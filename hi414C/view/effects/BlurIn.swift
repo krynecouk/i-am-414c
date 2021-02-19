@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BlurIn: View {
-    
     let gradient: Gradient;
     let radialGradient: RadialGradient;
     
@@ -20,7 +19,6 @@ struct BlurIn: View {
     var body: some View {
         Rectangle()
             .fill(radialGradient)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }

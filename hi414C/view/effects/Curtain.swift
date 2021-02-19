@@ -18,7 +18,6 @@ struct Curtain: View {
     var body: some View {
         Rectangle()
             .fill(color)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
