@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RefreshWave: View {
-    @State private var showWave = false;
+    @State private var y: CGFloat = -1000;
     
     let gradient: Gradient;
     let linearGradient: LinearGradient;
@@ -19,33 +19,16 @@ struct RefreshWave: View {
     }
     
     var body: some View {
-        ZStack {
-            if showWave {
-                Rectangle()
-                    .fill(linearGradient)
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .transition(.asymmetric(insertion: .refresh, removal: .opacity))
-                    .animation(Animation.linear(duration: 7).repeatForever(autoreverses: false))
+        Rectangle()
+            .fill(linearGradient)
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .offset(y: y)
+            .onAppear() {
+                withAnimation(Animation.linear(duration: 7).repeatForever(autoreverses: false)) {
+                    self.y = 1000
+                }
             }
-        }
-        .onAppear() {
-            showWave = true
-        }
     }
-}
-
-struct OffsetModifier: ViewModifier {
-    var x: CGFloat = 0
-    var y: CGFloat = 0
-    func body(content: Content) -> some View {
-        content.offset(x: x, y: y)
-    }
-}
-
-extension AnyTransition {
-    static var refresh: AnyTransition { get {
-        AnyTransition.modifier(active: OffsetModifier(y: -1000), identity: OffsetModifier(y: 800))
-    }}
 }
 
 struct RefreshWave_Previews: PreviewProvider {
