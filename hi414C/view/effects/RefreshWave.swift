@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct RefreshWave: View {
+    @State private var y: CGFloat = -1000;
+    @State private var animation: Animation? = Optional.none;
+    
     let gradient: Gradient;
     let linearGradient: LinearGradient;
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     init(of color: Color = Color("Primary").opacity(0.8)) {
         gradient = Gradient(colors: [Color.white.opacity(0), color])
@@ -17,12 +21,21 @@ struct RefreshWave: View {
     }
     
     var body: some View {
-        Rectangle()
-            .fill(linearGradient)
-            .transition(.move(edge: .bottom)) // TODO falling animation
-            .frame(width: .infinity, height: .infinity)
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        
+            Rectangle()
+                .fill(linearGradient)
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .animation(animation)
+                .onReceive(timer) {_ in
+                    if y < 1000 {
+                        animation = .linear
+                        y += 15
+                    } else {
+                        animation = .none
+                        y = -1000
+                    }
+                    print(timer)
+                }
+                .offset(y: y)
     }
 }
 

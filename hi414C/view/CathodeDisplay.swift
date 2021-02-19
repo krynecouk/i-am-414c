@@ -15,6 +15,7 @@ struct CathodeDisplay: View {
             BlurIn()
                 .opacity(0.9)
             RefreshWave()
+                .opacity(0.4)
             Curtain()
                 .opacity(0.8)
         }
