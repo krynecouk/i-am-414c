@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct StaticNoise: View {
-    @State var x : CGFloat = 0;
-    @State var y : CGFloat = 0;
-    
+    @State var x: CGFloat = 0
+    @State var y: CGFloat = 0
+
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    
+
     var body: some View {
         Image("Noise")
             .onReceive(timer) { _ in
-                x = CGFloat.random(in: -130...130)
-                y = CGFloat.random(in: -150...150)
+                x = CGFloat.random(in: -130 ... 130)
+                y = CGFloat.random(in: -150 ... 150)
             }
             .position(x: x, y: y)
     }

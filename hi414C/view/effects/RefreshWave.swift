@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct RefreshWave: View {
-    @State private var y: CGFloat = -1000;
-    
-    let gradient: Gradient;
-    let linearGradient: LinearGradient;
-    
+    @State private var y: CGFloat = -1000
+
+    let gradient: Gradient
+    let linearGradient: LinearGradient
+
     init(of color: Color = Color("Primary").opacity(0.8)) {
         gradient = Gradient(colors: [Color.white.opacity(0), color])
         linearGradient = LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
     }
-    
+
     var body: some View {
         Rectangle()
             .fill(linearGradient)
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
             .offset(y: y)
-            .onAppear() {
+            .onAppear {
                 withAnimation(Animation.linear(duration: 7).repeatForever(autoreverses: false)) {
                     self.y = 1000
                 }
