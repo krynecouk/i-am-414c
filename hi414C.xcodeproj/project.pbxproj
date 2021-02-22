@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2641EF3E25E411CE0005ABF7 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641EF3D25E411CE0005ABF7 /* A.swift */; };
+		2641EF4225E4188E0005ABF7 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641EF4125E4188E0005ABF7 /* FontManager.swift */; };
+		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
+		2641EF7025E4240D0005ABF7 /* H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641EF6F25E4240D0005ABF7 /* H.swift */; };
+		2641EF7325E424190005ABF7 /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641EF7225E424190005ABF7 /* I.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -19,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2641EF3D25E411CE0005ABF7 /* A.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
+		2641EF4125E4188E0005ABF7 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
+		2641EF6F25E4240D0005ABF7 /* H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H.swift; sourceTree = "<group>"; };
+		2641EF7225E424190005ABF7 /* I.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -43,12 +53,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2641EF3C25E411B00005ABF7 /* figlet */ = {
+			isa = PBXGroup;
+			children = (
+				2641EF3D25E411CE0005ABF7 /* A.swift */,
+				2641EF6F25E4240D0005ABF7 /* H.swift */,
+				2641EF7225E424190005ABF7 /* I.swift */,
+			);
+			path = figlet;
+			sourceTree = "<group>";
+		};
+		2641EF5125E41D1A0005ABF7 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
+				2641EF4125E4188E0005ABF7 /* FontManager.swift */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		2641EF6525E422350005ABF7 /* cathode */ = {
+			isa = PBXGroup;
+			children = (
+				267463DE25DED1A500624D7C /* effects */,
+				267463EB25DED87500624D7C /* CathodeDisplay.swift */,
+			);
+			path = cathode;
+			sourceTree = "<group>";
+		};
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				2641EF6525E422350005ABF7 /* cathode */,
+				2641EF3C25E411B00005ABF7 /* figlet */,
 				26BEC22B25DD3B0A0035065E /* ContentView.swift */,
-				267463DE25DED1A500624D7C /* effects */,
-				267463EB25DED87500624D7C /* CathodeDisplay.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -56,6 +94,7 @@
 		267463DC25DED19600624D7C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				2641EF5125E41D1A0005ABF7 /* font */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -173,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
 			);
@@ -188,9 +228,13 @@
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
+				2641EF3E25E411CE0005ABF7 /* A.swift in Sources */,
+				2641EF4225E4188E0005ABF7 /* FontManager.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeDisplay.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
+				2641EF7325E424190005ABF7 /* I.swift in Sources */,
+				2641EF7025E4240D0005ABF7 /* H.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
