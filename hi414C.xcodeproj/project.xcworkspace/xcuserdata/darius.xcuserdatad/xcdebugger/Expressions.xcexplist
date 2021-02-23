@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in Figlet.__preview__body.getter:Figlet.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lines.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "A.init():A.swift">
          <PersistentStrings>
             <PersistentString

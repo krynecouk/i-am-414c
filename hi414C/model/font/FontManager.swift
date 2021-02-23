@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// TODO singleton class
+// TODO enum
 struct FontManager {
     
     static func fontFamilies() -> [String] {
