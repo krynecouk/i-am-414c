@@ -12,8 +12,7 @@ struct ContentView: View {
         ZStack {
             CathodeDisplay()
             HStack {
-                H()
-                I()
+                ShadowAscii.A
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
