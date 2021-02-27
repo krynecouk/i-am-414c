@@ -1,13 +1,105 @@
 //
-//  ShadowAscii.swift
+//  ANSIShadow.swift
 //  hi414C
+//
+//  source: https://github.com/xero/figlet-fonts/blob/master/ANSI%20Shadow.flf
 //
 //  Created by Darius Kryszczuk on 23.02.2021.
 //
 
 import Foundation
 
-struct ShadowAscii {
+struct ANSIShadow {
+    static let ZERO = Figlet("0", [
+        " ██████╗ ",
+        "██╔═████╗",
+        "██║██╔██║",
+        "████╔╝██║",
+        "╚██████╔╝",
+        " ╚═════╝ ",
+    ])
+
+    static let ONE = Figlet("1", [
+        " ██╗",
+        "███║",
+        "╚██║",
+        " ██║",
+        " ██║",
+        " ╚═╝",
+    ])
+
+    static let TWO = Figlet("2", [
+        "██████╗ ",
+        "╚════██╗",
+        " █████╔╝",
+        "██╔═══╝ ",
+        "███████╗",
+        "╚══════╝",
+    ])
+
+    static let THREE = Figlet("3", [
+        "██████╗ ",
+        "╚════██╗",
+        " █████╔╝",
+        " ╚═══██╗",
+        "██████╔╝",
+        "╚═════╝ ",
+    ])
+
+    static let FOUR = Figlet("4", [
+        "██╗  ██╗",
+        "██║  ██║",
+        "███████║",
+        "╚════██║",
+        "     ██║",
+        "     ╚═╝",
+    ])
+
+    static let FIVE = Figlet("5", [
+        "███████╗",
+        "██╔════╝",
+        "███████╗",
+        "╚════██║",
+        "███████║",
+        "╚══════╝",
+    ])
+
+    static let SIX = Figlet("6", [
+        " ██████╗ ",
+        "██╔════╝ ",
+        "███████╗ ",
+        "██╔═══██╗",
+        "╚██████╔╝",
+        " ╚═════╝ ",
+    ])
+
+    static let SEVEN = Figlet("7", [
+        "███████╗",
+        "╚════██║",
+        "    ██╔╝",
+        "   ██╔╝ ",
+        "   ██║  ",
+        "   ╚═╝  ",
+    ])
+
+    static let EIGHT = Figlet("8", [
+        " █████╗ ",
+        "██╔══██╗",
+        "╚█████╔╝",
+        "██╔══██╗",
+        "╚█████╔╝",
+        " ╚════╝ ",
+    ])
+
+    static let NINE = Figlet("9", [
+        " █████╗ ",
+        "██╔══██╗",
+        "╚██████║",
+        " ╚═══██║",
+        " █████╔╝",
+        " ╚════╝ ",
+    ])
+
     static let A = Figlet("A", [
         " █████╗ ",
         "██╔══██╗",

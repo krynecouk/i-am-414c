@@ -13,28 +13,31 @@ struct Figlet: View {
     
     var key: String
     var lines: [String]
-    var font: Font = Font.custom(FontManager.ModernTerminus.terminus, size: 25)
+    var fontName: String
+    var fontSize: CGFloat
     
     let timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
     
     init(
         _ key: String,
         _ lines: [String],
-        _ font: Font = Font.custom(FontManager.ModernTerminus.terminus, size: 25)) {
+        _ fontName: String = FontManager.ModernTerminus.terminus,
+        _ fontSize: CGFloat = 18) {
         
         self.key = key
         self.lines = lines
-        self.font = font
+        self.fontName = fontName
+        self.fontSize = fontSize
         self.print = lines[0]
     }
     
     var body: some View {
         Text(print)
-            .frame(width: 100, height: 190, alignment: .topLeading)
+            .frame(height: 190, alignment: .topLeading)
             .foregroundColor(Color("Primary"))
-            .fixedSize()
+            //.fixedSize()
             .multilineTextAlignment(.leading)
-            .font(font)
+            .font(Font.custom(fontName, size: fontSize))
             .shadow(color: Color("Primary"), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
             .onReceive(timer) { _ in
                 if printIdx == lines.count {
@@ -44,7 +47,10 @@ struct Figlet: View {
                 print += lines[printIdx] + "\n"
                 printIdx += 1
             }
-
+    }
+    
+    func size(_ size: CGFloat) -> Figlet {
+        Figlet(self.key, self.lines, self.fontName, size)
     }
 }
 
