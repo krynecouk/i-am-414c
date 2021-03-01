@@ -30,33 +30,11 @@ struct ContentView: View {
                                 ANSIRegular.ZERO
                                 ANSIRegular.ZERO
                             }
-                            Group() {
-                                ANSIRegular.H
-                                ANSIRegular.ZERO
-                                ANSIRegular.ZERO
-                                ANSIRegular.ONE
-                                ANSIRegular.ZERO
-                                ANSIRegular.ZERO
-                                ANSIRegular.ONE
-                                ANSIRegular.ZERO
-                                ANSIRegular.ZERO
-                            }
-                            Group() {
-                                ANSIRegular.H
-                                ANSIRegular.ZERO
-                                ANSIRegular.ZERO
-                                ANSIRegular.ONE
-                                ANSIRegular.ZERO
-                                ANSIRegular.ZERO
-                                ANSIRegular.ONE
-                                ANSIRegular.ZERO
-                                ANSIRegular.ZERO
-                            }
                         }
                         .padding(30)
                     }
-                    Text("FOOOOOOO").foregroundColor(.green)
-                }.border(Color.yellow)
+                    TerminalView()
+                }
             }
         }
     }
