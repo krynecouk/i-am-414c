@@ -16,31 +16,8 @@ struct ContentView: View {
                     ANSIRegular.ONE
                     ANSIRegular.ZERO
                     ANSIRegular.ZERO
-                    ANSIRegular.ZERO
-                    ANSIRegular.ONE
-                    ANSIRegular.ONE
-                    ANSIRegular.ONE
-                    ANSIRegular.ONE
-                }.frame(height: 120)
-                HStack {
-                    ANSIRegular.ONE
-                    ANSIRegular.ZERO
-                    ANSIRegular.ZERO
-                    ANSIRegular.ZERO
-                    ANSIRegular.ONE
-                    ANSIRegular.ONE
-                    ANSIRegular.ONE
-                    ANSIRegular.ONE
-                }.frame(height: 120).opacity(0.2)
-                HStack {
-                    ANSIShadow.H
-                    ANSIShadow.I
-                }.frame(height: 120).opacity(0.2)
-                Text("10001111100100011000100010000101")
-                    .font(Font.custom(FontManager.ModernTerminus.terminus, size: 100))
-                    .foregroundColor(Color("Primary"))
-                    .shadow(color: Color("Primary"), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    .opacity(0.8)
+
+                }
                 
             }
         }

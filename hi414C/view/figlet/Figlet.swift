@@ -33,8 +33,9 @@ struct Figlet: View {
     
     var body: some View {
         Text(print)
-            .frame(height: 190, alignment: .topLeading)
+            .frame(height: 112, alignment: .topLeading)
             .foregroundColor(Color("Primary"))
+            .border(Color.blue)
             //.fixedSize()
             .multilineTextAlignment(.leading)
             .font(Font.custom(fontName, size: fontSize))
