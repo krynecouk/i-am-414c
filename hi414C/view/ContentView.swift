@@ -8,20 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private var columns: [GridItem] = [
+        GridItem(.adaptive(minimum: 60, maximum: .infinity), spacing: 20),
+    ]
+    
     var body: some View {
         ZStack {
-            CathodeDisplay()
-            VStack {
-                HStack {
-                    ANSIRegular.ONE
-                    ANSIRegular.ZERO
-                    ANSIRegular.ZERO
-
+            CathodeDisplay() {
+                ScrollView(.vertical) {
+                    LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+                        Group() {
+                            ANSIRegular.H
+                            ANSIRegular.ZERO
+                            ANSIRegular.ZERO
+                            ANSIRegular.ONE
+                            ANSIRegular.ZERO
+                            ANSIRegular.ZERO
+                            ANSIRegular.ONE
+                            ANSIRegular.ZERO
+                            ANSIRegular.ZERO
+                        }
+                    }
                 }
-                
             }
         }
-
     }
 }
 

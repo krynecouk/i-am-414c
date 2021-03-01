@@ -22,7 +22,7 @@ struct Figlet: View {
         _ key: String,
         _ lines: [String],
         _ fontName: String = FontManager.ModernTerminus.terminus,
-        _ fontSize: CGFloat = 18) {
+        _ fontSize: CGFloat = 15) {
         
         self.key = key
         self.lines = lines
@@ -33,10 +33,9 @@ struct Figlet: View {
     
     var body: some View {
         Text(print)
-            .frame(height: 112, alignment: .topLeading)
             .foregroundColor(Color("Primary"))
-            .border(Color.blue)
-            //.fixedSize()
+            //.border(Color.blue)
+            .fixedSize()
             .multilineTextAlignment(.leading)
             .font(Font.custom(fontName, size: fontSize))
             .shadow(color: Color("Primary"), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)

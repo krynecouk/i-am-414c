@@ -7,25 +7,41 @@
 
 import SwiftUI
 
-struct CathodeDisplay: View {
+struct CathodeDisplay<Content: View> : View {
+    
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
     var body: some View {
         ZStack {
-            StaticNoise()
-                .opacity(0.4)
+            //StaticNoise()
+            //  .opacity(0.4)
             BlurIn()
                 .opacity(0.9)
-            RefreshWave()
-                .opacity(0.4)
+
             Curtain()
                 .opacity(0.8)
+            content
+            RefreshWave()
+                .opacity(0.04)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
     }
 }
 
 struct CathodeDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        CathodeDisplay()
+        CathodeDisplay() {
+            HStack {
+                ANSIShadow.H
+                ANSIShadow.E
+                ANSIShadow.L
+                ANSIShadow.L
+                ANSIShadow.O
+            }
+
+        }
     }
 }
