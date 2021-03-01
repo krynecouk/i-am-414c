@@ -13,7 +13,7 @@ struct Figlet: View {
     
     var key: String
     var lines: [String]
-    var fontName: String
+    var fontName: FontName
     var fontSize: CGFloat
     
     let timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
@@ -21,7 +21,7 @@ struct Figlet: View {
     init(
         _ key: String,
         _ lines: [String],
-        _ fontName: String = FontManager.ModernTerminus.terminus,
+        _ fontName: FontName = .terminus,
         _ fontSize: CGFloat = 13) {
         
         self.key = key
@@ -37,7 +37,7 @@ struct Figlet: View {
             //.border(Color.blue)
             .fixedSize()
             .multilineTextAlignment(.leading)
-            .font(Font.custom(fontName, size: fontSize))
+            .font(Font.custom(fontName.rawValue, size: fontSize))
             .shadow(color: Color("Primary"), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
             .onReceive(timer) { _ in
                 if printIdx == lines.count {

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegular.swift */; };
-		2641EF4225E4188E0005ABF7 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641EF4125E4188E0005ABF7 /* FontManager.swift */; };
 		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
+		265A00A825ED498300F479FA /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00A725ED498300F479FA /* TerminalView.swift */; };
+		265A00AB25ED49EA00F479FA /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00AA25ED49EA00F479FA /* FontName.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -25,8 +26,9 @@
 
 /* Begin PBXFileReference section */
 		263F440025EAB5C700D069B6 /* ANSIRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegular.swift; sourceTree = "<group>"; };
-		2641EF4125E4188E0005ABF7 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
+		265A00A725ED498300F479FA /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
+		265A00AA25ED49EA00F479FA /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
-				2641EF4125E4188E0005ABF7 /* FontManager.swift */,
+				265A00AA25ED49EA00F479FA /* FontName.swift */,
 			);
 			path = font;
 			sourceTree = "<group>";
@@ -81,9 +83,18 @@
 			path = cathode;
 			sourceTree = "<group>";
 		};
+		265A00A625ED490D00F479FA /* terminal */ = {
+			isa = PBXGroup;
+			children = (
+				265A00A725ED498300F479FA /* TerminalView.swift */,
+			);
+			path = terminal;
+			sourceTree = "<group>";
+		};
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				265A00A625ED490D00F479FA /* terminal */,
 				2641EF6525E422350005ABF7 /* cathode */,
 				2641EF3C25E411B00005ABF7 /* figlet */,
 				26BEC22B25DD3B0A0035065E /* ContentView.swift */,
@@ -227,9 +238,10 @@
 			files = (
 				263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
+				265A00AB25ED49EA00F479FA /* FontName.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
-				2641EF4225E4188E0005ABF7 /* FontManager.swift in Sources */,
+				265A00A825ED498300F479FA /* TerminalView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				26851AAD25E574A4004B1E2E /* Figlet.swift in Sources */,
