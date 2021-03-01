@@ -13,7 +13,7 @@
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
-		267463EC25DED87500624D7C /* CathodeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463EB25DED87500624D7C /* CathodeDisplay.swift */; };
+		267463EC25DED87500624D7C /* CathodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463EB25DED87500624D7C /* CathodeView.swift */; };
 		267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463EF25DEDBDB00624D7C /* RefreshWave.swift */; };
 		26851AAD25E574A4004B1E2E /* Figlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26851AAC25E574A4004B1E2E /* Figlet.swift */; };
 		26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26851AAF25E5751E004B1E2E /* ANSIShadow.swift */; };
@@ -30,7 +30,7 @@
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
-		267463EB25DED87500624D7C /* CathodeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathodeDisplay.swift; sourceTree = "<group>"; };
+		267463EB25DED87500624D7C /* CathodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathodeView.swift; sourceTree = "<group>"; };
 		267463EF25DEDBDB00624D7C /* RefreshWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshWave.swift; sourceTree = "<group>"; };
 		26851AAC25E574A4004B1E2E /* Figlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figlet.swift; sourceTree = "<group>"; };
 		26851AAF25E5751E004B1E2E /* ANSIShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIShadow.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				267463DE25DED1A500624D7C /* effects */,
-				267463EB25DED87500624D7C /* CathodeDisplay.swift */,
+				267463EB25DED87500624D7C /* CathodeView.swift */,
 			);
 			path = cathode;
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
 				2641EF4225E4188E0005ABF7 /* FontManager.swift in Sources */,
-				267463EC25DED87500624D7C /* CathodeDisplay.swift in Sources */,
+				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				26851AAD25E574A4004B1E2E /* Figlet.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */,

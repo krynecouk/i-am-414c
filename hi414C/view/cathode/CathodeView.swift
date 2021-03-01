@@ -1,5 +1,5 @@
 //
-//  CathodeBackground.swift
+//  CathodeView.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 18.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CathodeDisplay<Content: View> : View {
+struct CathodeView<Content: View> : View {
     
     let content: Content
     
@@ -31,9 +31,9 @@ struct CathodeDisplay<Content: View> : View {
     }
 }
 
-struct CathodeDisplay_Previews: PreviewProvider {
+struct CathodeView_Previews: PreviewProvider {
     static var previews: some View {
-        CathodeDisplay() {
+        CathodeView() {
             HStack {
                 ANSIShadow.H
                 ANSIShadow.E

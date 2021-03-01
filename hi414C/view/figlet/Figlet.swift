@@ -22,7 +22,7 @@ struct Figlet: View {
         _ key: String,
         _ lines: [String],
         _ fontName: String = FontManager.ModernTerminus.terminus,
-        _ fontSize: CGFloat = 15) {
+        _ fontSize: CGFloat = 13) {
         
         self.key = key
         self.lines = lines

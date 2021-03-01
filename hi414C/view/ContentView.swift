@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            CathodeDisplay() {
+            CathodeView() {
                 ScrollView(.vertical) {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                         Group() {
@@ -30,6 +30,8 @@ struct ContentView: View {
                             ANSIRegular.ZERO
                         }
                     }
+                    .border(Color.blue)
+                    .padding(30)
                 }
             }
         }
