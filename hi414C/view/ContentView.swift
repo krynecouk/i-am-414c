@@ -33,8 +33,9 @@ struct ContentView: View {
                         }
                         .padding(30)
                     }
-                    TerminalView()
+
                 }
+                TerminalView()
             }
         }
     }
