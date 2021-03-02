@@ -37,6 +37,7 @@ struct ContentView: View {
                 }
                 TerminalView()
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
 }

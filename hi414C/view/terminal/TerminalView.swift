@@ -22,22 +22,53 @@ struct TerminalView: View {
             VStack {
                 Spacer()
                 VStack(spacing: 0) {
-                    HStack {
-                        TerminalFont("414C >")
-                        TerminalFont(text)
-                        TerminalFont("█")
+                    Group {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                TerminalFont("414C >")
+                                TerminalFont(text)
+                                TerminalFont("█")
+                            }.padding(.leading)
+                        }
+
                     }
+                    .frame(width: metrics.size.width, alignment: .topLeading)                    //.padding()
+
                     .onTapGesture {
                         withAnimation(Animation.spring()) {
                             self.offset = open ? metrics.size.height * 0.52 : 0
                             open.toggle()
                         }
                     }
+                    
+                    Group {
+                        TerminalFont("=================================")
+                        TerminalFont("1")
+                            .onTapGesture {
+                                text += "1"
+                            }
+                        TerminalFont("2")
+                            .onTapGesture {
+                                text += "2"
+                            }
+                        TerminalFont("3")
+                            .onTapGesture {
+                                text += "3"
+                            }
+                        TerminalFont("4")
+                            .onTapGesture {
+                                text += "4"
+                            }
+                    }
+                    
+                        .offset(y: 40)
+                    
                 }
-                .border(Color.pink)
+                .frame(width: metrics.size.width, height: metrics.size.height, alignment: .topLeading)
+                //.background(Color.black)
                 .offset(y: offset)
                 .frame(width: metrics.size.width, height: metrics.size.height * 0.6, alignment: .topLeading)
-                .border(Color.green)
+                //.border(Color.green)
                 .onAppear {
                     self.offset = metrics.size.height * 0.52
                 }
