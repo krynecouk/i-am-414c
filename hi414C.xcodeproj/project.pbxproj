@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26040D7C25F15319005BF921 /* TerminalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26040D7B25F15319005BF921 /* TerminalButton.swift */; };
+		26040D7F25F15629005BF921 /* ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26040D7E25F15629005BF921 /* ASCII.swift */; };
+		26040D8325F15753005BF921 /* ASCIITable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26040D8225F15753005BF921 /* ASCIITable.swift */; };
 		263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegular.swift */; };
 		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
 		265A00A825ED498300F479FA /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00A725ED498300F479FA /* TerminalView.swift */; };
@@ -18,7 +21,7 @@
 		267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463EF25DEDBDB00624D7C /* RefreshWave.swift */; };
 		26851AAD25E574A4004B1E2E /* Figlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26851AAC25E574A4004B1E2E /* Figlet.swift */; };
 		26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26851AAF25E5751E004B1E2E /* ANSIShadow.swift */; };
-		2689DA7125EE74E900F8B2EE /* TerminalFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2689DA7025EE74E900F8B2EE /* TerminalFont.swift */; };
+		2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2689DA7025EE74E900F8B2EE /* TerminalText.swift */; };
 		26904A5A25F0CC87001BFBA5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 26904A5925F0CC87001BFBA5 /* README.md */; };
 		26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */; };
 		26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22925DD3B0A0035065E /* hi414CApp.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26040D7B25F15319005BF921 /* TerminalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalButton.swift; sourceTree = "<group>"; };
+		26040D7E25F15629005BF921 /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
+		26040D8225F15753005BF921 /* ASCIITable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITable.swift; sourceTree = "<group>"; };
 		263F440025EAB5C700D069B6 /* ANSIRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegular.swift; sourceTree = "<group>"; };
 		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
 		265A00A725ED498300F479FA /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
@@ -39,7 +45,7 @@
 		267463EF25DEDBDB00624D7C /* RefreshWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshWave.swift; sourceTree = "<group>"; };
 		26851AAC25E574A4004B1E2E /* Figlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figlet.swift; sourceTree = "<group>"; };
 		26851AAF25E5751E004B1E2E /* ANSIShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIShadow.swift; sourceTree = "<group>"; };
-		2689DA7025EE74E900F8B2EE /* TerminalFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalFont.swift; sourceTree = "<group>"; };
+		2689DA7025EE74E900F8B2EE /* TerminalText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalText.swift; sourceTree = "<group>"; };
 		26904A5925F0CC87001BFBA5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegue.swift; sourceTree = "<group>"; };
 		26BEC22625DD3B0A0035065E /* hi414C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hi414C.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +67,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26040D7825F15261005BF921 /* terminal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = terminal;
+			sourceTree = "<group>";
+		};
+		26040D7925F15280005BF921 /* store */ = {
+			isa = PBXGroup;
+			children = (
+				26040D7A25F152A6005BF921 /* terminal */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
+		26040D7A25F152A6005BF921 /* terminal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = terminal;
+			sourceTree = "<group>";
+		};
+		26040D8125F15745005BF921 /* ascii */ = {
+			isa = PBXGroup;
+			children = (
+				26040D7E25F15629005BF921 /* ASCII.swift */,
+				26040D8225F15753005BF921 /* ASCIITable.swift */,
+			);
+			path = ascii;
+			sourceTree = "<group>";
+		};
 		2641EF3C25E411B00005ABF7 /* figlet */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				265A00A725ED498300F479FA /* TerminalView.swift */,
-				2689DA7025EE74E900F8B2EE /* TerminalFont.swift */,
+				2689DA7025EE74E900F8B2EE /* TerminalText.swift */,
 				26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */,
+				26040D7B25F15319005BF921 /* TerminalButton.swift */,
 			);
 			path = terminal;
 			sourceTree = "<group>";
@@ -113,16 +151,11 @@
 		267463DC25DED19600624D7C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				26040D8125F15745005BF921 /* ascii */,
+				26040D7825F15261005BF921 /* terminal */,
 				2641EF5125E41D1A0005ABF7 /* font */,
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		267463DD25DED19E00624D7C /* controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = controller;
 			sourceTree = "<group>";
 		};
 		267463DE25DED1A500624D7C /* effects */ = {
@@ -155,7 +188,7 @@
 		26BEC22825DD3B0A0035065E /* hi414C */ = {
 			isa = PBXGroup;
 			children = (
-				267463DD25DED19E00624D7C /* controller */,
+				26040D7925F15280005BF921 /* store */,
 				267463DC25DED19600624D7C /* model */,
 				267463DB25DED18000624D7C /* view */,
 				26BEC22925DD3B0A0035065E /* hi414CApp.swift */,
@@ -254,12 +287,15 @@
 				265A00A825ED498300F479FA /* TerminalView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
+				26040D7C25F15319005BF921 /* TerminalButton.swift in Sources */,
 				26851AAD25E574A4004B1E2E /* Figlet.swift in Sources */,
+				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
 				26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */,
-				2689DA7125EE74E900F8B2EE /* TerminalFont.swift in Sources */,
+				2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
+				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

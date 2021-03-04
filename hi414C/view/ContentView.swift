@@ -44,7 +44,7 @@ struct ContentView: View {
 
 struct Footer: View {
     var body: some View {
-        Text("FOOTER").foregroundColor(.white)
+        TerminalView()
     }
 }
 

@@ -40,7 +40,6 @@ struct TerminalSegue<Header: View, Content: View> : View {
                     }
                     
                     Group {
-                        TerminalFont("=================================")
                         content
                     }.offset(y: 40)
                     
