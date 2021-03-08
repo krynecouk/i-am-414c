@@ -19,7 +19,6 @@ struct TerminalText: View {
         shadowColor: Color = Color("Primary"),
         size: CGFloat = 25
     ) {
-        
         self.content = content
         self.color = color
         self.shadowColor = shadowColor
@@ -31,12 +30,25 @@ struct TerminalText: View {
             .foregroundColor(color)
             .fixedSize()
             .font(Font.custom(FontName.terminus.rawValue, size: size))
-            .shadow(color: shadowColor, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+            .cathodeShadow(color: shadowColor)
     }
 }
 
 struct TerminalText_Previews: PreviewProvider {
     static var previews: some View {
-        TerminalText("> this is test of terminal font █")
+        Group {
+            TerminalText("> this is test of terminal font █")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .background(Color.black)
+                .previewDisplayName("Black background")
+            
+            TerminalText("> this is test of terminal font █")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .background(Color.white)
+                .previewDisplayName("White background")
+        }
+
     }
 }

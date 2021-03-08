@@ -10,6 +10,15 @@ import SwiftUI
 struct TerminalView: View {
     @State var text: String = ""
     let ascii: [ASCII] = [
+        ASCIITable.one,
+        ASCIITable.two,
+        ASCIITable.three,
+        ASCIITable.four,
+        ASCIITable.six,
+        ASCIITable.seven,
+        ASCIITable.eight,
+        ASCIITable.nine,
+        ASCIITable.zero,
         ASCIITable.A,
         ASCIITable.B,
         ASCIITable.C,

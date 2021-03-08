@@ -38,7 +38,7 @@ struct Figlet: View {
             .fixedSize()
             .multilineTextAlignment(.leading)
             .font(Font.custom(fontName.rawValue, size: fontSize))
-            .shadow(color: Color("Primary"), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+            .cathodeShadow()
             .onReceive(timer) { _ in
                 if printIdx == lines.count {
                     self.timer.upstream.connect().cancel()

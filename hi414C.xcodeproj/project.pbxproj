@@ -24,6 +24,9 @@
 		2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2689DA7025EE74E900F8B2EE /* TerminalText.swift */; };
 		26904A5A25F0CC87001BFBA5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 26904A5925F0CC87001BFBA5 /* README.md */; };
 		26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */; };
+		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
+		26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */; };
+		26B39DC525F65741004E4D22 /* CathodeShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* CathodeShadow.swift */; };
 		26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22925DD3B0A0035065E /* hi414CApp.swift */; };
 		26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22B25DD3B0A0035065E /* ContentView.swift */; };
 		26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BEC22D25DD3B0B0035065E /* Assets.xcassets */; };
@@ -48,6 +51,9 @@
 		2689DA7025EE74E900F8B2EE /* TerminalText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalText.swift; sourceTree = "<group>"; };
 		26904A5925F0CC87001BFBA5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegue.swift; sourceTree = "<group>"; };
+		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
+		26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboardButton.swift; sourceTree = "<group>"; };
+		26B39DC425F65741004E4D22 /* CathodeShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathodeShadow.swift; sourceTree = "<group>"; };
 		26BEC22625DD3B0A0035065E /* hi414C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hi414C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BEC22925DD3B0A0035065E /* hi414CApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CApp.swift; sourceTree = "<group>"; };
 		26BEC22B25DD3B0A0035065E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,21 +132,18 @@
 			path = cathode;
 			sourceTree = "<group>";
 		};
-		265A00A625ED490D00F479FA /* terminal */ = {
+		265A00A625ED490D00F479FA /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				265A00A725ED498300F479FA /* TerminalView.swift */,
-				2689DA7025EE74E900F8B2EE /* TerminalText.swift */,
-				26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */,
-				26040D7B25F15319005BF921 /* TerminalButton.swift */,
+				26B39DBB25F63116004E4D22 /* terminal */,
 			);
-			path = terminal;
+			path = keyboard;
 			sourceTree = "<group>";
 		};
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
-				265A00A625ED490D00F479FA /* terminal */,
+				265A00A625ED490D00F479FA /* keyboard */,
 				2641EF6525E422350005ABF7 /* cathode */,
 				2641EF3C25E411B00005ABF7 /* figlet */,
 				26BEC22B25DD3B0A0035065E /* ContentView.swift */,
@@ -165,8 +168,22 @@
 				267463E425DED4B300624D7C /* StaticNoise.swift */,
 				267463E825DED6B000624D7C /* Curtain.swift */,
 				267463EF25DEDBDB00624D7C /* RefreshWave.swift */,
+				26B39DC425F65741004E4D22 /* CathodeShadow.swift */,
 			);
 			path = effects;
+			sourceTree = "<group>";
+		};
+		26B39DBB25F63116004E4D22 /* terminal */ = {
+			isa = PBXGroup;
+			children = (
+				265A00A725ED498300F479FA /* TerminalView.swift */,
+				2689DA7025EE74E900F8B2EE /* TerminalText.swift */,
+				26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */,
+				26040D7B25F15319005BF921 /* TerminalButton.swift */,
+				26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */,
+				26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */,
+			);
+			path = terminal;
 			sourceTree = "<group>";
 		};
 		26BEC21D25DD3B0A0035065E = {
@@ -280,9 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */,
+				26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				265A00AB25ED49EA00F479FA /* FontName.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
+				26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
 				265A00A825ED498300F479FA /* TerminalView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
@@ -294,6 +313,7 @@
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
 				26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */,
 				2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */,
+				26B39DC525F65741004E4D22 /* CathodeShadow.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 			);
