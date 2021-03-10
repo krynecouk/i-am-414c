@@ -1,5 +1,5 @@
 //
-//  Figlet.swift
+//  FigletView.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 23.02.2021.
@@ -7,28 +7,25 @@
 
 import SwiftUI
 
-struct Figlet: View {
+struct FigletView: View {
     @State var print: String = ""
     @State var printIdx: Int = 0
     
-    var key: String
-    var lines: [String]
+    let figlet: Figlet
     var fontName: FontName
     var fontSize: CGFloat
     
     let timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
     
     init(
-        _ key: String,
-        _ lines: [String],
+        _ figlet: Figlet,
         _ fontName: FontName = .terminus,
         _ fontSize: CGFloat = 13) {
         
-        self.key = key
-        self.lines = lines
+        self.figlet = figlet
         self.fontName = fontName
         self.fontSize = fontSize
-        self.print = lines[0]
+        self.print = figlet.lines[0]
     }
     
     var body: some View {
@@ -40,29 +37,22 @@ struct Figlet: View {
             .font(Font.custom(fontName.rawValue, size: fontSize))
             .bloom()
             .onReceive(timer) { _ in
-                if printIdx == lines.count {
+                if printIdx == figlet.lines.count {
                     self.timer.upstream.connect().cancel()
                     return
                 }
-                print += lines[printIdx] + "\n"
+                print += figlet.lines[printIdx] + "\n"
                 printIdx += 1
             }
     }
     
-    func size(_ size: CGFloat) -> Figlet {
-        Figlet(self.key, self.lines, self.fontName, size)
+    func size(_ size: CGFloat) -> FigletView {
+        FigletView(self.figlet, self.fontName, size)
     }
 }
 
-struct Figlet_Previews: PreviewProvider {
+struct FigletView_Previews: PreviewProvider {
     static var previews: some View {
-        Figlet("A", [
-            " █████╗ ",
-            "██╔══██╗",
-            "███████║",
-            "██╔══██║",
-            "██║  ██║",
-            "╚═╝  ╚═╝",
-        ])
+        FigletView(ANSIShadow.A)
     }
 }

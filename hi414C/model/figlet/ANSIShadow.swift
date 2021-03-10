@@ -10,7 +10,7 @@
 import Foundation
 
 struct ANSIShadow {
-    static let ZERO = Figlet("0", [
+    static let ZERO = Figlet(id: "0", lines: [
         " ██████╗ ",
         "██╔═████╗",
         "██║██╔██║",
@@ -19,7 +19,7 @@ struct ANSIShadow {
         " ╚═════╝ ",
     ])
 
-    static let ONE = Figlet("1", [
+    static let ONE = Figlet(id: "1", lines: [
         " ██╗",
         "███║",
         "╚██║",
@@ -28,7 +28,7 @@ struct ANSIShadow {
         " ╚═╝",
     ])
 
-    static let TWO = Figlet("2", [
+    static let TWO = Figlet(id: "2", lines: [
         "██████╗ ",
         "╚════██╗",
         " █████╔╝",
@@ -37,7 +37,7 @@ struct ANSIShadow {
         "╚══════╝",
     ])
 
-    static let THREE = Figlet("3", [
+    static let THREE = Figlet(id: "3", lines: [
         "██████╗ ",
         "╚════██╗",
         " █████╔╝",
@@ -46,7 +46,7 @@ struct ANSIShadow {
         "╚═════╝ ",
     ])
 
-    static let FOUR = Figlet("4", [
+    static let FOUR = Figlet(id: "4", lines: [
         "██╗  ██╗",
         "██║  ██║",
         "███████║",
@@ -55,7 +55,7 @@ struct ANSIShadow {
         "     ╚═╝",
     ])
 
-    static let FIVE = Figlet("5", [
+    static let FIVE = Figlet(id: "5", lines: [
         "███████╗",
         "██╔════╝",
         "███████╗",
@@ -64,7 +64,7 @@ struct ANSIShadow {
         "╚══════╝",
     ])
 
-    static let SIX = Figlet("6", [
+    static let SIX = Figlet(id: "6", lines: [
         " ██████╗ ",
         "██╔════╝ ",
         "███████╗ ",
@@ -73,7 +73,7 @@ struct ANSIShadow {
         " ╚═════╝ ",
     ])
 
-    static let SEVEN = Figlet("7", [
+    static let SEVEN = Figlet(id: "7", lines: [
         "███████╗",
         "╚════██║",
         "    ██╔╝",
@@ -82,7 +82,7 @@ struct ANSIShadow {
         "   ╚═╝  ",
     ])
 
-    static let EIGHT = Figlet("8", [
+    static let EIGHT = Figlet(id: "8", lines: [
         " █████╗ ",
         "██╔══██╗",
         "╚█████╔╝",
@@ -91,7 +91,7 @@ struct ANSIShadow {
         " ╚════╝ ",
     ])
 
-    static let NINE = Figlet("9", [
+    static let NINE = Figlet(id: "9", lines: [
         " █████╗ ",
         "██╔══██╗",
         "╚██████║",
@@ -100,7 +100,7 @@ struct ANSIShadow {
         " ╚════╝ ",
     ])
 
-    static let A = Figlet("A", [
+    static let A = Figlet(id: "A", lines: [
         " █████╗ ",
         "██╔══██╗",
         "███████║",
@@ -109,7 +109,7 @@ struct ANSIShadow {
         "╚═╝  ╚═╝",
     ])
 
-    static let B = Figlet("B", [
+    static let B = Figlet(id: "B", lines: [
         "██████╗ ",
         "██╔══██╗",
         "██████╔╝",
@@ -118,7 +118,7 @@ struct ANSIShadow {
         "╚═════╝ ",
     ])
 
-    static let C = Figlet("C", [
+    static let C = Figlet(id: "C", lines: [
         " ██████╗",
         "██╔════╝",
         "██║     ",
@@ -127,7 +127,7 @@ struct ANSIShadow {
         " ╚═════╝",
     ])
 
-    static let D = Figlet("D", [
+    static let D = Figlet(id: "D", lines: [
         "██████╗ ",
         "██╔══██╗",
         "██║  ██║",
@@ -136,7 +136,7 @@ struct ANSIShadow {
         "╚═════╝ ",
     ])
 
-    static let E = Figlet("E", [
+    static let E = Figlet(id: "E", lines: [
         "███████╗",
         "██╔════╝",
         "█████╗  ",
@@ -145,7 +145,7 @@ struct ANSIShadow {
         "╚══════╝",
     ])
 
-    static let F = Figlet("F", [
+    static let F = Figlet(id: "F", lines: [
         "███████╗",
         "██╔════╝",
         "█████╗  ",
@@ -154,7 +154,7 @@ struct ANSIShadow {
         "╚═╝     ",
     ])
 
-    static let G = Figlet("G", [
+    static let G = Figlet(id: "G", lines: [
         " ██████╗ ",
         "██╔════╝ ",
         "██║  ███╗",
@@ -163,7 +163,7 @@ struct ANSIShadow {
         " ╚═════╝ ",
     ])
 
-    static let H = Figlet("H", [
+    static let H = Figlet(id: "H", lines: [
         "██╗  ██╗",
         "██║  ██║",
         "███████║",
@@ -172,7 +172,7 @@ struct ANSIShadow {
         "╚═╝  ╚═╝",
     ])
 
-    static let I = Figlet("I", [
+    static let I = Figlet(id: "I", lines: [
         "██╗",
         "██║",
         "██║",
@@ -181,7 +181,7 @@ struct ANSIShadow {
         "╚═╝",
     ])
 
-    static let J = Figlet("J", [
+    static let J = Figlet(id: "J", lines: [
         "     ██╗",
         "     ██║",
         "     ██║",
@@ -190,7 +190,7 @@ struct ANSIShadow {
         " ╚════╝ ",
     ])
 
-    static let K = Figlet("K", [
+    static let K = Figlet(id: "K", lines: [
         "██╗  ██╗",
         "██║ ██╔╝",
         "█████╔╝ ",
@@ -199,7 +199,7 @@ struct ANSIShadow {
         "╚═╝  ╚═╝",
     ])
 
-    static let L = Figlet("L", [
+    static let L = Figlet(id: "L", lines: [
         "██╗     ",
         "██║     ",
         "██║     ",
@@ -208,7 +208,7 @@ struct ANSIShadow {
         "╚══════╝",
     ])
 
-    static let M = Figlet("M", [
+    static let M = Figlet(id: "M", lines: [
         "███╗   ███╗",
         "████╗ ████║",
         "██╔████╔██║",
@@ -217,7 +217,7 @@ struct ANSIShadow {
         "╚═╝     ╚═╝",
     ])
 
-    static let N = Figlet("N", [
+    static let N = Figlet(id: "N", lines: [
         "███╗   ██╗",
         "████╗  ██║",
         "██╔██╗ ██║",
@@ -226,7 +226,7 @@ struct ANSIShadow {
         "╚═╝  ╚═══╝",
     ])
 
-    static let O = Figlet("O", [
+    static let O = Figlet(id: "O", lines: [
         " ██████╗ ",
         "██╔═══██╗",
         "██║   ██║",
@@ -235,7 +235,7 @@ struct ANSIShadow {
         " ╚═════╝ ",
     ])
 
-    static let P = Figlet("P", [
+    static let P = Figlet(id: "P", lines: [
         "██████╗ ",
         "██╔══██╗",
         "██████╔╝",
@@ -244,7 +244,7 @@ struct ANSIShadow {
         "╚═╝     ",
     ])
 
-    static let Q = Figlet("Q", [
+    static let Q = Figlet(id: "Q", lines: [
         " ██████╗ ",
         "██╔═══██╗",
         "██║   ██║",
@@ -253,7 +253,7 @@ struct ANSIShadow {
         " ╚══▀▀═╝ ",
     ])
 
-    static let R = Figlet("R", [
+    static let R = Figlet(id: "R", lines: [
         "██████╗ ",
         "██╔══██╗",
         "██████╔╝",
@@ -262,7 +262,7 @@ struct ANSIShadow {
         "╚═╝  ╚═╝",
     ])
 
-    static let S = Figlet("S", [
+    static let S = Figlet(id: "S", lines: [
         "███████╗",
         "██╔════╝",
         "███████╗",
@@ -271,7 +271,7 @@ struct ANSIShadow {
         "╚══════╝",
     ])
 
-    static let T = Figlet("T", [
+    static let T = Figlet(id: "T", lines: [
         "████████╗",
         "╚══██╔══╝",
         "   ██║   ",
@@ -280,7 +280,7 @@ struct ANSIShadow {
         "   ╚═╝   ",
     ])
 
-    static let U = Figlet("U", [
+    static let U = Figlet(id: "U", lines: [
         "██╗   ██╗",
         "██║   ██║",
         "██║   ██║",
@@ -289,7 +289,7 @@ struct ANSIShadow {
         " ╚═════╝ ",
     ])
 
-    static let V = Figlet("V", [
+    static let V = Figlet(id: "V", lines: [
         "██╗   ██╗",
         "██║   ██║",
         "██║   ██║",
@@ -298,7 +298,7 @@ struct ANSIShadow {
         "  ╚═══╝  ",
     ])
 
-    static let W = Figlet("W", [
+    static let W = Figlet(id: "W", lines: [
         "██╗    ██╗",
         "██║    ██║",
         "██║ █╗ ██║",
@@ -307,7 +307,7 @@ struct ANSIShadow {
         " ╚══╝╚══╝ ",
     ])
 
-    static let X = Figlet("X", [
+    static let X = Figlet(id: "X", lines: [
         "██╗  ██╗",
         "╚██╗██╔╝",
         " ╚███╔╝ ",
@@ -316,7 +316,7 @@ struct ANSIShadow {
         "╚═╝  ╚═╝",
     ])
 
-    static let Y = Figlet("Y", [
+    static let Y = Figlet(id: "Y", lines: [
         "██╗   ██╗",
         "╚██╗ ██╔╝",
         " ╚████╔╝ ",
@@ -325,7 +325,7 @@ struct ANSIShadow {
         "   ╚═╝   ",
     ])
 
-    static let Z = Figlet("Z", [
+    static let Z = Figlet(id: "Z", lines: [
         "███████╗",
         "╚══███╔╝",
         "  ███╔╝ ",
