@@ -13,6 +13,13 @@ struct ASCII: Hashable {
 }
 
 extension ASCII {
+    static func from(symbol: String) -> ASCII? {
+        if let asciiSymbol = ASCIISymbol(rawValue: symbol) {
+            return ASCII.from(symbol: asciiSymbol)
+        }
+        return .none
+    }
+    
     static func from(symbol: ASCIISymbol) -> ASCII {
         switch symbol {
         case .NUL: return ASCIITable.NUL
