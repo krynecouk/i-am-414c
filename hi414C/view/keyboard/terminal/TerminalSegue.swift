@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+
+struct TerminalSequeProps {
+    static let INIT_HEIGHT: CGFloat = 50
+}
+
 struct TerminalSegue<Header: View, Content: View> : View {
+    
     @State var open: Bool = false
-    @State var offset: CGFloat = 0
+    @State var height: CGFloat = TerminalSequeProps.INIT_HEIGHT
     
     let header: Header
     let content: Content
@@ -31,24 +37,21 @@ struct TerminalSegue<Header: View, Content: View> : View {
                             }.padding(.leading)
                         }
                     }
-                    .frame(width: metrics.size.width, alignment: .topLeading)
                     .onTapGesture {
                         withAnimation(Animation.spring()) {
-                            self.offset = open ? metrics.size.height * 0.52 : 0
+                            self.height = open ? metrics.size.height * 0.4 : TerminalSequeProps.INIT_HEIGHT
                             open.toggle()
                         }
                     }
-                    
+
                     Group {
                         content
-                    }.offset(y: 40)
-                    
+                            .offset(y: 40)
+                    }
                 }
-                .frame(width: metrics.size.width, height: metrics.size.height, alignment: .topLeading)
-                .offset(y: offset)
-                .frame(width: metrics.size.width, height: metrics.size.height * 0.6, alignment: .topLeading)
+                .frame(width: metrics.size.width, height: self.height, alignment: .topLeading)
                 .onAppear {
-                    self.offset = metrics.size.height * 0.52
+                    self.height = TerminalSequeProps.INIT_HEIGHT
                 }
             }
         }
@@ -61,6 +64,6 @@ struct TerminalSegue_Previews: PreviewProvider {
             VStack {
                 Text("Some content")
             }
-        }
+        }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }

@@ -11,23 +11,24 @@ struct TerminalKeyboardButton: View {
     
     let value: String
     let width: CGFloat
+    let isLandscape: Bool
     
-    init(_ value: String, width: CGFloat = 40) {
+    init(_ value: String, width: CGFloat = 40, isLandscape: Bool = false) {
         self.value = value
         self.width = width
+        self.isLandscape = isLandscape
     }
     
     var body: some View {
         ZStack {
             Rectangle()
                 .fill(Color.white.opacity(0))
-                .frame(width: self.width, height: 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: self.width, height: isLandscape ? 30 : 55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
                     RoundedRectangle(cornerRadius: 9)
-                        .stroke(Color("Primary"), lineWidth: 2)
+                        .stroke(Color("Primary"), lineWidth: 1)
+                        .bloom()
                 )
-                .shadow(color: Color("Primary"), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-            
             TerminalText(value, size: 20)
         }
     }
@@ -35,8 +36,19 @@ struct TerminalKeyboardButton: View {
 
 struct TerminalKeyboardButton_Previews: PreviewProvider {
     static var previews: some View {
-        TerminalKeyboardButton("127")
-            .previewLayout(.sizeThatFits)
-            .padding()
+        Group {
+            TerminalKeyboardButton("127")
+                .previewLayout(.sizeThatFits)
+                .padding()
+                .background(Color.black)
+                .previewDisplayName("Portrait")
+            
+            TerminalKeyboardButton("127", isLandscape: true)
+                .previewLayout(.sizeThatFits)
+                .padding()
+                .background(Color.black)
+                .previewDisplayName("Landscape")
+        }
+
     }
 }

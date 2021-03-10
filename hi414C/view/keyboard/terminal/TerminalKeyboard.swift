@@ -8,52 +8,50 @@
 import SwiftUI
 
 struct TerminalKeyboard: View {
+    
     var body: some View {
-        ZStack {
+        GeometryReader { metrics in
             VStack {
-                HStack{
-                    TerminalKeyboardButton("Q")
-                    TerminalKeyboardButton("W")
-                    TerminalKeyboardButton("E")
-                    TerminalKeyboardButton("R")
-                    TerminalKeyboardButton("T")
-                    TerminalKeyboardButton("Y")
-                    TerminalKeyboardButton("U")
-                    TerminalKeyboardButton("I")
-                    TerminalKeyboardButton("O")
-                    TerminalKeyboardButton("P")
+                HStack(alignment: .center, spacing: 8) {
+                    TerminalKeyboardButton("Q", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("W", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("E", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("R", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("T", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("Y", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("U", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("I", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("O", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("P", width: (metrics.size.width - 80) / 10)
                 }
-                HStack{
-                    TerminalKeyboardButton("A")
-                    TerminalKeyboardButton("S")
-                    TerminalKeyboardButton("D")
-                    TerminalKeyboardButton("F")
-                    TerminalKeyboardButton("G")
-                    TerminalKeyboardButton("H")
-                    TerminalKeyboardButton("J")
-                    TerminalKeyboardButton("K")
-                    TerminalKeyboardButton("L")
+                HStack(spacing: 8) {
+                    TerminalKeyboardButton("A", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("S", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("D", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("F", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("G", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("H", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("J", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("K", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("L", width: (metrics.size.width - 80) / 10)
                 }
-                HStack{
-                    TerminalKeyboardButton("UP")
-                    TerminalKeyboardButton("Z")
-                    TerminalKeyboardButton("X")
-                    TerminalKeyboardButton("C")
-                    TerminalKeyboardButton("V")
-                    TerminalKeyboardButton("B")
-                    TerminalKeyboardButton("N")
-                    TerminalKeyboardButton("M")
-                    TerminalKeyboardButton("DEL")
+                HStack(spacing: 8) {
+                    TerminalKeyboardButton("Z", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("X", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("C", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("V", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("B", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("N", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("M", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("DEL", width: (metrics.size.width - 80) / 10)
                 }
-                HStack{
-                    TerminalKeyboardButton("123")
-                    TerminalKeyboardButton("SPACE", width: 330)
-                    TerminalKeyboardButton("ENT")
+                HStack(spacing: 8) {
+                    TerminalKeyboardButton("123", width: (metrics.size.width - 80) / 10)
+                    TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width/10 - metrics.size.width/10) - 16)
+                    TerminalKeyboardButton("ENT", width: (metrics.size.width - 80) / 10)
                 }
             }
-
         }
-        
     }
 }
 
@@ -63,9 +61,9 @@ struct TerminalKeyboard_Previews: PreviewProvider {
             VStack {
                 Spacer()
                 TerminalKeyboard()
-                    .frame(height: 350)
+                    .frame(height: 300)
             }
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
         }
     }
 }

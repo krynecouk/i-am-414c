@@ -30,7 +30,7 @@ struct TerminalText: View {
             .foregroundColor(color)
             .fixedSize()
             .font(Font.custom(FontName.terminus.rawValue, size: size))
-            .cathodeShadow(color: shadowColor)
+            .bloom(color: shadowColor)
     }
 }
 

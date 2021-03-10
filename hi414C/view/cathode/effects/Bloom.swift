@@ -1,5 +1,5 @@
 //
-//  Shadow.swift
+//  Bloom.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 08.03.2021.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CathodeShadow: ViewModifier {
+struct Bloom: ViewModifier {
     
     let color: Color
     
@@ -19,7 +19,7 @@ struct CathodeShadow: ViewModifier {
 }
 
 extension View {
-    func cathodeShadow(color: Color = Color("Primary")) -> some View {
-        self.modifier(CathodeShadow(color: color))
+    func bloom(color: Color = Color("Primary")) -> some View {
+        self.modifier(Bloom(color: color))
     }
 }

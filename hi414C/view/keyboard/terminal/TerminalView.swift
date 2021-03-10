@@ -53,25 +53,7 @@ struct TerminalView: View {
             TerminalText(text)
             TerminalText("█")
         }) {
-            ScrollView(.vertical) {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 60, maximum: .infinity))], alignment: .center, spacing: 10) {
-                    Group() {
-                        ForEach(ascii, id: \.self) { a in
-                            TerminalButton(a.char, label: String(a.dec))
-                                .onTapGesture {
-                                    text += a.char
-                                }
-                        }
-                        TerminalButton(ASCIITable.DEL.char)
-                            .onTapGesture {
-                                if (!text.isEmpty) {
-                                    text.removeLast()
-                                }
-                                
-                            }
-                    }
-                }
-            }
+            TerminalKeyboard()
         }
     }
 }

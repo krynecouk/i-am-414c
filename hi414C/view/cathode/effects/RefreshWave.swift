@@ -23,7 +23,7 @@ struct RefreshWave: View {
             .fill(linearGradient)
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
             .offset(y: y)
-            .cathodeShadow()
+            //.cathodeShadow()
             .onAppear {
                 withAnimation(Animation.linear(duration: 7).repeatForever(autoreverses: false)) {
                     self.y = 1000
