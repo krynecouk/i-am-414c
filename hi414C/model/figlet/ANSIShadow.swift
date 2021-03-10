@@ -7,8 +7,6 @@
 //  Created by Darius Kryszczuk on 23.02.2021.
 //
 
-import Foundation
-
 struct ANSIShadow {
     static let ZERO = Figlet(id: "0", lines: [
         " ██████╗ ",

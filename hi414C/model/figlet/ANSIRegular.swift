@@ -7,8 +7,6 @@
 //  Created by Darius Kryszczuk on 27.02.2021.
 //
 
-import Foundation
-
 struct ANSIRegular {
     static let ZERO = Figlet(id: "0", lines: [
         " ██████ ",
