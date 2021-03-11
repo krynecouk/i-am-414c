@@ -16,6 +16,9 @@
 		265A00AB25ED49EA00F479FA /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00AA25ED49EA00F479FA /* FontName.swift */; };
 		26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D1F25F8FD2900E32DE0 /* Figlet.swift */; };
 		26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2325F906D900E32DE0 /* ASCIISymbol.swift */; };
+		26647D2A25F94D1700E32DE0 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2925F94D1700E32DE0 /* Node.swift */; };
+		26647D2E25F94D4B00E32DE0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2D25F94D4B00E32DE0 /* Context.swift */; };
+		26647D3125F94DB300E32DE0 /* GraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D3025F94DB300E32DE0 /* GraphBuilder.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -46,6 +49,9 @@
 		265A00AA25ED49EA00F479FA /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
 		26647D1F25F8FD2900E32DE0 /* Figlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figlet.swift; sourceTree = "<group>"; };
 		26647D2325F906D900E32DE0 /* ASCIISymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIISymbol.swift; sourceTree = "<group>"; };
+		26647D2925F94D1700E32DE0 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		26647D2D25F94D4B00E32DE0 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		26647D3025F94DB300E32DE0 /* GraphBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBuilder.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -156,6 +162,16 @@
 			path = figlet;
 			sourceTree = "<group>";
 		};
+		26647D2825F94D0D00E32DE0 /* graph */ = {
+			isa = PBXGroup;
+			children = (
+				26647D2925F94D1700E32DE0 /* Node.swift */,
+				26647D2D25F94D4B00E32DE0 /* Context.swift */,
+				26647D3025F94DB300E32DE0 /* GraphBuilder.swift */,
+			);
+			path = graph;
+			sourceTree = "<group>";
+		};
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +186,7 @@
 		267463DC25DED19600624D7C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				26647D2825F94D0D00E32DE0 /* graph */,
 				26647D1D25F8FC7100E32DE0 /* figlet */,
 				26040D8125F15745005BF921 /* ascii */,
 				26040D7825F15261005BF921 /* terminal */,
@@ -324,6 +341,7 @@
 				26B39DCA25F65B08004E4D22 /* KeyboardInput.swift in Sources */,
 				263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */,
 				26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */,
+				26647D2A25F94D1700E32DE0 /* Node.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */,
 				265A00AB25ED49EA00F479FA /* FontName.swift in Sources */,
@@ -333,6 +351,8 @@
 				265A00A825ED498300F479FA /* TerminalView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
+				26647D2E25F94D4B00E32DE0 /* Context.swift in Sources */,
+				26647D3125F94DB300E32DE0 /* GraphBuilder.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				26851AAD25E574A4004B1E2E /* FigletView.swift in Sources */,
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
