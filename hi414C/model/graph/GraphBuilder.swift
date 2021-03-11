@@ -8,4 +8,8 @@
 @_functionBuilder
 struct GraphBuilder {
     static func buildBlock() -> [Node] { [] }
+    
+    static func buildBlock(_ nodes: Node...) -> [Node] {
+        nodes
+    }
 }

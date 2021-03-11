@@ -18,5 +18,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "GraphTests.testFoo():GraphTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "root.body[0].body[0].body[2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
