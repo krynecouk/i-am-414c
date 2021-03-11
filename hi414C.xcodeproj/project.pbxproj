@@ -13,7 +13,6 @@
 		263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegular.swift */; };
 		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
 		2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651294C25FA2D5F003F0FB2 /* Node.swift */; };
-		2651295125FA2DF5003F0FB2 /* FooNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651295025FA2DF5003F0FB2 /* FooNode.swift */; };
 		265A00A825ED498300F479FA /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00A725ED498300F479FA /* TerminalView.swift */; };
 		265A00AB25ED49EA00F479FA /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00AA25ED49EA00F479FA /* FontName.swift */; };
 		26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D1F25F8FD2900E32DE0 /* Figlet.swift */; };
@@ -63,7 +62,6 @@
 		263F440025EAB5C700D069B6 /* ANSIRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegular.swift; sourceTree = "<group>"; };
 		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
 		2651294C25FA2D5F003F0FB2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		2651295025FA2DF5003F0FB2 /* FooNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooNode.swift; sourceTree = "<group>"; };
 		265A00A725ED498300F479FA /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		265A00AA25ED49EA00F479FA /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
 		26647D1F25F8FD2900E32DE0 /* Figlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figlet.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			children = (
 				26F7A6DC25FA5B3400F04156 /* core */,
 				26647D2925F94D1700E32DE0 /* ASCIINode.swift */,
-				2651295025FA2DF5003F0FB2 /* FooNode.swift */,
 				26F7A6D825FA592200F04156 /* ASCIIEdge.swift */,
 			);
 			path = graph;
@@ -471,7 +468,6 @@
 				2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
-				2651295125FA2DF5003F0FB2 /* FooNode.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

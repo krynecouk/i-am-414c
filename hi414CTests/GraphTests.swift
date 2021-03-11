@@ -20,14 +20,22 @@ class GraphTests: XCTestCase {
     }
     
     func testFoo() {
-        let root = ASCIINode("HI") {
-            ASCIIEdge("I", variants: ["I?"]) {
-                FooNode("FooNodeOfEdge1")
+        typealias N = ASCIINode
+        typealias E = ASCIIEdge
+        
+        let root =
+            N("HI") {
+                E("I", variants: ["I?"]) {
+                    N("AL")
+                }
+                E("Foo") {
+                    N("Bar") {
+                        E("Baz") {
+                            N("BAZZZZ")
+                        }
+                    }
+                }
             }
-            ASCIIEdge("rootEdge2") {
-                ASCIINode("ASCIINODeOfEdge2")
-            }
-        }
         
         print("nodes", root)
         

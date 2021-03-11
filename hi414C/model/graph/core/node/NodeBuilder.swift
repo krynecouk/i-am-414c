@@ -7,7 +7,7 @@
 
 @_functionBuilder
 struct NodeBuilder {
-    static func buildBlock() -> [Node] { [] }
+    static func buildBlock() -> [String: Node] { [String: Node]() }
     
     static func buildBlock(_ nodes: Node...) -> [String: Node] {
         nodes.reduce(into: [String: Node]()) {

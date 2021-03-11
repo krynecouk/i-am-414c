@@ -7,7 +7,7 @@
 
 @_functionBuilder
 struct EdgeBuilder {
-    static func buildBlock() -> [Edge] { [] }
+    static func buildBlock() -> [String: Edge] { [String: Edge]() }
     
     static func buildBlock(_ edges: Edge...) -> [String: Edge] {
         edges.reduce(into: [String: Edge]()) {

@@ -9,5 +9,13 @@ protocol Edge {
     typealias Id = String
     var id: Id {get}
     @NodeBuilder var target: [Id: Node] { get }
+    func isTraversable(ctx: Context) -> Bool
+    func traverse() -> Node
     subscript(id: Id) -> Node? { get }
+}
+
+extension Edge {
+    subscript(id: Id) -> Node? {
+        target[id]
+    }
 }

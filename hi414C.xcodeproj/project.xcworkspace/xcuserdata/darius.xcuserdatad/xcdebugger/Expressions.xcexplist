@@ -22,7 +22,7 @@
          contextName = "GraphTests.testFoo():GraphTests.swift">
          <PersistentStrings>
             <PersistentString
-               value = "root[&quot;I&quot;]?[&quot;FooNodeOfEdge1&quot;]!">
+               value = "root">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
