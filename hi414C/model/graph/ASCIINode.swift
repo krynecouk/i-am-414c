@@ -7,11 +7,15 @@
 
 struct ASCIINode : Node {
     let id: String
-    let nodes: [Node]
+    let edges: [Id: Edge]
     //var closure: (_ ctx: Context) -> Node
     
-    init(_ id: String, @GraphBuilder _ content: () -> [Node] = {[]}) {
+    init(_ id: String, @EdgeBuilder _ content: () -> [Id: Edge] = {[Id: Edge]()}) {
         self.id = id
-        self.nodes = content()
+        self.edges = content()
+    }
+    
+    subscript(id: Id) -> Edge? {
+        edges[id]
     }
 }

@@ -20,28 +20,17 @@ class GraphTests: XCTestCase {
     }
     
     func testFoo() {
-        let root = ASCIINode("123") {
-            ASCIINode("456") {
-                BarNode("BarNodeHere")
+        let root = ASCIINode("HI") {
+            ASCIIEdge("I", variants: ["I?"]) {
+                FooNode("FooNodeOfEdge1")
+            }
+            ASCIIEdge("rootEdge2") {
+                ASCIINode("ASCIINODeOfEdge2")
             }
         }
         
         print("nodes", root)
         
-        XCTAssertEqual(root.id, "123", "Should be 123")
-    }
-    
-    
-    struct BarNode : Node {
-        var id: String
-        
-        init(_ id: String) {
-            self.id = id
-        }
-        
-        var body: [Node] {
-            ASCIINode("789")
-            FooNode("FooNode")
-        }
+        XCTAssertEqual("123", "FooNodeOfEdge1", "Should be 123")
     }
 }

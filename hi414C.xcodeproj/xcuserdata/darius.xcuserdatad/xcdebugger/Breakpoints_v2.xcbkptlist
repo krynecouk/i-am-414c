@@ -46,8 +46,8 @@
             filePath = "hi414CTests/GraphTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "testFoo()"
             landmarkType = "7">
          </BreakpointContent>

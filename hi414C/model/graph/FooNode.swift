@@ -5,14 +5,16 @@
 //  Created by Darius Kryszczuk on 11.03.2021.
 //
 
-import Foundation
-
 struct FooNode : Node {
     let id: String
-    let nodes: [Node]
+    let edges: [Id: Edge]
     
-    init(_ id: String, @GraphBuilder _ content: () -> [Node] = {[]}) {
+    init(_ id: String, @EdgeBuilder _ content: () -> [Id: Edge] = {[Id: Edge]()}) {
         self.id = id
-        self.nodes = content()
+        self.edges = content()
+    }
+    
+    subscript(id: Id) -> Edge? {
+        edges[id]
     }
 }
