@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var graphViewModel = GraphViewModel()
+    
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: .infinity)),
     ]
@@ -29,6 +31,11 @@ struct ContentView: View {
                                 FigletView(ANSIRegular.ZERO)
                                 FigletView(ANSIRegular.ZERO)
                             }
+                            Text(graphViewModel.node.id)
+                                .foregroundColor(Color.white)
+                                .onTapGesture {
+                                    graphViewModel.process(ctx: Context(input: "AL"))
+                                }
                         }
                         .padding(30)
                     }
