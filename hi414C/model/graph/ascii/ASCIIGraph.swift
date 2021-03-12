@@ -11,6 +11,9 @@ class Graphs {
     
     static let HI =
         N("HI") {
+            E("HI") {
+                N("HI")
+            }
             E("I", variants: ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
                 N("AL") {
                     E("AL?") {
@@ -34,9 +37,6 @@ class Graphs {
             }
             E("414C") {
                 N("I")
-            }
-            E("HI") {
-                N("HI")
             }
         }
 }

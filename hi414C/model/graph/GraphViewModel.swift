@@ -18,7 +18,7 @@ class GraphViewModel: ObservableObject {
                 return
             }
         }
-        for edge in Graphs.HI {
+        for edge in Graphs.HI.edges {
             if (edge.isTraversable(ctx: ctx)) {
                 self.node = edge.traverse()
                 print("in new node: ", self.node.id)
