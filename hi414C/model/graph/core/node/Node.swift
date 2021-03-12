@@ -6,15 +6,6 @@
 //
 
 protocol Node {
-    typealias Id = String
-    var id: Id { get }
-    @EdgeBuilder var edges: [Id: Edge] { get }
-    var path: [Id] { get set }
-    subscript(id: Id) -> Edge? { get }
-}
-
-extension Node {
-    subscript(id: Id) -> Edge? {
-        edges[id]
-    }
+    var id: String { get }
+    @EdgeBuilder var edges: [Edge] { get }
 }

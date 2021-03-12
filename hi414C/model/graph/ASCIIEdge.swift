@@ -6,11 +6,11 @@
 //
 
 class ASCIIEdge : Edge {
-    var id: Id
+    var id: String
     var variants: [String]
-    var target: [Id: Node]
+    var target: Node
     
-    init(_ id: Id, variants: [Id] = [], @NodeBuilder _ content: () -> [Id: Node] = {[Id: Node]()}) {
+    init(_ id: String, variants: [String] = [], _ content: () -> Node) {
         self.id = id
         self.variants = variants
         self.target = content()
@@ -18,10 +18,10 @@ class ASCIIEdge : Edge {
     }
     
     func isTraversable(ctx: Context) -> Bool {
-        true // TODO
+        self.variants.contains(ctx.input) // TODO need to be smarter
     }
     
     func traverse() -> Node {
-        target.values.first! // TODO
+        target
     }
 }
