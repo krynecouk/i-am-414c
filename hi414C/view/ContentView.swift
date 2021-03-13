@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var graphViewModel = GraphViewModel()
-    
+
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: .infinity)),
     ]
@@ -21,15 +21,15 @@ struct ContentView: View {
                     ScrollView(.vertical) {
                         LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                             Group {
-                                FigletView(ANSIRegular.H)
-                                FigletView(ANSIRegular.ZERO)
-                                FigletView(ANSIRegular.ZERO)
-                                FigletView(ANSIRegular.ONE)
-                                FigletView(ANSIRegular.ZERO)
-                                FigletView(ANSIRegular.ZERO)
-                                FigletView(ANSIRegular.ONE)
-                                FigletView(ANSIRegular.ZERO)
-                                FigletView(ANSIRegular.ZERO)
+                                FigletView(ANSIRegular[.H]!)
+                                FigletView(ANSIRegular[.zero]!)
+                                FigletView(ANSIRegular[.zero]!)
+                                FigletView(ANSIRegular[.one]!)
+                                FigletView(ANSIRegular[.zero]!)
+                                FigletView(ANSIRegular[.zero]!)
+                                FigletView(ANSIRegular[.one]!)
+                                FigletView(ANSIRegular[.zero]!)
+                                FigletView(ANSIRegular[.zero]!)
                             }
                             Text(graphViewModel.node.id)
                                 .foregroundColor(.white)

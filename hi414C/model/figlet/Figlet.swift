@@ -6,6 +6,6 @@
 //
 
 struct Figlet: Hashable {
-    let id: String
+    let symbol: ASCIISymbol
     let lines: [String]
 }

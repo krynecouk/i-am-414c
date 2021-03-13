@@ -35,13 +35,12 @@ struct CathodeView_Previews: PreviewProvider {
     static var previews: some View {
         CathodeView() {
             HStack {
-                FigletView(ANSIShadow.H)
-                FigletView(ANSIShadow.E)
-                FigletView(ANSIShadow.L)
-                FigletView(ANSIShadow.L)
-                FigletView(ANSIShadow.O)
+                FigletView(ANSIShadow[.H]!)
+                FigletView(ANSIShadow[.E]!)
+                FigletView(ANSIShadow[.L]!)
+                FigletView(ANSIShadow[.L]!)
+                FigletView(ANSIShadow[.O]!)
             }
-
         }
     }
 }
