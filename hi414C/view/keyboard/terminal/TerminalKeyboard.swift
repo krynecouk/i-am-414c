@@ -8,50 +8,219 @@
 import SwiftUI
 
 struct TerminalKeyboard: View {
+    @EnvironmentObject var keyboardInput: KeyboardInput
+    @EnvironmentObject var graphViewModel: GraphViewModel
+    @State var side: Side = .ALPH
     
+    enum Side {
+        case ALPH, SYMBOL
+    }
+
     var body: some View {
         GeometryReader { metrics in
             VStack {
-                HStack(alignment: .center, spacing: 8) {
-                    TerminalKeyboardButton("Q", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("W", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("E", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("R", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("T", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("Y", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("U", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("I", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("O", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("P", width: (metrics.size.width - 80) / 10)
+                if side == .ALPH {
+                    HStack(alignment: .center, spacing: 8) {
+                        TerminalKey("Q", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "Q")
+                            }
+                        TerminalKey("W", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "W")
+                            }
+                        TerminalKey("E", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "E")
+                            }
+                        TerminalKey("R", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "R")
+                            }
+                        TerminalKey("T", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "T")
+                            }
+                        TerminalKey("Y", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "Y")
+                            }
+                        TerminalKey("U", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "U")
+                            }
+                        TerminalKey("I", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "I")
+                            }
+                        TerminalKey("O", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "O")
+                            }
+                        TerminalKey("P", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "P")
+                            }
+                    }
+                    HStack(spacing: 8) {
+                        TerminalKey("A", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "A")
+                            }
+                        TerminalKey("S", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "S")
+                            }
+                        TerminalKey("D", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "D")
+                            }
+                        TerminalKey("F", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "F")
+                            }
+                        TerminalKey("G", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "G")
+                            }
+                        TerminalKey("H", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "H")
+                            }
+                        TerminalKey("J", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "J")
+                            }
+                        TerminalKey("K", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "K")
+                            }
+                        TerminalKey("L", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "L")
+                            }
+                    }
+                    HStack(spacing: 8) {
+                        TerminalKey("Z", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "Z")
+                            }
+                        TerminalKey("X", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "X")
+                            }
+                        TerminalKey("C", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "C")
+                            }
+                        TerminalKey("V", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "V")
+                            }
+                        TerminalKey("B", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "B")
+                            }
+                        TerminalKey("N", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "N")
+                            }
+                        TerminalKey("M", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "M")
+                            }
+                        TerminalKey("DEL", metrics: metrics)
+                            .onTapGesture {
+                                keyboardInput.delete()
+                            }
+                    }
+                    HStack(spacing: 8) {
+                        TerminalKey("123", metrics: metrics)
+                            .onTapGesture {
+                                self.side = .SYMBOL
+                            }
+                        TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width / 10 - metrics.size.width / 10) - 16)
+                        TerminalKey("ENT", metrics: metrics)
+                            .onTapGesture {
+                                graphViewModel.process(ctx: Context(input: keyboardInput.value))
+                                keyboardInput.delete()
+                            }
+                    }
+                } else {
+                    HStack(alignment: .center, spacing: 8) {
+                        TerminalKey("1", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "1")
+                            }
+                        TerminalKey("2", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "2")
+                            }
+                        TerminalKey("3", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "3")
+                            }
+                        TerminalKey("4", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "4")
+                            }
+                        TerminalKey("5", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "5")
+                            }
+                        TerminalKey("6", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "6")
+                            }
+                        TerminalKey("7", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "7")
+                            }
+                        TerminalKey("8", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "8")
+                            }
+                        TerminalKey("9", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "9")
+                            }
+                        TerminalKey("0", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "0")
+                            }
+                    }
+                    HStack(spacing: 8) {
+                        TerminalKey("123", metrics: metrics)
+                            .onTapGesture {
+                                self.side = .ALPH
+                            }
+                        TerminalKey("?", metrics: metrics)
+                            .onTapGesture {
+                                updateInput(value: "?")
+                            }
+                    }
                 }
-                HStack(spacing: 8) {
-                    TerminalKeyboardButton("A", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("S", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("D", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("F", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("G", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("H", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("J", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("K", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("L", width: (metrics.size.width - 80) / 10)
-                }
-                HStack(spacing: 8) {
-                    TerminalKeyboardButton("Z", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("X", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("C", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("V", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("B", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("N", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("M", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("DEL", width: (metrics.size.width - 80) / 10)
-                }
-                HStack(spacing: 8) {
-                    TerminalKeyboardButton("123", width: (metrics.size.width - 80) / 10)
-                    TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width/10 - metrics.size.width/10) - 16)
-                    TerminalKeyboardButton("ENT", width: (metrics.size.width - 80) / 10)
-                }
+                
             }
         }
+    }
+
+    func updateInput(value: String) {
+        keyboardInput.concat(with: value)
+    }
+}
+
+struct TerminalKey: View {
+    let metrics: GeometryProxy
+    let value: String
+
+    init(_ value: String, metrics: GeometryProxy) {
+        self.value = value
+        self.metrics = metrics
+    }
+
+    var body: some View {
+        TerminalKeyboardButton(self.value, width: (self.metrics.size.width - 80) / 10)
     }
 }
 

@@ -32,15 +32,13 @@ struct ContentView: View {
                                 FigletView(ANSIRegular.ZERO)
                             }
                             Text(graphViewModel.node.id)
-                                .foregroundColor(Color.white)
-                                .onTapGesture {
-                                    graphViewModel.process(ctx: Context(input: "AL"))
-                                }
+                                .foregroundColor(.white)
                         }
                         .padding(30)
                     }
                 }
                 TerminalView()
+                    .environmentObject(graphViewModel)
             }
             .edgesIgnoringSafeArea(.bottom)
         }
