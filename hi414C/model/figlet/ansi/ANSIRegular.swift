@@ -7,7 +7,7 @@
 //  Created by Darius Kryszczuk on 27.02.2021.
 //
 
-struct ANSIRegular: Figlets {
+struct ANSIRegular: FigletFont {
     static var figlets: [ASCIISymbol: Figlet] = [
         .zero: Figlet(symbol: .zero, lines: [
             " ██████ ",
@@ -299,6 +299,6 @@ struct ANSIRegular: Figlets {
     ]
 
     static subscript(symbol: ASCIISymbol) -> Figlet? {
-        ANSIShadow.figlets[symbol]
+        ANSIRegular.figlets[symbol]
     }
 }

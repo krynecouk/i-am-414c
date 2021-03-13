@@ -9,18 +9,28 @@ import SwiftUI
 
 struct FigletGroupView: View {
     var values: [String] = []
-
+    var figlets: [Figlet] = []
+    
     init(_ values: String...) {
         self.values = values
+        for char in values.joined() {
+            let ascii = ASCII.from(symbol: String(char))!
+            figlets.append(ANSIRegular[ascii.symbol]!)
+        }
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        // TODO duplicated data
+        ForEach(figlets, id: \.symbol) { figlet in
+            FigletView(figlet)
+        }
     }
 }
 
 struct FigletGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        FigletGroupView()
+        HStack {
+            FigletGroupView("HELLO")
+        }
     }
 }

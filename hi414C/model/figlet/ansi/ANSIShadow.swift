@@ -7,7 +7,7 @@
 //  Created by Darius Kryszczuk on 23.02.2021.
 //
 
-struct ANSIShadow: Figlets {
+struct ANSIShadow: FigletFont {
     static var figlets: [ASCIISymbol: Figlet] = [
         .zero: Figlet(symbol: .zero, lines: [
             " ██████╗ ",
