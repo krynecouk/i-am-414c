@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 15.03.2021.
 //
 
-enum TestSolution {
+enum TestSolution: Equatable {
     case right
     case wrong(String)
 }

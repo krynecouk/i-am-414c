@@ -44,7 +44,7 @@ class GraphTests: XCTestCase {
             }
         }
     
-    func testFoo() {
+    func test_graph_contains_all_the_nodes_and_edges() {
         print("tested graph: ", GraphTests.tested)
         
         XCTAssertEqual(GraphTests.tested.id, "HI", "Root node should have id 'HI'")

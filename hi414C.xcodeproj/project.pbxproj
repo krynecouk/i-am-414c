@@ -44,6 +44,8 @@
 		26AF9F6425FF955A00B77E0A /* ASCIITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6325FF955A00B77E0A /* ASCIITests.swift */; };
 		26AF9F6E25FF968C00B77E0A /* Testables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6D25FF968C00B77E0A /* Testables.swift */; };
 		26AF9F7225FFA38D00B77E0A /* FigletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7125FFA38D00B77E0A /* FigletItem.swift */; };
+		26AF9F7C25FFA69A00B77E0A /* ASCIITestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */; };
+		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
 		26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
@@ -105,6 +107,8 @@
 		26AF9F6325FF955A00B77E0A /* ASCIITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITests.swift; sourceTree = "<group>"; };
 		26AF9F6D25FF968C00B77E0A /* Testables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testables.swift; sourceTree = "<group>"; };
 		26AF9F7125FFA38D00B77E0A /* FigletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletItem.swift; sourceTree = "<group>"; };
+		26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIITestsTests.swift; path = hi414CTests/test/ascii/ASCIITestsTests.swift; sourceTree = SOURCE_ROOT; };
+		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
 		26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboardButton.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				261ED5FE25F7B226004DADB3 /* UIWindow.swift */,
+				26AF9F8525FFAD4600B77E0A /* String.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -299,6 +304,38 @@
 			path = ascii;
 			sourceTree = "<group>";
 		};
+		26AF9F7525FFA62700B77E0A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				26AF9F7625FFA62D00B77E0A /* graph */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		26AF9F7625FFA62D00B77E0A /* graph */ = {
+			isa = PBXGroup;
+			children = (
+				26F7A6CA25FA4FF800F04156 /* GraphTests.swift */,
+			);
+			path = graph;
+			sourceTree = "<group>";
+		};
+		26AF9F7925FFA65500B77E0A /* test */ = {
+			isa = PBXGroup;
+			children = (
+				26AF9F7A25FFA66500B77E0A /* ascii */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		26AF9F7A25FFA66500B77E0A /* ascii */ = {
+			isa = PBXGroup;
+			children = (
+				26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */,
+			);
+			path = ascii;
+			sourceTree = "<group>";
+		};
 		26B39DBB25F63116004E4D22 /* terminal */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,7 +392,8 @@
 		26F7A6BF25FA4FCE00F04156 /* hi414CTests */ = {
 			isa = PBXGroup;
 			children = (
-				26F7A6CA25FA4FF800F04156 /* GraphTests.swift */,
+				26AF9F7525FFA62700B77E0A /* model */,
+				26AF9F7925FFA65500B77E0A /* test */,
 				26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */,
 				26F7A6C225FA4FCE00F04156 /* Info.plist */,
 			);
@@ -493,6 +531,7 @@
 			files = (
 				263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */,
 				26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */,
+				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIINode.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */,
@@ -541,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */,
+				26AF9F7C25FFA69A00B77E0A /* ASCIITestsTests.swift in Sources */,
 				26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
