@@ -14,8 +14,5 @@ class TestViewModel: ObservableObject {
     func setCurrent(test: Testable) {
         self.current = test
     }
-    
-    func solve(with answer: String) -> TestSolution {
-        
-    }
+
 }
