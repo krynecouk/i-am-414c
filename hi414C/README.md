@@ -16,4 +16,5 @@
 
 ### Model
 
-- ASCII bin maybe not UInt8 
+- ASCII bin maybe not UInt8
+- ModelView separate from /model

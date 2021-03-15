@@ -46,6 +46,7 @@
 		26AF9F7225FFA38D00B77E0A /* FigletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7125FFA38D00B77E0A /* FigletItem.swift */; };
 		26AF9F7C25FFA69A00B77E0A /* ASCIITestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */; };
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
+		26AF9F8A25FFAFCF00B77E0A /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8925FFAFCF00B77E0A /* TestViewModel.swift */; };
 		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
 		26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
@@ -109,6 +110,7 @@
 		26AF9F7125FFA38D00B77E0A /* FigletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletItem.swift; sourceTree = "<group>"; };
 		26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIITestsTests.swift; path = hi414CTests/test/ascii/ASCIITestsTests.swift; sourceTree = SOURCE_ROOT; };
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		26AF9F8925FFAFCF00B77E0A /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
 		26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboardButton.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				26AF9F5D25FF849800B77E0A /* TestSolution.swift */,
 				26AF9F5525FF7FAC00B77E0A /* Testable.swift */,
 				26AF9F6D25FF968C00B77E0A /* Testables.swift */,
+				26AF9F8925FFAFCF00B77E0A /* TestViewModel.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
 				265A00A825ED498300F479FA /* TerminalView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
+				26AF9F8A25FFAFCF00B77E0A /* TestViewModel.swift in Sources */,
 				26AF9F4025FF7E2E00B77E0A /* ASCIITest.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
