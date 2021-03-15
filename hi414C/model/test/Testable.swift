@@ -10,6 +10,5 @@ protocol Testable {
     var type: TestType { get }
     var level: TestLevel { get }
     var solution: String { get }
-    var solved: Bool { get set }
     func solve(with answer: String) -> TestSolution
 }

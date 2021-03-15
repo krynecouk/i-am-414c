@@ -6,25 +6,28 @@
 //
 
 class ASCIITest: Testable {
+    var symbol: ASCIISymbol
     var test: String
     var type: TestType
     var level: TestLevel
     var solution: String
-    var solved: Bool
-    
-    init(test: String, type: TestType, level: TestLevel, solution: String, solved: Bool = false) {
+
+    convenience init(symbol: ASCIISymbol) {
+        let ascii = ASCII.from(symbol: symbol)
+        self.init(symbol: ascii.symbol, test: String(ascii.bin), type: .bin, level: .easy, solution: ascii.symbol.rawValue)
+    }
+
+    init(symbol: ASCIISymbol, test: String, type: TestType, level: TestLevel, solution: String) {
+        self.symbol = symbol
         self.test = test
         self.type = type
         self.level = level
         self.solution = solution
-        self.solved = solved
     }
-    
+
     func solve(with answer: String) -> TestSolution {
-        if (solution == answer) {
-            self.solved = true
-            return .right
-        }
-        return .wrong("solution '\(solution)' is different from the provided answer '\(answer)'")
+        solution == answer
+            ? .right
+            : .wrong("solution '\(solution)' is different from the provided answer '\(answer)'")
     }
 }
