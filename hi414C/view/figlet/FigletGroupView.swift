@@ -9,20 +9,20 @@ import SwiftUI
 
 struct FigletGroupView: View {
     var values: [String] = []
-    var figlets: [Figlet] = []
+    var figletItems: [FigletItem] = []
     
     init(_ values: String...) {
         self.values = values
         for char in values.joined() {
             let ascii = ASCII.from(symbol: String(char))!
-            figlets.append(ANSIRegular[ascii.symbol]!)
+            figletItems.append(FigletItem(figlet: ANSIRegular[ascii.symbol]!))
         }
     }
     
     var body: some View {
         // TODO duplicated data
-        ForEach(figlets, id: \.symbol) { figlet in
-            FigletView(figlet)
+        ForEach(figletItems) { figletItem in
+            FigletView(figletItem.figlet)
         }
     }
 }

@@ -43,6 +43,7 @@
 		26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestSolution.swift */; };
 		26AF9F6425FF955A00B77E0A /* ASCIITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6325FF955A00B77E0A /* ASCIITests.swift */; };
 		26AF9F6E25FF968C00B77E0A /* Testables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6D25FF968C00B77E0A /* Testables.swift */; };
+		26AF9F7225FFA38D00B77E0A /* FigletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7125FFA38D00B77E0A /* FigletItem.swift */; };
 		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
 		26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
@@ -103,6 +104,7 @@
 		26AF9F5D25FF849800B77E0A /* TestSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSolution.swift; sourceTree = "<group>"; };
 		26AF9F6325FF955A00B77E0A /* ASCIITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITests.swift; sourceTree = "<group>"; };
 		26AF9F6D25FF968C00B77E0A /* Testables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testables.swift; sourceTree = "<group>"; };
+		26AF9F7125FFA38D00B77E0A /* FigletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletItem.swift; sourceTree = "<group>"; };
 		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
 		26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboardButton.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				2613B0FA25FCB9F000DDE737 /* ansi */,
 				26647D1F25F8FD2900E32DE0 /* Figlet.swift */,
 				2636248D25FCBB2900B490B4 /* FigletFont.swift */,
+				26AF9F7125FFA38D00B77E0A /* FigletItem.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* ASCIIGraph.swift in Sources */,
 				26AF9F4A25FF7ECE00B77E0A /* TestType.swift in Sources */,
+				26AF9F7225FFA38D00B77E0A /* FigletItem.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* ASCIIEdge.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
