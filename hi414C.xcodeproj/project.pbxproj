@@ -36,6 +36,11 @@
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* ASCIIGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* ASCIIGraph.swift */; };
+		26AF9F4025FF7E2E00B77E0A /* ASCIITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F3F25FF7E2E00B77E0A /* ASCIITest.swift */; };
+		26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4325FF7E7400B77E0A /* TestLevel.swift */; };
+		26AF9F4A25FF7ECE00B77E0A /* TestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4925FF7ECE00B77E0A /* TestType.swift */; };
+		26AF9F5625FF7FAC00B77E0A /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5525FF7FAC00B77E0A /* Testable.swift */; };
+		26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestSolution.swift */; };
 		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
 		26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
@@ -89,6 +94,11 @@
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* ASCIIGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIGraph.swift; sourceTree = "<group>"; };
+		26AF9F3F25FF7E2E00B77E0A /* ASCIITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITest.swift; sourceTree = "<group>"; };
+		26AF9F4325FF7E7400B77E0A /* TestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLevel.swift; sourceTree = "<group>"; };
+		26AF9F4925FF7ECE00B77E0A /* TestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestType.swift; sourceTree = "<group>"; };
+		26AF9F5525FF7FAC00B77E0A /* Testable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testable.swift; sourceTree = "<group>"; };
+		26AF9F5D25FF849800B77E0A /* TestSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSolution.swift; sourceTree = "<group>"; };
 		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
 		26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboardButton.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
@@ -242,6 +252,7 @@
 				26647D2825F94D0D00E32DE0 /* graph */,
 				26647D1D25F8FC7100E32DE0 /* figlet */,
 				26040D8125F15745005BF921 /* ascii */,
+				26AF9F4825FF7E9400B77E0A /* test */,
 				2641EF5125E41D1A0005ABF7 /* font */,
 			);
 			path = model;
@@ -257,6 +268,26 @@
 				26B39DC425F65741004E4D22 /* Bloom.swift */,
 			);
 			path = effects;
+			sourceTree = "<group>";
+		};
+		26AF9F4825FF7E9400B77E0A /* test */ = {
+			isa = PBXGroup;
+			children = (
+				26AF9F4F25FF7F2400B77E0A /* ascii */,
+				26AF9F4325FF7E7400B77E0A /* TestLevel.swift */,
+				26AF9F4925FF7ECE00B77E0A /* TestType.swift */,
+				26AF9F5D25FF849800B77E0A /* TestSolution.swift */,
+				26AF9F5525FF7FAC00B77E0A /* Testable.swift */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		26AF9F4F25FF7F2400B77E0A /* ascii */ = {
+			isa = PBXGroup;
+			children = (
+				26AF9F3F25FF7E2E00B77E0A /* ASCIITest.swift */,
+			);
+			path = ascii;
 			sourceTree = "<group>";
 		};
 		26B39DBB25F63116004E4D22 /* terminal */ = {
@@ -461,27 +492,32 @@
 				26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */,
 				2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* ASCIIGraph.swift in Sources */,
+				26AF9F4A25FF7ECE00B77E0A /* TestType.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* ASCIIEdge.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
 				265A00A825ED498300F479FA /* TerminalView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
+				26AF9F4025FF7E2E00B77E0A /* ASCIITest.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
 				26647D2E25F94D4B00E32DE0 /* Context.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				26851AAD25E574A4004B1E2E /* FigletView.swift in Sources */,
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
+				26AF9F5625FF7FAC00B77E0A /* Testable.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */,
 				261ED5FF25F7B226004DADB3 /* UIWindow.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
+				26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */,
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
 				26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardInput.swift in Sources */,
 				26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */,
 				2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
+				26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				2613B0F725FCB6F800DDE737 /* FigletGroupView.swift in Sources */,
