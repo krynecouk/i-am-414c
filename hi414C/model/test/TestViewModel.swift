@@ -8,11 +8,10 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    @Published private(set) var current: Testable?
-    @Published private(set) var solved: [ASCIISymbol] = [] // TODO this needs to be persistentnly stored
+    @Published private(set) var current: ASCIITest?
     
-    func setCurrent(test: Testable) {
+    func setCurrent(test: ASCIITest) {
+        print("setting new test as current: ", test.test)
         self.current = test
     }
-
 }

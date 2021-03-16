@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 10.03.2021.
 //
 
-enum ASCIISymbol: String {
+enum ASCIISymbol: String, Hashable {
     case NUL
     case SOH
     case STX

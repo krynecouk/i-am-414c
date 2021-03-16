@@ -10,6 +10,9 @@ import SwiftUI
 struct TerminalKeyboard: View {
     @EnvironmentObject var keyboardInput: KeyboardInput
     @EnvironmentObject var graphViewModel: GraphViewModel
+    @EnvironmentObject var testViewModel: TestViewModel
+    @EnvironmentObject var asciiViewModel: ASCIIViewModel
+    
     @State var side: Side = .ALPH
     
     enum Side {
@@ -142,6 +145,14 @@ struct TerminalKeyboard: View {
                         TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width / 10 - metrics.size.width / 10) - 16)
                         TerminalKey("ENT", metrics: metrics)
                             .onTapGesture {
+                                let solution = testViewModel.current?.solve(with: keyboardInput.value)
+                                switch solution {
+                                case .right:
+                                    asciiViewModel.add(symbol: testViewModel.current!.symbol)
+                                default:
+                                    print("not correct")
+                                }
+                                
                                 graphViewModel.process(ctx: Context(input: keyboardInput.value))
                                 keyboardInput.delete()
                             }

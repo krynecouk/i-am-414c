@@ -10,7 +10,6 @@ import SwiftUI
 struct TerminalView: View {
     @StateObject var keyboardInput = KeyboardInput()
 
-    
     let ascii: [ASCII] = [
         ASCIITable.one,
         ASCIITable.two,

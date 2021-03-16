@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var graphViewModel = GraphViewModel()
     @StateObject var testViewModel = TestViewModel()
+    @StateObject var asciiViewModel = ASCIIViewModel()
     
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: .infinity)),
@@ -21,8 +22,12 @@ struct ContentView: View {
                 VStack {
                     ScrollView(.vertical) {
                         LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                            Foo(content: graphViewModel.node.id, known: testViewModel.solved) {test in
-                                testViewModel.setCurrent(test: test)
+                            ForEach(symbols(from: graphViewModel.node.id), id: \.self) { symbol in
+                                if asciiViewModel.known.contains(symbol) {
+                                    FigletBanner(symbol.rawValue)
+                                } else {
+                                    Foo(symbol)
+                                }
                             }
                         }
                         .padding(30)
@@ -30,34 +35,33 @@ struct ContentView: View {
                 }
                 TerminalView()
                     .environmentObject(graphViewModel)
+                    .environmentObject(asciiViewModel)
+                    .environmentObject(testViewModel)
             }
             .edgesIgnoringSafeArea(.bottom)
+        }
+    }
+    
+    func symbols(from string: String) -> [ASCIISymbol] {
+        string.map { char in
+            ASCII.from(symbol: String(char))!.symbol
         }
     }
 }
 
 struct Foo: View {
-    var symbols: [ASCIISymbol] = []
-    var known: [ASCIISymbol] = []
-    var closure: (ASCIITest) -> Void
+    @ObservedObject var testViewModel = TestViewModel()
+    let symbol: ASCIISymbol
+    let test: ASCIITest
     
-    init(content: String, known: [ASCIISymbol], closure: @escaping (ASCIITest) -> Void) {
-        self.known = known
-        self.closure = closure
-        for char in content {
-            symbols.append(ASCII.from(symbol: String(char))!.symbol)
-        }
+    init(_ symbol: ASCIISymbol) {
+        self.symbol = symbol
+        self.test = ASCIITests[symbol]![0]
+        testViewModel.setCurrent(test: test)
     }
     
     var body: some View {
-        ForEach(symbols, id: \.self) {symbol in
-            if known.contains(symbol) {
-                FigletBanner(symbol.rawValue)
-            } else {
-                let test = ASCIITests[symbol]![0]
-                FigletBanner(test.test)
-            }
-        }
+        FigletBanner(test.test)
     }
 }
 
