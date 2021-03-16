@@ -10,8 +10,10 @@
 		26040D7F25F15629005BF921 /* ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26040D7E25F15629005BF921 /* ASCII.swift */; };
 		26040D8325F15753005BF921 /* ASCIITable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26040D8225F15753005BF921 /* ASCIITable.swift */; };
 		2613B0ED25FCA9FF00DDE737 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613B0EC25FCA9FF00DDE737 /* KeyboardInput.swift */; };
-		2613B0F725FCB6F800DDE737 /* FigletGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613B0F625FCB6F800DDE737 /* FigletGroupView.swift */; };
 		261ED5FF25F7B226004DADB3 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261ED5FE25F7B226004DADB3 /* UIWindow.swift */; };
+		2620921B2600B2FE0001904B /* FigletBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2620921A2600B2FE0001904B /* FigletBanner.swift */; };
+		262092212600B50D0001904B /* FigletFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262092202600B50D0001904B /* FigletFonts.swift */; };
+		262092252600B7250001904B /* FigletTypeface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262092242600B7250001904B /* FigletTypeface.swift */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636248D25FCBB2900B490B4 /* FigletFont.swift */; };
 		263F440125EAB5C700D069B6 /* ANSIRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegular.swift */; };
@@ -43,7 +45,6 @@
 		26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestSolution.swift */; };
 		26AF9F6425FF955A00B77E0A /* ASCIITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6325FF955A00B77E0A /* ASCIITests.swift */; };
 		26AF9F6E25FF968C00B77E0A /* Testables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6D25FF968C00B77E0A /* Testables.swift */; };
-		26AF9F7225FFA38D00B77E0A /* FigletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7125FFA38D00B77E0A /* FigletItem.swift */; };
 		26AF9F7C25FFA69A00B77E0A /* ASCIITestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */; };
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26AF9F8A25FFAFCF00B77E0A /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8925FFAFCF00B77E0A /* TestViewModel.swift */; };
@@ -74,8 +75,10 @@
 		26040D7E25F15629005BF921 /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
 		26040D8225F15753005BF921 /* ASCIITable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITable.swift; sourceTree = "<group>"; };
 		2613B0EC25FCA9FF00DDE737 /* KeyboardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInput.swift; sourceTree = "<group>"; };
-		2613B0F625FCB6F800DDE737 /* FigletGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletGroupView.swift; sourceTree = "<group>"; };
 		261ED5FE25F7B226004DADB3 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		2620921A2600B2FE0001904B /* FigletBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletBanner.swift; sourceTree = "<group>"; };
+		262092202600B50D0001904B /* FigletFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletFonts.swift; sourceTree = "<group>"; };
+		262092242600B7250001904B /* FigletTypeface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletTypeface.swift; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		2636248D25FCBB2900B490B4 /* FigletFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletFont.swift; sourceTree = "<group>"; };
 		263F440025EAB5C700D069B6 /* ANSIRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegular.swift; sourceTree = "<group>"; };
@@ -107,7 +110,6 @@
 		26AF9F5D25FF849800B77E0A /* TestSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSolution.swift; sourceTree = "<group>"; };
 		26AF9F6325FF955A00B77E0A /* ASCIITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITests.swift; sourceTree = "<group>"; };
 		26AF9F6D25FF968C00B77E0A /* Testables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testables.swift; sourceTree = "<group>"; };
-		26AF9F7125FFA38D00B77E0A /* FigletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletItem.swift; sourceTree = "<group>"; };
 		26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIITestsTests.swift; path = hi414CTests/model/test/ascii/ASCIITestsTests.swift; sourceTree = SOURCE_ROOT; };
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26AF9F8925FFAFCF00B77E0A /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				26851AAC25E574A4004B1E2E /* FigletView.swift */,
-				2613B0F625FCB6F800DDE737 /* FigletGroupView.swift */,
+				2620921A2600B2FE0001904B /* FigletBanner.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -233,7 +235,8 @@
 				2613B0FA25FCB9F000DDE737 /* ansi */,
 				26647D1F25F8FD2900E32DE0 /* Figlet.swift */,
 				2636248D25FCBB2900B490B4 /* FigletFont.swift */,
-				26AF9F7125FFA38D00B77E0A /* FigletItem.swift */,
+				262092202600B50D0001904B /* FigletFonts.swift */,
+				262092242600B7250001904B /* FigletTypeface.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -537,14 +540,15 @@
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIINode.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
+				262092212600B50D0001904B /* FigletFonts.swift in Sources */,
 				26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */,
 				265A00AB25ED49EA00F479FA /* FontName.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
+				262092252600B7250001904B /* FigletTypeface.swift in Sources */,
 				26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */,
 				2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* ASCIIGraph.swift in Sources */,
 				26AF9F4A25FF7ECE00B77E0A /* TestType.swift in Sources */,
-				26AF9F7225FFA38D00B77E0A /* FigletItem.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* ASCIIEdge.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
@@ -563,6 +567,7 @@
 				26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */,
 				261ED5FF25F7B226004DADB3 /* UIWindow.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
+				2620921B2600B2FE0001904B /* FigletBanner.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
 				26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */,
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
@@ -575,7 +580,6 @@
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				26AF9F6E25FF968C00B77E0A /* Testables.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
-				2613B0F725FCB6F800DDE737 /* FigletGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

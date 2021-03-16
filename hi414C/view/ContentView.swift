@@ -10,21 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var graphViewModel = GraphViewModel()
     @StateObject var testViewModel = TestViewModel()
-
+    
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: .infinity)),
     ]
-
+    
     var body: some View {
         ZStack {
             CathodeView {
                 VStack {
                     ScrollView(.vertical) {
                         LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                            Group {
-                                if (true) {
-                                    FigletGroupView(graphViewModel.node.id)
-                                }
+                            Foo(content: graphViewModel.node.id, known: testViewModel.solved) {test in
+                                testViewModel.setCurrent(test: test)
                             }
                         }
                         .padding(30)
@@ -34,6 +32,31 @@ struct ContentView: View {
                     .environmentObject(graphViewModel)
             }
             .edgesIgnoringSafeArea(.bottom)
+        }
+    }
+}
+
+struct Foo: View {
+    var symbols: [ASCIISymbol] = []
+    var known: [ASCIISymbol] = []
+    var closure: (ASCIITest) -> Void
+    
+    init(content: String, known: [ASCIISymbol], closure: @escaping (ASCIITest) -> Void) {
+        self.known = known
+        self.closure = closure
+        for char in content {
+            symbols.append(ASCII.from(symbol: String(char))!.symbol)
+        }
+    }
+    
+    var body: some View {
+        ForEach(symbols, id: \.self) {symbol in
+            if known.contains(symbol) {
+                FigletBanner(symbol.rawValue)
+            } else {
+                let test = ASCIITests[symbol]![0]
+                FigletBanner(test.test)
+            }
         }
     }
 }
