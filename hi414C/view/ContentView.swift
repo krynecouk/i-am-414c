@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var graphViewModel = GraphViewModel()
-    @StateObject var testViewModel = TestViewModel()
     @StateObject var asciiViewModel = ASCIIViewModel()
+    @StateObject var testViewModel = TestViewModel()
     
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: .infinity)),
@@ -22,11 +22,13 @@ struct ContentView: View {
                 VStack {
                     ScrollView(.vertical) {
                         LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+                            // todo symbols duplicate
                             ForEach(symbols(from: graphViewModel.node.id), id: \.self) { symbol in
                                 if asciiViewModel.known.contains(symbol) {
                                     FigletBanner(symbol.rawValue)
                                 } else {
-                                    Foo(symbol)
+                                    let test = ASCIITests[symbol]![0]
+                                    FigletBanner(test.test)
                                 }
                             }
                         }
@@ -46,22 +48,6 @@ struct ContentView: View {
         string.map { char in
             ASCII.from(symbol: String(char))!.symbol
         }
-    }
-}
-
-struct Foo: View {
-    @ObservedObject var testViewModel = TestViewModel()
-    let symbol: ASCIISymbol
-    let test: ASCIITest
-    
-    init(_ symbol: ASCIISymbol) {
-        self.symbol = symbol
-        self.test = ASCIITests[symbol]![0]
-        testViewModel.setCurrent(test: test)
-    }
-    
-    var body: some View {
-        FigletBanner(test.test)
     }
 }
 
