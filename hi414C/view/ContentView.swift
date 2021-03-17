@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var graphViewModel = GraphViewModel()
     @StateObject var asciiViewModel = ASCIIViewModel()
-    @StateObject var testViewModel = TestViewModel()
     
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: .infinity)),
@@ -29,6 +28,12 @@ struct ContentView: View {
                                 } else {
                                     let test = ASCIITests[symbol]![0]
                                     FigletBanner(test.test)
+                                        .onAppear {
+                                            Tests.setCurrent(test: test)
+                                        }
+                                        .onTapGesture {
+                                            Tests.setCurrent(test: test)
+                                        }
                                 }
                             }
                         }
@@ -38,7 +43,6 @@ struct ContentView: View {
                 TerminalView()
                     .environmentObject(graphViewModel)
                     .environmentObject(asciiViewModel)
-                    .environmentObject(testViewModel)
             }
             .edgesIgnoringSafeArea(.bottom)
         }
