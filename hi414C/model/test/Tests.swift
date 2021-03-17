@@ -6,9 +6,9 @@
 //
 
 struct Tests {
-    static private(set) var current: ASCIITest?
+    static private(set) var current: Testable?
     
-    static func setCurrent(test: ASCIITest?) {
+    static func setCurrent(test: Testable?) {
         current = test
     }
 }

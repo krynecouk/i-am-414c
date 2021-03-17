@@ -6,6 +6,7 @@
 //
 
 protocol Testable {
+    var symbol: ASCIISymbol { get }
     var test: String { get }
     var type: TestType { get }
     var level: TestLevel { get }
