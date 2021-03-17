@@ -15,6 +15,7 @@ struct ContentView: View {
         ZStack {
             CathodeView {
                 ASCIIGrid(content: graphViewModel.node.id, knownSymbols: asciiViewModel.known)
+                    .padding(30)
                 TerminalView()
             }
             .edgesIgnoringSafeArea(.bottom)
