@@ -14,22 +14,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             CathodeView {
-                MainView {
-                    ForEach(ascii(from: graphViewModel.node.id)) { ascii in
-                        if asciiViewModel.known.contains(ascii.symbol) {
-                            FigletBanner(ascii.symbol.rawValue)
-                        } else {
-                            let test = ASCIITests[ascii.symbol]![0]
-                            FigletBanner(test.test)
-                                .onAppear {
-                                    Tests.setCurrent(test: test)
-                                }
-                                .onTapGesture {
-                                    Tests.setCurrent(test: test)
-                                }
-                        }
-                    }
-                }
+                ASCIIGrid(content: graphViewModel.node.id, knownSymbols: asciiViewModel.known)
                 TerminalView()
             }
             .edgesIgnoringSafeArea(.bottom)
@@ -37,17 +22,6 @@ struct ContentView: View {
     }
 }
 
-func ascii(from string: String) -> [ASCIIItem] {
-    string.map { char in
-        let symbol = ASCII.from(symbol: String(char))!.symbol
-        return ASCIIItem(symbol: symbol)
-    }
-}
-
-struct ASCIIItem: Identifiable {
-    var id = UUID()
-    var symbol: ASCIISymbol
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

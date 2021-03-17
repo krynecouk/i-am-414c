@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  Grid.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 17.03.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView<Content: View> : View {
+struct Grid<Content: View> : View {
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
@@ -23,16 +23,16 @@ struct MainView<Content: View> : View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                 content
             }
-            .padding(30)
         }
     }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct Grid_Previews: PreviewProvider {
     static var previews: some View {
-        MainView {
-            FigletBanner("test")
-            FigletBanner("really")
+        Grid {
+            FigletBanner("Preview")
+            FigletBanner("Of")
+            FigletBanner("Grid")
         }
     }
 }
