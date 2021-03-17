@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TerminalView: View {
-    @StateObject var keyboardInput = KeyboardInput()
 
+    @EnvironmentObject var keyboardInput: KeyboardInput
+    
     let ascii: [ASCII] = [
         ASCIITable.one,
         ASCIITable.two,
@@ -55,7 +56,6 @@ struct TerminalView: View {
             TerminalText("█")
         }) {
             TerminalKeyboard()
-                .environmentObject(keyboardInput)
         }
     }
 }
@@ -66,5 +66,6 @@ struct TerminalView_Previews: PreviewProvider {
             TerminalView()
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
+        .withEnvironment()
     }
 }

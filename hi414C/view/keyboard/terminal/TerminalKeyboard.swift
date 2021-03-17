@@ -245,6 +245,7 @@ struct TerminalKeyboard_Previews: PreviewProvider {
                     .frame(height: 300)
             }
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
+            .withEnvironment()
         }
     }
 }
