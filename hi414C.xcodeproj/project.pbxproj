@@ -187,7 +187,6 @@
 			children = (
 				261ED5FE25F7B226004DADB3 /* UIWindow.swift */,
 				26AF9F8525FFAD4600B77E0A /* String.swift */,
-				2649527D260267DA0045BC21 /* Environment.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -229,6 +228,14 @@
 			path = cathode;
 			sourceTree = "<group>";
 		};
+		2649528326026A1D0045BC21 /* environment */ = {
+			isa = PBXGroup;
+			children = (
+				2649527D260267DA0045BC21 /* Environment.swift */,
+			);
+			path = environment;
+			sourceTree = "<group>";
+		};
 		265A00A625ED490D00F479FA /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +269,7 @@
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				2649528326026A1D0045BC21 /* environment */,
 				265A00A625ED490D00F479FA /* keyboard */,
 				2641EF6525E422350005ABF7 /* cathode */,
 				2641EF3C25E411B00005ABF7 /* figlet */,
