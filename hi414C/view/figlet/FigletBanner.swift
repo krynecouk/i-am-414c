@@ -20,8 +20,10 @@ struct FigletBanner: View {
     }
     
     var body: some View {
-        ForEach(figlets) { item in
-            FigletView(item.figlet)
+        Group {
+            ForEach(figlets) { item in
+                FigletView(item.figlet)
+            }
         }
     }
 }

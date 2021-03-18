@@ -19,3 +19,6 @@
 - ASCII bin maybe not UInt8
 - ModelView separate from /model
 - ASCII test replace with BIN/DEC/HEX ...
+
+### Graph
+

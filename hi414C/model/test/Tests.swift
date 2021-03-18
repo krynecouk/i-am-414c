@@ -9,6 +9,7 @@ struct Tests {
     static private(set) var current: Testable?
     
     static func setCurrent(test: Testable?) {
+        print("current test is: ", test != nil ? test!.test : "NIL")
         current = test
     }
 }
