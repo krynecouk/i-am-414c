@@ -1,17 +1,21 @@
 //
-//  ASCIITestGrid.swift
+//  TerminalContent.swift
 //  hi414C
 //
-//  Created by Darius Kryszczuk on 17.03.2021.
+//  Created by Darius Kryszczuk on 19.03.2021.
 //
 
 import SwiftUI
 
-struct ASCIITestGrid: View {
-    var items: [ElementItem]
+struct TerminalContent: View {
+    var items: [TerminalContentItem]
     
-    init(_ elements: [Element]) {
-        self.items = elements.map { ElementItem(type: $0)}
+    init(_ types: [TerminalContentType]) {
+        self.init(types.map { TerminalContentItem(type: $0)})
+    }
+    
+    init(_ items: [TerminalContentItem]) {
+        self.items = items
         Tests.setCurrent(test: nil)
     }
     
@@ -24,9 +28,7 @@ struct ASCIITestGrid: View {
                 if case let .test(test, isCurrent) = item.type {
                     FigletBanner(test.test)
                         .onAppear {
-                            if isCurrent && Tests.current == nil {
-                                print("setting current test from symbol: ", test.symbol)
-                                Tests.setCurrent(test: test)
+                            if isCurrent && Tests.current == nil {                                Tests.setCurrent(test: test)
                             }
                         }
                         .onTapGesture {
@@ -38,19 +40,19 @@ struct ASCIITestGrid: View {
     }
 }
 
-enum Element {
+enum TerminalContentType {
     case ascii(ASCIISymbol)
     case test(Testable, Bool)
 }
 
-struct ElementItem: Identifiable {
+struct TerminalContentItem: Identifiable {
     var id = UUID()
-    var type: Element
+    var type: TerminalContentType
 }
 
-struct ASCIIGrid_Previews: PreviewProvider {
+struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
-        ASCIITestGrid([
+        TerminalContent([
             .ascii(.H),
             .test(ASCIITests[.I]![0], true)
         ])

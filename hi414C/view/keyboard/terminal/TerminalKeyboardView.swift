@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TerminalView: View {
+struct TerminalKeyboardView: View {
 
     @EnvironmentObject var keyboardInput: KeyboardInput
     
@@ -60,10 +60,10 @@ struct TerminalView: View {
     }
 }
 
-struct TerminalView_Previews: PreviewProvider {
+struct TerminalKeyboardView_Previews: PreviewProvider {
     static var previews: some View {
         CathodeView {
-            TerminalView()
+            TerminalKeyboardView()
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
         .withEnvironment()

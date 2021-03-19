@@ -1,48 +1,42 @@
 //
-//  ContentView.swift
+//  TerminalView.swift
 //  hi414C
 //
-//  Created by Darius Kryszczuk on 17.02.2021.
+//  Created by Darius Kryszczuk on 19.03.2021.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct TerminalView: View {
     @EnvironmentObject var graphViewModel: GraphViewModel
     @EnvironmentObject var asciiViewModel: ASCIIViewModel
     
     var body: some View {
-        ZStack {
-            CathodeView {
-                ASCIITestGrid(toElements(from: graphViewModel.node.id))
-                    .padding(30)
-                TerminalView()
-            }
-            .edgesIgnoringSafeArea(.bottom)
-        }
+        TerminalContent(getContent(from: graphViewModel.node.id))
+            .padding(30)
+        TerminalCommandLine()
     }
     
-    func toElements(from string: String) -> [Element] {
+    func getContent(from string: String) -> [TerminalContentItem] {
         var testWasSetup = false
         return string.map { char in
             let symbol = ASCII.from(symbol: String(char))!.symbol
             if asciiViewModel.known.contains(symbol) {
-                return .ascii(symbol)
+                return TerminalContentItem(type: .ascii(symbol))
             }
             let test = ASCIITests[symbol]![0]
             if testWasSetup {
-                return .test(test, false)
+                return TerminalContentItem(type: .test(test, false))
             }
             testWasSetup.toggle()
-            return .test(test, true)
+            return TerminalContentItem(type: .test(test, true))
         }
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
+struct TerminalView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TerminalView()
             .withEnvironment()
     }
 }
