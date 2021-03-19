@@ -13,6 +13,7 @@
 - BlurIn animated (slow transition)
 - Figlet shakening (group of `Text` with offset changing: https://stackoverflow.com/questions/61619013/is-there-a-better-way-to-implement-a-shake-animation-in-swiftui or here : https://www.objc.io/blog/2019/10/01/swiftui-shake-animation/)
 - Font shakening
+- Font je cropped by upper and edge borders
 
 ### Model
 

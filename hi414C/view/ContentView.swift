@@ -10,16 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var graphViewModel: GraphViewModel
     @EnvironmentObject var asciiViewModel: ASCIIViewModel
-    // tady asi nejaky Binding na test, ktery poslat i dolu
     
     var body: some View {
         ZStack {
             CathodeView {
                 ASCIITestGrid(toElements(from: graphViewModel.node.id))
                     .padding(30)
-                
-              //  ASCIITestGrid(content: graphViewModel.node.id, knownSymbols: asciiViewModel.known)
-              //      .padding(30)
                 TerminalView()
             }
             .edgesIgnoringSafeArea(.bottom)

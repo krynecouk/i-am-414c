@@ -22,17 +22,16 @@ struct ASCIITestGrid: View {
                     FigletBanner(symbol.rawValue)
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    Group {
-                        FigletBanner(test.test)
-                    }.onAppear {
-                        if isCurrent {
-                            print("setting current test from symbol: ", test.symbol)
+                    FigletBanner(test.test)
+                        .onAppear {
+                            if isCurrent && Tests.current == nil {
+                                print("setting current test from symbol: ", test.symbol)
+                                Tests.setCurrent(test: test)
+                            }
+                        }
+                        .onTapGesture {
                             Tests.setCurrent(test: test)
                         }
-                    }
-                    .onTapGesture {
-                        Tests.setCurrent(test: test)
-                    }
                 }
             }
         }
