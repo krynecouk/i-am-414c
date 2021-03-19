@@ -1,15 +1,12 @@
 //
-//  ASCIITests.swift
+//  Tests.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 15.03.2021.
 //
 
-class ASCIITests: Testables {
-    typealias Key = ASCIISymbol
-    typealias Value = ASCIITest
-
-    static var tests: [ASCIISymbol: [ASCIITest]] = [
+class Tests {
+    static var tests: [ASCIISymbol: [Testable]] = [
         .NUL: [
             ASCIITest(symbol: .NUL),
         ],
@@ -395,4 +392,23 @@ class ASCIITests: Testables {
             ASCIITest(symbol: .DEL),
         ],
     ]
+}
+
+extension Tests {
+    // TODO force unwrap
+    static subscript(key: ASCIISymbol) -> [Testable] {
+        self.tests[key]!
+    }
+    
+    static subscript(key: ASCIISymbol, level: TestLevel) -> [Testable] {
+        self.tests[key]!.filter { $0.level == level }
+    }
+    
+    static subscript(key: ASCIISymbol, type: TestType) -> [Testable] {
+        self.tests[key]!.filter { $0.type == type }
+    }
+    
+    static subscript(key: ASCIISymbol, type: TestType, level: TestLevel) -> [Testable] {
+        self.tests[key]!.filter { $0.type == type && $0.level == level }
+    }
 }

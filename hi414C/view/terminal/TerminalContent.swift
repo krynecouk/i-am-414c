@@ -57,7 +57,7 @@ struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
             .ascii(.H),
-            .test(ASCIITests[.I]![0], true)
+            .test(Tests[.I][0], true)
         ], testVM: TestViewModel())
     }
 }

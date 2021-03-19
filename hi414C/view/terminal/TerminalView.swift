@@ -28,7 +28,7 @@ private func getContent(from string: String, using ascii: [ASCIISymbol]) -> [Ter
         if ascii.contains(symbol) {
             return TerminalContentItem(type: .ascii(symbol))
         }
-        let test = ASCIITests[symbol]![0]
+        let test = Tests[symbol][0]
         if testWasSetup {
             return TerminalContentItem(type: .test(test, false))
         }

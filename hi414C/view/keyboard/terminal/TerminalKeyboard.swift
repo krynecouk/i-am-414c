@@ -146,7 +146,7 @@ struct TerminalKeyboard: View {
                         TerminalKey("ENT", metrics: metrics)
                             .onTapGesture {
                                 if (testVM.current != nil) {
-                                    let solution = testVM.current?.solve(with: keyboardVM.currentValue)
+                                    let solution = testVM.solve(with: keyboardVM.currentValue)
                                     switch solution {
                                     case .right:
                                         asciiVM.add(symbol: testVM.current!.symbol)

@@ -49,9 +49,8 @@
 		26AF9F4A25FF7ECE00B77E0A /* TestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4925FF7ECE00B77E0A /* TestType.swift */; };
 		26AF9F5625FF7FAC00B77E0A /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5525FF7FAC00B77E0A /* Testable.swift */; };
 		26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestSolution.swift */; };
-		26AF9F6425FF955A00B77E0A /* ASCIITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6325FF955A00B77E0A /* ASCIITests.swift */; };
-		26AF9F6E25FF968C00B77E0A /* Testables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6D25FF968C00B77E0A /* Testables.swift */; };
-		26AF9F7C25FFA69A00B77E0A /* ASCIITestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */; };
+		26AF9F6425FF955A00B77E0A /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F6325FF955A00B77E0A /* Tests.swift */; };
+		26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */; };
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26B10A2126027B08007E7B65 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B10A2026027B08007E7B65 /* Grid.swift */; };
 		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
@@ -120,9 +119,8 @@
 		26AF9F4925FF7ECE00B77E0A /* TestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestType.swift; sourceTree = "<group>"; };
 		26AF9F5525FF7FAC00B77E0A /* Testable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testable.swift; sourceTree = "<group>"; };
 		26AF9F5D25FF849800B77E0A /* TestSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSolution.swift; sourceTree = "<group>"; };
-		26AF9F6325FF955A00B77E0A /* ASCIITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITests.swift; sourceTree = "<group>"; };
-		26AF9F6D25FF968C00B77E0A /* Testables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testables.swift; sourceTree = "<group>"; };
-		26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIITestsTests.swift; path = hi414CTests/model/test/ascii/ASCIITestsTests.swift; sourceTree = SOURCE_ROOT; };
+		26AF9F6325FF955A00B77E0A /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestsTests.swift; path = hi414CTests/model/test/TestsTests.swift; sourceTree = SOURCE_ROOT; };
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26B10A2026027B08007E7B65 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
@@ -323,17 +321,9 @@
 		267E73FB25FFC5EF004E18E0 /* test */ = {
 			isa = PBXGroup;
 			children = (
-				267E73FC25FFC5F5004E18E0 /* ascii */,
+				26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */,
 			);
 			path = test;
-			sourceTree = "<group>";
-		};
-		267E73FC25FFC5F5004E18E0 /* ascii */ = {
-			isa = PBXGroup;
-			children = (
-				26AF9F7B25FFA69A00B77E0A /* ASCIITestsTests.swift */,
-			);
-			path = ascii;
 			sourceTree = "<group>";
 		};
 		26AF9F4825FF7E9400B77E0A /* test */ = {
@@ -344,7 +334,7 @@
 				26AF9F4925FF7ECE00B77E0A /* TestType.swift */,
 				26AF9F5D25FF849800B77E0A /* TestSolution.swift */,
 				26AF9F5525FF7FAC00B77E0A /* Testable.swift */,
-				26AF9F6D25FF968C00B77E0A /* Testables.swift */,
+				26AF9F6325FF955A00B77E0A /* Tests.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -353,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				26AF9F3F25FF7E2E00B77E0A /* ASCIITest.swift */,
-				26AF9F6325FF955A00B77E0A /* ASCIITests.swift */,
 			);
 			path = ascii;
 			sourceTree = "<group>";
@@ -609,7 +598,7 @@
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				26851AAD25E574A4004B1E2E /* FigletView.swift in Sources */,
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
-				26AF9F6425FF955A00B77E0A /* ASCIITests.swift in Sources */,
+				26AF9F6425FF955A00B77E0A /* Tests.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Testable.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadow.swift in Sources */,
 				261ED5FF25F7B226004DADB3 /* UIWindow.swift in Sources */,
@@ -626,7 +615,6 @@
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
 				26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
-				26AF9F6E25FF968C00B77E0A /* Testables.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,7 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */,
-				26AF9F7C25FFA69A00B77E0A /* ASCIITestsTests.swift in Sources */,
+				26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */,
 				26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

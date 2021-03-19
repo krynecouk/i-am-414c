@@ -14,4 +14,9 @@ class TestViewModel: ObservableObject {
     func setCurrent(test: Testable?) {
         current = test
     }
+    
+    func solve(with value: String) -> TestSolution {
+        result = current!.solve(with: value) // TODO force unwrap
+        return result
+    }
 }
