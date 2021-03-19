@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TerminalKeyboard: View {
-    @EnvironmentObject var keyboardInput: KeyboardInput
-    @EnvironmentObject var graphViewModel: GraphViewModel
-    @EnvironmentObject var asciiViewModel: ASCIIViewModel
+    @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
     
     @State var side: Side = .ALPH
     
@@ -133,7 +133,7 @@ struct TerminalKeyboard: View {
                             }
                         TerminalKey("DEL", metrics: metrics)
                             .onTapGesture {
-                                keyboardInput.delete()
+                                keyboardVM.currentValue = ""
                             }
                     }
                     HStack(spacing: 8) {
@@ -144,18 +144,18 @@ struct TerminalKeyboard: View {
                         TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width / 10 - metrics.size.width / 10) - 16)
                         TerminalKey("ENT", metrics: metrics)
                             .onTapGesture {
-                                if (Tests.current != nil) {
-                                    let solution = Tests.current?.solve(with: keyboardInput.value)
+                                if (TestViewModel.current != nil) {
+                                    let solution = TestViewModel.current?.solve(with: keyboardVM.currentValue)
                                     switch solution {
                                     case .right:
-                                        asciiViewModel.add(symbol: Tests.current!.symbol)
+                                        asciiVM.add(symbol: TestViewModel.current!.symbol)
                                     default:
                                         print("not correct")
                                     }
                                 } else {
-                                    graphViewModel.process(ctx: Context(input: keyboardInput.value))
+                                    graphVM.process(ctx: Context(input: keyboardVM.currentValue))
                                 }
-                                keyboardInput.delete()
+                                keyboardVM.currentValue = ""
                             }
                     }
                 } else {
@@ -218,7 +218,7 @@ struct TerminalKeyboard: View {
     }
 
     func updateInput(value: String) {
-        keyboardInput.concat(with: value)
+        keyboardVM.currentValue += value
     }
 }
 

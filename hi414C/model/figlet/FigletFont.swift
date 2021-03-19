@@ -7,5 +7,5 @@
 
 protocol FigletFont {
     static var figlets: [ASCIISymbol:Figlet] { get }
-    static subscript(symbol: ASCIISymbol) -> Figlet? { get }
+    static subscript(symbol: ASCIISymbol) -> Figlet { get }
 }

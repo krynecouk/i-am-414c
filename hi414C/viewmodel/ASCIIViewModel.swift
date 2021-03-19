@@ -8,9 +8,9 @@
 import SwiftUI
 
 class ASCIIViewModel: ObservableObject {
-    @Published private(set) var known: [ASCIISymbol] = [] // TODO this needs to be persistentnly stored
+    @Published private(set) var symbols: [ASCIISymbol] = [] // TODO persistently store
     
     func add(symbol: ASCIISymbol) {
-        self.known.append(symbol)
+        self.symbols.append(symbol)
     }
 }

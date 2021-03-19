@@ -9,7 +9,9 @@ struct FigletFonts {
     static subscript(typeface: FigletTypeface) -> [ASCIISymbol: Figlet] {
         switch typeface {
         case .ansi(let variation):
-            if variation == .shadow { return ANSIShadow.figlets }
+            if variation == .shadow {
+                return ANSIShadow.figlets
+            }
             return ANSIRegular.figlets
         }
     }

@@ -16,7 +16,7 @@ struct TerminalContent: View {
     
     init(_ items: [TerminalContentItem]) {
         self.items = items
-        Tests.setCurrent(test: nil)
+        TestViewModel.setCurrent(test: nil)
     }
     
     var body: some View {
@@ -28,12 +28,12 @@ struct TerminalContent: View {
                 if case let .test(test, isCurrent) = item.type {
                     FigletBanner(test.test)
                         .onAppear {
-                            if isCurrent && Tests.current == nil {
-                                Tests.setCurrent(test: test)
+                            if isCurrent && TestViewModel.current == nil {
+                                TestViewModel.setCurrent(test: test)
                             }
                         }
                         .onTapGesture {
-                            Tests.setCurrent(test: test)
+                            TestViewModel.setCurrent(test: test)
                         }
                 }
             }

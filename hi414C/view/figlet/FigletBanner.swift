@@ -13,7 +13,7 @@ struct FigletBanner: View {
     
     init(_ content: String, typeface: FigletTypeface = .ansi(.regular)) {
         self.figlets = content.map { char in
-            let symbol = ASCII.from(symbol: String(char))!.symbol
+            let symbol = ASCIISymbol.from(String(char))
             return FigletItem(figlet: FigletFonts[typeface][symbol]!)
         }
         self.typeface = typeface

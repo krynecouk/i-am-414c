@@ -53,6 +53,6 @@ struct FigletView: View {
 
 struct FigletView_Previews: PreviewProvider {
     static var previews: some View {
-        FigletView(ANSIShadow[.A]!)
+        FigletView(ANSIShadow[.A])
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum FontName: String {
-    
+
     static func fontFamilies() -> [String] {
         UIFont.familyNames
     }

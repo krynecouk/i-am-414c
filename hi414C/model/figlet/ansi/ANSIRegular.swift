@@ -298,7 +298,7 @@ struct ANSIRegular: FigletFont {
         ]),
     ]
 
-    static subscript(symbol: ASCIISymbol) -> Figlet? {
-        ANSIRegular.figlets[symbol]
+    static subscript(symbol: ASCIISymbol) -> Figlet {
+        ANSIRegular.figlets[symbol]! // TODO force unwrap
     }
 }

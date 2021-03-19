@@ -334,7 +334,7 @@ struct ANSIShadow: FigletFont {
         ]),
     ]
 
-    static subscript(symbol: ASCIISymbol) -> Figlet? {
-        ANSIShadow.figlets[symbol]
+    static subscript(symbol: ASCIISymbol) -> Figlet {
+        ANSIShadow.figlets[symbol]! // TODO force unwrap
     }
 }

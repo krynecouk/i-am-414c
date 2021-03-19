@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct TerminalKeyboardView: View {
-
-    @EnvironmentObject var keyboardInput: KeyboardInput
+    @EnvironmentObject var keyboardVM: KeyboardViewModel
     
     let ascii: [ASCII] = [
         ASCIITable.one,
@@ -52,7 +51,7 @@ struct TerminalKeyboardView: View {
     var body: some View {
         TerminalSegue(header: Group {
             TerminalText("414C >")
-            TerminalText(keyboardInput.value)
+            TerminalText(keyboardVM.currentValue)
             TerminalText("█")
         }) {
             TerminalKeyboard()

@@ -13,7 +13,7 @@ struct TerminalView: View {
     
     var body: some View {
         ZStack {
-            TerminalContent(getContent(from: graphVM.node.id, using: asciiVM.known))
+            TerminalContent(getContent(from: graphVM.node.id, using: asciiVM.symbols))
                 .padding(30)
             TerminalCommandLine()
         }
