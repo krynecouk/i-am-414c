@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CathodeView<Content: View> : View {
-    
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
@@ -17,11 +16,9 @@ struct CathodeView<Content: View> : View {
     
     var body: some View {
         ZStack {
-            //StaticNoise()
-            //  .opacity(0.4)
+            // StaticNoise().opacity(0.4)
             BlurIn()
                 .opacity(0.9)
-
             Curtain()
                 .opacity(0.8)
             content
@@ -35,11 +32,7 @@ struct CathodeView_Previews: PreviewProvider {
     static var previews: some View {
         CathodeView() {
             HStack {
-                FigletView(ANSIShadow[.H]!)
-                FigletView(ANSIShadow[.E]!)
-                FigletView(ANSIShadow[.L]!)
-                FigletView(ANSIShadow[.L]!)
-                FigletView(ANSIShadow[.O]!)
+                FigletBanner("HELLO", typeface: .ansi(.shadow))
             }
         }
     }

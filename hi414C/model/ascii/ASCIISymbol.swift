@@ -135,3 +135,9 @@ enum ASCIISymbol: String, Hashable {
     case tilde = "~"
     case DEL
 }
+
+extension ASCIISymbol {
+    static func from(_ string: String) -> ASCIISymbol {
+        return ASCIISymbol(rawValue: string)! // TODO kryszczuk: unwrap
+    }
+}

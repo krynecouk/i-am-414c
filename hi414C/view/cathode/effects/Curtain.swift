@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Curtain: View {
-    
     let color: Color;
     
     init(of color: Color = Color.black) {

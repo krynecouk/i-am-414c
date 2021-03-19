@@ -9,12 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            CathodeView {
-                TerminalView()
-            }
-            .edgesIgnoringSafeArea(.bottom)
+        CathodeView {
+            TerminalView()
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

@@ -30,9 +30,11 @@ struct Grid<Content: View> : View {
 struct Grid_Previews: PreviewProvider {
     static var previews: some View {
         Grid {
-            FigletBanner("Preview")
-            FigletBanner("Of")
-            FigletBanner("Grid")
+            Group {
+                ForEach(0..<40) {i in
+                    FigletBanner(String(i))
+                }
+            }
         }
     }
 }

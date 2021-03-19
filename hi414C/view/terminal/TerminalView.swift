@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct TerminalView: View {
-    @EnvironmentObject var graphViewModel: GraphViewModel
-    @EnvironmentObject var asciiViewModel: ASCIIViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
     
     var body: some View {
-        TerminalContent(getContent(from: graphViewModel.node.id))
-            .padding(30)
-        TerminalCommandLine()
-    }
-    
-    func getContent(from string: String) -> [TerminalContentItem] {
-        var testWasSetup = false
-        return string.map { char in
-            let symbol = ASCII.from(symbol: String(char))!.symbol
-            if asciiViewModel.known.contains(symbol) {
-                return TerminalContentItem(type: .ascii(symbol))
-            }
-            let test = ASCIITests[symbol]![0]
-            if testWasSetup {
-                return TerminalContentItem(type: .test(test, false))
-            }
-            testWasSetup.toggle()
-            return TerminalContentItem(type: .test(test, true))
+        ZStack {
+            TerminalContent(getContent(from: graphVM.node.id, using: asciiVM.known))
+                .padding(30)
+            TerminalCommandLine()
         }
+    }
+}
+
+private func getContent(from string: String, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
+    var testWasSetup = false
+    return string.map { char in
+        let symbol = ASCIISymbol.from(String(char))
+        if ascii.contains(symbol) {
+            return TerminalContentItem(type: .ascii(symbol))
+        }
+        let test = ASCIITests[symbol]![0]
+        if testWasSetup {
+            return TerminalContentItem(type: .test(test, false))
+        }
+        testWasSetup.toggle()
+        return TerminalContentItem(type: .test(test, true))
     }
 }
 

@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct Bloom: ViewModifier {
-    
     let color: Color
     
     func body(content: Content) -> some View {

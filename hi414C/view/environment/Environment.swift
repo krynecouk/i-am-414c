@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct EnvironmentModifier: ViewModifier {
-    @StateObject var graphViewModel = GraphViewModel()
-    @StateObject var asciiViewModel = ASCIIViewModel()
-    @StateObject var keyboardInput = KeyboardInput()
+    @StateObject var graphVM = GraphViewModel()
+    @StateObject var asciiVM = ASCIIViewModel()
+    @StateObject var keyboardVM = KeyboardInput()
     
     func body(content: Content) -> some View {
         content
-            .environmentObject(graphViewModel)
-            .environmentObject(asciiViewModel)
-            .environmentObject(keyboardInput)
+            .environmentObject(graphVM)
+            .environmentObject(asciiVM)
+            .environmentObject(keyboardVM)
     }
 }
 

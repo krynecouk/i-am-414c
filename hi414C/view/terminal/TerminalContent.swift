@@ -28,7 +28,8 @@ struct TerminalContent: View {
                 if case let .test(test, isCurrent) = item.type {
                     FigletBanner(test.test)
                         .onAppear {
-                            if isCurrent && Tests.current == nil {                                Tests.setCurrent(test: test)
+                            if isCurrent && Tests.current == nil {
+                                Tests.setCurrent(test: test)
                             }
                         }
                         .onTapGesture {
