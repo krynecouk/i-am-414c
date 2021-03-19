@@ -11,6 +11,7 @@ struct TerminalKeyboard: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var testVM: TestViewModel
     
     @State var side: Side = .ALPH
     
@@ -144,11 +145,11 @@ struct TerminalKeyboard: View {
                         TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width / 10 - metrics.size.width / 10) - 16)
                         TerminalKey("ENT", metrics: metrics)
                             .onTapGesture {
-                                if (TestViewModel.current != nil) {
-                                    let solution = TestViewModel.current?.solve(with: keyboardVM.currentValue)
+                                if (testVM.current != nil) {
+                                    let solution = testVM.current?.solve(with: keyboardVM.currentValue)
                                     switch solution {
                                     case .right:
-                                        asciiVM.add(symbol: TestViewModel.current!.symbol)
+                                        asciiVM.add(symbol: testVM.current!.symbol)
                                     default:
                                         print("not correct")
                                     }

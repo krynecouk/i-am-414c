@@ -10,10 +10,11 @@ import SwiftUI
 struct TerminalView: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var testVM: TestViewModel
     
     var body: some View {
         ZStack {
-            TerminalContent(getContent(from: graphVM.node.id, using: asciiVM.symbols))
+            TerminalContent(getContent(from: graphVM.node.id, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
             TerminalCommandLine()
         }

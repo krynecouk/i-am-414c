@@ -9,9 +9,9 @@ import SwiftUI
 
 class TestViewModel: ObservableObject {
     @Published private(set) var result: TestSolution = .right
-    static private(set) var current: Testable? // TODO replace with nonstatic?
+    private(set) var current: Testable?
 
-    static func setCurrent(test: Testable?) {
+    func setCurrent(test: Testable?) {
         current = test
     }
 }
