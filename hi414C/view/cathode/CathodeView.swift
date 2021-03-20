@@ -32,7 +32,7 @@ struct CathodeView_Previews: PreviewProvider {
     static var previews: some View {
         CathodeView() {
             HStack {
-                FigletView(content: "HELLO")
+                FigletView("HELLO")
             }
         }
     }

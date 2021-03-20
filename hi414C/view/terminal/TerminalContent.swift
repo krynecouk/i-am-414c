@@ -25,10 +25,10 @@ struct TerminalContent: View {
         Grid {
             ForEach(items) { item in
                 if case let .ascii(symbol) = item.type {
-                    FigletView(content: symbol.rawValue)
+                    FigletView(symbol.rawValue)
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    FigletView(content: test.test)
+                    FigletView(test.test)
                         .onAppear {
                             if isCurrent && testVM.current == nil {
                                 testVM.setCurrent(test: test)

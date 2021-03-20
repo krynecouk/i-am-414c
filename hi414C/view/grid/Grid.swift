@@ -32,7 +32,7 @@ struct Grid_Previews: PreviewProvider {
         Grid {
             Group {
                 ForEach(0..<40) {i in
-                    FigletView(content: String(i))
+                    FigletView(String(i))
                 }
             }
         }
