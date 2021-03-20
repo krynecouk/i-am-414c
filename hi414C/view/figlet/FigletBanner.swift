@@ -22,7 +22,7 @@ struct FigletBanner: View {
     var body: some View {
         Group {
             ForEach(figlets) { item in
-                FigletView(item.figlet)
+                FigletView2(item.figlet)
             }
         }
     }

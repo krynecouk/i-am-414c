@@ -21,6 +21,7 @@
 		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
 		2649527E260267DA0045BC21 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649527D260267DA0045BC21 /* Environment.swift */; };
 		2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651294C25FA2D5F003F0FB2 /* Node.swift */; };
+		2652DC5A2606622900ECF455 /* FigletView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2652DC592606622900ECF455 /* FigletView2.swift */; };
 		2654882326050B710044297D /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882226050B710044297D /* TerminalView.swift */; };
 		2654882726050B7F0044297D /* TerminalContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882626050B7F0044297D /* TerminalContent.swift */; };
 		2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882A26050B920044297D /* TerminalCommandLine.swift */; };
@@ -93,6 +94,7 @@
 		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
 		2649527D260267DA0045BC21 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		2651294C25FA2D5F003F0FB2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		2652DC592606622900ECF455 /* FigletView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletView2.swift; sourceTree = "<group>"; };
 		2654882226050B710044297D /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		2654882626050B7F0044297D /* TerminalContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalContent.swift; sourceTree = "<group>"; };
 		2654882A26050B920044297D /* TerminalCommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandLine.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				26851AAC25E574A4004B1E2E /* FigletView.swift */,
 				2620921A2600B2FE0001904B /* FigletBanner.swift */,
+				2652DC592606622900ECF455 /* FigletView2.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				2620921B2600B2FE0001904B /* FigletBanner.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
 				26AF9F5E25FF849800B77E0A /* TestSolution.swift in Sources */,
+				2652DC5A2606622900ECF455 /* FigletView2.swift in Sources */,
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
 				26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */,
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
