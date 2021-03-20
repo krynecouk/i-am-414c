@@ -32,7 +32,7 @@ struct CathodeView_Previews: PreviewProvider {
     static var previews: some View {
         CathodeView() {
             HStack {
-                FigletBanner("HELLO", typeface: .ansi(.shadow))
+                FigletView(content: "HELLO")
             }
         }
     }
