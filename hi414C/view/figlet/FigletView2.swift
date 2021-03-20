@@ -31,17 +31,10 @@ struct FigletView2: View {
     var body: some View {
         VStack {
             ForEach(figletLines) { line in
-                Text(line.line)
-                    .foregroundColor(Color("Primary"))
-                    .fixedSize()
-                    .multilineTextAlignment(.leading)
-                    .font(Font.custom(fontName.rawValue, size: fontSize))
-                    .opacity(printIdx >= line.id ? 1 : 0)
-                    .bloom()
-
+                FigletLine(line: line.line, isVisible: printIdx > line.id ? true : false, offset: CGFloat.random(in: -0.5...0.5))
             }
         }.onReceive(timer) { _ in
-            if printIdx == figlet.lines.count {
+            if printIdx == figletLines.count {
                 self.timer.upstream.connect().cancel()
                 return
             }

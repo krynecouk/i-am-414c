@@ -6,7 +6,7 @@
 //
 
 enum FigletTypeface {
-    case ansi(FigletTypefaceVariation)
+    case ansi(FigletTypefaceVariation = .regular)
 }
 
 enum FigletTypefaceVariation {
