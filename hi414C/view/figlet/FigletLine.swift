@@ -8,33 +8,22 @@
 import SwiftUI
 
 struct FigletLine: View {
-    @State var offset: CGFloat = 0
     var line: String
+    var offset: CGFloat = 0
     var isVisible: Bool = false
-    
-    init(line: String, isVisible: Bool, offset: CGFloat = 0) {
-        self.line = line
-        self.isVisible = isVisible
-        self.offset = offset
-    }
-    
-    let timer = Timer.publish(every: TimeInterval.random(in: 0.8...2), on: .main, in: .common).autoconnect()
+    var color: Color = Color("Primary")
+    var fontName: FontName = .terminus
+    var fontSize: CGFloat = 13
     
     var body: some View {
         Text(line)
-            .foregroundColor(Color("Primary"))
+            .foregroundColor(color)
             .fixedSize()
             .multilineTextAlignment(.leading)
-            .font(Font.custom(FontName.terminus.rawValue, size: 13)) // TODO param
+            .font(Font.custom(fontName.rawValue, size: fontSize)) // TODO param
             .opacity(isVisible ? 1 : 0)
-            .offset(x: self.offset)
-            .bloom()
-            .onAppear {
-                self.offset = CGFloat.random(in: -0.5...0.5)
-            }
-            .onReceive(timer) { _ in
-                self.offset = CGFloat.random(in: -0.5...0.5)
-            }
+            .offset(x: offset)
+            .bloom(color: color)
     }
 }
 

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct FigletView2: View {
     @State var printIdx: Int = 0
+    @State var lineToUpdate: Int = 0
+    @State var lineToUpdate2: Int = 0
     
     let figlet: Figlet
     let figletLines: [FigletLineItem]
     var fontName: FontName
     var fontSize: CGFloat
     
-    let timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.8, on: .main, in: .common).autoconnect()
     
     init(
         _ figlet: Figlet,
@@ -31,14 +33,12 @@ struct FigletView2: View {
     var body: some View {
         VStack {
             ForEach(figletLines) { line in
-                FigletLine(line: line.line, isVisible: printIdx > line.id ? true : false, offset: CGFloat.random(in: -0.5...0.5))
+                FigletLine(line: line.line,offset: lineToUpdate == line.id || lineToUpdate2 == line.id ? CGFloat.random(in: -1...1) : 0, isVisible: printIdx > line.id ? true : false)
             }
         }.onReceive(timer) { _ in
-            if printIdx == figletLines.count {
-                self.timer.upstream.connect().cancel()
-                return
-            }
             printIdx += 1
+            lineToUpdate = Int.random(in: 0...figletLines.count)
+            lineToUpdate2 = Int.random(in: 0...figletLines.count)
         }
     }
     
