@@ -9,6 +9,8 @@ class Graphs {
     typealias N = ASCIINode
     typealias E = ASCIIEdge
     
+    private init() {}
+    
     static let HI =
         N("HI") {
             E("HI") {

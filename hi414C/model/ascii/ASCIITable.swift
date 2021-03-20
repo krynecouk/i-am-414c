@@ -6,6 +6,7 @@
 //
 
 struct ASCIITable {
+    private init() {}
     static let NUL = ASCII(dec: 0, hex: 0x00, bin: 0b0000_0000, symbol: .NUL)
     static let SOH = ASCII(dec: 1, hex: 0x01, bin: 0b0000_0001, symbol: .SOH)
     static let STX = ASCII(dec: 2, hex: 0x02, bin: 0b0000_0010, symbol: .STX)

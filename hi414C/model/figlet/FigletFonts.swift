@@ -6,6 +6,7 @@
 //
 
 struct FigletFonts {
+    private init() {}
     static subscript(typeface: FigletTypeface) -> [ASCIISymbol: Figlet] {
         switch typeface {
         case .ansi(let variation):

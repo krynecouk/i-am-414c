@@ -6,6 +6,7 @@
 //
 
 class Tests {
+    private init() {}
     static var tests: [ASCIISymbol: [Testable]] = [
         .NUL: [
             ASCIITest(symbol: .NUL),
@@ -395,7 +396,6 @@ class Tests {
 }
 
 extension Tests {
-    // TODO force unwrap
     static subscript(key: ASCIISymbol) -> [Testable] {
         self.tests[key]!
     }
