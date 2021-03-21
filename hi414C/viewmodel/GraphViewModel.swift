@@ -13,15 +13,20 @@ class GraphViewModel: ObservableObject {
     func process(ctx: Context) {
         for edge in node.edges {
             if (edge.isTraversable(ctx: ctx)) {
+                self.node.onExit(ctx: ctx)
                 self.node = edge.traverse()
                 print("in new node: ", self.node.id)
+                self.node.onEnter(ctx: ctx)
                 return
             }
         }
+        
         for edge in Graphs.HI.edges {
             if (edge.isTraversable(ctx: ctx)) {
+                self.node.onExit(ctx: ctx)
                 self.node = edge.traverse()
                 print("in new node: ", self.node.id)
+                self.node.onEnter(ctx: ctx)
                 return
             }
         }

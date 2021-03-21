@@ -8,4 +8,11 @@
 protocol Node {
     var id: String { get }
     @EdgeBuilder var edges: [Edge] { get }
+    func onEnter(ctx: Context)
+    func onExit(ctx: Context)
+}
+
+extension Node {
+    func onEnter(ctx: Context) {}
+    func onExit(ctx: Context) {}
 }
