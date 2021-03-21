@@ -13,4 +13,9 @@ class ASCIINode : Node {
         self.id = id
         self.edges = edges()
     }
+    
+    func onEnter(ctx: Context) {
+        let symbols = self.id.map { ASCIISymbol.from(String($0)) }
+        ctx.asciiVM.setCurrent(current: symbols)
+    }
 }

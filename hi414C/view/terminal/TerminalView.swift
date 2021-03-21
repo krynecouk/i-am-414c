@@ -14,10 +14,24 @@ struct TerminalView: View {
     
     var body: some View {
         ZStack {
-            TerminalContent(getContent(from: graphVM.node.id, using: asciiVM.symbols), testVM: testVM)
+            TerminalContent(getContent(from: asciiVM.current, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
             TerminalCommandLine()
         }
+    }
+}
+private func getContent(from symbols: [ASCIISymbol], using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
+    var testWasSetup = false
+    return symbols.map { symbol in
+        if ascii.contains(symbol) {
+            return TerminalContentItem(type: .ascii(symbol))
+        }
+        let test = Tests[symbol][0]
+        if testWasSetup {
+            return TerminalContentItem(type: .test(test, false))
+        }
+        testWasSetup.toggle()
+        return TerminalContentItem(type: .test(test, true))
     }
 }
 

@@ -7,4 +7,5 @@
 
 struct Context {
     let input: String
+    let asciiVM: ASCIIViewModel
 }

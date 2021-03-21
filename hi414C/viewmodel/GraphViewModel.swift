@@ -30,6 +30,7 @@ class GraphViewModel: ObservableObject {
                 return
             }
         }
+        self.node.onEnter(ctx: ctx)
         // todo
     }
 }
