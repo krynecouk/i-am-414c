@@ -21,7 +21,7 @@ struct ASCIIArtView: View {
     var shakeable: Bool = true
     
     let printer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
-    let shaker = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    let shaker = Timer.publish(every: 0.9, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
