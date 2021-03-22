@@ -11,5 +11,5 @@ protocol Testable {
     var type: TestType { get }
     var level: TestLevel { get }
     var solution: String { get }
-    func solve(with answer: String) -> TestSolution
+    func solve(with answer: String) -> TestResult
 }

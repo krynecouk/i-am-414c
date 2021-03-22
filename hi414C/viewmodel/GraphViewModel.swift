@@ -8,29 +8,34 @@
 import SwiftUI
 
 class GraphViewModel: ObservableObject {
-    @Published var node: Node = Graphs.HI
+    @Published private(set) var node: Node = Graphs.HI
+    
+    let toolkit: GraphToolkit
 
-    func process(ctx: Context) {
-        for edge in node.edges {
+    init(toolkit: GraphToolkit) {
+        self.toolkit = toolkit
+        self.node.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
+    }
+    
+    func process(ctx: GraphContext) {
+        self.node.onExit(ctx: ctx, toolkit: toolkit)
+        let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(Graphs.HI.edges, ctx: ctx)
+        if let node = targetNode {
+            print("in new node: ", node.id)
+            self.node = node
+            self.node.onEnter(ctx: ctx, toolkit: toolkit)
+        } else {
+            print("node not found")
+            // TODO what to do when no edge is found?
+        }
+    }
+    
+    private func traverse(_ edges: [Edge], ctx: GraphContext) -> Node? {
+        for edge in edges {
             if (edge.isTraversable(ctx: ctx)) {
-                self.node.onExit(ctx: ctx)
-                self.node = edge.traverse()
-                print("in new node: ", self.node.id)
-                self.node.onEnter(ctx: ctx)
-                return
+                return edge.traverse()
             }
         }
-        
-        for edge in Graphs.HI.edges {
-            if (edge.isTraversable(ctx: ctx)) {
-                self.node.onExit(ctx: ctx)
-                self.node = edge.traverse()
-                print("in new node: ", self.node.id)
-                self.node.onEnter(ctx: ctx)
-                return
-            }
-        }
-        self.node.onEnter(ctx: ctx)
-        // todo
+        return .none
     }
 }

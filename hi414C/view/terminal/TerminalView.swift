@@ -8,47 +8,34 @@
 import SwiftUI
 
 struct TerminalView: View {
-    @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var contentVM: ContentViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
     
     var body: some View {
         ZStack {
-            TerminalContent(getContent(from: asciiVM.current, using: asciiVM.symbols), testVM: testVM)
+            TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
             TerminalCommandLine()
         }
     }
 }
-private func getContent(from symbols: [ASCIISymbol], using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
-    var testWasSetup = false
-    return symbols.map { symbol in
-        if ascii.contains(symbol) {
-            return TerminalContentItem(type: .ascii(symbol))
+private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
+    if case let .ascii(symbols) = content {
+        var testWasSetup = false
+        return symbols.map { symbol in
+            if ascii.contains(symbol) {
+                return TerminalContentItem(type: .ascii(symbol))
+            }
+            let test = Tests[symbol][0]
+            if testWasSetup {
+                return TerminalContentItem(type: .test(test, false))
+            }
+            testWasSetup.toggle()
+            return TerminalContentItem(type: .test(test, true))
         }
-        let test = Tests[symbol][0]
-        if testWasSetup {
-            return TerminalContentItem(type: .test(test, false))
-        }
-        testWasSetup.toggle()
-        return TerminalContentItem(type: .test(test, true))
     }
-}
-
-private func getContent(from string: String, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
-    var testWasSetup = false
-    return string.map { char in
-        let symbol = ASCIISymbol.from(String(char))
-        if ascii.contains(symbol) {
-            return TerminalContentItem(type: .ascii(symbol))
-        }
-        let test = Tests[symbol][0]
-        if testWasSetup {
-            return TerminalContentItem(type: .test(test, false))
-        }
-        testWasSetup.toggle()
-        return TerminalContentItem(type: .test(test, true))
-    }
+    return []
 }
 
 struct TerminalView_Previews: PreviewProvider {

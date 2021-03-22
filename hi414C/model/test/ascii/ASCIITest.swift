@@ -25,7 +25,7 @@ class ASCIITest: Testable {
         self.solution = solution
     }
 
-    func solve(with answer: String) -> TestSolution {
+    func solve(with answer: String) -> TestResult {
         solution == answer
             ? .right
             : .wrong("solution '\(solution)' is different from the provided answer '\(answer)'")

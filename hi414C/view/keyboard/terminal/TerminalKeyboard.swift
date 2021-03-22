@@ -134,7 +134,7 @@ struct TerminalKeyboard: View {
                             }
                         TerminalKey("DEL", metrics: metrics)
                             .onTapGesture {
-                                keyboardVM.currentValue = ""
+                                keyboardVM.delete()
                             }
                     }
                     HStack(spacing: 8) {
@@ -145,18 +145,18 @@ struct TerminalKeyboard: View {
                         TerminalKeyboardButton("SPACE", width: (metrics.size.width - metrics.size.width / 10 - metrics.size.width / 10) - 16)
                         TerminalKey("ENT", metrics: metrics)
                             .onTapGesture {
-                                if (testVM.current != nil) {
-                                    let solution = testVM.solve(with: keyboardVM.currentValue)
+                                if (testVM.test != nil) {
+                                    let solution = testVM.solve(with: keyboardVM.input)
                                     switch solution {
                                     case .right:
-                                        asciiVM.add(symbol: testVM.current!.symbol)
+                                        asciiVM.add(symbol: testVM.test!.symbol)
                                     default:
                                         print("not correct")
                                     }
                                 } else {
-                                    graphVM.process(ctx: Context(input: keyboardVM.currentValue, asciiVM: asciiVM))
+                                    graphVM.process(ctx: GraphContext(input: keyboardVM.input))
                                 }
-                                keyboardVM.currentValue = ""
+                                keyboardVM.delete()
                             }
                     }
                 } else {
@@ -219,7 +219,7 @@ struct TerminalKeyboard: View {
     }
 
     func updateInput(value: String) {
-        keyboardVM.currentValue += value
+        keyboardVM.append(value)
     }
 }
 

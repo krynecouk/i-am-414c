@@ -23,7 +23,7 @@ struct FigletView: View {
         Group {
             ForEach(figlets.indices) { i in
                 let figlet = figlets[i]
-                FigletLines(lines: figlet.lines, animations: [.print, .shake])
+                FigletLines(lines: figlet.lines, animations: [.print])
             }
         }
     }

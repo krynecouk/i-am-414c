@@ -10,15 +10,11 @@ import SwiftUI
 struct TerminalContent: View {
     var items: [TerminalContentItem]
     var testVM: TestViewModel
-    
-    init(_ types: [TerminalContentType], testVM: TestViewModel) {
-        self.init(types.map { TerminalContentItem(type: $0)}, testVM: testVM)
-    }
-    
+
     init(_ items: [TerminalContentItem], testVM: TestViewModel) {
         self.items = items
         self.testVM = testVM
-        testVM.setCurrent(test: nil)
+        testVM.setTest(test: nil)
     }
     
     var body: some View {
@@ -30,12 +26,12 @@ struct TerminalContent: View {
                 if case let .test(test, isCurrent) = item.type {
                     FigletView(test.test)
                         .onAppear {
-                            if isCurrent && testVM.current == nil {
-                                testVM.setCurrent(test: test)
+                            if isCurrent && testVM.test == nil {
+                                testVM.setTest(test: test)
                             }
                         }
                         .onTapGesture {
-                            testVM.setCurrent(test: test)
+                            testVM.setTest(test: test)
                         }
                 }
             }
@@ -56,8 +52,8 @@ struct TerminalContentItem: Identifiable {
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
-            .ascii(.H),
-            .test(Tests[.I][0], true)
+            TerminalContentItem(type: .ascii(.H)),
+            TerminalContentItem(type: .test(Tests[.I][0], true))
         ], testVM: TestViewModel())
     }
 }

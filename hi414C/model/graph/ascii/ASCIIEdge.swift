@@ -17,7 +17,7 @@ class ASCIIEdge : Edge {
         self.variants.append(id)
     }
     
-    func isTraversable(ctx: Context) -> Bool {
+    func isTraversable(ctx: GraphContext) -> Bool {
         self.variants.contains(ctx.input) // TODO need to be smarter
     }
     

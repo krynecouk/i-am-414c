@@ -8,11 +8,11 @@
 protocol Node {
     var id: String { get }
     @EdgeBuilder var edges: [Edge] { get }
-    func onEnter(ctx: Context)
-    func onExit(ctx: Context)
+    func onEnter(ctx: GraphContext, toolkit: GraphToolkit)
+    func onExit(ctx: GraphContext, toolkit: GraphToolkit)
 }
 
 extension Node {
-    func onEnter(ctx: Context) {}
-    func onExit(ctx: Context) {}
+    func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {}
+    func onExit(ctx: GraphContext, toolkit: GraphToolkit) {}
 }

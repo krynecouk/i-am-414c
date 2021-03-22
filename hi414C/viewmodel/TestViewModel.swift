@@ -8,15 +8,24 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    @Published private(set) var result: TestSolution = .right
-    private(set) var current: Testable?
-
-    func setCurrent(test: Testable?) {
-        current = test
+    private(set) var test: Testable?
+    @Published private(set) var result: TestResult = .right
+    
+    func setTest(test: Testable?) {
+        if let test = self.test {
+            print("current test: ", test.test)
+        } else {
+            print("no test")
+        }
+        self.test = test
     }
     
-    func solve(with value: String) -> TestSolution {
-        result = current!.solve(with: value) // TODO force unwrap
-        return result
+    func solve(with value: String) -> TestResult {
+        if let test = self.test {
+            self.result = test.solve(with: value)
+        } else {
+            self.result = .wrong("No test was provided")
+        }
+        return self.result
     }
 }

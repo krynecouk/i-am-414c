@@ -8,5 +8,13 @@
 import SwiftUI
 
 class KeyboardViewModel: ObservableObject {
-    @Published var currentValue: String = ""
+    @Published private(set) var input: String = ""
+    
+    func append(_ input: String) {
+        self.input += input
+    }
+    
+    func delete() {
+        self.input = ""
+    }
 }

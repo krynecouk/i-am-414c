@@ -51,7 +51,7 @@ struct TerminalKeyboardView: View {
     var body: some View {
         TerminalSegue(header: Group {
             TerminalText("414C >")
-            TerminalText(keyboardVM.currentValue)
+            TerminalText(keyboardVM.input)
             TerminalText("█")
         }) {
             TerminalKeyboard()

@@ -14,8 +14,10 @@ class ASCIINode : Node {
         self.edges = edges()
     }
     
-    func onEnter(ctx: Context) {
-        let symbols = self.id.map { ASCIISymbol.from(String($0)) }
-        ctx.asciiVM.setCurrent(current: symbols)
+    func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
+        let symbols = id.map { char in
+            ASCIISymbol.from(String(char))
+        }
+        toolkit.contentVM.setContent(.ascii(symbols))
     }
 }

@@ -8,16 +8,37 @@
 import SwiftUI
 
 struct EnvironmentModifier: ViewModifier {
-    @StateObject var graphVM = GraphViewModel()
-    @StateObject var asciiVM = ASCIIViewModel()
-    @StateObject var keyboardVM = KeyboardViewModel()
-    @StateObject var testVM = TestViewModel()
+    @ObservedObject var asciiVM: ASCIIViewModel
+    @ObservedObject var contentVM: ContentViewModel
+    @ObservedObject var keyboardVM: KeyboardViewModel
+    @ObservedObject var settingsVM: SettingsViewModel
+    @ObservedObject var testVM: TestViewModel
+    @ObservedObject var graphVM: GraphViewModel
+    
+    init(
+        asciiVM: ASCIIViewModel = ASCIIViewModel(),
+        contentVM: ContentViewModel = ContentViewModel(),
+        keyboardVM: KeyboardViewModel = KeyboardViewModel(),
+        settingsVM: SettingsViewModel = SettingsViewModel(),
+        testVM: TestViewModel = TestViewModel())
+    {
+        self.asciiVM = asciiVM
+        self.contentVM = contentVM
+        self.keyboardVM = keyboardVM
+        self.settingsVM = settingsVM
+        self.testVM = testVM
+        self.graphVM = GraphViewModel(toolkit: GraphToolkit(
+            asciiVM: asciiVM, contentVM: contentVM, keyboardVM: keyboardVM, settingsVM: settingsVM, testVM: testVM
+        ))
+    }
     
     func body(content: Content) -> some View {
         content
-            .environmentObject(graphVM)
             .environmentObject(asciiVM)
+            .environmentObject(contentVM)
+            .environmentObject(graphVM)
             .environmentObject(keyboardVM)
+            .environmentObject(settingsVM)
             .environmentObject(testVM)
     }
 }
