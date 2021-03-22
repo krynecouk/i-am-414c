@@ -9,22 +9,17 @@ import SwiftUI
 
 struct FigletView: View {
     let figlets: [Figlet]
-    let settings: FigletSettings
     
-    init(_ content: String, settings: FigletSettings = FigletSettings()) {
+    init(_ content: String) {
         self.figlets = content.map { char in
             let symbol = ASCIISymbol.from(String(char))
-            return FigletFonts[settings.typeface][symbol]!
+            return FigletFonts[.ansi()][symbol]!
         }
-        self.settings = settings
     }
     
     var body: some View {
         Group {
-            ForEach(figlets.indices) { i in
-                let figlet = figlets[i]
-                FigletLines(lines: figlet.lines, animations: [.print])
-            }
+            ForEach(figlets.indices) { ASCIIArtView(lines: figlets[$0].lines) }
         }
     }
 }
