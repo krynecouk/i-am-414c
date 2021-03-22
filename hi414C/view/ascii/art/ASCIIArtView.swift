@@ -21,7 +21,7 @@ struct ASCIIArtView: View {
     var shakeable: Bool = true
     
     let printer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
-    let shaker = Timer.publish(every: 1.3, on: .main, in: .common).autoconnect()
+    let shaker = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -44,7 +44,10 @@ struct ASCIIArtView: View {
                 self.shaker.upstream.connect().cancel()
                 return
             }
-            shakeLines.insert(Int.random(in: 0...lines.count))
+            shakeLines = [
+                Int.random(in: 0...lines.count),
+                Int.random(in: 0...lines.count)
+            ]
         }
     }
 }
