@@ -58,9 +58,9 @@ class GraphTests: XCTestCase {
         XCTAssertEqual(GraphTests.tested.edges[1].target.edges[0].target.id, "YES", "[HI] -I-> [AL] -AL?-> [YES]")
         
         let edgeWithVariants = GraphTests.tested.edges[1]
-        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: Context(input: "foo")), false, "Should not be traversable")
-        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: Context(input: "I")), true, "Should be traversable")
-        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: Context(input: "ME?")), true, "Should be traversable")
+        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: GraphContext(input: "foo")), false, "Should not be traversable")
+        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: GraphContext(input: "I")), true, "Should be traversable")
+        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: GraphContext(input: "ME?")), true, "Should be traversable")
         // XCTAssertEqual(edgeWithVariants.isTraversable(ctx: Context(input: "MY NAME")), true, "Should be traversable") //TODO should be traversable
         XCTAssertEqual(edgeWithVariants.traverse().id, "AL", "Should traverse to node with id 'AL'")
         XCTAssertEqual(edgeWithVariants.traverse().edges.count, 1, "New node should have 1 edge to traverse")

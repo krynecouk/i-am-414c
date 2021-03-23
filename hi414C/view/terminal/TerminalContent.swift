@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TerminalContent: View {
+    @EnvironmentObject var settingsVM: SettingsViewModel
+    
     var items: [TerminalContentItem]
     var testVM: TestViewModel
 
@@ -21,10 +23,10 @@ struct TerminalContent: View {
         Grid {
             ForEach(items) { item in
                 if case let .ascii(symbol) = item.type {
-                    FigletView(symbol.rawValue)
+                    FigletView(symbol.rawValue, settings: settingsVM.settings.content.asciiArt)
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    FigletView(test.test)
+                    FigletView(test.test, settings: settingsVM.settings.content.asciiArt)
                         .onAppear {
                             if isCurrent && testVM.test == nil {
                                 testVM.setTest(test: test)
@@ -55,5 +57,6 @@ struct TerminalContent_Previews: PreviewProvider {
             TerminalContentItem(type: .ascii(.H)),
             TerminalContentItem(type: .test(Tests[.I][0], true))
         ], testVM: TestViewModel())
+        .withEnvironment()
     }
 }

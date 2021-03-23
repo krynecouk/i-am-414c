@@ -11,6 +11,7 @@ struct TerminalView: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var contentVM: ContentViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+
     
     var body: some View {
         ZStack {

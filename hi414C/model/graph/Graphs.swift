@@ -24,7 +24,7 @@ class Graphs {
                 }
             }
             E("AL") {
-                N("YOU") {
+                FooASCIINode("YOU") {
                     E("AL?") {
                         N("YES")
                     }
