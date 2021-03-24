@@ -27,6 +27,9 @@ struct TerminalContent: View {
     var body: some View {
         Grid {
             ForEach(items) { item in
+                if case let .message(symbols) = item.type {
+                    FigletView(symbols, settings: settingsVM.asciiMessage.figlet)
+                }
                 if case let .symbol(symbol) = item.type {
                     FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet)
                 }

@@ -11,12 +11,15 @@ struct FigletView: View {
     let figlets: [Figlet]
     var settings: FigletSettings
     
-    init(_ content: String, settings: FigletSettings = FigletSettings()) {
-        self.figlets = content.map { char in
-            let symbol = ASCIISymbol.from(String(char))
+    init(_ content: [ASCIISymbol], settings: FigletSettings = FigletSettings()) {
+        self.figlets = content.map { symbol in
             return FigletFonts[settings.typeface][symbol]!
         }
         self.settings = settings
+    }
+    
+    init(_ content: String, settings: FigletSettings = FigletSettings()) {
+        self.init(content.map { ASCIISymbol.from(String($0)) }, settings: settings)
     }
     
     var body: some View {

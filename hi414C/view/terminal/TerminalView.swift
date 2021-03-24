@@ -20,8 +20,13 @@ struct TerminalView: View {
         }
     }
 }
+
 private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
     if case let .asciiTest(symbols) = content {
+        if containsAll(tested: symbols, from: ascii) {
+            return [.message(symbols)]
+        }
+        
         var testWasSetup = false
         return symbols.map { symbol in
             if ascii.contains(symbol) {
@@ -36,6 +41,15 @@ private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -
         }
     }
     return []
+}
+
+private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
+    for symbol in tested {
+        if !symbols.contains(symbol) {
+            return false
+        }
+    }
+    return true
 }
 
 struct TerminalView_Previews: PreviewProvider {

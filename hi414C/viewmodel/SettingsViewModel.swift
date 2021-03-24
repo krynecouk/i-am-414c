@@ -61,7 +61,7 @@ class SettingsViewModel: ObservableObject {
     
     var defaultAsciiMessageSettings: ASCIIMessageSettings = ASCIIMessageSettings(
         figlet: FigletSettings(
-            typeface: .ansi(.regular),
+            typeface: .ansi(.shadow),
             view: ViewSettings(
                 opacity: 1,
                 font: (name: .terminus, size: 13),
