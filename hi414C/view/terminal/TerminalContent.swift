@@ -22,11 +22,11 @@ struct TerminalContent: View {
     var body: some View {
         Grid {
             ForEach(items) { item in
-                if case let .ascii(symbol) = item.type {
-                    FigletView(symbol.rawValue, settings: settingsVM.settings.content.asciiArt)
+                if case let .symbol(symbol) = item.type {
+                    FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet)
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    FigletView(test.test, settings: settingsVM.settings.content.asciiArt)
+                    FigletView(test.test, settings: settingsVM.asciiTest.test.active.figlet)
                         .onAppear {
                             if isCurrent && testVM.test == nil {
                                 testVM.setTest(test: test)
@@ -42,8 +42,10 @@ struct TerminalContent: View {
 }
 
 enum TerminalContentType {
-    case ascii(ASCIISymbol)
+    case symbol(ASCIISymbol)
     case test(Testable, Bool)
+    case message([ASCIISymbol])
+    case art(ASCIIArt)
 }
 
 struct TerminalContentItem: Identifiable {
@@ -54,7 +56,7 @@ struct TerminalContentItem: Identifiable {
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
-            TerminalContentItem(type: .ascii(.H)),
+            TerminalContentItem(type: .symbol(.H)),
             TerminalContentItem(type: .test(Tests[.I][0], true))
         ], testVM: TestViewModel())
         .withEnvironment()

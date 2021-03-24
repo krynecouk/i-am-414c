@@ -18,7 +18,11 @@ class FooASCIINode : Node {
         let symbols = id.map { char in
             ASCIISymbol.from(String(char))
         }
-        toolkit.contentVM.setContent(.ascii(symbols))
-        toolkit.settingsVM.settings.content.asciiArt.animations = [.shake(force: 10)]
+        toolkit.contentVM.setContent(.asciiTest(symbols))
+        toolkit.settingsVM.asciiTest.symbol.figlet.animations = []
+    }
+    
+    func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
+        toolkit.settingsVM.reset(of: .asciiTest)
     }
 }

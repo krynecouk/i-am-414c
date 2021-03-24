@@ -12,7 +12,6 @@ struct TerminalView: View {
     @EnvironmentObject var contentVM: ContentViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
 
-    
     var body: some View {
         ZStack {
             TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
@@ -22,11 +21,11 @@ struct TerminalView: View {
     }
 }
 private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
-    if case let .ascii(symbols) = content {
+    if case let .asciiTest(symbols) = content {
         var testWasSetup = false
         return symbols.map { symbol in
             if ascii.contains(symbol) {
-                return TerminalContentItem(type: .ascii(symbol))
+                return TerminalContentItem(type: .symbol(symbol))
             }
             let test = Tests[symbol][0]
             if testWasSetup {

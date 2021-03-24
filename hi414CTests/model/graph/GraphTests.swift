@@ -10,8 +10,8 @@ import XCTest
 @testable import hi414C
 
 class GraphTests: XCTestCase {
-    typealias N = ASCIINode
-    typealias E = ASCIIEdge
+    typealias N = ASCIITestNode
+    typealias E = ASCIITestEdge
     
     static let tested: Node =
         N("HI") {

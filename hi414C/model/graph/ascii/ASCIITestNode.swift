@@ -1,11 +1,11 @@
 //
-//  ASCIINode.swift
+//  ASCIITestNode.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 10.03.2021.
 //
 
-class ASCIINode : Node {
+class ASCIITestNode : Node {
     let id: String
     let edges: [Edge]
     
@@ -18,6 +18,6 @@ class ASCIINode : Node {
         let symbols = id.map { char in
             ASCIISymbol.from(String(char))
         }
-        toolkit.contentVM.setContent(.ascii(symbols))
+        toolkit.contentVM.setContent(.asciiTest(symbols))
     }
 }

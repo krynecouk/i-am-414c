@@ -49,7 +49,7 @@ struct ASCIIArtView: View {
                 Text(lines[idx])
                     .opacity(!printable || idx < printLine ? 1 : 0)
                     .offset(x: !shakeable ? 0 : CGFloat(shakeMoves[shakeMoveIdx][idx]!))
-                    .withSettings(settings.ui)
+                    .withSettings(settings.view)
             }
         }.onReceive(printer!) { _ in
             if !printable || printLine == lines.count {
@@ -75,16 +75,6 @@ struct ASCIIArtView: View {
 
 typealias ViewTimer = Publishers.Autoconnect<Timer.TimerPublisher>
 
-struct ASCIIArtSettings {
-    var ui: UISettings = UISettings()
-    var animations: [ASCIIArtAnimation] = [.print(), .shake()]
-}
-
-enum ASCIIArtAnimation {
-    case print(dt: Double = 0.3)
-    case shake(dt: Double = 0.4, force: Float = 0.8, ASCIIArtShakeType = .wave)
-}
-
 struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
         ASCIIArtView(
@@ -94,7 +84,7 @@ struct ASCIIArtView_Previews: PreviewProvider {
                 #"    `-.-' \ )-`( , o o)"#,
                 #"          `-    \`_`"'-"#
             ], settings: ASCIIArtSettings(
-                ui: UISettings(font: (.terminus, 25))
+                view: ViewSettings(font: (.terminus, 25))
             )
         )
     }

@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
 struct FigletView: View {
     let figlets: [Figlet]
-    var settings: ASCIIArtSettings
+    var settings: FigletSettings
     
-    init(_ content: String, settings: ASCIIArtSettings = ASCIIArtSettings()) {
+    init(_ content: String, settings: FigletSettings = FigletSettings()) {
         self.figlets = content.map { char in
             let symbol = ASCIISymbol.from(String(char))
             return FigletFonts[.ansi()][symbol]!
