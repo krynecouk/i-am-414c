@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct FigletView: View {
     let figlets: [Figlet]
     var settings: FigletSettings
@@ -15,7 +14,7 @@ struct FigletView: View {
     init(_ content: String, settings: FigletSettings = FigletSettings()) {
         self.figlets = content.map { char in
             let symbol = ASCIISymbol.from(String(char))
-            return FigletFonts[.ansi()][symbol]!
+            return FigletFonts[settings.typeface][symbol]!
         }
         self.settings = settings
     }
@@ -23,7 +22,9 @@ struct FigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
-                ASCIIArtView(lines: figlets[i].lines, settings: settings)
+                ASCIIArtView(lines: figlets[i].lines, settings: ASCIIArtSettings(
+                    view: settings.view, animations: settings.animations
+                ))
             }
         }
     }

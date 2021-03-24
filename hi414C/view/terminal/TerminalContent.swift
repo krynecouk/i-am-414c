@@ -9,9 +9,14 @@ import SwiftUI
 
 struct TerminalContent: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
+    @State var activeTestId: String = ""
     
     var items: [TerminalContentItem]
     var testVM: TestViewModel
+    
+    init(_ types: [TerminalContentType], testVM: TestViewModel) {
+        self.init(types.map { TerminalContentItem(type: $0) }, testVM: testVM)
+    }
 
     init(_ items: [TerminalContentItem], testVM: TestViewModel) {
         self.items = items
@@ -26,19 +31,28 @@ struct TerminalContent: View {
                     FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet)
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    FigletView(test.test, settings: settingsVM.asciiTest.test.active.figlet)
+                    FigletView(test.test, settings: activeTestId == item.id.uuidString
+                                ? settingsVM.asciiTest.test.active.figlet
+                                : settingsVM.asciiTest.test.passive.figlet)
                         .onAppear {
                             if isCurrent && testVM.test == nil {
                                 testVM.setTest(test: test)
+                                activeTestId = item.id.uuidString
                             }
                         }
                         .onTapGesture {
                             testVM.setTest(test: test)
+                            activeTestId = item.id.uuidString
                         }
                 }
             }
         }
     }
+}
+
+struct TerminalContentItem: Identifiable {
+    var id = UUID()
+    var type: TerminalContentType
 }
 
 enum TerminalContentType {
@@ -48,16 +62,11 @@ enum TerminalContentType {
     case art(ASCIIArt)
 }
 
-struct TerminalContentItem: Identifiable {
-    var id = UUID()
-    var type: TerminalContentType
-}
-
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
-            TerminalContentItem(type: .symbol(.H)),
-            TerminalContentItem(type: .test(Tests[.I][0], true))
+            .symbol(.H),
+            .test(Tests[.I][0], true)
         ], testVM: TestViewModel())
         .withEnvironment()
     }

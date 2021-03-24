@@ -15,17 +15,19 @@ class SettingsViewModel: ObservableObject {
     var defaultAsciiTestSettings: ASCIITestSettings = ASCIITestSettings(
         symbol: ASCIITestSettings.SymbolSettings(
             figlet: FigletSettings(
+                typeface: .ansi(.regular),
                 view: ViewSettings(
                     opacity: 1,
                     font: (name: .terminus, size: 13),
-                    color: Color("Primary")
+                    color: .gray
                 ),
-                animations: [.print(dt: 0.3), .shake(dt: 0.8, force: 1, .wave)]
+                animations: [.print(dt: 0.3)]
             )
         ),
         test: ASCIITestSettings.TestSettings(
             active: ASCIITestSettings.TestSettings.Active(
                 figlet: FigletSettings(
+                    typeface: .ansi(.regular),
                     view: ViewSettings(
                         opacity: 1,
                         font: (name: .terminus, size: 13),
@@ -36,12 +38,13 @@ class SettingsViewModel: ObservableObject {
             ),
             passive: ASCIITestSettings.TestSettings.Passive(
                 figlet: FigletSettings(
+                    typeface: .ansi(.regular),
                     view: ViewSettings(
                         opacity: 1,
                         font: (name: .terminus, size: 13),
-                        color: Color("Primary")
+                        color: .gray
                     ),
-                    animations: [.print(dt: 0.3), .shake(dt: 0.8, force: 1, .wave)]
+                    animations: [.print(dt: 0.3)]
                 )
             )
         )
@@ -58,6 +61,7 @@ class SettingsViewModel: ObservableObject {
     
     var defaultAsciiMessageSettings: ASCIIMessageSettings = ASCIIMessageSettings(
         figlet: FigletSettings(
+            typeface: .ansi(.regular),
             view: ViewSettings(
                 opacity: 1,
                 font: (name: .terminus, size: 13),

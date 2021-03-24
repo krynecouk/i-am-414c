@@ -20,19 +20,19 @@ struct TerminalView: View {
         }
     }
 }
-private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
+private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
     if case let .asciiTest(symbols) = content {
         var testWasSetup = false
         return symbols.map { symbol in
             if ascii.contains(symbol) {
-                return TerminalContentItem(type: .symbol(symbol))
+                return .symbol(symbol)
             }
             let test = Tests[symbol][0]
             if testWasSetup {
-                return TerminalContentItem(type: .test(test, false))
+                return .test(test, false)
             }
             testWasSetup.toggle()
-            return TerminalContentItem(type: .test(test, true))
+            return .test(test, true)
         }
     }
     return []
