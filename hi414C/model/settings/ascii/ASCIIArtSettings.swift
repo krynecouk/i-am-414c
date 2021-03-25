@@ -5,6 +5,8 @@
 //  Created by Darius Kryszczuk on 24.03.2021.
 //
 
+import SwiftUI
+
 struct FigletSettings {
     var typeface: FigletTypeface = .ansi()
     var view: ViewSettings = ViewSettings()
@@ -17,6 +19,6 @@ struct ASCIIArtSettings {
 }
 
 enum ASCIIArtAnimation {
-    case print(dt: Double = 0.3)
+    case print(dt: Double = 0.3, Animation? = .linear)
     case shake(dt: Double = 0.4, force: Float = 0.8, ASCIIArtShakeType = .wave)
 }

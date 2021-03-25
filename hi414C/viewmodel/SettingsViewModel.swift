@@ -21,7 +21,7 @@ class SettingsViewModel: ObservableObject {
                     font: (name: .terminus, size: 13),
                     color: .gray
                 ),
-                animations: [.print(dt: 0.3)]
+                animations: [.print(dt: 0.3, .linear)]
             )
         ),
         test: ASCIITestSettings.TestSettings(
@@ -33,7 +33,7 @@ class SettingsViewModel: ObservableObject {
                         font: (name: .terminus, size: 13),
                         color: Color("Primary")
                     ),
-                    animations: [.print(dt: 0.3), .shake(dt: 0.8, force: 1, .wave)]
+                    animations: [.print(dt: 0.3, .linear), .shake(dt: 0.8, force: 1, .wave)]
                 )
             ),
             passive: ASCIITestSettings.TestSettings.Passive(
@@ -44,7 +44,7 @@ class SettingsViewModel: ObservableObject {
                         font: (name: .terminus, size: 13),
                         color: .gray
                     ),
-                    animations: [.print(dt: 0.3)]
+                    animations: [.print(dt: 0.3, .linear)]
                 )
             )
         )
@@ -56,7 +56,7 @@ class SettingsViewModel: ObservableObject {
             font: (name: .terminus, size: 13),
             color: Color("Primary")
         ),
-        animations: [.print(dt: 0.3), .shake(dt: 0.8, force: 1, .wave)]
+        animations: [.print(dt: 0.3, .linear), .shake(dt: 0.8, force: 1, .wave)]
     )
     
     var defaultAsciiMessageSettings: ASCIIMessageSettings = ASCIIMessageSettings(
@@ -67,7 +67,7 @@ class SettingsViewModel: ObservableObject {
                 font: (name: .terminus, size: 13),
                 color: Color("Primary")
             ),
-            animations: [.print(dt: 0.3), .shake(dt: 0.8, force: 1, .wave)]
+            animations: [.print(dt: 0.3, .linear), .shake(dt: 0.8, force: 1, .wave)]
         )
     )
     

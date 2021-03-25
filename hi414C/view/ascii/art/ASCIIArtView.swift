@@ -13,6 +13,7 @@ struct ASCIIArtView: View {
     @State var shakeMoveIdx: Int = 0
 
     var print: ASCIIPrintable
+    var printAnimation: Animation?
     var lines: [String]
     var settings: ASCIIArtSettings
     var printer: ViewTimer?
@@ -27,9 +28,10 @@ struct ASCIIArtView: View {
         self.settings = settings
         
         for animation in settings.animations {
-            if case let .print(dt) = animation {
+            if case let .print(dt, animation) = animation {
                 self.printer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
                 self.printable = true
+                self.printAnimation = animation
             }
             if case let .shake(dt, force, type) = animation {
                 self.shaker = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
@@ -50,8 +52,10 @@ struct ASCIIArtView: View {
             ForEach(lines.indices) { idx in
                 Text(lines[idx])
                     .fixedSize()
-                    .opacity(!printable || idx < printLine ? 1 : 0)
                     .offset(x: !shakeable ? 0 : CGFloat(shakeMoves[shakeMoveIdx][idx]!))
+                    .animation(nil)
+                    .opacity(!printable || idx < printLine ? 1 : 0)
+                    .animation(printAnimation)
                     .withSettings(settings.view)
             }
         }.onReceive(printer!) { _ in
