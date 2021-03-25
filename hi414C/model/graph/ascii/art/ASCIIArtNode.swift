@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 25.03.2021.
 //
 
-struct ASCIIArtNode {
+struct ASCIIArtNode: Node {
     let id: String
     let edges: [Edge]
     
@@ -15,9 +15,8 @@ struct ASCIIArtNode {
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        let symbols = id.map { char in
-            ASCIISymbol.from(String(char))
-        }
-        toolkit.contentVM.setContent(.asciiTest(symbols))
+        let cat = ASCIIArt.of(.cat)
+        toolkit.contentVM.setContent([.asciiArt([cat]), .asciiTest([.C, .A, .T])])
+        toolkit.settingsVM.asciiArt.view.font = (.terminus, 18)
     }
 }

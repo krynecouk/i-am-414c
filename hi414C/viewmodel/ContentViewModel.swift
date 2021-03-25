@@ -8,14 +8,20 @@
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
-    @Published private(set) var content: ContentType = .asciiTest([])
+    @Published private(set) var content: Foo = []
     
-    func setContent(_ content: ContentType) {
+    func setContent(_ content: Foo) {
         self.content = content
+    }
+    
+    func setContent(_ contentType: ContentType) {
+        self.content = [contentType]
     }
 }
 
+typealias Foo = [ContentType] // TODO
+
 enum ContentType {
     case asciiTest([ASCIISymbol])
-    case asciiArt(ASCIIArt)
+    case asciiArt([ASCIIPrintable])
 }

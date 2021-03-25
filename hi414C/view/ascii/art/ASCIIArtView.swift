@@ -12,6 +12,7 @@ struct ASCIIArtView: View {
     @State var printLine: LineIdx = 0
     @State var shakeMoveIdx: Int = 0
 
+    var print: ASCIIPrintable
     var lines: [String]
     var settings: ASCIIArtSettings
     var printer: ViewTimer?
@@ -20,8 +21,9 @@ struct ASCIIArtView: View {
     var printable = false
     var shakeable = false
     
-    init(lines: [String], settings: ASCIIArtSettings = ASCIIArtSettings()) {
-        self.lines = lines
+    init(_ print: ASCIIPrintable, settings: ASCIIArtSettings = ASCIIArtSettings()) {
+        self.print = print
+        self.lines = print.lines
         self.settings = settings
         
         for animation in settings.animations {
@@ -47,6 +49,7 @@ struct ASCIIArtView: View {
         VStack {
             ForEach(lines.indices) { idx in
                 Text(lines[idx])
+                    .fixedSize()
                     .opacity(!printable || idx < printLine ? 1 : 0)
                     .offset(x: !shakeable ? 0 : CGFloat(shakeMoves[shakeMoveIdx][idx]!))
                     .withSettings(settings.view)
@@ -77,13 +80,7 @@ typealias ViewTimer = Publishers.Autoconnect<Timer.TimerPublisher>
 
 struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
-        ASCIIArtView(
-            lines: [
-                #" _._     _,-'""`-._"#,
-                #"(,-.`._,'(       |\`-/|"#,
-                #"    `-.-' \ )-`( , o o)"#,
-                #"          `-    \`_`"'-"#
-            ], settings: ASCIIArtSettings(
+        ASCIIArtView(ASCIIArt.of(.cat), settings: ASCIIArtSettings(
                 view: ViewSettings(font: (.terminus, 25))
             )
         )

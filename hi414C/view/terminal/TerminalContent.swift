@@ -27,6 +27,11 @@ struct TerminalContent: View {
     var body: some View {
         Grid {
             ForEach(items) { item in
+                if case let .art(arts) = item.type {
+                    ForEach(arts.indices) { i in
+                        ASCIIArtView(arts[i], settings: settingsVM.asciiArt)
+                    }
+                }
                 if case let .message(symbols) = item.type {
                     FigletView(symbols, settings: settingsVM.asciiMessage.figlet)
                 }
@@ -62,7 +67,7 @@ enum TerminalContentType {
     case symbol(ASCIISymbol)
     case test(Testable, Bool)
     case message([ASCIISymbol])
-    case art(ASCIIArt)
+    case art([ASCIIPrintable])
 }
 
 struct TerminalContent_Previews: PreviewProvider {

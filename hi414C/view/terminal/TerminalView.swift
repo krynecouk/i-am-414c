@@ -21,26 +21,35 @@ struct TerminalView: View {
     }
 }
 
-private func getContent(from content: ContentType, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
-    if case let .asciiTest(symbols) = content {
-        if containsAll(tested: symbols, from: ascii) {
-            return [.message(symbols)]
+private func getContent(from content: Foo, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
+    var result: [TerminalContentType] = []
+    for contentItem in content {
+        if case let .asciiTest(symbols) = contentItem {
+            if containsAll(tested: symbols, from: ascii) {
+                result.append(.message(symbols))
+                continue
+            }
+            
+            var testWasSetup = false
+            symbols.forEach { symbol in
+                if ascii.contains(symbol) {
+                    result.append(.symbol(symbol))
+                    return
+                }
+                let test = Tests[symbol][0]
+                if testWasSetup {
+                    result.append(.test(test, false))
+                    return
+                }
+                testWasSetup.toggle()
+                result.append(.test(test, true))
+            }
         }
-        
-        var testWasSetup = false
-        return symbols.map { symbol in
-            if ascii.contains(symbol) {
-                return .symbol(symbol)
-            }
-            let test = Tests[symbol][0]
-            if testWasSetup {
-                return .test(test, false)
-            }
-            testWasSetup.toggle()
-            return .test(test, true)
+        if case let .asciiArt(arts) = contentItem {
+            result.append(.art(arts))
         }
     }
-    return []
+    return result
 }
 
 private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {

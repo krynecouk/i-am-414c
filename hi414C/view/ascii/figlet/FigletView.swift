@@ -25,7 +25,7 @@ struct FigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
-                ASCIIArtView(lines: figlets[i].lines, settings: ASCIIArtSettings(
+                ASCIIArtView(figlets[i], settings: ASCIIArtSettings(
                     view: settings.view, animations: settings.animations
                 ))
             }
@@ -36,7 +36,7 @@ struct FigletView: View {
 struct FigletView_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            FigletView("H")
+            FigletView([.H])
         }
     }
 }

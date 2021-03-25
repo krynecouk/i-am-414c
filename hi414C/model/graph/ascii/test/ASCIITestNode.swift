@@ -18,6 +18,6 @@ class ASCIITestNode : Node {
         let symbols = id.map { char in
             ASCIISymbol.from(String(char))
         }
-        toolkit.contentVM.setContent(.asciiTest(symbols))
+        toolkit.contentVM.setContent([.asciiTest(symbols)])
     }
 }

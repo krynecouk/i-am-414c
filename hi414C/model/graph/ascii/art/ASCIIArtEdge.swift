@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 25.03.2021.
 //
 
-struct ASCIIArtEdge {
+struct ASCIIArtEdge: Edge {
     var id: String
     var variants: [String]
     var target: Node

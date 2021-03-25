@@ -38,7 +38,14 @@ class Graphs {
                 }
             }
             E("414C") {
-                N("I")
+                ASCIIArtNode("cat") {
+                    E("YES") {
+                        N("TRULY")
+                    }
+                    E("NO") {
+                        N("WAT")
+                    }
+                }
             }
         }
 }
