@@ -1,5 +1,5 @@
 //
-//  ANSIRegular.swift
+//  ANSIRegularFiglets.swift
 //  hi414C
 //
 //  source: https://github.com/xero/figlet-fonts/blob/master/ANSI%20Regular.flf
@@ -7,8 +7,8 @@
 //  Created by Darius Kryszczuk on 27.02.2021.
 //
 
-struct ANSIRegular: FigletFont {
-    static var figlets: [ASCIISymbol: Figlet] = [
+struct ANSIRegularFiglets {
+    static var figlets: FigletFont = [
         .zero: Figlet(symbol: .zero, lines: [
             " ██████ ",
             "██  ████",
@@ -297,8 +297,4 @@ struct ANSIRegular: FigletFont {
             "███████",
         ]),
     ]
-
-    static subscript(symbol: ASCIISymbol) -> Figlet {
-        ANSIRegular.figlets[symbol]! // TODO force unwrap
-    }
 }

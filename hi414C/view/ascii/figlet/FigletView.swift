@@ -13,7 +13,7 @@ struct FigletView: View {
     
     init(_ content: [ASCIISymbol], settings: FigletSettings = FigletSettings()) {
         self.figlets = content.map { symbol in
-            return FigletFonts[settings.typeface][symbol]!
+            return Figlet.of(symbol, typeface: settings.typeface)
         }
         self.settings = settings
     }

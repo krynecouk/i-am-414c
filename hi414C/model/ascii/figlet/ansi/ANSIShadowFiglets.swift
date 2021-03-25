@@ -1,5 +1,5 @@
 //
-//  ANSIShadow.swift
+//  ANSIShadowFiglets.swift
 //  hi414C
 //
 //  source: https://github.com/xero/figlet-fonts/blob/master/ANSI%20Shadow.flf
@@ -7,8 +7,8 @@
 //  Created by Darius Kryszczuk on 23.02.2021.
 //
 
-struct ANSIShadow: FigletFont {
-    static var figlets: [ASCIISymbol: Figlet] = [
+struct ANSIShadowFiglets {
+    static var figlets: FigletFont = [
         .zero: Figlet(symbol: .zero, lines: [
             " ██████╗ ",
             "██╔═████╗",
@@ -333,8 +333,4 @@ struct ANSIShadow: FigletFont {
             "╚══════╝",
         ]),
     ]
-
-    static subscript(symbol: ASCIISymbol) -> Figlet {
-        ANSIShadow.figlets[symbol]! // TODO force unwrap
-    }
 }

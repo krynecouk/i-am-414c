@@ -5,7 +5,16 @@
 //  Created by Darius Kryszczuk on 13.03.2021.
 //
 
-protocol FigletFont {
-    static var figlets: [ASCIISymbol:Figlet] { get }
-    static subscript(symbol: ASCIISymbol) -> Figlet { get }
+typealias FigletFont = [ASCIISymbol:Figlet]
+
+extension FigletFont {
+    static func of(_ typeface: FigletTypeface = .ansi()) -> FigletFont {
+        switch typeface {
+        case .ansi(let variation):
+            if variation == .shadow {
+                return ANSIShadowFiglets.figlets
+            }
+            return ANSIRegularFiglets.figlets
+        }
+    }
 }
