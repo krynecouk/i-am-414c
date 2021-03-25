@@ -12,7 +12,12 @@ import XCTest
 class ASCIIArtShakerTests: XCTestCase {
     
     func test_of_ASCII_art_wave_shaker() {
-        let shakeMoves = ASCIIArtShaker.shake(lines: 5, weight: 1.5, type: .wave)
+        let shakeMoves = ASCIIArtShaker.shake(lines: 5, force: 1.5, type: .wave)
+        
+        let contentItems = [
+            TerminalContentItem(type: .symbol(.A)),
+            TerminalContentItem(type: .symbol(.B))
+        ]
         
         XCTAssertEqual(shakeMoves[0][0], 1.5, "[0: 1.5, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0]")
         XCTAssertEqual(shakeMoves[0][1], 0, "[0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0]")

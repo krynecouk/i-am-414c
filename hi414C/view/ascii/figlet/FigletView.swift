@@ -23,12 +23,12 @@ struct FigletView: View {
     }
     
     var body: some View {
-        Group {
-            ForEach(figlets.indices) { i in
-                ASCIIArtView(figlets[i], settings: ASCIIArtSettings(
-                    view: settings.view, animations: settings.animations
-                ))
-            }
+            Group {
+                ForEach(figlets.indices) { i in
+                    ASCIIArtView(figlets[i], settings: ASCIIArtSettings(
+                        view: settings.view, animations: settings.animations
+                    ))
+                }
         }
     }
 }

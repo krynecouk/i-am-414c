@@ -39,7 +39,7 @@ struct TerminalSegue<Header: View, Content: View> : View {
                     }
                     .onTapGesture {
                         withAnimation(Animation.spring()) {
-                            self.height = open ? metrics.size.height * 0.4 : TerminalSequeProps.INIT_HEIGHT
+                            self.height = open ? metrics.size.height * 0.7 : TerminalSequeProps.INIT_HEIGHT
                             open.toggle()
                         }
                     }
