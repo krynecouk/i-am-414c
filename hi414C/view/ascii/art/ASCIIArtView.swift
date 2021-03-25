@@ -11,9 +11,11 @@ import Combine
 struct ASCIIArtView: View {
     @State var printLine: LineIdx = 0
     @State var shakeMoveIdx: Int = 0
-
+    @State var isDelayFinished = true
+    
     var print: ASCIIPrintable
     var printAnimation: Animation?
+    var printDelay: Double?
     var lines: [String]
     var settings: ASCIIArtSettings
     var printer: ViewTimer?
@@ -28,10 +30,11 @@ struct ASCIIArtView: View {
         self.settings = settings
         
         for animation in settings.animations {
-            if case let .print(dt, animation) = animation {
+            if case let .print(dt, delay, animation) = animation {
                 self.printer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
                 self.printable = true
                 self.printAnimation = animation
+                self.printDelay = delay
             }
             if case let .shake(dt, force, type) = animation {
                 self.shaker = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
@@ -58,12 +61,28 @@ struct ASCIIArtView: View {
                     .animation(printAnimation)
                     .withSettings(settings.view)
             }
-        }.onReceive(printer!) { _ in
+        }
+        .onAppear {
+            guard let printDelay = printDelay else {
+                return
+            }
+            
+            if printable && printDelay > 0 {
+                self.isDelayFinished = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + printDelay) {
+                    self.isDelayFinished = true
+                }
+            }
+        }
+        .onReceive(printer!) { _ in
             if !printable || printLine == lines.count {
                 self.printer!.upstream.connect().cancel()
                 return
             }
-            printLine += 1
+            
+            if isDelayFinished {
+                printLine += 1
+            }
         }
         .onReceive(shaker!) { _ in
             if !shakeable {

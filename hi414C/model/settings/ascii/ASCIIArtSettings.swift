@@ -19,6 +19,6 @@ struct ASCIIArtSettings {
 }
 
 enum ASCIIArtAnimation {
-    case print(dt: Double = 0.3, Animation? = .linear)
+    case print(dt: Double = 0.3, delay: Double = 0, Animation? = .linear)
     case shake(dt: Double = 0.4, force: Float = 0.8, ASCIIArtShakeType = .wave)
 }
