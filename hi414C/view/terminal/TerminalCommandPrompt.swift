@@ -7,10 +7,25 @@
 
 import SwiftUI
 
-// TODO 414C > |
 struct TerminalCommandPrompt: View {
+    @State var visible = false
+    
+    var settings = ViewSettings(
+        font: (.terminus, 25),
+        color: Color("Primary")
+    )
+    
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("█")
+            .opacity(visible ? 1 : 0)
+            .animation(Animation.easeInOut(duration: 0.3).speed(0.75))
+            .withSettings(settings)
+            .bloom()
+            .onReceive(timer) { _ in
+                self.visible.toggle()
+            }
     }
 }
 
