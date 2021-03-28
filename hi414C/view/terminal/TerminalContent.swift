@@ -26,7 +26,7 @@ struct TerminalContent: View {
     
     var body: some View {
         Grid {
-            ForEach(items) { item in
+            ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
                 if case let .art(arts) = item.type {
                     ForEach(arts.indices) { i in
                         ASCIIArtView(arts[i], settings: settingsVM.asciiArt)

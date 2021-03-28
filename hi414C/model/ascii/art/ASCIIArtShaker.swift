@@ -39,7 +39,11 @@ struct ASCIIArtShaker {
     }
     
     static func randShake(lines: Int, force: Float = 1) -> [ShakeMove] {
-        [[:]]
+        let moves: [ShakeMove] = [
+            [Int.random(in: 0..<lines):force * 1]
+        ]
+        return moves
+        
     }
     
     static func babaShake(lines: Int, force: Float = 1) -> [ShakeMove] {
