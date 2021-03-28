@@ -46,10 +46,15 @@ struct KeyboardView: View {
             .id(metrics.frame(in: .global).size.width)
             .onAppear {
                 let frame = metrics.frame(in: .global)
-                let frameWidth = frame.size.width
-                self.size = (.infinity, (4 * self.keySize.height) + self.spacing.vertical * 3)
-                self.keySize = (((frameWidth - (self.spacing.horizontal * 9)) / 10), 70)
-                self.spaceKeySize = ((frameWidth - (self.spacing.horizontal * 2) - (2 * keySize.width)), keySize.height)
+                let frameW = frame.size.width
+                let keyW: CGFloat = ((frameW - (self.spacing.horizontal * 9)) / 10)
+                let keyH: CGFloat = frameW > 500 ? 40 : 70
+                let spaceW = (frameW - (self.spacing.horizontal * 2) - (2 * keyW))
+                let keyboardH = (4 * keyH) + self.spacing.vertical * 3
+                
+                self.keySize = (keyW, keyH)
+                self.size = (.infinity, keyboardH)
+                self.spaceKeySize = (spaceW, keyH)
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)
