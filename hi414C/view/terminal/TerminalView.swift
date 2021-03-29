@@ -11,13 +11,26 @@ struct TerminalView: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var contentVM: ContentViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
 
     var body: some View {
         ZStack(alignment: .bottom) {
             TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
             //TerminalCommandLine()
-            ASCIIKeyboardView()
+            ASCIIKeyboardView() { input in
+                if (testVM.test != nil) {
+                    let solution = testVM.solve(with: input)
+                    switch solution {
+                    case .right:
+                        asciiVM.add(symbol: testVM.test!.symbol)
+                    default:
+                        print("not correct")
+                    }
+                } else {
+                    graphVM.process(ctx: GraphContext(input: input))
+                }
+            }
         }
     }
 }

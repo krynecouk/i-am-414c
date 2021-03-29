@@ -9,9 +9,6 @@ import SwiftUI
 
 struct KeyboardView: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
-    @EnvironmentObject var testVM: TestViewModel
-    @EnvironmentObject var asciiVM: ASCIIViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
     
     typealias Size = (width: CGFloat, height: CGFloat)
     typealias Space = (horizontal: CGFloat, vertical: CGFloat)
@@ -23,9 +20,11 @@ struct KeyboardView: View {
     @State var spaceKeySize: Size = (200, 70)
 
     var keyboard: Keyboard
+    var onEnter: (String) -> Void
    
-    init(_ keyboard: Keyboard) {
+    init(_ keyboard: Keyboard, onEnter: @escaping (String) -> Void = { _ in }) {
         self.keyboard = keyboard
+        self.onEnter = onEnter
     }
     
     var body: some View {
@@ -48,17 +47,7 @@ struct KeyboardView: View {
                         keyboardVM.append(value)
                     }
                     KeyboardKeyView("ENT", width: keySize.width, height: keySize.height) { _ in
-                        if (testVM.test != nil) {
-                            let solution = testVM.solve(with: keyboardVM.input)
-                            switch solution {
-                            case .right:
-                                asciiVM.add(symbol: testVM.test!.symbol)
-                            default:
-                                print("not correct")
-                            }
-                        } else {
-                            graphVM.process(ctx: GraphContext(input: keyboardVM.input))
-                        }
+                        self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                     }
                 }

@@ -10,6 +10,12 @@ import SwiftUI
 struct ASCIIKeyboardView: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     
+    var onEnter: (String) -> Void
+    
+    init(onEnter: @escaping (String) -> Void = { _ in }) {
+        self.onEnter = onEnter
+    }
+    
     var body: some View {
         KeyboardView([
             .alphabetic: [
@@ -85,7 +91,7 @@ struct ASCIIKeyboardView: View {
                     ASCIIKeyboardKey(.space, value: " ")
                 ]
             ]
-        ])
+        ], onEnter: onEnter)
     }
     
     func ASCIIKeyboardKey(_ symbol: ASCIISymbol, value: String? = .none) -> KeyboardKey {
@@ -101,5 +107,6 @@ struct ASCIIKeyboardView: View {
 struct ASCIIKeyboardView_Previews: PreviewProvider {
     static var previews: some View {
         ASCIIKeyboardView()
+            .withEnvironment()
     }
 }
