@@ -5,13 +5,13 @@
 //  Created by Darius Kryszczuk on 23.03.2021.
 //
 
-typealias LineIdx = Int
-typealias LineOffset = Float
-typealias ShakeMove = [LineIdx:LineOffset]
+typealias Line = Int
+typealias Offset = (x: Float, y: Float)
+typealias Shaker = () -> [Line:Offset]
 
 struct ASCIIArtShaker {
 
-    static func shake(lines: Int, force: Float = 1, type: ASCIIArtShakeType = .wave) -> [ShakeMove] {
+    static func of(lines: Int, force: Float = 1, type: ASCIIArtShakeType = .wave) -> Shaker {
         switch type {
         case .wave:
             return waveShake(lines: lines, force: force)
@@ -22,32 +22,25 @@ struct ASCIIArtShaker {
         }
     }
     
-    static func waveShake(lines: Int, force: Float = 1) -> [ShakeMove] {
-        var moves: [ShakeMove] = []
-        for i in 0..<lines {
-            var move: ShakeMove = [:]
-            for j in 0..<lines {
-                if i == j {
-                    move[j] = force * 1
-                } else {
-                    move[j] = 0
-                }
-            }
-            moves.append(move)
+    private static func waveShake(lines: Int, force: Float = 1) -> Shaker {
+        var currentLine = 0
+        return {
+            let offsets = [currentLine:(force * 1, Float(0))]
+            currentLine = currentLine == lines - 1
+                ? 0
+                : currentLine + 1
+            return offsets
         }
-        return moves
     }
     
-    static func randShake(lines: Int, force: Float = 1) -> [ShakeMove] {
-        let moves: [ShakeMove] = [
-            [Int.random(in: 0..<lines):force * 1]
-        ]
-        return moves
-        
+    private static func randShake(lines: Int, force: Float = 1) -> Shaker {
+        { [Int.random(in: 0..<lines):(force * 1, Float(0))] }
     }
     
-    static func babaShake(lines: Int, force: Float = 1) -> [ShakeMove] {
-        [[:]]
+    private static func babaShake(lines: Int, force: Float = 1) -> Shaker {
+        return {
+            [:]
+        }
     }
 }
 

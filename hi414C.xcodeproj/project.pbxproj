@@ -38,6 +38,7 @@
 		26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2325F906D900E32DE0 /* ASCIISymbol.swift */; };
 		26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */; };
 		26647D2E25F94D4B00E32DE0 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2D25F94D4B00E32DE0 /* GraphContext.swift */; };
+		26682CB32611FAAA00F7C943 /* ASCIIKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -135,6 +136,7 @@
 		26647D2325F906D900E32DE0 /* ASCIISymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIISymbol.swift; sourceTree = "<group>"; };
 		26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITestNode.swift; sourceTree = "<group>"; };
 		26647D2D25F94D4B00E32DE0 /* GraphContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContext.swift; sourceTree = "<group>"; };
+		26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIKeyboardView.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		265A00A625ED490D00F479FA /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				26682CB12611FA9A00F7C943 /* ascii */,
 				26B39DBB25F63116004E4D22 /* terminal */,
 				2654884E2605247C0044297D /* KeyboardView.swift */,
 				2678D96C260E4D2700DDB40F /* KeyboardKeyView.swift */,
@@ -358,6 +361,14 @@
 				26ADBC1925FBAAA10003AD54 /* Graphs.swift */,
 			);
 			path = graph;
+			sourceTree = "<group>";
+		};
+		26682CB12611FA9A00F7C943 /* ascii */ = {
+			isa = PBXGroup;
+			children = (
+				26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */,
+			);
+			path = ascii;
 			sourceTree = "<group>";
 		};
 		267463DB25DED18000624D7C /* view */ = {
@@ -813,6 +824,7 @@
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
 				26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */,
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
+				26682CB32611FAAA00F7C943 /* ASCIIKeyboardView.swift in Sources */,
 				265848E9260BB48E009C0975 /* ASCIIArtSettings.swift in Sources */,
 				26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */,
 				2678D972260E5D4A00DDB40F /* KeyboardSet.swift in Sources */,

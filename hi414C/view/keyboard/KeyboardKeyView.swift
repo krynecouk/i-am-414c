@@ -50,7 +50,7 @@ struct KeyboardKeyView: View {
             view: ViewSettings(
                 font: (.terminus, fontSize)
             ),
-            animations: [.shake()]
+            animations: [.shake(dt: 0.6, type: .rand)]
         ))
         .offset(x: offset)
     }

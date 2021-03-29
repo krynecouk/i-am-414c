@@ -9,18 +9,19 @@ import SwiftUI
 import Combine
 
 struct ASCIIArtView: View {
-    @State var printLine: LineIdx = 0
-    @State var shakeMoveIdx: Int = 0
-    @State var isDelayFinished = true
+    @State var printLine: Line = 0
+    @State var shakeLines: [Line:Offset] = [:]
+    @State var isPrintDelayFinished = true
     
     var print: ASCIIPrintable
     var printAnimation: Animation?
     var printDelay: Double?
     var lines: [String]
     var settings: ASCIIArtSettings
-    var printer: ViewTimer?
-    var shaker: ViewTimer?
-    var shakeMoves: [ShakeMove] = []
+    var printTimer: ViewTimer?
+    var shakeTimer: ViewTimer?
+    var shaker: Shaker?
+    var shakeAnimation: Animation?
     var printable = false
     var shakeable = false
     
@@ -31,22 +32,23 @@ struct ASCIIArtView: View {
         
         for animation in settings.animations {
             if case let .print(dt, delay, animation) = animation {
-                self.printer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
+                self.printTimer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
                 self.printable = true
                 self.printAnimation = animation
                 self.printDelay = delay
             }
-            if case let .shake(dt, force, type) = animation {
-                self.shaker = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
-                self.shakeMoves = ASCIIArtShaker.shake(lines: lines.count, force: force, type: type)
+            if case let .shake(dt, force, type, animation) = animation {
+                self.shakeTimer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
+                self.shaker = ASCIIArtShaker.of(lines: lines.count, force: force, type: type)
                 self.shakeable = true
+                self.shakeAnimation = animation
             }
         }
-        if self.printer == nil {
-            self.printer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        if self.printTimer == nil {
+            self.printTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
-        if self.shaker == nil {
-            self.shaker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        if self.shakeTimer == nil {
+            self.shakeTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
     }
     
@@ -55,8 +57,8 @@ struct ASCIIArtView: View {
             ForEach(lines.indices) { idx in
                 Text(lines[idx])
                     .fixedSize()
-                    .offset(x: !shakeable ? 0 : CGFloat(shakeMoves[shakeMoveIdx][idx]!))
-                    .animation(nil)
+                    .offset(x: !shakeable || shakeLines[idx] == nil ? 0 : CGFloat(shakeLines[idx]!.x))
+                    .animation(shakeAnimation)
                     .opacity(!printable || idx < printLine ? 1 : 0)
                     .animation(printAnimation)
                     .withSettings(settings.view)
@@ -68,33 +70,28 @@ struct ASCIIArtView: View {
             }
             
             if printable && printDelay > 0 {
-                self.isDelayFinished = false
+                self.isPrintDelayFinished = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + printDelay) {
-                    self.isDelayFinished = true
+                    self.isPrintDelayFinished = true
                 }
             }
         }
-        .onReceive(printer!) { _ in
+        .onReceive(printTimer!) { _ in
             if !printable || printLine == lines.count {
-                self.printer!.upstream.connect().cancel()
+                self.printTimer!.upstream.connect().cancel()
                 return
             }
             
-            if isDelayFinished {
+            if isPrintDelayFinished {
                 printLine += 1
             }
         }
-        .onReceive(shaker!) { _ in
+        .onReceive(shakeTimer!) { _ in
             if !shakeable {
-                self.shaker!.upstream.connect().cancel()
+                self.shakeTimer!.upstream.connect().cancel()
                 return
             }
-            
-            if (shakeMoveIdx == shakeMoves.count - 1) {
-                shakeMoveIdx = 0
-            } else {
-                shakeMoveIdx += 1
-            }
+            self.shakeLines = shaker!()
         }
     }
 }
@@ -104,8 +101,8 @@ typealias ViewTimer = Publishers.Autoconnect<Timer.TimerPublisher>
 struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
         ASCIIArtView(ASCIIArt.of(.cat), settings: ASCIIArtSettings(
-                view: ViewSettings(font: (.terminus, 25))
-            )
+            view: ViewSettings(font: (.terminus, 25))
+        )
         )
     }
 }

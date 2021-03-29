@@ -13,10 +13,11 @@ struct TerminalView: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
-            TerminalCommandLine()
+            //TerminalCommandLine()
+            ASCIIKeyboardView()
         }
     }
 }

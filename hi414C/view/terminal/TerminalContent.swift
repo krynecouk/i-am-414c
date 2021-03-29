@@ -27,7 +27,7 @@ struct TerminalContent: View {
     var body: some View {
         Grid {
             ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
-                let delay = Double(i) * 1.4
+                let delay = Double(i) * 1.5
                 if case let .art(arts) = item.type {
                     ForEach(arts.indices) { i in
                         ASCIIArtView(arts[i], settings: settingsVM.asciiArt.withDelay(delay))

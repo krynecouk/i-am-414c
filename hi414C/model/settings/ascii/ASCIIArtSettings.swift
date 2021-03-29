@@ -10,7 +10,7 @@ import SwiftUI
 struct FigletSettings {
     var typeface: FigletTypeface = .ansi()
     var view: ViewSettings = ViewSettings()
-    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, animation: .wave)]
+    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
 extension FigletSettings {
@@ -21,7 +21,25 @@ extension FigletSettings {
     }
 }
 
-func add(delay: Double, to animations: [ASCIIArtAnimation]) -> [ASCIIArtAnimation] {
+struct ASCIIArtSettings {
+    var view: ViewSettings = ViewSettings()
+    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
+}
+
+enum ASCIIArtAnimation {
+    case print(dt: Double = 0.3, delay: Double = 0, animation: Animation? = .linear)
+    case shake(dt: Double = 0.4, force: Float = 0.8, type: ASCIIArtShakeType = .wave, animation: Animation? = .none)
+}
+
+extension ASCIIArtSettings {
+    func withDelay(_ delay: Double) -> ASCIIArtSettings {
+        var copy = self
+        copy.animations = add(delay: delay, to: copy.animations)
+        return copy
+    }
+}
+
+private func add(delay: Double, to animations: [ASCIIArtAnimation]) -> [ASCIIArtAnimation] {
     var result: [ASCIIArtAnimation] = []
     for animation in animations {
         if case let .print(dt, _, animation) = animation {
@@ -31,22 +49,4 @@ func add(delay: Double, to animations: [ASCIIArtAnimation]) -> [ASCIIArtAnimatio
         }
     }
     return result
-}
-
-struct ASCIIArtSettings {
-    var view: ViewSettings = ViewSettings()
-    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, animation: .wave)]
-}
-
-enum ASCIIArtAnimation {
-    case print(dt: Double = 0.3, delay: Double = 0, animation: Animation? = .linear)
-    case shake(dt: Double = 0.4, force: Float = 0.8, animation: ASCIIArtShakeType = .wave)
-}
-
-extension ASCIIArtSettings {
-    func withDelay(_ delay: Double) -> ASCIIArtSettings {
-        var copy = self
-        copy.animations = add(delay: delay, to: copy.animations)
-        return copy
-    }
 }

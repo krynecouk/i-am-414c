@@ -21,7 +21,7 @@ class SettingsViewModel: ObservableObject {
                     font: (name: .terminus, size: 13),
                     color: .gray
                 ),
-                animations: [.print(dt: 0.3, animation: .linear)]
+                animations: [.print(dt: 0.3, animation: .none)]
             )
         ),
         test: ASCIITestSettings.TestSettings(
@@ -33,7 +33,7 @@ class SettingsViewModel: ObservableObject {
                         font: (name: .terminus, size: 13),
                         color: Color("Primary")
                     ),
-                    animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, animation: .wave)]
+                    animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.8, force: 1, type: .rand)]
                 )
             ),
             passive: ASCIITestSettings.TestSettings.Passive(
@@ -44,7 +44,7 @@ class SettingsViewModel: ObservableObject {
                         font: (name: .terminus, size: 13),
                         color: .gray
                     ),
-                    animations: [.print(dt: 0.3, animation: .linear)]
+                    animations: [.print(dt: 0.3, animation: .none)]
                 )
             )
         )
@@ -56,7 +56,7 @@ class SettingsViewModel: ObservableObject {
             font: (name: .terminus, size: 13),
             color: Color("Primary")
         ),
-        animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, animation: .wave)]
+        animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, type: .wave)]
     )
     
     var defaultAsciiMessageSettings: ASCIIMessageSettings = ASCIIMessageSettings(
@@ -67,7 +67,7 @@ class SettingsViewModel: ObservableObject {
                 font: (name: .terminus, size: 13),
                 color: Color("Primary")
             ),
-            animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, animation: .wave)]
+            animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.8, force: 1, type: .wave)]
         )
     )
     

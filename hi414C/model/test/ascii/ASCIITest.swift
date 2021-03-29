@@ -14,7 +14,7 @@ class ASCIITest: Testable {
 
     convenience init(symbol: ASCIISymbol) {
         let ascii = ASCII.from(symbol)
-        self.init(symbol: ascii.symbol, test: String(ascii.bin, radix: 2).pad(with: "0", toLength: 8), type: .bin, level: .easy, solution: ascii.symbol.rawValue)
+        self.init(symbol: ascii.symbol, test: String(ascii.bin, radix: 2).pad(with: "0", toLength: 8), type: .bin, level: .easy, solution: String(ascii.dec))
     }
 
     init(symbol: ASCIISymbol, test: String, type: TestType, level: TestLevel, solution: String) {

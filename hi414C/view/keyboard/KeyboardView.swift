@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct KeyboardView: View {
+    @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
+    
     typealias Size = (width: CGFloat, height: CGFloat)
     typealias Space = (horizontal: CGFloat, vertical: CGFloat)
     
@@ -31,15 +36,30 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView("DEL", width: keySize.width, height: keySize.height)
+                    KeyboardKeyView("DEL", width: keySize.width, height: keySize.height) { _ in
+                        keyboardVM.delete()
+                    }
                 }
                 HStack(spacing: self.spacing.horizontal) {
                     KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: keySize.width, height: keySize.height) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
-                    KeyboardKeyView("SPC", width: self.spaceKeySize.width, height: keySize.height)
-                    KeyboardKeyView("ENT", width: keySize.width, height: keySize.height) { value in
-                        print("clicked on \(value)")
+                    KeyboardKeyView("SPC", value: " ", width: self.spaceKeySize.width, height: keySize.height) { value in
+                        keyboardVM.append(value)
+                    }
+                    KeyboardKeyView("ENT", width: keySize.width, height: keySize.height) { _ in
+                        if (testVM.test != nil) {
+                            let solution = testVM.solve(with: keyboardVM.input)
+                            switch solution {
+                            case .right:
+                                asciiVM.add(symbol: testVM.test!.symbol)
+                            default:
+                                print("not correct")
+                            }
+                        } else {
+                            graphVM.process(ctx: GraphContext(input: keyboardVM.input))
+                        }
+                        keyboardVM.delete()
                     }
                 }
             }
@@ -58,7 +78,6 @@ struct KeyboardView: View {
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .border(Color.blue)
     }
     
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {
@@ -66,6 +85,7 @@ struct KeyboardView: View {
             ForEach(row, id: \.label){ key in
                 KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height) { value in
                     print("Clicked on \(key.label) with value \(key.value)")
+                    keyboardVM.append(value)
                 }
             }
         }
@@ -78,6 +98,7 @@ struct KeyboardView_Previews: PreviewProvider {
             Spacer()
             KeyboardView(Keyboards.qwerty)
         }
+        .withEnvironment()
         .previewDisplayName("Portrait")
         
         Landscape {
@@ -86,6 +107,7 @@ struct KeyboardView_Previews: PreviewProvider {
                 KeyboardView(Keyboards.qwerty)
             }
         }
+        .withEnvironment()
         .previewDisplayName("Landscape")
     }
 }

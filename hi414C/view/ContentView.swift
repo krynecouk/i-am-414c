@@ -12,7 +12,6 @@ struct ContentView: View {
         CathodeView {
             TerminalView()
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
