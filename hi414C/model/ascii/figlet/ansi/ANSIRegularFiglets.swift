@@ -7,7 +7,7 @@
 //  Created by Darius Kryszczuk on 27.02.2021.
 //
 
-struct ANSIRegularFiglets {
+enum ANSIRegularFiglets {
     static var figlets: FigletFont = [
         .zero: Figlet(symbol: .zero, lines: [
             " ██████ ",
@@ -295,6 +295,126 @@ struct ANSIRegularFiglets {
             "  ███  ",
             " ███   ",
             "███████",
+        ]),
+        .dash: Figlet(symbol: .dash, lines: [
+            "     ",
+            "     ",
+            "█████",
+            "     ",
+            "     ",
+        ]),
+        .slash: Figlet(symbol: .slash, lines: [
+            "    ██",
+            "   ██ ",
+            "  ██  ",
+            " ██   ",
+            "██    ",
+        ]),
+        .colon: Figlet(symbol: .colon, lines: [
+            "  ",
+            "██",
+            "  ",
+            "██",
+            "  ",
+        ]),
+        .semicolon: Figlet(symbol: .semicolon, lines: [
+            "  ",
+            "██",
+            "  ",
+            "██",
+            " ▀",
+        ]),
+        .leftParen: Figlet(symbol: .leftParen, lines: [
+            "  ██",
+            " ██ ",
+            "██  ",
+            " ██ ",
+            "  ██",
+        ]),
+        .rightParen: Figlet(symbol: .rightParen, lines: [
+            "██  ",
+            " ██ ",
+            "  ██",
+            " ██ ",
+            "██  ",
+        ]),
+        .dollar: Figlet(symbol: .dollar, lines: [
+            "▄▄███▄▄",
+            "██     ",
+            "███████",
+            "     ██",
+            "███████",
+            "  ▀▀▀  ",
+        ]),
+        .ampersand: Figlet(symbol: .ampersand, lines: [
+            "   ██   ",
+            "   ██   ",
+            "████████",
+            "██  ██  ",
+            "██████  ",
+        ]),
+        .atSign: Figlet(symbol: .atSign, lines: [
+            "  ██████  ",
+            " ██    ██ ",
+            " ██ ██ ██ ",
+            " ██ ██ ██ ",
+            "  █ ████  ",
+        ]),
+        .doubleQuote: Figlet(symbol: .doubleQuote, lines: [
+            " █  █",
+            "█▀ █▀",
+            "    ",
+            "    ",
+            "    ",
+        ]),
+        .dot: Figlet(symbol: .dot, lines: [
+            "    ",
+            "    ",
+            "    ",
+            "    ",
+            " ██ ",
+        ]),
+        .comma: Figlet(symbol: .comma, lines: [
+            "    ",
+            "    ",
+            "    ",
+            "    ",
+            " ▄█ ",
+        ]),
+        .questionMark: Figlet(symbol: .questionMark, lines: [
+            "██████ ",
+            "     ██",
+            "  ▄███ ",
+            "  ▀▀   ",
+            "  ██   ",
+        ]),
+        .exclamationMark: Figlet(symbol: .exclamationMark, lines: [
+            " ██ ",
+            " ██ ",
+            " ██ ",
+            "    ",
+            " ██ ",
+        ]),
+        .singleQuote: Figlet(symbol: .singleQuote, lines: [
+            "  █ ",
+            " █▀  ",
+            "    ",
+            "    ",
+            "    ",
+        ]),
+        .leftSquare: Figlet(symbol: .leftSquare, lines: [
+            " ███ ",
+            " ██  ",
+            " ██  ",
+            " ██  ",
+            " ███ ",
+        ]),
+        .rightSquare: Figlet(symbol: .rightSquare, lines: [
+            " ███ ",
+            "  ██ ",
+            "  ██ ",
+            "  ██ ",
+            " ███ ",
         ]),
     ]
 }
