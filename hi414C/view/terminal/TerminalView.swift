@@ -17,7 +17,7 @@ struct TerminalView: View {
         ZStack(alignment: .bottom) {
             TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
-            VStack {
+            VStack(spacing: 0) {
                 TerminalCommandLine()
                 ASCIIKeyboardView() { input in
                     if (testVM.test != nil) {

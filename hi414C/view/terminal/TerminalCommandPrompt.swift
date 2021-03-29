@@ -11,7 +11,7 @@ struct TerminalCommandPrompt: View {
     @State var visible = false
     
     var settings = ViewSettings(
-        font: (.terminus, 25),
+        font: (.terminus, 33),
         color: Color("Primary")
     )
     

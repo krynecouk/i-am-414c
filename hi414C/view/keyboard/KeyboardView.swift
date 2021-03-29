@@ -67,7 +67,7 @@ struct KeyboardView: View {
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .background(Color.gray.edgesIgnoringSafeArea(.all))
+        .background(Color("GoldBck").edgesIgnoringSafeArea(.all))
     }
     
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {

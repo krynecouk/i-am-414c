@@ -15,7 +15,7 @@ struct TerminalCommandLine: View {
             HStack {
                 FigletView([.greaterThan], settings: FigletSettings(
                     view: ViewSettings(
-                        font: (.terminus, 7)
+                        font: (.terminus, 6)
                     ),
                     animations: []
                 ))
@@ -25,9 +25,12 @@ struct TerminalCommandLine: View {
                     ),
                     animations: []
                 ))
+                TerminalCommandPrompt()
+                    .padding(.leading)
             }
-            .padding(.leading)
+            .padding()
         }
+        .background(Color("GoldBck").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
     }
 }
 

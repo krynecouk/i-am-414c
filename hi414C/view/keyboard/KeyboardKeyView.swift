@@ -42,7 +42,7 @@ struct KeyboardKeyView: View {
             }
         }
         .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-        .background(Color.yellow)
+        .background(Color("Primary"))
     }
     
     func FigletKeyView(_ label: String, fontSize: CGFloat, offset: CGFloat = 0) -> some View {
