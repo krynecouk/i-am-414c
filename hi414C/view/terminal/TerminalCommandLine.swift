@@ -8,13 +8,32 @@
 import SwiftUI
 
 struct TerminalCommandLine: View {
+    @EnvironmentObject var keyboardVM: KeyboardViewModel
+    
     var body: some View {
-        TerminalKeyboardView()
+        ScrollView(.horizontal) {
+            HStack {
+                FigletView([.greaterThan], settings: FigletSettings(
+                    view: ViewSettings(
+                        font: (.terminus, 7)
+                    ),
+                    animations: []
+                ))
+                FigletView(keyboardVM.input, settings: FigletSettings(
+                    view: ViewSettings(
+                        font: (.terminus, 6)
+                    ),
+                    animations: []
+                ))
+            }
+            .padding(.leading)
+        }
     }
 }
 
 struct TerminalCommandLine_Previews: PreviewProvider {
     static var previews: some View {
         TerminalCommandLine()
+            .withEnvironment()
     }
 }

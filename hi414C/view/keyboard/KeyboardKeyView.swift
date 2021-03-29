@@ -42,13 +42,14 @@ struct KeyboardKeyView: View {
             }
         }
         .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-        .background(Color.blue)
+        .background(Color.yellow)
     }
     
     func FigletKeyView(_ label: String, fontSize: CGFloat, offset: CGFloat = 0) -> some View {
         FigletView(label, settings: FigletSettings(
             view: ViewSettings(
-                font: (.terminus, fontSize)
+                font: (.terminus, fontSize),
+                color: Color.black
             ),
             animations: [.shake(dt: 0.6, type: .rand)]
         ))

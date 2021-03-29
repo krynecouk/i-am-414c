@@ -17,20 +17,23 @@ struct TerminalView: View {
         ZStack(alignment: .bottom) {
             TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
                 .padding(30)
-            //TerminalCommandLine()
-            ASCIIKeyboardView() { input in
-                if (testVM.test != nil) {
-                    let solution = testVM.solve(with: input)
-                    switch solution {
-                    case .right:
-                        asciiVM.add(symbol: testVM.test!.symbol)
-                    default:
-                        print("not correct")
+            VStack {
+                TerminalCommandLine()
+                ASCIIKeyboardView() { input in
+                    if (testVM.test != nil) {
+                        let solution = testVM.solve(with: input)
+                        switch solution {
+                        case .right:
+                            asciiVM.add(symbol: testVM.test!.symbol)
+                        default:
+                            print("not correct")
+                        }
+                    } else {
+                        graphVM.process(ctx: GraphContext(input: input))
                     }
-                } else {
-                    graphVM.process(ctx: GraphContext(input: input))
                 }
             }
+
         }
     }
 }

@@ -43,7 +43,7 @@ struct KeyboardView: View {
                     KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: keySize.width, height: keySize.height) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
-                    KeyboardKeyView("SPC", value: " ", width: self.spaceKeySize.width, height: keySize.height) { value in
+                    KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in
                         keyboardVM.append(value)
                     }
                     KeyboardKeyView("ENT", width: keySize.width, height: keySize.height) { _ in
@@ -67,6 +67,7 @@ struct KeyboardView: View {
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)
+        .background(Color.gray.edgesIgnoringSafeArea(.all))
     }
     
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {

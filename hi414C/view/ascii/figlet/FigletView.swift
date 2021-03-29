@@ -24,13 +24,18 @@ struct FigletView: View {
     
     var body: some View {
         Group {
-            ForEach(figlets.indices) { i in
-                ASCIIArtView(figlets[i], settings: ASCIIArtSettings(
+            ForEach(figlets.map { FigletItem(figlet: $0) }) { item in
+                ASCIIArtView(item.figlet, settings: ASCIIArtSettings(
                     view: settings.view, animations: settings.animations
                 ))
             }
         }
     }
+}
+
+private struct FigletItem: Identifiable {
+    var id = UUID()
+    var figlet: Figlet
 }
 
 struct FigletView_Previews: PreviewProvider {

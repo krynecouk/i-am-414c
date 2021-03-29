@@ -416,5 +416,12 @@ enum ANSIRegularFiglets {
             "  ██ ",
             " ███ ",
         ]),
+        .greaterThan: Figlet(symbol: .greaterThan, lines: [
+            "██    ",
+            "  ██  ",
+            "    ██",
+            "  ██  ",
+            "██    ",
+        ]),
     ]
 }
