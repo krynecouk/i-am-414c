@@ -27,21 +27,22 @@ struct TerminalContent: View {
     var body: some View {
         Grid {
             ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
+                let delay = Double(i) * 1.4
                 if case let .art(arts) = item.type {
                     ForEach(arts.indices) { i in
-                        ASCIIArtView(arts[i], settings: settingsVM.asciiArt)
+                        ASCIIArtView(arts[i], settings: settingsVM.asciiArt.withDelay(delay))
                     }
                 }
                 if case let .message(symbols) = item.type {
-                    FigletView(symbols, settings: settingsVM.asciiMessage.figlet)
+                    FigletView(symbols, settings: settingsVM.asciiMessage.figlet.withDelay(delay))
                 }
                 if case let .symbol(symbol) = item.type {
-                    FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet)
+                    FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet.withDelay(delay))
                 }
                 if case let .test(test, isCurrent) = item.type {
                     FigletView(test.test, settings: activeTestId == item.id.uuidString
-                                ? settingsVM.asciiTest.test.active.figlet
-                                : settingsVM.asciiTest.test.passive.figlet)
+                                ? settingsVM.asciiTest.test.active.figlet.withDelay(delay)
+                                : settingsVM.asciiTest.test.passive.figlet.withDelay(delay))
                         .onAppear {
                             if isCurrent && testVM.test == nil {
                                 testVM.setTest(test: test)
