@@ -25,9 +25,7 @@ struct TerminalContent: View {
             ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
                 let delay = Double(i) * 1.5
                 if case let .art(arts) = item.type {
-                    ForEach(arts.indices) { i in
-                        ASCIIArtView(arts[i], settings: settingsVM.asciiArt.withDelay(delay))
-                    }
+                    ASCIIArtViews(arts, delay: delay)
                 }
                 if case let .message(symbols) = item.type {
                     FigletView(symbols, settings: settingsVM.asciiMessage.figlet.withDelay(delay))
@@ -36,22 +34,32 @@ struct TerminalContent: View {
                     FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet.withDelay(delay))
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    FigletView(test.test, settings: activeTestId == item.id.uuidString
-                                ? settingsVM.asciiTest.test.active.figlet.withDelay(delay)
-                                : settingsVM.asciiTest.test.passive.figlet.withDelay(delay))
-                        .onAppear {
-                            if isCurrent && testVM.test == nil {
-                                testVM.setTest(test: test)
-                                activeTestId = item.id.uuidString
-                            }
-                        }
-                        .onTapGesture {
-                            testVM.setTest(test: test)
-                            activeTestId = item.id.uuidString
-                        }
+                    TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
                 }
             }
         }
+    }
+    
+    func ASCIIArtViews(_ arts: [ASCIIPrintable], delay: Double) -> some View {
+        ForEach(arts.indices) { i in
+            ASCIIArtView(arts[i], settings: settingsVM.asciiArt.withDelay(delay))
+        }
+    }
+    
+    func TestFigletView(id: String, test: Testable, isCurrent: Bool, delay: Double) -> some View {
+        FigletView(test.test, settings: activeTestId == id
+                    ? settingsVM.asciiTest.test.active.figlet.withDelay(delay)
+                    : settingsVM.asciiTest.test.passive.figlet.withDelay(delay))
+            .onAppear {
+                if isCurrent && testVM.test == nil {
+                    testVM.setTest(test: test)
+                    activeTestId = id
+                }
+            }
+            .onTapGesture {
+                testVM.setTest(test: test)
+                activeTestId = id
+            }
     }
 }
 
