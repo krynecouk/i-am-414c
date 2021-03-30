@@ -14,8 +14,8 @@ struct TerminalContent: View {
     var items: [TerminalContentItem]
     var testVM: TestViewModel
 
-    init(_ items: [TerminalContentItem], testVM: TestViewModel) {
-        self.items = items
+    init(_ types: [TerminalContentType], testVM: TestViewModel) {
+        self.items = types.map { TerminalContentItem($0) }
         self.testVM = testVM
         testVM.setTest(test: nil)
     }
@@ -82,8 +82,8 @@ enum TerminalContentType {
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
-            TerminalContentItem(.symbol(.H)),
-            TerminalContentItem(.test(Tests[.I][0], true))
+            .symbol(.H),
+            .test(Tests[.I][0], true)
         ], testVM: TestViewModel())
         .withEnvironment()
     }

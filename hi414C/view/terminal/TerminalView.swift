@@ -38,32 +38,32 @@ struct TerminalView: View {
     }
 }
 
-private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
-    var result: [TerminalContentItem] = []
+private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
+    var result: [TerminalContentType] = []
     for contentItem in content {
         if case let .asciiTest(symbols) = contentItem {
             if containsAll(tested: symbols, from: ascii) {
-                result.append(TerminalContentItem(.message(symbols)))
+                result.append(.message(symbols))
                 continue
             }
             
             var testWasSetup = false
             symbols.forEach { symbol in
                 if ascii.contains(symbol) {
-                    result.append(TerminalContentItem(.symbol(symbol)))
+                    result.append(.symbol(symbol))
                     return
                 }
                 let test = Tests[symbol][0]
                 if testWasSetup {
-                    result.append(TerminalContentItem(.test(test, false)))
+                    result.append(.test(test, false))
                     return
                 }
                 testWasSetup.toggle()
-                result.append(TerminalContentItem(.test(test, true)))
+                result.append(.test(test, true))
             }
         }
         if case let .asciiArt(arts) = contentItem {
-            result.append(TerminalContentItem(.art(arts)))
+            result.append(.art(arts))
         }
     }
     return result
