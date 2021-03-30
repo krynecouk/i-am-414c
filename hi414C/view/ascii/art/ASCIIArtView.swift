@@ -57,7 +57,8 @@ struct ASCIIArtView: View {
             ForEach(lines.indices) { idx in
                 Text(lines[idx])
                     .fixedSize()
-                    .offset(x: !shakeable || shakeLines[idx] == nil ? 0 : CGFloat(shakeLines[idx]!.x))
+                    .offset(x: !shakeable || shakeLines[idx] == nil ? 0 : CGFloat(shakeLines[idx]!.x),
+                            y: !shakeable || shakeLines[idx] == nil ? 0 : CGFloat(shakeLines[idx]!.y))
                     .animation(shakeAnimation)
                     .opacity(!printable || idx < printLine ? 1 : 0)
                     .animation(printAnimation)
