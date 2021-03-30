@@ -33,7 +33,7 @@ class SettingsViewModel: ObservableObject {
                         font: (name: .terminus, size: 13),
                         color: Color("Primary")
                     ),
-                    animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.4, force: 0.8, type: .wave, animation: Animation.linear.speed(1.3))]
+                    animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.4, force: 1, type: .wave, animation: .easeInOut)]
                 )
             ),
             passive: ASCIITestSettings.TestSettings.Passive(

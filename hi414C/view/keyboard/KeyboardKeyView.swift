@@ -37,11 +37,14 @@ struct KeyboardKeyView: View {
                         FigletKeyView(String(char), fontSize: fontSize, offset: offsets[i])
                     }
                 }
+                .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             } else {
-                FigletKeyView(label, fontSize: label.count == 1 ? 5 : 4)
+                HStack {
+                    FigletKeyView(label, fontSize: label.count == 1 ? 5 : 4)
+                }
+                .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
         }
-        .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .background(Color("Primary"))
     }
     
@@ -51,7 +54,7 @@ struct KeyboardKeyView: View {
                 font: (.terminus, fontSize),
                 color: Color.black
             ),
-            animations: [.shake(dt: 0.6, type: .rand)]
+            animations: []
         ))
         .offset(x: offset)
     }
