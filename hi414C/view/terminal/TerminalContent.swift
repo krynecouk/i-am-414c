@@ -13,10 +13,6 @@ struct TerminalContent: View {
     
     var items: [TerminalContentItem]
     var testVM: TestViewModel
-    
-    init(_ types: [TerminalContentType], testVM: TestViewModel) {
-        self.init(types.map { TerminalContentItem(type: $0) }, testVM: testVM)
-    }
 
     init(_ items: [TerminalContentItem], testVM: TestViewModel) {
         self.items = items
@@ -62,6 +58,10 @@ struct TerminalContent: View {
 struct TerminalContentItem: Identifiable {
     var id = UUID()
     var type: TerminalContentType
+    
+    init(_ type: TerminalContentType) {
+        self.type = type
+    }
 }
 
 enum TerminalContentType {
@@ -74,8 +74,8 @@ enum TerminalContentType {
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
-            .symbol(.H),
-            .test(Tests[.I][0], true)
+            TerminalContentItem(.symbol(.H)),
+            TerminalContentItem(.test(Tests[.I][0], true))
         ], testVM: TestViewModel())
         .withEnvironment()
     }

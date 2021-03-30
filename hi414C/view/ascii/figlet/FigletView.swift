@@ -24,8 +24,8 @@ struct FigletView: View {
     
     var body: some View {
         Group {
-            ForEach(figlets.map { FigletItem(figlet: $0) }) { item in
-                ASCIIArtView(item.figlet, settings: ASCIIArtSettings(
+            ForEach(figlets.indices) { i in
+                ASCIIArtView(figlets[i], settings: ASCIIArtSettings(
                     view: settings.view, animations: settings.animations
                 ))
             }
