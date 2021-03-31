@@ -13,19 +13,37 @@ struct KeyboardKeyView: View {
     var onClick: (String) -> Void
     var width: CGFloat
     var height: CGFloat
+    var special = false
     
-    init(_ label: String, value: String? = nil, width: CGFloat, height: CGFloat, onClick: @escaping (String) -> Void = { _ in }) {
+    init(_ label: String, value: String? = nil, width: CGFloat, height: CGFloat, special: Bool = false, onClick: @escaping (String) -> Void = { _ in }) {
         self.label = label
         self.value = value ?? label
         self.width = width
         self.height = height
+        self.special = special
         self.onClick = onClick
     }
     
     var body: some View {
-        Button(action: {
-            onClick(value)
-        }) {
+        ZStack {
+            KeyboardKeyBackground()
+            KeyboardKeyLabel()
+        }
+    }
+    
+    func KeyboardKeyBackground() -> some View {
+        Rectangle()
+            .fill(special ? Color.blue : Color("Primary"))
+            .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .onLongPressGesture(minimumDuration: 0) {
+                onClick(value)
+                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                impactMed.impactOccurred()
+            }
+    }
+    
+    func KeyboardKeyLabel() -> some View {
+        Group {
             if label.count > 1 && self.width < 50 {
                 VStack(spacing: 4) {
                     let offsetMargin = self.width / 5
@@ -37,15 +55,12 @@ struct KeyboardKeyView: View {
                         FigletKeyView(String(char), fontSize: fontSize, offset: offsets[i])
                     }
                 }
-                .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             } else {
                 HStack {
                     FigletKeyView(label, fontSize: label.count == 1 ? 5 : 4)
                 }
-                .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
         }
-        .background(Color("Primary"))
     }
     
     func FigletKeyView(_ label: String, fontSize: CGFloat, offset: CGFloat = 0) -> some View {

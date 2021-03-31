@@ -19,12 +19,16 @@ struct TerminalCommandLine: View {
                     ),
                     animations: []
                 ))
+                /**
                 FigletView(keyboardVM.input, settings: FigletSettings(
                     view: ViewSettings(
                         font: (.terminus, 6)
                     ),
                     animations: []
                 ))
+                 */
+                Text(keyboardVM.input)
+                    .foregroundColor(Color("Primary"))
                 TerminalCommandPrompt()
                     .padding(.leading)
             }

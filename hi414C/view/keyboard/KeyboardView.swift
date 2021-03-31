@@ -9,6 +9,7 @@ import SwiftUI
 
 struct KeyboardView: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
     
     typealias Size = (width: CGFloat, height: CGFloat)
     typealias Space = (horizontal: CGFloat, vertical: CGFloat)
@@ -73,7 +74,7 @@ struct KeyboardView: View {
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {
         HStack(spacing: self.spacing.horizontal) {
             ForEach(row, id: \.label){ key in
-                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height) { value in
+                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, special: key.special) { value in
                     print("Clicked on \(key.label) with value \(key.value)")
                     keyboardVM.append(value)
                 }

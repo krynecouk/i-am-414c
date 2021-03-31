@@ -97,7 +97,7 @@ struct ASCIIKeyboardView: View {
     func ASCIIKeyboardKey(_ symbol: ASCIISymbol, value: String? = .none) -> KeyboardKey {
         if asciiVM.symbols.contains(symbol) {
             let value = value ?? symbol.rawValue
-            return KeyboardKey(symbol.rawValue, value: value)
+            return KeyboardKey(symbol.rawValue, value: value, special: true)
         }
         let ascii = ASCII.from(symbol)
         return KeyboardKey(String(ascii.dec), value: String(ascii.dec))
