@@ -12,7 +12,6 @@ struct ASCIIArtView: View {
     @State var printLine: Line = 0
     @State var shakeLines: [Line:Offset] = [:]
     @State var isPrintDelayFinished = true
-    @State var bloomOpacity: Double = 1
     
     var print: ASCIIPrintable
     var printAnimation: Animation?
@@ -21,12 +20,12 @@ struct ASCIIArtView: View {
     var settings: ASCIIArtSettings
     var printTimer: ViewTimer?
     var shakeTimer: ViewTimer?
-    var bloomTimer: ViewTimer?
     var shaker: Shaker?
     var shakeAnimation: Animation?
     var printable = false
     var shakeable = false
     var bloomable = false
+    var bloomSpeed: Double = 1
     
     init(_ print: ASCIIPrintable, settings: ASCIIArtSettings = ASCIIArtSettings()) {
         self.print = print
@@ -46,10 +45,9 @@ struct ASCIIArtView: View {
                 self.shakeable = true
                 self.shakeAnimation = animation
             }
-            if case let .bloom(dt) = animation {
-                self.bloomTimer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
-                self.bloomOpacity = 1
+            if case let .bloom(speed) = animation {
                 self.bloomable = true
+                self.bloomSpeed = speed
             }
         }
         if self.printTimer == nil {
@@ -58,26 +56,20 @@ struct ASCIIArtView: View {
         if self.shakeTimer == nil {
             self.shakeTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
-        if self.bloomTimer == nil {
-            self.bloomTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-        }
     }
     
     var body: some View {
         VStack(spacing: 0) {
             ForEach(lines.indices) { idx in
-                ZStack {
-                    // todo separate view
-                    Text(lines[idx])
-                        .fixedSize()
-                        .offset(x: !shakeable || shakeLines[idx] == nil ? 0 : CGFloat(shakeLines[idx]!.x),
-                                y: !shakeable || shakeLines[idx] == nil ? 0 : CGFloat(shakeLines[idx]!.y))
-                        .animation(shakeAnimation)
-                        .opacity(!printable || idx < printLine ? 1 : 0)
-                        .animation(printAnimation)
-                        .withSettings(settings.view)
-                        .background(Color("Primary").opacity(self.bloomOpacity))
-                }
+                ASCIIArtLineView(
+                    lines[idx],
+                    settings: settings.view,
+                    visible: !printable || idx < printLine,
+                    bloom: bloomSpeed,
+                    offset: (
+                        x: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.x,
+                        y: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.y
+                    ))
             }
         }
         .onAppear {
@@ -92,13 +84,7 @@ struct ASCIIArtView: View {
                 }
             }
         }
-        .onAppear {
-            if bloomable {
-                withAnimation {
-                    self.bloomOpacity = 0
-                }
-            }
-        }
+        
         .onReceive(printTimer!) { _ in
             if !printable || printLine == lines.count {
                 self.printTimer!.upstream.connect().cancel()
@@ -126,8 +112,7 @@ struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
         ASCIIArtView(ASCIIArt.of(.cat), settings: ASCIIArtSettings(
             view: ViewSettings(font: (.terminus, 25)),
-            animations: [.print(), .bloom(dt: 1)]
-        )
+                        animations: [.print(),.bloom(speed: 0.5)])
         )
     }
 }

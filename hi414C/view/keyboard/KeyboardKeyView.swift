@@ -56,11 +56,17 @@ struct KeyboardKeyView: View {
                         : [-1 * offsetMargin, 0, offsetMargin]
                     let fontSize: CGFloat = label.count == 2 ? 3.5 : 2.5
                     ForEach(Array(label.enumerated()), id: \.offset) { i, char in
+                        /*
+                        Text(String(char)).foregroundColor(Color.black)
+                            .offset(x: offsets[i])
+                            .font(Font.custom(FontName.terminus.rawValue, size: 25))
+                         */
                         FigletKeyView(String(char), symbol: self.symbol, fontSize: fontSize, offset: offsets[i])
                     }
                 }
             } else {
                 HStack {
+                    //Text(label).foregroundColor(Color.black)
                     FigletKeyView(label, symbol: self.symbol, fontSize: label.count == 1 ? 5 : 4)
                 }
             }
@@ -77,8 +83,8 @@ struct KeyboardKeyView: View {
         )
         
         return symbol != .none
-            ? FigletView(symbol!, settings: settings).offset(x: offset)
-            : FigletView(label, settings: settings).offset(x: offset)
+            ? LiteFigletView(symbol!, settings: settings).offset(x: offset)
+            : LiteFigletView(label, settings: settings).offset(x: offset)
     }
 }
 

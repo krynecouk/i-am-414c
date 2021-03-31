@@ -1,13 +1,13 @@
 //
-//  FigletView.swift
+//  LiteFigletView.swift
 //  hi414C
 //
-//  Created by Darius Kryszczuk on 16.03.2021.
+//  Created by Darius Kryszczuk on 31.03.2021.
 //
 
 import SwiftUI
 
-struct FigletView: View {
+struct LiteFigletView: View {
     let figlets: [Figlet]
     var settings: FigletSettings
     
@@ -29,25 +29,18 @@ struct FigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
-                ASCIIArtView(figlets[i], settings: ASCIIArtSettings(
-                    view: settings.view, animations: settings.animations
-                ))
+                Text(figlets[i].lines.joined(separator: "\n"))
+                    .withSettings(settings.view)
             }
         }
+        
     }
 }
 
-private struct FigletItem: Identifiable {
-    var id = UUID()
-    var figlet: Figlet
-}
-
-struct FigletView_Previews: PreviewProvider {
+struct LiteFigletView_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            FigletView([.H], settings: FigletSettings(
-                animations: [.print(), .bloom(speed: 0.5)]
-            ))
+            LiteFigletView("HELLO")
         }
     }
 }
