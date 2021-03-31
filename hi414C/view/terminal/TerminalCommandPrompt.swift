@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TerminalCommandPrompt: View {
-    @State var visible = false
+    @State var visible = true
     
     var settings = ViewSettings(
         font: (.terminus, 33),
@@ -20,11 +20,12 @@ struct TerminalCommandPrompt: View {
     var body: some View {
         Text("█")
             .opacity(visible ? 1 : 0)
-            .animation(Animation.easeInOut(duration: 0.3).speed(0.75))
             .withSettings(settings)
             .bloom()
             .onReceive(timer) { _ in
-                self.visible.toggle()
+                withAnimation {
+                    self.visible.toggle()
+                }
             }
     }
 }

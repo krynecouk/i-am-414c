@@ -19,6 +19,7 @@ struct KeyboardView: View {
     @State var spacing: Space = (4, 4)
     @State var keySize: Size = (50, 70)
     @State var spaceKeySize: Size = (200, 70)
+    @State var specialKeySize: Size = (50, 70)
 
     var keyboard: Keyboard
     var onEnter: (String) -> Void
@@ -36,18 +37,18 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView(.DEL, width: keySize.width, height: keySize.height) { _ in
+                    KeyboardKeyView(.DEL, width: keySize.width + 10, height: keySize.height) { _ in
                         keyboardVM.delete()
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
-                    KeyboardKeyView("01?", width: keySize.width, height: keySize.height) { value in
+                    KeyboardKeyView("01?", width: specialKeySize.width, height: specialKeySize.height) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
                     KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView(.CR, width: keySize.width, height: keySize.height) { _ in
+                    KeyboardKeyView(.CR, width: specialKeySize.width, height: specialKeySize.height) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                     }
@@ -59,12 +60,14 @@ struct KeyboardView: View {
                 let frameW = frame.size.width
                 let keyW: CGFloat = ((frameW - (self.spacing.horizontal * 9)) / 10)
                 let keyH: CGFloat = frameW > 500 ? 40 : 70
-                let spaceW = (frameW - (self.spacing.horizontal * 2) - (2 * keyW))
+                let specialW: CGFloat = (frameW - (7 * keyW + 8 * self.spacing.horizontal)) / 2
+                let spaceW = (frameW - (self.spacing.horizontal * 2) - (2 * specialW))
                 let keyboardH = (4 * keyH) + self.spacing.vertical * 3
                 
                 self.keySize = (keyW, keyH)
                 self.size = (.infinity, keyboardH)
                 self.spaceKeySize = (spaceW, keyH)
+                self.specialKeySize = (specialW, keyH)
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)
@@ -74,7 +77,7 @@ struct KeyboardView: View {
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {
         HStack(spacing: self.spacing.horizontal) {
             ForEach(row, id: \.label){ key in
-                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, special: key.special) { value in
+                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, background: key.special ? Color.blue : Color("Primary")) { value in
                     print("Clicked on \(key.label) with value \(key.value)")
                     keyboardVM.append(value)
                 }

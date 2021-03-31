@@ -14,19 +14,19 @@ struct KeyboardKeyView: View {
     var onClick: (String) -> Void
     var width: CGFloat
     var height: CGFloat
-    var special = false
+    var background: Color
     
-    init(_ symbol: ASCIISymbol, value: String? = .none, width: CGFloat, height: CGFloat, special: Bool = false, onClick: @escaping (String) -> Void = { _ in }) {
-        self.init(symbol.rawValue, value: value, symbol: symbol, width: width, height: height, special: special, onClick: onClick)
+    init(_ symbol: ASCIISymbol, value: String? = .none, width: CGFloat, height: CGFloat, background: Color = Color("Primary"), onClick: @escaping (String) -> Void = { _ in }) {
+        self.init(symbol.rawValue, value: value, symbol: symbol, width: width, height: height, background: background, onClick: onClick)
     }
     
-    init(_ label: String, value: String? = .none, symbol: ASCIISymbol? = .none, width: CGFloat, height: CGFloat, special: Bool = false, onClick: @escaping (String) -> Void = { _ in }) {
+    init(_ label: String, value: String? = .none, symbol: ASCIISymbol? = .none, width: CGFloat, height: CGFloat, background: Color = Color("Primary"), onClick: @escaping (String) -> Void = { _ in }) {
         self.label = label
         self.value = value ?? label
         self.symbol = symbol
         self.width = width
         self.height = height
-        self.special = special
+        self.background = background
         self.onClick = onClick
     }
     
@@ -39,7 +39,7 @@ struct KeyboardKeyView: View {
     
     func KeyboardKeyBackground() -> some View {
         Rectangle()
-            .fill(special ? Color.blue : Color("Primary"))
+            .fill(background)
             .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .onLongPressGesture(minimumDuration: 0) {
                 onClick(value)
