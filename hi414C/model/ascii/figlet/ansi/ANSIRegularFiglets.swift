@@ -423,6 +423,7 @@ enum ANSIRegularFiglets {
             "  ██  ",
             "██    ",
         ]),
+        /*
         .DEL: Figlet(symbol: .DEL, lines: [
             "   ▄██████████",
             " ▄███▄ ▀█▀ ▄██",
@@ -430,7 +431,15 @@ enum ANSIRegularFiglets {
             " ▀███▀ ▄█▄ ▀██",
             "   ▀██████████",
         ]),
-        .ACK: Figlet(symbol: .ACK, lines: [
+        */
+        .DEL: Figlet(symbol: .DEL, lines: [
+            "   ▄██████████",
+            " ▄████▀▀█▀▀███",
+            "███████   ████",
+            " ▀████▄▄█▄▄███",
+            "   ▀██████████",
+        ]),
+        .CR: Figlet(symbol: .CR, lines: [
             "            ██",
             "            ██",
             " ▄█         ██",

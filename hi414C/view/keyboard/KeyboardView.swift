@@ -41,13 +41,13 @@ struct KeyboardView: View {
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
-                    KeyboardKeyView(side == .alphabetic ? "01?" : "ABC", width: keySize.width, height: keySize.height) { value in
+                    KeyboardKeyView("01?", width: keySize.width, height: keySize.height) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
                     KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView(.ACK, width: keySize.width, height: keySize.height) { _ in
+                    KeyboardKeyView(.CR, width: keySize.width, height: keySize.height) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                     }
