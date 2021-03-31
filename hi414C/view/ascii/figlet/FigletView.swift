@@ -11,6 +11,10 @@ struct FigletView: View {
     let figlets: [Figlet]
     var settings: FigletSettings
     
+    init(_ content: ASCIISymbol, settings: FigletSettings = FigletSettings()) {
+        self.init([content], settings: settings)
+    }
+    
     init(_ content: [ASCIISymbol], settings: FigletSettings = FigletSettings()) {
         self.figlets = content.map { symbol in
             return Figlet.of(symbol, typeface: settings.typeface)

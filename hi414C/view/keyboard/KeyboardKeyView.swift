@@ -10,14 +10,20 @@ import SwiftUI
 struct KeyboardKeyView: View {
     var label: String
     var value: String
+    var symbol: ASCIISymbol?
     var onClick: (String) -> Void
     var width: CGFloat
     var height: CGFloat
     var special = false
     
-    init(_ label: String, value: String? = nil, width: CGFloat, height: CGFloat, special: Bool = false, onClick: @escaping (String) -> Void = { _ in }) {
+    init(_ symbol: ASCIISymbol, value: String? = .none, width: CGFloat, height: CGFloat, special: Bool = false, onClick: @escaping (String) -> Void = { _ in }) {
+        self.init(symbol.rawValue, value: value, symbol: symbol, width: width, height: height, special: special, onClick: onClick)
+    }
+    
+    init(_ label: String, value: String? = .none, symbol: ASCIISymbol? = .none, width: CGFloat, height: CGFloat, special: Bool = false, onClick: @escaping (String) -> Void = { _ in }) {
         self.label = label
         self.value = value ?? label
+        self.symbol = symbol
         self.width = width
         self.height = height
         self.special = special
@@ -37,14 +43,12 @@ struct KeyboardKeyView: View {
             .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .onLongPressGesture(minimumDuration: 0) {
                 onClick(value)
-                let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                impactMed.impactOccurred()
             }
     }
     
     func KeyboardKeyLabel() -> some View {
         Group {
-            if label.count > 1 && self.width < 50 {
+            if label.count > 1 && symbol == .none && self.width < 50 {
                 VStack(spacing: 4) {
                     let offsetMargin = self.width / 5
                     let offsets = label.count == 2
@@ -52,26 +56,29 @@ struct KeyboardKeyView: View {
                         : [-1 * offsetMargin, 0, offsetMargin]
                     let fontSize: CGFloat = label.count == 2 ? 3.5 : 2.5
                     ForEach(Array(label.enumerated()), id: \.offset) { i, char in
-                        FigletKeyView(String(char), fontSize: fontSize, offset: offsets[i])
+                        FigletKeyView(String(char), symbol: self.symbol, fontSize: fontSize, offset: offsets[i])
                     }
                 }
             } else {
                 HStack {
-                    FigletKeyView(label, fontSize: label.count == 1 ? 5 : 4)
+                    FigletKeyView(label, symbol: self.symbol, fontSize: label.count == 1 ? 5 : 4)
                 }
             }
         }
     }
     
-    func FigletKeyView(_ label: String, fontSize: CGFloat, offset: CGFloat = 0) -> some View {
-        FigletView(label, settings: FigletSettings(
+    func FigletKeyView(_ label: String, symbol: ASCIISymbol? = .none, fontSize: CGFloat, offset: CGFloat = 0) -> some View {
+        let settings = FigletSettings(
             view: ViewSettings(
                 font: (.terminus, fontSize),
                 color: Color.black
             ),
             animations: []
-        ))
-        .offset(x: offset)
+        )
+        
+        return symbol != .none
+            ? FigletView(symbol!, settings: settings).offset(x: offset)
+            : FigletView(label, settings: settings).offset(x: offset)
     }
 }
 

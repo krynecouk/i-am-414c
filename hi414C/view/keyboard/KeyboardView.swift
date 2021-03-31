@@ -36,7 +36,7 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView("DEL", width: keySize.width, height: keySize.height) { _ in
+                    KeyboardKeyView(.DEL, width: keySize.width, height: keySize.height) { _ in
                         keyboardVM.delete()
                     }
                 }
@@ -47,7 +47,7 @@ struct KeyboardView: View {
                     KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView("ENT", width: keySize.width, height: keySize.height) { _ in
+                    KeyboardKeyView(.ACK, width: keySize.width, height: keySize.height) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                     }
