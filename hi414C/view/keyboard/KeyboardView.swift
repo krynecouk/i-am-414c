@@ -41,7 +41,7 @@ struct KeyboardView: View {
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
-                    KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: keySize.width, height: keySize.height) { value in
+                    KeyboardKeyView(side == .alphabetic ? "01?" : "ABC", width: keySize.width, height: keySize.height) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
                     KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in

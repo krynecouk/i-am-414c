@@ -14,8 +14,6 @@ class TestViewModel: ObservableObject {
     func setTest(test: Testable?) {
         if let test = self.test {
             print("current test: ", test.test)
-        } else {
-            print("no test")
         }
         self.test = test
     }
