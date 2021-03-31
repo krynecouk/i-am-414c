@@ -9,8 +9,10 @@ import SwiftUI
 
 struct Grid<Content: View> : View {
     let content: Content
+    let padding: CGFloat
     
-    init(@ViewBuilder content: () -> Content) {
+    init(padding: CGFloat = 20, @ViewBuilder content: () -> Content) {
+        self.padding = padding
         self.content = content()
     }
     
@@ -23,6 +25,7 @@ struct Grid<Content: View> : View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                 content
             }
+            .padding(self.padding)
         }
     }
 }

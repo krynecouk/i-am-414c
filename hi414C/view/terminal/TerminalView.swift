@@ -12,12 +12,10 @@ struct TerminalView: View {
     @EnvironmentObject var contentVM: ContentViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
-
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
-            TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
-                .padding(30)
             VStack(spacing: 0) {
+                TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
                 TerminalCommandLine()
                 ASCIIKeyboardView() { input in
                     if (testVM.test != nil) {
@@ -33,8 +31,6 @@ struct TerminalView: View {
                     }
                 }
             }
-
-        }
     }
 }
 
