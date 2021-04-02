@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ASCIIArtLineView: View {
-    @State var bloomOpacity: Double = 0
-    
     var line: String
     var offset: Offset
     var visible: Bool
@@ -25,19 +23,19 @@ struct ASCIIArtLineView: View {
     }
     
     var body: some View {
+        if visible && bloom > 0 {
+            Line()
+                .bloomFadeOut(speed: bloom)
+        } else {
+            Line()
+        }
+    }
+    
+    func Line() -> some View {
         Text(line)
             .fixedSize()
-            .background(Color("Primary").opacity(self.bloomOpacity).bloom())
             .opacity(visible ? 1 : 0)
             .offset(x: CGFloat(offset.x), y: CGFloat(offset.y))
-            .onAppear {
-               if visible && bloom > 0 {
-                self.bloomOpacity = 1
-                withAnimation(Animation.easeIn.speed(self.bloom)) {
-                        self.bloomOpacity = 0
-                    }
-               }
-            }
             .id(visible)
             .withSettings(settings)
     }
