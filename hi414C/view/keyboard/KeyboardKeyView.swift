@@ -15,6 +15,7 @@ struct KeyboardKeyView: View {
     var width: CGFloat
     var height: CGFloat
     var background: Color
+    let font = Font.custom(FontName.proggyTiny.rawValue, size: 35)
     
     init(_ symbol: ASCIISymbol, value: String? = .none, width: CGFloat, height: CGFloat, background: Color = Color("Primary"), onClick: @escaping (String) -> Void = { _ in }) {
         self.init(symbol.rawValue, value: value, symbol: symbol, width: width, height: height, background: background, onClick: onClick)
@@ -58,7 +59,7 @@ struct KeyboardKeyView: View {
                     ForEach(Array(label.enumerated()), id: \.offset) { i, char in
                         Text(String(char)).foregroundColor(Color.black)
                             .offset(x: offsets[i])
-                            .font(Font.custom(FontName.proggyTiny.rawValue, size: 35))
+                            .font(font)
                          
                         //FigletKeyView(String(char), symbol: self.symbol, fontSize: fontSize, offset: offsets[i])
                     }
@@ -66,7 +67,7 @@ struct KeyboardKeyView: View {
             } else {
                 HStack {
                     Text(label).foregroundColor(Color.black)
-                        .font(Font.custom(FontName.proggyTiny.rawValue, size: 35))
+                        .font(font)
                     // FigletKeyView(label, symbol: self.symbol, fontSize: label.count == 1 ? 5 : 4)
                 }
             }

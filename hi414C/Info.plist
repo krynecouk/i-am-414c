@@ -29,7 +29,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>ProggyTiny.ttf</string>
+		<string>ProggyTinySZ.ttf</string>
 		<string>TerminusTTF-4.46.0.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
