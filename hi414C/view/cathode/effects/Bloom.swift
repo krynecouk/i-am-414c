@@ -5,7 +5,6 @@
 //  Created by Darius Kryszczuk on 08.03.2021.
 //
 
-import Foundation
 import SwiftUI
 
 struct Bloom: ViewModifier {

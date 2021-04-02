@@ -44,6 +44,8 @@
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
 		267463EC25DED87500624D7C /* CathodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463EB25DED87500624D7C /* CathodeView.swift */; };
 		267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463EF25DEDBDB00624D7C /* RefreshWave.swift */; };
+		26782B3C261774A200BA9C4E /* ProggyTiny.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26782B3B261774A200BA9C4E /* ProggyTiny.ttf */; };
+		26782B4026177AC800BA9C4E /* BloomFadeOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26782B3F26177AC800BA9C4E /* BloomFadeOut.swift */; };
 		2678D96D260E4D2700DDB40F /* KeyboardKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D96C260E4D2700DDB40F /* KeyboardKeyView.swift */; };
 		2678D972260E5D4A00DDB40F /* KeyboardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D971260E5D4A00DDB40F /* KeyboardSet.swift */; };
 		2678D978260E5D5B00DDB40F /* KeyboardPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D977260E5D5B00DDB40F /* KeyboardPart.swift */; };
@@ -144,6 +146,8 @@
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
 		267463EB25DED87500624D7C /* CathodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathodeView.swift; sourceTree = "<group>"; };
 		267463EF25DEDBDB00624D7C /* RefreshWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshWave.swift; sourceTree = "<group>"; };
+		26782B3B261774A200BA9C4E /* ProggyTiny.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProggyTiny.ttf; sourceTree = "<group>"; };
+		26782B3F26177AC800BA9C4E /* BloomFadeOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomFadeOut.swift; sourceTree = "<group>"; };
 		2678D96C260E4D2700DDB40F /* KeyboardKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKeyView.swift; sourceTree = "<group>"; };
 		2678D971260E5D4A00DDB40F /* KeyboardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSet.swift; sourceTree = "<group>"; };
 		2678D977260E5D5B00DDB40F /* KeyboardPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPart.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 				267463E825DED6B000624D7C /* Curtain.swift */,
 				267463EF25DEDBDB00624D7C /* RefreshWave.swift */,
 				26B39DC425F65741004E4D22 /* Bloom.swift */,
+				26782B3F26177AC800BA9C4E /* BloomFadeOut.swift */,
 			);
 			path = effects;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 		26782B382617734F00BA9C4E /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				26782B3B261774A200BA9C4E /* ProggyTiny.ttf */,
 				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
 			);
 			path = fonts;
@@ -764,6 +770,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
+				26782B3C261774A200BA9C4E /* ProggyTiny.ttf in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
@@ -814,6 +821,7 @@
 				26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */,
 				2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */,
 				26841024260A67A700C50F9A /* FooASCINode.swift in Sources */,
+				26782B4026177AC800BA9C4E /* BloomFadeOut.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewSettings.swift in Sources */,
 				267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */,
