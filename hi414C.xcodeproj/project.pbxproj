@@ -270,7 +270,6 @@
 		2641EF5125E41D1A0005ABF7 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
 				265A00AA25ED49EA00F479FA /* FontName.swift */,
 			);
 			path = font;
@@ -415,6 +414,22 @@
 				26B39DC425F65741004E4D22 /* Bloom.swift */,
 			);
 			path = effects;
+			sourceTree = "<group>";
+		};
+		26782B372617730300BA9C4E /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				26782B382617734F00BA9C4E /* fonts */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		26782B382617734F00BA9C4E /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		2678D970260E5D3400DDB40F /* keyboard */ = {
@@ -591,6 +606,7 @@
 		26BEC22825DD3B0A0035065E /* hi414C */ = {
 			isa = PBXGroup;
 			children = (
+				26782B372617730300BA9C4E /* assets */,
 				267463DC25DED19600624D7C /* model */,
 				267463DB25DED18000624D7C /* view */,
 				26548835260519670044297D /* viewmodel */,

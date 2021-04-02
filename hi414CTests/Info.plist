@@ -20,5 +20,9 @@
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TerminusTTF-4.46.0.ttf</string>
+	</array>
 </dict>
 </plist>
