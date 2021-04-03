@@ -52,7 +52,7 @@ struct TerminalKeyboardView: View {
         TerminalSegue(header: Group {
             TerminalText(">")
             TerminalText(keyboardVM.input)
-            TerminalCommandPrompt()
+            //TerminalCommandPrompt(theme: )
         }) {
             TerminalKeyboard()
         }

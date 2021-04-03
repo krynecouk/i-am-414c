@@ -102,9 +102,15 @@ struct PrimaryTheme: Themable {
             view: ViewTheme(
                 background: Color("GoldBck") // TODO
             ),
-            prompt: ViewTheme(
-                font: (.terminus, 6),
-                color: .primary
+            prompt: TerminalTheme.CommandLine.Prompt(
+                figlet: FigletTheme(
+                    typeface: .ansi(.regular),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 6),
+                        color: .primary
+                    ),
+                    animations: []
+                )
             ),
             cursor: TerminalTheme.CommandLine.Cursor(
                 view: ViewTheme(

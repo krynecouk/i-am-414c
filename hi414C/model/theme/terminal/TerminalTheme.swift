@@ -12,10 +12,14 @@ struct TerminalTheme {
     
     struct CommandLine {
         var view: ViewTheme
-        var prompt: ViewTheme
+        var prompt: Prompt
         var cursor: Cursor
         var text: Text
-    
+        
+        struct Prompt {
+            var figlet: FigletTheme
+        }
+        
         struct Cursor {
             var view: ViewTheme
             var blink: (speed: Double, animation: Animation)

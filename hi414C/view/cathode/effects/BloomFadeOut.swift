@@ -25,7 +25,7 @@ struct BloomFadeOut: ViewModifier {
 }
 
 extension View {
-    func bloomFadeOut(color: Color = Color("Primary"), speed: Double = 0.8) -> some View {
+    func bloomFadeOut(speed: Double = 0.8, color: Color = Color("Primary")) -> some View {
         self.modifier(BloomFadeOut(color: color, speed: speed))
     }
 }
