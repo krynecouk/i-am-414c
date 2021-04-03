@@ -12,11 +12,11 @@ struct ASCIIArtLineView: View {
     var offset: Offset
     var visible: Bool
     var bloom: Double
-    var settings: ViewSettings
+    var theme: ViewTheme
     
-    init(_ line: String, settings: ViewSettings = ViewSettings(), visible: Bool = false, bloom: Double = 0, offset: Offset = (0,0)) {
+    init(_ line: String, theme: ViewTheme = ViewTheme(), visible: Bool = false, bloom: Double = 0, offset: Offset = (0,0)) {
         self.line = line
-        self.settings = settings
+        self.theme = theme
         self.offset = offset
         self.visible = visible
         self.bloom = bloom
@@ -37,7 +37,7 @@ struct ASCIIArtLineView: View {
             .opacity(visible ? 1 : 0)
             .offset(x: CGFloat(offset.x), y: CGFloat(offset.y))
             .id(visible)
-            .withSettings(settings)
+            .withTheme(theme)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TerminalContent: View {
-    @EnvironmentObject var settingsVM: SettingsViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     @State var activeTestId: String = ""
     
     var items: [TerminalContentItem]
@@ -28,10 +28,10 @@ struct TerminalContent: View {
                     ASCIIArtViews(arts, delay: delay)
                 }
                 if case let .message(symbols) = item.type {
-                    FigletView(symbols, settings: settingsVM.asciiMessage.figlet.withDelay(delay))
+                    FigletView(symbols, theme: themeVM.ascii.message.figlet.withDelay(delay))
                 }
                 if case let .symbol(symbol) = item.type {
-                    FigletView(symbol.rawValue, settings: settingsVM.asciiTest.symbol.figlet.withDelay(delay))
+                    FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withDelay(delay))
                 }
                 if case let .test(test, isCurrent) = item.type {
                     TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
@@ -42,14 +42,14 @@ struct TerminalContent: View {
     
     func ASCIIArtViews(_ arts: [ASCIIPrintable], delay: Double) -> some View {
         ForEach(arts.indices) { i in
-            ASCIIArtView(arts[i], settings: settingsVM.asciiArt.withDelay(delay))
+            ASCIIArtView(arts[i], theme: themeVM.ascii.art.withDelay(delay))
         }
     }
     
     func TestFigletView(id: String, test: Testable, isCurrent: Bool, delay: Double) -> some View {
-        FigletView(test.test, settings: activeTestId == id
-                    ? settingsVM.asciiTest.test.active.figlet.withDelay(delay)
-                    : settingsVM.asciiTest.test.passive.figlet.withDelay(delay))
+        FigletView(test.test, theme: activeTestId == id
+                    ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
+                    : themeVM.ascii.test.test.passive.figlet.withDelay(delay))
             .onAppear {
                 if isCurrent && testVM.test == nil {
                     testVM.setTest(test: test)

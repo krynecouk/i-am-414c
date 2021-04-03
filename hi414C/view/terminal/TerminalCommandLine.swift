@@ -13,8 +13,8 @@ struct TerminalCommandLine: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack(alignment: .center, spacing: 0) {
-                FigletView([.greaterThan], settings: FigletSettings(
-                    view: ViewSettings(
+                FigletView([.greaterThan], theme: FigletTheme(
+                    view: ViewTheme(
                         font: (.terminus, 6)
                     ),
                     animations: []
@@ -22,8 +22,8 @@ struct TerminalCommandLine: View {
                 .padding(.trailing, 15)
                 /*
                 ForEach(Array(keyboardVM.input.enumerated()), id: \.offset) { i, char in
-                    FigletView(String(char), settings: FigletSettings(
-                    view: ViewSettings(
+                    FigletView(String(char), theme: FigletTheme(
+                    view: ViewTheme(
                     font: (.terminus, 6)
                     ),
                     animations: []
@@ -32,8 +32,8 @@ struct TerminalCommandLine: View {
                 }
                 */
                 /*
-                 FigletView(keyboardVM.input, settings: FigletSettings(
-                 view: ViewSettings(
+                 FigletView(keyboardVM.input, theme: FigletTheme(
+                 view: ViewTheme(
                  font: (.terminus, 6)
                  ),
                  animations: []

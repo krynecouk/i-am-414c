@@ -1,5 +1,5 @@
 //
-//  ASCIIArtSettings.swift
+//  ASCIIArtTheme.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 24.03.2021.
@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct FigletSettings {
+struct FigletTheme {
     var typeface: FigletTypeface = .ansi()
-    var view: ViewSettings = ViewSettings()
+    var view: ViewTheme = ViewTheme()
     var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
-extension FigletSettings {
-    func withDelay(_ delay: Double) -> FigletSettings {
+extension FigletTheme {
+    func withDelay(_ delay: Double) -> FigletTheme {
         var copy = self
         copy.animations = add(delay: delay, to: copy.animations)
         return copy
     }
 }
 
-struct ASCIIArtSettings {
-    var view: ViewSettings = ViewSettings()
+struct ASCIIArtTheme {
+    var view: ViewTheme = ViewTheme()
     var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
@@ -32,8 +32,8 @@ enum ASCIIArtAnimation {
     case bloom(speed: Double = 0.8)
 }
 
-extension ASCIIArtSettings {
-    func withDelay(_ delay: Double) -> ASCIIArtSettings {
+extension ASCIIArtTheme {
+    func withDelay(_ delay: Double) -> ASCIIArtTheme {
         var copy = self
         copy.animations = add(delay: delay, to: copy.animations)
         return copy

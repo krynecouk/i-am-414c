@@ -9,28 +9,28 @@ import SwiftUI
 
 struct LiteFigletView: View {
     let figlets: [Figlet]
-    var settings: FigletSettings
+    var theme: FigletTheme
     
-    init(_ content: String, settings: FigletSettings = FigletSettings()) {
-        self.init(content.map { ASCIISymbol.from(String($0)) }, settings: settings)
+    init(_ content: String, theme: FigletTheme = FigletTheme()) {
+        self.init(content.map { ASCIISymbol.from(String($0)) }, theme: theme)
     }
     
-    init(_ content: ASCIISymbol, settings: FigletSettings = FigletSettings()) {
-        self.init([content], settings: settings)
+    init(_ content: ASCIISymbol, theme: FigletTheme = FigletTheme()) {
+        self.init([content], theme: theme)
     }
     
-    init(_ content: [ASCIISymbol], settings: FigletSettings = FigletSettings()) {
+    init(_ content: [ASCIISymbol], theme: FigletTheme = FigletTheme()) {
         self.figlets = content.map { symbol in
-            return Figlet.of(symbol, typeface: settings.typeface)
+            return Figlet.of(symbol, typeface: theme.typeface)
         }
-        self.settings = settings
+        self.theme = theme
     }
     
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
                 Text(figlets[i].lines.joined(separator: "\n"))
-                    .withSettings(settings.view)
+                    .withTheme(theme.view)
             }
         }
         

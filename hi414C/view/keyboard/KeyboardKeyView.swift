@@ -77,8 +77,8 @@ struct KeyboardKeyView: View {
     }
     
     func FigletKeyView(_ label: String, symbol: ASCIISymbol? = .none, fontSize: CGFloat, offset: CGFloat = 0) -> some View {
-        let settings = FigletSettings(
-            view: ViewSettings(
+        let theme = FigletTheme(
+            view: ViewTheme(
                 font: (.terminus, fontSize),
                 color: Color.black
             ),
@@ -86,8 +86,8 @@ struct KeyboardKeyView: View {
         )
         
         return symbol != .none
-            ? LiteFigletView(symbol!, settings: settings).offset(x: offset)
-            : LiteFigletView(label, settings: settings).offset(x: offset)
+            ? LiteFigletView(symbol!, theme: theme).offset(x: offset)
+            : LiteFigletView(label, theme: theme).offset(x: offset)
     }
 }
 

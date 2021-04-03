@@ -11,24 +11,24 @@ struct EnvironmentModifier: ViewModifier {
     @ObservedObject var asciiVM: ASCIIViewModel
     @ObservedObject var contentVM: ContentViewModel
     @ObservedObject var keyboardVM: KeyboardViewModel
-    @ObservedObject var settingsVM: SettingsViewModel
     @ObservedObject var testVM: TestViewModel
+    @ObservedObject var themeVM: ThemeViewModel
     @ObservedObject var graphVM: GraphViewModel
     
     init(
         asciiVM: ASCIIViewModel = ASCIIViewModel(),
         contentVM: ContentViewModel = ContentViewModel(),
         keyboardVM: KeyboardViewModel = KeyboardViewModel(),
-        settingsVM: SettingsViewModel = SettingsViewModel(),
+        themeVM: ThemeViewModel = ThemeViewModel(),
         testVM: TestViewModel = TestViewModel())
     {
         self.asciiVM = asciiVM
         self.contentVM = contentVM
         self.keyboardVM = keyboardVM
-        self.settingsVM = settingsVM
+        self.themeVM = themeVM
         self.testVM = testVM
         self.graphVM = GraphViewModel(toolkit: GraphToolkit(
-            asciiVM: asciiVM, contentVM: contentVM, keyboardVM: keyboardVM, settingsVM: settingsVM, testVM: testVM
+            asciiVM: asciiVM, contentVM: contentVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM
         ))
     }
     
@@ -38,8 +38,8 @@ struct EnvironmentModifier: ViewModifier {
             .environmentObject(contentVM)
             .environmentObject(graphVM)
             .environmentObject(keyboardVM)
-            .environmentObject(settingsVM)
             .environmentObject(testVM)
+            .environmentObject(themeVM)
     }
 }
 

@@ -23,6 +23,6 @@
 - DEL a ENT nahradit za figlet symbols, 123 - <- ?
 - Figlets in command line
 - command line prompt better
-- special symbols? - jednotne settings
+- special symbols? - jednotne theme
 - 
 

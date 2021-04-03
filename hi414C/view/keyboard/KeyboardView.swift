@@ -37,18 +37,18 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView("<x", width: keySize.width + 10, height: keySize.height, background: Color.gray) { _ in
+                    KeyboardKeyView("BS", width: keySize.width, height: keySize.height, background: Color.gray) { _ in
                         keyboardVM.delete()
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
-                    KeyboardKeyView("123", width: specialKeySize.width, height: specialKeySize.height, background: Color.gray) { value in
+                    KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: specialKeySize.width, height: specialKeySize.height, background: Color.gray) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
                     KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView(.CR, width: specialKeySize.width, height: specialKeySize.height, background: Color.gray) { _ in
+                    KeyboardKeyView("CR", width: specialKeySize.width, height: specialKeySize.height, background: Color.blue) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                     }

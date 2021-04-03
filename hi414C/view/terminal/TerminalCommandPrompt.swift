@@ -10,7 +10,7 @@ import SwiftUI
 struct TerminalCommandPrompt: View {
     @State var visible = true
     
-    var settings = ViewSettings(
+    var theme = ViewTheme(
         color: Color("Primary")
     )
     
@@ -21,7 +21,7 @@ struct TerminalCommandPrompt: View {
             .fill(Color("Primary"))
             .opacity(visible ? 1 : 0)
             .frame(width: 20.5, height: 34.5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .withSettings(settings)
+            .withTheme(theme)
             .onReceive(timer) { _ in
                withAnimation {
                     self.visible.toggle()

@@ -9,6 +9,6 @@ struct GraphToolkit {
     var asciiVM: ASCIIViewModel
     var contentVM: ContentViewModel
     var keyboardVM: KeyboardViewModel
-    var settingsVM: SettingsViewModel
     var testVM: TestViewModel
+    var themeVM: ThemeViewModel
 }

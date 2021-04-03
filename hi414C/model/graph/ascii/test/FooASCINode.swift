@@ -19,10 +19,10 @@ class FooASCIINode : Node {
             ASCIISymbol.from(String(char))
         }
         toolkit.contentVM.setContent([.asciiTest(symbols)])
-        toolkit.settingsVM.asciiTest.symbol.figlet.animations = []
+        toolkit.themeVM.ascii.test.symbol.figlet.animations = []
     }
     
     func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
-        toolkit.settingsVM.reset(of: .asciiTest)
+        toolkit.themeVM.reset(of: .ascii)
     }
 }

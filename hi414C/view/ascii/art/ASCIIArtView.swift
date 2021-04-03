@@ -17,7 +17,7 @@ struct ASCIIArtView: View {
     var printAnimation: Animation?
     var printDelay: Double?
     var lines: [String]
-    var settings: ASCIIArtSettings
+    var theme: ASCIIArtTheme
     var printTimer: ViewTimer?
     var shakeTimer: ViewTimer?
     var shaker: Shaker?
@@ -27,12 +27,12 @@ struct ASCIIArtView: View {
     var bloomable = false
     var bloomSpeed: Double = 1
     
-    init(_ print: ASCIIPrintable, settings: ASCIIArtSettings = ASCIIArtSettings()) {
+    init(_ print: ASCIIPrintable, theme: ASCIIArtTheme = ASCIIArtTheme()) {
         self.print = print
         self.lines = print.lines
-        self.settings = settings
+        self.theme = theme
         
-        for animation in settings.animations {
+        for animation in theme.animations {
             if case let .print(dt, delay, animation) = animation {
                 self.printTimer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
                 self.printable = true
@@ -63,7 +63,7 @@ struct ASCIIArtView: View {
             ForEach(lines.indices) { idx in
                 ASCIIArtLineView(
                     lines[idx],
-                    settings: settings.view,
+                    theme: theme.view,
                     visible: !printable || idx < printLine,
                     bloom: bloomSpeed,
                     offset: (
@@ -110,8 +110,8 @@ typealias ViewTimer = Publishers.Autoconnect<Timer.TimerPublisher>
 
 struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
-        ASCIIArtView(ASCIIArt.of(.cat), settings: ASCIIArtSettings(
-            view: ViewSettings(font: (.terminus, 25)),
+        ASCIIArtView(ASCIIArt.of(.cat), theme: ASCIIArtTheme(
+            view: ViewTheme(font: (.terminus, 25)),
                         animations: [.print(),.bloom(speed: 0.5)])
         )
     }
