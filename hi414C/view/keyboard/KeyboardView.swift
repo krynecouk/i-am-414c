@@ -10,6 +10,7 @@ import SwiftUI
 struct KeyboardView: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     
     typealias Size = (width: CGFloat, height: CGFloat)
     typealias Space = (horizontal: CGFloat, vertical: CGFloat)
@@ -37,18 +38,19 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView("BS", width: keySize.width, height: keySize.height, background: Color.gray) { _ in
+                    KeyboardKeyView("BS", width: keySize.width, height: keySize.height, theme: themeVM.keyboard.key.BS) { _ in
                         keyboardVM.delete()
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
-                    KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: specialKeySize.width, height: specialKeySize.height, background: Color.gray) { value in
+                    KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.ABC) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
-                    KeyboardKeyView(keyboard[side]![.space][0].label, value: keyboard[side]![.space][0].value, width: self.spaceKeySize.width, height: keySize.height) { value in
+                    let space = keyboard[side]![.space][0]
+                    KeyboardKeyView(space.label, value: space.value, width: self.spaceKeySize.width, height: keySize.height, theme: space.special ? themeVM.keyboard.key.special : themeVM.keyboard.key.default) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView("CR", width: specialKeySize.width, height: specialKeySize.height, background: Color.blue) { _ in
+                    KeyboardKeyView("CR", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                     }
@@ -77,7 +79,7 @@ struct KeyboardView: View {
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {
         HStack(spacing: self.spacing.horizontal) {
             ForEach(row, id: \.label){ key in
-                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, background: key.special ? Color.blue : Color("Primary")) { value in
+                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, theme: key.special ? themeVM.keyboard.key.special : themeVM.keyboard.key.default) { value in
                     print("Clicked on \(key.label) with value \(key.value)")
                     keyboardVM.append(value)
                 }

@@ -72,21 +72,21 @@ struct PrimaryTheme: Themable {
             default: ViewTheme(
                 font: (.proggyTiny, 35),
                 color: .black,
-                background: .primary
+                background: .orange
             ),
             special: ViewTheme(
                 font: (.proggyTiny, 35),
                 color: .black,
-                background: .blue // TODO
+                background: .primary
             ),
             ABC: ViewTheme(
                 font: (.proggyTiny, 35),
-                color: .black,
+                color: .white,
                 background: .gray
             ),
             BS: ViewTheme(
                 font: (.proggyTiny, 35),
-                color: .black,
+                color: .white,
                 background: .gray
             ),
             CR: ViewTheme(
