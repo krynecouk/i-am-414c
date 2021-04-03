@@ -11,10 +11,10 @@ struct ASCIIArtLineView: View {
     var line: String
     var offset: Offset
     var visible: Bool
-    var bloom: Double
+    var bloom: (speed: Double, color: Color)
     var theme: ViewTheme
     
-    init(_ line: String, theme: ViewTheme = ViewTheme(), visible: Bool = false, bloom: Double = 0, offset: Offset = (0,0)) {
+    init(_ line: String, theme: ViewTheme = ViewTheme(), visible: Bool = false, bloom: (speed: Double, color: Color), offset: Offset = (0,0)) {
         self.line = line
         self.theme = theme
         self.offset = offset
@@ -23,9 +23,9 @@ struct ASCIIArtLineView: View {
     }
     
     var body: some View {
-        if visible && bloom > 0 {
+        if visible && bloom.speed > 0 {
             Line()
-                .bloomFadeOut(speed: bloom)
+                .bloomFadeOut(speed: bloom.speed, color: bloom.color)
         } else {
             Line()
         }

@@ -17,7 +17,7 @@ struct Bloom: ViewModifier {
 }
 
 extension View {
-    func bloom(color: Color = Color("Primary")) -> some View {
+    func bloom(color: Color = .primary) -> some View {
         self.modifier(Bloom(color: color))
     }
 }

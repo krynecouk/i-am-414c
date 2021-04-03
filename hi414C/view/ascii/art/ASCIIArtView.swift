@@ -25,7 +25,7 @@ struct ASCIIArtView: View {
     var printable = false
     var shakeable = false
     var bloomable = false
-    var bloomSpeed: Double = 1
+    var bloom: (speed: Double, color: Color) = (0.0, .primary)
     
     init(_ print: ASCIIPrintable, theme: ASCIIArtTheme = ASCIIArtTheme()) {
         self.print = print
@@ -45,9 +45,9 @@ struct ASCIIArtView: View {
                 self.shakeable = true
                 self.shakeAnimation = animation
             }
-            if case let .bloom(speed) = animation {
+            if case let .bloom(speed, color) = animation {
                 self.bloomable = true
-                self.bloomSpeed = speed
+                self.bloom = (speed, color)
             }
         }
         if self.printTimer == nil {
@@ -65,7 +65,7 @@ struct ASCIIArtView: View {
                     lines[idx],
                     theme: theme.view,
                     visible: !printable || idx < printLine,
-                    bloom: bloomSpeed,
+                    bloom: bloom,
                     offset: (
                         x: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.x,
                         y: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.y

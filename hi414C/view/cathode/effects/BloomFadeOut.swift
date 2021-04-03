@@ -15,7 +15,7 @@ struct BloomFadeOut: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .background(color.opacity(opacity).bloom())
+            .background(color.opacity(opacity).bloom(color: color))
             .onAppear {
                 withAnimation(Animation.easeIn.speed(speed)) {
                     self.opacity = 0
