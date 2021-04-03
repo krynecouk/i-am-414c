@@ -45,13 +45,14 @@ struct TerminalCommandLine: View {
                     Text(String(char)).foregroundColor(Color("Primary"))
                         .font(Font.custom(FontName.proggyTiny.rawValue, size: 55))
                         .offset(y: 2)
-                        .bloomFadeOut()
+                        .bloomFadeOut(speed: 1)
                         .padding(.trailing, 3)
+                    
                 }
                 
                 TerminalCommandPrompt()
                     .id(keyboardVM.input)
-                    .padding(.trailing, 5)
+                    //.padding(.trailing, 5)
             }
             .padding()
         }

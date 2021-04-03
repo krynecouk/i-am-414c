@@ -37,7 +37,7 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView(.DEL, width: keySize.width + 10, height: keySize.height, background: Color.gray) { _ in
+                    KeyboardKeyView("<x", width: keySize.width + 10, height: keySize.height, background: Color.gray) { _ in
                         keyboardVM.delete()
                     }
                 }

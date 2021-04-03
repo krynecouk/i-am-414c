@@ -11,11 +11,6 @@ struct ContentView: View {
     var body: some View {
         CathodeView {
             TerminalView()
-                .onAppear {
-                    FontName.fontFamilies().forEach { name in
-                        print(name)
-                    }
-                }
         }
     }
 }

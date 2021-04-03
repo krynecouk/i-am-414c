@@ -11,21 +11,21 @@ struct TerminalCommandPrompt: View {
     @State var visible = true
     
     var settings = ViewSettings(
-        font: (.terminus, 33),
         color: Color("Primary")
     )
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        Text("█")
+        Rectangle()
+            .fill(Color("Primary"))
             .opacity(visible ? 1 : 0)
+            .frame(width: 20.5, height: 34.5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .withSettings(settings)
-            .bloom()
             .onReceive(timer) { _ in
-                withAnimation {
+               withAnimation {
                     self.visible.toggle()
-                }
+               }
             }
     }
 }

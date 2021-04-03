@@ -49,7 +49,9 @@ struct KeyboardKeyView: View {
     
     func KeyboardKeyLabel() -> some View {
         Group {
-            if label.count > 1 && symbol == .none && self.width < 50 {
+            if symbol != .none {
+                FigletKeyView(label, symbol: self.symbol, fontSize: label.count == 1 ? 5 : 4)
+            } else if label.count > 1 && self.width < 50 {
                 VStack(spacing: 4) {
                     let offsetMargin = self.width / 5
                     let offsets = label.count == 2
