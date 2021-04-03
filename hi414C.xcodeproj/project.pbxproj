@@ -18,6 +18,7 @@
 		2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636248D25FCBB2900B490B4 /* FigletFont.swift */; };
 		263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegularFiglets.swift */; };
 		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
+		264404022618342B00CA7EA1 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 264404012618342B00CA7EA1 /* COPYING */; };
 		2649527E260267DA0045BC21 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649527D260267DA0045BC21 /* Environment.swift */; };
 		26500147260F316200414E89 /* DeviceRotationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26500146260F316200414E89 /* DeviceRotationModifier.swift */; };
 		26500159260F3C6200414E89 /* Keyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26500158260F3C6200414E89 /* Keyboards.swift */; };
@@ -121,6 +122,7 @@
 		2636248D25FCBB2900B490B4 /* FigletFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletFont.swift; sourceTree = "<group>"; };
 		263F440025EAB5C700D069B6 /* ANSIRegularFiglets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegularFiglets.swift; sourceTree = "<group>"; };
 		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
+		264404012618342B00CA7EA1 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		2649527D260267DA0045BC21 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		26500146260F316200414E89 /* DeviceRotationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationModifier.swift; sourceTree = "<group>"; };
 		26500158260F3C6200414E89 /* Keyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboards.swift; sourceTree = "<group>"; };
@@ -290,6 +292,15 @@
 			path = cathode;
 			sourceTree = "<group>";
 		};
+		264404052618342E00CA7EA1 /* terminus */ = {
+			isa = PBXGroup;
+			children = (
+				264404012618342B00CA7EA1 /* COPYING */,
+				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
+			);
+			path = terminus;
+			sourceTree = "<group>";
+		};
 		2649528326026A1D0045BC21 /* environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,8 +445,8 @@
 		26782B382617734F00BA9C4E /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				264404052618342E00CA7EA1 /* terminus */,
 				26782B772617BE4300BA9C4E /* proggy */,
-				2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -783,6 +794,7 @@
 				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
 				26782B742617BE3F00BA9C4E /* Licence.txt in Resources */,
+				264404022618342B00CA7EA1 /* COPYING in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
 				26782B732617BE3F00BA9C4E /* ProggyTinySZ.ttf in Resources */,

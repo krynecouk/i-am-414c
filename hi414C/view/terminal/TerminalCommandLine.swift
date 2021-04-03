@@ -12,14 +12,14 @@ struct TerminalCommandLine: View {
     
     var body: some View {
         ScrollView(.horizontal) {
-            HStack(alignment: .center) {
+            HStack(alignment: .center, spacing: 0) {
                 FigletView([.greaterThan], settings: FigletSettings(
                     view: ViewSettings(
                         font: (.terminus, 6)
                     ),
                     animations: []
                 ))
-                .padding(.trailing, 7)
+                .padding(.trailing, 15)
                 /*
                 ForEach(Array(keyboardVM.input.enumerated()), id: \.offset) { i, char in
                     FigletView(String(char), settings: FigletSettings(
@@ -46,13 +46,12 @@ struct TerminalCommandLine: View {
                         .font(Font.custom(FontName.proggyTiny.rawValue, size: 55))
                         .offset(y: 2)
                         .bloomFadeOut()
+                        .padding(.trailing, 3)
                 }
-                
-                    
-
                 
                 TerminalCommandPrompt()
                     .id(keyboardVM.input)
+                    .padding(.trailing, 5)
             }
             .padding()
         }
