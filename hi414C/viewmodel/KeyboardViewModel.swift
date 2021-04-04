@@ -17,4 +17,8 @@ class KeyboardViewModel: ObservableObject {
     func delete() {
         self.input = ""
     }
+    
+    func backspace() {
+        self.input = String(input.dropLast())
+    }
 }

@@ -39,7 +39,7 @@ struct KeyboardView: View {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
                     KeyboardKeyView("BS", width: keySize.width, height: keySize.height, theme: themeVM.keyboard.key.BS) { _ in
-                        keyboardVM.delete()
+                        keyboardVM.backspace()
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
