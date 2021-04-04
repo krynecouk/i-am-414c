@@ -37,6 +37,7 @@
 		2654883B26051B8B0044297D /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654883A26051B8B0044297D /* TestViewModel.swift */; };
 		2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884A260524460044297D /* TerminalCommandPrompt.swift */; };
 		2654884F2605247C0044297D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884E2605247C0044297D /* KeyboardView.swift */; };
+		26557EFD2619A77C00794B86 /* TerminalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26557EFC2619A77C00794B86 /* TerminalSegue.swift */; };
 		265848E9260BB48E009C0975 /* ASCIIArtTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848E8260BB48E009C0975 /* ASCIIArtTheme.swift */; };
 		265848EE260BB4A8009C0975 /* ASCIITestTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848ED260BB4A8009C0975 /* ASCIITestTheme.swift */; };
 		265848F2260BB4B5009C0975 /* ASCIIMessageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848F1260BB4B5009C0975 /* ASCIIMessageTheme.swift */; };
@@ -77,7 +78,7 @@
 		268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92E2260901F300A43802 /* ASCIIArtView.swift */; };
 		268D92E92609025400A43802 /* ASCIIArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92E82609025400A43802 /* ASCIIArt.swift */; };
 		26904A5A25F0CC87001BFBA5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 26904A5925F0CC87001BFBA5 /* README.md */; };
-		26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */; };
+		26904A5D25F0CD26001BFBA5 /* TerminalSegueOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26904A5C25F0CD26001BFBA5 /* TerminalSegueOld.swift */; };
 		2695155C2614F56C0020DD11 /* ASCIIArtLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */; };
 		2695156026151B2F0020DD11 /* LiteFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155F26151B2F0020DD11 /* LiteFigletView.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
@@ -148,6 +149,7 @@
 		2654883A26051B8B0044297D /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		2654884A260524460044297D /* TerminalCommandPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandPrompt.swift; sourceTree = "<group>"; };
 		2654884E2605247C0044297D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		26557EFC2619A77C00794B86 /* TerminalSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegue.swift; sourceTree = "<group>"; };
 		265848E8260BB48E009C0975 /* ASCIIArtTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtTheme.swift; sourceTree = "<group>"; };
 		265848ED260BB4A8009C0975 /* ASCIITestTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITestTheme.swift; sourceTree = "<group>"; };
 		265848F1260BB4B5009C0975 /* ASCIIMessageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIMessageTheme.swift; sourceTree = "<group>"; };
@@ -188,7 +190,7 @@
 		268D92E2260901F300A43802 /* ASCIIArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtView.swift; sourceTree = "<group>"; };
 		268D92E82609025400A43802 /* ASCIIArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArt.swift; sourceTree = "<group>"; };
 		26904A5925F0CC87001BFBA5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegue.swift; sourceTree = "<group>"; };
+		26904A5C25F0CD26001BFBA5 /* TerminalSegueOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegueOld.swift; sourceTree = "<group>"; };
 		2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtLineView.swift; sourceTree = "<group>"; };
 		2695155F26151B2F0020DD11 /* LiteFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteFigletView.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				2644045C26191A0400CA7EA1 /* command */,
 				2654882226050B710044297D /* TerminalView.swift */,
 				2654882626050B7F0044297D /* TerminalContent.swift */,
+				26557EFC2619A77C00794B86 /* TerminalSegue.swift */,
 			);
 			path = terminal;
 			sourceTree = "<group>";
@@ -651,7 +654,7 @@
 			children = (
 				265A00A725ED498300F479FA /* TerminalKeyboardView.swift */,
 				2689DA7025EE74E900F8B2EE /* TerminalText.swift */,
-				26904A5C25F0CD26001BFBA5 /* TerminalSegue.swift */,
+				26904A5C25F0CD26001BFBA5 /* TerminalSegueOld.swift */,
 				26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */,
 				26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */,
 			);
@@ -935,8 +938,9 @@
 				264404572619135E00CA7EA1 /* TerminalCommandCursor.swift in Sources */,
 				2678D972260E5D4A00DDB40F /* KeyboardSet.swift in Sources */,
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
+				26557EFD2619A77C00794B86 /* TerminalSegue.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
-				26904A5D25F0CD26001BFBA5 /* TerminalSegue.swift in Sources */,
+				26904A5D25F0CD26001BFBA5 /* TerminalSegueOld.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				2689DA7125EE74E900F8B2EE /* TerminalText.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,

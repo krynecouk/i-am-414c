@@ -12,22 +12,24 @@ struct TerminalView: View {
     @EnvironmentObject var contentVM: ContentViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
-    
+
     var body: some View {
             VStack(spacing: 0) {
                 TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols), testVM: testVM)
-                TerminalCommandLine()
-                ASCIIKeyboardView() { input in
-                    if (testVM.test != nil) {
-                        let solution = testVM.solve(with: input)
-                        switch solution {
-                        case .right:
-                            asciiVM.add(symbol: testVM.test!.symbol)
-                        default:
-                            print("not correct")
+                TerminalSegue(
+                    header: TerminalCommandLine()) {
+                    ASCIIKeyboardView() { input in
+                        if (testVM.test != nil) {
+                            let solution = testVM.solve(with: input)
+                            switch solution {
+                            case .right:
+                                asciiVM.add(symbol: testVM.test!.symbol)
+                            default:
+                                print("not correct")
+                            }
+                        } else {
+                            graphVM.process(ctx: GraphContext(input: input))
                         }
-                    } else {
-                        graphVM.process(ctx: GraphContext(input: input))
                     }
                 }
             }

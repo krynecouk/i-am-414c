@@ -12,7 +12,7 @@ struct TerminalSequeProps {
     static let INIT_HEIGHT: CGFloat = 50
 }
 
-struct TerminalSegue<Header: View, Content: View> : View {
+struct TerminalSegueOld<Header: View, Content: View> : View {
     
     @State var open: Bool = false
     @State var height: CGFloat = TerminalSequeProps.INIT_HEIGHT
@@ -58,9 +58,9 @@ struct TerminalSegue<Header: View, Content: View> : View {
     }
 }
 
-struct TerminalSegue_Previews: PreviewProvider {
+struct TerminalSegueOld_Previews: PreviewProvider {
     static var previews: some View {
-        TerminalSegue(header: Text("Click me")) {
+        TerminalSegueOld(header: Text("Click me")) {
             VStack {
                 Text("Some content")
             }

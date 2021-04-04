@@ -53,6 +53,7 @@ struct KeyboardView: View {
                     KeyboardKeyView("CR", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
+                        keyboardVM.isOpen = false
                     }
                 }
             }
@@ -70,6 +71,7 @@ struct KeyboardView: View {
                 self.size = (.infinity, keyboardH)
                 self.spaceKeySize = (spaceW, keyH)
                 self.specialKeySize = (specialW, keyH)
+                keyboardVM.setKeyboardSize(self.size)
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)

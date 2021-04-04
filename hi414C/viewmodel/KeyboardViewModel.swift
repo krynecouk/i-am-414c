@@ -8,7 +8,11 @@
 import SwiftUI
 
 class KeyboardViewModel: ObservableObject {
+    typealias Size = (width: CGFloat, height: CGFloat)
+    
     @Published private(set) var input: String = ""
+    @Published private(set) var keyboardSize: Size = (.infinity, 200)
+    @Published var isOpen: Bool = false
     
     func append(_ input: String) {
         self.input += input
@@ -20,5 +24,17 @@ class KeyboardViewModel: ObservableObject {
     
     func backspace() {
         self.input = String(input.dropLast())
+    }
+    
+    func setKeyboardSize(_ size: Size) {
+        self.keyboardSize = size
+    }
+    
+    func open() {
+        self.isOpen = true
+    }
+    
+    func close() {
+        self.isOpen = false
     }
 }

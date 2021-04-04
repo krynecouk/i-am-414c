@@ -58,7 +58,7 @@ struct PrimaryTheme: Themable {
                     font: (name: .terminus, size: 13),
                     color: .primary
                 ),
-                animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.8, force: 1, type: .wave)]
+                animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 0.3, color: .primary)]
             )
         )
     )

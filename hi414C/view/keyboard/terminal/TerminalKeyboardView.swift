@@ -49,7 +49,7 @@ struct TerminalKeyboardView: View {
     ]
 
     var body: some View {
-        TerminalSegue(header: Group {
+        TerminalSegueOld(header: Group {
             TerminalText(">")
             TerminalText(keyboardVM.input)
             //TerminalCommandPrompt(theme: )
