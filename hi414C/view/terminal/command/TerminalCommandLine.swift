@@ -27,9 +27,9 @@ struct TerminalCommandLine: View {
                 TerminalCommandCursor(theme: themeVM.terminal.commandLine.cursor)
                     .id(keyboardVM.input)
             }
-            .padding()
+            .padding(.all, 15)
         }
-        .background(Color("GoldBck").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
+        .background(themeVM.terminal.commandLine.view.background.edgesIgnoringSafeArea(.all))
     }
 }
 

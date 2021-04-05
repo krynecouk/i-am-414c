@@ -24,7 +24,7 @@ struct TerminalCommandCursor: View {
         Rectangle()
             .fill(theme.view.background!)
             .opacity(visible ? 1 : 0)
-            .frame(width: 20.5, height: 34.5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: 20.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .onReceive(timer) { _ in
                 withAnimation(self.animation) {
                     self.visible.toggle()

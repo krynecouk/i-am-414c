@@ -9,10 +9,13 @@ import SwiftUI
 
 struct TerminalSegue<Header: View, Content: View> : View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
-    @State var height: CGFloat = 0
+    @State var segueH: CGFloat = 0
+    @State var segueOpacity: CGFloat = 0
     
+    // commandline
     let header: Header
     let content: Content
+    let headerH: CGFloat = 64
     
     init(header: Header, @ViewBuilder content: () -> Content) {
         self.header = header
@@ -23,25 +26,20 @@ struct TerminalSegue<Header: View, Content: View> : View {
         VStack(spacing: 0) {
             header
                 .onTapGesture {
-                    if keyboardVM.isOpen {
-                        keyboardVM.isOpen = false
-                    } else {
-                        keyboardVM.isOpen = true
-                    }
+                    keyboardVM.isOpen
+                        ? keyboardVM.close()
+                        : keyboardVM.open()
                 }
-            
             content
         }
-        .animation(.spring())
-        .frame(height: keyboardVM.isOpen ? 60 + keyboardVM.keyboardSize.height : 60)
-        .onAppear {
-            print("is open: \(keyboardVM.isOpen)")
-            withAnimation(Animation.spring()) {
-                keyboardVM.isOpen = false
-                self.height = 60
-            }
-        }
+        .frame(height: withAnimation {
+            keyboardVM.isOpen ? headerH + keyboardVM.keyboardSize.height : headerH
+        })
         .id(keyboardVM.keyboardSize.height)
+        .onAppear {
+            keyboardVM.close()
+            self.segueH = headerH
+        }
     }
 }
 

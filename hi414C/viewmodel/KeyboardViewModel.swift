@@ -12,7 +12,7 @@ class KeyboardViewModel: ObservableObject {
     
     @Published private(set) var input: String = ""
     @Published private(set) var keyboardSize: Size = (.infinity, 200)
-    @Published var isOpen: Bool = false
+    @Published private(set) var isOpen: Bool = false
     
     func append(_ input: String) {
         self.input += input
