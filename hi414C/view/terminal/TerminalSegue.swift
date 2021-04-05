@@ -10,9 +10,8 @@ import SwiftUI
 struct TerminalSegue<Header: View, Content: View> : View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @State var segueH: CGFloat = 0
-    @State var segueOpacity: CGFloat = 0
+    @State var segueOpacity: Double = 0
     
-    // commandline
     let header: Header
     let content: Content
     let headerH: CGFloat = 64
@@ -31,22 +30,22 @@ struct TerminalSegue<Header: View, Content: View> : View {
                         : keyboardVM.open()
                 }
             content
+                .opacity(segueOpacity)
         }
-        .frame(height: withAnimation {
-            keyboardVM.isOpen ? headerH + keyboardVM.keyboardSize.height : headerH
-        })
+        .frame(height: segueH)
         .id(keyboardVM.keyboardSize.height)
         .onAppear {
             keyboardVM.close()
             self.segueH = headerH
         }
+        .onReceive(keyboardVM.$isOpen) { isOpen in
+            withAnimation {
+                self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
+            }
+            
+            withAnimation {
+                self.segueOpacity = isOpen ? 1 : 0 // TODO make only keys opacity 0
+            }
+        }
     }
 }
-
-/*
- struct TerminalSegue_Previews: PreviewProvider {
- static var previews: some View {
- TerminalSegue()
- }
- }
- */
