@@ -13,14 +13,25 @@ struct KeyboardKeyView: View {
     var width: CGFloat
     var height: CGFloat
     var theme: ViewTheme
+    var collapsable: Bool
     var onClick: (String) -> Void
     
-    init(_ label: String, value: String? = .none, symbol: ASCIISymbol? = .none, width: CGFloat, height: CGFloat, theme: ViewTheme, onClick: @escaping (String) -> Void = { _ in }) {
+    init(
+        _ label: String,
+        value: String? = .none,
+        symbol: ASCIISymbol? = .none,
+        width: CGFloat,
+        height: CGFloat,
+        theme: ViewTheme,
+        collapsable: Bool = true,
+        onClick: @escaping (String) -> Void = { _ in }) {
+        
         self.label = label
         self.value = value ?? label
         self.width = width
         self.height = height
         self.theme = theme
+        self.collapsable = collapsable
         self.onClick = onClick
     }
     
@@ -42,7 +53,7 @@ struct KeyboardKeyView: View {
     
     func KeyboardKeyLabel() -> some View {
         Group {
-            if label.count > 1 && self.width < 50 {
+            if collapsable && label.count > 1 && self.width < 50 {
                 VStack(spacing: 4) {
                     let offsetMargin = self.width / 6
                     let offsets = label.count == 2

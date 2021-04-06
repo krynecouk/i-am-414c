@@ -36,7 +36,7 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView("BS", width: keySize.width, height: keySize.height, theme: themeVM.keyboard.key.BS) { _ in
+                    KeyboardKeyView("<-", width: keySize.width + 10, height: keySize.height, theme: themeVM.keyboard.key.BS, collapsable: false) { _ in
                         keyboardVM.backspace()
                     }
                 }
@@ -48,7 +48,7 @@ struct KeyboardView: View {
                     KeyboardKeyView(space.label, value: space.value, width: self.spaceKeySize.width, height: keySize.height, theme: space.special ? themeVM.keyboard.key.special : themeVM.keyboard.key.default) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView("CR", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR) { _ in
+                    KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                         keyboardVM.close()
