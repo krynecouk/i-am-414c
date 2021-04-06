@@ -59,6 +59,13 @@ struct TerminalContent: View {
         }
     }
     
+    func Divider() -> some View {
+        Rectangle()
+            .fill(Color.gray.opacity(0.1))
+            .frame(width: 40, height: 70)
+            
+    }
+    
     func ASCIIArtViews(_ arts: [ASCIIPrintable], delay: Double) -> some View {
         ForEach(arts.indices) { i in
             ASCIIArtView(arts[i], theme: themeVM.ascii.art.withDelay(delay))

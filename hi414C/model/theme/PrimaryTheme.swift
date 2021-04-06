@@ -23,9 +23,9 @@ struct PrimaryTheme: Themable {
                     typeface: .ansi(.regular),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
-                        color: .gray
+                        color: Color.primary.opacity(0.2)
                     ),
-                    animations: [.print(), .bloom(speed: 0.3, color: .gray)]
+                    animations: [.print(), .bloom(speed: 0.3, color: .primary)]
                 )
             ),
             test: ASCIITestTheme.Test(
@@ -44,21 +44,21 @@ struct PrimaryTheme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
-                            color: .gray
+                            color: Color.primary.opacity(0.2)
                         ),
-                        animations: [.print(), .bloom(speed: 0.3, color: .gray)]
+                        animations: [.print(), .bloom(speed: 0.3, color: .primary)]
                     )
                 )
             )
         ),
         message: ASCIIMessageTheme(
             figlet: FigletTheme(
-                typeface: .ansi(.shadow),
+                typeface: .ansi(.regular),
                 view: ViewTheme(
                     font: (name: .terminus, size: 13),
                     color: .primary
                 ),
-                animations: [.print(dt: 0.3, animation: .none), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 0.3, color: .primary)]
+                animations: [.print(), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 0.3, color: .primary)]
             )
         )
     )

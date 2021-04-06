@@ -95,6 +95,7 @@
 		26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */; };
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26B10A2126027B08007E7B65 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B10A2026027B08007E7B65 /* Grid.swift */; };
+		26B23259261C6A1D0013FC39 /* BarASCIINode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23258261C6A1D0013FC39 /* BarASCIINode.swift */; };
 		26B39DBF25F6341F004E4D22 /* TerminalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */; };
 		26B39DC225F63795004E4D22 /* TerminalKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
@@ -209,6 +210,7 @@
 		26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestsTests.swift; path = hi414CTests/model/test/TestsTests.swift; sourceTree = SOURCE_ROOT; };
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26B10A2026027B08007E7B65 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		26B23258261C6A1D0013FC39 /* BarASCIINode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarASCIINode.swift; sourceTree = "<group>"; };
 		26B39DBE25F6341F004E4D22 /* TerminalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboard.swift; sourceTree = "<group>"; };
 		26B39DC125F63795004E4D22 /* TerminalKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalKeyboardButton.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 				26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */,
 				26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */,
 				26841023260A67A700C50F9A /* FooASCINode.swift */,
+				26B23258261C6A1D0013FC39 /* BarASCIINode.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B23259261C6A1D0013FC39 /* BarASCIINode.swift in Sources */,
 				2644041E2619007300CA7EA1 /* Themable.swift in Sources */,
 				2654882326050B710044297D /* TerminalView.swift in Sources */,
 				267A0D4F260C823400844927 /* ASCIIArtNode.swift in Sources */,

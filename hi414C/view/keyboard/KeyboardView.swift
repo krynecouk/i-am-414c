@@ -60,7 +60,12 @@ struct KeyboardView: View {
                 let frame = metrics.frame(in: .global)
                 let frameW = frame.size.width
                 let keyW: CGFloat = ((frameW - (self.spacing.horizontal * 9)) / 10)
-                let keyH: CGFloat = frameW > 500 ? 40 : 70
+                var keyH: CGFloat = frameW > 500 ? 40 : 70
+                // ipad
+                if frame.maxY > 800 {
+                    keyH = 70
+                }
+                
                 let specialW: CGFloat = (frameW - (7 * keyW + 8 * self.spacing.horizontal)) / 2
                 let spaceW = (frameW - (self.spacing.horizontal * 2) - (2 * specialW))
                 let keyboardH = (4 * keyH) + self.spacing.vertical * 3
