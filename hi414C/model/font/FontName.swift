@@ -5,7 +5,6 @@
 //  Created by Darius Kryszczuk on 01.03.2021.
 //
 
-import Foundation
 import SwiftUI
 
 enum FontName: String {
