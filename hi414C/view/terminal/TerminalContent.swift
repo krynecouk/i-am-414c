@@ -9,15 +9,16 @@ import SwiftUI
 
 struct TerminalContent: View {
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var testVM: TestViewModel
+    
     @State var activeTestId: String = ""
+    @State var attempt: Int = 0
     
     var items: [TerminalContentItem]
-    var testVM: TestViewModel
 
-    init(_ types: [TerminalContentType], testVM: TestViewModel) {
+    init(_ types: [TerminalContentType]) {
         self.items = types.map { TerminalContentItem($0) }
-        self.testVM = testVM
-        testVM.setTest(test: nil)
     }
     
     var body: some View {
@@ -29,12 +30,30 @@ struct TerminalContent: View {
                 }
                 if case let .message(symbols) = item.type {
                     FigletView(symbols, theme: themeVM.ascii.message.figlet.withDelay(delay))
+                        .onAppear {
+                            testVM.setTest(test: .none)
+                        }
                 }
                 if case let .symbol(symbol) = item.type {
                     FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withDelay(delay))
                 }
                 if case let .test(test, isCurrent) = item.type {
                     TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
+                }
+            }
+        }
+        .withShake(attempt: attempt)
+        .onReceive(testVM.$result) { result in
+            if case .wrong(_) = result {
+                withAnimation(.default) {
+                    self.attempt += 1
+                }
+            }
+        }
+        .onReceive(graphVM.$result) { result in
+            if case .error(_) = result {
+                withAnimation(.default) {
+                    self.attempt += 1
                 }
             }
         }
@@ -51,7 +70,7 @@ struct TerminalContent: View {
                     ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
                     : themeVM.ascii.test.test.passive.figlet.withDelay(delay))
             .onAppear {
-                if isCurrent && testVM.test == nil {
+                if isCurrent && activeTestId != id {
                     testVM.setTest(test: test)
                     activeTestId = id
                 }
@@ -79,12 +98,14 @@ enum TerminalContentType {
     case art([ASCIIPrintable])
 }
 
+
+
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
             .symbol(.H),
             .test(Tests[.I][0], true)
-        ], testVM: TestViewModel())
+        ])
         .withEnvironment()
     }
 }

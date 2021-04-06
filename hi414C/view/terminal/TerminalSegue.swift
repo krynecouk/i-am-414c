@@ -7,28 +7,36 @@
 
 import SwiftUI
 
-struct TerminalSegue<Header: View, Content: View> : View {
+struct TerminalSegue: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
+    
     @State var segueH: CGFloat = 0
-    
-    let header: Header
-    let content: Content
     let headerH: CGFloat = 64
-    
-    init(header: Header, @ViewBuilder content: () -> Content) {
-        self.header = header
-        self.content = content()
-    }
-    
+
     var body: some View {
         VStack(spacing: 0) {
-            header
+            TerminalCommandLine()
                 .onTapGesture {
                     keyboardVM.isOpen
                         ? keyboardVM.close()
                         : keyboardVM.open()
                 }
-            content
+            ASCIIKeyboardView() { input in
+                if (testVM.test != nil) {
+                    let solution = testVM.solve(with: input)
+                    switch solution {
+                    case .right:
+                        asciiVM.add(symbol: testVM.test!.symbol)
+                    default:
+                        print("not correct")
+                    }
+                } else {
+                    graphVM.traverse(ctx: GraphContext(input: input))
+                }
+            }
         }
         .frame(height: segueH)
         .id(keyboardVM.keyboardSize.height)

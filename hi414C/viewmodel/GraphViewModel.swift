@@ -9,6 +9,7 @@ import SwiftUI
 
 class GraphViewModel: ObservableObject {
     @Published private(set) var node: Node = Graphs.HI
+    @Published private(set) var result: GraphTraverseResult = .ok
     
     let toolkit: GraphToolkit
 
@@ -17,16 +18,15 @@ class GraphViewModel: ObservableObject {
         self.node.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
-    func process(ctx: GraphContext) {
+    func traverse(ctx: GraphContext) {
         self.node.onExit(ctx: ctx, toolkit: toolkit)
         let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(Graphs.HI.edges, ctx: ctx)
         if let node = targetNode {
-            print("in new node: ", node.id)
             self.node = node
             self.node.onEnter(ctx: ctx, toolkit: toolkit)
+            self.result = .ok
         } else {
-            print("node not found")
-            // TODO what to do when no edge is found?
+            self.result = .error("Node \(ctx.input) was not found")
         }
     }
     
@@ -38,4 +38,9 @@ class GraphViewModel: ObservableObject {
         }
         return .none
     }
+}
+
+enum GraphTraverseResult {
+    case ok
+    case error(String)
 }

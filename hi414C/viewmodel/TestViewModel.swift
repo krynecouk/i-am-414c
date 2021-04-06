@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    private(set) var test: Testable?
+    @Published private(set) var test: Testable? = .none
     @Published private(set) var result: TestResult = .right
     
     func setTest(test: Testable?) {
@@ -24,6 +24,7 @@ class TestViewModel: ObservableObject {
         } else {
             self.result = .wrong("No test was provided")
         }
+        print("test solved with \(self.result)")
         return self.result
     }
 }

@@ -154,7 +154,7 @@ struct TerminalKeyboard: View {
                                         print("not correct")
                                     }
                                 } else {
-                                    graphVM.process(ctx: GraphContext(input: keyboardVM.input))
+                                    graphVM.traverse(ctx: GraphContext(input: keyboardVM.input))
                                 }
                                 keyboardVM.delete()
                             }
