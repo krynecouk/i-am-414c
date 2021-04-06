@@ -10,7 +10,6 @@ import SwiftUI
 struct TerminalSegue<Header: View, Content: View> : View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @State var segueH: CGFloat = 0
-    @State var segueOpacity: Double = 0
     
     let header: Header
     let content: Content
@@ -30,7 +29,6 @@ struct TerminalSegue<Header: View, Content: View> : View {
                         : keyboardVM.open()
                 }
             content
-                .opacity(segueOpacity)
         }
         .frame(height: segueH)
         .id(keyboardVM.keyboardSize.height)
@@ -41,10 +39,6 @@ struct TerminalSegue<Header: View, Content: View> : View {
         .onReceive(keyboardVM.$isOpen) { isOpen in
             withAnimation {
                 self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
-            }
-            
-            withAnimation {
-                self.segueOpacity = isOpen ? 1 : 0 // TODO make only keys opacity 0
             }
         }
     }

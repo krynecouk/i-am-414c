@@ -8,8 +8,6 @@
 import SwiftUI
 
 class KeyboardViewModel: ObservableObject {
-    typealias Size = (width: CGFloat, height: CGFloat)
-    
     @Published private(set) var input: String = ""
     @Published private(set) var keyboardSize: Size = (.infinity, 200)
     @Published private(set) var isOpen: Bool = false

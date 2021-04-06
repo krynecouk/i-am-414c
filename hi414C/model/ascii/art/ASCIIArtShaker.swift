@@ -6,8 +6,8 @@
 //
 
 typealias Line = Int
-typealias Offset = (x: Float, y: Float)
-typealias Shaker = () -> [Line:Offset]
+typealias LineOffset = (x: Float, y: Float)
+typealias Shaker = () -> [Line:LineOffset]
 
 struct ASCIIArtShaker {
 
@@ -43,7 +43,7 @@ struct ASCIIArtShaker {
         let smallOffset = (force * Float.random(in: -1...1), force * Float.random(in: -1...1))
         let biggOffset = (force * Float.random(in: -2...2), force * Float.random(in: -0.5...0.5))
         return {
-            var result: [Line:Offset] = [:]
+            var result: [Line:LineOffset] = [:]
             if currentStep == 1 {
                 result.updateValue(smallOffset, forKey: Int.random(in: 0...lines/2))
                 result.updateValue(biggOffset, forKey: Int.random(in: 0...lines/2))

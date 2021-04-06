@@ -12,13 +12,11 @@ struct KeyboardView: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
-    typealias Size = (width: CGFloat, height: CGFloat)
-    typealias Space = (horizontal: CGFloat, vertical: CGFloat)
-    
     @State var side: KeyboardSide = .alphabetic
     @State var size: Size = (.infinity, 250)
     @State var spacing: Space = (4, 4)
     @State var keySize: Size = (50, 70)
+    @State var keyOffset: Offset = (0, 100)
     @State var spaceKeySize: Size = (200, 70)
     @State var specialKeySize: Size = (50, 70)
 
@@ -71,7 +69,13 @@ struct KeyboardView: View {
                 self.size = (.infinity, keyboardH)
                 self.spaceKeySize = (spaceW, keyH)
                 self.specialKeySize = (specialW, keyH)
+                
                 keyboardVM.setKeyboardSize(self.size)
+            }
+            .onReceive(keyboardVM.$isOpen) { isOpen in
+                withAnimation {
+                    self.keyOffset = isOpen ? (0,0) : (0, 100)
+                }
             }
         }
         .frame(maxWidth: self.size.width, maxHeight: self.size.height)
@@ -85,6 +89,7 @@ struct KeyboardView: View {
                     print("Clicked on \(key.label) with value \(key.value)")
                     keyboardVM.append(value)
                 }
+                .offset(x: keyOffset.x, y: keyOffset.y)
             }
         }
     }

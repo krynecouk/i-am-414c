@@ -24,5 +24,5 @@
 - Figlets in command line
 - command line prompt better
 - special symbols? - jednotne theme
-- 
+- BS on long press should delete
 

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ASCIIArtLineView: View {
     var line: String
-    var offset: Offset
+    var offset: LineOffset
     var visible: Bool
     var bloom: (speed: Double, color: Color)
     var theme: ViewTheme
     
-    init(_ line: String, theme: ViewTheme = ViewTheme(), visible: Bool = false, bloom: (speed: Double, color: Color), offset: Offset = (0,0)) {
+    init(_ line: String, theme: ViewTheme = ViewTheme(), visible: Bool = false, bloom: (speed: Double, color: Color), offset: LineOffset = (0,0)) {
         self.line = line
         self.theme = theme
         self.offset = offset

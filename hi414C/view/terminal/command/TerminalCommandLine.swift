@@ -15,13 +15,13 @@ struct TerminalCommandLine: View {
         ScrollView(.horizontal) {
             HStack(alignment: .center, spacing: 0) {
                 TerminalCommandPrompt(theme: themeVM.terminal.commandLine.prompt)
-                .padding(.trailing, 15)
+                .padding(.trailing, 17)
                 ForEach(Array(keyboardVM.input.enumerated()), id: \.offset) { i, char in
                     Text(String(char))
-                        .offset(y: 2)
+                        .offset(y: 4)
                         .withTheme(themeVM.terminal.commandLine.text.view)
                         .bloomFadeOut(speed: themeVM.terminal.commandLine.text.bloom.speed, color: themeVM.terminal.commandLine.text.bloom.color)
-                        .padding(.trailing, 3)
+                        .padding(.trailing, 4)
                     
                 }
                 TerminalCommandCursor(theme: themeVM.terminal.commandLine.cursor)
@@ -29,6 +29,7 @@ struct TerminalCommandLine: View {
             }
             .padding(.all, 15)
         }
+        .frame(height: 64)
         .background(themeVM.terminal.commandLine.view.background.edgesIgnoringSafeArea(.all))
     }
 }

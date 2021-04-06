@@ -10,7 +10,7 @@ import Combine
 
 struct ASCIIArtView: View {
     @State var printLine: Line = 0
-    @State var shakeLines: [Line:Offset] = [:]
+    @State var shakeLines: [Line:LineOffset] = [:]
     @State var isPrintDelayFinished = true
     
     var print: ASCIIPrintable
