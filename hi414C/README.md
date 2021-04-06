@@ -6,6 +6,18 @@
 
 # HI 414C
 
+## Story
+Hlavni protagonista najde rozbiteho robota. Tomu se rozsviti hlavni display a zacne s nim komunikovat pomoci binary. Hrac se v prvni polovine hry (binary cast) dozvida, ze:
+- se jmenuje AL;
+- robot zna jeho jmeno;
+- robot se jmenuje 414C;
+- robot je rozbity;
+
+Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni protagonista dozvida, ze:
+- se jmenuje 414C (AL v HEX);
+- on je robotem;
+- je v komatu;
+
 ## TODO
 
 ### Visuals
@@ -25,4 +37,3 @@
 - command line prompt better
 - special symbols? - jednotne theme
 - BS on long press should delete
-

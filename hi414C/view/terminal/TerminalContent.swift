@@ -36,6 +36,7 @@ struct TerminalContent: View {
                 }
                 if case let .symbol(symbol) = item.type {
                     FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withDelay(delay))
+                    Divider()
                 }
                 if case let .test(test, isCurrent) = item.type {
                     TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
@@ -62,7 +63,7 @@ struct TerminalContent: View {
     func Divider() -> some View {
         Rectangle()
             .fill(Color.gray.opacity(0.1))
-            .frame(width: 40, height: 70)
+            .frame(width: .infinity, height: 70)
             
     }
     
@@ -104,8 +105,6 @@ enum TerminalContentType {
     case message([ASCIISymbol])
     case art([ASCIIPrintable])
 }
-
-
 
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
