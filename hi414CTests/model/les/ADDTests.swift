@@ -12,7 +12,7 @@ import XCTest
 class ADDTests: XCTestCase {
 
     func test_of_ADD_equations() {
-        let result = ADD() => 65
+        let result = AND() => 65
         print(result)
         print(result.x & result.y)
         print(result.x & result.y == result.result)

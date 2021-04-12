@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CathodeView<Content: View> : View {
+struct CathodeView<Content: View>: View {
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
