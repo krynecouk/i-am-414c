@@ -78,10 +78,12 @@
 		26904A5A25F0CC87001BFBA5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 26904A5925F0CC87001BFBA5 /* README.md */; };
 		2695155C2614F56C0020DD11 /* ASCIIArtLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */; };
 		2695156026151B2F0020DD11 /* LiteFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155F26151B2F0020DD11 /* LiteFigletView.swift */; };
-		269764D3262483BA00775D71 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764D2262483BA00775D71 /* Operation.swift */; };
-		269764DA262483E800775D71 /* ADDer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764D9262483E800775D71 /* ADDer.swift */; };
-		269764DE262483F800775D71 /* LinearEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764DD262483F800775D71 /* LinearEquation.swift */; };
+		269764DA262483E800775D71 /* ADD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764D9262483E800775D71 /* ADD.swift */; };
+		269764DE262483F800775D71 /* Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764DD262483F800775D71 /* Equation.swift */; };
 		269764E22624845200775D71 /* FooTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764E12624845200775D71 /* FooTest.swift */; };
+		269764F02624981700775D71 /* EquationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764EF2624981700775D71 /* EquationResult.swift */; };
+		269764F926249A7200775D71 /* ADDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764F826249A7200775D71 /* ADDTests.swift */; };
+		2697650126249D0900775D71 /* UInt8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697650026249D0900775D71 /* UInt8.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
@@ -188,10 +190,12 @@
 		26904A5925F0CC87001BFBA5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtLineView.swift; sourceTree = "<group>"; };
 		2695155F26151B2F0020DD11 /* LiteFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteFigletView.swift; sourceTree = "<group>"; };
-		269764D2262483BA00775D71 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
-		269764D9262483E800775D71 /* ADDer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADDer.swift; sourceTree = "<group>"; };
-		269764DD262483F800775D71 /* LinearEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearEquation.swift; sourceTree = "<group>"; };
+		269764D9262483E800775D71 /* ADD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADD.swift; sourceTree = "<group>"; };
+		269764DD262483F800775D71 /* Equation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
 		269764E12624845200775D71 /* FooTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooTest.swift; sourceTree = "<group>"; };
+		269764EF2624981700775D71 /* EquationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationResult.swift; sourceTree = "<group>"; };
+		269764F826249A7200775D71 /* ADDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADDTests.swift; path = hi414CTests/model/les/ADDTests.swift; sourceTree = SOURCE_ROOT; };
+		2697650026249D0900775D71 /* UInt8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt8.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 			children = (
 				26AF9F8525FFAD4600B77E0A /* String.swift */,
 				266A43B3261C229700C7855C /* Metrics.swift */,
+				2697650026249D0900775D71 /* UInt8.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -602,9 +607,17 @@
 		269764D12624839900775D71 /* les */ = {
 			isa = PBXGroup;
 			children = (
-				269764D2262483BA00775D71 /* Operation.swift */,
-				269764D9262483E800775D71 /* ADDer.swift */,
-				269764DD262483F800775D71 /* LinearEquation.swift */,
+				269764D9262483E800775D71 /* ADD.swift */,
+				269764DD262483F800775D71 /* Equation.swift */,
+				269764EF2624981700775D71 /* EquationResult.swift */,
+			);
+			path = les;
+			sourceTree = "<group>";
+		};
+		269764F726249A3700775D71 /* les */ = {
+			isa = PBXGroup;
+			children = (
+				269764F826249A7200775D71 /* ADDTests.swift */,
 			);
 			path = les;
 			sourceTree = "<group>";
@@ -624,6 +637,7 @@
 		26AF9F7525FFA62700B77E0A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				269764F726249A3700775D71 /* les */,
 				26DA68C52609F55B00AF0583 /* ascii */,
 				267E73FB25FFC5EF004E18E0 /* test */,
 				26AF9F7625FFA62D00B77E0A /* graph */,
@@ -871,10 +885,9 @@
 				2695156026151B2F0020DD11 /* LiteFigletView.swift in Sources */,
 				2649527E260267DA0045BC21 /* Environment.swift in Sources */,
 				265848EE260BB4A8009C0975 /* ASCIITestTheme.swift in Sources */,
-				269764DA262483E800775D71 /* ADDer.swift in Sources */,
+				269764DA262483E800775D71 /* ADD.swift in Sources */,
 				2695155C2614F56C0020DD11 /* ASCIIArtLineView.swift in Sources */,
 				2654882726050B7F0044297D /* TerminalContent.swift in Sources */,
-				269764D3262483BA00775D71 /* Operation.swift in Sources */,
 				267A0D74260C8BB400844927 /* AnimalASCIIArts.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				2678D986260E81BD00DDB40F /* Keyboard.swift in Sources */,
@@ -893,6 +906,7 @@
 				2678D96D260E4D2700DDB40F /* KeyboardKeyView.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
 				2644042E2619051C00CA7EA1 /* ASCIITheme.swift in Sources */,
+				269764F02624981700775D71 /* EquationResult.swift in Sources */,
 				2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */,
 				268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
@@ -930,11 +944,12 @@
 				26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				2678D978260E5D5B00DDB40F /* KeyboardPart.swift in Sources */,
-				269764DE262483F800775D71 /* LinearEquation.swift in Sources */,
+				269764DE262483F800775D71 /* Equation.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */,
 				264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
+				2697650126249D0900775D71 /* UInt8.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,6 +958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */,
+				269764F926249A7200775D71 /* ADDTests.swift in Sources */,
 				26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */,
 				26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */,
 				26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */,
