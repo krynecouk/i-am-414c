@@ -34,7 +34,7 @@ private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) 
                     result.append(.symbol(symbol))
                     return
                 }
-                let test = Tests[symbol][0]
+                let test = FooTest() // TODO
                 if testWasSetup {
                     result.append(.test(test, false))
                     return

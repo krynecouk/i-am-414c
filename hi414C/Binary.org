@@ -1,0 +1,39 @@
+#+TITLE: Binary
+
+* Bitwise Operations
+** AND ~&~
+*** Usage
+**** Bit masking
+- used to determine whether a particular bit is set (1) or clear (0);
+- bit masking (masking tape ~ 0 covers what should not be altered);
+
+  #+name: 00X0 bit masking
+  #+begin_src
+    0011 (decimal 3)
+AND 0010 (decimal 2)
+  = 0010 (decimal 2)
+  #+end_src
+**** Parity
+- even/odd
+
+  #+name: even parity
+  #+begin_src
+    0110 (decimal 6)
+AND 0001 (decimal 1)
+  = 0000 (decimal 0)
+  #+end_src
+*** Tutorial
+0000&1111=0000|1111&1111=1111
+
+** OR  ~|~
+** NOT ~~~
+** XOR ~^~
+** SHL ~<<~
+** SHR ~>>~
+
+* Binary Arithmetics
+** ADD            ~+~
+** SUB            ~-~
+** MODULO         ~%~
+** DIVISION       ~/~
+** MULTIPLICATIOn ~*~

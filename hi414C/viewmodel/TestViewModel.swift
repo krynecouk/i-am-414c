@@ -8,10 +8,10 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    @Published private(set) var test: Testable? = .none
+    @Published private(set) var test: Test? = .none
     @Published private(set) var result: TestResult = .right
     
-    func setTest(test: Testable?) {
+    func setTest(test: Test?) {
         if let test = self.test {
             print("current test: ", test.test)
         }
@@ -19,8 +19,10 @@ class TestViewModel: ObservableObject {
     }
     
     func solve(with value: String) -> TestResult {
-        if let test = self.test {
-            self.result = test.solve(with: value)
+        //if let test = self.test {
+        if self.test != nil {
+            print("BACHA TOHLE MUSIS OPRAVIT")
+            //self.result = test.solve(with: value)
         } else {
             self.result = .wrong("No test was provided")
         }
