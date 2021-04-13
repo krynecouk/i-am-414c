@@ -50,4 +50,16 @@ class EquationTests: XCTestCase {
         print(~eq.x!)
         print(~eq.x! == eq.result)
     }
+    
+    func test_of_SHL_equations() {
+        print(ADD() => 65)
+        //let result = 65 << 1
+        
+        /*
+        let eq = SHL() => 65
+        print(eq)
+        print(~eq.x!)
+        print(~eq.x! == eq.result)
+        */
+    }
 }
