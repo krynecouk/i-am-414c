@@ -11,16 +11,35 @@ import XCTest
 
 class EquationTests: XCTestCase {
     
+    func test_of_ADD_equations() {
+        let result = AND() => 65
+        print(result)
+        print(result.x & result.y)
+        print(result.x & result.y == result.result)
+    }
+    
     func test_of_OR_equations() {
-        let result =
+        let eq =
             OR(
                 AND(
                     OR(),
                     OR()
                 )
+            ) => 97
+        print(eq)
+        print(eq.x | eq.y)
+        print(eq.x | eq.y == eq.result)
+    }
+    
+    func test_of_XOR_equations() {
+        let eq =
+            XOR(
+                OR(
+                    AND()
+                )
             ) => 65
-        print(result)
-        print(result.x | result.y)
-        print(result.x | result.y == result.result)
+        print(eq)
+        print(eq.x ^ eq.y)
+        print(eq.x ^ eq.y == eq.result)
     }
 }
