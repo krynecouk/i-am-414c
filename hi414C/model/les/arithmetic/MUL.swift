@@ -7,6 +7,30 @@
 
 import Foundation
 
-func getAllDenominators(for value: UInt8) -> [UInt8] {
-    (1...(value/2)).filter { value % $0 == 0 } + [value]
+struct MUL: Equation {
+    var x: Equation
+    var y: Equation
+    
+    init(_ x: Equation = ID(), _ y: Equation = ID()) {
+        self.x = x
+        self.y = y
+    }
+    
+    func eq(_ result: UInt8) -> EquationResult {
+        let denominators = getAllDenominators(for: result)
+        let y: UInt8 = result / denominators.randomElement()!
+        let x: UInt8 = result / y
+        
+        let xResult = self.x.eq(x)
+        let yResult = self.y.eq(y)
+        
+        let xText = self.x is ID ? xResult.text : "(\(xResult.text))"
+        let yText = self.y is ID ? yResult.text : "(\(yResult.text))"
+                
+        return EquationResult(x: x, y: y, result: result, text: "\(xText)*\(yText)")
+    }
+    
+    func getAllDenominators(for value: UInt8) -> [UInt8] {
+        (1...(value/2)).filter { value % $0 == 0 } + [value]
+    }
 }
