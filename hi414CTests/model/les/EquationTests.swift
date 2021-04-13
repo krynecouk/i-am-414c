@@ -14,8 +14,8 @@ class EquationTests: XCTestCase {
     func test_of_ADD_equations() {
         let result = AND() => 65
         print(result)
-        print(result.x & result.y)
-        print(result.x & result.y == result.result)
+        print(result.x! & result.y!)
+        print(result.x! & result.y! == result.result)
     }
     
     func test_of_OR_equations() {
@@ -27,8 +27,8 @@ class EquationTests: XCTestCase {
                 )
             ) => 97
         print(eq)
-        print(eq.x | eq.y)
-        print(eq.x | eq.y == eq.result)
+        print(eq.x! | eq.y!)
+        print(eq.x! | eq.y! == eq.result)
     }
     
     func test_of_XOR_equations() {
@@ -39,7 +39,15 @@ class EquationTests: XCTestCase {
                 )
             ) => 65
         print(eq)
-        print(eq.x ^ eq.y)
-        print(eq.x ^ eq.y == eq.result)
+        print(eq.x! ^ eq.y!)
+        print(eq.x! ^ eq.y! == eq.result)
+    }
+    
+    func test_of_NOT_equations() {
+        let eq =
+            NOT() => 65
+        print(eq)
+        print(~eq.x!)
+        print(~eq.x! == eq.result)
     }
 }
