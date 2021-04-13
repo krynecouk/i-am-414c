@@ -91,6 +91,8 @@
 		269765262625705A00775D71 /* SHL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765252625705A00775D71 /* SHL.swift */; };
 		269765322625EE3300775D71 /* ADD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765312625EE3300775D71 /* ADD.swift */; };
 		269765382625F09700775D71 /* SUB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765372625F09700775D71 /* SUB.swift */; };
+		2697653C26260E4B00775D71 /* DIV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697653B26260E4B00775D71 /* DIV.swift */; };
+		269765402626128F00775D71 /* MUL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697653F2626128F00775D71 /* MUL.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
@@ -210,6 +212,8 @@
 		269765252625705A00775D71 /* SHL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHL.swift; sourceTree = "<group>"; };
 		269765312625EE3300775D71 /* ADD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADD.swift; sourceTree = "<group>"; };
 		269765372625F09700775D71 /* SUB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUB.swift; sourceTree = "<group>"; };
+		2697653B26260E4B00775D71 /* DIV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIV.swift; sourceTree = "<group>"; };
+		2697653F2626128F00775D71 /* MUL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUL.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
@@ -655,6 +659,8 @@
 			children = (
 				269765312625EE3300775D71 /* ADD.swift */,
 				269765372625F09700775D71 /* SUB.swift */,
+				2697653B26260E4B00775D71 /* DIV.swift */,
+				2697653F2626128F00775D71 /* MUL.swift */,
 			);
 			path = arithmetic;
 			sourceTree = "<group>";
@@ -982,6 +988,7 @@
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
 				269765322625EE3300775D71 /* ADD.swift in Sources */,
 				26557EFD2619A77C00794B86 /* TerminalSegue.swift in Sources */,
+				269765402626128F00775D71 /* MUL.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
@@ -989,6 +996,7 @@
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				2678D978260E5D5B00DDB40F /* KeyboardPart.swift in Sources */,
 				269764DE262483F800775D71 /* Equation.swift in Sources */,
+				2697653C26260E4B00775D71 /* DIV.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */,
 				264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */,
