@@ -52,7 +52,7 @@ class EquationTests: XCTestCase {
     }
     
     func test_of_SHL_equations() {
-        print(ADD() => 65)
+        print(SUB() => 65)
         //let result = 65 << 1
         
         /*
