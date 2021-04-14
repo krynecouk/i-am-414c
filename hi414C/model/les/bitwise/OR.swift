@@ -32,9 +32,9 @@ struct OR: Equation {
         let xResult = self.x.eq(UInt8.from(bin: xByte))
         let yResult = self.y.eq(UInt8.from(bin: yByte))
         
-        let xText = self.x is ID ? xResult.text : "(\(xResult.text))"
-        let yText = self.y is ID ? yResult.text : "(\(yResult.text))"
+        let xParts = xResult.parts.withParen(!(self.x is ID))
+        let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return EquationResult(x: UInt8.from(bin: xByte), y: UInt8.from(bin: yByte), result: result, text: "\(xText)|\(yText)")
+        return EquationResult(x: UInt8.from(bin: xByte), y: UInt8.from(bin: yByte), result: result, parts: xParts + [.OP(.OR)] + yParts)
     }
 }

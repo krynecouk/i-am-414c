@@ -24,8 +24,8 @@ struct NOT: Equation {
         }
         
         let xResult = self.x.eq(UInt8.from(bin: xByte))
-        let xText = self.x is ID ? xResult.text : "(\(xResult.text))"
+        let xParts = xResult.parts.withParen(!(self.x is ID))
                 
-        return EquationResult(x: UInt8.from(bin: xByte), result: result, text: "~\(xText)")
+        return EquationResult(x: UInt8.from(bin: xByte), result: result, parts: [.OP(.NOT)] + xParts)
     }
 }

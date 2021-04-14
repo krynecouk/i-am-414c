@@ -22,9 +22,9 @@ struct DIV: Equation {
         let xResult = self.x.eq(x)
         let yResult = self.y.eq(y)
         
-        let xText = self.x is ID ? xResult.text : "(\(xResult.text))"
-        let yText = self.y is ID ? yResult.text : "(\(yResult.text))"
+        let xParts = xResult.parts.withParen(!(self.x is ID))
+        let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return EquationResult(x: x, y: y, result: result, text: "\(xText)/\(yText)")
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.DIV)] + yParts)
     }
 }

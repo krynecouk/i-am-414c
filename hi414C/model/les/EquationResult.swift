@@ -9,6 +9,12 @@ struct EquationResult {
     var x: UInt8 = 0
     var y: UInt8 = 0
     var result: UInt8
-    var text: String
-    //func solve: () -> Bool
+    var parts: EquationParts
+    //var solve: () -> Bool
+}
+
+extension EquationResult {
+    func toString() -> String {
+        self.parts.toString()
+    }
 }

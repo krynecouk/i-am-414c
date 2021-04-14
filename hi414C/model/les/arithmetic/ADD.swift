@@ -33,9 +33,9 @@ struct ADD: Equation {
         let xResult = self.x.equation.eq(x)
         let yResult = self.y.equation.eq(y)
         
-        let xText = self.x.equation is ID ? xResult.text : "(\(xResult.text))"
-        let yText = self.y.equation is ID ? yResult.text : "(\(yResult.text))"
+        let xParts = xResult.parts.withParen(!(self.x.equation is ID))
+        let yParts = yResult.parts.withParen(!(self.y.equation is ID))
                 
-        return EquationResult(x: x, y: y, result: result, text: "\(xText)+\(yText)")
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.ADD)] + yParts)
     }
 }

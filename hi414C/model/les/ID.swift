@@ -7,6 +7,6 @@
 
 struct ID: Equation {
     func eq(_ result: UInt8) -> EquationResult {
-        EquationResult(x: result, result: result, text: result.toByteStr())
+        EquationResult(x: result, result: result, parts: [.NUM(result)])
     }
 }
