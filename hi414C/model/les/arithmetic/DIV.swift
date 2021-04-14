@@ -15,6 +15,10 @@ struct DIV: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
+        if result == 0 {
+            return ID() => result
+        }
+        
         let maxMultiplicator = 255 / result
         let y = UInt8.random(in: 1...maxMultiplicator)
         let x = result * y

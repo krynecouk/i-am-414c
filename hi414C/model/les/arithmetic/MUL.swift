@@ -17,8 +17,8 @@ struct MUL: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
-        let y: UInt8 = result / result.getRndDenominator()
-        let x: UInt8 = result / y
+        let y: UInt8 = result == 0 ? 0 : result / result.getRndDenominator()
+        let x: UInt8 = y == 0 ? UInt8.random(in: 0...128) : result / y
         
         let xResult = self.x.eq(x)
         let yResult = self.y.eq(y)

@@ -17,6 +17,10 @@ struct SHR: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
+        if result == 0 {
+            return ID() => 0
+        }
+        
         let modulo = result % 2
         let toSHR = result - modulo
         
@@ -33,7 +37,7 @@ struct SHR: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, test: { x >> y == result })
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, test: { x >> y == toSHR })
     }
     
     func getMultiplications(from value: UInt8) -> [UInt8] {

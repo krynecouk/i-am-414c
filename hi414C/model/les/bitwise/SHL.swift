@@ -17,6 +17,10 @@ struct SHL: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
+        if result == 0 {
+            return ID() => 0
+        }
+        
         let modulo = result % 2
         let toSHL = result - modulo
         
@@ -24,7 +28,8 @@ struct SHL: Equation {
             return ADD(SHL(), (ID(), modulo)) => result
         }
         
-        let x: UInt8 = toSHL.getRndDenominator()
+        let denominators = toSHL.getAllDenominators().filter { [2, 4, 8, 16, 32, 64, 128].contains(toSHL/$0) }
+        let x: UInt8 = denominators.randomElement()!
         let y: UInt8 = UInt8(log2(Double(toSHL/x)))
                 
         let xResult = self.x.eq(x)
@@ -33,6 +38,6 @@ struct SHL: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHL)] + yParts, test: { x << y == result })
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHL)] + yParts, test: { x << y == toSHL })
     }
 }

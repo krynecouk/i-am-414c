@@ -15,7 +15,11 @@ extension UInt8 {
     }
     
     func getAllDenominators() -> [UInt8] {
-        (1...(self/2)).filter { self % $0 == 0 } + [self]
+        if self == 1 {
+            return [self]
+        }
+        
+        return (1...(self/2)).filter { self % $0 == 0 } + [self]
     }
     
     func getRndDenominator() -> UInt8 {
