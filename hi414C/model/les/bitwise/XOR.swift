@@ -18,7 +18,7 @@ struct XOR: Equation {
         var xByte: String = ""
         var yByte: String = ""
         
-        result.toByteStr().forEach { bit in
+        result.toBinStr().forEach { bit in
             if bit == "0" {
                 let rnd = Int.random(in: 0...1)
                 xByte += String(rnd)
@@ -36,6 +36,9 @@ struct XOR: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return EquationResult(x: UInt8.from(bin: xByte), y: UInt8.from(bin: yByte), result: result, parts: xParts + [.OP(.XOR)] + yParts)
+        let x: UInt8 = UInt8.from(bin: xByte)
+        let y: UInt8 = UInt8.from(bin: yByte)
+        
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.XOR)] + yParts, test: { x ^ y == result })
     }
 }

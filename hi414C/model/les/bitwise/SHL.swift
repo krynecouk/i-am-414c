@@ -33,6 +33,6 @@ struct SHL: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHL)] + yParts)
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHL)] + yParts, test: { x << y == result })
     }
 }

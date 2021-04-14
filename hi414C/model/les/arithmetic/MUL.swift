@@ -26,6 +26,6 @@ struct MUL: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.MUL)] + yParts)
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.MUL)] + yParts, test: { x * y == result })
     }
 }

@@ -17,5 +17,6 @@ class EquationTests: XCTestCase {
         print(result.x & result.y)
         print(result.x & result.y == result.result)
         print(result.toString())
+        print(result.test())
     }
 }

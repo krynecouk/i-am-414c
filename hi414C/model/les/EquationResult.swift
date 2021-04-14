@@ -10,11 +10,5 @@ struct EquationResult {
     var y: UInt8 = 0
     var result: UInt8
     var parts: EquationParts
-    //var solve: () -> Bool
-}
-
-extension EquationResult {
-    func toString() -> String {
-        self.parts.toString()
-    }
+    var test: () -> Bool
 }

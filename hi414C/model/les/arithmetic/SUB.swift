@@ -24,7 +24,7 @@ struct SUB: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SUB)] + yParts)
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SUB)] + yParts, test: { x - y == result })
     }
 }
 

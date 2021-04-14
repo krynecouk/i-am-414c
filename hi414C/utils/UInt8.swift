@@ -6,8 +6,12 @@
 //
 
 extension UInt8 {
-    func toByteStr() -> String {
+    func toBinStr() -> String {
         String(self, radix: 2).pad(with: "0", toLength: 8)
+    }
+    
+    func toHexStr() -> String {
+        String(self, radix: 16)
     }
     
     func getAllDenominators() -> [UInt8] {

@@ -24,23 +24,29 @@ enum EquationOperator: String {
     case RHL = ">>"
 }
 
+extension EquationResult {
+    func toString(radix: EquationRadix = .bin) -> String {
+        self.parts.toString(radix: radix)
+    }
+}
+
 extension EquationParts {
     func withParen(_ flag: Bool = true) -> Self {
         flag ? [.LP] + self + [.RP] : self
     }
     
-    func toString() -> String {
+    func toString(radix: EquationRadix = .bin) -> String {
         self.map { $0.toString() }.joined()
     }
 }
 
 extension EquationPart {
-    func toString() -> String {
+    func toString(radix: EquationRadix = .bin) -> String {
         switch self {
         case .LP:
             return "("
         case let .NUM(num):
-            return num.toByteStr() // TODO hex
+            return radix == .bin ? num.toBinStr() : num.toHexStr().uppercased()
         case .RP:
             return ")"
         case let .OP(op):

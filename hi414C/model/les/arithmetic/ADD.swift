@@ -36,6 +36,6 @@ struct ADD: Equation {
         let xParts = xResult.parts.withParen(!(self.x.equation is ID))
         let yParts = yResult.parts.withParen(!(self.y.equation is ID))
                 
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.ADD)] + yParts)
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.ADD)] + yParts, test: { x + y == result })
     }
 }

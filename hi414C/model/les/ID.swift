@@ -7,6 +7,6 @@
 
 struct ID: Equation {
     func eq(_ result: UInt8) -> EquationResult {
-        EquationResult(x: result, result: result, parts: [.NUM(result)])
+        EquationResult(x: result, result: result, parts: [.NUM(result)], test: { result == result })
     }
 }

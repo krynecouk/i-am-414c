@@ -18,7 +18,7 @@ struct AND: Equation {
         var xByte: String = ""
         var yByte: String = ""
         
-        result.toByteStr().forEach { bit in
+        result.toBinStr().forEach { bit in
             if bit == "1" {
                 xByte += "1"
                 yByte += "1"
@@ -35,6 +35,9 @@ struct AND: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return EquationResult(x: UInt8.from(bin: xByte), y: UInt8.from(bin: yByte), result: result, parts: xParts + [.OP(.AND)] + yParts)
+        let x: UInt8 = UInt8.from(bin: xByte)
+        let y: UInt8 = UInt8.from(bin: yByte)
+        
+        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.AND)] + yParts, test: { x & y == result })
     }
 }

@@ -15,7 +15,7 @@ struct NOT: Equation {
     func eq(_ result: UInt8) -> EquationResult {
         var xByte: String = ""
         
-        result.toByteStr().forEach { bit in
+        result.toBinStr().forEach { bit in
             if bit == "1" {
                 xByte += "0"
             } else {
@@ -25,7 +25,9 @@ struct NOT: Equation {
         
         let xResult = self.x.eq(UInt8.from(bin: xByte))
         let xParts = xResult.parts.withParen(!(self.x is ID))
+        
+        let x: UInt8 = UInt8.from(bin: xByte)
                 
-        return EquationResult(x: UInt8.from(bin: xByte), result: result, parts: [.OP(.NOT)] + xParts)
+        return EquationResult(x: x, result: result, parts: [.OP(.NOT)] + xParts, test: { ~x == result })
     }
 }
