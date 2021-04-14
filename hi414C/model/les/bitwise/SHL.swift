@@ -5,6 +5,8 @@
 //  Created by Darius Kryszczuk on 13.04.2021.
 //
 
+import Foundation
+
 struct SHL: Equation {
     var x: Equation
     var y: Equation
@@ -15,30 +17,24 @@ struct SHL: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
-        if result % 2 != 0 {
-            print("BIT WILL LOST")
+        let modulo = result % 2
+        let toSHL = result - modulo
+        
+        if modulo != 0 {
+            return ADD(SHL(), (ID(), modulo)) => result
         }
         
-        var xByte: String = ""
-        var yByte: String = ""
-        
-        result.toByteStr().forEach { bit in
-            if bit == "1" {
-                xByte += "1"
-                yByte += "1"
-            } else {
-                let rnd = Int.random(in: 0...1)
-                xByte += String(rnd)
-                yByte += rnd == 1 ? "0" : "1"
-            }
-        }
-        
-        let xResult = self.x.eq(UInt8.from(bin: xByte))
-        let yResult = self.y.eq(UInt8.from(bin: yByte))
+        let x: UInt8 = toSHL.getRndDenominator()
+        let y: UInt8 = UInt8(log2(Double(toSHL/x)))
+                
+        let xResult = self.x.eq(x)
+        let yResult = self.y.eq(y)
         
         let xText = self.x is ID ? xResult.text : "(\(xResult.text))"
         let yText = self.y is ID ? yResult.text : "(\(yResult.text))"
-                
-        return EquationResult(x: UInt8.from(bin: xByte), y: UInt8.from(bin: yByte), result: result, text: "\(xText)&\(yText)")
+        
+        return EquationResult(x: x, y: y, result: result, text: "\(xText)<<\(yText)")
     }
+    
+    
 }

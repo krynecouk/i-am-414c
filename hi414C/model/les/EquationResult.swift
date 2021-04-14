@@ -6,8 +6,9 @@
 //
 
 struct EquationResult {
-    var x: UInt8?
-    var y: UInt8?
+    var x: UInt8 = 0
+    var y: UInt8 = 0
     var result: UInt8
     var text: String
+    //func solve: () -> Bool
 }

@@ -17,8 +17,7 @@ struct MUL: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
-        let denominators = getAllDenominators(for: result)
-        let y: UInt8 = result / denominators.randomElement()!
+        let y: UInt8 = result / result.getRndDenominator()
         let x: UInt8 = result / y
         
         let xResult = self.x.eq(x)
@@ -28,9 +27,5 @@ struct MUL: Equation {
         let yText = self.y is ID ? yResult.text : "(\(yResult.text))"
                 
         return EquationResult(x: x, y: y, result: result, text: "\(xText)*\(yText)")
-    }
-    
-    func getAllDenominators(for value: UInt8) -> [UInt8] {
-        (1...(value/2)).filter { value % $0 == 0 } + [value]
     }
 }
