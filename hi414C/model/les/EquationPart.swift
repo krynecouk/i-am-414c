@@ -21,7 +21,7 @@ enum EquationOperator: String {
     case XOR = "^"
     case NOT = "~"
     case SHL = "<<"
-    case RHL = ">>"
+    case SHR = ">>"
 }
 
 extension EquationResult {

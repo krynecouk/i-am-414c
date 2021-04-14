@@ -12,11 +12,12 @@ import XCTest
 class EquationTests: XCTestCase {
     
     func test_of_ADD_equations() {
-        let result = AND(OR(), AND()) => 65
+        let result = SHR() => 1
         print(result)
         print(result.x & result.y)
         print(result.x & result.y == result.result)
         print(result.toString())
         print(result.test())
     }
+
 }

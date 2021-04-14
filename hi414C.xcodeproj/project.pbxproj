@@ -95,6 +95,7 @@
 		269765402626128F00775D71 /* MUL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697653F2626128F00775D71 /* MUL.swift */; };
 		2697654426271E3E00775D71 /* EquationPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697654326271E3E00775D71 /* EquationPart.swift */; };
 		269765542627367A00775D71 /* EquationRadix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765532627367A00775D71 /* EquationRadix.swift */; };
+		2697655826273C1B00775D71 /* SHR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697655726273C1B00775D71 /* SHR.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
@@ -218,6 +219,7 @@
 		2697653F2626128F00775D71 /* MUL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUL.swift; sourceTree = "<group>"; };
 		2697654326271E3E00775D71 /* EquationPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationPart.swift; sourceTree = "<group>"; };
 		269765532627367A00775D71 /* EquationRadix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationRadix.swift; sourceTree = "<group>"; };
+		2697655726273C1B00775D71 /* SHR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHR.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 				2697651626256A2600775D71 /* XOR.swift */,
 				2697651E26256DB500775D71 /* NOT.swift */,
 				269765252625705A00775D71 /* SHL.swift */,
+				2697655726273C1B00775D71 /* SHR.swift */,
 			);
 			path = bitwise;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				267A0D4F260C823400844927 /* ASCIIArtNode.swift in Sources */,
 				26440444261907B000CA7EA1 /* ColorTheme.swift in Sources */,
 				268D92D12608D83000A43802 /* GraphToolkit.swift in Sources */,
+				2697655826273C1B00775D71 /* SHR.swift in Sources */,
 				2654884F2605247C0044297D /* KeyboardView.swift in Sources */,
 				2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */,
 				263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */,
