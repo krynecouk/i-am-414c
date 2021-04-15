@@ -43,7 +43,7 @@ struct SHR: Equation {
     func getMultiplications(from value: UInt8) -> [UInt8] {
         var current: UInt16 = UInt16(value)
         var result: [UInt8] = []
-        while current != 0 && current <= 128 {
+        while current != 0 && current <= UInt8.max {
             result.append(UInt8(current))
             current = current * 2
         }

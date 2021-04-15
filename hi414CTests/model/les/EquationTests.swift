@@ -68,12 +68,14 @@ class EquationTests: XCTestCase {
     }
     
     func test(_ equation: Equation, debug: Bool = false) {
+        test(equation.eq(0), debug: debug)
         tests.forEach { _ in
-            test_one_equation_result(equation.eq(UInt8.random(in: 0...128)), debug: debug)
+            test(equation.eq(UInt8.random(in: 0...UInt8.max)), debug: debug)
         }
+        test(equation.eq(UInt8.max), debug: debug)
     }
     
-    func test_one_equation_result(_ result: EquationResult, debug: Bool = false) {
+    func test(_ result: EquationResult, debug: Bool = false) {
         if debug {
             print("\(result.toString())=\(result.result) (\(result.test()))")
         }

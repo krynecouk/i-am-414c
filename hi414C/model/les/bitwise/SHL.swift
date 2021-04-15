@@ -28,7 +28,7 @@ struct SHL: Equation {
             return ADD(SHL(), (ID(), modulo)) => result
         }
         
-        let denominators = toSHL.getAllDenominators().filter { [2, 4, 8, 16, 32, 64, 128].contains(toSHL/$0) }
+        let denominators = toSHL.getAllDenominators().filter { [2, 4, 8, 16, 32, 64].contains(toSHL/$0) }
         let x: UInt8 = denominators.randomElement()!
         let y: UInt8 = UInt8(log2(Double(toSHL/x)))
                 

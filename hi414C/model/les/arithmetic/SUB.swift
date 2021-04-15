@@ -15,7 +15,7 @@ struct SUB: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
-        let y: UInt8 = UInt8.random(in: 0...result)
+        let y: UInt8 = UInt8.random(in: 0...(UInt8.max - result))
         let x: UInt8 = result + y
         
         let xResult = self.x.eq(x)
