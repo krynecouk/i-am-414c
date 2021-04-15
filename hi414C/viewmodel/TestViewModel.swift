@@ -13,16 +13,14 @@ class TestViewModel: ObservableObject {
     
     func setTest(test: Test?) {
         if let test = self.test {
-            print("current test: ", test.test)
+            print("current test: ", test.equation.toString())
         }
         self.test = test
     }
     
     func solve(with value: String) -> TestResult {
-        //if let test = self.test {
-        if self.test != nil {
-            print("BACHA TOHLE MUSIS OPRAVIT")
-            //self.result = test.solve(with: value)
+        if let test = self.test {
+            self.result = test.equation.result == UInt8(value) ? .right : .wrong("wrong result \(value)")
         } else {
             self.result = .wrong("No test was provided")
         }

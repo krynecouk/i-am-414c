@@ -5,16 +5,16 @@
 //  Created by Darius Kryszczuk on 12.04.2021.
 //
 
-struct OR: Equation {
-    var x: Equation
-    var y: Equation
+struct OR: EquationBuilder {
+    var x: EquationBuilder
+    var y: EquationBuilder
 
-    init(_ x: Equation = ID(), _ y: Equation = ID()) {
+    init(_ x: EquationBuilder = ID(), _ y: EquationBuilder = ID()) {
         self.x = x
         self.y = y
     }
     
-    func eq(_ result: UInt8) -> EquationResult {
+    func eq(_ result: UInt8) -> Equation {
         var xByte: String = ""
         var yByte: String = ""
         
@@ -38,6 +38,6 @@ struct OR: Equation {
         let x: UInt8 = UInt8.from(bin: xByte)
         let y: UInt8 = UInt8.from(bin: yByte)
         
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.OR)] + yParts, test: { x | y == result })
+        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.OR)] + yParts, test: { x | y == result })
     }
 }

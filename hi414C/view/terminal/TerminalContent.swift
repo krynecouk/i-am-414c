@@ -73,7 +73,7 @@ struct TerminalContent: View {
     }
     
     func TestFigletView(id: String, test: Test, isCurrent: Bool, delay: Double) -> some View {
-        FigletView(test.test, theme: activeTestId == id
+        FigletView(test.equation.toString(), theme: activeTestId == id
                     ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
                     : themeVM.ascii.test.test.passive.figlet.withDelay(delay))
             .onAppear {
@@ -108,8 +108,7 @@ enum TerminalContentType {
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContent([
-            .symbol(.H),
-            .test(FooTest(), true) // TODO
+            .symbol(.H)
         ])
         .withEnvironment()
     }

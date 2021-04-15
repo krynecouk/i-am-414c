@@ -24,7 +24,7 @@ enum EquationOperator: String {
     case SHR = ">>"
 }
 
-extension EquationResult {
+extension Equation {
     func toString(radix: EquationRadix = .bin) -> String {
         self.parts.toString(radix: radix)
     }

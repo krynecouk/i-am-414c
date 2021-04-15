@@ -22,19 +22,21 @@ struct TerminalView: View {
 private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
     var result: [TerminalContentType] = []
     for contentItem in content {
-        if case let .asciiTest(symbols) = contentItem {
+        if case let .asciiTest(tests) = contentItem {
+            let symbols = tests.map { $0.symbol }
             if containsAll(tested: symbols, from: ascii) {
                 result.append(.message(symbols))
                 continue
             }
             
             var testWasSetup = false
-            symbols.forEach { symbol in
+            tests.forEach { test in
+                let symbol = test.symbol
                 if ascii.contains(symbol) {
                     result.append(.symbol(symbol))
                     return
                 }
-                let test = FooTest() // TODO
+
                 if testWasSetup {
                     result.append(.test(test, false))
                     return

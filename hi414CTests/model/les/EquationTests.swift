@@ -67,18 +67,18 @@ class EquationTests: XCTestCase {
         )
     }
     
-    func test(_ equation: Equation, debug: Bool = false) {
-        test(equation.eq(0), debug: debug)
+    func test(_ builder: EquationBuilder, debug: Bool = false) {
+        test(builder.eq(0), debug: debug)
         tests.forEach { _ in
-            test(equation.eq(UInt8.random(in: 1..<UInt8.max)), debug: debug)
+            test(builder.eq(UInt8.random(in: 1..<UInt8.max)), debug: debug)
         }
-        test(equation.eq(UInt8.max), debug: debug)
+        test(builder.eq(UInt8.max), debug: debug)
     }
     
-    func test(_ result: EquationResult, debug: Bool = false) {
+    func test(_ equation: Equation, debug: Bool = false) {
         if debug {
-            print("\(result.toString())=\(result.result) (\(result.test()))")
+            print("\(equation.toString())=\(equation.result) (\(equation.test()))")
         }
-        XCTAssertEqual(result.test(), true, "equation \(result.toString()) was not equal to \(result.result); x = \(result.x), y = \(result.y), result = \(result.result)")
+        XCTAssertEqual(equation.test(), true, "equation \(equation.toString()) was not equal to \(equation.result); x = \(equation.x), y = \(equation.y), result = \(equation.result)")
     }
 }

@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct SHR: Equation {
-    var x: Equation
-    var y: Equation
+struct SHR: EquationBuilder {
+    var x: EquationBuilder
+    var y: EquationBuilder
     
-    init(_ x: Equation = ID(), _ y: Equation = ID()) {
+    init(_ x: EquationBuilder = ID(), _ y: EquationBuilder = ID()) {
         self.x = x
         self.y = y
     }
     
-    func eq(_ result: UInt8) -> EquationResult {
+    func eq(_ result: UInt8) -> Equation {
         if result == 0 {
             return ID() => 0
         }
@@ -43,7 +43,7 @@ struct SHR: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, test: { x >> y == toSHR })
+        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, test: { x >> y == toSHR })
     }
     
     func getMultiplications(from value: UInt8, max: UInt8 = UInt8.max) -> [UInt8] {

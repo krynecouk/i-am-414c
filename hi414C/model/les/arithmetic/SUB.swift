@@ -5,16 +5,16 @@
 //  Created by Darius Kryszczuk on 13.04.2021.
 //
 
-struct SUB: Equation {
-    var x: Equation
-    var y: Equation
+struct SUB: EquationBuilder {
+    var x: EquationBuilder
+    var y: EquationBuilder
     
-    init(_ x: Equation = ID(), _ y: Equation = ID()) {
+    init(_ x: EquationBuilder = ID(), _ y: EquationBuilder = ID()) {
         self.x = x
         self.y = y
     }
     
-    func eq(_ result: UInt8) -> EquationResult {
+    func eq(_ result: UInt8) -> Equation {
         var x: UInt8
         var y: UInt8
         if result == UInt8.max {
@@ -31,7 +31,7 @@ struct SUB: Equation {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SUB)] + yParts, test: { x - y == result })
+        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.SUB)] + yParts, test: { x - y == result })
     }
 }
 

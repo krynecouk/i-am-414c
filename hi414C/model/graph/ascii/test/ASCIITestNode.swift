@@ -18,6 +18,11 @@ class ASCIITestNode : Node {
         let symbols = id.map { char in
             ASCIISymbol.from(String(char))
         }
-        toolkit.contentVM.setContent([.asciiTest(symbols)])
+        let tests: [Test] = symbols.map { symbol in
+            let ascii = ASCII.from(symbol)
+            let equation = AND().eq(ascii.dec) // TODO
+            return Test(symbol: symbol, equation: equation)
+        }
+        toolkit.contentVM.setContent([.asciiTest(tests)])
     }
 }

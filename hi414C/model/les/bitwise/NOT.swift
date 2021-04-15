@@ -5,14 +5,14 @@
 //  Created by Darius Kryszczuk on 13.04.2021.
 //
 
-struct NOT: Equation {
-    var x: Equation
+struct NOT: EquationBuilder {
+    var x: EquationBuilder
     
-    init(_ x: Equation = ID()) {
+    init(_ x: EquationBuilder = ID()) {
         self.x = x
     }
     
-    func eq(_ result: UInt8) -> EquationResult {
+    func eq(_ result: UInt8) -> Equation {
         var xByte: String = ""
         
         result.toBinStr().forEach { bit in
@@ -28,6 +28,6 @@ struct NOT: Equation {
         
         let x: UInt8 = UInt8.from(bin: xByte)
                 
-        return EquationResult(x: x, result: result, parts: [.OP(.NOT)] + xParts, test: { ~x == result })
+        return Equation(x: x, result: result, parts: [.OP(.NOT)] + xParts, test: { ~x == result })
     }
 }

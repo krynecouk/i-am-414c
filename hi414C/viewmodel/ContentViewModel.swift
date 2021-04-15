@@ -22,6 +22,6 @@ class ContentViewModel: ObservableObject {
 typealias ASCIIContent = [ASCIIContentType] // TODO
 
 enum ASCIIContentType {
-    case asciiTest([ASCIISymbol])
+    case asciiTest([Test])
     case asciiArt([ASCIIPrintable])
 }

@@ -16,7 +16,7 @@ struct ASCIIArtNode: Node {
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         let cat = ASCIIArt.of(.cat)
-        toolkit.contentVM.setContent([.asciiArt([cat]), .asciiTest([.C, .A, .T])])
+        toolkit.contentVM.setContent([.asciiArt([cat])])
         toolkit.themeVM.ascii.art.view.font = (.terminus, 18)
     }
 }
