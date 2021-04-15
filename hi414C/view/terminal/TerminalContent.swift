@@ -14,7 +14,7 @@ struct TerminalContent: View {
     
     @State var activeTestId: String = ""
     @State var attempt: Int = 0
-    
+        
     var items: [TerminalContentItem]
 
     init(_ types: [TerminalContentType]) {
@@ -73,9 +73,25 @@ struct TerminalContent: View {
     }
     
     func TestFigletView(id: String, test: Test, isCurrent: Bool, delay: Double) -> some View {
-        FigletView(test.equation.toString(), theme: activeTestId == id
-                    ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
-                    : themeVM.ascii.test.test.passive.figlet.withDelay(delay))
+        ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { i, char in
+            if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">"].contains(char) {
+                TestFiglet(char: char, id: id, test: test, isCurrent: isCurrent, delay: delay,
+                           theme: activeTestId == id
+                                       ? themeVM.ascii.test.test.active.special.withDelay(delay)
+                                       : themeVM.ascii.test.test.passive.special.withDelay(delay)
+                           )
+            } else {
+                TestFiglet(char: char, id: id, test: test, isCurrent: isCurrent, delay: delay,
+                            theme: activeTestId == id
+                                        ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
+                                        : themeVM.ascii.test.test.passive.figlet.withDelay(delay)
+                           )
+            }
+        }
+    }
+    
+    func TestFiglet(char: Character, id: String, test: Test, isCurrent: Bool, delay: Double, theme: FigletTheme) -> some View {
+        FigletView(String(char), theme: theme)
             .onAppear {
                 if isCurrent && activeTestId != id {
                     testVM.setTest(test: test)

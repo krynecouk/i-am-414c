@@ -19,12 +19,12 @@ struct ASCIITestTheme {
         
         struct Active {
             var figlet: FigletTheme
+            var special: FigletTheme
         }
         
         struct Passive {
             var figlet: FigletTheme
+            var special: FigletTheme
         }
-    
     }
-
 }
