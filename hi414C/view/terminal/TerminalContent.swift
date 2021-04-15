@@ -74,7 +74,7 @@ struct TerminalContent: View {
     
     func TestFigletView(id: String, test: Test, isCurrent: Bool, delay: Double) -> some View {
         ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { i, char in
-            if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">"].contains(char) {
+            if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char) {
                 CharFigletView(char: char, id: id, test: test, isCurrent: isCurrent,
                            theme: activeTestId == id
                                        ? themeVM.ascii.test.test.active.special.withDelay(delay)
