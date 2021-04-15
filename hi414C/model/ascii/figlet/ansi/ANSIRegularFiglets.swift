@@ -16,7 +16,7 @@ enum ANSIRegularFiglets {
             "████  ██",
             " ██████ ",
         ]),
-
+        
         .one: Figlet(symbol: .one, lines: [
             " ██",
             "███",
@@ -24,7 +24,7 @@ enum ANSIRegularFiglets {
             " ██",
             " ██",
         ]),
-
+        
         .two: Figlet(symbol: .two, lines: [
             "██████ ",
             "     ██",
@@ -32,7 +32,7 @@ enum ANSIRegularFiglets {
             "██     ",
             "███████",
         ]),
-
+        
         .three: Figlet(symbol: .three, lines: [
             "██████ ",
             "     ██",
@@ -40,7 +40,7 @@ enum ANSIRegularFiglets {
             "     ██",
             "██████ ",
         ]),
-
+        
         .four: Figlet(symbol: .four, lines: [
             "██   ██",
             "██   ██",
@@ -48,7 +48,7 @@ enum ANSIRegularFiglets {
             "     ██",
             "     ██",
         ]),
-
+        
         .five: Figlet(symbol: .five, lines: [
             "███████",
             "██     ",
@@ -56,7 +56,7 @@ enum ANSIRegularFiglets {
             "     ██",
             "███████",
         ]),
-
+        
         .six: Figlet(symbol: .six, lines: [
             " ██████ ",
             "██      ",
@@ -64,7 +64,7 @@ enum ANSIRegularFiglets {
             "██    ██",
             " ██████ ",
         ]),
-
+        
         .seven: Figlet(symbol: .seven, lines: [
             "███████",
             "     ██",
@@ -72,7 +72,7 @@ enum ANSIRegularFiglets {
             "   ██  ",
             "   ██  ",
         ]),
-
+        
         .eight: Figlet(symbol: .eight, lines: [
             " █████ ",
             "██   ██",
@@ -80,7 +80,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             " █████ ",
         ]),
-
+        
         .nine: Figlet(symbol: .nine, lines: [
             " █████ ",
             "██   ██",
@@ -88,7 +88,7 @@ enum ANSIRegularFiglets {
             "     ██",
             " █████ ",
         ]),
-
+        
         .A: Figlet(symbol: .A, lines: [
             " █████ ",
             "██   ██",
@@ -96,7 +96,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             "██   ██",
         ]),
-
+        
         .B: Figlet(symbol: .B, lines: [
             "██████ ",
             "██   ██",
@@ -104,7 +104,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             "██████ ",
         ]),
-
+        
         .C: Figlet(symbol: .C, lines: [
             " ██████",
             "██     ",
@@ -112,7 +112,7 @@ enum ANSIRegularFiglets {
             "██     ",
             " ██████",
         ]),
-
+        
         .D: Figlet(symbol: .D, lines: [
             "██████ ",
             "██   ██",
@@ -120,7 +120,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             "██████ ",
         ]),
-
+        
         .E: Figlet(symbol: .E, lines: [
             "███████",
             "██     ",
@@ -128,7 +128,7 @@ enum ANSIRegularFiglets {
             "██     ",
             "███████",
         ]),
-
+        
         .F: Figlet(symbol: .F, lines: [
             "███████",
             "██     ",
@@ -136,7 +136,7 @@ enum ANSIRegularFiglets {
             "██     ",
             "██     ",
         ]),
-
+        
         .G: Figlet(symbol: .G, lines: [
             " ██████ ",
             "██      ",
@@ -144,7 +144,7 @@ enum ANSIRegularFiglets {
             "██    ██",
             " ██████ ",
         ]),
-
+        
         .H: Figlet(symbol: .H, lines: [
             "██   ██",
             "██   ██",
@@ -152,7 +152,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             "██   ██",
         ]),
-
+        
         .I: Figlet(symbol: .I, lines: [
             "██",
             "██",
@@ -160,7 +160,7 @@ enum ANSIRegularFiglets {
             "██",
             "██",
         ]),
-
+        
         .J: Figlet(symbol: .J, lines: [
             "     ██",
             "     ██",
@@ -168,7 +168,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             " █████ ",
         ]),
-
+        
         .K: Figlet(symbol: .K, lines: [
             "██   ██",
             "██  ██ ",
@@ -176,7 +176,7 @@ enum ANSIRegularFiglets {
             "██  ██ ",
             "██   ██",
         ]),
-
+        
         .L: Figlet(symbol: .L, lines: [
             "██     ",
             "██     ",
@@ -184,7 +184,7 @@ enum ANSIRegularFiglets {
             "██     ",
             "███████",
         ]),
-
+        
         .M: Figlet(symbol: .M, lines: [
             "███    ███",
             "████  ████",
@@ -192,7 +192,7 @@ enum ANSIRegularFiglets {
             "██  ██  ██",
             "██      ██",
         ]),
-
+        
         .N: Figlet(symbol: .N, lines: [
             "███    ██",
             "████   ██",
@@ -200,7 +200,7 @@ enum ANSIRegularFiglets {
             "██  ██ ██",
             "██   ████",
         ]),
-
+        
         .O: Figlet(symbol: .O, lines: [
             " ██████ ",
             "██    ██",
@@ -208,7 +208,7 @@ enum ANSIRegularFiglets {
             "██    ██",
             " ██████ ",
         ]),
-
+        
         .P: Figlet(symbol: .P, lines: [
             "██████ ",
             "██   ██",
@@ -216,7 +216,7 @@ enum ANSIRegularFiglets {
             "██     ",
             "██     ",
         ]),
-
+        
         .Q: Figlet(symbol: .Q, lines: [
             " ██████ ",
             "██    ██",
@@ -224,7 +224,7 @@ enum ANSIRegularFiglets {
             "██ ▄▄ ██",
             " ██████ ",
         ]),
-
+        
         .R: Figlet(symbol: .R, lines: [
             "██████ ",
             "██   ██",
@@ -232,7 +232,7 @@ enum ANSIRegularFiglets {
             "██   ██",
             "██   ██",
         ]),
-
+        
         .S: Figlet(symbol: .S, lines: [
             "███████",
             "██     ",
@@ -240,7 +240,7 @@ enum ANSIRegularFiglets {
             "     ██",
             "███████",
         ]),
-
+        
         .T: Figlet(symbol: .T, lines: [
             "████████",
             "   ██   ",
@@ -248,7 +248,7 @@ enum ANSIRegularFiglets {
             "   ██   ",
             "   ██   ",
         ]),
-
+        
         .U: Figlet(symbol: .U, lines: [
             "██    ██",
             "██    ██",
@@ -256,7 +256,7 @@ enum ANSIRegularFiglets {
             "██    ██",
             " ██████ ",
         ]),
-
+        
         .V: Figlet(symbol: .V, lines: [
             "██    ██",
             "██    ██",
@@ -264,7 +264,7 @@ enum ANSIRegularFiglets {
             " ██  ██ ",
             "  ████  ",
         ]),
-
+        
         .W: Figlet(symbol: .W, lines: [
             "██     ██",
             "██     ██",
@@ -272,7 +272,7 @@ enum ANSIRegularFiglets {
             "██ ███ ██",
             " ███ ███ ",
         ]),
-
+        
         .X: Figlet(symbol: .X, lines: [
             "██   ██",
             " ██ ██ ",
@@ -280,7 +280,7 @@ enum ANSIRegularFiglets {
             " ██ ██ ",
             "██   ██",
         ]),
-
+        
         .Y: Figlet(symbol: .Y, lines: [
             "██    ██",
             " ██  ██ ",
@@ -288,7 +288,7 @@ enum ANSIRegularFiglets {
             "   ██   ",
             "   ██   ",
         ]),
-
+        
         .Z: Figlet(symbol: .Z, lines: [
             "███████",
             "   ███ ",
@@ -346,13 +346,22 @@ enum ANSIRegularFiglets {
             "███████",
             "  ▀▀▀  ",
         ]),
+         .ampersand: Figlet(symbol: .ampersand, lines: [
+         "   ██   ",
+         "   ██   ",
+         "████████",
+         "██  ██  ",
+         "██████  ",
+         ]),
+        /*
         .ampersand: Figlet(symbol: .ampersand, lines: [
-            "   ██   ",
-            "   ██   ",
+            "████    ",
+            "█ ██    ",
             "████████",
             "██  ██  ",
             "██████  ",
         ]),
+         */
         .atSign: Figlet(symbol: .atSign, lines: [
             "  ██████  ",
             " ██    ██ ",
@@ -423,21 +432,57 @@ enum ANSIRegularFiglets {
             "  ██  ",
             "██    ",
         ]),
-        /*
-        .DEL: Figlet(symbol: .DEL, lines: [
-            "   ▄██████████",
-            " ▄███▄ ▀█▀ ▄██",
-            "███████   ████",
-            " ▀███▀ ▄█▄ ▀██",
-            "   ▀██████████",
+        .lessThan: Figlet(symbol: .lessThan, lines: [
+            "    ██",
+            "  ██  ",
+            "██    ",
+            "  ██  ",
+            "    ██",
         ]),
-        .DEL: Figlet(symbol: .DEL, lines: [
-            "   ▄██████████",
-            " ▄████▀▀█▀▀███",
-            "███████   ████",
-            " ▀████▄▄█▄▄███",
-            "   ▀██████████",
-        ]),*/
+        .caret: Figlet(symbol: .caret, lines: [
+            " ███ ",
+            "██ ██",
+            "     ",
+            "     ",
+            "     ",
+        ]),
+        .asterisk: Figlet(symbol: .asterisk, lines: [
+            "      ",
+            "▄ ██ ▄",
+            " ████ ",
+            "▀ ██ ▀",
+            "      ",
+        ]),
+        .pipe: Figlet(symbol: .pipe, lines: [
+            "██",
+            "██",
+            "██",
+            "██",
+            "██",
+        ]),
+        .tilde: Figlet(symbol: .tilde, lines: [
+            "     ",
+            " ▄   ",
+            "█ █ █",
+            "   ▀ ",
+            "     ",
+        ]),
+        
+        /*
+         .DEL: Figlet(symbol: .DEL, lines: [
+         "   ▄██████████",
+         " ▄███▄ ▀█▀ ▄██",
+         "███████   ████",
+         " ▀███▀ ▄█▄ ▀██",
+         "   ▀██████████",
+         ]),
+         .DEL: Figlet(symbol: .DEL, lines: [
+         "   ▄██████████",
+         " ▄████▀▀█▀▀███",
+         "███████   ████",
+         " ▀████▄▄█▄▄███",
+         "   ▀██████████",
+         ]),*/
         .CR: Figlet(symbol: .CR, lines: [
             "       █████",
             " ▄█       ██",
