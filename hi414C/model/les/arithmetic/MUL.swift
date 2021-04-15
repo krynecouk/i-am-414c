@@ -25,7 +25,7 @@ struct MUL: Equation {
             x = UInt8.random(in: 0...UInt8.max)
         } else {
             var denominators = result.getAllDenominators()
-            // prefer (2..<UInt8.max) result
+            // prefer less of: * 00000001
             if denominators.count > 2 {
                 denominators = denominators.filter { $0 != 1 && $0 != result }
             }

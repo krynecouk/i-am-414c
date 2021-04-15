@@ -28,7 +28,13 @@ struct SHR: Equation {
             return ADD(SHR(), (ID(), modulo)) => result
         }
         
-        let x: UInt8 = getMultiplications(from: toSHR).randomElement() ?? 0
+        var multiplications = getMultiplications(from: toSHR)
+        // prefer less of: >> 0000 0000
+        if multiplications.count > 1 {
+            multiplications = multiplications.filter { $0 != toSHR }
+        }
+        
+        let x: UInt8 = multiplications.randomElement() ?? 0
         let y: UInt8 = x == 0 ? 0 : UInt8(log2(Double(x/result)))
                 
         let xResult = self.x.eq(x)
@@ -40,10 +46,10 @@ struct SHR: Equation {
         return EquationResult(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, test: { x >> y == toSHR })
     }
     
-    func getMultiplications(from value: UInt8) -> [UInt8] {
+    func getMultiplications(from value: UInt8, max: UInt8 = UInt8.max) -> [UInt8] {
         var current: UInt16 = UInt16(value)
         var result: [UInt8] = []
-        while current != 0 && current <= UInt8.max {
+        while current != 0 && current <= max {
             result.append(UInt8(current))
             current = current * 2
         }

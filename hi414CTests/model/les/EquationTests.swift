@@ -29,12 +29,10 @@ class EquationTests: XCTestCase {
         test(NOT(), debug: false)
     }
     
-    // TODO
     func test_of_SHL() {
         test(SHL(), debug: false)
     }
     
-    // TODO
     func test_of_SHR() {
         test(SHR(), debug: false)
     }
