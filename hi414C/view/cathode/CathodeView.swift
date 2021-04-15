@@ -16,14 +16,13 @@ struct CathodeView<Content: View>: View {
     
     var body: some View {
         ZStack {
-            // StaticNoise().opacity(0.4)
             BlurIn()
                 .opacity(0.9)
             Curtain()
                 .opacity(0.8)
-            content
             RefreshWave()
                 .opacity(0.04)
+            content
         }
     }
 }
