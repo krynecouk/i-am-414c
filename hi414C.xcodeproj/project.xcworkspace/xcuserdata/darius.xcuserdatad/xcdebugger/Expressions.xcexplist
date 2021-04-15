@@ -30,10 +30,18 @@
          contextName = "closure #2 in closure #4 in closure #1 in closure #1 in TerminalKeyboard.__preview__body.getter:TerminalKeyboard.swift">
          <PersistentStrings>
             <PersistentString
-               value = "testViewModel.current!.symbol">
+               value = "keyboardInput.value">
             </PersistentString>
             <PersistentString
-               value = "keyboardInput.value">
+               value = "testViewModel.current!.symbol">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MUL.eq(_:):MUL.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "result.getAllDenominators()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -29,10 +29,12 @@ class EquationTests: XCTestCase {
         test(NOT(), debug: false)
     }
     
+    // TODO
     func test_of_SHL() {
         test(SHL(), debug: false)
     }
     
+    // TODO
     func test_of_SHR() {
         test(SHR(), debug: false)
     }
@@ -70,7 +72,7 @@ class EquationTests: XCTestCase {
     func test(_ equation: Equation, debug: Bool = false) {
         test(equation.eq(0), debug: debug)
         tests.forEach { _ in
-            test(equation.eq(UInt8.random(in: 0...UInt8.max)), debug: debug)
+            test(equation.eq(UInt8.random(in: 1..<UInt8.max)), debug: debug)
         }
         test(equation.eq(UInt8.max), debug: debug)
     }

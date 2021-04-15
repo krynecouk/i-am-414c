@@ -17,8 +17,22 @@ struct MUL: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
-        let y: UInt8 = result == 0 ? 0 : result / result.getRndDenominator()
-        let x: UInt8 = y == 0 ? UInt8.random(in: 0...UInt8.max) : result / y
+        var x: UInt8
+        var y: UInt8
+        
+        if result == 0 {
+            y = 0
+            x = UInt8.random(in: 0...UInt8.max)
+        } else {
+            var denominators = result.getAllDenominators()
+            // prefer (2..<UInt8.max) result
+            if denominators.count > 2 {
+                denominators = denominators.filter { $0 != 1 && $0 != result }
+            }
+            
+            y = result / denominators.randomElement()!
+            x = result / y
+        }
         
         let xResult = self.x.eq(x)
         let yResult = self.y.eq(y)

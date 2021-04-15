@@ -27,9 +27,19 @@ struct ADD: Equation {
     }
     
     func eq(_ result: UInt8) -> EquationResult {
-        let y: UInt8 = self.y.result ?? UInt8.random(in: 0...result)
-        let x: UInt8 = self.x.result ?? result - y
-        
+        var y: UInt8
+        var x: UInt8
+        if result == 0 {
+            y = 0
+            x = 0
+        } else if result == 1 {
+            y = 1
+            x = 0
+        } else {
+            y = self.y.result ?? UInt8.random(in: 1..<result)
+            x = self.x.result ?? result - y
+        }
+
         let xResult = self.x.equation.eq(x)
         let yResult = self.y.equation.eq(y)
         
