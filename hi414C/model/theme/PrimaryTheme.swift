@@ -25,7 +25,7 @@ struct PrimaryTheme: Themable {
                         font: (name: .terminus, size: 13),
                         color: Color.primary.opacity(0.2)
                     ),
-                    animations: [.print(), .bloom(speed: 0.3, color: .primary)]
+                    animations: [.print(), .bloom(speed: 1, color: .primary)]
                 )
             ),
             test: ASCIITestTheme.Test(
@@ -36,7 +36,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: .primary
                         ),
-                        animations: [.print(), .bloom(speed: 0.3, color: .primary)]
+                        animations: [.print(), .bloom(speed: 1, color: .primary)]
                     )
                 ),
                 passive: ASCIITestTheme.Test.Passive(
@@ -46,7 +46,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: Color.primary.opacity(0.2)
                         ),
-                        animations: [.print(), .bloom(speed: 0.3, color: .primary)]
+                        animations: [.print(), .bloom(speed: 1, color: .primary)]
                     )
                 )
             )
@@ -58,7 +58,7 @@ struct PrimaryTheme: Themable {
                     font: (name: .terminus, size: 13),
                     color: .primary
                 ),
-                animations: [.print(), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 0.3, color: .primary)]
+                animations: [.print(), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
             )
         )
     )
