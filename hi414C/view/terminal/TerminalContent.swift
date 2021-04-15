@@ -75,13 +75,13 @@ struct TerminalContent: View {
     func TestFigletView(id: String, test: Test, isCurrent: Bool, delay: Double) -> some View {
         ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { i, char in
             if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">"].contains(char) {
-                TestFiglet(char: char, id: id, test: test, isCurrent: isCurrent, delay: delay,
+                CharFigletView(char: char, id: id, test: test, isCurrent: isCurrent,
                            theme: activeTestId == id
                                        ? themeVM.ascii.test.test.active.special.withDelay(delay)
                                        : themeVM.ascii.test.test.passive.special.withDelay(delay)
                            )
             } else {
-                TestFiglet(char: char, id: id, test: test, isCurrent: isCurrent, delay: delay,
+                CharFigletView(char: char, id: id, test: test, isCurrent: isCurrent,
                             theme: activeTestId == id
                                         ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
                                         : themeVM.ascii.test.test.passive.figlet.withDelay(delay)
@@ -90,7 +90,7 @@ struct TerminalContent: View {
         }
     }
     
-    func TestFiglet(char: Character, id: String, test: Test, isCurrent: Bool, delay: Double, theme: FigletTheme) -> some View {
+    func CharFigletView(char: Character, id: String, test: Test, isCurrent: Bool, theme: FigletTheme) -> some View {
         FigletView(String(char), theme: theme)
             .onAppear {
                 if isCurrent && activeTestId != id {
