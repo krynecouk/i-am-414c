@@ -10,7 +10,7 @@ import SwiftUI
 struct FigletTheme {
     var typeface: FigletTypeface = .ansi()
     var view: ViewTheme = ViewTheme()
-    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
+    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .bloom(speed: 0.8, color: .primary)]
 }
 
 extension FigletTheme {

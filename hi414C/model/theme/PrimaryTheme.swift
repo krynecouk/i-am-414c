@@ -25,7 +25,7 @@ struct PrimaryTheme: Themable {
                         font: (name: .terminus, size: 13),
                         color: Color.primary.opacity(0.2)
                     ),
-                    animations: [.print(), .bloom(speed: 1, color: .primary)]
+                    animations: [.print(dt: 0.5), .bloom(speed: 1, color: .primary)]
                 )
             ),
             test: ASCIITestTheme.Test(

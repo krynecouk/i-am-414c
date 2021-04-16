@@ -13,7 +13,8 @@ struct TerminalView: View {
 
     var body: some View {
             VStack(spacing: 0) {
-                TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols))
+                //TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols))
+                TerminalGrid((0...100).map { _ in .ascii([ASCIISymbol.one, ASCIISymbol.zero].randomElement()!) })
                 TerminalSegue()
             }
     }

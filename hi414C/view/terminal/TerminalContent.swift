@@ -114,6 +114,8 @@ struct TerminalContentItem: Identifiable {
     }
 }
 
+// TODO art colspan
+// TODO umeni on dissapear
 enum TerminalContentType {
     case symbol(ASCIISymbol)
     case test(Test, Bool)
