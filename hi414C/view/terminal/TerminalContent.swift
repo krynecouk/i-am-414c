@@ -14,9 +14,10 @@ struct TerminalContent: View {
     
     @State var activeTestId: String = ""
     @State var attempt: Int = 0
-        
+    @State var isAnimated = true
+    
     var items: [TerminalContentItem]
-
+    
     init(_ types: [TerminalContentType]) {
         self.items = types.map { TerminalContentItem($0) }
     }
@@ -48,6 +49,8 @@ struct TerminalContent: View {
                 withAnimation(.default) {
                     self.attempt += 1
                 }
+            } else {
+                isAnimated = true
             }
         }
         .onReceive(graphVM.$result) { result in
@@ -55,20 +58,24 @@ struct TerminalContent: View {
                 withAnimation(.default) {
                     self.attempt += 1
                 }
+            } else {
+                isAnimated = true
             }
         }
-    }
-    
-    func Divider() -> some View {
-        Rectangle()
-            .fill(Color.gray.opacity(0.1))
-            .frame(height: 70)
-            
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    print(value)
+                    withAnimation(Animation.linear.speed(0.3)) {
+                        self.isAnimated = false
+                    }
+                }
+        )
     }
     
     func ASCIIArtViews(_ arts: [ASCIIPrintable], delay: Double) -> some View {
         ForEach(arts.indices) { i in
-            ASCIIArtView(arts[i], theme: themeVM.ascii.art.withDelay(delay))
+            ASCIIArtView(arts[i], theme: isAnimated ? themeVM.ascii.art.withDelay(delay) : themeVM.ascii.art.withAnimation([]))
         }
     }
     
@@ -76,32 +83,29 @@ struct TerminalContent: View {
         ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { i, char in
             if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char) {
                 CharFigletView(char: char, id: id, test: test, isCurrent: isCurrent,
-                           theme: activeTestId == id
-                                       ? themeVM.ascii.test.test.active.special.withDelay(delay)
-                                       : themeVM.ascii.test.test.passive.special.withDelay(delay)
-                           )
+                               theme: activeTestId == id
+                                ? themeVM.ascii.test.test.active.special.withDelay(delay)
+                                : themeVM.ascii.test.test.passive.special.withDelay(delay)
+                )
             } else {
                 CharFigletView(char: char, id: id, test: test, isCurrent: isCurrent,
-                            theme: activeTestId == id
-                                        ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
-                                        : themeVM.ascii.test.test.passive.figlet.withDelay(delay)
-                           )
+                               theme: activeTestId == id
+                                ? themeVM.ascii.test.test.active.figlet.withDelay(delay)
+                                : themeVM.ascii.test.test.passive.figlet.withDelay(delay)
+                )
             }
         }
     }
     
     func CharFigletView(char: Character, id: String, test: Test, isCurrent: Bool, theme: FigletTheme) -> some View {
-        FigletView(String(char), theme: theme)
+        FigletView(String(char), theme: isAnimated ? theme : theme.withAnimation([]))
             .onAppear {
                 if isCurrent && activeTestId != id {
                     testVM.setTest(test: test)
                     activeTestId = id
                 }
             }
-            .onTapGesture {
-                testVM.setTest(test: test)
-                activeTestId = id
-            }
+        
     }
 }
 

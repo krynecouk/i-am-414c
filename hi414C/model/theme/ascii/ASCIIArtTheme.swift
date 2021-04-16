@@ -19,6 +19,12 @@ extension FigletTheme {
         copy.animations = add(delay: delay, to: copy.animations)
         return copy
     }
+    
+    func withAnimation(_ animations: [ASCIIArtAnimation]) -> FigletTheme {
+        var copy = self
+        copy.animations = animations
+        return copy
+    }
 }
 
 struct ASCIIArtTheme {
@@ -36,6 +42,12 @@ extension ASCIIArtTheme {
     func withDelay(_ delay: Double) -> ASCIIArtTheme {
         var copy = self
         copy.animations = add(delay: delay, to: copy.animations)
+        return copy
+    }
+    
+    func withAnimation(_ animations: [ASCIIArtAnimation]) -> ASCIIArtTheme {
+        var copy = self
+        copy.animations = animations
         return copy
     }
 }
