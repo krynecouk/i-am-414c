@@ -20,7 +20,7 @@ class ASCIITestNode : Node {
         }
         let tests: [Test] = symbols.map { symbol in
             let ascii = ASCII.from(symbol)
-            let equation = AND(OR(MUL(NOT()))).eq(ascii.dec) // TODO
+            let equation = MUL().eq(ascii.dec) // TODO
             return Test(symbol: symbol, equation: equation)
         }
         toolkit.contentVM.setContent([.asciiTest(tests)])

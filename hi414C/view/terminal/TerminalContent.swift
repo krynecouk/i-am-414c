@@ -21,25 +21,45 @@ struct TerminalContent: View {
         self.items = types.map { TerminalContentItem($0) }
     }
     
+    /*
+    Grid {
+        ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
+            let delay = Double(i) * 1.5
+            if case let .art(arts) = item.type {
+                ASCIIArtViews(arts, delay: delay)
+            }
+            if case let .message(symbols) = item.type {
+                FigletView(symbols, theme: themeVM.ascii.message.figlet.withDelay(delay))
+                    .onAppear {
+                        testVM.setTest(test: .none)
+                    }
+            }
+            if case let .symbol(symbol) = item.type {
+                FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withDelay(delay))
+            }
+            if case let .test(test, isCurrent) = item.type {
+                TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
+            }
+        }
+    }
+   */
+    
     var body: some View {
-        Grid {
-            ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
-                let delay = Double(i) * 1.5
-                if case let .art(arts) = item.type {
-                    ASCIIArtViews(arts, delay: delay)
-                }
-                if case let .message(symbols) = item.type {
-                    FigletView(symbols, theme: themeVM.ascii.message.figlet.withDelay(delay))
-                        .onAppear {
-                            testVM.setTest(test: .none)
-                        }
-                }
-                if case let .symbol(symbol) = item.type {
-                    FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withDelay(delay))
-                }
-                if case let .test(test, isCurrent) = item.type {
-                    TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
-                }
+        GridStack(columns: 8, list: items) { item in
+            if case let .art(arts) = item.type {
+                ASCIIArtViews(arts, delay: 0)
+            }
+            if case let .message(symbols) = item.type {
+                FigletView(symbols, theme: themeVM.ascii.message.figlet)
+                    .onAppear {
+                        testVM.setTest(test: .none)
+                    }
+            }
+            if case let .symbol(symbol) = item.type {
+                FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet)
+            }
+            if case let .test(test, isCurrent) = item.type {
+                TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: 0)
             }
         }
         .withShake(attempt: attempt)
@@ -106,6 +126,7 @@ struct TerminalContent: View {
 }
 
 struct TerminalContentItem: Identifiable {
+
     var id = UUID()
     var type: TerminalContentType
     

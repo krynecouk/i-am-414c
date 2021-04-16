@@ -58,7 +58,8 @@ struct KeyboardView: View {
             .id(metrics.frame(in: .global).size.width)
             .onAppear {
                 let frame = metrics.frame(in: .global)
-                let frameW = frame.size.width
+                //let frameW = frame.size.width
+                let frameW = UIScreen.main.bounds.size.width
                 let keyW: CGFloat = ((frameW - (self.spacing.horizontal * 9)) / 10)
                 var keyH: CGFloat = frameW > 500 ? 40 : 70
                 // ipad
