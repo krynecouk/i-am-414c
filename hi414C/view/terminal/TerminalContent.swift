@@ -11,7 +11,7 @@ struct TerminalContent: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
-        
+    
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
         .autoconnect()
@@ -101,15 +101,21 @@ struct TerminalContent: View {
                 .onChanged { value in
                     print(value)
                     if isAnimated {
-                        withAnimation(Animation.linear.speed(0.3)) {
+                        if isDetail {
                             self.isAnimated = false
+                        } else {
+                            withAnimation(Animation.linear.speed(0.3)) {
+                                self.isAnimated = false
+                            }
                         }
-                        isAnimated = false
+                        
                     }
-                    withAnimation(Animation.linear.speed(0.3)) {
-                        self.columns = TerminalContent.DEFAULT_COLS
-                        isDetail = false
-                    }
+                    /*
+                     withAnimation(Animation.linear.speed(0.3)) {
+                     self.columns = TerminalContent.DEFAULT_COLS
+                     isDetail = false
+                     }
+                     */
                 }
         )
     }
