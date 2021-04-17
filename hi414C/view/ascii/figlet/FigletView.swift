@@ -48,6 +48,9 @@ struct FigletView_Previews: PreviewProvider {
             FigletView([.H], theme: FigletTheme(
                 animations: [.print(), .bloom(speed: 0.5)]
             ))
+            .onTapGesture {
+                print("tapped")
+            }
         }
     }
 }

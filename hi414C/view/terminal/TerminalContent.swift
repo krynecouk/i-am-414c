@@ -30,13 +30,13 @@ struct TerminalContent: View {
                     ASCIIArtViews(arts, delay: delay)
                 }
                 if case let .message(symbols) = item.type {
-                    FigletView(symbols, theme: themeVM.ascii.message.figlet.withDelay(delay))
+                    FigletView(symbols, theme: isAnimated ? themeVM.ascii.message.figlet.withDelay(delay) : themeVM.ascii.message.figlet.withAnimation([]))
                         .onAppear {
                             testVM.setTest(test: .none)
                         }
                 }
                 if case let .symbol(symbol) = item.type {
-                    FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withDelay(delay))
+                    FigletView(symbol.rawValue, theme: isAnimated ? themeVM.ascii.test.symbol.figlet.withDelay(delay) : themeVM.ascii.test.symbol.figlet.withAnimation([]))
                 }
                 if case let .test(test, isCurrent) = item.type {
                     TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
@@ -105,7 +105,10 @@ struct TerminalContent: View {
                     activeTestId = id
                 }
             }
-        
+            .onTapGesture {
+                testVM.setTest(test: test)
+                activeTestId = id
+            }
     }
 }
 
