@@ -37,6 +37,10 @@ struct TerminalContent: View {
         self.items = types.map { TerminalContentItem($0) }
     }
     
+    init(_ items: [TerminalContentItem]) {
+        self.items = items
+    }
+    
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
@@ -48,6 +52,7 @@ struct TerminalContent: View {
                     FigletView(symbols, theme: isAnimated ? themeVM.ascii.message.figlet.withDelay(delay) : themeVM.ascii.message.figlet.withAnimation([]))
                         .onAppear {
                             testVM.setTest(test: .none)
+                            isAnimated = true
                         }
                 }
                 if case let .symbol(symbol) = item.type {
@@ -56,8 +61,8 @@ struct TerminalContent: View {
                     }
                 }
                 if case let .test(test, isCurrent) = item.type {
-                    if !isDetail || (isDetail && activeTestId == item.id.uuidString) {
-                        TestFigletView(id: item.id.uuidString, test: test, isCurrent: isCurrent, delay: delay)
+                    if !isDetail || (isDetail && activeTestId == item.id) {
+                        TestFigletView(id: item.id, test: test, isCurrent: isCurrent, delay: delay)
                     }
                 }
             }
@@ -69,7 +74,6 @@ struct TerminalContent: View {
                     self.attempt += 1
                 }
             } else {
-                isAnimated = true
                 isDetail = false
             }
         }
@@ -79,7 +83,6 @@ struct TerminalContent: View {
                     self.attempt += 1
                 }
             } else {
-                isAnimated = true
                 isDetail = false
             }
         }
@@ -189,12 +192,13 @@ struct TerminalContent: View {
     }
 }
 
-struct TerminalContentItem: Identifiable {
-    var id = UUID()
+struct TerminalContentItem {
+    var id: String
     var type: TerminalContentType
     
-    init(_ type: TerminalContentType) {
+    init(_ type: TerminalContentType, id: String = UUID().uuidString) {
         self.type = type
+        self.id = id
     }
 }
 

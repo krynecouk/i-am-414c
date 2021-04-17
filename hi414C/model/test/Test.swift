@@ -5,7 +5,10 @@
 //  Created by Darius Kryszczuk on 15.03.2021.
 //
 
-struct Test {
+import Foundation
+
+struct Test: Identifiable {
+    var id = UUID()
     var symbol: ASCIISymbol
     var equation: Equation
 }

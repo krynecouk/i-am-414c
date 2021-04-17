@@ -19,13 +19,13 @@ struct TerminalView: View {
     }
 }
 
-private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) -> [TerminalContentType] {
-    var result: [TerminalContentType] = []
+private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
+    var result: [TerminalContentItem] = []
     for contentItem in content {
         if case let .asciiTest(tests) = contentItem {
             let symbols = tests.map { $0.symbol }
             if containsAll(tested: symbols, from: ascii) {
-                result.append(.message(symbols))
+                result.append(TerminalContentItem(.message(symbols)))
                 continue
             }
             
@@ -33,20 +33,20 @@ private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) 
             tests.forEach { test in
                 let symbol = test.symbol
                 if ascii.contains(symbol) {
-                    result.append(.symbol(symbol))
+                    result.append(TerminalContentItem(.symbol(symbol), id: "\(test.id.uuidString)\(symbol.rawValue)"))
                     return
                 }
 
                 if testWasSetup {
-                    result.append(.test(test, false))
+                    result.append(TerminalContentItem(.test(test, false), id: "\(test.id.uuidString)"))
                     return
                 }
                 testWasSetup.toggle()
-                result.append(.test(test, true))
+                result.append(TerminalContentItem(.test(test, true), id: "\(test.id.uuidString)"))
             }
         }
         if case let .asciiArt(arts) = contentItem {
-            result.append(.art(arts))
+            result.append(TerminalContentItem(.art(arts)))
         }
     }
     return result
