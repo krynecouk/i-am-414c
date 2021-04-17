@@ -99,7 +99,6 @@ struct TerminalContent: View {
         .highPriorityGesture(
             DragGesture()
                 .onChanged { value in
-                    print(value)
                     if isAnimated {
                         if isDetail {
                             self.isAnimated = false
