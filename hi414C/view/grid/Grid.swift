@@ -9,20 +9,25 @@ import SwiftUI
 
 struct Grid<Content: View> : View {
     let content: Content
+    let spacing: CGFloat
     let padding: CGFloat
+    let columns: [GridItem]
     
-    init(padding: CGFloat = 20, @ViewBuilder content: () -> Content) {
+    init(
+        columns: [GridItem] = [GridItem(.adaptive(minimum: 60, maximum: .infinity))],
+        spacing: CGFloat = 10,
+        padding: CGFloat = 20,
+        @ViewBuilder content: () -> Content) {
+        
+        self.columns = columns
+        self.spacing = spacing
         self.padding = padding
         self.content = content()
     }
     
-    private var columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 60, maximum: .infinity)),
-    ]
-    
     var body: some View {
         ScrollView(.vertical) {
-            LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+            LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
                 content
             }
             .padding(self.padding)
