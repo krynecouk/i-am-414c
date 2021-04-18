@@ -103,7 +103,7 @@ struct TerminalContent: View {
                         if isDetail {
                             self.isAnimated = false
                         } else {
-                            withAnimation(Animation.linear.speed(0.3)) {
+                            withAnimation(Animation.linear.speed(0.8)) {
                                 self.isAnimated = false
                             }
                         }
@@ -171,7 +171,7 @@ struct TerminalContent: View {
                     testVM.setTest(test: test)
                     activeTestId = id
                 } else {
-                    withAnimation(Animation.linear.speed(0.3)) {
+                    withAnimation(Animation.linear.speed(0.8)) {
                         if isDetail {
                             self.columns = TerminalContent.DEFAULT_COLS
                             isDetail = false
