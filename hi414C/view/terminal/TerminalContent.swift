@@ -44,7 +44,8 @@ struct TerminalContent: View {
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
-                let delay = Double(i) * 1.5
+                //let delay = Double(i) * 1.5
+                let delay = 0.0
                 if case let .art(arts) = item.type {
                     ASCIIArtViews(arts, delay: delay)
                 }
@@ -67,6 +68,7 @@ struct TerminalContent: View {
                 }
             }
         }
+        .animation(Animation.spring(), value: self.items)
         .withShake(attempt: attempt)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
@@ -75,6 +77,7 @@ struct TerminalContent: View {
                 }
             } else {
                 isDetail = false
+                isAnimated = true
             }
         }
         .onReceive(graphVM.$result) { result in
@@ -84,6 +87,7 @@ struct TerminalContent: View {
                 }
             } else {
                 isDetail = false
+                isAnimated = true
             }
         }
         .onReceive(orientationChanged) { _ in
@@ -120,6 +124,7 @@ struct TerminalContent: View {
                      */
                 }
         )
+
     }
     
     func ASCIIArtViews(_ arts: [ASCIIPrintable], delay: Double) -> some View {
@@ -192,7 +197,11 @@ struct TerminalContent: View {
     }
 }
 
-struct TerminalContentItem {
+struct TerminalContentItem: Equatable {
+    static func == (lhs: TerminalContentItem, rhs: TerminalContentItem) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id: String
     var type: TerminalContentType
     
