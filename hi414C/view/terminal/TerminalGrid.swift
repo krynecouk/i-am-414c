@@ -56,6 +56,7 @@ struct TerminalGrid: View {
         .animation(Animation.spring().speed(0.8), value: self.items)
         .withShake(attempt: attempt)
         .onReceive(testVM.$result) { result in
+            print("receiving test result from test \(testVM.test?.id)")
             if case .wrong(_) = result {
                 withAnimation(.default) {
                     self.attempt += 1
@@ -112,6 +113,9 @@ struct TerminalGrid: View {
                             ? themeVM.ascii.test.test.active.figlet
                             : themeVM.ascii.test.test.passive.figlet)
             }
+        }
+        .onAppear {
+            print("TEST \(id) ONAPPEAR")
         }
     }
     

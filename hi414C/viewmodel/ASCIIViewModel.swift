@@ -13,6 +13,7 @@ class ASCIIViewModel: ObservableObject {
     ] // TODO persistently store
     
     func add(symbol: ASCIISymbol) {
+        print("adding \(symbol)")
         self.symbols.append(symbol)
     }
 }

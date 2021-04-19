@@ -30,10 +30,10 @@ struct TerminalSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                        uiVM.isDetail = false
-                        //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        asciiVM.add(symbol: testVM.test!.symbol)
-                    //}
+                        //uiVM.isDetail = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            asciiVM.add(symbol: testVM.test!.symbol)
+                        }
                     default:
                         print("not correct")
                     }

@@ -11,7 +11,6 @@ struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
 
-
     var body: some View {
             VStack(spacing: 0) {
                 //TerminalContentOld(getContent(from: terminalVM.content, using: asciiVM.symbols))
