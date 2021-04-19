@@ -11,7 +11,7 @@ struct TerminalGrid: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
-    @EnvironmentObject var terminalVM: TerminalViewModel
+    @EnvironmentObject var uiVM: UIViewModel
     
     @State var testId: String = ""
     @State var attempt: Int = 0
@@ -29,6 +29,7 @@ struct TerminalGrid: View {
     
     init(items: [TerminalItem]) {
         self.items = items
+        print(items)
     }
     
     var body: some View {
@@ -41,17 +42,18 @@ struct TerminalGrid: View {
                     MessageView(symbols)
                 }
                 if case let .symbol(symbol) = item.type {
-                    if !terminalVM.isDetail {
+                    if !uiVM.isDetail {
                         SymbolView(symbol)
                     }
                 }
                 if case let .test(test, current) = item.type {
-                    if !terminalVM.isDetail || (terminalVM.isDetail && testId == item.id) {
+                    if !uiVM.isDetail || (uiVM.isDetail && testId == item.id) {
                         TestView(item.id, test, current)
                     }
                 }
             }
         }
+        .animation(Animation.spring().speed(0.8), value: self.items)
         .withShake(attempt: attempt)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
@@ -67,7 +69,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .onReceive(terminalVM.$isDetail) { isDetail in
+        .onReceive(uiVM.$isDetail) { isDetail in
             withAnimation(Animation.spring().speed(0.8)) {
                 if !isDetail {
                     self.columns = TerminalGrid.ADAPTIVE
@@ -77,7 +79,7 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-            terminalVM.isDetail.toggle()
+            uiVM.isDetail.toggle()
         }
     }
     
@@ -94,6 +96,9 @@ struct TerminalGrid: View {
     
     func SymbolView(_ symbol: ASCIISymbol) -> some View {
         FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet)
+            .onAppear {
+                print("symbol here")
+            }
     }
     
     func TestView(_ id: String, _ test: Test, _ current: Bool = false) -> some View {
@@ -111,8 +116,9 @@ struct TerminalGrid: View {
     }
     
     func TestFiglet(_ char: Character, id: String, test: Test, current: Bool, theme: FigletTheme) -> some View {
-        FigletView(String(char), theme: theme)
+        return FigletView(String(char), theme: theme)
             .onAppear {
+                print("ON APPEAR of test \(id) current: \(current); testId: \(testId)")
                 if current && testId != id {
                     testVM.setTest(test: test)
                     self.testId = id

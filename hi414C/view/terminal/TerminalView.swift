@@ -10,6 +10,8 @@ import SwiftUI
 struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var testVM: TestViewModel
+
 
     var body: some View {
             VStack(spacing: 0) {
@@ -18,40 +20,43 @@ struct TerminalView: View {
                 TerminalSegue()
             }
     }
-}
+    
+    private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
+        var items: [TerminalItem] = []
+        for type in types {
+            if case let .asciiTest(tests) = type {
+                let symbols = tests.map { $0.symbol }
+                if containsAll(tested: symbols, from: ascii) {
+                    items.append(TerminalItem(of: .message(symbols)))
+                    continue
+                }
+                
+                var testWasSetup = false
+                tests.forEach { test in
+                    let symbol = test.symbol
+                    if ascii.contains(symbol) {
+                        items.append(TerminalItem(id: "\(test.id.uuidString)\(symbol.rawValue)", of: .symbol(symbol)))
+                        return
+                    }
 
-private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
-    var items: [TerminalItem] = []
-    for type in types {
-        if case let .asciiTest(tests) = type {
-            let symbols = tests.map { $0.symbol }
-            if containsAll(tested: symbols, from: ascii) {
-                items.append(TerminalItem(of: .message(symbols)))
-                continue
+                    if testWasSetup {
+                        items.append(TerminalItem(id: test.id.uuidString, of: .test(test, false)))
+                        return
+                    }
+                    testWasSetup.toggle()
+                    testVM.setTest(test: test)
+                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, true)))
+                }
             }
-            
-            var testWasSetup = false
-            tests.forEach { test in
-                let symbol = test.symbol
-                if ascii.contains(symbol) {
-                    items.append(TerminalItem(id: "\(test.id.uuidString)\(symbol.rawValue)", of: .symbol(symbol)))
-                    return
-                }
-
-                if testWasSetup {
-                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, false)))
-                    return
-                }
-                testWasSetup.toggle()
-                items.append(TerminalItem(id: test.id.uuidString, of: .test(test, true)))
+            if case let .asciiArt(arts) = type {
+                items.append(TerminalItem(of: .art(arts)))
             }
         }
-        if case let .asciiArt(arts) = type {
-            items.append(TerminalItem(of: .art(arts)))
-        }
+        return items
     }
-    return items
 }
+
+
 
 /*
 private func getContent(from content: TerminalContent, using ascii: [ASCIISymbol]) -> [TerminalContentItemOld] {

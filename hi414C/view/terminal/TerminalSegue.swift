@@ -12,6 +12,7 @@ struct TerminalSegue: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var uiVM: UIViewModel
     
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
@@ -29,12 +30,17 @@ struct TerminalSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                        asciiVM.add(symbol: testVM.test!.symbol)
+                       // uiVM.isDetail = false
+                       DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            asciiVM.add(symbol: testVM.test!.symbol)
+                       }
                     default:
                         print("not correct")
                     }
                 } else {
-                    graphVM.traverse(ctx: GraphContext(input: input))
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        graphVM.traverse(ctx: GraphContext(input: input))
+                    }
                 }
             }
         }

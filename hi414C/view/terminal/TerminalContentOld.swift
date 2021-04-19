@@ -69,7 +69,7 @@ struct TerminalContentOld: View {
                 }
             }
         }
-        .animation(Animation.spring().speed(0.8), value: self.items)
+        
         .withShake(attempt: attempt)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
