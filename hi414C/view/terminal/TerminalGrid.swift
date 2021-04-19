@@ -13,7 +13,6 @@ struct TerminalGrid: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
-    @State var testId: String = ""
     @State var attempt: Int = 0
     @State var columns = ADAPTIVE
     
@@ -29,7 +28,7 @@ struct TerminalGrid: View {
     
     init(items: [TerminalItem]) {
         self.items = items
-        print(items)
+        //self.test = findCurrentTest(from: items)
     }
     
     var body: some View {
@@ -47,7 +46,7 @@ struct TerminalGrid: View {
                     }
                 }
                 if case let .test(test, current) = item.type {
-                    if !uiVM.isDetail || (uiVM.isDetail && testId == item.id) {
+                    if !uiVM.isDetail || (uiVM.isDetail && current) {
                         TestView(item.id, test, current)
                     }
                 }
@@ -56,7 +55,6 @@ struct TerminalGrid: View {
         .animation(Animation.spring().speed(0.8), value: self.items)
         .withShake(attempt: attempt)
         .onReceive(testVM.$result) { result in
-            print("receiving test result from test \(testVM.test?.id)")
             if case .wrong(_) = result {
                 withAnimation(.default) {
                     self.attempt += 1
@@ -105,28 +103,35 @@ struct TerminalGrid: View {
     func TestView(_ id: String, _ test: Test, _ current: Bool = false) -> some View {
         ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { _, char in
             if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char) {
-                TestFiglet(char, id: id, test: test, current: current, theme: testId == id
+                TestFiglet(char, id: id, test: test, current: current, theme: current
                             ? themeVM.ascii.test.test.active.special
                             : themeVM.ascii.test.test.passive.special)
             } else {
-                TestFiglet(char, id: id, test: test, current: current, theme: testId == id
+                TestFiglet(char, id: id, test: test, current: current, theme: current
                             ? themeVM.ascii.test.test.active.figlet
                             : themeVM.ascii.test.test.passive.figlet)
             }
-        }
-        .onAppear {
-            print("TEST \(id) ONAPPEAR")
         }
     }
     
     func TestFiglet(_ char: Character, id: String, test: Test, current: Bool, theme: FigletTheme) -> some View {
         return FigletView(String(char), theme: theme)
             .onAppear {
-                if current && testId != id {
+                if current {
                     testVM.setTest(test: test)
-                    self.testId = id
                 }
             }
+    }
+    
+    func findCurrentTest(from items: [TerminalItem]) -> Test? {
+        for item in items {
+            if case let .test(test, current) = item.type {
+                if current {
+                    return test
+                }
+            }
+        }
+        return .none
     }
     
     func isWideScreen() -> Bool {
