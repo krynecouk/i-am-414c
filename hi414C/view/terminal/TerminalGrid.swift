@@ -41,10 +41,14 @@ struct TerminalGrid: View {
                     MessageView(symbols)
                 }
                 if case let .symbol(symbol) = item.type {
-                    SymbolView(symbol)
+                    if !terminalVM.isDetail {
+                        SymbolView(symbol)
+                    }
                 }
                 if case let .test(test, current) = item.type {
-                    TestView(item.id, test, current)
+                    if !terminalVM.isDetail || (terminalVM.isDetail && testId == item.id) {
+                        TestView(item.id, test, current)
+                    }
                 }
             }
         }
@@ -62,6 +66,18 @@ struct TerminalGrid: View {
                     self.attempt += 1
                 }
             }
+        }
+        .onReceive(terminalVM.$isDetail) { isDetail in
+            withAnimation(Animation.spring().speed(0.8)) {
+                if !isDetail {
+                    self.columns = TerminalGrid.ADAPTIVE
+                } else {
+                    self.columns = isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
+                }
+            }
+        }
+        .onTapGesture {
+            terminalVM.isDetail.toggle()
         }
     }
     
