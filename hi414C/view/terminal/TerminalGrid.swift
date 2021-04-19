@@ -48,6 +48,21 @@ struct TerminalGrid: View {
                 }
             }
         }
+        .withShake(attempt: attempt)
+        .onReceive(testVM.$result) { result in
+            if case .wrong(_) = result {
+                withAnimation(.default) {
+                    self.attempt += 1
+                }
+            }
+        }
+        .onReceive(graphVM.$result) { result in
+            if case .error(_) = result {
+                withAnimation(.default) {
+                    self.attempt += 1
+                }
+            }
+        }
     }
     
     func ArtView(_ arts: [ASCIIPrintable]) -> some View {
