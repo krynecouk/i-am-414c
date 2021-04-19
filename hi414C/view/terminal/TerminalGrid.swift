@@ -27,6 +27,7 @@ struct TerminalGrid: View {
     var items: [TerminalItem]
     
     init(items: [TerminalItem]) {
+        print(items)
         self.items = items
         //self.test = findCurrentTest(from: items)
     }
@@ -88,9 +89,6 @@ struct TerminalGrid: View {
     
     func MessageView(_ symbols: [ASCIISymbol]) -> some View {
         FigletView(symbols, theme: themeVM.ascii.message.figlet)
-            .onAppear {
-                testVM.setTest(test: .none)
-            }
     }
     
     func SymbolView(_ symbol: ASCIISymbol) -> some View {
@@ -115,9 +113,11 @@ struct TerminalGrid: View {
     }
     
     func TestFiglet(_ char: Character, id: String, test: Test, current: Bool, theme: FigletTheme) -> some View {
+        print("IN FIGLET TEST \(test.id); current: \(current)")
         return FigletView(String(char), theme: theme)
             .onAppear {
                 if current {
+                    print("SETTING AS CURRENT TEST \(test.id)")
                     testVM.setTest(test: test)
                 }
             }

@@ -5,6 +5,7 @@
 //  Created by Darius Kryszczuk on 19.03.2021.
 //
 
+/*
 import SwiftUI
 
 struct TerminalContentOld: View {
@@ -224,3 +225,4 @@ struct TerminalContentOld_Previews: PreviewProvider {
         .withEnvironment()
     }
 }
+*/
