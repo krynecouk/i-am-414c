@@ -54,6 +54,7 @@ struct TerminalContent: View {
                         .onAppear {
                             testVM.setTest(test: .none)
                             isAnimated = true
+                            isDetail = false
                         }
                 }
                 if case let .symbol(symbol) = item.type {

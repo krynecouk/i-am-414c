@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EnvironmentModifier: ViewModifier {
     @ObservedObject var asciiVM: ASCIIViewModel
-    @ObservedObject var contentVM: ContentViewModel
+    @ObservedObject var terminalVM: TerminalViewModel
     @ObservedObject var keyboardVM: KeyboardViewModel
     @ObservedObject var testVM: TestViewModel
     @ObservedObject var themeVM: ThemeViewModel
@@ -17,25 +17,25 @@ struct EnvironmentModifier: ViewModifier {
     
     init(
         asciiVM: ASCIIViewModel = ASCIIViewModel(),
-        contentVM: ContentViewModel = ContentViewModel(),
+        terminalVM: TerminalViewModel = TerminalViewModel(),
         keyboardVM: KeyboardViewModel = KeyboardViewModel(),
         themeVM: ThemeViewModel = ThemeViewModel(),
         testVM: TestViewModel = TestViewModel())
     {
         self.asciiVM = asciiVM
-        self.contentVM = contentVM
+        self.terminalVM = terminalVM
         self.keyboardVM = keyboardVM
         self.themeVM = themeVM
         self.testVM = testVM
         self.graphVM = GraphViewModel(toolkit: GraphToolkit(
-            asciiVM: asciiVM, contentVM: contentVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM
+            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM
         ))
     }
     
     func body(content: Content) -> some View {
         content
             .environmentObject(asciiVM)
-            .environmentObject(contentVM)
+            .environmentObject(terminalVM)
             .environmentObject(graphVM)
             .environmentObject(keyboardVM)
             .environmentObject(testVM)

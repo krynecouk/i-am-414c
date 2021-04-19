@@ -23,6 +23,6 @@ class ASCIITestNode : Node {
             let equation = MUL().eq(ascii.dec) // TODO
             return Test(symbol: symbol, equation: equation)
         }
-        toolkit.contentVM.setContent([.asciiTest(tests)])
+        toolkit.terminalVM.setContent([.asciiTest(tests)])
     }
 }

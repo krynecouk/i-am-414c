@@ -1,5 +1,5 @@
 //
-//  ContentViewModel.swift
+//  TerminalViewModel.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 22.03.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ContentViewModel: ObservableObject {
+class TerminalViewModel: ObservableObject {
     @Published private(set) var content: ASCIIContent = []
     
     func setContent(_ content: ASCIIContent) {

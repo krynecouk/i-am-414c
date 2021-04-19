@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TerminalView: View {
-    @EnvironmentObject var contentVM: ContentViewModel
+    @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
 
     var body: some View {
             VStack(spacing: 0) {
-                TerminalContent(getContent(from: contentVM.content, using: asciiVM.symbols))
+                TerminalContent(getContent(from: terminalVM.content, using: asciiVM.symbols))
                 TerminalSegue()
             }
     }

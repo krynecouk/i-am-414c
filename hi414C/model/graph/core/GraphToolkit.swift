@@ -7,7 +7,7 @@
 
 struct GraphToolkit {
     var asciiVM: ASCIIViewModel
-    var contentVM: ContentViewModel
+    var terminalVM: TerminalViewModel
     var keyboardVM: KeyboardViewModel
     var testVM: TestViewModel
     var themeVM: ThemeViewModel
