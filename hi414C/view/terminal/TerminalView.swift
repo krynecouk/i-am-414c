@@ -10,7 +10,6 @@ import SwiftUI
 struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
-    @EnvironmentObject var testVM: TestViewModel
 
 
     var body: some View {
@@ -44,7 +43,6 @@ struct TerminalView: View {
                         return
                     }
                     testWasSetup.toggle()
-                    testVM.setTest(test: test)
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, true)))
                 }
             }

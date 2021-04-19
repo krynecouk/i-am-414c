@@ -118,7 +118,6 @@ struct TerminalGrid: View {
     func TestFiglet(_ char: Character, id: String, test: Test, current: Bool, theme: FigletTheme) -> some View {
         return FigletView(String(char), theme: theme)
             .onAppear {
-                print("ON APPEAR of test \(id) current: \(current); testId: \(testId)")
                 if current && testId != id {
                     testVM.setTest(test: test)
                     self.testId = id

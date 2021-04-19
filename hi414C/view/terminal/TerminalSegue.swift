@@ -16,7 +16,7 @@ struct TerminalSegue: View {
     
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
-
+    
     var body: some View {
         VStack(spacing: 0) {
             TerminalCommandLine()
@@ -30,17 +30,15 @@ struct TerminalSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                       // uiVM.isDetail = false
-                       DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            asciiVM.add(symbol: testVM.test!.symbol)
-                       }
+                        uiVM.isDetail = false
+                        //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        asciiVM.add(symbol: testVM.test!.symbol)
+                    //}
                     default:
                         print("not correct")
                     }
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        graphVM.traverse(ctx: GraphContext(input: input))
-                    }
+                    graphVM.traverse(ctx: GraphContext(input: input))
                 }
             }
         }
