@@ -1,5 +1,5 @@
 //
-//  TerminalContent.swift
+//  TerminalContentOld.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 19.03.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TerminalContent: View {
+struct TerminalContentOld: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
@@ -31,13 +31,13 @@ struct TerminalContent: View {
     
     @State var columns: [GridItem] = DEFAULT_COLS
     
-    var items: [TerminalContentItem]
+    var items: [TerminalContentItemOld]
     
-    init(_ types: [TerminalContentType]) {
-        self.items = types.map { TerminalContentItem($0) }
+    init(_ types: [TerminalContentTypeOld]) {
+        self.items = types.map { TerminalContentItemOld($0) }
     }
     
-    init(_ items: [TerminalContentItem]) {
+    init(_ items: [TerminalContentItemOld]) {
         self.items = items
     }
     
@@ -95,25 +95,25 @@ struct TerminalContent: View {
             withAnimation() {
                 if isDetail {
                     if isWide() {
-                        self.columns = TerminalContent.DETAIL_COLS_LANDSLIDE
+                        self.columns = TerminalContentOld.DETAIL_COLS_LANDSLIDE
                     } else {
-                        self.columns = TerminalContent.DETAIL_COLS_PORTRAIT
+                        self.columns = TerminalContentOld.DETAIL_COLS_PORTRAIT
                     }
                 } else {
-                    self.columns = TerminalContent.DEFAULT_COLS
+                    self.columns = TerminalContentOld.DEFAULT_COLS
                 }
             }
         }
         .onTapGesture {
                 withAnimation(Animation.spring().speed(0.8)) {
                     if isDetail {
-                        self.columns = TerminalContent.DEFAULT_COLS
+                        self.columns = TerminalContentOld.DEFAULT_COLS
                         isDetail = false
                     } else {
                         if isWide() {
-                            self.columns = TerminalContent.DETAIL_COLS_LANDSLIDE
+                            self.columns = TerminalContentOld.DETAIL_COLS_LANDSLIDE
                         } else {
-                            self.columns = TerminalContent.DETAIL_COLS_PORTRAIT
+                            self.columns = TerminalContentOld.DETAIL_COLS_PORTRAIT
                         }
                         isDetail = true
                     }
@@ -195,21 +195,21 @@ struct TerminalContent: View {
     }
 }
 
-struct TerminalContentItem: Equatable {
-    static func == (lhs: TerminalContentItem, rhs: TerminalContentItem) -> Bool {
+struct TerminalContentItemOld: Equatable {
+    static func == (lhs: TerminalContentItemOld, rhs: TerminalContentItemOld) -> Bool {
         lhs.id == rhs.id
     }
     
     var id: String
-    var type: TerminalContentType
+    var type: TerminalContentTypeOld
     
-    init(_ type: TerminalContentType, id: String = UUID().uuidString) {
+    init(_ type: TerminalContentTypeOld, id: String = UUID().uuidString) {
         self.type = type
         self.id = id
     }
 }
 
-enum TerminalContentType {
+enum TerminalContentTypeOld {
     case symbol(ASCIISymbol)
     case test(Test, Bool)
     case message([ASCIISymbol])
@@ -218,7 +218,7 @@ enum TerminalContentType {
 
 struct TerminalContent_Previews: PreviewProvider {
     static var previews: some View {
-        TerminalContent([
+        TerminalContentOld([
             .symbol(.H)
         ])
         .withEnvironment()

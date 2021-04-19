@@ -13,19 +13,19 @@ struct TerminalView: View {
 
     var body: some View {
             VStack(spacing: 0) {
-                TerminalContent(getContent(from: terminalVM.content, using: asciiVM.symbols))
+                TerminalContentOld(getContent(from: terminalVM.content, using: asciiVM.symbols))
                 TerminalSegue()
             }
     }
 }
 
-private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) -> [TerminalContentItem] {
-    var result: [TerminalContentItem] = []
+private func getContent(from content: TerminalContent, using ascii: [ASCIISymbol]) -> [TerminalContentItemOld] {
+    var result: [TerminalContentItemOld] = []
     for contentItem in content {
         if case let .asciiTest(tests) = contentItem {
             let symbols = tests.map { $0.symbol }
             if containsAll(tested: symbols, from: ascii) {
-                result.append(TerminalContentItem(.message(symbols)))
+                result.append(TerminalContentItemOld(.message(symbols)))
                 continue
             }
             
@@ -33,20 +33,20 @@ private func getContent(from content: ASCIIContent, using ascii: [ASCIISymbol]) 
             tests.forEach { test in
                 let symbol = test.symbol
                 if ascii.contains(symbol) {
-                    result.append(TerminalContentItem(.symbol(symbol), id: "\(test.id.uuidString)\(symbol.rawValue)"))
+                    result.append(TerminalContentItemOld(.symbol(symbol), id: "\(test.id.uuidString)\(symbol.rawValue)"))
                     return
                 }
 
                 if testWasSetup {
-                    result.append(TerminalContentItem(.test(test, false), id: "\(test.id.uuidString)"))
+                    result.append(TerminalContentItemOld(.test(test, false), id: "\(test.id.uuidString)"))
                     return
                 }
                 testWasSetup.toggle()
-                result.append(TerminalContentItem(.test(test, true), id: "\(test.id.uuidString)"))
+                result.append(TerminalContentItemOld(.test(test, true), id: "\(test.id.uuidString)"))
             }
         }
         if case let .asciiArt(arts) = contentItem {
-            result.append(TerminalContentItem(.art(arts)))
+            result.append(TerminalContentItemOld(.art(arts)))
         }
     }
     return result

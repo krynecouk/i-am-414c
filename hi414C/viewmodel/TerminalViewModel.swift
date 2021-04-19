@@ -8,22 +8,20 @@
 import SwiftUI
 
 class TerminalViewModel: ObservableObject {
-    @Published private(set) var content: ASCIIContent = []
+    @Published private(set) var content: TerminalContent = []
     
-    func setContent(_ content: ASCIIContent) {
+    func setContent(_ content: TerminalContent) {
         self.content = content
     }
     
-    func setContent(_ contentType: ASCIIContentType) {
+    func setContent(_ contentType: TerminalContentType) {
         self.content = [contentType]
     }
 }
 
-typealias ASCIIContent = [ASCIIContentType] // TODO
+typealias TerminalContent = [TerminalContentType] // TODO
 
-
-
-enum ASCIIContentType {
+enum TerminalContentType {
     case asciiTest([Test])
     case asciiArt([ASCIIPrintable])
 }
