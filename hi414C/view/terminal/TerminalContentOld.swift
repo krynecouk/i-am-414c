@@ -216,7 +216,7 @@ enum TerminalContentTypeOld {
     case art([ASCIIPrintable])
 }
 
-struct TerminalContent_Previews: PreviewProvider {
+struct TerminalContentOld_Previews: PreviewProvider {
     static var previews: some View {
         TerminalContentOld([
             .symbol(.H)

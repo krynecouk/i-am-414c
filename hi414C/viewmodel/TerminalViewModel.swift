@@ -8,18 +8,17 @@
 import SwiftUI
 
 class TerminalViewModel: ObservableObject {
-    @Published private(set) var content: TerminalContent = []
+    @Published private(set) var content: [TerminalContentType] = []
+    @Published var isDetail = false
     
-    func setContent(_ content: TerminalContent) {
+    func setContent(_ content: [TerminalContentType]) {
         self.content = content
     }
     
-    func setContent(_ contentType: TerminalContentType) {
-        self.content = [contentType]
+    func setContent(_ content: TerminalContentType) {
+        self.content = [content]
     }
 }
-
-typealias TerminalContent = [TerminalContentType] // TODO
 
 enum TerminalContentType {
     case asciiTest([Test])

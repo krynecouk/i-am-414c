@@ -13,12 +13,47 @@ struct TerminalView: View {
 
     var body: some View {
             VStack(spacing: 0) {
-                TerminalContentOld(getContent(from: terminalVM.content, using: asciiVM.symbols))
+                //TerminalContentOld(getContent(from: terminalVM.content, using: asciiVM.symbols))
+                TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
                 TerminalSegue()
             }
     }
 }
 
+private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
+    var items: [TerminalItem] = []
+    for type in types {
+        if case let .asciiTest(tests) = type {
+            let symbols = tests.map { $0.symbol }
+            if containsAll(tested: symbols, from: ascii) {
+                items.append(TerminalItem(of: .message(symbols)))
+                continue
+            }
+            
+            var testWasSetup = false
+            tests.forEach { test in
+                let symbol = test.symbol
+                if ascii.contains(symbol) {
+                    items.append(TerminalItem(id: "\(test.id.uuidString)\(symbol.rawValue)", of: .symbol(symbol)))
+                    return
+                }
+
+                if testWasSetup {
+                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, false)))
+                    return
+                }
+                testWasSetup.toggle()
+                items.append(TerminalItem(id: test.id.uuidString, of: .test(test, true)))
+            }
+        }
+        if case let .asciiArt(arts) = type {
+            items.append(TerminalItem(of: .art(arts)))
+        }
+    }
+    return items
+}
+
+/*
 private func getContent(from content: TerminalContent, using ascii: [ASCIISymbol]) -> [TerminalContentItemOld] {
     var result: [TerminalContentItemOld] = []
     for contentItem in content {
@@ -51,6 +86,7 @@ private func getContent(from content: TerminalContent, using ascii: [ASCIISymbol
     }
     return result
 }
+ */
 
 private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
     for symbol in tested {
