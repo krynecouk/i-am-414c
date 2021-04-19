@@ -36,7 +36,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: .primary
                         ),
-                        animations: [.print(), .bloom(speed: 1, color: .primary)]
+                        animations: []
                     ),
                     special: FigletTheme(
                         typeface: .ansi(.regular),
@@ -44,7 +44,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: .gray
                         ),
-                        animations: [.print(), .bloom(speed: 1, color: .gray)]
+                        animations: []
                     )
                 ),
                 passive: ASCIITestTheme.Test.Passive(
@@ -54,7 +54,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: Color.primary.opacity(0.2)
                         ),
-                        animations: [.print(), .bloom(speed: 1, color: .primary)]
+                        animations: []
                     ),
                     special: FigletTheme(
                         typeface: .ansi(.regular),
@@ -62,7 +62,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: Color.gray.opacity(0.2)
                         ),
-                        animations: [.print(), .bloom(speed: 1, color: .gray)]
+                        animations: []
                     )
                 )
             )

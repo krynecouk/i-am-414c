@@ -68,7 +68,7 @@ struct TerminalContent: View {
                 }
             }
         }
-        .animation(Animation.spring(), value: self.items)
+        .animation(Animation.spring().speed(0.8), value: self.items)
         .withShake(attempt: attempt)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
@@ -103,6 +103,22 @@ struct TerminalContent: View {
                 }
             }
         }
+        .onTapGesture {
+                withAnimation(Animation.spring().speed(0.8)) {
+                    if isDetail {
+                        self.columns = TerminalContent.DEFAULT_COLS
+                        isDetail = false
+                    } else {
+                        if isWide() {
+                            self.columns = TerminalContent.DETAIL_COLS_LANDSLIDE
+                        } else {
+                            self.columns = TerminalContent.DETAIL_COLS_PORTRAIT
+                        }
+                        isDetail = true
+                    }
+                }
+        }
+        /*
         .highPriorityGesture(
             DragGesture()
                 .onChanged { value in
@@ -116,14 +132,15 @@ struct TerminalContent: View {
                         }
                         
                     }
-                    /*
+                    
                      withAnimation(Animation.linear.speed(0.3)) {
                      self.columns = TerminalContent.DEFAULT_COLS
                      isDetail = false
                      }
-                     */
+                     
                 }
         )
+         */
 
     }
     
@@ -173,27 +190,7 @@ struct TerminalContent: View {
                     activeTestId = id
                 }
             }
-            .onTapGesture {
-                print("TAPPED ON FIGLET")
-                if activeTestId != id {
-                    testVM.setTest(test: test)
-                    activeTestId = id
-                } else {
-                    withAnimation(Animation.linear.speed(0.3)) {
-                        if isDetail {
-                            self.columns = TerminalContent.DEFAULT_COLS
-                            isDetail = false
-                        } else {
-                            if isWide() {
-                                self.columns = TerminalContent.DETAIL_COLS_LANDSLIDE
-                            } else {
-                                self.columns = TerminalContent.DETAIL_COLS_PORTRAIT
-                            }
-                            isDetail = true
-                        }
-                    }
-                }
-            }
+            
     }
 }
 
