@@ -13,9 +13,17 @@ struct TerminalGrid: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
-    @State var attempt: Int = 0
+    typealias SymbolId = String
+    
+    enum CurrentItem {
+        case art, test, message
+    }
+    
+    @State var errors: Int = 0
     @State var columns = ADAPTIVE
-    @State var printedSymbols: [String] = []
+    @State var printed: [SymbolId] = []
+    @State var current: TerminalGrid.CurrentItem = .test
+    @State var animated = true
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
@@ -28,7 +36,6 @@ struct TerminalGrid: View {
     var items: [TerminalItem]
     
     init(items: [TerminalItem]) {
-        print(items)
         self.items = items
     }
     
@@ -48,31 +55,36 @@ struct TerminalGrid: View {
                 }
                 if case let .test(test, active) = item.type {
                     if !uiVM.isDetail || (uiVM.isDetail && active) {
-                        TerminalTest(test, active)
+                        TerminalTest(test, active, animations: self.animated ? [.print(), .bloom()] : [])
+                            .onAppear {
+                                if current != .test {
+                                    current = .test
+                                }
+                            }
                     }
                 }
             }
         }
         .animation(Animation.spring().speed(0.8), value: self.items)
-        .withShake(attempt: attempt)
+        .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
                 withAnimation(.default) {
-                    self.attempt += 1
+                    self.errors += 1
                 }
             }
         }
         .onReceive(graphVM.$result) { result in
             if case .error(_) = result {
                 withAnimation(.default) {
-                    self.attempt += 1
+                    self.errors += 1
                 }
             }
         }
         .onReceive(orientationChanged) { _ in
-                self.columns = uiVM.isDetail
-                    ? (uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL)
-                    : TerminalGrid.ADAPTIVE
+            self.columns = uiVM.isDetail
+                ? (uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL)
+                : TerminalGrid.ADAPTIVE
         }
         .onReceive(uiVM.$isDetail) { isDetail in
             withAnimation(Animation.spring().speed(0.8)) {
@@ -83,6 +95,16 @@ struct TerminalGrid: View {
                 }
             }
         }
+        .highPriorityGesture(
+            DragGesture()
+                .onChanged { value in
+                    if animated && current == .test {
+                        withAnimation(Animation.spring().speed(0.8)) {
+                            self.animated = false
+                        }
+                    }
+                }
+        )
         .onTapGesture {
             withAnimation(Animation.spring().speed(0.8)) {
                 uiVM.isDetail.toggle()
@@ -92,19 +114,24 @@ struct TerminalGrid: View {
     
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.ascii.art) }
+            .onAppear {
+                self.current = .art
+            }
     }
     
     func TerminalMessage(_ symbols: [ASCIISymbol]) -> some View {
         FigletView(symbols, theme: themeVM.ascii.message.figlet)
             .onAppear {
-                self.printedSymbols = []
+                self.current = .message
+                self.printed = []
+                self.animated = true
             }
     }
     
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
-        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printedSymbols.contains(id) ? [] : [.print(), .bloom()]))
+        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printed.contains(id) ? [] : [.print(), .bloom()]))
             .onDisappear {
-                self.printedSymbols.append(id)
+                self.printed.append(id)
             }
     }
 }

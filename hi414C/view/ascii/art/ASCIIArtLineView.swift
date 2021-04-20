@@ -40,17 +40,3 @@ struct ASCIIArtLineView: View {
             .withTheme(theme)
     }
 }
-
-struct ASCIIArtLineView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            /*
-            ASCIIArtLineView(" ██████ ", bloomable: true, bloomSpeed: 1)
-            ASCIIArtLineView("██  ████", bloomable: true, bloomSpeed: 1)
-            ASCIIArtLineView("██ ██ ██", bloomable: true, bloomSpeed: 1)
-            ASCIIArtLineView("████  ██", bloomable: true, bloomSpeed: 1)
-            ASCIIArtLineView(" ██████ ", bloomable: true, bloomSpeed: 1)
- */
-        }
-    }
-}

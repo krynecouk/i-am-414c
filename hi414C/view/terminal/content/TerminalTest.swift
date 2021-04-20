@@ -16,24 +16,26 @@ struct TerminalTest: View {
     let test: Test
     let active: Bool
     let items: [TerminalTestItem]
+    let animations: [ASCIIArtAnimation]
     
-    init(_ test: Test, _ active: Bool = false) {
+    init(_ test: Test, _ active: Bool = false, animations: [ASCIIArtAnimation] = []) {
         self.test = test
         self.active = active
         self.items = TerminalTest.getItems(from: test)
+        self.animations = animations
     }
     
     var body: some View {
         ForEach(Array(items.enumerated()), id: \.offset) { i, item in
             if case let .bin(char) = item.type {
                 FigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.figlet
-                            : themeVM.ascii.test.test.passive.figlet)
+                            ? themeVM.ascii.test.test.active.figlet.withAnimation(animations)
+                            : themeVM.ascii.test.test.passive.figlet.withAnimation(animations))
             }
             if case let .op(char, span) = item.type {
                 FigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.special // TODO operator
-                            : themeVM.ascii.test.test.passive.special)
+                            ? themeVM.ascii.test.test.active.special.withAnimation(animations) // TODO operator
+                            : themeVM.ascii.test.test.passive.special.withAnimation(animations))
                 if uiVM.isDetail {
                     if uiVM.isWideScreen() {
                         ForEach(0 ..< span.big) { _ in
