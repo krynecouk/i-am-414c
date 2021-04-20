@@ -30,7 +30,6 @@
 		26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26500164260F455D00414E89 /* DeviceLandscapePreview.swift */; };
 		2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651294C25FA2D5F003F0FB2 /* Node.swift */; };
 		2654882326050B710044297D /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882226050B710044297D /* TerminalView.swift */; };
-		2654882726050B7F0044297D /* TerminalContentOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882626050B7F0044297D /* TerminalContentOld.swift */; };
 		2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882A26050B920044297D /* TerminalCommandLine.swift */; };
 		2654883B26051B8B0044297D /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654883A26051B8B0044297D /* TestViewModel.swift */; };
 		2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884A260524460044297D /* TerminalCommandPrompt.swift */; };
@@ -154,7 +153,6 @@
 		26500164260F455D00414E89 /* DeviceLandscapePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLandscapePreview.swift; sourceTree = "<group>"; };
 		2651294C25FA2D5F003F0FB2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		2654882226050B710044297D /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
-		2654882626050B7F0044297D /* TerminalContentOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalContentOld.swift; sourceTree = "<group>"; };
 		2654882A26050B920044297D /* TerminalCommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandLine.swift; sourceTree = "<group>"; };
 		2654883A26051B8B0044297D /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		2654884A260524460044297D /* TerminalCommandPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandPrompt.swift; sourceTree = "<group>"; };
@@ -402,7 +400,6 @@
 				269765AF262EC57700775D71 /* content */,
 				2644045C26191A0400CA7EA1 /* command */,
 				2654882226050B710044297D /* TerminalView.swift */,
-				2654882626050B7F0044297D /* TerminalContentOld.swift */,
 				26557EFC2619A77C00794B86 /* TerminalSegue.swift */,
 			);
 			path = terminal;
@@ -948,7 +945,6 @@
 				265848EE260BB4A8009C0975 /* ASCIITestTheme.swift in Sources */,
 				269764DA262483E800775D71 /* AND.swift in Sources */,
 				2695155C2614F56C0020DD11 /* ASCIIArtLineView.swift in Sources */,
-				2654882726050B7F0044297D /* TerminalContentOld.swift in Sources */,
 				2697651726256A2600775D71 /* XOR.swift in Sources */,
 				2697651F26256DB500775D71 /* NOT.swift in Sources */,
 				267A0D74260C8BB400844927 /* AnimalASCIIArts.swift in Sources */,

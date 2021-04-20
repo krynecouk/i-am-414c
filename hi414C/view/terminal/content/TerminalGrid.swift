@@ -82,7 +82,9 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-            uiVM.isDetail.toggle()
+            withAnimation(Animation.spring().speed(0.8)) {
+                uiVM.isDetail.toggle()
+            }
         }
     }
     

@@ -14,7 +14,6 @@ struct TerminalView: View {
 
     var body: some View {
             VStack(spacing: 0) {
-                //TerminalContentOld(getContent(from: terminalVM.content, using: asciiVM.symbols))
                 TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
                 TerminalSegue()
             }
@@ -54,52 +53,15 @@ struct TerminalView: View {
         }
         return items
     }
-}
-
-
-
-/*
-private func getContent(from content: TerminalContent, using ascii: [ASCIISymbol]) -> [TerminalContentItemOld] {
-    var result: [TerminalContentItemOld] = []
-    for contentItem in content {
-        if case let .asciiTest(tests) = contentItem {
-            let symbols = tests.map { $0.symbol }
-            if containsAll(tested: symbols, from: ascii) {
-                result.append(TerminalContentItemOld(.message(symbols)))
-                continue
-            }
-            
-            var testWasSetup = false
-            tests.forEach { test in
-                let symbol = test.symbol
-                if ascii.contains(symbol) {
-                    result.append(TerminalContentItemOld(.symbol(symbol), id: "\(test.id.uuidString)\(symbol.rawValue)"))
-                    return
-                }
-
-                if testWasSetup {
-                    result.append(TerminalContentItemOld(.test(test, false), id: "\(test.id.uuidString)"))
-                    return
-                }
-                testWasSetup.toggle()
-                result.append(TerminalContentItemOld(.test(test, true), id: "\(test.id.uuidString)"))
+    
+    private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
+        for symbol in tested {
+            if !symbols.contains(symbol) {
+                return false
             }
         }
-        if case let .asciiArt(arts) = contentItem {
-            result.append(TerminalContentItemOld(.art(arts)))
-        }
+        return true
     }
-    return result
-}
- */
-
-private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
-    for symbol in tested {
-        if !symbols.contains(symbol) {
-            return false
-        }
-    }
-    return true
 }
 
 struct TerminalView_Previews: PreviewProvider {
