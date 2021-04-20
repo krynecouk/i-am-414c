@@ -15,12 +15,12 @@ struct TerminalTest: View {
     
     let test: Test
     let active: Bool
-    var items: [TerminalTestItem] = []
+    let items: [TerminalTestItem]
     
     init(_ test: Test, _ active: Bool = false) {
         self.test = test
         self.active = active
-        self.items = getItems(from: test)
+        self.items = TerminalTest.getItems(from: test)
     }
     
     var body: some View {
@@ -49,7 +49,7 @@ struct TerminalTest: View {
         }
     }
     
-    func getItems(from test: Test) -> [TerminalTestItem] {
+    private static func getItems(from test: Test) -> [TerminalTestItem] {
         var items: [TerminalTestItem] = []
         let chars = test.equation.toString().map { $0 }
         var consecutiveOps = 0
@@ -69,7 +69,7 @@ struct TerminalTest: View {
         return items
     }
     
-    func isOperator(_ char: Character) -> Bool {
+    private static func isOperator(_ char: Character) -> Bool {
         ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
     }
 }
