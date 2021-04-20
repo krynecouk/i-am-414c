@@ -20,7 +20,7 @@ class ASCIITestNode : Node {
         }
         let tests: [Test] = symbols.map { symbol in
             let ascii = ASCII.from(symbol)
-            let equation = MUL().eq(ascii.dec) // TODO
+            let equation = SHL().eq(ascii.dec) // TODO
             return Test(symbol: symbol, equation: equation)
         }
         toolkit.terminalVM.setContent([.asciiTest(tests)])

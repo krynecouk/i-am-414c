@@ -32,6 +32,7 @@ struct TerminalTest: View {
                                 ? themeVM.ascii.test.test.active.special
                                 : themeVM.ascii.test.test.passive.special)
                         .onAppear {
+                            print(self.portraitSpan)
                             self.landSpan -= 1
                             self.portraitSpan -= 1
                         }
@@ -63,7 +64,30 @@ struct TerminalTest: View {
         }
     }
     
+    func getItems(from test: Test) -> [TerminalTestItem] {
+        test.equation.toString().map { char in
+            isOperator(char)
+                ? TerminalTestItem(of: .op(char, 0))
+                : TerminalTestItem(of: .bin(char))
+        }
+    }
+    
     func isOperator(_ char: Character) -> Bool {
         ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
     }
+}
+
+struct TerminalTestItem: Identifiable {
+    var id: UUID
+    var type: TerminalTestType
+    
+    init(id: UUID = UUID(), of type: TerminalTestType) {
+        self.id = id
+        self.type = type
+    }
+}
+
+enum TerminalTestType {
+    case bin(Character)
+    case op(Character, Int)
 }
