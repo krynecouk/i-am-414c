@@ -37,3 +37,6 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 - command line prompt better
 - special symbols? - jednotne theme
 - BS on long press should delete
+
+### others
+- other name? Something with shifting? been shifted? being shift? 414C

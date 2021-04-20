@@ -7,69 +7,66 @@
 
 import SwiftUI
 
+typealias Span = (small: Int, big: Int)
+
 struct TerminalTest: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
-    @State var landSpan = 7
-    @State var portraitSpan = 3
-    
     let test: Test
     let active: Bool
-    let chars: Array<EnumeratedSequence<String>.Element>
+    var items: [TerminalTestItem] = []
     
     init(_ test: Test, _ active: Bool = false) {
         self.test = test
         self.active = active
-        self.chars = Array(test.equation.toString().enumerated())
+        self.items = getItems(from: test)
     }
     
     var body: some View {
-        ForEach(chars, id: \.offset) { i, char in
-            if isOperator(char) {
-                if isOperator(chars[i + 1].element) {
-                    FigletView(String(char), theme: active
-                                ? themeVM.ascii.test.test.active.special
-                                : themeVM.ascii.test.test.passive.special)
-                        .onAppear {
-                            print(self.portraitSpan)
-                            self.landSpan -= 1
-                            self.portraitSpan -= 1
-                        }
-                } else {
-                    FigletView(String(char), theme: active
-                                ? themeVM.ascii.test.test.active.special
-                                : themeVM.ascii.test.test.passive.special)
-                        .onAppear {
-                            self.landSpan = 7
-                            self.portraitSpan = 3
-                        }
-                    if uiVM.isDetail {
-                        if uiVM.isWideScreen() {
-                            ForEach(0 ..< self.landSpan) { _ in
-                                Color.clear
-                            }
-                        } else {
-                            ForEach(0 ..< self.portraitSpan) { _ in
-                                Color.clear
-                            }
-                        }
-                    }
-                }
-            } else {
+        ForEach(Array(items.enumerated()), id: \.offset) { i, item in
+            if case let .bin(char) = item.type {
                 FigletView(String(char), theme: active
                             ? themeVM.ascii.test.test.active.figlet
                             : themeVM.ascii.test.test.passive.figlet)
+            }
+            if case let .op(char, span) = item.type {
+                FigletView(String(char), theme: active
+                            ? themeVM.ascii.test.test.active.special // TODO operator
+                            : themeVM.ascii.test.test.passive.special)
+                if uiVM.isDetail {
+                    if uiVM.isWideScreen() {
+                        ForEach(0 ..< span.big) { _ in
+                            Color.clear
+                        }
+                    } else {
+                        ForEach(0 ..< span.small) { _ in
+                            Color.clear
+                        }
+                    }
+                }
             }
         }
     }
     
     func getItems(from test: Test) -> [TerminalTestItem] {
-        test.equation.toString().map { char in
-            isOperator(char)
-                ? TerminalTestItem(of: .op(char, 0))
-                : TerminalTestItem(of: .bin(char))
+        var items: [TerminalTestItem] = []
+        let chars = test.equation.toString().map { $0 }
+        var consecutiveOps = 0
+        for (i, char) in chars.enumerated() {
+            if isOperator(char) {
+                if isOperator(chars[i + 1]) {
+                    items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
+                    consecutiveOps += 1
+                } else {
+                    items.append(TerminalTestItem(id: test.id, of: .op(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
+                    consecutiveOps = 0
+                }
+            } else {
+                items.append(TerminalTestItem(id: test.id, of: .bin(char)))
+            }
         }
+        return items
     }
     
     func isOperator(_ char: Character) -> Bool {
@@ -89,5 +86,5 @@ struct TerminalTestItem: Identifiable {
 
 enum TerminalTestType {
     case bin(Character)
-    case op(Character, Int)
+    case op(Character, Span)
 }
