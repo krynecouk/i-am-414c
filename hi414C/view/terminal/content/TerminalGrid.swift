@@ -67,6 +67,11 @@ struct TerminalGrid: View {
                 }
             }
         }
+        .onReceive(orientationChanged) { _ in
+                self.columns = uiVM.isDetail
+                    ? (uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL)
+                    : TerminalGrid.ADAPTIVE
+        }
         .onReceive(uiVM.$isDetail) { isDetail in
             withAnimation(Animation.spring().speed(0.8)) {
                 if !isDetail {
