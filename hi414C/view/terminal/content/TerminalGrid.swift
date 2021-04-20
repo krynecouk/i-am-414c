@@ -15,6 +15,7 @@ struct TerminalGrid: View {
     
     @State var attempt: Int = 0
     @State var columns = ADAPTIVE
+    @State var printedSymbols: [String] = []
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
@@ -27,6 +28,7 @@ struct TerminalGrid: View {
     var items: [TerminalItem]
     
     init(items: [TerminalItem]) {
+        print(items)
         self.items = items
     }
     
@@ -41,7 +43,7 @@ struct TerminalGrid: View {
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail {
-                        TerminalSymbol(symbol)
+                        TerminalSymbol(item.id, symbol)
                     }
                 }
                 if case let .test(test, active) = item.type {
@@ -94,10 +96,16 @@ struct TerminalGrid: View {
     
     func TerminalMessage(_ symbols: [ASCIISymbol]) -> some View {
         FigletView(symbols, theme: themeVM.ascii.message.figlet)
+            .onAppear {
+                self.printedSymbols = []
+            }
     }
     
-    func TerminalSymbol(_ symbol: ASCIISymbol) -> some View {
-        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet)
+    func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
+        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printedSymbols.contains(id) ? [] : [.print(), .bloom()]))
+            .onDisappear {
+                self.printedSymbols.append(id)
+            }
     }
 }
 
