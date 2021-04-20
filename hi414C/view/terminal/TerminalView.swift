@@ -18,6 +18,7 @@ struct TerminalView: View {
                 TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
                 if !uiVM.isDetail {
                     TerminalSegue()
+                        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
                 }
             }
     }
