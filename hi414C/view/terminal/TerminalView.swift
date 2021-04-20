@@ -11,11 +11,14 @@ struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var uiVM: UIViewModel
 
     var body: some View {
             VStack(spacing: 0) {
                 TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
-                TerminalSegue()
+                if !uiVM.isDetail {
+                    TerminalSegue()
+                }
             }
     }
     
