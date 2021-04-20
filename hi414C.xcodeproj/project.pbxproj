@@ -96,6 +96,8 @@
 		2697655826273C1B00775D71 /* SHR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697655726273C1B00775D71 /* SHR.swift */; };
 		2697659C262DB14E00775D71 /* TerminalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697659B262DB14E00775D71 /* TerminalGrid.swift */; };
 		269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765A3262DD6F000775D71 /* UIViewModel.swift */; };
+		269765A8262EBC3800775D71 /* ColSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765A7262EBC3800775D71 /* ColSpan.swift */; };
+		269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765AB262EC32E00775D71 /* TerminalTest.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
@@ -218,6 +220,8 @@
 		2697655726273C1B00775D71 /* SHR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHR.swift; sourceTree = "<group>"; };
 		2697659B262DB14E00775D71 /* TerminalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalGrid.swift; sourceTree = "<group>"; };
 		269765A3262DD6F000775D71 /* UIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewModel.swift; sourceTree = "<group>"; };
+		269765A7262EBC3800775D71 /* ColSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColSpan.swift; sourceTree = "<group>"; };
+		269765AB262EC32E00775D71 /* TerminalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTest.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
@@ -395,11 +399,11 @@
 		2654882126050B510044297D /* terminal */ = {
 			isa = PBXGroup;
 			children = (
+				269765AF262EC57700775D71 /* content */,
 				2644045C26191A0400CA7EA1 /* command */,
 				2654882226050B710044297D /* TerminalView.swift */,
 				2654882626050B7F0044297D /* TerminalContentOld.swift */,
 				26557EFC2619A77C00794B86 /* TerminalSegue.swift */,
-				2697659B262DB14E00775D71 /* TerminalGrid.swift */,
 			);
 			path = terminal;
 			sourceTree = "<group>";
@@ -670,6 +674,15 @@
 			path = arithmetic;
 			sourceTree = "<group>";
 		};
+		269765AF262EC57700775D71 /* content */ = {
+			isa = PBXGroup;
+			children = (
+				2697659B262DB14E00775D71 /* TerminalGrid.swift */,
+				269765AB262EC32E00775D71 /* TerminalTest.swift */,
+			);
+			path = content;
+			sourceTree = "<group>";
+		};
 		26AF9F4825FF7E9400B77E0A /* test */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +716,7 @@
 			isa = PBXGroup;
 			children = (
 				26B10A2026027B08007E7B65 /* Grid.swift */,
+				269765A7262EBC3800775D71 /* ColSpan.swift */,
 			);
 			path = grid;
 			sourceTree = "<group>";
@@ -969,6 +983,7 @@
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */,
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
+				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */,
 				269765382625F09700775D71 /* SUB.swift in Sources */,
 				265848F2260BB4B5009C0975 /* ASCIIMessageTheme.swift in Sources */,
@@ -1005,6 +1020,7 @@
 				267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */,
 				264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
+				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
 				2697650126249D0900775D71 /* UInt8.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

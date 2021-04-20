@@ -27,28 +27,26 @@ struct TerminalGrid: View {
     var items: [TerminalItem]
     
     init(items: [TerminalItem]) {
-        print(items)
         self.items = items
-        //self.test = findCurrentTest(from: items)
     }
     
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(items, id: \.id) { item in
                 if case let .art(arts) = item.type {
-                    ArtView(arts)
+                    TerminalArt(arts)
                 }
                 if case let .message(symbols) = item.type {
-                    MessageView(symbols)
+                    TerminalMessage(symbols)
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail {
-                        SymbolView(symbol)
+                        TerminalSymbol(symbol)
                     }
                 }
-                if case let .test(test, current) = item.type {
-                    if !uiVM.isDetail || (uiVM.isDetail && current) {
-                        TestView(item.id, test, current)
+                if case let .test(test, active) = item.type {
+                    if !uiVM.isDetail || (uiVM.isDetail && active) {
+                        TerminalTest(test, active)
                     }
                 }
             }
@@ -74,7 +72,7 @@ struct TerminalGrid: View {
                 if !isDetail {
                     self.columns = TerminalGrid.ADAPTIVE
                 } else {
-                    self.columns = isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
+                    self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
                 }
             }
         }
@@ -83,37 +81,16 @@ struct TerminalGrid: View {
         }
     }
     
-    func ArtView(_ arts: [ASCIIPrintable]) -> some View {
+    func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.ascii.art) }
     }
     
-    func MessageView(_ symbols: [ASCIISymbol]) -> some View {
+    func TerminalMessage(_ symbols: [ASCIISymbol]) -> some View {
         FigletView(symbols, theme: themeVM.ascii.message.figlet)
     }
     
-    func SymbolView(_ symbol: ASCIISymbol) -> some View {
+    func TerminalSymbol(_ symbol: ASCIISymbol) -> some View {
         FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet)
-            .onAppear {
-                print("symbol here")
-            }
-    }
-    
-    func TestView(_ id: String, _ test: Test, _ current: Bool = false) -> some View {
-        ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { _, char in
-            if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char) {
-                FigletView(String(char), theme: current
-                            ? themeVM.ascii.test.test.active.special
-                            : themeVM.ascii.test.test.passive.special)
-            } else {
-                FigletView(String(char), theme: current
-                            ? themeVM.ascii.test.test.active.figlet
-                            : themeVM.ascii.test.test.passive.figlet)
-            }
-        }
-    }
-    
-    func isWideScreen() -> Bool {
-        UIScreen.main.bounds.width > 500
     }
 }
 
@@ -137,12 +114,3 @@ enum TerminalItemType {
     case message([ASCIISymbol])
     case art([ASCIIPrintable])
 }
-
-
-/*
- struct TerminalBody_Previews: PreviewProvider {
- static var previews: some View {
- TerminalItems()
- }
- }
- */

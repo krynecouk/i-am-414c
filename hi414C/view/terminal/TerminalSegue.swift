@@ -32,7 +32,7 @@ struct TerminalSegue: View {
                     case .right:
                         if uiVM.isDetail {
                             uiVM.isDetail = false
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
                                 asciiVM.add(symbol: testVM.test!.symbol)
                             }
                         } else {
