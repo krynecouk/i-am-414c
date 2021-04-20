@@ -26,7 +26,7 @@ struct Grid<Content: View> : View {
     }
     
     var body: some View {
-        ScrollView(.vertical) {
+        ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
                 content
             }
