@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    @Published private(set) var test: Test? = .none
+    private(set) var test: Test? = .none
     @Published private(set) var result: TestResult = .right
     
     func setTest(test: Test?) {

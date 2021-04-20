@@ -101,37 +101,15 @@ struct TerminalGrid: View {
     func TestView(_ id: String, _ test: Test, _ current: Bool = false) -> some View {
         ForEach(Array(test.equation.toString().enumerated()), id: \.offset) { _, char in
             if ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char) {
-                TestFiglet(char, id: id, test: test, current: current, theme: current
+                FigletView(String(char), theme: current
                             ? themeVM.ascii.test.test.active.special
                             : themeVM.ascii.test.test.passive.special)
             } else {
-                TestFiglet(char, id: id, test: test, current: current, theme: current
+                FigletView(String(char), theme: current
                             ? themeVM.ascii.test.test.active.figlet
                             : themeVM.ascii.test.test.passive.figlet)
             }
         }
-    }
-    
-    func TestFiglet(_ char: Character, id: String, test: Test, current: Bool, theme: FigletTheme) -> some View {
-        print("IN FIGLET TEST \(test.id); current: \(current)")
-        return FigletView(String(char), theme: theme)
-            .onAppear {
-                if current {
-                    print("SETTING AS CURRENT TEST \(test.id)")
-                    testVM.setTest(test: test)
-                }
-            }
-    }
-    
-    func findCurrentTest(from items: [TerminalItem]) -> Test? {
-        for item in items {
-            if case let .test(test, current) = item.type {
-                if current {
-                    return test
-                }
-            }
-        }
-        return .none
     }
     
     func isWideScreen() -> Bool {

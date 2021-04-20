@@ -10,6 +10,7 @@ import SwiftUI
 struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var testVM: TestViewModel
 
     var body: some View {
             VStack(spacing: 0) {
@@ -26,6 +27,7 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if containsAll(tested: symbols, from: ascii) {
                     items.append(TerminalItem(of: .message(symbols)))
+                    testVM.setTest(test: .none)
                     continue
                 }
                 
@@ -43,6 +45,7 @@ struct TerminalView: View {
                     }
                     testWasSetup.toggle()
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, true)))
+                    testVM.setTest(test: test)
                 }
             }
             if case let .asciiArt(arts) = type {
