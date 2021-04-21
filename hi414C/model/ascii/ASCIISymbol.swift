@@ -38,7 +38,7 @@ enum ASCIISymbol: String, Hashable {
     case GS
     case RS
     case US
-    case space
+    case space = " "
     case exclamationMark = "!"
     case doubleQuote = "\""
     case hash = "#"

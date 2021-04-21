@@ -18,8 +18,7 @@ struct TerminalGrid: View {
     @State var errors: Int = 0
     @State var columns = ADAPTIVE
     @State var printed: [SymbolId] = []
-    @State var isMessage = false
-    @State var isAnimated = true
+    @State var wide = false
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
@@ -52,7 +51,7 @@ struct TerminalGrid: View {
                 }
                 if case let .test(_, items, active) = item.type {
                     if !uiVM.isDetail || (uiVM.isDetail && active) {
-                        TerminalTest(items, active, animated: isAnimated)
+                        TerminalTest(items, active, wide)
                     }
                 }
             }
@@ -74,8 +73,9 @@ struct TerminalGrid: View {
             }
         }
         .onReceive(orientationChanged) { _ in
+            self.wide = uiVM.isWideScreen()
             self.columns = uiVM.isDetail
-                ? (uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL)
+                ? (wide ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL)
                 : TerminalGrid.ADAPTIVE
         }
         .onReceive(uiVM.$isDetail) { isDetail in
@@ -87,22 +87,10 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .highPriorityGesture(
-            DragGesture()
-                .onChanged { value in
-                    if self.isAnimated && !isMessage {
-                        withAnimation(Animation.spring().speed(0.8)) {
-                            self.isAnimated = false
-                        }
-                    }
-                }
-        )
         .onTapGesture {
-            if !isMessage {
                 withAnimation(Animation.spring().speed(0.8)) {
                     uiVM.isDetail.toggle()
                 }
-            }
         }
     }
     
@@ -113,11 +101,7 @@ struct TerminalGrid: View {
     func TerminalMessage(_ symbols: [ASCIISymbol]) -> some View {
         FigletView(symbols, theme: themeVM.ascii.message.figlet)
             .onAppear {
-                self.isMessage = true
                 self.printed = []
-            }
-            .onDisappear {
-                self.isMessage = false
             }
     }
     

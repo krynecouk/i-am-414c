@@ -33,7 +33,6 @@ struct LiteFigletView: View {
                     .withTheme(theme.view)
             }
         }
-        
     }
 }
 

@@ -17,6 +17,10 @@ struct TerminalSegue: View {
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
     
+    let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
+    
     init() {
         print("TerminalSegue")
     }
@@ -45,7 +49,6 @@ struct TerminalSegue: View {
                 }
             }
             .frame(height: segueH)
-            .id(keyboardVM.keyboardSize.height)
             .onAppear {
                 keyboardVM.close()
                 self.segueH = headerH
@@ -54,6 +57,9 @@ struct TerminalSegue: View {
                 withAnimation {
                     self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
                 }
+            }
+            .onReceive(orientationChanged) { _ in
+                keyboardVM.close()
             }
             .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
         }
