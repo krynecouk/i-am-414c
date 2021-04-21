@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TerminalGrid: View {
+    @Namespace private var ns
+    
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
@@ -16,6 +18,7 @@ struct TerminalGrid: View {
     typealias SymbolId = String
     
     @State var errors: Int = 0
+    @State var changes: Int = 0
     @State var columns = ADAPTIVE
     @State var printed: [SymbolId] = []
     @State var wide = false
@@ -33,6 +36,7 @@ struct TerminalGrid: View {
     init(items: [TerminalItem]) {
         print("TerminalGrid")
         self.items = items
+        print(items)
     }
     
     var body: some View {
@@ -47,17 +51,20 @@ struct TerminalGrid: View {
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail {
                         TerminalSymbol(item.id, symbol)
+                            .matchedGeometryEffect(id: item.id, in: ns)
                     }
                 }
-                if case let .test(_, items, active) = item.type {
+                if case let .test(test, items, active) = item.type {
                     if !uiVM.isDetail || (uiVM.isDetail && active) {
                         TerminalTest(items, active, wide)
+                            .matchedGeometryEffect(id: "\(test.id.uuidString)\(test.symbol.rawValue)", in: ns, isSource: false)
                     }
                 }
             }
         }
-        .animation(Animation.spring().speed(0.8), value: self.items)
+        .animation(Animation.spring().speed(0.6), value: self.items)
         .withShake(attempt: errors)
+        //.withFoo(offset: 10, pct: 10, goingRight: true)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
                 withAnimation(.default) {
@@ -92,6 +99,9 @@ struct TerminalGrid: View {
                     uiVM.isDetail.toggle()
                 }
         }
+        .onChange(of: self.items) { val in
+            self.changes += 1
+        }
     }
     
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
@@ -106,7 +116,7 @@ struct TerminalGrid: View {
     }
     
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
-        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printed.contains(id) ? [] : [.print(), .bloom()]))
+        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printed.contains(id) ? [] : [.print(), .bloom()]).withDelay(0.5))
             .onDisappear {
                 self.printed.append(id)
             }
