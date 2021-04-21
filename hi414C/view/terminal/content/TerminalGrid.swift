@@ -116,6 +116,7 @@ struct TerminalGrid: View {
     }
     
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
+        // animace jen u tech co v momentalnim kole jsou solved a jeste nebyly prited
         FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printed.contains(id) ? [] : [.print(), .bloom()]).withDelay(0.5))
             .onDisappear {
                 self.printed.append(id)
