@@ -12,6 +12,10 @@ struct TerminalView: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
     
+    init() {
+        print("TerminalView")
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
@@ -20,6 +24,8 @@ struct TerminalView: View {
     }
     
     private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
+        print("Calculating Test Content Items")
+
         var items: [TerminalItem] = []
         for type in types {
             if case let .asciiTest(tests) = type {
@@ -38,12 +44,13 @@ struct TerminalView: View {
                         return
                     }
                     
+                    let testItems = getItems(from: test)
                     if testWasSetup {
-                        items.append(TerminalItem(id: test.id.uuidString, of: .test(test, false)))
+                        items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, false)))
                         return
                     }
                     testWasSetup.toggle()
-                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, true)))
+                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
                     testVM.setTest(test: test)
                 }
             }
@@ -52,6 +59,31 @@ struct TerminalView: View {
             }
         }
         return items
+    }
+    
+    private func getItems(from test: Test) -> [TerminalTestItem] {
+        print("Calculating Test Items")
+        var items: [TerminalTestItem] = []
+        let chars = test.equation.toString().map { $0 }
+        var consecutiveOps = 0
+        for (i, char) in chars.enumerated() {
+            if isOperator(char) {
+                if isOperator(chars[i + 1]) {
+                    items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
+                    consecutiveOps += 1
+                } else {
+                    items.append(TerminalTestItem(id: test.id, of: .op(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
+                    consecutiveOps = 0
+                }
+            } else {
+                items.append(TerminalTestItem(id: test.id, of: .bin(char)))
+            }
+        }
+        return items
+    }
+    
+    private func isOperator(_ char: Character) -> Bool {
+        ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
     }
 }
 

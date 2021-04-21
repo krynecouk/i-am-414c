@@ -12,7 +12,7 @@ class Graphs {
     private init() {}
     
     static let HI =
-        N("HIAL") {
+        N("HIALTHIS IS NOT VERY SAFE TO BE HONEST AND I DONT KNOW IF YEAH") {
             E("HI") {
                 N("HI")
             }

@@ -108,13 +108,15 @@ struct KeyboardView_Previews: PreviewProvider {
         }
         .withEnvironment()
         .previewDisplayName("Portrait")
-        
+
+        /*
         Landscape {
             VStack {
                 Spacer()
                 KeyboardView(Keyboards.qwerty)
             }
         }
+        */
         .withEnvironment()
         .previewDisplayName("Landscape")
     }

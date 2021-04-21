@@ -17,6 +17,10 @@ struct TerminalSegue: View {
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
     
+    init() {
+        print("TerminalSegue")
+    }
+    
     var body: some View {
         if !uiVM.isDetail {
             VStack(spacing: 0) {

@@ -13,29 +13,28 @@ struct TerminalTest: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
-    let test: Test
-    let active: Bool
     let items: [TerminalTestItem]
-    let animations: [ASCIIArtAnimation]
+    let active: Bool
+    let animated: Bool
     
-    init(_ test: Test, _ active: Bool = false, animations: [ASCIIArtAnimation] = []) {
-        self.test = test
+    init(_ items: [TerminalTestItem], _ active: Bool = false, animated: Bool = true) {
+        print("TerminalTest")
+        self.items = items
         self.active = active
-        self.items = TerminalTest.getItems(from: test)
-        self.animations = animations
+        self.animated = animated
     }
     
     var body: some View {
         ForEach(Array(items.enumerated()), id: \.offset) { i, item in
             if case let .bin(char) = item.type {
                 FigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.figlet.withAnimation(animations)
-                            : themeVM.ascii.test.test.passive.figlet.withAnimation(animations))
+                            ? (animated ? themeVM.ascii.test.test.active.figlet : themeVM.ascii.test.test.active.figlet.withAnimation([]))
+                            : (animated ? themeVM.ascii.test.test.passive.figlet : themeVM.ascii.test.test.passive.figlet.withAnimation([])))
             }
             if case let .op(char, span) = item.type {
                 FigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.special.withAnimation(animations) // TODO operator
-                            : themeVM.ascii.test.test.passive.special.withAnimation(animations))
+                            ? (animated ? themeVM.ascii.test.test.active.special : themeVM.ascii.test.test.active.special.withAnimation([]))
+                            : (animated ? themeVM.ascii.test.test.passive.special : themeVM.ascii.test.test.passive.special.withAnimation([])))
                 if uiVM.isDetail {
                     if uiVM.isWideScreen() {
                         ForEach(0 ..< span.big) { _ in
@@ -49,30 +48,6 @@ struct TerminalTest: View {
                 }
             }
         }
-    }
-    
-    private static func getItems(from test: Test) -> [TerminalTestItem] {
-        var items: [TerminalTestItem] = []
-        let chars = test.equation.toString().map { $0 }
-        var consecutiveOps = 0
-        for (i, char) in chars.enumerated() {
-            if isOperator(char) {
-                if isOperator(chars[i + 1]) {
-                    items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
-                    consecutiveOps += 1
-                } else {
-                    items.append(TerminalTestItem(id: test.id, of: .op(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
-                    consecutiveOps = 0
-                }
-            } else {
-                items.append(TerminalTestItem(id: test.id, of: .bin(char)))
-            }
-        }
-        return items
-    }
-    
-    private static func isOperator(_ char: Character) -> Bool {
-        ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
     }
 }
 
