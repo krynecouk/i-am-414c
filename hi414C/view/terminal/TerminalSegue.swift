@@ -18,42 +18,40 @@ struct TerminalSegue: View {
     let headerH: CGFloat = 64
     
     var body: some View {
-        VStack(spacing: 0) {
-            TerminalCommandLine()
-                .onTapGesture {
-                    if keyboardVM.isOpen {
-                        keyboardVM.close()
-                    } else {
-                        keyboardVM.open()
-                        withAnimation(Animation.spring().speed(0.8)) {
-                            uiVM.isAnimated = false
+        if !uiVM.isDetail {
+            VStack(spacing: 0) {
+                TerminalCommandLine()
+                    .onTapGesture {
+                        keyboardVM.isOpen
+                            ? keyboardVM.close()
+                            : keyboardVM.open()
+                    }
+                ASCIIKeyboardView() { input in
+                    if (testVM.test != nil) {
+                        let solution = testVM.solve(with: input)
+                        switch solution {
+                        case .right:
+                            asciiVM.add(symbol: testVM.test!.symbol)
+                        default:
+                            print("not correct")
                         }
+                    } else {
+                        graphVM.traverse(ctx: GraphContext(input: input))
                     }
                 }
-            ASCIIKeyboardView() { input in
-                if (testVM.test != nil) {
-                    let solution = testVM.solve(with: input)
-                    switch solution {
-                    case .right:
-                        asciiVM.add(symbol: testVM.test!.symbol)
-                    default:
-                        print("not correct")
-                    }
-                } else {
-                    graphVM.traverse(ctx: GraphContext(input: input))
+            }
+            .frame(height: segueH)
+            .id(keyboardVM.keyboardSize.height)
+            .onAppear {
+                keyboardVM.close()
+                self.segueH = headerH
+            }
+            .onReceive(keyboardVM.$isOpen) { isOpen in
+                withAnimation {
+                    self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
                 }
             }
-        }
-        .frame(height: segueH)
-        .id(keyboardVM.keyboardSize.height)
-        .onAppear {
-            keyboardVM.close()
-            self.segueH = headerH
-        }
-        .onReceive(keyboardVM.$isOpen) { isOpen in
-            withAnimation {
-                self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
-            }
+            .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
         }
     }
 }

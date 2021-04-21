@@ -11,16 +11,12 @@ struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
-    @EnvironmentObject var uiVM: UIViewModel
-
+    
     var body: some View {
-            VStack(spacing: 0) {
-                TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
-                if !uiVM.isDetail {
-                    TerminalSegue()
-                        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
-                }
-            }
+        VStack(spacing: 0) {
+            TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
+            TerminalSegue()
+        }
     }
     
     private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
@@ -41,7 +37,7 @@ struct TerminalView: View {
                         items.append(TerminalItem(id: "\(test.id.uuidString)\(symbol.rawValue)", of: .symbol(symbol)))
                         return
                     }
-
+                    
                     if testWasSetup {
                         items.append(TerminalItem(id: test.id.uuidString, of: .test(test, false)))
                         return
@@ -57,15 +53,15 @@ struct TerminalView: View {
         }
         return items
     }
-    
-    private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
-        for symbol in tested {
-            if !symbols.contains(symbol) {
-                return false
-            }
+}
+
+private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
+    for symbol in tested {
+        if !symbols.contains(symbol) {
+            return false
         }
-        return true
     }
+    return true
 }
 
 struct TerminalView_Previews: PreviewProvider {
