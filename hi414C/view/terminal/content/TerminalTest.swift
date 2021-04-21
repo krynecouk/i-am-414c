@@ -27,12 +27,12 @@ struct TerminalTest: View {
     var body: some View {
         ForEach(Array(items.enumerated()), id: \.offset) { i, item in
             if case let .bin(char) = item.type {
-                FigletView(String(char), theme: active
+                LiteFigletView(String(char), theme: active
                             ? (animated ? themeVM.ascii.test.test.active.figlet : themeVM.ascii.test.test.active.figlet.withAnimation([]))
                             : (animated ? themeVM.ascii.test.test.passive.figlet : themeVM.ascii.test.test.passive.figlet.withAnimation([])))
             }
             if case let .op(char, span) = item.type {
-                FigletView(String(char), theme: active
+                LiteFigletView(String(char), theme: active
                             ? (animated ? themeVM.ascii.test.test.active.special : themeVM.ascii.test.test.active.special.withAnimation([]))
                             : (animated ? themeVM.ascii.test.test.passive.special : themeVM.ascii.test.test.passive.special.withAnimation([])))
                 if uiVM.isDetail {
