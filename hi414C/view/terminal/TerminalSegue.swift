@@ -21,9 +21,14 @@ struct TerminalSegue: View {
         VStack(spacing: 0) {
             TerminalCommandLine()
                 .onTapGesture {
-                    keyboardVM.isOpen
-                        ? keyboardVM.close()
-                        : keyboardVM.open()
+                    if keyboardVM.isOpen {
+                        keyboardVM.close()
+                    } else {
+                        keyboardVM.open()
+                        withAnimation(Animation.spring().speed(0.8)) {
+                            uiVM.isAnimated = false
+                        }
+                    }
                 }
             ASCIIKeyboardView() { input in
                 if (testVM.test != nil) {

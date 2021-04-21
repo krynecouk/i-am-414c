@@ -23,7 +23,6 @@ struct TerminalGrid: View {
     @State var columns = ADAPTIVE
     @State var printed: [SymbolId] = []
     @State var current: TerminalGrid.CurrentItem = .test
-    @State var animated = true
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
@@ -55,7 +54,7 @@ struct TerminalGrid: View {
                 }
                 if case let .test(test, active) = item.type {
                     if !uiVM.isDetail || (uiVM.isDetail && active) {
-                        TerminalTest(test, active, animations: self.animated ? [.print(), .bloom()] : [])
+                        TerminalTest(test, active, animations: uiVM.isAnimated ? [.print(), .bloom()] : [])
                             .onAppear {
                                 if current != .test {
                                     current = .test
@@ -98,9 +97,9 @@ struct TerminalGrid: View {
         .highPriorityGesture(
             DragGesture()
                 .onChanged { value in
-                    if animated && current == .test {
+                    if uiVM.isAnimated && current == .test {
                         withAnimation(Animation.spring().speed(0.8)) {
-                            self.animated = false
+                            uiVM.isAnimated = false
                         }
                     }
                 }
@@ -124,7 +123,7 @@ struct TerminalGrid: View {
             .onAppear {
                 self.current = .message
                 self.printed = []
-                self.animated = true
+                uiVM.isAnimated = true
             }
     }
     
