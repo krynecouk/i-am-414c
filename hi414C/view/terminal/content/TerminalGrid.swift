@@ -105,8 +105,10 @@ struct TerminalGrid: View {
                 }
         )
         .onTapGesture {
-            withAnimation(Animation.spring().speed(0.8)) {
-                uiVM.isDetail.toggle()
+            if current != .message {
+                withAnimation(Animation.spring().speed(0.8)) {
+                    uiVM.isDetail.toggle()
+                }
             }
         }
     }
