@@ -62,7 +62,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .animation(themeVM.ascii.test.test.symbol, value: self.items)
+        .animation(themeVM.terminal.grid.test.test.symbol, value: self.items)
         .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
@@ -107,11 +107,11 @@ struct TerminalGrid: View {
     }
     
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
-        ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.ascii.art) }
+        ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
     }
     
     func TerminalMessage(_ symbols: [ASCIISymbol]) -> some View {
-        FigletView(symbols, theme: themeVM.ascii.message.figlet)
+        FigletView(symbols, theme: themeVM.terminal.grid.message.figlet)
             .onAppear {
                 self.printed = []
                 self.solved = []
@@ -119,7 +119,7 @@ struct TerminalGrid: View {
     }
     
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
-        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(!printed.contains(id) && solved.contains(symbol) ? [.print(), .bloom()] : []).withDelay(0.5))
+        FigletView(symbol.rawValue, theme: themeVM.terminal.grid.test.symbol.figlet.withAnimation(!printed.contains(id) && solved.contains(symbol) ? [.print(), .bloom()] : []).withDelay(0.5))
             .onDisappear {
                 self.printed.append(id)
             }

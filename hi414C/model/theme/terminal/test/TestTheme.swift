@@ -1,5 +1,5 @@
 //
-//  ASCIITestTheme.swift
+//  TerminalTestTheme.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 24.03.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ASCIITestTheme {
+struct TestTheme {
     var symbol: Symbol
     var test: Test
     

@@ -29,7 +29,7 @@ struct FigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
-                ASCIIArtView(figlets[i], theme: ASCIIArtTheme(
+                ASCIIArtView(figlets[i], theme: ArtTheme(
                     view: theme.view, animations: theme.animations
                 ))
             }

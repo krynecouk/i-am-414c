@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct TerminalTheme {
-    var commandLine: CommandLine
+    var grid: Grid
+    var cli: CommandLine
+    
+    struct Grid {
+        var art: ArtTheme
+        var test: TestTheme
+        var message: MessageTheme
+    }
     
     struct CommandLine {
         var view: ViewTheme

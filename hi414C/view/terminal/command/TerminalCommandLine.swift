@@ -14,23 +14,23 @@ struct TerminalCommandLine: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack(alignment: .center, spacing: 0) {
-                TerminalCommandPrompt(theme: themeVM.terminal.commandLine.prompt)
+                TerminalCommandPrompt(theme: themeVM.terminal.cli.prompt)
                 .padding(.trailing, 17)
                 ForEach(Array(keyboardVM.input.enumerated()), id: \.offset) { i, char in
                     Text(String(char))
                         .offset(y: 4)
-                        .withTheme(themeVM.terminal.commandLine.text.view)
-                        .bloomFadeOut(speed: themeVM.terminal.commandLine.text.bloom.speed, color: themeVM.terminal.commandLine.text.bloom.color)
+                        .withTheme(themeVM.terminal.cli.text.view)
+                        .bloomFadeOut(speed: themeVM.terminal.cli.text.bloom.speed, color: themeVM.terminal.cli.text.bloom.color)
                         .padding(.trailing, 4)
                     
                 }
-                TerminalCommandCursor(theme: themeVM.terminal.commandLine.cursor)
+                TerminalCommandCursor(theme: themeVM.terminal.cli.cursor)
                     .id(keyboardVM.input)
             }
             .padding(.all, 15)
         }
         .frame(height: 64)
-        .background(themeVM.terminal.commandLine.view.background.edgesIgnoringSafeArea(.all))
+        .background(themeVM.terminal.cli.view.background.edgesIgnoringSafeArea(.all))
     }
 }
 

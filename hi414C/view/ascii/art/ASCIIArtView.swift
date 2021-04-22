@@ -17,7 +17,7 @@ struct ASCIIArtView: View {
     var printAnimation: Animation?
     var printDelay: Double?
     var lines: [String]
-    var theme: ASCIIArtTheme
+    var theme: ArtTheme
     var printTimer: ViewTimer?
     var shakeTimer: ViewTimer?
     var shaker: Shaker?
@@ -27,7 +27,7 @@ struct ASCIIArtView: View {
     var bloomable = false
     var bloom: (speed: Double, color: Color) = (0.0, .primary)
     
-    init(_ print: ASCIIPrintable, theme: ASCIIArtTheme = ASCIIArtTheme()) {
+    init(_ print: ASCIIPrintable, theme: ArtTheme = ArtTheme()) {
         self.print = print
         self.lines = print.lines
         self.theme = theme
@@ -110,7 +110,7 @@ typealias ViewTimer = Publishers.Autoconnect<Timer.TimerPublisher>
 
 struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
-        ASCIIArtView(ASCIIArt.of(.cat), theme: ASCIIArtTheme(
+        ASCIIArtView(ASCIIArt.of(.cat), theme: ArtTheme(
             view: ViewTheme(font: (.terminus, 25)),
                         animations: [.print(),.bloom(speed: 0.5)])
         )

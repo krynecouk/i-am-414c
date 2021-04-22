@@ -28,13 +28,13 @@ struct TerminalTest: View {
         ForEach(Array(items.enumerated()), id: \.offset) { i, item in
             if case let .bin(char) = item.type {
                 LiteFigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.figlet
-                            : themeVM.ascii.test.test.passive.figlet)
+                            ? themeVM.terminal.grid.test.test.active.figlet
+                            : themeVM.terminal.grid.test.test.passive.figlet)
             }
             if case let .op(char, span) = item.type {
                 FigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.op
-                            : themeVM.ascii.test.test.passive.op)
+                            ? themeVM.terminal.grid.test.test.active.op
+                            : themeVM.terminal.grid.test.test.passive.op)
                 if uiVM.isDetail {
                     if wide {
                         ForEach(0 ..< span.big) { _ in

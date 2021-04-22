@@ -9,72 +9,103 @@ import SwiftUI
 
 struct PrimaryTheme: Themable {
     
-    static var ascii: ASCIITheme = ASCIITheme(
-        art: ASCIIArtTheme(
-            view: ViewTheme(
-                font: (name: .terminus, size: 13),
-                color: .primary
-            ),
-            animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, type: .wave)]
-        ),
-        test: ASCIITestTheme(
-            symbol: ASCIITestTheme.Symbol(
-                figlet: FigletTheme(
-                    typeface: .ansi(.regular),
-                    view: ViewTheme(
-                        font: (name: .terminus, size: 13),
-                        color: Color.primary.opacity(0.2)
-                    ),
-                    animations: [.print(), .bloom(speed: 1, color: .primary)]
-                )
-            ),
-            test: ASCIITestTheme.Test(
-                active: ASCIITestTheme.Test.Active(
-                    figlet: LiteFigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: (name: .terminus, size: 13),
-                            color: .primary
-                        )
-                    ),
-                    op: FigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: (name: .terminus, size: 13),
-                            color: .gray
-                        ),
-                        animations: [.shake(dt: 0.8, force: 1, type: .wave)]
-                    )
-                ),
-                passive: ASCIITestTheme.Test.Passive(
-                    figlet: LiteFigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: (name: .terminus, size: 13),
-                            color: Color.primary.opacity(0.2)
-                        )
-                    ),
-                    op: FigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: (name: .terminus, size: 13),
-                            color: Color.gray.opacity(0.2)
-                        ),
-                        animations: []
-                    )
-                ),
-                symbol: Animation.spring().speed(0.6),
-                detail: Animation.spring().speed(0.6)
-            )
-        ),
-        message: ASCIIMessageTheme(
-            figlet: FigletTheme(
-                typeface: .ansi(.regular),
+    static var terminal: TerminalTheme = TerminalTheme(
+        grid: TerminalTheme.Grid(
+            art: ArtTheme(
                 view: ViewTheme(
                     font: (name: .terminus, size: 13),
                     color: .primary
                 ),
-                animations: [.print(), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
+                animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, type: .wave)]
+            ),
+            test: TestTheme(
+                symbol: TestTheme.Symbol(
+                    figlet: FigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: Color.primary.opacity(0.2)
+                        ),
+                        animations: [.print(), .bloom(speed: 1, color: .primary)]
+                    )
+                ),
+                test: TestTheme.Test(
+                    active: TestTheme.Test.Active(
+                        figlet: LiteFigletTheme(
+                            typeface: .ansi(.regular),
+                            view: ViewTheme(
+                                font: (name: .terminus, size: 13),
+                                color: .primary
+                            )
+                        ),
+                        op: FigletTheme(
+                            typeface: .ansi(.regular),
+                            view: ViewTheme(
+                                font: (name: .terminus, size: 13),
+                                color: .gray
+                            ),
+                            animations: [.shake(dt: 0.8, force: 1, type: .wave)]
+                        )
+                    ),
+                    passive: TestTheme.Test.Passive(
+                        figlet: LiteFigletTheme(
+                            typeface: .ansi(.regular),
+                            view: ViewTheme(
+                                font: (name: .terminus, size: 13),
+                                color: Color.primary.opacity(0.2)
+                            )
+                        ),
+                        op: FigletTheme(
+                            typeface: .ansi(.regular),
+                            view: ViewTheme(
+                                font: (name: .terminus, size: 13),
+                                color: Color.gray.opacity(0.2)
+                            ),
+                            animations: []
+                        )
+                    ),
+                    symbol: Animation.spring().speed(0.6),
+                    detail: Animation.spring().speed(0.6)
+                )
+            ),
+            message: MessageTheme(
+                figlet: FigletTheme(
+                    typeface: .ansi(.regular),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 13),
+                        color: .primary
+                    ),
+                    animations: [.print(), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
+                )
+            )
+        ),
+        cli: TerminalTheme.CommandLine(
+            view: ViewTheme(
+                background: Color("GoldBck") // TODO
+            ),
+            prompt: TerminalTheme.CommandLine.Prompt(
+                figlet: FigletTheme(
+                    typeface: .ansi(.regular),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 6),
+                        color: .primary
+                    ),
+                    animations: []
+                )
+            ),
+            cursor: TerminalTheme.CommandLine.Cursor(
+                view: ViewTheme(
+                    color: .primary,
+                    background: .primary
+                ),
+                blink: (1, .linear)
+            ),
+            text: TerminalTheme.CommandLine.Text(
+                view: ViewTheme(
+                    font: (.proggyTiny, 55),
+                    color: .primary
+                ),
+                bloom: (1, .primary)
             )
         )
     )
@@ -109,38 +140,6 @@ struct PrimaryTheme: Themable {
                 font: (.proggyTiny, 35),
                 color: .white,
                 background: .blue
-            )
-        )
-    )
-    
-    static var terminal: TerminalTheme = TerminalTheme(
-        commandLine: TerminalTheme.CommandLine(
-            view: ViewTheme(
-                background: Color("GoldBck") // TODO
-            ),
-            prompt: TerminalTheme.CommandLine.Prompt(
-                figlet: FigletTheme(
-                    typeface: .ansi(.regular),
-                    view: ViewTheme(
-                        font: (name: .terminus, size: 6),
-                        color: .primary
-                    ),
-                    animations: []
-                )
-            ),
-            cursor: TerminalTheme.CommandLine.Cursor(
-                view: ViewTheme(
-                    color: .primary,
-                    background: .primary
-                ),
-                blink: (1, .linear)
-            ),
-            text: TerminalTheme.CommandLine.Text(
-                view: ViewTheme(
-                    font: (.proggyTiny, 55),
-                    color: .primary
-                ),
-                bloom: (1, .primary)
             )
         )
     )

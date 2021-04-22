@@ -1,5 +1,5 @@
 //
-//  ASCIIArtTheme.swift
+//  ArtTheme.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 24.03.2021.
@@ -10,7 +10,7 @@ import SwiftUI
 struct FigletTheme {
     var typeface: FigletTypeface = .ansi()
     var view: ViewTheme = ViewTheme()
-    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
+    var animations: [ArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
 struct LiteFigletTheme {
@@ -25,43 +25,43 @@ extension FigletTheme {
         return copy
     }
     
-    func withAnimation(_ animations: [ASCIIArtAnimation]) -> FigletTheme {
+    func withAnimation(_ animations: [ArtAnimation]) -> FigletTheme {
         var copy = self
         copy.animations = animations
         return copy
     }
 }
 
-struct ASCIIArtTheme {
+struct ArtTheme {
     var view: ViewTheme = ViewTheme()
-    var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
+    var animations: [ArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
-enum ASCIIArtAnimation {
+enum ArtAnimation {
     case print(dt: Double = 0.3, delay: Double = 0, animation: Animation? = .linear)
     case shake(dt: Double = 0.4, force: Float = 0.8, type: ASCIIArtShakeType = .wave, animation: Animation? = .none)
     case bloom(speed: Double = 0.8, color: Color = .primary)
 }
 
-extension ASCIIArtTheme {
-    func withDelay(_ delay: Double) -> ASCIIArtTheme {
+extension ArtTheme {
+    func withDelay(_ delay: Double) -> ArtTheme {
         var copy = self
         copy.animations = add(delay: delay, to: copy.animations)
         return copy
     }
     
-    func withAnimation(_ animations: [ASCIIArtAnimation]) -> ASCIIArtTheme {
+    func withAnimation(_ animations: [ArtAnimation]) -> ArtTheme {
         var copy = self
         copy.animations = animations
         return copy
     }
 }
 
-private func add(delay: Double, to animations: [ASCIIArtAnimation]) -> [ASCIIArtAnimation] {
-    var result: [ASCIIArtAnimation] = []
+private func add(delay: Double, to animations: [ArtAnimation]) -> [ArtAnimation] {
+    var result: [ArtAnimation] = []
     for animation in animations {
         if case let .print(dt, _, animation) = animation {
-            result.append(ASCIIArtAnimation.print(dt: dt, delay: delay, animation: animation))
+            result.append(ArtAnimation.print(dt: dt, delay: delay, animation: animation))
         } else {
             result.append(animation)
         }
