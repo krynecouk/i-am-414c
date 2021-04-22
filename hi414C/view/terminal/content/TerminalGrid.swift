@@ -62,7 +62,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .animation(Animation.spring().speed(0.6), value: self.items)
+        .animation(themeVM.ascii.test.test.symbol, value: self.items)
         .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {

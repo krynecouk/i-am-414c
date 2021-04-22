@@ -62,7 +62,9 @@ struct PrimaryTheme: Themable {
                         ),
                         animations: []
                     )
-                )
+                ),
+                symbol: Animation.spring().speed(0.6),
+                detail: Animation.spring().speed(0.6)
             )
         ),
         message: ASCIIMessageTheme(
