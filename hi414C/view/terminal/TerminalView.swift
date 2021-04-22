@@ -32,7 +32,7 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if containsAll(tested: symbols, from: ascii) {
                     items.append(TerminalItem(of: .message(symbols)))
-                    testVM.setTest(test: .none)
+                    testVM.set(test: .none)
                     continue
                 }
                 
@@ -51,7 +51,7 @@ struct TerminalView: View {
                     }
                     testWasSetup.toggle()
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
-                    testVM.setTest(test: test)
+                    testVM.set(test: test)
                 }
             }
             if case let .asciiArt(arts) = type {
@@ -68,7 +68,7 @@ struct TerminalView: View {
         var consecutiveOps = 0
         for (i, char) in chars.enumerated() {
             if isOperator(char) {
-                if isOperator(chars[i + 1]) {
+                if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
                     items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
                     consecutiveOps += 1
                 } else {

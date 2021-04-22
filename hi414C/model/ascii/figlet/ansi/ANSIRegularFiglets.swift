@@ -362,11 +362,18 @@ enum ANSIRegularFiglets {
         ]),
         /*
          .ampersand: Figlet(symbol: .ampersand, lines: [
-         "████    ",
-         "█ ██    ",
-         "████████",
-         "██  ██  ",
-         "██████  ",
+             "██▀▀▀▀▀ ",
+             "██  ██   ",
+             "████████",
+             "██  ██  ",
+             "██████  ",
+         ]),
+         .ampersand: Figlet(symbol: .ampersand, lines: [
+             " ██████",
+             "██     ",
+             " ██████  ",
+             "██   ██ ",
+             " ██████",
          ]),
          */
         .atSign: Figlet(symbol: .atSign, lines: [

@@ -3,6 +3,23 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "TerminalView.getItems(from:):TerminalView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chars.endIndex">
+            </PersistentString>
+            <PersistentString
+               value = "chars.count &gt;= (i + 1)">
+            </PersistentString>
+            <PersistentString
+               value = "chars[i + 1]">
+            </PersistentString>
+            <PersistentString
+               value = "chars.endIndex &gt; (i + 1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in Figlet.__preview__body.getter:Figlet.swift">
          <PersistentStrings>
             <PersistentString
@@ -30,10 +47,10 @@
          contextName = "closure #2 in closure #4 in closure #1 in closure #1 in TerminalKeyboard.__preview__body.getter:TerminalKeyboard.swift">
          <PersistentStrings>
             <PersistentString
-               value = "keyboardInput.value">
+               value = "testViewModel.current!.symbol">
             </PersistentString>
             <PersistentString
-               value = "testViewModel.current!.symbol">
+               value = "keyboardInput.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
