@@ -35,10 +35,7 @@ struct TerminalSegue: View {
                         let solution = testVM.solve(with: input)
                         switch solution {
                         case .right:
-                            //DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                asciiVM.add(symbol: testVM.test!.symbol)
-                            //}
-                            
+                            asciiVM.add(symbol: testVM.test!.symbol)
                         default:
                             print("not correct")
                         }

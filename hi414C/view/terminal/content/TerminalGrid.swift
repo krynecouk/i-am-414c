@@ -119,7 +119,9 @@ struct TerminalGrid: View {
     }
     
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
-        FigletView(symbol.rawValue, theme: themeVM.terminal.grid.test.symbol.figlet.withAnimation(!printed.contains(id) && solved.contains(symbol) ? [.print(), .bloom()] : []).withDelay(0.5))
+        FigletView(symbol.rawValue, theme: (!printed.contains(id) && solved.contains(symbol))
+                    ? themeVM.terminal.grid.test.symbol.figlet
+                    : themeVM.terminal.grid.test.symbol.figlet.withAnimation([]))
             .onDisappear {
                 self.printed.append(id)
             }
