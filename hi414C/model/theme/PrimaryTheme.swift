@@ -64,8 +64,13 @@ struct PrimaryTheme: Themable {
                             animations: []
                         )
                     ),
-                    symbol: Animation.spring().speed(0.6),
-                    detail: Animation.spring().speed(0.6)
+                    animation: TestTheme.Test.TestAnimation(
+                        detail: TestTheme.Test.TestAnimation.Detail (
+                            active: Animation.spring().speed(0.6),
+                            passive: Animation.spring().speed(0.6)
+                        ),
+                        symbol: Animation.spring().speed(0.6)
+                    )
                 )
             ),
             message: MessageTheme(

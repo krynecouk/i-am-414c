@@ -62,7 +62,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .animation(themeVM.terminal.grid.test.test.symbol, value: self.items)
+        .animation(themeVM.terminal.grid.test.test.animation.symbol, value: self.items)
         .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
@@ -97,7 +97,7 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-                withAnimation(Animation.spring().speed(0.8)) {
+            withAnimation(Animation.linear.speed(0.8)) {
                     uiVM.isDetail.toggle()
                 }
         }

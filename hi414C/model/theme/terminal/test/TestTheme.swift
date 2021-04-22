@@ -18,8 +18,7 @@ struct TestTheme {
     struct Test {
         var active: Active
         var passive: Passive
-        var symbol: Animation
-        var detail: Animation
+        var animation: TestAnimation
         
         struct Active {
             var figlet: LiteFigletTheme
@@ -29,6 +28,16 @@ struct TestTheme {
         struct Passive {
             var figlet: LiteFigletTheme
             var op: FigletTheme
+        }
+        
+        struct TestAnimation {
+            var detail: Detail
+            var symbol: Animation?
+            
+            struct Detail {
+                var active: Animation?
+                var passive: Animation?
+            }
         }
     }
 }
