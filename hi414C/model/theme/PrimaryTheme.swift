@@ -16,7 +16,7 @@ struct PrimaryTheme: Themable {
                     font: (name: .terminus, size: 13),
                     color: .primary
                 ),
-                animations: [.print(dt: 0.3, animation: .linear), .shake(dt: 0.8, force: 1, type: .wave)]
+                animations: [.print(speed: 0.3, animation: .linear), .shake(speed: 0.8, force: 1, type: .wave)]
             ),
             test: TestTheme(
                 symbol: TestTheme.Symbol(
@@ -44,7 +44,7 @@ struct PrimaryTheme: Themable {
                                 font: (name: .terminus, size: 13),
                                 color: .gray
                             ),
-                            animations: [.shake(dt: 0.8, force: 1, type: .wave)]
+                            animations: [.shake(speed: 0.8, force: 1, type: .wave)]
                         )
                     ),
                     passive: TestTheme.Test.Passive(
@@ -65,11 +65,8 @@ struct PrimaryTheme: Themable {
                         )
                     ),
                     animation: TestTheme.Test.TestAnimation(
-                        detail: TestTheme.Test.TestAnimation.Detail (
-                            active: Animation.spring().speed(0.6),
-                            passive: Animation.spring().speed(0.6)
-                        ),
-                        symbol: Animation.spring().speed(0.6)
+                        detail: Animation.spring().speed(0.8),
+                        symbol: Animation.spring().speed(0.8)
                     )
                 )
             ),
@@ -80,7 +77,7 @@ struct PrimaryTheme: Themable {
                         font: (name: .terminus, size: 13),
                         color: .primary
                     ),
-                    animations: [.print(), .shake(dt: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
+                    animations: [.print(), .shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
                 )
             )
         ),

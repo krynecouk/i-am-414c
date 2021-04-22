@@ -33,14 +33,14 @@ struct ASCIIArtView: View {
         self.theme = theme
         
         for animation in theme.animations {
-            if case let .print(dt, delay, animation) = animation {
-                self.printTimer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
+            if case let .print(speed, delay, animation) = animation {
+                self.printTimer = Timer.publish(every: speed, on: .main, in: .common).autoconnect()
                 self.printable = true
                 self.printAnimation = animation
                 self.printDelay = delay
             }
-            if case let .shake(dt, force, type, animation) = animation {
-                self.shakeTimer = Timer.publish(every: dt, on: .main, in: .common).autoconnect()
+            if case let .shake(speed, force, type, animation) = animation {
+                self.shakeTimer = Timer.publish(every: speed, on: .main, in: .common).autoconnect()
                 self.shaker = ASCIIArtShaker.of(lines: lines.count, force: force, type: type)
                 self.shakeable = true
                 self.shakeAnimation = animation

@@ -31,13 +31,8 @@ struct TestTheme {
         }
         
         struct TestAnimation {
-            var detail: Detail
+            var detail: Animation?
             var symbol: Animation?
-            
-            struct Detail {
-                var active: Animation?
-                var passive: Animation?
-            }
         }
     }
 }

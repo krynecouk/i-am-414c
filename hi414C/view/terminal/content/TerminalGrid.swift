@@ -88,7 +88,7 @@ struct TerminalGrid: View {
                 : TerminalGrid.ADAPTIVE
         }
         .onReceive(uiVM.$isDetail) { isDetail in
-            withAnimation(Animation.spring().speed(0.8)) {
+            withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
                 if !isDetail {
                     self.columns = TerminalGrid.ADAPTIVE
                 } else {
@@ -97,9 +97,9 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-            withAnimation(Animation.linear.speed(0.8)) {
-                    uiVM.isDetail.toggle()
-                }
+            withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
+                uiVM.isDetail.toggle()
+            }
         }
         .onChange(of: self.items) { val in
             self.changes += 1
