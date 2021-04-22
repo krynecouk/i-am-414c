@@ -22,14 +22,14 @@ enum EquationType: CaseIterable {
     case ID, AND, OR, XOR, NOT, SHL, SHR, ADD, SUB, DIV, MUL
     
     func build(x: EquationType = .ID, y: EquationType = .ID) -> EquationBuilder {
-        return self._build(x: x._build(), y: y._build())
+        return self.builder(x: x.builder(), y: y.builder())
     }
     
     static func rand() -> EquationType {
         EquationType.allCases.randomElement()!
     }
     
-    private func _build(x: EquationBuilder = id(), y: EquationBuilder = id()) -> EquationBuilder {
+    private func builder(x: EquationBuilder = id(), y: EquationBuilder = id()) -> EquationBuilder {
         switch self {
         case .ID:
             return id()
