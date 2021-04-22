@@ -13,6 +13,11 @@ struct FigletTheme {
     var animations: [ASCIIArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
+struct LiteFigletTheme {
+    var typeface: FigletTypeface = .ansi()
+    var view: ViewTheme = ViewTheme()
+}
+
 extension FigletTheme {
     func withDelay(_ delay: Double) -> FigletTheme {
         var copy = self

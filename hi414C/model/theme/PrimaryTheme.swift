@@ -30,15 +30,14 @@ struct PrimaryTheme: Themable {
             ),
             test: ASCIITestTheme.Test(
                 active: ASCIITestTheme.Test.Active(
-                    figlet: FigletTheme(
+                    figlet: LiteFigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
                             color: .primary
-                        ),
-                        animations: []
+                        )
                     ),
-                    special: FigletTheme(
+                    op: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
@@ -48,15 +47,14 @@ struct PrimaryTheme: Themable {
                     )
                 ),
                 passive: ASCIITestTheme.Test.Passive(
-                    figlet: FigletTheme(
+                    figlet: LiteFigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
                             color: Color.primary.opacity(0.2)
-                        ),
-                        animations: []
+                        )
                     ),
-                    special: FigletTheme(
+                    op: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),

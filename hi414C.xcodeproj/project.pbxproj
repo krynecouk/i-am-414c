@@ -107,7 +107,6 @@
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26B10A2126027B08007E7B65 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B10A2026027B08007E7B65 /* Grid.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
-		26BE1E2A26308E3800F4AB0F /* FooShake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE1E2926308E3800F4AB0F /* FooShake.swift */; };
 		26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22925DD3B0A0035065E /* hi414CApp.swift */; };
 		26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22B25DD3B0A0035065E /* ContentView.swift */; };
 		26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BEC22D25DD3B0B0035065E /* Assets.xcassets */; };
@@ -231,7 +230,6 @@
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26B10A2026027B08007E7B65 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
-		26BE1E2926308E3800F4AB0F /* FooShake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooShake.swift; sourceTree = "<group>"; };
 		26BEC22625DD3B0A0035065E /* hi414C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hi414C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BEC22925DD3B0A0035065E /* hi414CApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CApp.swift; sourceTree = "<group>"; };
 		26BEC22B25DD3B0A0035065E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -511,7 +509,6 @@
 				26B39DC425F65741004E4D22 /* Bloom.swift */,
 				26782B3F26177AC800BA9C4E /* BloomFadeOut.swift */,
 				266A43B7261C2F7800C7855C /* Shake.swift */,
-				26BE1E2926308E3800F4AB0F /* FooShake.swift */,
 			);
 			path = effects;
 			sourceTree = "<group>";
@@ -974,7 +971,6 @@
 				268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,
-				26BE1E2A26308E3800F4AB0F /* FooShake.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
 				26647D2E25F94D4B00E32DE0 /* GraphContext.swift in Sources */,

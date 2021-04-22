@@ -9,7 +9,7 @@ import SwiftUI
 
 class TestViewModel: ObservableObject {
     private(set) var test: Test? = .none
-    @Published private(set) var result: TestResult = .right
+    @Published private(set) var result: TestResult = .right(.questionMark)
     
     func setTest(test: Test?) {
         if let test = self.test {
@@ -20,7 +20,7 @@ class TestViewModel: ObservableObject {
     
     func solve(with value: String) -> TestResult {
         if let test = self.test {
-            self.result = test.equation.result == UInt8(value) ? .right : .wrong("wrong result \(value)")
+            self.result = test.equation.result == UInt8(value) ? .right(test.symbol) : .wrong("wrong result \(value)")
         } else {
             self.result = .wrong("No test was provided")
         }

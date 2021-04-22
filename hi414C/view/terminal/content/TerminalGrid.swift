@@ -21,6 +21,7 @@ struct TerminalGrid: View {
     @State var changes: Int = 0
     @State var columns = ADAPTIVE
     @State var printed: [SymbolId] = []
+    @State var solved: [ASCIISymbol] = []
     @State var wide = false
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
@@ -36,7 +37,6 @@ struct TerminalGrid: View {
     init(items: [TerminalItem]) {
         print("TerminalGrid")
         self.items = items
-        print(items)
     }
     
     var body: some View {
@@ -64,12 +64,14 @@ struct TerminalGrid: View {
         }
         .animation(Animation.spring().speed(0.6), value: self.items)
         .withShake(attempt: errors)
-        //.withFoo(offset: 10, pct: 10, goingRight: true)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
                 withAnimation(.default) {
                     self.errors += 1
                 }
+            }
+            if case let .right(symbol) = result {
+                self.solved.append(symbol)
             }
         }
         .onReceive(graphVM.$result) { result in
@@ -112,12 +114,12 @@ struct TerminalGrid: View {
         FigletView(symbols, theme: themeVM.ascii.message.figlet)
             .onAppear {
                 self.printed = []
+                self.solved = []
             }
     }
     
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
-        // animace jen u tech co v momentalnim kole jsou solved a jeste nebyly prited
-        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(printed.contains(id) ? [] : [.print(), .bloom()]).withDelay(0.5))
+        FigletView(symbol.rawValue, theme: themeVM.ascii.test.symbol.figlet.withAnimation(!printed.contains(id) && solved.contains(symbol) ? [.print(), .bloom()] : []).withDelay(0.5))
             .onDisappear {
                 self.printed.append(id)
             }

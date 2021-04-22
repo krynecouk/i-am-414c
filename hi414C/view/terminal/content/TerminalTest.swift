@@ -33,8 +33,8 @@ struct TerminalTest: View {
             }
             if case let .op(char, span) = item.type {
                 FigletView(String(char), theme: active
-                            ? themeVM.ascii.test.test.active.special
-                            : themeVM.ascii.test.test.passive.special)
+                            ? themeVM.ascii.test.test.active.op
+                            : themeVM.ascii.test.test.passive.op)
                 if uiVM.isDetail {
                     if wide {
                         ForEach(0 ..< span.big) { _ in

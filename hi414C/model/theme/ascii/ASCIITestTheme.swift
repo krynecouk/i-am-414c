@@ -18,13 +18,13 @@ struct ASCIITestTheme {
         var passive: Passive
         
         struct Active {
-            var figlet: FigletTheme
-            var special: FigletTheme
+            var figlet: LiteFigletTheme
+            var op: FigletTheme
         }
         
         struct Passive {
-            var figlet: FigletTheme
-            var special: FigletTheme
+            var figlet: LiteFigletTheme
+            var op: FigletTheme
         }
     }
 }

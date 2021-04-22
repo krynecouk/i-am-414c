@@ -6,6 +6,6 @@
 //
 
 enum TestResult: Equatable {
-    case right
+    case right(ASCIISymbol)
     case wrong(String)
 }
