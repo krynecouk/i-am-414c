@@ -43,7 +43,7 @@ struct SHR: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, test: { x >> y == toSHR })
+        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.SHR)] + yParts, types: [.SHR] + xResult.types + yResult.types, test: { x >> y == toSHR })
     }
     
     func getMultiplications(from value: UInt8, max: UInt8 = UInt8.max) -> [UInt8] {

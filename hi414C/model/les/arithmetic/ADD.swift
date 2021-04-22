@@ -45,7 +45,7 @@ struct ADD: EquationBuilder {
         
         let xParts = xResult.parts.withParen(!(self.x.equation is ID))
         let yParts = yResult.parts.withParen(!(self.y.equation is ID))
-                
-        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.ADD)] + yParts, test: { x + y == result })
+
+        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.ADD)] + yParts, types: [.ADD] + xResult.types + yResult.types, test: { x + y == result })
     }
 }

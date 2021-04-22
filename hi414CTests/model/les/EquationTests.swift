@@ -67,6 +67,23 @@ class EquationTests: XCTestCase {
         )
     }
     
+    func test_of_equation_types() {
+        let equation = AND(OR(NOT()), XOR()) => 100
+        let types = equation.types
+        XCTAssertEqual(types.contains(.AND), true, "equation \(equation.toString()) contains AND operator")
+        XCTAssertEqual(types.contains(.OR), true, "equation \(equation.toString()) contains OR operator")
+        XCTAssertEqual(types.contains(.NOT), true, "equation \(equation.toString()) contains NOT operator")
+        XCTAssertEqual(types.contains(.XOR), true, "equation \(equation.toString()) contains XOR operator")
+        XCTAssertEqual(types.contains(.ID), true, "equation \(equation.toString()) contains ID operator")
+        
+        XCTAssertEqual(types.contains(.ADD), false, "equation \(equation.toString()) does not contains ADD operator")
+        XCTAssertEqual(types.contains(.SUB), false, "equation \(equation.toString()) does not contains SUB operator")
+        XCTAssertEqual(types.contains(.DIV), false, "equation \(equation.toString()) does not contains DIV operator")
+        XCTAssertEqual(types.contains(.MUL), false, "equation \(equation.toString()) does not contains MUL operator")
+        XCTAssertEqual(types.contains(.SHL), false, "equation \(equation.toString()) does not contains SHL operator")
+        XCTAssertEqual(types.contains(.SHR), false, "equation \(equation.toString()) does not contains SHR operator")
+    }
+    
     func test(_ builder: EquationBuilder, debug: Bool = false) {
         test(builder.eq(0), debug: debug)
         tests.forEach { _ in

@@ -10,5 +10,6 @@ struct Equation {
     var y: UInt8 = 0
     var result: UInt8
     var parts: EquationParts
+    var types: Set<EquationType>
     var test: () -> Bool
 }

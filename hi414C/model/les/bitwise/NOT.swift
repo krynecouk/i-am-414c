@@ -28,6 +28,6 @@ struct NOT: EquationBuilder {
         
         let x: UInt8 = UInt8.from(bin: xByte)
                 
-        return Equation(x: x, result: result, parts: [.OP(.NOT)] + xParts, test: { ~x == result })
+        return Equation(x: x, result: result, parts: [.OP(.NOT)] + xParts, types: [.NOT] + xResult.types, test: { ~x == result })
     }
 }
