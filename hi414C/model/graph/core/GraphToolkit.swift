@@ -11,4 +11,5 @@ struct GraphToolkit {
     var keyboardVM: KeyboardViewModel
     var testVM: TestViewModel
     var themeVM: ThemeViewModel
+    var uiVM: UIViewModel
 }

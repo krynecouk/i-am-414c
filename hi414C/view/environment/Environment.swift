@@ -31,7 +31,7 @@ struct EnvironmentModifier: ViewModifier {
         self.testVM = testVM
         self.uiVM = uiVM
         self.graphVM = GraphViewModel(toolkit: GraphToolkit(
-            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM
+            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM, uiVM: uiVM
         ))
     }
     
