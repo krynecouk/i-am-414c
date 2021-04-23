@@ -25,8 +25,8 @@ enum EquationType: CaseIterable {
         return self.builder(x: x.builder(), y: y.builder())
     }
     
-    static func rand() -> EquationType {
-        EquationType.allCases.randomElement()!
+    static func rand(of types: [EquationType] = [AND, OR, XOR, NOT, SHL, SHR, ADD, SUB, DIV, MUL], withId: Bool = false) -> EquationType {
+        withId ? (types + [ID]).randomElement()! : types.randomElement()!
     }
     
     private func builder(x: EquationBuilder = id(), y: EquationBuilder = id()) -> EquationBuilder {
