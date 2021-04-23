@@ -28,7 +28,7 @@ struct TerminalView: View {
 
         var items: [TerminalItem] = []
         for type in types {
-            if case let .asciiTest(tests) = type {
+            if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
                 if containsAll(tested: symbols, from: ascii) {
                     items.append(TerminalItem(of: .message(symbols)))
@@ -54,7 +54,7 @@ struct TerminalView: View {
                     testVM.set(test: test)
                 }
             }
-            if case let .asciiArt(arts) = type {
+            if case let .art(arts) = type {
                 items.append(TerminalItem(of: .art(arts)))
             }
         }

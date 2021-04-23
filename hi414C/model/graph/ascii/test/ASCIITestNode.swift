@@ -24,6 +24,6 @@ class ASCIITestNode : Node {
             toolkit.testVM.level(up: 1)
         }
         let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
-        toolkit.terminalVM.setContent([.asciiTest(tests)])
+        toolkit.terminalVM.setContent([.test(tests)])
     }
 }

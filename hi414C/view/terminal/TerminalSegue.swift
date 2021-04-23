@@ -13,6 +13,7 @@ struct TerminalSegue: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var terminalVM: TerminalViewModel
     
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
