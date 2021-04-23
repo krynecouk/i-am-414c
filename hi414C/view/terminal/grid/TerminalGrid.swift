@@ -148,3 +148,12 @@ enum TerminalItemType {
     case message([ASCIISymbol])
     case art([ASCIIPrintable])
 }
+
+struct TerminalGrid_Previews: PreviewProvider {
+    static var previews: some View {
+        CathodeView {
+            TerminalGrid(items: [TerminalItem(of: .symbol(.A))])
+                .withEnvironment()
+        }
+    }
+}
