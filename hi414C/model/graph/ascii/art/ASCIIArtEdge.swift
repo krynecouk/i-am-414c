@@ -17,11 +17,11 @@ struct ASCIIArtEdge: Edge {
         self.variants.append(id)
     }
     
-    func isTraversable(ctx: GraphContext) -> Bool {
+    func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
         self.variants.contains(ctx.input) // TODO need to be smarter
     }
     
-    func traverse() -> Node {
+    func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
         target
     }
 }

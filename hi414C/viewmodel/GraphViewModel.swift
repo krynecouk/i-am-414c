@@ -32,8 +32,8 @@ class GraphViewModel: ObservableObject {
     
     private func traverse(_ edges: [Edge], ctx: GraphContext) -> Node? {
         for edge in edges {
-            if (edge.isTraversable(ctx: ctx)) {
-                return edge.traverse()
+            if (edge.isTraversable(ctx: ctx, toolkit: toolkit)) {
+                return edge.traverse(ctx: ctx, toolkit: toolkit)
             }
         }
         return .none

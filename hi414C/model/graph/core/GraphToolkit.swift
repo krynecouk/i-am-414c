@@ -12,4 +12,5 @@ struct GraphToolkit {
     var testVM: TestViewModel
     var themeVM: ThemeViewModel
     var uiVM: UIViewModel
+    var historyVM: HistoryViewModel
 }

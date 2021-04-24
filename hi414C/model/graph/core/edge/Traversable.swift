@@ -6,6 +6,6 @@
 //
 
 protocol Traversable {
-    func isTraversable(ctx: GraphContext) -> Bool
-    func traverse() -> Node
+    func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool
+    func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node
 }

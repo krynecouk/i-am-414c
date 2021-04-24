@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 11.03.2021.
 //
 
-class ASCIITestEdge : Edge {
+class ASCIITestEdge: Edge {
     var id: String
     var variants: [String]
     var target: Node
@@ -17,11 +17,18 @@ class ASCIITestEdge : Edge {
         self.variants.append(id)
     }
     
-    func isTraversable(ctx: GraphContext) -> Bool {
+    func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
         self.variants.contains(ctx.input) // TODO need to be smarter
     }
     
-    func traverse() -> Node {
+    func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
         target
+    }
+}
+
+class RootASCIITestEdge: ASCIITestEdge {
+    override func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
+        toolkit.historyVM.remove()
+        return super.traverse(ctx: ctx, toolkit: toolkit)
     }
 }

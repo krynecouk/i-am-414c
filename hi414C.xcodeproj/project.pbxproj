@@ -17,6 +17,7 @@
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
 		2636123D263323C000341B60 /* TerminalHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636123C263323C000341B60 /* TerminalHelp.swift */; };
+		263612412634A6B600341B60 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612402634A6B600341B60 /* HistoryViewModel.swift */; };
 		2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636248D25FCBB2900B490B4 /* FigletFont.swift */; };
 		263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegularFiglets.swift */; };
 		2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */; };
@@ -142,6 +143,7 @@
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		2636123C263323C000341B60 /* TerminalHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelp.swift; sourceTree = "<group>"; };
+		263612402634A6B600341B60 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		2636248D25FCBB2900B490B4 /* FigletFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletFont.swift; sourceTree = "<group>"; };
 		263F440025EAB5C700D069B6 /* ANSIRegularFiglets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegularFiglets.swift; sourceTree = "<group>"; };
 		2641EF6225E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminusTTF-4.46.0.ttf"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				268D92D62608E10700A43802 /* TerminalViewModel.swift */,
 				268D92DA2608E18A00A43802 /* ThemeViewModel.swift */,
 				269765A3262DD6F000775D71 /* UIViewModel.swift */,
+				263612402634A6B600341B60 /* HistoryViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */,
 				2654882326050B710044297D /* TerminalView.swift in Sources */,
 				267A0D4F260C823400844927 /* ASCIIArtNode.swift in Sources */,
+				263612412634A6B600341B60 /* HistoryViewModel.swift in Sources */,
 				26440444261907B000CA7EA1 /* ColorTheme.swift in Sources */,
 				268D92D12608D83000A43802 /* GraphToolkit.swift in Sources */,
 				2697655826273C1B00775D71 /* SHR.swift in Sources */,

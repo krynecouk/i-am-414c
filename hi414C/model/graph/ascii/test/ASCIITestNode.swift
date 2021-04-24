@@ -15,6 +15,7 @@ class ASCIITestNode : Node {
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
+        toolkit.historyVM.add(message: Message(from: .AL, text: ctx.input))
         let symbols = id.map { char in
             ASCIISymbol.from(String(char))
         }
@@ -25,5 +26,11 @@ class ASCIITestNode : Node {
         }
         let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
         toolkit.terminalVM.setContent([.test(tests)])
+        
+        print(toolkit.historyVM.history)
+    }
+    
+    func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
+        toolkit.historyVM.add(message: Message(from: ._414C, text: id))
     }
 }

@@ -14,10 +14,3 @@ struct Equation {
     var test: () -> Bool
 }
 
-extension Equation {
-    func toString(radix: EquationRadix = .bin, result: (visible: Bool, radix: EquationRadix) = (false, .bin)) -> String {
-        result.visible
-            ? (self.parts + [.SYM(.EQ), .RESULT(self.result)]).toString(radix: (radix, result.radix))
-            : self.parts.toString(radix: (radix, result.radix))
-    }
-}

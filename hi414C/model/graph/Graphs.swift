@@ -8,6 +8,7 @@
 class Graphs {
     typealias N = ASCIITestNode
     typealias E = ASCIITestEdge
+    typealias RE = RootASCIITestEdge
     
     private init() {}
     
