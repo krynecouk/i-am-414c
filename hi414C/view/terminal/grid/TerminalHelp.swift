@@ -9,17 +9,17 @@ import SwiftUI
 
 struct TerminalHelp: View {
     
-    let symbols: [ASCIISymbol]
+    let text: String
     let theme: FigletTheme
     
-    init(_ symbols: [ASCIISymbol], _ theme: FigletTheme = FigletTheme()) {
+    init(_ text: String, _ theme: FigletTheme = FigletTheme()) {
         print("TerminalHelp")
-        self.symbols = symbols
+        self.text = text
         self.theme = theme
     }
     
     var body: some View {
-        FigletView(symbols, theme: theme)
+        FigletView(text, theme: theme)
     }
 }
 

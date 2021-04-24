@@ -14,6 +14,7 @@ struct TerminalGrid: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     
     typealias SymbolId = String
     
@@ -44,7 +45,7 @@ struct TerminalGrid: View {
             ForEach(items, id: \.id) { item in
                 if case let .help(symbols) = item.type {
                     if uiVM.isHelp {
-                        TerminalHelp(symbols)
+                        TerminalHelp(historyVM.history.map { $0.text }.joined(separator: "|"))
                     }
                 }
                 if case let .art(arts) = item.type {

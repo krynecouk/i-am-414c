@@ -25,10 +25,3 @@ class ASCIITestEdge: Edge {
         target
     }
 }
-
-class RootASCIITestEdge: ASCIITestEdge {
-    override func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
-        toolkit.historyVM.remove()
-        return super.traverse(ctx: ctx, toolkit: toolkit)
-    }
-}

@@ -20,7 +20,7 @@ class GraphViewModel: ObservableObject {
     
     func traverse(ctx: GraphContext) {
         self.node.onExit(ctx: ctx, toolkit: toolkit)
-        let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(Graphs.HI.edges, ctx: ctx)
+        let targetNode = traverse(self.node.edges, ctx: ctx) ?? clearAndTraverse(Graphs.HI.edges, ctx: ctx)
         if let node = targetNode {
             self.node = node
             self.node.onEnter(ctx: ctx, toolkit: toolkit)
@@ -28,6 +28,14 @@ class GraphViewModel: ObservableObject {
         } else {
             self.result = .error("Node \(ctx.input) was not found")
         }
+    }
+    
+    private func clearAndTraverse(_ edges: [Edge], ctx: GraphContext) -> Node? {
+        let node = traverse(edges, ctx: ctx)
+        if node != nil {
+            toolkit.historyVM.remove()
+        }
+        return node
     }
     
     private func traverse(_ edges: [Edge], ctx: GraphContext) -> Node? {
