@@ -6,13 +6,14 @@
 //
 
 class Graphs {
+    typealias R = ASCIITestNode
     typealias N = ASCIITestNode
     typealias E = ASCIITestEdge
     
     private init() {}
     
     static let HI =
-        N("HI") {
+        R("HI") {
             E("HI") {
                 N("HI")
             }

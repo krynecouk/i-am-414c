@@ -45,7 +45,7 @@ struct TerminalGrid: View {
             ForEach(items, id: \.id) { item in
                 if case let .help(symbols) = item.type {
                     if uiVM.isHelp {
-                        TerminalHelp(historyVM.history.map { $0.text }.joined(separator: "|"))
+                        TerminalHelp(historyVM.history.map { $0.text }.joined())
                     }
                 }
                 if case let .art(arts) = item.type {
