@@ -32,6 +32,12 @@ struct TerminalSegue: View {
                             : keyboardVM.open()
                     }
                 ASCIIKeyboardView() { input in
+                    if input == "?" {
+                        withAnimation {
+                            uiVM.isHelp = uiVM.isHelp ? false : true
+                        }
+                        return
+                    }
                     if (testVM.test != nil) {
                         let solution = testVM.solve(with: input)
                         switch solution {

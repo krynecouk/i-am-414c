@@ -42,6 +42,11 @@ struct TerminalGrid: View {
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(items, id: \.id) { item in
+                if case let .help(symbols) = item.type {
+                    if uiVM.isHelp {
+                        TerminalHelp(symbols)
+                    }
+                }
                 if case let .art(arts) = item.type {
                     TerminalArt(arts)
                 }
@@ -56,7 +61,10 @@ struct TerminalGrid: View {
                 }
                 if case let .test(test, items, active) = item.type {
                     if !uiVM.isDetail || (uiVM.isDetail && active) {
-                        TerminalTest(items, active, wide)
+                        let theme = active
+                            ? (themeVM.terminal.grid.test.test.active.figlet, themeVM.terminal.grid.test.test.active.op)
+                            : (themeVM.terminal.grid.test.test.passive.figlet, themeVM.terminal.grid.test.test.passive.op)
+                        TerminalTest(items, theme: theme, wide: wide)
                             .matchedGeometryEffect(id: "\(test.id.uuidString)\(test.symbol.rawValue)", in: ns, isSource: false)
                     }
                 }
@@ -72,6 +80,7 @@ struct TerminalGrid: View {
             }
             if case let .right(symbol) = result {
                 self.solved.append(symbol)
+                uiVM.isHelp = false
             }
         }
         .onReceive(graphVM.$result) { result in
@@ -80,6 +89,8 @@ struct TerminalGrid: View {
                     self.errors += 1
                 }
             }
+            uiVM.isHelp = false
+
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()
@@ -147,6 +158,7 @@ enum TerminalItemType {
     case test(Test, [TerminalTestItem], Bool)
     case message([ASCIISymbol])
     case art([ASCIIPrintable])
+    case help([ASCIISymbol])
 }
 
 struct TerminalGrid_Previews: PreviewProvider {

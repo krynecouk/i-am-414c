@@ -72,7 +72,7 @@ struct PrimaryTheme: Themable {
             ),
             message: MessageTheme(
                 figlet: FigletTheme(
-                    typeface: .ansi(.regular),
+                    typeface: .ansi(.shadow),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
                         color: .primary

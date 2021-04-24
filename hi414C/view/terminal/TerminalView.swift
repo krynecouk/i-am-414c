@@ -27,6 +27,7 @@ struct TerminalView: View {
         print("Calculating Test Content Items")
 
         var items: [TerminalItem] = []
+        items.append(TerminalItem(of: .help([.H, .E, .R, .E, .I, .S, .H, .E, .L, .P])))
         for type in types {
             if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
@@ -38,13 +39,14 @@ struct TerminalView: View {
                 
                 var testWasSetup = false
                 tests.forEach { test in
+                    
                     let symbol = test.symbol
                     if ascii.contains(symbol) {
                         items.append(TerminalItem(id: "\(test.id.uuidString)\(symbol.rawValue)", of: .symbol(symbol)))
                         return
                     }
                     
-                    let testItems = getItems(from: test)
+                    let testItems = TerminalTest.getItems(from: test)
                     if testWasSetup {
                         items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, false)))
                         return
@@ -59,31 +61,6 @@ struct TerminalView: View {
             }
         }
         return items
-    }
-    
-    private func getItems(from test: Test) -> [TerminalTestItem] {
-        print("Calculating Test Items")
-        var items: [TerminalTestItem] = []
-        let chars = test.equation.toString().map { $0 }
-        var consecutiveOps = 0
-        for (i, char) in chars.enumerated() {
-            if isOperator(char) {
-                if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
-                    items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
-                    consecutiveOps += 1
-                } else {
-                    items.append(TerminalTestItem(id: test.id, of: .op(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
-                    consecutiveOps = 0
-                }
-            } else {
-                items.append(TerminalTestItem(id: test.id, of: .bin(char)))
-            }
-        }
-        return items
-    }
-    
-    private func isOperator(_ char: Character) -> Bool {
-        ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
     }
 }
 

@@ -10,31 +10,29 @@ import SwiftUI
 typealias Span = (small: Int, big: Int)
 
 struct TerminalTest: View {
-    @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
     let items: [TerminalTestItem]
-    let active: Bool
+    let theme: (
+        num: LiteFigletTheme,
+        op: FigletTheme
+    )
     let wide: Bool
 
-    init(_ items: [TerminalTestItem], _ active: Bool = false, _ wide: Bool = false) {
+    init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, FigletTheme), wide: Bool = false) {
         print("TerminalTest")
         self.items = items
-        self.active = active
+        self.theme = theme
         self.wide = wide
     }
     
     var body: some View {
         ForEach(Array(items.enumerated()), id: \.offset) { i, item in
-            if case let .bin(char) = item.type {
-                LiteFigletView(String(char), theme: active
-                            ? themeVM.terminal.grid.test.test.active.figlet
-                            : themeVM.terminal.grid.test.test.passive.figlet)
+            if case let .num(char) = item.type {
+                LiteFigletView(String(char), theme: theme.num)
             }
             if case let .op(char, span) = item.type {
-                FigletView(String(char), theme: active
-                            ? themeVM.terminal.grid.test.test.active.op
-                            : themeVM.terminal.grid.test.test.passive.op)
+                FigletView(String(char), theme: theme.op)
                 if uiVM.isDetail {
                     if wide {
                         ForEach(0 ..< span.big) { _ in
@@ -49,6 +47,31 @@ struct TerminalTest: View {
             }
         }
     }
+    
+    public static func getItems(from test: Test) -> [TerminalTestItem] {
+        print("Calculating Test Items")
+        var items: [TerminalTestItem] = []
+        let chars = test.equation.toString().map { $0 }
+        var consecutiveOps = 0
+        for (i, char) in chars.enumerated() {
+            if isOperator(char) {
+                if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
+                    items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
+                    consecutiveOps += 1
+                } else {
+                    items.append(TerminalTestItem(id: test.id, of: .op(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
+                    consecutiveOps = 0
+                }
+            } else {
+                items.append(TerminalTestItem(id: test.id, of: .num(char)))
+            }
+        }
+        return items
+    }
+
+    public static func isOperator(_ char: Character) -> Bool {
+        ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
+    }
 }
 
 struct TerminalTestItem: Identifiable {
@@ -62,6 +85,6 @@ struct TerminalTestItem: Identifiable {
 }
 
 enum TerminalTestType {
-    case bin(Character)
+    case num(Character)
     case op(Character, Span)
 }

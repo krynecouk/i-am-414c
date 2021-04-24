@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct TerminalHelp: View {
+    
+    let symbols: [ASCIISymbol]
+    let theme: FigletTheme
+    
+    init(_ symbols: [ASCIISymbol], _ theme: FigletTheme = FigletTheme()) {
+        print("TerminalHelp")
+        self.symbols = symbols
+        self.theme = theme
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        FigletView(symbols, theme: theme)
     }
 }
 
+/*
 struct TerminalHelp_Previews: PreviewProvider {
     static var previews: some View {
         TerminalHelp()
     }
 }
+ */

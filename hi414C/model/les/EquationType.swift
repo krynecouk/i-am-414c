@@ -6,7 +6,7 @@
 //
 
 
-enum EquationType: CaseIterable {
+enum EquationType {
     typealias id = ID
     typealias add = ADD
     typealias sub = SUB
