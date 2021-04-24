@@ -31,7 +31,7 @@ struct SUB: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return Equation(x: x, y: y, result: result, parts: xParts + [.OP(.SUB)] + yParts, types: [.SUB] + xResult.types + yResult.types, test: { x - y == result })
+        return Equation(x: x, y: y, result: result, parts: xParts + [.SYM(.SUB)] + yParts, types: [.SUB] + xResult.types + yResult.types, test: { x - y == result })
     }
 }
 

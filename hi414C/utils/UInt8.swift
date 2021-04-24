@@ -11,7 +11,7 @@ extension UInt8 {
     }
     
     func toHexStr() -> String {
-        String(self, radix: 16)
+        String(self, radix: 16).pad(with: "0", toLength: 2)
     }
     
     func getAllDenominators() -> [UInt8] {

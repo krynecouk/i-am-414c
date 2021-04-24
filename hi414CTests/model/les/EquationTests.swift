@@ -84,6 +84,15 @@ class EquationTests: XCTestCase {
         XCTAssertEqual(types.contains(.SHR), false, "equation \(equation.toString()) does not contains SHR operator")
     }
     
+    func test_of_equation_string() {
+        let equation = ADD((ID(), 1), (ID(), 2)) => 3
+        XCTAssertEqual(equation.toString(), "00000001+00000010", "equation \(equation.toString()) should be printed as 00000001+00000010")
+        XCTAssertEqual(equation.toString(result: (true, .bin)), "00000001+00000010=00000011", "equation \(equation.toString(result: (true, .bin))) should be printed as 00000001+00000010=00000011")
+        XCTAssertEqual(equation.toString(result: (true, .dec)), "00000001+00000010=3", "equation \(equation.toString(result: (true, .dec))) should be printed as 00000001+00000010=3")
+        XCTAssertEqual(equation.toString(radix: .dec, result: (true, .dec)), "1+2=3", "equation \(equation.toString(result: (true, .dec))) should be printed as 1+2=3")
+        XCTAssertEqual(equation.toString(radix: .hex), "01+02", "equation \(equation.toString(radix: .hex)) should be printed as 01+02")
+    }
+    
     func test(_ builder: EquationBuilder, debug: Bool = false) {
         test(builder.eq(0), debug: debug)
         tests.forEach { _ in

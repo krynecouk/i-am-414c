@@ -15,7 +15,7 @@ struct TerminalTest: View {
     let items: [TerminalTestItem]
     let theme: (
         num: LiteFigletTheme,
-        op: FigletTheme
+        sym: FigletTheme
     )
     let wide: Bool
 
@@ -31,8 +31,8 @@ struct TerminalTest: View {
             if case let .num(char) = item.type {
                 LiteFigletView(String(char), theme: theme.num)
             }
-            if case let .op(char, span) = item.type {
-                FigletView(String(char), theme: theme.op)
+            if case let .sym(char, span) = item.type {
+                FigletView(String(char), theme: theme.sym)
                 if uiVM.isDetail {
                     if wide {
                         ForEach(0 ..< span.big) { _ in
@@ -56,10 +56,10 @@ struct TerminalTest: View {
         for (i, char) in chars.enumerated() {
             if isOperator(char) {
                 if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
-                    items.append(TerminalTestItem(id: test.id, of: .op(char, (0, 0))))
+                    items.append(TerminalTestItem(id: test.id, of: .sym(char, (0, 0))))
                     consecutiveOps += 1
                 } else {
-                    items.append(TerminalTestItem(id: test.id, of: .op(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
+                    items.append(TerminalTestItem(id: test.id, of: .sym(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
                     consecutiveOps = 0
                 }
             } else {
@@ -86,5 +86,5 @@ struct TerminalTestItem: Identifiable {
 
 enum TerminalTestType {
     case num(Character)
-    case op(Character, Span)
+    case sym(Character, Span)
 }

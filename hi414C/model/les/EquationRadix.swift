@@ -6,5 +6,5 @@
 //
 
 enum EquationRadix {
-    case bin, hex
+    case bin, hex, dec
 }

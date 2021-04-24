@@ -8,10 +8,10 @@
 typealias EquationParts = [EquationPart]
 
 enum EquationPart {
-    case LP, NUM(UInt8), RP, OP(EquationOperator)
+    case LP, NUM(UInt8), RP, SYM(EquationSymbol), RESULT(UInt8)
 }
 
-enum EquationOperator: String {
+enum EquationSymbol: String {
     case ADD = "+"
     case SUB = "-"
     case DIV = "/"
@@ -22,12 +22,7 @@ enum EquationOperator: String {
     case NOT = "~"
     case SHL = "<<"
     case SHR = ">>"
-}
-
-extension Equation {
-    func toString(radix: EquationRadix = .bin) -> String {
-        self.parts.toString(radix: radix)
-    }
+    case EQ = "="
 }
 
 extension EquationParts {
@@ -35,22 +30,36 @@ extension EquationParts {
         flag ? [.LP] + self + [.RP] : self
     }
     
-    func toString(radix: EquationRadix = .bin) -> String {
-        self.map { $0.toString() }.joined()
+    func toString(radix: (body: EquationRadix, result: EquationRadix)) -> String {
+        self.map { $0.toString(radix) }.joined()
     }
 }
 
 extension EquationPart {
-    func toString(radix: EquationRadix = .bin) -> String {
+    func toString(_ radix: (body: EquationRadix, result: EquationRadix)) -> String {
         switch self {
         case .LP:
             return "("
         case let .NUM(num):
-            return radix == .bin ? num.toBinStr() : num.toHexStr().uppercased()
+            if radix.body == .bin {
+                return num.toBinStr()
+            } else if radix.body == .hex {
+                return num.toHexStr().uppercased()
+            } else {
+                return String(num)
+            }
         case .RP:
             return ")"
-        case let .OP(op):
-            return op.rawValue
+        case let .SYM(symbol):
+            return symbol.rawValue
+        case let .RESULT(num):
+            if radix.result == .bin {
+                return num.toBinStr()
+            } else if radix.result == .hex {
+                return num.toHexStr().uppercased()
+            } else {
+                return String(num)
+            }
         }
     }
 }
