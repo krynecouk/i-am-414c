@@ -27,7 +27,6 @@ struct TerminalView: View {
         print("Calculating Test Content Items")
 
         var items: [TerminalItem] = []
-        items.append(TerminalItem(of: .help([.H, .E, .R, .E, .I, .S, .H, .E, .L, .P])))
         for type in types {
             if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
@@ -52,6 +51,7 @@ struct TerminalView: View {
                         return
                     }
                     testWasSetup.toggle()
+                    items.append(TerminalItem(of: .help(.test(test))))
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
                     testVM.set(test: test)
                 }

@@ -48,29 +48,33 @@ struct TerminalTest: View {
         }
     }
     
-    public static func getItems(from test: Test) -> [TerminalTestItem] {
+    public static func getItems(id: UUID, equation: String) -> [TerminalTestItem] {
         print("Calculating Test Items")
         var items: [TerminalTestItem] = []
-        let chars = test.equation.toString().map { $0 }
+        let chars = equation.map { $0 }
         var consecutiveOps = 0
         for (i, char) in chars.enumerated() {
             if isOperator(char) {
                 if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
-                    items.append(TerminalTestItem(id: test.id, of: .sym(char, (0, 0))))
+                    items.append(TerminalTestItem(id: id, of: .sym(char, (0, 0))))
                     consecutiveOps += 1
                 } else {
-                    items.append(TerminalTestItem(id: test.id, of: .sym(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
+                    items.append(TerminalTestItem(id: id, of: .sym(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
                     consecutiveOps = 0
                 }
             } else {
-                items.append(TerminalTestItem(id: test.id, of: .num(char)))
+                items.append(TerminalTestItem(id: id, of: .num(char)))
             }
         }
         return items
     }
+    
+    public static func getItems(from test: Test) -> [TerminalTestItem] {
+        getItems(id: test.id, equation: test.equation.toString())
+    }
 
     public static func isOperator(_ char: Character) -> Bool {
-        ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "("].contains(char)
+        ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "(", "="].contains(char)
     }
 }
 

@@ -23,7 +23,7 @@ struct TerminalSegue: View {
     }
     
     var body: some View {
-        if !uiVM.isDetail {
+        if !uiVM.isDetail && !uiVM.isHelp {
             VStack(spacing: 0) {
                 TerminalCommandLine()
                     .onTapGesture {

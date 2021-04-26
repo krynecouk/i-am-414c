@@ -9,18 +9,44 @@ import SwiftUI
 
 struct TerminalHelp: View {
     
-    let text: String
+    let type: TerminalHelpType
     let theme: FigletTheme
+    let wide: Bool
     
-    init(_ text: String, _ theme: FigletTheme = FigletTheme()) {
+    init(_ type: TerminalHelpType, _ theme: FigletTheme = FigletTheme(), wide: Bool = false) {
         print("TerminalHelp")
-        self.text = text
+        self.type = type
         self.theme = theme
+        self.wide = wide
     }
     
     var body: some View {
-        FigletView(text, theme: theme)
+        if case let .test(test) = type {
+            let types = test.equation.types
+            ForEach(Array(types), id: \.self) { type in
+                let equation = type.build().eq(UInt8.random(in: 0...128))
+                TerminalTest(TerminalTest.getItems(id: test.id, equation: equation.toString(result: (true, type == .ID ? .dec : .bin))), theme:
+                                (
+                                    LiteFigletTheme(
+                                        view: ViewTheme(
+                                            color: .black
+                                        )
+                                    ),
+                                    FigletTheme(
+                                        view: ViewTheme(
+                                            color: .gray
+                                        )
+                                    ))
+                )
+            }
+        }
+
     }
+}
+
+enum TerminalHelpType {
+    case test(Test)
+    case message([Message])
 }
 
 /*

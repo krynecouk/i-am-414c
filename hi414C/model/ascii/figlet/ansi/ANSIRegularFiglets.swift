@@ -310,6 +310,13 @@ enum ANSIRegularFiglets {
             "  ██  ",
             "      ",
         ]),
+        .equal: Figlet(symbol: .equal, lines: [
+            "     ",
+            "█████",
+            "     ",
+            "█████",
+            "     ",
+        ]),
         .slash: Figlet(symbol: .slash, lines: [
             "    ██",
             "   ██ ",
