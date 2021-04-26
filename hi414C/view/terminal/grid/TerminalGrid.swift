@@ -19,7 +19,6 @@ struct TerminalGrid: View {
     typealias SymbolId = String
     
     @State var errors: Int = 0
-    @State var changes: Int = 0
     @State var columns = ADAPTIVE
     @State var printed: [SymbolId] = []
     @State var solved: [ASCIISymbol] = []
@@ -43,25 +42,38 @@ struct TerminalGrid: View {
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(items, id: \.id) { item in
-                if case let .help(type) = item.type {
+                if case let .help(test) = item.type {
                     if uiVM.isHelp {
-                        TerminalHelp(type)
+                        LiteFigletView(test.equation.toString(), theme: LiteFigletTheme(
+                                        view: ViewTheme(
+                                            color: .black
+                                        )
+                        ))
+                        .onTapGesture {
+                            withAnimation {
+                                uiVM.isHelp = false
+                            }
+                        }
                     }
                 }
                 if case let .art(arts) = item.type {
-                    TerminalArt(arts)
+                    if !uiVM.isHelp {
+                        TerminalArt(arts)
+                    }
                 }
                 if case let .message(symbols) = item.type {
+                    if !uiVM.isHelp {
                     TerminalMessage(symbols)
+                    }
                 }
                 if case let .symbol(symbol) = item.type {
-                    if !uiVM.isDetail {
+                    if !uiVM.isDetail && !uiVM.isHelp {
                         TerminalSymbol(item.id, symbol)
                             .matchedGeometryEffect(id: item.id, in: ns)
                     }
                 }
                 if case let .test(test, items, active) = item.type {
-                    if !uiVM.isDetail || (uiVM.isDetail && active) {
+                    if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
                         let theme = active
                             ? (themeVM.terminal.grid.test.test.active.figlet, themeVM.terminal.grid.test.test.active.op)
                             : (themeVM.terminal.grid.test.test.passive.figlet, themeVM.terminal.grid.test.test.passive.op)
@@ -71,7 +83,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .background(uiVM.isHelp ? Color.primary.frame(width: UIScreen.main.bounds.width + 50, height: UIScreen.main.bounds.height + 50).transition(.circular) : nil)
+        .background(uiVM.isHelp ? Color.primary.frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100).transition(.circular) : nil)
         .animation(themeVM.terminal.grid.test.test.animation.symbol, value: self.items)
         .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in
@@ -113,9 +125,6 @@ struct TerminalGrid: View {
             withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
                 uiVM.isDetail.toggle()
             }
-        }
-        .onChange(of: self.items) { val in
-            self.changes += 1
         }
     }
     
@@ -160,7 +169,7 @@ enum TerminalItemType {
     case test(Test, [TerminalTestItem], Bool)
     case message([ASCIISymbol])
     case art([ASCIIPrintable])
-    case help(TerminalHelpType)
+    case help(Test)
 }
 
 struct TerminalGrid_Previews: PreviewProvider {
@@ -169,82 +178,5 @@ struct TerminalGrid_Previews: PreviewProvider {
             TerminalGrid(items: [TerminalItem(of: .symbol(.A))])
                 .withEnvironment()
         }
-    }
-}
-
-extension AnyTransition {
-    static var circular: AnyTransition { get {
-        AnyTransition.modifier(
-            active: ShapeClipModifier(shape: CircleClipShape(pct: 1)),
-            identity: ShapeClipModifier(shape: CircleClipShape(pct: 0)))
-        }
-    }
-}
-
-struct ShapeClipModifier<S: Shape>: ViewModifier {
-    let shape: S
-    
-    func body(content: Content) -> some View {
-        content.clipShape(shape)
-    }
-}
-
-struct CircleClipShape: Shape {
-    var pct: CGFloat
-
-    var animatableData: CGFloat {
-        get { pct }
-        set { pct = newValue }
-    }
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        var bigRect = rect
-        bigRect.size.width = bigRect.size.width * 2 * (1 - pct)
-        bigRect.size.height = bigRect.size.height * 2 * (1 - pct)
-        bigRect = bigRect.offsetBy(dx: -rect.width/2.0, dy: -rect.height/2.0)
-
-        path = Circle().path(in: bigRect)
-        
-        return path
-    }
-}
-
-struct ScaledCircle: Shape {
-    // This controls the size of the circle inside the
-    // drawing rectangle. When it's 0 the circle is
-    // invisible, and when it’s 1 the circle fills
-    // the rectangle.
-    var animatableData: CGFloat
-
-    func path(in rect: CGRect) -> Path {
-        let maximumCircleRadius = sqrt(rect.width * rect.width + rect.height * rect.height)
-        let circleRadius = maximumCircleRadius * animatableData
-
-        let x = rect.midX - circleRadius / 2
-        let y = rect.midY - circleRadius / 2
-
-        let circleRect = CGRect(x: x, y: y, width: circleRadius, height: circleRadius)
-
-        return Circle().path(in: circleRect)
-    }
-}
-
-// A general modifier that can clip any view using a any shape.
-struct ClipShapeModifier<T: Shape>: ViewModifier {
-    let shape: T
-
-    func body(content: Content) -> some View {
-        content.clipShape(shape)
-    }
-}
-
-// A custom transition combining ScaledCircle and ClipShapeModifier.
-extension AnyTransition {
-    static var iris: AnyTransition {
-        .modifier(
-            active: ClipShapeModifier(shape: ScaledCircle(animatableData: 0)),
-            identity: ClipShapeModifier(shape: ScaledCircle(animatableData: 1))
-        )
     }
 }
