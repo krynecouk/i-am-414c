@@ -42,18 +42,9 @@ struct TerminalGrid: View {
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(items, id: \.id) { item in
-                if case let .help(test) = item.type {
+                if case let .help(type) = item.type {
                     if uiVM.isHelp {
-                        LiteFigletView(test.equation.toString(), theme: LiteFigletTheme(
-                                        view: ViewTheme(
-                                            color: .black
-                                        )
-                        ))
-                        .onTapGesture {
-                            withAnimation {
-                                uiVM.isHelp = false
-                            }
-                        }
+                        TerminalHelp(type)
                     }
                 }
                 if case let .art(arts) = item.type {
@@ -121,9 +112,42 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .onTapGesture {
+        .onReceive(uiVM.$isHelp) { isHelp in
             withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
-                uiVM.isDetail.toggle()
+                if !isHelp {
+                    self.columns = TerminalGrid.ADAPTIVE
+                } else {
+                    self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
+                }
+            }
+        }
+        .gesture(
+            DragGesture()
+                .onChanged({ gesture in
+                    if gesture.startLocation.x < CGFloat(40){
+                        let slope = abs((gesture.startLocation.y - gesture.location.y)/(gesture.startLocation.x - gesture.location.x))
+                        if slope < 1 {
+                            withAnimation {
+                                uiVM.isHelp = true
+                            }
+                        }
+                    }
+                    if gesture.startLocation.x > CGFloat(UIScreen.main.bounds.width - 40){
+                        let slope = abs((gesture.startLocation.y - gesture.location.y)/(gesture.startLocation.x - gesture.location.x))
+                        if slope < 1 {
+                            withAnimation {
+                                uiVM.isHelp = false
+                            }
+                        }
+                    }
+                 }
+            )
+        )
+        .onTapGesture {
+            if !uiVM.isHelp {
+                withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
+                    uiVM.isDetail.toggle()
+                }
             }
         }
     }
@@ -150,6 +174,7 @@ struct TerminalGrid: View {
     }
 }
 
+
 struct TerminalItem: Equatable {
     var id: String
     var type: TerminalItemType
@@ -169,7 +194,7 @@ enum TerminalItemType {
     case test(Test, [TerminalTestItem], Bool)
     case message([ASCIISymbol])
     case art([ASCIIPrintable])
-    case help(Test)
+    case help(TerminalHelpType)
 }
 
 struct TerminalGrid_Previews: PreviewProvider {
@@ -178,5 +203,82 @@ struct TerminalGrid_Previews: PreviewProvider {
             TerminalGrid(items: [TerminalItem(of: .symbol(.A))])
                 .withEnvironment()
         }
+    }
+}
+
+extension AnyTransition {
+    static var circular: AnyTransition { get {
+        AnyTransition.modifier(
+            active: ShapeClipModifier(shape: CircleClipShape(pct: 1)),
+            identity: ShapeClipModifier(shape: CircleClipShape(pct: 0)))
+        }
+    }
+}
+
+struct ShapeClipModifier<S: Shape>: ViewModifier {
+    let shape: S
+    
+    func body(content: Content) -> some View {
+        content.clipShape(shape)
+    }
+}
+
+struct CircleClipShape: Shape {
+    var pct: CGFloat
+
+    var animatableData: CGFloat {
+        get { pct }
+        set { pct = newValue }
+    }
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        var bigRect = rect
+        bigRect.size.width = bigRect.size.width * 2 * (1 - pct)
+        bigRect.size.height = bigRect.size.height * 2 * (1 - pct)
+        bigRect = bigRect.offsetBy(dx: -rect.width/2.0, dy: -rect.height/2.0)
+
+        path = Circle().path(in: bigRect)
+        
+        return path
+    }
+}
+
+struct ScaledCircle: Shape {
+    // This controls the size of the circle inside the
+    // drawing rectangle. When it's 0 the circle is
+    // invisible, and when it’s 1 the circle fills
+    // the rectangle.
+    var animatableData: CGFloat
+
+    func path(in rect: CGRect) -> Path {
+        let maximumCircleRadius = sqrt(rect.width * rect.width + rect.height * rect.height)
+        let circleRadius = maximumCircleRadius * animatableData
+
+        let x = rect.midX - circleRadius / 2
+        let y = rect.midY - circleRadius / 2
+
+        let circleRect = CGRect(x: x, y: y, width: circleRadius, height: circleRadius)
+
+        return Circle().path(in: circleRect)
+    }
+}
+
+// A general modifier that can clip any view using a any shape.
+struct ClipShapeModifier<T: Shape>: ViewModifier {
+    let shape: T
+
+    func body(content: Content) -> some View {
+        content.clipShape(shape)
+    }
+}
+
+// A custom transition combining ScaledCircle and ClipShapeModifier.
+extension AnyTransition {
+    static var iris: AnyTransition {
+        .modifier(
+            active: ClipShapeModifier(shape: ScaledCircle(animatableData: 0)),
+            identity: ClipShapeModifier(shape: ScaledCircle(animatableData: 1))
+        )
     }
 }
