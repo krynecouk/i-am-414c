@@ -74,7 +74,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .background(uiVM.isHelp ? Color.primary.frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100).transition(.circular) : nil)
+        .background(uiVM.isHelp ? Color.random().frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100).transition(.circular) : nil)
         .animation(themeVM.terminal.grid.test.test.animation.symbol, value: self.items)
         .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in

@@ -19,7 +19,7 @@ struct TerminalView: View {
     var body: some View {
         VStack(spacing: 0) {
             TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
-            TerminalSegue()
+            TerminalCommandSegue()
         }
     }
     

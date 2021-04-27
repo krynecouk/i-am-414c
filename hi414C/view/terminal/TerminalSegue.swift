@@ -7,64 +7,36 @@
 
 import SwiftUI
 
-struct TerminalSegue: View {
-    @EnvironmentObject var keyboardVM: KeyboardViewModel
-    @EnvironmentObject var testVM: TestViewModel
-    @EnvironmentObject var asciiVM: ASCIIViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var uiVM: UIViewModel
-    @EnvironmentObject var terminalVM: TerminalViewModel
+struct TerminalSegue<Header: View, Content: View> : View {
+    let header: Header
+    let content: Content
+    let height: (header: CGFloat, content: CGFloat)
+    let isOpen: Bool
     
     @State var segueH: CGFloat = 0
-    let headerH: CGFloat = 64
     
-    init() {
+    init(header: Header, height: (CGFloat, CGFloat), isOpen: Bool = false, @ViewBuilder content: () -> Content) {
         print("TerminalSegue")
+        self.header = header
+        self.height = height
+        self.isOpen = isOpen
+        self.content = content()
     }
     
     var body: some View {
-        if !uiVM.isDetail && !uiVM.isHelp {
-            VStack(spacing: 0) {
-                TerminalCommandLine()
-                    .onTapGesture {
-                        keyboardVM.isOpen
-                            ? keyboardVM.close()
-                            : keyboardVM.open()
-                    }
-                ASCIIKeyboardView() { input in
-                    if input == "?" {
-                        withAnimation {
-                            uiVM.isHelp = uiVM.isHelp ? false : true
-                        }
-                        return
-                    }
-                    if (testVM.test != nil) {
-                        let solution = testVM.solve(with: input)
-                        switch solution {
-                        case .right:
-                            asciiVM.add(symbol: testVM.test!.symbol)
-                        default:
-                            print("not correct")
-                        }
-                    } else {
-                        graphVM.traverse(ctx: GraphContext(input: input))
-                    }
-                }
-            }
-            .frame(height: segueH)
-            .onAppear {
-                keyboardVM.close()
-                self.segueH = headerH
-            }
-            .onReceive(keyboardVM.$isOpen) { isOpen in
-                withAnimation {
-                    self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
-                }
-            }
-            .onReceive(keyboardVM.$keyboardSize) { value in
-                keyboardVM.close()
-            }
-            .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
+        VStack(spacing: 0) {
+            header
+            content
         }
+        .onAppear {
+            self.segueH = height.header
+        }
+        .onChange(of: self.isOpen) { isOpen in
+            withAnimation {
+                self.segueH = isOpen ? self.height.header + self.height.content : self.height.header
+            }
+        }
+        .frame(height: segueH)
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
     }
 }
