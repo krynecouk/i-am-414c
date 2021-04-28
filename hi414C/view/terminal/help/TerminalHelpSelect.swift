@@ -32,7 +32,7 @@ struct TerminalHelpSelect: View {
                     segueVM.setHelpSize((.infinity, 150))
                     segueVM.setSettingsSize((.infinity, 150))
                 } else {
-                    segueVM.setHelpSize((.infinity, 300))
+                    segueVM.setHelpSize((.infinity, 200))
                     segueVM.setSettingsSize((.infinity, 300))
                 }
             }
@@ -43,7 +43,7 @@ struct TerminalHelpSelect: View {
             }
         }
         //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .background(Color("BlackBck").edgesIgnoringSafeArea(.all))
+        .background(segueVM.isOpen ? Color.blue.edgesIgnoringSafeArea(.all) : Color("BlackBck").edgesIgnoringSafeArea(.all))
     }
 }
 

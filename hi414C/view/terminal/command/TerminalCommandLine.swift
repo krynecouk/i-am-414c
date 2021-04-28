@@ -29,7 +29,7 @@ struct TerminalCommandLine: View {
             }
             .padding(.all, 15)
         }
-        .frame(height: 64)
+        .frame(height: SegueViewModel.header.height)
         .background(themeVM.terminal.cli.view.background.edgesIgnoringSafeArea(.all))
     }
 }
