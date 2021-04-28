@@ -76,7 +76,7 @@ struct KeyboardView: View {
                 self.spaceKeySize = (spaceW, keyH)
                 self.specialKeySize = (specialW, keyH)
                 
-                keyboardVM.setKeyboardSize(self.size)
+                segueVM.setKeyboardSize(self.size)
             }
             .onReceive(segueVM.$isOpen) { isOpen in
                 withAnimation {

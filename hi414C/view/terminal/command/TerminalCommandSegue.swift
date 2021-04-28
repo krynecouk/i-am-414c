@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct TerminalCommandSegue: View {
-    @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
@@ -55,10 +54,10 @@ struct TerminalCommandSegue: View {
         }
         .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
-                self.segueH = isOpen ? SegueViewModel.header.height + keyboardVM.keyboardSize.height : SegueViewModel.header.height
+                self.segueH = isOpen ? SegueViewModel.header.height + segueVM.keyboard.height : SegueViewModel.header.height
             }
         }
-        .onReceive(keyboardVM.$keyboardSize) { value in
+        .onReceive(segueVM.$keyboard) { value in
             segueVM.close()
         }
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
