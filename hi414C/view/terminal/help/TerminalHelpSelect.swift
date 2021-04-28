@@ -25,6 +25,17 @@ struct TerminalHelpSelect: View {
                     .offset(x: self.offset.x, y: self.offset.y)
             }
             .id(metrics.frame(in: .global).size.width)
+            .onAppear {
+                let frame = metrics.frame(in: .global)
+                let frameW = frame.size.width
+                if frameW > 500 {
+                    segueVM.setHelpSize((.infinity, 150))
+                    segueVM.setSettingsSize((.infinity, 150))
+                } else {
+                    segueVM.setHelpSize((.infinity, 300))
+                    segueVM.setSettingsSize((.infinity, 300))
+                }
+            }
             .onReceive(segueVM.$isOpen) { isOpen in
                 withAnimation {
                     self.offset = isOpen ? (0,0) : (0, 100)

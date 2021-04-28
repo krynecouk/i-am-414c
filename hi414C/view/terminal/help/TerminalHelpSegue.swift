@@ -43,6 +43,9 @@ struct TerminalHelpSegue: View {
                     
                 }
             }
+            .onReceive(segueVM.$help) { value in
+                segueVM.close()
+            }
             .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
         }
 }
