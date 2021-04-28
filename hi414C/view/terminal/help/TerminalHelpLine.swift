@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TerminalHelpLine: View {
-    @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
     var body: some View {

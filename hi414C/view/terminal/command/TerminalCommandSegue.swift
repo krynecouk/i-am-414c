@@ -15,8 +15,7 @@ struct TerminalCommandSegue: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var segueVM: SegueViewModel
     
-    @State var segueH: CGFloat = 0
-    let headerH: CGFloat = 64
+    @State var segueH: CGFloat = SegueViewModel.header.height
     
     init() {
         print("TerminalSegue")
@@ -53,11 +52,10 @@ struct TerminalCommandSegue: View {
         .frame(height: segueH)
         .onAppear {
             segueVM.close()
-            self.segueH = headerH
         }
         .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
-                self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
+                self.segueH = isOpen ? SegueViewModel.header.height + keyboardVM.keyboardSize.height : SegueViewModel.header.height
             }
         }
         .onReceive(keyboardVM.$keyboardSize) { value in

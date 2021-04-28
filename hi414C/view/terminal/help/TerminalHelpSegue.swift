@@ -8,10 +8,8 @@ import SwiftUI
 
 struct TerminalHelpSegue: View {
     @EnvironmentObject var segueVM: SegueViewModel
-    @EnvironmentObject var keyboardVM: KeyboardViewModel
     
-    @State var segueH: CGFloat = 0
-    let headerH: CGFloat = 64
+    @State var segueH: CGFloat = SegueViewModel.header.height
     
     init() {
         print("TerminalHelpSegue")
@@ -30,15 +28,20 @@ struct TerminalHelpSegue: View {
             .frame(height: segueH)
             .onAppear {
                 segueVM.close()
-                self.segueH = headerH
             }
-            .onReceive(segueVM.$isOpen) { isOpen in
+            .onReceive(segueVM.$opened) { opened in
                 withAnimation {
-                    self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
+                    if opened != nil {
+                        if opened == .help {
+                            self.segueH = SegueViewModel.header.height + segueVM.help.height
+                        } else {
+                            self.segueH = SegueViewModel.header.height + segueVM.settings.height
+                        }
+                    } else {
+                        self.segueH = SegueViewModel.header.height
+                    }
+                    
                 }
-            }
-            .onReceive(keyboardVM.$keyboardSize) { value in
-                segueVM.close()
             }
             .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
         }
