@@ -12,7 +12,7 @@ struct TerminalHelpLine: View {
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
-    @State var quitBck: Color = .clear
+    @State var quitBackground: Color = .clear
     
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
@@ -40,9 +40,9 @@ struct TerminalHelpLine: View {
     
     func QuitButton(_ text: String) -> some View {
         ButtonLabel(text)
-            .background(self.quitBck)
+            .background(self.quitBackground)
             .onTapGesture {
-                self.quitBck = Color("GoldBck")
+                self.quitBackground = Color("GoldBck")
                 withAnimation {
                     segueVM.close()
                     uiVM.isHelp = false

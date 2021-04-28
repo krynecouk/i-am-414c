@@ -95,7 +95,6 @@ struct TerminalGrid: View {
                 }
             }
             uiVM.isHelp = false
-            
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()
