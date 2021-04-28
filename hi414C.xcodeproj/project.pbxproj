@@ -41,6 +41,8 @@
 		265848E9260BB48E009C0975 /* ArtTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848E8260BB48E009C0975 /* ArtTheme.swift */; };
 		265848EE260BB4A8009C0975 /* TestTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848ED260BB4A8009C0975 /* TestTheme.swift */; };
 		265A00AB25ED49EA00F479FA /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00AA25ED49EA00F479FA /* FontName.swift */; };
+		26645DC22639B1930086F26C /* CircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26645DC12639B1930086F26C /* CircleTransition.swift */; };
+		26645DC62639B2790086F26C /* IrisTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26645DC52639B2790086F26C /* IrisTransition.swift */; };
 		26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D1F25F8FD2900E32DE0 /* Figlet.swift */; };
 		26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2325F906D900E32DE0 /* ASCIISymbol.swift */; };
 		26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */; };
@@ -173,6 +175,8 @@
 		265848E8260BB48E009C0975 /* ArtTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTheme.swift; sourceTree = "<group>"; };
 		265848ED260BB4A8009C0975 /* TestTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTheme.swift; sourceTree = "<group>"; };
 		265A00AA25ED49EA00F479FA /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
+		26645DC12639B1930086F26C /* CircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransition.swift; sourceTree = "<group>"; };
+		26645DC52639B2790086F26C /* IrisTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisTransition.swift; sourceTree = "<group>"; };
 		26647D1F25F8FD2900E32DE0 /* Figlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figlet.swift; sourceTree = "<group>"; };
 		26647D2325F906D900E32DE0 /* ASCIISymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIISymbol.swift; sourceTree = "<group>"; };
 		26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITestNode.swift; sourceTree = "<group>"; };
@@ -524,6 +528,8 @@
 				26B39DC425F65741004E4D22 /* Bloom.swift */,
 				26782B3F26177AC800BA9C4E /* BloomFadeOut.swift */,
 				266A43B7261C2F7800C7855C /* Shake.swift */,
+				26645DC12639B1930086F26C /* CircleTransition.swift */,
+				26645DC52639B2790086F26C /* IrisTransition.swift */,
 			);
 			path = effects;
 			sourceTree = "<group>";
@@ -1013,6 +1019,7 @@
 				267A0D74260C8BB400844927 /* AnimalASCIIArts.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				2678D986260E81BD00DDB40F /* Keyboard.swift in Sources */,
+				26645DC22639B1930086F26C /* CircleTransition.swift in Sources */,
 				262092252600B7250001904B /* FigletTypeface.swift in Sources */,
 				2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */,
 				26782B4026177AC800BA9C4E /* BloomFadeOut.swift in Sources */,
@@ -1069,6 +1076,7 @@
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
 				269765322625EE3300775D71 /* ADD.swift in Sources */,
 				269765402626128F00775D71 /* MUL.swift in Sources */,
+				26645DC62639B2790086F26C /* IrisTransition.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
