@@ -13,6 +13,7 @@ struct TerminalCommandSegue: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var segueVM: SegueViewModel
     
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
@@ -25,9 +26,9 @@ struct TerminalCommandSegue: View {
         VStack(spacing: 0) {
             TerminalCommandLine()
                 .onTapGesture {
-                    keyboardVM.isOpen
-                        ? keyboardVM.close()
-                        : keyboardVM.open()
+                    segueVM.isOpen
+                        ? segueVM.close()
+                        : segueVM.open()
                 }
             ASCIIKeyboardView() { input in
                 if input == "?" {
@@ -51,16 +52,16 @@ struct TerminalCommandSegue: View {
         }
         .frame(height: segueH)
         .onAppear {
-            keyboardVM.close()
+            segueVM.close()
             self.segueH = headerH
         }
-        .onReceive(keyboardVM.$isOpen) { isOpen in
+        .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
                 self.segueH = isOpen ? self.headerH + keyboardVM.keyboardSize.height : self.headerH
             }
         }
         .onReceive(keyboardVM.$keyboardSize) { value in
-            keyboardVM.close()
+            segueVM.close()
         }
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
     }

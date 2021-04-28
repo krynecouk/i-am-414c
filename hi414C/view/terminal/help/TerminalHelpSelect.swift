@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TerminalHelpSelect: View {
-    @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
@@ -24,7 +24,7 @@ struct TerminalHelpSelect: View {
                     .background(Color.primary)
             }
             .id(metrics.frame(in: .global).size.width)
-            .onReceive(keyboardVM.$isOpen) { isOpen in
+            .onReceive(segueVM.$isOpen) { isOpen in
                 withAnimation {
                     self.offset = isOpen ? (0,0) : (0, 100)
                 }

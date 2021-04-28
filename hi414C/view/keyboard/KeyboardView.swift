@@ -11,6 +11,7 @@ struct KeyboardView: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var segueVM: SegueViewModel
     
     @State var side: KeyboardSide = .alphabetic
     @State var size: Size = (.infinity, 250)
@@ -51,7 +52,7 @@ struct KeyboardView: View {
                     KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
-                        keyboardVM.close()
+                        segueVM.close()
                     }
                 }
             }
@@ -77,7 +78,7 @@ struct KeyboardView: View {
                 
                 keyboardVM.setKeyboardSize(self.size)
             }
-            .onReceive(keyboardVM.$isOpen) { isOpen in
+            .onReceive(segueVM.$isOpen) { isOpen in
                 withAnimation {
                     self.keyOffset = isOpen ? (0,0) : (0, 100)
                 }
