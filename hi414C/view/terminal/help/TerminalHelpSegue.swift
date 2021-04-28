@@ -1,5 +1,5 @@
 //
-//  TerminalSegue2.swift
+//  TerminalHelpSegue.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 27.04.2021.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct TerminalSegue2: View {
+struct TerminalHelpSegue: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     
     @State var segueH: CGFloat = 0
     let headerH: CGFloat = 64
     
     init() {
-        print("TerminalSegue2")
+        print("TerminalHelpSegue")
     }
     
     var body: some View {

@@ -1,5 +1,5 @@
 //
-//  TerminalSegue.swift
+//  TerminalCommandSegue.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 04.04.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TerminalSegue: View {
+struct TerminalCommandSegue: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
