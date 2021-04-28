@@ -18,7 +18,6 @@
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
 		263612412634A6B600341B60 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612402634A6B600341B60 /* HistoryViewModel.swift */; };
 		263612532636F8F200341B60 /* TerminalHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612522636F8F200341B60 /* TerminalHelp.swift */; };
-		263612672637F6D300341B60 /* TerminalSegue2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612662637F6D300341B60 /* TerminalSegue2.swift */; };
 		2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636126A2637F70500341B60 /* TerminalFooter.swift */; };
 		2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636248D25FCBB2900B490B4 /* FigletFont.swift */; };
 		263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F440025EAB5C700D069B6 /* ANSIRegularFiglets.swift */; };
@@ -39,7 +38,6 @@
 		2654883B26051B8B0044297D /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654883A26051B8B0044297D /* TestViewModel.swift */; };
 		2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884A260524460044297D /* TerminalCommandPrompt.swift */; };
 		2654884F2605247C0044297D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884E2605247C0044297D /* KeyboardView.swift */; };
-		26557EFD2619A77C00794B86 /* TerminalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26557EFC2619A77C00794B86 /* TerminalSegue.swift */; };
 		265848E9260BB48E009C0975 /* ArtTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848E8260BB48E009C0975 /* ArtTheme.swift */; };
 		265848EE260BB4A8009C0975 /* TestTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848ED260BB4A8009C0975 /* TestTheme.swift */; };
 		265A00AB25ED49EA00F479FA /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00AA25ED49EA00F479FA /* FontName.swift */; };
@@ -101,6 +99,10 @@
 		269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765A3262DD6F000775D71 /* UIViewModel.swift */; };
 		269765A8262EBC3800775D71 /* ColSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765A7262EBC3800775D71 /* ColSpan.swift */; };
 		269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765AB262EC32E00775D71 /* TerminalTest.swift */; };
+		269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */; };
+		269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC75263927DA00229E8A /* TerminalHelpLine.swift */; };
+		269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC79263927F600229E8A /* TerminalHelpSelect.swift */; };
+		269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC7D2639290E00229E8A /* TerminalCommandSegue.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
@@ -146,7 +148,6 @@
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		263612402634A6B600341B60 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		263612522636F8F200341B60 /* TerminalHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelp.swift; sourceTree = "<group>"; };
-		263612662637F6D300341B60 /* TerminalSegue2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegue2.swift; sourceTree = "<group>"; };
 		2636126A2637F70500341B60 /* TerminalFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalFooter.swift; sourceTree = "<group>"; };
 		2636248D25FCBB2900B490B4 /* FigletFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletFont.swift; sourceTree = "<group>"; };
 		263F440025EAB5C700D069B6 /* ANSIRegularFiglets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIRegularFiglets.swift; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		2654883A26051B8B0044297D /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		2654884A260524460044297D /* TerminalCommandPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandPrompt.swift; sourceTree = "<group>"; };
 		2654884E2605247C0044297D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		26557EFC2619A77C00794B86 /* TerminalSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSegue.swift; sourceTree = "<group>"; };
 		265848E8260BB48E009C0975 /* ArtTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTheme.swift; sourceTree = "<group>"; };
 		265848ED260BB4A8009C0975 /* TestTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTheme.swift; sourceTree = "<group>"; };
 		265A00AA25ED49EA00F479FA /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
@@ -229,6 +229,10 @@
 		269765A3262DD6F000775D71 /* UIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewModel.swift; sourceTree = "<group>"; };
 		269765A7262EBC3800775D71 /* ColSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColSpan.swift; sourceTree = "<group>"; };
 		269765AB262EC32E00775D71 /* TerminalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTest.swift; sourceTree = "<group>"; };
+		269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSegue.swift; sourceTree = "<group>"; };
+		269BCC75263927DA00229E8A /* TerminalHelpLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpLine.swift; sourceTree = "<group>"; };
+		269BCC79263927F600229E8A /* TerminalHelpSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSelect.swift; sourceTree = "<group>"; };
+		269BCC7D2639290E00229E8A /* TerminalCommandSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandSegue.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 				2654882A26050B920044297D /* TerminalCommandLine.swift */,
 				2654884A260524460044297D /* TerminalCommandPrompt.swift */,
 				264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */,
+				269BCC7D2639290E00229E8A /* TerminalCommandSegue.swift */,
 			);
 			path = command;
 			sourceTree = "<group>";
@@ -410,11 +415,10 @@
 		2654882126050B510044297D /* terminal */ = {
 			isa = PBXGroup;
 			children = (
+				269BCC6E263927AA00229E8A /* help */,
 				269765AF262EC57700775D71 /* grid */,
 				2644045C26191A0400CA7EA1 /* command */,
 				2654882226050B710044297D /* TerminalView.swift */,
-				26557EFC2619A77C00794B86 /* TerminalSegue.swift */,
-				263612662637F6D300341B60 /* TerminalSegue2.swift */,
 				2636126A2637F70500341B60 /* TerminalFooter.swift */,
 			);
 			path = terminal;
@@ -685,6 +689,16 @@
 				263612522636F8F200341B60 /* TerminalHelp.swift */,
 			);
 			path = grid;
+			sourceTree = "<group>";
+		};
+		269BCC6E263927AA00229E8A /* help */ = {
+			isa = PBXGroup;
+			children = (
+				269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */,
+				269BCC75263927DA00229E8A /* TerminalHelpLine.swift */,
+				269BCC79263927F600229E8A /* TerminalHelpSelect.swift */,
+			);
+			path = help;
 			sourceTree = "<group>";
 		};
 		26AF9F4825FF7E9400B77E0A /* test */ = {
@@ -968,7 +982,9 @@
 				2620922E2600C5420001904B /* ASCIIViewModel.swift in Sources */,
 				268D92E92609025400A43802 /* ASCIIArt.swift in Sources */,
 				2678D982260E818700DDB40F /* KeyboardSide.swift in Sources */,
+				269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */,
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
+				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */,
@@ -989,6 +1005,7 @@
 				269765092624A2C100775D71 /* ID.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewTheme.swift in Sources */,
+				269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */,
 				267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */,
 				268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
@@ -1019,7 +1036,6 @@
 				269765382625F09700775D71 /* SUB.swift in Sources */,
 				2678D97E260E5D8700DDB40F /* KeyboardKey.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
-				263612672637F6D300341B60 /* TerminalSegue2.swift in Sources */,
 				2620921B2600B2FE0001904B /* FigletView.swift in Sources */,
 				264404242619014000CA7EA1 /* PrimaryTheme.swift in Sources */,
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
@@ -1037,7 +1053,6 @@
 				2678D972260E5D4A00DDB40F /* KeyboardSet.swift in Sources */,
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
 				269765322625EE3300775D71 /* ADD.swift in Sources */,
-				26557EFD2619A77C00794B86 /* TerminalSegue.swift in Sources */,
 				269765402626128F00775D71 /* MUL.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
@@ -1051,6 +1066,7 @@
 				267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */,
 				264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */,
 				2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */,
+				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
 				2697650126249D0900775D71 /* UInt8.swift in Sources */,

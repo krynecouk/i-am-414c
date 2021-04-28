@@ -4,7 +4,6 @@
 //
 //  Created by Darius Kryszczuk on 27.04.2021.
 //
-
 import SwiftUI
 
 struct TerminalHelpSegue: View {
@@ -19,14 +18,13 @@ struct TerminalHelpSegue: View {
     
     var body: some View {
             VStack(spacing: 0) {
-                TerminalCommandLine()
+                TerminalHelpLine()
                     .onTapGesture {
                         keyboardVM.isOpen
                             ? keyboardVM.close()
                             : keyboardVM.open()
                     }
-                ASCIIKeyboardView() { input in
-                }
+                TerminalHelpSelect()
             }
             .frame(height: segueH)
             .onAppear {

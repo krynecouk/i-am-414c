@@ -23,8 +23,8 @@ struct TerminalHelp: View {
         if case let .test(test) = type {
             let types = test.equation.types
             ForEach(Array(types), id: \.self) { type in
-                let equation = type.build().eq(UInt8.random(in: 0...128))
-                TerminalTest(TerminalTest.getItems(id: test.id, equation: equation.toString(result: (true, type == .ID ? .dec : .bin))), theme:
+                //let equation = type.build().eq(UInt8.random(in: 0...128))
+                TerminalTest(TerminalTest.getItems(id: test.id, equation: test.equation.toString(result: (true, type == .ID ? .dec : .bin))), theme:
                                 (
                                     LiteFigletTheme(
                                         view: ViewTheme(

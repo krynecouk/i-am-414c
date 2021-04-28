@@ -54,7 +54,7 @@ struct TerminalGrid: View {
                 }
                 if case let .message(symbols) = item.type {
                     if !uiVM.isHelp {
-                    TerminalMessage(symbols)
+                        TerminalMessage(symbols)
                     }
                 }
                 if case let .symbol(symbol) = item.type {
@@ -74,7 +74,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .background(uiVM.isHelp ? Color.primary.frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100).transition(.circular) : nil)
+        .background(uiVM.isHelp ? Color.primary.opacity(0.7).frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100).transition(.circular) : nil)
         .animation(themeVM.terminal.grid.test.test.animation.symbol, value: self.items)
         .withShake(attempt: errors)
         .onReceive(testVM.$result) { result in
@@ -95,7 +95,7 @@ struct TerminalGrid: View {
                 }
             }
             uiVM.isHelp = false
-
+            
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()
@@ -106,15 +106,6 @@ struct TerminalGrid: View {
         .onReceive(uiVM.$isDetail) { isDetail in
             withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
                 if !isDetail {
-                    self.columns = TerminalGrid.ADAPTIVE
-                } else {
-                    self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
-                }
-            }
-        }
-        .onReceive(uiVM.$isHelp) { isHelp in
-            withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
-                if !isHelp {
                     self.columns = TerminalGrid.ADAPTIVE
                 } else {
                     self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
@@ -140,14 +131,12 @@ struct TerminalGrid: View {
                             }
                         }
                     }
-                 }
-            )
+                }
+                )
         )
         .onTapGesture {
-            if !uiVM.isHelp {
-                withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
-                    uiVM.isDetail.toggle()
-                }
+            withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
+                uiVM.isDetail.toggle()
             }
         }
     }
@@ -211,7 +200,7 @@ extension AnyTransition {
         AnyTransition.modifier(
             active: ShapeClipModifier(shape: CircleClipShape(pct: 1)),
             identity: ShapeClipModifier(shape: CircleClipShape(pct: 0)))
-        }
+    }
     }
 }
 
@@ -225,7 +214,7 @@ struct ShapeClipModifier<S: Shape>: ViewModifier {
 
 struct CircleClipShape: Shape {
     var pct: CGFloat
-
+    
     var animatableData: CGFloat {
         get { pct }
         set { pct = newValue }
@@ -237,7 +226,7 @@ struct CircleClipShape: Shape {
         bigRect.size.width = bigRect.size.width * 2 * (1 - pct)
         bigRect.size.height = bigRect.size.height * 2 * (1 - pct)
         bigRect = bigRect.offsetBy(dx: -rect.width/2.0, dy: -rect.height/2.0)
-
+        
         path = Circle().path(in: bigRect)
         
         return path
@@ -250,16 +239,16 @@ struct ScaledCircle: Shape {
     // invisible, and when it’s 1 the circle fills
     // the rectangle.
     var animatableData: CGFloat
-
+    
     func path(in rect: CGRect) -> Path {
         let maximumCircleRadius = sqrt(rect.width * rect.width + rect.height * rect.height)
         let circleRadius = maximumCircleRadius * animatableData
-
+        
         let x = rect.midX - circleRadius / 2
         let y = rect.midY - circleRadius / 2
-
+        
         let circleRect = CGRect(x: x, y: y, width: circleRadius, height: circleRadius)
-
+        
         return Circle().path(in: circleRect)
     }
 }
@@ -267,7 +256,7 @@ struct ScaledCircle: Shape {
 // A general modifier that can clip any view using a any shape.
 struct ClipShapeModifier<T: Shape>: ViewModifier {
     let shape: T
-
+    
     func body(content: Content) -> some View {
         content.clipShape(shape)
     }
