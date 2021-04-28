@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct TerminalHelp: View {
+    @EnvironmentObject var helpVM: HelpViewModel
     
     let type: TerminalHelpType
     let theme: FigletTheme
@@ -22,6 +23,7 @@ struct TerminalHelp: View {
     var body: some View {
         if case let .test(test) = type {
             // TODO items from terminal view
+            let test = helpVM.test ?? test
             TerminalTest(TerminalTest.getItems(id: test.id, equation: test.equation.toString(result: (true, .dec))), theme:
                             (
                                 LiteFigletTheme(
@@ -36,6 +38,9 @@ struct TerminalHelp: View {
                                     animations: []
                                 ))
             )
+            .onAppear {
+                helpVM.test = test
+            }
         }
         
     }

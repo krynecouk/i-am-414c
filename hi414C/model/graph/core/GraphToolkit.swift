@@ -14,4 +14,5 @@ struct GraphToolkit {
     var uiVM: UIViewModel
     var historyVM: HistoryViewModel
     var segueVM: SegueViewModel
+    var helpVM: HelpViewModel
 }

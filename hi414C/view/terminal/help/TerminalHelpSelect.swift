@@ -10,7 +10,7 @@ import SwiftUI
 struct TerminalHelpSelect: View {
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
-    @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var helpVM: HelpViewModel
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 90, maximum: .infinity))]
     
@@ -20,7 +20,9 @@ struct TerminalHelpSelect: View {
         GeometryReader { metrics in
             Grid(columns: TerminalHelpSelect.ADAPTIVE) {
                 if segueVM.opened == .help {
-                    Button("-1")
+                    Button("-1") {
+                        helpVM.test = Test(symbol: .A, equation: AND() => 12)
+                    }
                     Button("+1")
                     Button("Rand")
                     Button("Reset")

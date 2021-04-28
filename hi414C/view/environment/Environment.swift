@@ -17,6 +17,7 @@ struct EnvironmentModifier: ViewModifier {
     @ObservedObject var uiVM: UIViewModel
     @ObservedObject var historyVM: HistoryViewModel
     @ObservedObject var segueVM: SegueViewModel
+    @ObservedObject var helpVM: HelpViewModel
     
     init(
         asciiVM: ASCIIViewModel = ASCIIViewModel(),
@@ -26,7 +27,8 @@ struct EnvironmentModifier: ViewModifier {
         testVM: TestViewModel = TestViewModel(),
         uiVM: UIViewModel = UIViewModel(),
         historyVM: HistoryViewModel = HistoryViewModel(),
-        segueVM: SegueViewModel = SegueViewModel())
+        segueVM: SegueViewModel = SegueViewModel(),
+        helpVM: HelpViewModel = HelpViewModel())
     {
         self.asciiVM = asciiVM
         self.terminalVM = terminalVM
@@ -36,8 +38,9 @@ struct EnvironmentModifier: ViewModifier {
         self.uiVM = uiVM
         self.historyVM = historyVM
         self.segueVM = segueVM
+        self.helpVM = helpVM
         self.graphVM = GraphViewModel(toolkit: GraphToolkit(
-            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM, uiVM: uiVM, historyVM: historyVM, segueVM: segueVM
+            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM, uiVM: uiVM, historyVM: historyVM, segueVM: segueVM, helpVM: helpVM
         ))
     }
     
@@ -52,6 +55,7 @@ struct EnvironmentModifier: ViewModifier {
             .environmentObject(uiVM)
             .environmentObject(historyVM)
             .environmentObject(segueVM)
+            .environmentObject(helpVM)
     }
 }
 
