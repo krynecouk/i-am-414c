@@ -104,6 +104,7 @@
 		269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC79263927F600229E8A /* TerminalHelpSelect.swift */; };
 		269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC7D2639290E00229E8A /* TerminalCommandSegue.swift */; };
 		269BCC8226396A1700229E8A /* SegueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC8126396A1700229E8A /* SegueViewModel.swift */; };
+		269BCC872639A07900229E8A /* EdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC862639A07900229E8A /* EdgeDrag.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
@@ -235,6 +236,7 @@
 		269BCC79263927F600229E8A /* TerminalHelpSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSelect.swift; sourceTree = "<group>"; };
 		269BCC7D2639290E00229E8A /* TerminalCommandSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandSegue.swift; sourceTree = "<group>"; };
 		269BCC8126396A1700229E8A /* SegueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueViewModel.swift; sourceTree = "<group>"; };
+		269BCC862639A07900229E8A /* EdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeDrag.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				269BCC852639A06800229E8A /* gesture */,
 				26500145260F312400414E89 /* device */,
 				268D92E0260901CF00A43802 /* ascii */,
 				2641EF6525E422350005ABF7 /* cathode */,
@@ -702,6 +705,14 @@
 				269BCC79263927F600229E8A /* TerminalHelpSelect.swift */,
 			);
 			path = help;
+			sourceTree = "<group>";
+		};
+		269BCC852639A06800229E8A /* gesture */ = {
+			isa = PBXGroup;
+			children = (
+				269BCC862639A07900229E8A /* EdgeDrag.swift */,
+			);
+			path = gesture;
 			sourceTree = "<group>";
 		};
 		26AF9F4825FF7E9400B77E0A /* test */ = {
@@ -1036,6 +1047,7 @@
 				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */,
 				263612332631DB7800341B60 /* EquationType.swift in Sources */,
+				269BCC872639A07900229E8A /* EdgeDrag.swift in Sources */,
 				269765382625F09700775D71 /* SUB.swift in Sources */,
 				2678D97E260E5D8700DDB40F /* KeyboardKey.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,

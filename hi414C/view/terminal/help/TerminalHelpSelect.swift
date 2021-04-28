@@ -43,7 +43,7 @@ struct TerminalHelpSelect: View {
             }
         }
         //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .background(segueVM.isOpen ? Color.blue.edgesIgnoringSafeArea(.all) : Color("BlackBck").edgesIgnoringSafeArea(.all))
+        .background(segueVM.isOpen ? Color("GoldBck").edgesIgnoringSafeArea(.all) : Color("BlackBck").edgesIgnoringSafeArea(.all))
     }
 }
 

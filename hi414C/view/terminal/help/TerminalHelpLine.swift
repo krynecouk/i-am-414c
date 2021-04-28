@@ -16,14 +16,19 @@ struct TerminalHelpLine: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
-            SegueTerminalLineButton("Help", .help)
-            //Spacer()
-            SegueTerminalLineButton("Settings", .settings)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    SegueTerminalLineButton("Help", .help)
+                    //Spacer()
+                    SegueTerminalLineButton("Settings", .settings)
+                    SegueTerminalLineButton("Themes", .settings)
+                }
+            }
             Spacer()
             TerminalLineButton("X")
                 .background(self.quitBck)
                 .onTapGesture {
-                    self.quitBck = .blue
+                    self.quitBck = Color("GoldBck")
                     withAnimation {
                         segueVM.close()
                         uiVM.isHelp = false
@@ -37,17 +42,16 @@ struct TerminalHelpLine: View {
     
     func TerminalLineButton(_ text: String) -> some View {
         Text(text)
-            .font(Font.custom(FontName.proggyTiny.rawValue, size: 40))
+            .font(Font.custom(FontName.proggyTiny.rawValue, size: 34))
             .foregroundColor(.white)
             .padding(.leading)
             .padding(.trailing)
             .frame(height: SegueViewModel.header.height)
-        
     }
     
     func SegueTerminalLineButton(_ text: String, _ type: SegueType) -> some View {
         TerminalLineButton(text)
-            .background(segueVM.opened == type ? Color.blue : Color.clear)
+            .background(segueVM.opened == type ? Color("GoldBck") : Color.clear)
             .onTapGesture {
                 if segueVM.isOpen {
                     segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)

@@ -112,27 +112,21 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .gesture(
-            DragGesture()
-                .onChanged({ gesture in
-                    if gesture.startLocation.x < CGFloat(40){
-                        let slope = abs((gesture.startLocation.y - gesture.location.y)/(gesture.startLocation.x - gesture.location.x))
-                        if slope < 1 {
-                            withAnimation {
-                                uiVM.isHelp = true
-                            }
-                        }
-                    }
-                    if gesture.startLocation.x > CGFloat(UIScreen.main.bounds.width - 40){
-                        let slope = abs((gesture.startLocation.y - gesture.location.y)/(gesture.startLocation.x - gesture.location.x))
-                        if slope < 1 {
-                            withAnimation {
-                                uiVM.isHelp = false
-                            }
-                        }
+        .onEdgeDrag(
+            left: {
+                if !uiVM.isHelp {
+                    withAnimation {
+                        uiVM.isHelp = true
                     }
                 }
-                )
+            },
+            right: {
+                if uiVM.isHelp {
+                    withAnimation {
+                        uiVM.isHelp = false
+                    }
+                }
+            }
         )
         .onTapGesture {
             withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
