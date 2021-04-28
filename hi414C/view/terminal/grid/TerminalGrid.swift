@@ -133,6 +133,7 @@ struct TerminalGrid: View {
                 uiVM.isDetail.toggle()
             }
         }
+        .contentShape(Rectangle())
     }
     
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {

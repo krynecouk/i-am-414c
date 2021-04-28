@@ -9,7 +9,6 @@ import SwiftUI
 
 class TerminalViewModel: ObservableObject {
     @Published private(set) var content: [TerminalContentType] = []
-    @Published var isDetail = false
     
     func setContent(_ content: [TerminalContentType]) {
         self.content = content

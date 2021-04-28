@@ -18,30 +18,19 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueTerminalLineButton("Help", .help)
-                    //Spacer()
-                    SegueTerminalLineButton("Settings", .settings)
-                    SegueTerminalLineButton("Themes", .themes)
+                    SegueButton("Help", .help)
+                    SegueButton("Settings", .settings)
+                    SegueButton("Themes", .themes)
                 }
             }
             Spacer()
-            TerminalLineButton("X")
-                .background(self.quitBck)
-                .onTapGesture {
-                    self.quitBck = Color("GoldBck")
-                    withAnimation {
-                        segueVM.close()
-                        uiVM.isHelp = false
-                    }
-                }
+            QuitButton("X")
         }
-
         .frame(height: SegueViewModel.header.height)
         .background(Color("BlackBck").edgesIgnoringSafeArea(.all))
     }
     
-    
-    func TerminalLineButton(_ text: String) -> some View {
+    func ButtonLabel(_ text: String) -> some View {
         Text(text)
             .font(Font.custom(FontName.proggyTiny.rawValue, size: 34))
             .foregroundColor(.white)
@@ -49,14 +38,26 @@ struct TerminalHelpLine: View {
             .frame(height: SegueViewModel.header.height)
     }
     
-    func SegueTerminalLineButton(_ text: String, _ type: SegueType) -> some View {
-        TerminalLineButton(text)
-            .background(segueVM.opened == type ? Color("GoldBck") : Color.clear)
+    func QuitButton(_ text: String) -> some View {
+        ButtonLabel(text)
+            .background(self.quitBck)
             .onTapGesture {
-                openSegue(type)
+                self.quitBck = Color("GoldBck")
+                withAnimation {
+                    segueVM.close()
+                    uiVM.isHelp = false
+                }
             }
     }
     
+    func SegueButton(_ text: String, _ type: SegueType) -> some View {
+        ButtonLabel(text)
+                .background(segueVM.opened == type ? Color("GoldBck") : Color.clear)
+                .onTapGesture {
+                    openSegue(type)
+                }
+    }
+
     func openSegue(_ type: SegueType) {
         if segueVM.isOpen {
             segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)
