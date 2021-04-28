@@ -12,6 +12,7 @@ class SegueViewModel: ObservableObject {
     
     @Published private(set) var help: Size = (.infinity, 200)
     @Published private(set) var settings: Size = (.infinity, 200)
+    @Published private(set) var themes: Size = (.infinity, 200)
     @Published private(set) var keyboard: Size = (.infinity, 200)
     @Published private(set) var isOpen: Bool = false
     @Published private(set) var opened: SegueType?
@@ -37,8 +38,12 @@ class SegueViewModel: ObservableObject {
     func setSettingsSize(_ size: Size) {
         self.settings = size
     }
+    
+    func setThemesSize(_ size: Size) {
+        self.themes = size
+    }
 }
 
 enum SegueType {
-    case keyboard, help, settings
+    case keyboard, help, settings, themes
 }

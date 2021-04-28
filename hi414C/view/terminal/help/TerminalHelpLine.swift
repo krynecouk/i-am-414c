@@ -21,7 +21,7 @@ struct TerminalHelpLine: View {
                     SegueTerminalLineButton("Help", .help)
                     //Spacer()
                     SegueTerminalLineButton("Settings", .settings)
-                    SegueTerminalLineButton("Themes", .settings)
+                    SegueTerminalLineButton("Themes", .themes)
                 }
             }
             Spacer()
@@ -35,17 +35,17 @@ struct TerminalHelpLine: View {
                     }
                 }
         }
-        .padding(.all, 15)
+
         .frame(height: SegueViewModel.header.height)
         .background(Color("BlackBck").edgesIgnoringSafeArea(.all))
     }
+    
     
     func TerminalLineButton(_ text: String) -> some View {
         Text(text)
             .font(Font.custom(FontName.proggyTiny.rawValue, size: 34))
             .foregroundColor(.white)
-            .padding(.leading)
-            .padding(.trailing)
+            .padding(.all, 15)
             .frame(height: SegueViewModel.header.height)
     }
     
@@ -53,11 +53,15 @@ struct TerminalHelpLine: View {
         TerminalLineButton(text)
             .background(segueVM.opened == type ? Color("GoldBck") : Color.clear)
             .onTapGesture {
-                if segueVM.isOpen {
-                    segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)
-                } else {
-                    segueVM.open(type: type)
-                }
+                openSegue(type)
             }
+    }
+    
+    func openSegue(_ type: SegueType) {
+        if segueVM.isOpen {
+            segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)
+        } else {
+            segueVM.open(type: type)
+        }
     }
 }
