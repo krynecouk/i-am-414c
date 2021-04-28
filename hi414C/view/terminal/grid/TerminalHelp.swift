@@ -21,27 +21,23 @@ struct TerminalHelp: View {
     
     var body: some View {
         if case let .test(test) = type {
-            let types = test.equation.types.count > 1 ? test.equation.types.filter { $0 != .ID } : test.equation.types
-            ForEach(Array(types), id: \.self) { type in
-                //let equation = type.build().eq(UInt8.random(in: 0...128))
-                // TODO items from terminal view
-                TerminalTest(TerminalTest.getItems(id: test.id, equation: test.equation.toString(result: (true, type == .ID ? .dec : .bin))), theme:
-                                (
-                                    LiteFigletTheme(
-                                        view: ViewTheme(
-                                            color: .black
-                                        )
+            // TODO items from terminal view
+            TerminalTest(TerminalTest.getItems(id: test.id, equation: test.equation.toString(result: (true, .dec))), theme:
+                            (
+                                LiteFigletTheme(
+                                    view: ViewTheme(
+                                        color: .black
+                                    )
+                                ),
+                                FigletTheme(
+                                    view: ViewTheme(
+                                        color: .gray
                                     ),
-                                    FigletTheme(
-                                        view: ViewTheme(
-                                            color: .gray
-                                        ),
-                                        animations: []
-                                    ))
-                )
-            }
+                                    animations: []
+                                ))
+            )
         }
-
+        
     }
 }
 
