@@ -32,7 +32,7 @@ struct TerminalHelpLine: View {
     
     func ButtonLabel(_ text: String) -> some View {
         Text(text)
-            .font(Font.custom(FontName.proggyTiny.rawValue, size: 34))
+            .font(Font.custom(FontName.proggyTiny.rawValue, size: 32))
             .foregroundColor(.white)
             .padding(.all, 15)
             .frame(height: SegueViewModel.header.height)
