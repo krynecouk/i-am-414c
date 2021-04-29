@@ -39,6 +39,6 @@ struct XOR: EquationBuilder {
         let x: UInt8 = UInt8.from(bin: xByte)
         let y: UInt8 = UInt8.from(bin: yByte)
         
-        return Equation(x: x, y: y, result: result, parts: xParts + [.SYM(.XOR)] + yParts, types: [.XOR] + xResult.types + yResult.types, test: { x ^ y == result })
+        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SYM(.XOR)] + yParts, types: [.XOR] + xResult.types + yResult.types, test: { x ^ y == result })
     }
 }

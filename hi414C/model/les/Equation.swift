@@ -9,6 +9,7 @@ struct Equation {
     var x: UInt8 = 0
     var y: UInt8 = 0
     var result: UInt8
+    var builder: EquationBuilder
     var parts: EquationParts
     var types: Set<EquationType>
     var test: () -> Bool

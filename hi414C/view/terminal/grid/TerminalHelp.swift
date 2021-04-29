@@ -22,9 +22,8 @@ struct TerminalHelp: View {
     
     var body: some View {
         if case let .test(test) = type {
-            // TODO items from terminal view
-            let test = helpVM.test ?? test
-            TerminalTest(TerminalTest.getItems(id: test.id, equation: test.equation.toString(result: (true, .dec))), theme:
+            let equation = helpVM.equation.value
+            TerminalTest(TerminalTest.getItems(id: test.id, equation: equation.toString(result: (true, .dec))), theme:
                             (
                                 LiteFigletTheme(
                                     view: ViewTheme(
@@ -39,10 +38,9 @@ struct TerminalHelp: View {
                                 ))
             )
             .onAppear {
-                helpVM.test = test
-            }
-            .onDisappear {
-                helpVM.test = .none
+                if helpVM.equation.id != test.id {
+                    helpVM.setEquation(id: test.id, value: test.equation)
+                }
             }
         }
         

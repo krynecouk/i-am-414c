@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct Test: Identifiable {
+struct Test: Identifiable, Equatable {
     var id = UUID()
     var symbol: ASCIISymbol
     var equation: Equation
+    
+    static func == (lhs: Test, rhs: Test) -> Bool {
+        lhs.id == rhs.id
+    }
 }

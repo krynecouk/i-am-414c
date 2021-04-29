@@ -29,6 +29,6 @@ struct DIV: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return Equation(x: x, y: y, result: result, parts: xParts + [.SYM(.DIV)] + yParts, types: [.DIV] + xResult.types + yResult.types, test: { x / y == result })
+        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SYM(.DIV)] + yParts, types: [.DIV] + xResult.types + yResult.types, test: { x / y == result })
     }
 }

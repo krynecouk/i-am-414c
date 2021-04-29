@@ -20,12 +20,57 @@ struct TerminalHelpSelect: View {
         GeometryReader { metrics in
             Grid(columns: TerminalHelpSelect.ADAPTIVE) {
                 if segueVM.opened == .help {
-                    Button("-1") {
-                        helpVM.test = Test(symbol: .A, equation: AND() => 12)
+                    Group {
+                        Button("-1") {
+                            helpVM.decrement()
+                        }
+                        Button("+1") {
+                            helpVM.increment()
+                        }
+                        Button("Rand") {
+                            helpVM.rand()
+                        }
+                        Button("Reset") {
+                            helpVM.reset()
+                        }
+                        Button("0000") {
+                            helpVM.resetToZero()
+                        }
                     }
-                    Button("+1")
-                    Button("Rand")
-                    Button("Reset")
+                    Group {
+                        Button("AND") {
+                            helpVM.changeTo(type: .AND)
+                        }
+                        Button("OR") {
+                            helpVM.changeTo(type: .OR)
+                        }
+                        Button("XOR") {
+                            helpVM.changeTo(type: .XOR)
+                        }
+                        Button("NOT") {
+                            helpVM.changeTo(type: .NOT)
+                        }
+                        Button("SHL") {
+                            helpVM.changeTo(type: .SHL)
+                        }
+                        Button("SHR") {
+                            helpVM.changeTo(type: .SHR)
+                        }
+                    }
+                    Group {
+                        Button("ADD") {
+                            helpVM.changeTo(type: .ADD)
+                        }
+                        Button("SUB") {
+                            helpVM.changeTo(type: .SUB)
+                        }
+                        Button("DIV") {
+                            helpVM.changeTo(type: .DIV)
+                        }
+                        Button("MUL") {
+                            helpVM.changeTo(type: .MUL)
+                        }
+                    }
                 }
                 
                 if segueVM.opened == .settings {
@@ -46,12 +91,12 @@ struct TerminalHelpSelect: View {
                 let frameW = frame.size.width
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setSettingsSize((.infinity, 150))
-                    segueVM.setThemesSize((.infinity, 150))
+                    segueVM.setSettingsSize((.infinity, 70))
+                    segueVM.setThemesSize((.infinity, 70))
                 } else {
-                    segueVM.setHelpSize((.infinity, 200))
-                    segueVM.setSettingsSize((.infinity, 200))
-                    segueVM.setThemesSize((.infinity, 200))
+                    segueVM.setHelpSize((.infinity, 150))
+                    segueVM.setSettingsSize((.infinity, 70))
+                    segueVM.setThemesSize((.infinity, 70))
                 }
             }
             .onReceive(segueVM.$isOpen) { isOpen in
