@@ -41,6 +41,9 @@ struct TerminalHelp: View {
             .onAppear {
                 helpVM.test = test
             }
+            .onDisappear {
+                helpVM.test = .none
+            }
         }
         
     }

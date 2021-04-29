@@ -18,7 +18,7 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton("Help", .help)
+                    SegueButton("Learn", .help)
                     SegueButton("Settings", .settings)
                     SegueButton("Themes", .themes)
                 }
