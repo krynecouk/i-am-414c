@@ -36,13 +36,11 @@ struct TerminalTest: View {
                 if uiVM.isDetail {
                     if wide {
                         ForEach(0 ..< span.big) { _ in
-                            Text("f")
-                                .opacity(0)
+                            Color.clear
                         }
                     } else {
                         ForEach(0 ..< span.small) { _ in
-                            Text("f")
-                                .opacity(0)
+                            Color.clear
                         }
                     }
                 }
