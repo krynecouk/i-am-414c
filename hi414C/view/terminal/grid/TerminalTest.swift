@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-typealias Span = (small: Int, big: Int)
-
 struct TerminalTest: View {
     @EnvironmentObject var uiVM: UIViewModel
     

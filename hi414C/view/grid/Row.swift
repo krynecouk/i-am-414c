@@ -22,10 +22,17 @@ struct Row<Content: View, Item>: View {
         content()
         
         if size > 0 {
-            ForEach(0 ..< (size - (items.count % size))) { _ in
-                Color.clear
+            let mod = items.count % size
+            if mod > 0 {
+                ForEach((0 ..< (size - mod)).map { _ in ID() }) { _ in
+                    Color.clear
+                }
             }
         }
+    }
+    
+    struct ID: Identifiable {
+        var id: UUID = UUID()
     }
 }
 
