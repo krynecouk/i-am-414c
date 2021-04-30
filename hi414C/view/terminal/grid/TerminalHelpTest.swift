@@ -44,9 +44,7 @@ struct TerminalHelp: View {
                 }
             }
         }
-        if case let .message(messages) = type {
-          //  FigletView(symbols, theme: themeVM.terminal.grid.message.figlet)
-        }
+
     }
     
     func getTestData(from test: Test) -> (id: UUID, equation: Equation) {

@@ -10,6 +10,7 @@ import SwiftUI
 class UIViewModel: ObservableObject {
     @Published var isDetail = false
     @Published var isHelp = false
+    @Published var isMessageAnimated = true
     
     func isWideScreen() -> Bool {
         UIScreen.main.bounds.width > 500

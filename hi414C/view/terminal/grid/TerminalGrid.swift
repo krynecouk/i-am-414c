@@ -16,11 +16,11 @@ struct TerminalGrid: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var historyVM: HistoryViewModel
     
-    typealias SymbolId = String
+    typealias Id = String // symbol or message
     
     @State var errors: Int = 0
     @State var columns = ADAPTIVE
-    @State var printed: [SymbolId] = []
+    @State var printed: [Id] = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = false
     
@@ -53,13 +53,11 @@ struct TerminalGrid: View {
                     }
                 }
                 if case let .message(text) = item.type {
-                    if !uiVM.isHelp {
-                        TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
+                    TerminalMessage(text, theme: uiVM.isHelp ? themeVM.terminal.grid.message.figlet.withAnimation([.shake()]) : themeVM.terminal.grid.message.figlet)
                             .onAppear {
                                 self.printed = []
                                 self.solved = []
                             }
-                    }
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail && !uiVM.isHelp {
@@ -167,8 +165,6 @@ struct TerminalItem: Equatable {
         lhs.id == rhs.id
     }
 }
-
-
 
 enum TerminalItemType {
     case symbol(ASCIISymbol)
