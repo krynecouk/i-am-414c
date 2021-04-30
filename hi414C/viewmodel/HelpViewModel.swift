@@ -14,7 +14,7 @@ class HelpViewModel: ObservableObject {
     func increment() {
         let item = updatedEq ?? originalEq
         let result = item.equation.result
-        let builder = item.equation.builder
+        let builder = getBuilder(item.equation)
         
         if result == UInt8.max {
             self.updatedEq = HelpEquation(equation: builder.eq(0))
@@ -26,7 +26,7 @@ class HelpViewModel: ObservableObject {
     func decrement() {
         let item = updatedEq ?? originalEq
         let result = item.equation.result
-        let builder = item.equation.builder
+        let builder = getBuilder(item.equation)
         
         if result == 0 {
             self.updatedEq = HelpEquation(equation: builder.eq(UInt8.max))
@@ -36,23 +36,20 @@ class HelpViewModel: ObservableObject {
     }
     
     func rand() {
-        /*
-         let builder = equation.value.builder
-         self.equation = (equation.id, builder.eq(UInt8.random(in: 0...UInt8.max)))
-         */
+        let item = updatedEq ?? originalEq
+        let builder = getBuilder(item.equation)
+        
+        self.updatedEq = HelpEquation(equation: builder.eq(UInt8.random(in: 0...UInt8.max)))
     }
     
     func reset() {
-        /*
-         self.updatedEq = originalEq
-         */
+        self.updatedEq = originalEq
     }
     
     func resetToZero() {
-        /*
-         let builder = equation.value.builder
-         self.equation = (equation.id, builder.eq(0))
-         */
+        let item = updatedEq ?? originalEq
+        let builder = getBuilder(item.equation)
+        self.updatedEq = HelpEquation(equation: builder.eq(0))
     }
     
     func changeTo(type: EquationType) {
@@ -71,6 +68,16 @@ class HelpViewModel: ObservableObject {
     
     func removeUpdatedEq() {
         self.updatedEq = nil
+    }
+    
+    private func getBuilder(_ equation: Equation) -> EquationBuilder {
+        if equation.types.contains(.SHL) {
+            return SHL()
+        } else if equation.types.contains(.SHR) {
+            return SHR()
+        } else {
+            return equation.builder
+        }
     }
 }
 struct HelpEquation: Identifiable {
