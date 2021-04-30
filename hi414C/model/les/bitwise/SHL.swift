@@ -17,21 +17,27 @@ struct SHL: EquationBuilder {
     }
     
     func eq(_ result: UInt8) -> Equation {
-        if result == 0 {
-            return ID() => 0
+        var x: UInt8
+        var y: UInt8
+        var toSHL: UInt8
+        
+        if (result == 0) {
+            x = 0
+            y = 0
+            toSHL = 0
+        } else {
+            let modulo = result % 2
+            toSHL = result - modulo
+            
+            if modulo != 0 {
+                return ADD(SHL(), (ID(), modulo)) => result
+            }
+            
+            let denominators = toSHL.getAllDenominators().filter { [2, 4, 8, 16, 32, 64].contains(toSHL/$0) }
+            x = denominators.randomElement()!
+            y = UInt8(log2(Double(toSHL/x)))
         }
         
-        let modulo = result % 2
-        let toSHL = result - modulo
-        
-        if modulo != 0 {
-            return ADD(SHL(), (ID(), modulo)) => result
-        }
-        
-        let denominators = toSHL.getAllDenominators().filter { [2, 4, 8, 16, 32, 64].contains(toSHL/$0) }
-        let x: UInt8 = denominators.randomElement()!
-        let y: UInt8 = UInt8(log2(Double(toSHL/x)))
-                
         let xResult = self.x.eq(x)
         let yResult = self.y.eq(y)
         

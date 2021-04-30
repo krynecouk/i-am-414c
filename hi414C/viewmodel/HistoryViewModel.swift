@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+typealias History = [Message]
+
 class HistoryViewModel: ObservableObject {
-    private(set) var history: [Message] = []
+    private(set) var history: History = []
     
     func add(message: Message) {
         self.history.append(message)

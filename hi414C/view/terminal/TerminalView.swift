@@ -31,7 +31,8 @@ struct TerminalView: View {
             if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
                 if containsAll(tested: symbols, from: ascii) {
-                    items.append(TerminalItem(of: .message(symbols)))
+                    let text = symbols.map { $0.rawValue }.joined()
+                    items.append(TerminalItem(of: .message(text)))
                     testVM.set(test: .none)
                     continue
                 }

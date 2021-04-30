@@ -17,26 +17,33 @@ struct SHR: EquationBuilder {
     }
     
     func eq(_ result: UInt8) -> Equation {
+        // TODO wrong - compute empty places before 1 and random
+        var x: UInt8
+        var y: UInt8
+        var toSHR: UInt8
+        
         if result == 0 {
-            return ID() => 0
+            x = 0
+            y = 0
+            toSHR = 0
+        } else {
+            let modulo = result % 2
+            toSHR = result - modulo
+            
+            if modulo != 0 {
+                return ADD(SHR(), (ID(), modulo)) => result
+            }
+            
+            var multiplications = getMultiplications(from: toSHR)
+            // prefer less of: >> 0000 0000
+            if multiplications.count > 1 {
+                multiplications = multiplications.filter { $0 != toSHR }
+            }
+            
+            x = multiplications.randomElement() ?? 0
+            y = x == 0 ? 0 : UInt8(log2(Double(x/result)))
         }
-        
-        let modulo = result % 2
-        let toSHR = result - modulo
-        
-        if modulo != 0 {
-            return ADD(SHR(), (ID(), modulo)) => result
-        }
-        
-        var multiplications = getMultiplications(from: toSHR)
-        // prefer less of: >> 0000 0000
-        if multiplications.count > 1 {
-            multiplications = multiplications.filter { $0 != toSHR }
-        }
-        
-        let x: UInt8 = multiplications.randomElement() ?? 0
-        let y: UInt8 = x == 0 ? 0 : UInt8(log2(Double(x/result)))
-                
+      
         let xResult = self.x.eq(x)
         let yResult = self.y.eq(y)
         

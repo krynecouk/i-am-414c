@@ -22,7 +22,7 @@ struct TerminalHelp: View {
     
     var body: some View {
         if case let .test(test) = type {
-            let (id, equation) = getData(from: test)
+            let (id, equation) = getTestData(from: test)
             TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme:
                             (
                                 LiteFigletTheme(
@@ -44,9 +44,12 @@ struct TerminalHelp: View {
                 }
             }
         }
+        if case let .message(messages) = type {
+          //  FigletView(symbols, theme: themeVM.terminal.grid.message.figlet)
+        }
     }
     
-    func getData(from test: Test) -> (id: UUID, equation: Equation) {
+    func getTestData(from test: Test) -> (id: UUID, equation: Equation) {
         if helpVM.originalEq.id != test.id || helpVM.updatedEq == nil {
             return (test.id, test.equation)
         } else {
@@ -57,5 +60,5 @@ struct TerminalHelp: View {
 
 enum TerminalHelpType {
     case test(Test)
-    case message([Message])
+    case message(String)
 }

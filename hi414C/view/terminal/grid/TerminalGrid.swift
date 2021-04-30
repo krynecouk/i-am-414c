@@ -52,9 +52,13 @@ struct TerminalGrid: View {
                         TerminalArt(arts)
                     }
                 }
-                if case let .message(symbols) = item.type {
+                if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        TerminalMessage(symbols)
+                        TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
+                            .onAppear {
+                                self.printed = []
+                                self.solved = []
+                            }
                     }
                 }
                 if case let .symbol(symbol) = item.type {
@@ -139,14 +143,6 @@ struct TerminalGrid: View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
     }
     
-    func TerminalMessage(_ symbols: [ASCIISymbol]) -> some View {
-        FigletView(symbols, theme: themeVM.terminal.grid.message.figlet)
-            .onAppear {
-                self.printed = []
-                self.solved = []
-            }
-    }
-    
     func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
         FigletView(symbol.rawValue, theme: (!printed.contains(id) && solved.contains(symbol))
                     ? themeVM.terminal.grid.test.symbol.figlet
@@ -172,10 +168,12 @@ struct TerminalItem: Equatable {
     }
 }
 
+
+
 enum TerminalItemType {
     case symbol(ASCIISymbol)
     case test(Test, [TerminalTestItem], Bool)
-    case message([ASCIISymbol])
+    case message(String)
     case art([ASCIIPrintable])
     case help(TerminalHelpType)
 }
