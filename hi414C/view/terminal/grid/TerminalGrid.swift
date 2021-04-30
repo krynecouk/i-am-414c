@@ -15,12 +15,13 @@ struct TerminalGrid: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var historyVM: HistoryViewModel
+    @EnvironmentObject var helpVM: HelpViewModel
     
-    typealias Id = String // symbol or message
+    typealias SymbolId = String
     
     @State var errors: Int = 0
     @State var columns = ADAPTIVE
-    @State var printed: [Id] = []
+    @State var printed: [SymbolId] = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = false
     
@@ -53,8 +54,12 @@ struct TerminalGrid: View {
                     }
                 }
                 if case let .message(text) = item.type {
+                    if uiVM.isHelp && helpVM.isHistory {
+                        TerminalHistory()
+                    }
                     TerminalMessage(text, theme: uiVM.isHelp ? themeVM.terminal.grid.message.figlet.withAnimation([.shake()]) : themeVM.terminal.grid.message.figlet)
                             .onAppear {
+                                helpVM.isMessage = true
                                 self.printed = []
                                 self.solved = []
                             }
@@ -72,6 +77,9 @@ struct TerminalGrid: View {
                             : (themeVM.terminal.grid.test.test.passive.figlet, themeVM.terminal.grid.test.test.passive.op)
                         TerminalTest(items, theme: theme, wide: wide)
                             .matchedGeometryEffect(id: "\(test.id.uuidString)\(test.symbol.rawValue)", in: ns, isSource: false)
+                            .onAppear {
+                                helpVM.isMessage = false
+                            }
                     }
                 }
             }
@@ -87,7 +95,6 @@ struct TerminalGrid: View {
             }
             if case let .right(symbol) = result {
                 self.solved.append(symbol)
-                uiVM.isHelp = false
             }
         }
         .onReceive(graphVM.$result) { result in
@@ -96,7 +103,6 @@ struct TerminalGrid: View {
                     self.errors += 1
                 }
             }
-            uiVM.isHelp = false
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()

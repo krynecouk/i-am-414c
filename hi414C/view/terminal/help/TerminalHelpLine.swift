@@ -11,6 +11,7 @@ struct TerminalHelpLine: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var helpVM: HelpViewModel
     
     @State var quitBackground: Color = .clear
     
@@ -18,9 +19,9 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton("Learn", .help)
-                    SegueButton("Settings", .settings)
+                    SegueButton(helpVM.isMessage ? "Speak" : "Learn", .help)
                     SegueButton("Themes", .themes)
+                    SegueButton("Settings", .settings)
                 }
             }
             Spacer()

@@ -21,7 +21,8 @@ class HistoryViewModel: ObservableObject {
     }
 }
 
-struct Message {
+struct Message: Identifiable {
+    var id: UUID = UUID()
     var author: MessageAuthor
     var text: String
     

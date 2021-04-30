@@ -19,7 +19,14 @@ struct TerminalHelpSelect: View {
     var body: some View {
         GeometryReader { metrics in
             Grid(columns: TerminalHelpSelect.ADAPTIVE) {
-                if segueVM.opened == .help {
+                if segueVM.opened == .help && helpVM.isMessage {
+                    Group {
+                        Button("History") {
+                            helpVM.isHistory.toggle()
+                        }
+                    }
+                }
+                if segueVM.opened == .help && !helpVM.isMessage {
                     Group {
                         Button("-1") {
                             helpVM.decrement()

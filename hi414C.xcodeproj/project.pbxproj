@@ -51,6 +51,7 @@
 		2665C9BB263AB41300CE724F /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9BA263AB41300CE724F /* Row.swift */; };
 		2665C9C3263C0DC400CE724F /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9C2263C0DC400CE724F /* DetailRow.swift */; };
 		2665C9C7263C32B100CE724F /* TerminalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9C6263C32B100CE724F /* TerminalMessage.swift */; };
+		2665C9D3263C5BB800CE724F /* TerminalHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9D2263C5BB800CE724F /* TerminalHistory.swift */; };
 		26682CB32611FAAA00F7C943 /* ASCIIKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */; };
 		266A43B4261C229700C7855C /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266A43B3261C229700C7855C /* Metrics.swift */; };
 		266A43B8261C2F7800C7855C /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266A43B7261C2F7800C7855C /* Shake.swift */; };
@@ -189,6 +190,7 @@
 		2665C9BA263AB41300CE724F /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		2665C9C2263C0DC400CE724F /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
 		2665C9C6263C32B100CE724F /* TerminalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalMessage.swift; sourceTree = "<group>"; };
+		2665C9D2263C5BB800CE724F /* TerminalHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHistory.swift; sourceTree = "<group>"; };
 		26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIKeyboardView.swift; sourceTree = "<group>"; };
 		266A43B3261C229700C7855C /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		266A43B7261C2F7800C7855C /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			isa = PBXGroup;
 			children = (
 				2697659B262DB14E00775D71 /* TerminalGrid.swift */,
+				2665C9D2263C5BB800CE724F /* TerminalHistory.swift */,
 				269765AB262EC32E00775D71 /* TerminalTest.swift */,
 				263612522636F8F200341B60 /* TerminalHelpTest.swift */,
 				2665C9C6263C32B100CE724F /* TerminalMessage.swift */,
@@ -1077,6 +1080,7 @@
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26500159260F3C6200414E89 /* Keyboards.swift in Sources */,
 				267A0D55260C823E00844927 /* ASCIIArtEdge.swift in Sources */,
+				2665C9D3263C5BB800CE724F /* TerminalHistory.swift in Sources */,
 				2665C9C7263C32B100CE724F /* TerminalMessage.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
 				26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */,
