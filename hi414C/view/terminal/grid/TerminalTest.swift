@@ -18,7 +18,7 @@ struct TerminalTest: View {
         sym: FigletTheme
     )
     let wide: Bool
-
+    
     init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, FigletTheme), wide: Bool = false) {
         print("TerminalTest")
         self.items = items
@@ -28,21 +28,14 @@ struct TerminalTest: View {
     
     var body: some View {
         ForEach(items, id: \.id) { item in
-            if case let .num(char) = item.type {
-                LiteFigletView(String(char), theme: theme.num)
+            if case let .num(chars) = item.type {
+                Row(of: chars, size: uiVM.isDetail ? (wide ? 8 : 4) : 0) {
+                    LiteFigletView(String(chars), theme: theme.num)
+                }
             }
-            if case let .sym(char, span) = item.type {
-                FigletView(String(char), theme: theme.sym)
-                if uiVM.isDetail {
-                    if wide {
-                        ForEach(0 ..< span.big) { _ in
-                            Color.clear
-                        }
-                    } else {
-                        ForEach(0 ..< span.small) { _ in
-                            Color.clear
-                        }
-                    }
+            if case let .sym(chars) = item.type {
+                Row(of: chars, size: uiVM.isDetail ? (wide ? 8 : 4) : 0) {
+                    FigletView(String(chars), theme: theme.sym)
                 }
             }
         }
@@ -52,18 +45,26 @@ struct TerminalTest: View {
         print("Calculating Test Items")
         var items: [TerminalTestItem] = []
         let chars = equation.map { $0 }
-        var consecutiveOps = 0
+        
+        var syms: [Character] = []
+        var nums: [Character] = []
         for (i, char) in chars.enumerated() {
             if isOperator(char) {
+                syms.append(char)
                 if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
-                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(char, (0, 0))))
-                    consecutiveOps += 1
+                    continue
                 } else {
-                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
-                    consecutiveOps = 0
+                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(syms)))
+                    syms = []
                 }
             } else {
-                items.append(TerminalTestItem(id: "\(id)-\(i)", of: .num(char)))
+                nums.append(char)
+                if chars.endIndex > (i + 1) && !isOperator(chars[i + 1]) {
+                    continue
+                } else {
+                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .num(nums)))
+                    nums = []
+                }
             }
         }
         print(items)
@@ -73,7 +74,7 @@ struct TerminalTest: View {
     public static func getItems(from test: Test) -> [TerminalTestItem] {
         getItems(id: test.id, equation: test.equation.toString())
     }
-
+    
     public static func isOperator(_ char: Character) -> Bool {
         ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "(", "="].contains(char)
     }
@@ -94,6 +95,6 @@ protocol IdentifiableString {
 }
 
 enum TerminalTestType {
-    case num(Character)
-    case sym(Character, Span)
+    case num([Character])
+    case sym([Character])
 }

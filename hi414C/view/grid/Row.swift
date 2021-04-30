@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct Row<Content: View, Item: Identifiable>: View {
+struct Row<Content: View, Item>: View {
     let items: [Item]
     let size: Int
-    let content: (Item) -> Content
+    let content: () -> Content
 
-    init(of items: [Item], size: Int, @ViewBuilder content: @escaping (Item) -> Content) {
+    init(of items: [Item], size: Int, @ViewBuilder content: @escaping () -> Content) {
         self.items = items
         self.size = size
         self.content = content
     }
     
     var body: some View {
-        ForEach(items) { item in
-            content(item)
-        }
+        content()
         
-        ForEach(0 ..< (size - (items.count % size))) { _ in
-            Color.clear
+        if size > 0 {
+            ForEach(0 ..< (size - (items.count % size))) { _ in
+                Color.clear
+            }
         }
     }
 }
