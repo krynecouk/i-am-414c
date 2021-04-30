@@ -19,6 +19,9 @@ struct TerminalHelpSegue: View {
     var body: some View {
         VStack(spacing: 0) {
             TerminalHelpLine()
+                .onTapGesture {
+                    segueVM.close()
+                }
             TerminalHelpSelect()
         }
         .frame(height: segueH)

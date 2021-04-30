@@ -22,8 +22,7 @@ struct TerminalHelp: View {
     
     var body: some View {
         if case let .test(test) = type {
-            let id = getId(test: test)
-            let equation = getEquation(test: test)
+            let (id, equation) = getData(from: test)
             TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme:
                             (
                                 LiteFigletTheme(
@@ -40,34 +39,18 @@ struct TerminalHelp: View {
             )
             .onAppear {
                 if helpVM.originalEq.id != test.id {
-                    helpVM.originalEq = HelpEquation(id: test.id, equation: test.equation)
-                    helpVM.updatedEq = nil
+                    helpVM.setOriginalEq(id: test.id, equation: test.equation)
+                    helpVM.removeUpdatedEq()
                 }
             }
         }
     }
     
-    func getId(test: Test) -> UUID {
-        if helpVM.originalEq.id != test.id {
-            return test.id
+    func getData(from test: Test) -> (id: UUID, equation: Equation) {
+        if helpVM.originalEq.id != test.id || helpVM.updatedEq == nil {
+            return (test.id, test.equation)
         } else {
-            if helpVM.updatedEq != nil {
-                return helpVM.updatedEq!.id
-            } else {
-                return test.id
-            }
-        }
-    }
-    
-    func getEquation(test: Test) -> Equation {
-        if helpVM.originalEq.id != test.id {
-            return test.equation
-        } else {
-            if helpVM.updatedEq != nil {
-                return helpVM.updatedEq!.equation
-            } else {
-                return test.equation
-            }
+            return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation)
         }
     }
 }

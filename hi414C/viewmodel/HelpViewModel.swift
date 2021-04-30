@@ -8,8 +8,8 @@
 import SwiftUI
 
 class HelpViewModel: ObservableObject {
-    var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
-    @Published var updatedEq: HelpEquation?
+    private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
+    @Published private(set) var updatedEq: HelpEquation?
     
     func increment() {
         let item = updatedEq ?? originalEq
@@ -24,16 +24,15 @@ class HelpViewModel: ObservableObject {
     }
     
     func decrement() {
-        /*
-         let result = equation.value.result
-         let builder = equation.value.builder
-         
-         if result == 0 {
-         self.equation = (equation.id, builder.eq(UInt8.max))
-         } else {
-         self.equation = (equation.id, builder.eq(result - 1))
-         }
-         */
+        let item = updatedEq ?? originalEq
+        let result = item.equation.result
+        let builder = item.equation.builder
+        
+        if result == 0 {
+            self.updatedEq = HelpEquation(equation: builder.eq(UInt8.max))
+        } else {
+            self.updatedEq = HelpEquation(equation: builder.eq(result - 1))
+        }
     }
     
     func rand() {
@@ -62,12 +61,17 @@ class HelpViewModel: ObservableObject {
         self.updatedEq = HelpEquation(equation: type.build().eq(result))
     }
     
-    func setEquation(id: UUID, equation: Equation) {
+    func setOriginalEq(id: UUID, equation: Equation) {
         self.originalEq = HelpEquation(id: id, equation: equation)
+    }
+    
+    func setUpdatedEq(id: UUID, equation: Equation) {
         self.updatedEq = HelpEquation(id: id, equation: equation)
     }
     
-    
+    func removeUpdatedEq() {
+        self.updatedEq = nil
+    }
 }
 struct HelpEquation: Identifiable {
     var id: UUID = UUID()
