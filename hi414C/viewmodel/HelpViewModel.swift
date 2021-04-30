@@ -12,10 +12,7 @@ class HelpViewModel: ObservableObject {
     @Published private(set) var updatedEq: HelpEquation?
     
     func increment() {
-        let item = updatedEq ?? originalEq
-        let result = item.equation.result
-        let builder = getBuilder(item.equation)
-        
+        let (result, builder) = getResultBuilder()
         if result == UInt8.max {
             self.updatedEq = HelpEquation(equation: builder.eq(0))
         } else {
@@ -24,10 +21,7 @@ class HelpViewModel: ObservableObject {
     }
     
     func decrement() {
-        let item = updatedEq ?? originalEq
-        let result = item.equation.result
-        let builder = getBuilder(item.equation)
-        
+        let (result, builder) = getResultBuilder()
         if result == 0 {
             self.updatedEq = HelpEquation(equation: builder.eq(UInt8.max))
         } else {
@@ -36,9 +30,7 @@ class HelpViewModel: ObservableObject {
     }
     
     func rand() {
-        let item = updatedEq ?? originalEq
-        let builder = getBuilder(item.equation)
-        
+        let (_, builder) = getResultBuilder()
         self.updatedEq = HelpEquation(equation: builder.eq(UInt8.random(in: 0...UInt8.max)))
     }
     
@@ -47,14 +39,12 @@ class HelpViewModel: ObservableObject {
     }
     
     func resetToZero() {
-        let item = updatedEq ?? originalEq
-        let builder = getBuilder(item.equation)
+        let (_, builder) = getResultBuilder()
         self.updatedEq = HelpEquation(equation: builder.eq(0))
     }
     
     func changeTo(type: EquationType) {
-        let item = updatedEq ?? originalEq
-        let result = item.equation.result
+        let (result, _) = getResultBuilder()
         self.updatedEq = HelpEquation(equation: type.build().eq(result))
     }
     
@@ -68,6 +58,13 @@ class HelpViewModel: ObservableObject {
     
     func removeUpdatedEq() {
         self.updatedEq = nil
+    }
+    
+    private func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {
+        let item = updatedEq ?? originalEq
+        let result = item.equation.result
+        let builder = getBuilder(item.equation)
+        return (result, builder)
     }
     
     private func getBuilder(_ equation: Equation) -> EquationBuilder {
