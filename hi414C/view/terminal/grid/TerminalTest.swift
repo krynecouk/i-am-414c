@@ -27,12 +27,12 @@ struct TerminalTest: View {
     var body: some View {
         ForEach(items, id: \.id) { item in
             if case let .num(chars) = item.type {
-                Row(of: chars, size: uiVM.isDetail ? (wide ? 8 : 4) : 0) {
+                DetailRow(of: chars, wide: wide) {
                     LiteFigletView(String(chars), theme: theme.num)
                 }
             }
             if case let .sym(chars) = item.type {
-                Row(of: chars, size: uiVM.isDetail ? (wide ? 8 : 4) : 0) {
+                DetailRow(of: chars, wide: wide) {
                     FigletView(String(chars), theme: theme.sym)
                 }
             }
