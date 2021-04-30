@@ -9,10 +9,12 @@ import SwiftUI
 
 struct Row<Content: View, Item: Identifiable>: View {
     let items: [Item]
+    let size: Int
     let content: (Item) -> Content
-    
-    init(of items: [Item], @ViewBuilder content: @escaping (Item) -> Content) {
+
+    init(of items: [Item], size: Int, @ViewBuilder content: @escaping (Item) -> Content) {
         self.items = items
+        self.size = size
         self.content = content
     }
     
@@ -21,7 +23,7 @@ struct Row<Content: View, Item: Identifiable>: View {
             content(item)
         }
         
-        ForEach(0 ..< 8) { _ in
+        ForEach(0 ..< (size - (items.count % size))) { _ in
             Color.clear
         }
     }

@@ -27,7 +27,7 @@ struct TerminalTest: View {
     }
     
     var body: some View {
-        ForEach(Array(items.enumerated()), id: \.offset) { i, item in
+        ForEach(items, id: \.id) { item in
             if case let .num(char) = item.type {
                 LiteFigletView(String(char), theme: theme.num)
             }
@@ -56,16 +56,17 @@ struct TerminalTest: View {
         for (i, char) in chars.enumerated() {
             if isOperator(char) {
                 if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
-                    items.append(TerminalTestItem(id: id, of: .sym(char, (0, 0))))
+                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(char, (0, 0))))
                     consecutiveOps += 1
                 } else {
-                    items.append(TerminalTestItem(id: id, of: .sym(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
+                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(char, (3 - (consecutiveOps % 4), 7 - (consecutiveOps % 8)))))
                     consecutiveOps = 0
                 }
             } else {
-                items.append(TerminalTestItem(id: id, of: .num(char)))
+                items.append(TerminalTestItem(id: "\(id)-\(i)", of: .num(char)))
             }
         }
+        print(items)
         return items
     }
     
@@ -78,14 +79,18 @@ struct TerminalTest: View {
     }
 }
 
-struct TerminalTestItem: Identifiable {
-    var id: UUID
+struct TerminalTestItem: IdentifiableString {
+    var id: String
     var type: TerminalTestType
     
-    init(id: UUID = UUID(), of type: TerminalTestType) {
+    init(id: String = UUID().uuidString, of type: TerminalTestType) {
         self.id = id
         self.type = type
     }
+}
+
+protocol IdentifiableString {
+    var id: String { get }
 }
 
 enum TerminalTestType {

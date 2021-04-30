@@ -8,52 +8,68 @@
 import SwiftUI
 
 class HelpViewModel: ObservableObject {
-    private(set) var original: (id: UUID, value: Equation) = (UUID(), ID() => 0)
-    @Published private(set) var equation: (id: UUID, value: Equation) = (UUID(), ID() => 0)
+    var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
+    @Published var updatedEq: HelpEquation?
     
     func increment() {
-        let result = equation.value.result
-        let builder = equation.value.builder
+        let item = updatedEq ?? originalEq
+        let result = item.equation.result
+        let builder = item.equation.builder
         
         if result == UInt8.max {
-            self.equation = (equation.id, builder.eq(0))
+            self.updatedEq = HelpEquation(equation: builder.eq(0))
         } else {
-            self.equation = (equation.id, builder.eq(result + 1))
+            self.updatedEq = HelpEquation(equation: builder.eq(result + 1))
         }
     }
     
     func decrement() {
-        let result = equation.value.result
-        let builder = equation.value.builder
-        
-        if result == 0 {
-            self.equation = (equation.id, builder.eq(UInt8.max))
-        } else {
-            self.equation = (equation.id, builder.eq(result - 1))
-        }
+        /*
+         let result = equation.value.result
+         let builder = equation.value.builder
+         
+         if result == 0 {
+         self.equation = (equation.id, builder.eq(UInt8.max))
+         } else {
+         self.equation = (equation.id, builder.eq(result - 1))
+         }
+         */
     }
     
     func rand() {
-        let builder = equation.value.builder
-        self.equation = (equation.id, builder.eq(UInt8.random(in: 0...UInt8.max)))
+        /*
+         let builder = equation.value.builder
+         self.equation = (equation.id, builder.eq(UInt8.random(in: 0...UInt8.max)))
+         */
     }
     
     func reset() {
-        self.equation = original
+        /*
+         self.updatedEq = originalEq
+         */
     }
-        
+    
     func resetToZero() {
-        let builder = equation.value.builder
-        self.equation = (equation.id, builder.eq(0))
+        /*
+         let builder = equation.value.builder
+         self.equation = (equation.id, builder.eq(0))
+         */
     }
     
     func changeTo(type: EquationType) {
-        let result = equation.value.result
-        self.equation = (equation.id, type.build().eq(result))
+        let item = updatedEq ?? originalEq
+        let result = item.equation.result
+        self.updatedEq = HelpEquation(equation: type.build().eq(result))
     }
     
-    func setEquation(id: UUID, value: Equation) {
-        self.original = (id, value)
-        self.equation = (id, value)
+    func setEquation(id: UUID, equation: Equation) {
+        self.originalEq = HelpEquation(id: id, equation: equation)
+        self.updatedEq = HelpEquation(id: id, equation: equation)
     }
+    
+    
+}
+struct HelpEquation: Identifiable {
+    var id: UUID = UUID()
+    var equation: Equation
 }
