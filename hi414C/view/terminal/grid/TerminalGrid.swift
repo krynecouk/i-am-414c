@@ -42,24 +42,24 @@ struct TerminalGrid: View {
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(items, id: \.id) { item in
+                if case let .help(item) = item.type {
+                    if uiVM.isHelp {
+                        TerminalHelp(item, wide: wide)
+                    }
+                }
                 if case let .art(arts) = item.type {
                     if !uiVM.isHelp {
                         TerminalArt(arts)
                     }
                 }
-                if case let .message(text, answers) = item.type {
-                    if uiVM.isHelp && helpVM.isHistory {
-                        TerminalHistory()
-                    }
-                    TerminalMessage(text, theme: uiVM.isHelp ? themeVM.terminal.grid.message.figlet.withAnimation([.shake()]) : themeVM.terminal.grid.message.figlet)
+                if case let .message(text) = item.type {
+                    if !uiVM.isHelp {
+                    TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
                             .onAppear {
-                                helpVM.isMessage = true
-                                helpVM.answers = answers
+                                helpVM.current = .message
                                 self.printed = []
                                 self.solved = []
                             }
-                    if uiVM.isHelp {
-                        TerminalMessageGenerator()
                     }
                 }
                 if case let .symbol(symbol) = item.type {
@@ -68,11 +68,7 @@ struct TerminalGrid: View {
                             .matchedGeometryEffect(id: item.id, in: ns)
                     }
                 }
-                if case let .help(test) = item.type {
-                    if uiVM.isHelp {
-                        TerminalHelpTest(test, wide: wide)
-                    }
-                }
+
                 if case let .test(test, items, active) = item.type {
                     if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
                         let theme = active
@@ -81,7 +77,7 @@ struct TerminalGrid: View {
                         TerminalTest(items, theme: theme, wide: wide)
                             .matchedGeometryEffect(id: "\(test.id.uuidString)\(test.symbol.rawValue)", in: ns, isSource: false)
                             .onAppear {
-                                helpVM.isMessage = false
+                                helpVM.current = .test
                             }
                     }
                 }
@@ -184,9 +180,9 @@ struct TerminalItem: Equatable {
 enum TerminalItemType {
     case symbol(ASCIISymbol)
     case test(Test, [TerminalTestItem], Bool)
-    case message(String, Answers)
+    case message(String)
     case art([ASCIIPrintable])
-    case help(Test)
+    case help(TerminalHelpItem)
 }
 
 struct TerminalGrid_Previews: PreviewProvider {

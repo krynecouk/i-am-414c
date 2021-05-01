@@ -8,12 +8,14 @@
 import SwiftUI
 
 class HelpViewModel: ObservableObject {
-    private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
-    var isMessage = false
     @Published private(set) var updatedEq: HelpEquation?
     @Published var isHistory: Bool = false
-    var answers: Set<String> = []
     @Published var answer: String = "HI"
+    
+    private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
+    var current: HelpType = .test
+    var answers: Set<String> = []
+
     
     func increment() {
         let (result, builder) = getResultBuilder()
@@ -81,6 +83,11 @@ class HelpViewModel: ObservableObject {
         }
     }
 }
+
+enum HelpType {
+    case message, test
+}
+
 struct HelpEquation: Identifiable {
     var id: UUID = UUID()
     var equation: Equation

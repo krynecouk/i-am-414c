@@ -24,7 +24,7 @@ struct TerminalView: View {
         }
     }
     
-    private func getPaths(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
+    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
         var paths: Set<String> = []
         for edge in node.edges {
             paths.insert(edge.id)
@@ -44,7 +44,9 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if contains(all: symbols, in: ascii) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    items.append(TerminalItem(of: .message(text, getPaths(from: graphVM.node, ascii: ascii))))
+                    let answers = getAnswers(from: graphVM.node, ascii: ascii)
+                    items.append(TerminalItem(of: .help(TerminalHelpItem(of: .message(text, answers)))))
+                    items.append(TerminalItem(of: .message(text)))
                     testVM.set(test: .none)
                     continue
                 }
@@ -64,7 +66,7 @@ struct TerminalView: View {
                         return
                     }
                     testWasSetup.toggle()
-                    items.append(TerminalItem(of: .help(test)))
+                    items.append(TerminalItem(of: .help(TerminalHelpItem(of: .test(test)))))
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
                     testVM.set(test: test)
                 }
