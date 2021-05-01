@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailRow<Content: View, Item>: View {
+struct DetailRow<Content: View>: View {
     @EnvironmentObject var uiVM: UIViewModel
     
     let length: Int
@@ -20,7 +20,7 @@ struct DetailRow<Content: View, Item>: View {
         self.content = content
     }
     
-    init(of items: [Item], wide: Bool = false, @ViewBuilder content: @escaping () -> Content) {
+    init(of items: Array<Any>, wide: Bool = false, @ViewBuilder content: @escaping () -> Content) {
         self.init(of: items.count, wide: wide, content: content)
     }
     

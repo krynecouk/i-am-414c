@@ -13,12 +13,7 @@ struct TerminalHistory: View {
     
     var body: some View {
         ForEach(historyVM.history) { message in
-            if message.author == ._414C {
-                TerminalMessage(message.text, theme: themeVM.terminal.help.history._414C)
-            } else {
-                Text(message.text)
-                    .withTheme(themeVM.terminal.help.history.AL)
-            }
+            TerminalMessage(message.text, theme: message.author == ._414C ? themeVM.terminal.help.history._414C : themeVM.terminal.help.history.AL)
         }
     }
 }

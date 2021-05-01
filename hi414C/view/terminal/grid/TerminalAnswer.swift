@@ -14,8 +14,7 @@ struct TerminalAnswer: View {
     @EnvironmentObject var themeVM: ThemeViewModel
 
     var body: some View {
-        Text(helpVM.answer)
-            .withTheme(themeVM.terminal.help.answer)
+        TerminalMessage(helpVM.answer, theme: themeVM.terminal.help.answer)
     }
 
 }

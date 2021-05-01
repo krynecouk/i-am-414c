@@ -137,16 +137,24 @@ struct PrimaryTheme: Themable {
                         font: (name: .terminus, size: 13),
                         color: .gray
                     ),
-                    animations: [.shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .gray)]
+                    animations: []
                 ),
-                AL: ViewTheme(
-                    font: (name: .proggyTiny, size: 47),
-                    color: .gray
+                AL: FigletTheme(
+                    typeface: .ansi(.regular),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 13),
+                        color: .yellow
+                    ),
+                    animations: []
                 )
             ),
-            answer: ViewTheme(
-                font: (name: .proggyTiny, size: 47),
-                color: .blue
+            answer: FigletTheme(
+                typeface: .ansi(.regular),
+                view: ViewTheme(
+                    font: (name: .terminus, size: 13),
+                    color: .yellow
+                ),
+                animations: [.print(), .bloom(speed: 1, color: .primary)]
             )
         ),
         cli: TerminalTheme.CommandLine(
