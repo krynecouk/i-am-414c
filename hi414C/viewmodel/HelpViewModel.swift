@@ -12,6 +12,8 @@ class HelpViewModel: ObservableObject {
     var isMessage = false
     @Published private(set) var updatedEq: HelpEquation?
     @Published var isHistory: Bool = false
+    var answers: Set<String> = []
+    @Published var answer: String = "HI"
     
     func increment() {
         let (result, builder) = getResultBuilder()

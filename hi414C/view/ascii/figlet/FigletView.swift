@@ -28,8 +28,8 @@ struct FigletView: View {
     
     var body: some View {
         Group {
-            ForEach(figlets.indices) { i in
-                ASCIIArtView(figlets[i], theme: ArtTheme(
+            ForEach(figlets.map { FigletItem(figlet: $0) }) { item in
+                ASCIIArtView(item.figlet, theme: ArtTheme(
                     view: theme.view, animations: theme.animations
                 ))
             }
@@ -48,9 +48,6 @@ struct FigletView_Previews: PreviewProvider {
             FigletView([.H], theme: FigletTheme(
                 animations: [.print(), .bloom(speed: 0.5)]
             ))
-            .onTapGesture {
-                print("tapped")
-            }
         }
     }
 }

@@ -11,6 +11,7 @@ struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
     
     init() {
         print("TerminalView")
@@ -23,6 +24,17 @@ struct TerminalView: View {
         }
     }
     
+    private func getPaths(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
+        var paths: Set<String> = []
+        for edge in node.edges {
+            paths.insert(edge.id)
+            if let asciiEdge = edge as? ASCIITestEdge {
+                paths.formUnion(Set(asciiEdge.variants))
+            }
+        }
+        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
+    }
+    
     private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
         print("Calculating Test Content Items")
 
@@ -30,9 +42,9 @@ struct TerminalView: View {
         for type in types {
             if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
-                if containsAll(tested: symbols, from: ascii) {
+                if contains(all: symbols, in: ascii) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    items.append(TerminalItem(of: .message(text)))
+                    items.append(TerminalItem(of: .message(text, getPaths(from: graphVM.node, ascii: ascii))))
                     testVM.set(test: .none)
                     continue
                 }
@@ -52,7 +64,7 @@ struct TerminalView: View {
                         return
                     }
                     testWasSetup.toggle()
-                    items.append(TerminalItem(of: .help(.test(test))))
+                    items.append(TerminalItem(of: .help(test)))
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
                     testVM.set(test: test)
                 }
@@ -65,9 +77,9 @@ struct TerminalView: View {
     }
 }
 
-private func containsAll(tested: [ASCIISymbol], from symbols: [ASCIISymbol]) -> Bool {
-    for symbol in tested {
-        if !symbols.contains(symbol) {
+private func contains(all symbols: [ASCIISymbol], in basket: [ASCIISymbol]) -> Bool {
+    for symbol in symbols {
+        if !basket.contains(symbol) {
             return false
         }
     }

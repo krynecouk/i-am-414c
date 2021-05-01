@@ -137,6 +137,10 @@ enum ASCIISymbol: String, Hashable {
 }
 
 extension ASCIISymbol {
+    static func from(_ char: Character) -> ASCIISymbol {
+        from(String(char))
+    }
+    
     static func from(_ string: String) -> ASCIISymbol {
         if let symbol = ASCIISymbol(rawValue: string) {
             return symbol

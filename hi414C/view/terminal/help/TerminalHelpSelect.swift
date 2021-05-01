@@ -24,6 +24,9 @@ struct TerminalHelpSelect: View {
                         Button("History") {
                             helpVM.isHistory.toggle()
                         }
+                        Button("Rand") {
+                            helpVM.answer = helpVM.answers.randomElement() ?? "N/A"
+                        }
                     }
                 }
                 if segueVM.opened == .help && !helpVM.isMessage {

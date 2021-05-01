@@ -19,7 +19,6 @@ struct TerminalGrid: View {
     
     typealias SymbolId = String
     
-    @State var errors: Int = 0
     @State var columns = ADAPTIVE
     @State var printed: [SymbolId] = []
     @State var solved: [ASCIISymbol] = []
@@ -43,31 +42,35 @@ struct TerminalGrid: View {
     var body: some View {
         Grid(columns: self.columns) {
             ForEach(items, id: \.id) { item in
-                if case let .help(type) = item.type {
-                    if uiVM.isHelp {
-                        TerminalHelp(type, wide: wide)
-                    }
-                }
                 if case let .art(arts) = item.type {
                     if !uiVM.isHelp {
                         TerminalArt(arts)
                     }
                 }
-                if case let .message(text) = item.type {
+                if case let .message(text, answers) = item.type {
                     if uiVM.isHelp && helpVM.isHistory {
                         TerminalHistory()
                     }
                     TerminalMessage(text, theme: uiVM.isHelp ? themeVM.terminal.grid.message.figlet.withAnimation([.shake()]) : themeVM.terminal.grid.message.figlet)
                             .onAppear {
                                 helpVM.isMessage = true
+                                helpVM.answers = answers
                                 self.printed = []
                                 self.solved = []
                             }
+                    if uiVM.isHelp {
+                        TerminalMessageGenerator()
+                    }
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail && !uiVM.isHelp {
                         TerminalSymbol(item.id, symbol)
                             .matchedGeometryEffect(id: item.id, in: ns)
+                    }
+                }
+                if case let .help(test) = item.type {
+                    if uiVM.isHelp {
+                        TerminalHelpTest(test, wide: wide)
                     }
                 }
                 if case let .test(test, items, active) = item.type {
@@ -84,13 +87,13 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .background(uiVM.isHelp ? Color.primary.opacity(0.7).frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100).transition(.circular) : nil)
+        .background(uiVM.isHelp ? HelpBackground() : nil)
         .animation(themeVM.terminal.grid.test.test.animation.symbol, value: self.items)
-        .withShake(attempt: errors)
+        .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
                 withAnimation(.default) {
-                    self.errors += 1
+                    uiVM.errors += 1
                 }
             }
             if case let .right(symbol) = result {
@@ -100,7 +103,7 @@ struct TerminalGrid: View {
         .onReceive(graphVM.$result) { result in
             if case .error(_) = result {
                 withAnimation(.default) {
-                    self.errors += 1
+                    uiVM.errors += 1
                 }
             }
         }
@@ -143,6 +146,13 @@ struct TerminalGrid: View {
         .contentShape(Rectangle())
     }
     
+    func HelpBackground() -> some View {
+        Color.primary
+            .opacity(0.7)
+            .frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100)
+            .transition(.circular)
+    }
+    
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
     }
@@ -156,7 +166,6 @@ struct TerminalGrid: View {
             }
     }
 }
-
 
 struct TerminalItem: Equatable {
     var id: String
@@ -175,9 +184,9 @@ struct TerminalItem: Equatable {
 enum TerminalItemType {
     case symbol(ASCIISymbol)
     case test(Test, [TerminalTestItem], Bool)
-    case message(String)
+    case message(String, Answers)
     case art([ASCIIPrintable])
-    case help(TerminalHelpType)
+    case help(Test)
 }
 
 struct TerminalGrid_Previews: PreviewProvider {

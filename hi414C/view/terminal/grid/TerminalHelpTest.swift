@@ -6,24 +6,23 @@
 //
 import SwiftUI
 
-struct TerminalHelp: View {
+struct TerminalHelpTest: View {
     @EnvironmentObject var helpVM: HelpViewModel
     
-    let type: TerminalHelpType
+    let test: Test
     let theme: FigletTheme
     let wide: Bool
     
-    init(_ type: TerminalHelpType, _ theme: FigletTheme = FigletTheme(), wide: Bool = false) {
+    init(_ test: Test, _ theme: FigletTheme = FigletTheme(), wide: Bool = false) {
         print("TerminalHelp")
-        self.type = type
+        self.test = test
         self.theme = theme
         self.wide = wide
     }
     
     var body: some View {
-        if case let .test(test) = type {
             let (id, equation) = getTestData(from: test)
-            TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme:
+            return TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme:
                             (
                                 LiteFigletTheme(
                                     view: ViewTheme(
@@ -43,8 +42,6 @@ struct TerminalHelp: View {
                     helpVM.removeUpdatedEq()
                 }
             }
-        }
-
     }
     
     func getTestData(from test: Test) -> (id: UUID, equation: Equation) {
@@ -54,9 +51,4 @@ struct TerminalHelp: View {
             return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation)
         }
     }
-}
-
-enum TerminalHelpType {
-    case test(Test)
-    case message(String)
 }
