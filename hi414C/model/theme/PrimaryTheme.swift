@@ -125,9 +125,9 @@ struct PrimaryTheme: Themable {
                     typeface: .ansi(.shadow),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
-                        color: .primary
+                        color: .black
                     ),
-                    animations: [.print(), .shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
+                    animations: [.shake(speed: 0.8, force: 1, type: .wave)]
                 )
             ),
             history: TerminalTheme.Help.History(
@@ -143,7 +143,7 @@ struct PrimaryTheme: Themable {
                     typeface: .ansi(.regular),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
-                        color: .yellow
+                        color: .gray
                     ),
                     animations: []
                 )
@@ -152,9 +152,9 @@ struct PrimaryTheme: Themable {
                 typeface: .ansi(.regular),
                 view: ViewTheme(
                     font: (name: .terminus, size: 13),
-                    color: .yellow
+                    color: .gray
                 ),
-                animations: [.print(), .bloom(speed: 1, color: .primary)]
+                animations: []
             )
         ),
         cli: TerminalTheme.CommandLine(

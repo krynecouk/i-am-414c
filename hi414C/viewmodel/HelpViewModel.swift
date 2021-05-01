@@ -10,12 +10,10 @@ import SwiftUI
 class HelpViewModel: ObservableObject {
     @Published private(set) var updatedEq: HelpEquation?
     @Published var isHistory: Bool = false
-    @Published var answer: String = "HI"
+    @Published private(set) var answers: Int = 0
     
     private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
     var current: HelpType = .test
-    var answers: Set<String> = []
-
     
     func increment() {
         let (result, builder) = getResultBuilder()
@@ -64,6 +62,10 @@ class HelpViewModel: ObservableObject {
     
     func removeUpdatedEq() {
         self.updatedEq = nil
+    }
+    
+    func randAnswer() {
+        self.answers += 1
     }
     
     private func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {

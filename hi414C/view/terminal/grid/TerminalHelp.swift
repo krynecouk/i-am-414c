@@ -35,16 +35,8 @@ struct TerminalHelp: View {
             if helpVM.isHistory {
                 TerminalHistory()
             }
-            
-            TerminalMessage(text, theme: FigletTheme(
-                typeface: .ansi(.shadow),
-                view: ViewTheme(
-                    color: .black
-                ),
-                animations: []
-            ))
-            
-            TerminalAnswer()
+            TerminalMessage(text, theme: themeVM.terminal.help.message.figlet)
+            TerminalAnswer(answers)
         }
     }
     

@@ -62,7 +62,7 @@ struct ASCIIArtView: View {
         VStack(spacing: 0) {
             ForEach(lines.indices) { idx in
                 ASCIIArtLineView(
-                    lines[idx],
+                    lines.count > idx ? lines[idx] : lines[0],
                     theme: theme.view,
                     visible: !printable || idx < printLine,
                     bloom: bloom,

@@ -23,6 +23,7 @@ struct TerminalGrid: View {
     @State var printed: [SymbolId] = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = false
+    @State var animatedMsg = true
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
@@ -45,6 +46,9 @@ struct TerminalGrid: View {
                 if case let .help(item) = item.type {
                     if uiVM.isHelp {
                         TerminalHelp(item, wide: wide)
+                            .onAppear {
+                                self.animatedMsg = false
+                            }
                     }
                 }
                 if case let .art(arts) = item.type {
@@ -54,7 +58,8 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                    TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
+                        // TODO fix withAnimation
+                        TerminalMessage(text, theme: animatedMsg ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([.shake()]))
                             .onAppear {
                                 helpVM.current = .message
                                 self.printed = []
@@ -65,15 +70,15 @@ struct TerminalGrid: View {
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail && !uiVM.isHelp {
                         TerminalSymbol(symbol, theme: (!printed.contains(item.id) && solved.contains(symbol))
-                                       ? themeVM.terminal.grid.symbol
-                                       : themeVM.terminal.grid.symbol.withAnimation([]))
+                                        ? themeVM.terminal.grid.symbol
+                                        : themeVM.terminal.grid.symbol.withAnimation([]))
                             .matchedGeometryEffect(id: item.id, in: ns)
                             .onDisappear {
                                 self.printed.append(item.id)
                             }
                     }
                 }
-
+                
                 if case let .test(test, items, active) = item.type {
                     if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
                         let theme = active
@@ -82,7 +87,12 @@ struct TerminalGrid: View {
                         TerminalTest(items, theme: theme, wide: wide)
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, isSource: false)
                             .onAppear {
-                                helpVM.current = .test
+                                if helpVM.current != .test {
+                                    helpVM.current = .test
+                                }
+                                if !animatedMsg {
+                                    animatedMsg = true
+                                }
                             }
                     }
                 }
