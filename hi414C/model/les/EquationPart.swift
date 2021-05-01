@@ -8,10 +8,10 @@
 typealias EquationParts = [EquationPart]
 
 enum EquationPart {
-    case LP, NUM(UInt8), RP, SYM(EquationSymbol), RESULT(UInt8)
+    case LP, NUM(UInt8), RP, SIGN(EquationSign), RESULT(UInt8)
 }
 
-enum EquationSymbol: String {
+enum EquationSign: String {
     case ADD = "+"
     case SUB = "-"
     case DIV = "/"
@@ -28,7 +28,7 @@ enum EquationSymbol: String {
 extension Equation {
     func toString(radix: EquationRadix = .bin, result: (visible: Bool, radix: EquationRadix) = (false, .bin)) -> String {
         result.visible
-            ? (self.parts + [.SYM(.EQ), .RESULT(self.result)]).toString(radix: (radix, result.radix))
+            ? (self.parts + [.SIGN(.EQ), .RESULT(self.result)]).toString(radix: (radix, result.radix))
             : self.parts.toString(radix: (radix, result.radix))
     }
 }
@@ -58,7 +58,7 @@ extension EquationPart {
             }
         case .RP:
             return ")"
-        case let .SYM(symbol):
+        case let .SIGN(symbol):
             return symbol.rawValue
         case let .RESULT(num):
             if radix.result == .bin {

@@ -47,9 +47,9 @@ struct TerminalTest: View {
         var syms: [Character] = []
         var nums: [Character] = []
         for (i, char) in chars.enumerated() {
-            if isOperator(char) {
+            if isEquationSign(char) {
                 syms.append(char)
-                if chars.endIndex > (i + 1) && isOperator(chars[i + 1]) {
+                if chars.endIndex > (i + 1) && isEquationSign(chars[i + 1]) {
                     continue
                 } else {
                     items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(syms)))
@@ -57,7 +57,7 @@ struct TerminalTest: View {
                 }
             } else {
                 nums.append(char)
-                if chars.endIndex > (i + 1) && !isOperator(chars[i + 1]) {
+                if chars.endIndex > (i + 1) && !isEquationSign(chars[i + 1]) {
                     continue
                 } else {
                     items.append(TerminalTestItem(id: "\(id)-\(i)", of: .num(nums)))
@@ -73,7 +73,7 @@ struct TerminalTest: View {
         getItems(id: test.id, equation: test.equation.toString())
     }
     
-    public static func isOperator(_ char: Character) -> Bool {
+    public static func isEquationSign(_ char: Character) -> Bool {
         ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "(", "="].contains(char)
     }
 }

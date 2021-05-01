@@ -23,7 +23,7 @@ struct TerminalHelp: View {
         if case let .test(test) = item.type {
             let (id, equation) = getTestData(from: test)
             let theme = themeVM.terminal.help.test.active
-            TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme: (theme.figlet, theme.op), wide: wide)
+            TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
             .onAppear {
                 if helpVM.originalEq.id != test.id {
                     helpVM.setOriginalEq(id: test.id, equation: test.equation)

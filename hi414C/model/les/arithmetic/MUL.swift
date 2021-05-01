@@ -40,6 +40,6 @@ struct MUL: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
                 
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SYM(.MUL)] + yParts, types: [.MUL] + xResult.types + yResult.types, test: { x * y == result })
+        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.MUL)] + yParts, types: [.MUL] + xResult.types + yResult.types, test: { x * y == result })
     }
 }

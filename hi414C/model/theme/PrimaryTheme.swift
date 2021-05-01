@@ -36,7 +36,7 @@ struct PrimaryTheme: Themable {
                             color: .primary
                         )
                     ),
-                    op: FigletTheme(
+                    sign: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
@@ -53,7 +53,7 @@ struct PrimaryTheme: Themable {
                             color: Color.primary.opacity(0.2)
                         )
                     ),
-                    op: FigletTheme(
+                    sign: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
@@ -89,7 +89,7 @@ struct PrimaryTheme: Themable {
                             color: .primary
                         )
                     ),
-                    op: FigletTheme(
+                    sign: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
@@ -106,7 +106,7 @@ struct PrimaryTheme: Themable {
                             color: Color.primary.opacity(0.2)
                         )
                     ),
-                    op: FigletTheme(
+                    sign: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
