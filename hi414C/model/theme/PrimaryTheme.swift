@@ -185,6 +185,30 @@ struct PrimaryTheme: Themable {
                 ),
                 bloom: (1, .primary)
             )
+        ),
+        hli: TerminalTheme.HelpLine(
+            background: Color("BlackBck"),
+            button: TerminalTheme.HelpLine.Button(
+                view: ViewTheme(
+                    font: (.proggyTiny, 32),
+                    color: .white
+                ),
+                background: TerminalTheme.HelpLine.Background(
+                    active: Color("GoldBck"),
+                    passive: .clear
+                )
+            ),
+            select: TerminalTheme.HelpLine.Select(
+                button: ViewTheme(
+                    font: (.proggyTiny, 29),
+                    color: .white,
+                    background: .primary
+                ),
+                background: TerminalTheme.HelpLine.Background(
+                    active: Color("GoldBck"),
+                    passive: Color("BlackBck")
+                )
+            )
         )
     )
     

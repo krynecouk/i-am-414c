@@ -116,14 +116,15 @@ struct TerminalHelpSelect: View {
             }
         }
         //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .background(segueVM.isOpen ? Color("GoldBck").edgesIgnoringSafeArea(.all) : Color("BlackBck").edgesIgnoringSafeArea(.all))
+        .background(segueVM.isOpen
+                        ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
+                        : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
     }
     
     func Button(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
         Text(text)
-            .font(Font.custom(FontName.proggyTiny.rawValue, size: 29))
             .padding()
-            .background(Color.primary)
+            .withTheme(themeVM.terminal.hli.select.button)
             .offset(x: self.offset.x, y: self.offset.y)
             .onTapGesture {
                 action()
@@ -132,9 +133,8 @@ struct TerminalHelpSelect: View {
     
     func RadioButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
         Text(text)
-            .font(Font.custom(FontName.proggyTiny.rawValue, size: 29))
             .padding()
-            .background(Color.primary)
+            .withTheme(themeVM.terminal.hli.select.button)
             .offset(x: self.offset.x, y: self.offset.y)
             .onTapGesture {
                 action()

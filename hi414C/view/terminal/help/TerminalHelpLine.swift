@@ -28,13 +28,12 @@ struct TerminalHelpLine: View {
             QuitButton("X")
         }
         .frame(height: SegueViewModel.header.height)
-        .background(Color("BlackBck").edgesIgnoringSafeArea(.all))
+        .background(themeVM.terminal.hli.background.edgesIgnoringSafeArea(.all))
     }
     
     func ButtonLabel(_ text: String) -> some View {
         Text(text)
-            .font(Font.custom(FontName.proggyTiny.rawValue, size: 32))
-            .foregroundColor(.white)
+            .withTheme(themeVM.terminal.hli.button.view)
             .padding(.all, 15)
             .frame(height: SegueViewModel.header.height)
     }
@@ -53,7 +52,7 @@ struct TerminalHelpLine: View {
     
     func SegueButton(_ text: String, _ type: SegueType) -> some View {
         ButtonLabel(text)
-                .background(segueVM.opened == type ? Color("GoldBck") : Color.clear)
+            .background(segueVM.opened == type ? themeVM.terminal.hli.button.background.active : themeVM.terminal.hli.button.background.passive)
                 .onTapGesture {
                     openSegue(type)
                 }

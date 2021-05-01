@@ -11,6 +11,7 @@ struct TerminalTheme {
     var grid: Grid
     var help: Help
     var cli: CommandLine
+    var hli: HelpLine
     
     struct Grid {
         var art: ArtTheme
@@ -50,6 +51,27 @@ struct TerminalTheme {
         struct Text {
             var view: ViewTheme
             var bloom: (speed: Double, color: Color)
+        }
+    }
+    
+    struct HelpLine {
+        var background: Color
+        var button: Button
+        var select: Select
+        
+        struct Button {
+            var view: ViewTheme
+            var background: Background
+        }
+        
+        struct Select {
+            var button: ViewTheme
+            var background: Background
+        }
+        
+        struct Background {
+            var active: Color
+            var passive: Color
         }
     }
 }
