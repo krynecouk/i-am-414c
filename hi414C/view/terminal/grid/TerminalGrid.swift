@@ -78,6 +78,7 @@ struct TerminalGrid: View {
                             .onDisappear {
                                 self.printed.append(item.id)
                             }
+                            .animation(nil)
                     }
                 }
                 
@@ -87,7 +88,7 @@ struct TerminalGrid: View {
                             ? (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.sign)
                             : (themeVM.terminal.grid.test.passive.figlet, themeVM.terminal.grid.test.passive.sign)
                         TerminalTest(items, theme: theme, wide: wide)
-                            .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, isSource: false)
+                            .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
                             .onAppear {
                                 if helpVM.current != .test {
                                     helpVM.current = .test
@@ -101,7 +102,7 @@ struct TerminalGrid: View {
             }
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        .animation(themeVM.terminal.grid.test.animation.symbol, value: self.items)
+        .animation(Animation.spring().speed(0.8), value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
