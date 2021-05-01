@@ -10,7 +10,11 @@ import SwiftUI
 class UIViewModel: ObservableObject {
     @Published var isDetail = false
     @Published var isHelp = false
-    @Published var errors: Int = 0
+    @Published private(set) var errors: Int = 0
+    
+    func shake() {
+        self.errors += 1
+    }
     
     func isWideScreen() -> Bool {
         UIScreen.main.bounds.width > 500

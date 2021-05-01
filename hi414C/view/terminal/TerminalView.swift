@@ -56,7 +56,7 @@ struct TerminalView: View {
                     
                     let symbol = test.symbol
                     if ascii.contains(symbol) {
-                        items.append(TerminalItem(id: "\(test.id.uuidString)\(symbol.rawValue)", of: .symbol(symbol)))
+                        items.append(TerminalItem(id: TerminalSymbol.id(from: test), of: .symbol(symbol)))
                         return
                     }
                     

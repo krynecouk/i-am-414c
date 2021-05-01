@@ -64,8 +64,13 @@ struct TerminalGrid: View {
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail && !uiVM.isHelp {
-                        TerminalSymbol(item.id, symbol)
+                        TerminalSymbol(symbol, theme: (!printed.contains(item.id) && solved.contains(symbol))
+                                       ? themeVM.terminal.grid.test.symbol.figlet
+                                       : themeVM.terminal.grid.test.symbol.figlet.withAnimation([]))
                             .matchedGeometryEffect(id: item.id, in: ns)
+                            .onDisappear {
+                                self.printed.append(item.id)
+                            }
                     }
                 }
 
@@ -75,7 +80,7 @@ struct TerminalGrid: View {
                             ? (themeVM.terminal.grid.test.test.active.figlet, themeVM.terminal.grid.test.test.active.op)
                             : (themeVM.terminal.grid.test.test.passive.figlet, themeVM.terminal.grid.test.test.passive.op)
                         TerminalTest(items, theme: theme, wide: wide)
-                            .matchedGeometryEffect(id: "\(test.id.uuidString)\(test.symbol.rawValue)", in: ns, isSource: false)
+                            .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, isSource: false)
                             .onAppear {
                                 helpVM.current = .test
                             }
@@ -89,7 +94,7 @@ struct TerminalGrid: View {
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
                 withAnimation(.default) {
-                    uiVM.errors += 1
+                    uiVM.shake()
                 }
             }
             if case let .right(symbol) = result {
@@ -99,7 +104,7 @@ struct TerminalGrid: View {
         .onReceive(graphVM.$result) { result in
             if case .error(_) = result {
                 withAnimation(.default) {
-                    uiVM.errors += 1
+                    uiVM.shake()
                 }
             }
         }
@@ -151,15 +156,6 @@ struct TerminalGrid: View {
     
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
-    }
-    
-    func TerminalSymbol(_ id: String, _ symbol: ASCIISymbol) -> some View {
-        FigletView(symbol.rawValue, theme: (!printed.contains(id) && solved.contains(symbol))
-                    ? themeVM.terminal.grid.test.symbol.figlet
-                    : themeVM.terminal.grid.test.symbol.figlet.withAnimation([]))
-            .onDisappear {
-                self.printed.append(id)
-            }
     }
 }
 

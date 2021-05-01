@@ -52,7 +52,8 @@
 		2665C9C3263C0DC400CE724F /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9C2263C0DC400CE724F /* DetailRow.swift */; };
 		2665C9C7263C32B100CE724F /* TerminalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9C6263C32B100CE724F /* TerminalMessage.swift */; };
 		2665C9D3263C5BB800CE724F /* TerminalHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9D2263C5BB800CE724F /* TerminalHistory.swift */; };
-		2665C9D9263C651700CE724F /* TerminalMessageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9D8263C651700CE724F /* TerminalMessageGenerator.swift */; };
+		2665C9D9263C651700CE724F /* TerminalAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9D8263C651700CE724F /* TerminalAnswer.swift */; };
+		2665C9E1263D2DD500CE724F /* TerminalSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9E0263D2DD500CE724F /* TerminalSymbol.swift */; };
 		26682CB32611FAAA00F7C943 /* ASCIIKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */; };
 		266A43B4261C229700C7855C /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266A43B3261C229700C7855C /* Metrics.swift */; };
 		266A43B8261C2F7800C7855C /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266A43B7261C2F7800C7855C /* Shake.swift */; };
@@ -192,7 +193,8 @@
 		2665C9C2263C0DC400CE724F /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
 		2665C9C6263C32B100CE724F /* TerminalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalMessage.swift; sourceTree = "<group>"; };
 		2665C9D2263C5BB800CE724F /* TerminalHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHistory.swift; sourceTree = "<group>"; };
-		2665C9D8263C651700CE724F /* TerminalMessageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalMessageGenerator.swift; sourceTree = "<group>"; };
+		2665C9D8263C651700CE724F /* TerminalAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalAnswer.swift; sourceTree = "<group>"; };
+		2665C9E0263D2DD500CE724F /* TerminalSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSymbol.swift; sourceTree = "<group>"; };
 		26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIKeyboardView.swift; sourceTree = "<group>"; };
 		266A43B3261C229700C7855C /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		266A43B7261C2F7800C7855C /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
@@ -714,7 +716,8 @@
 				269765AB262EC32E00775D71 /* TerminalTest.swift */,
 				263612522636F8F200341B60 /* TerminalHelp.swift */,
 				2665C9C6263C32B100CE724F /* TerminalMessage.swift */,
-				2665C9D8263C651700CE724F /* TerminalMessageGenerator.swift */,
+				2665C9D8263C651700CE724F /* TerminalAnswer.swift */,
+				2665C9E0263D2DD500CE724F /* TerminalSymbol.swift */,
 			);
 			path = grid;
 			sourceTree = "<group>";
@@ -1046,7 +1049,7 @@
 				269765092624A2C100775D71 /* ID.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewTheme.swift in Sources */,
-				2665C9D9263C651700CE724F /* TerminalMessageGenerator.swift in Sources */,
+				2665C9D9263C651700CE724F /* TerminalAnswer.swift in Sources */,
 				269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */,
 				267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */,
 				268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */,
@@ -1060,6 +1063,7 @@
 				269764F02624981700775D71 /* Equation.swift in Sources */,
 				269765052624A25900775D71 /* OR.swift in Sources */,
 				2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */,
+				2665C9E1263D2DD500CE724F /* TerminalSymbol.swift in Sources */,
 				268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,

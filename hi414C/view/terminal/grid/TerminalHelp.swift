@@ -57,7 +57,7 @@ struct TerminalHelp: View {
                 animations: []
             ))
             
-            TerminalMessageGenerator()
+            TerminalAnswer()
         }
     }
     
