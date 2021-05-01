@@ -65,8 +65,8 @@ struct TerminalGrid: View {
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail && !uiVM.isHelp {
                         TerminalSymbol(symbol, theme: (!printed.contains(item.id) && solved.contains(symbol))
-                                       ? themeVM.terminal.grid.test.symbol.figlet
-                                       : themeVM.terminal.grid.test.symbol.figlet.withAnimation([]))
+                                       ? themeVM.terminal.grid.symbol
+                                       : themeVM.terminal.grid.symbol.withAnimation([]))
                             .matchedGeometryEffect(id: item.id, in: ns)
                             .onDisappear {
                                 self.printed.append(item.id)
@@ -77,8 +77,8 @@ struct TerminalGrid: View {
                 if case let .test(test, items, active) = item.type {
                     if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
                         let theme = active
-                            ? (themeVM.terminal.grid.test.test.active.figlet, themeVM.terminal.grid.test.test.active.op)
-                            : (themeVM.terminal.grid.test.test.passive.figlet, themeVM.terminal.grid.test.test.passive.op)
+                            ? (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.op)
+                            : (themeVM.terminal.grid.test.passive.figlet, themeVM.terminal.grid.test.passive.op)
                         TerminalTest(items, theme: theme, wide: wide)
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, isSource: false)
                             .onAppear {
@@ -89,7 +89,7 @@ struct TerminalGrid: View {
             }
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        .animation(themeVM.terminal.grid.test.test.animation.symbol, value: self.items)
+        .animation(themeVM.terminal.grid.test.animation.symbol, value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
@@ -115,7 +115,7 @@ struct TerminalGrid: View {
                 : TerminalGrid.ADAPTIVE
         }
         .onReceive(uiVM.$isDetail) { isDetail in
-            withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
+            withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 if !isDetail {
                     self.columns = TerminalGrid.ADAPTIVE
                 } else {
@@ -140,7 +140,7 @@ struct TerminalGrid: View {
             }
         )
         .onTapGesture {
-            withAnimation(themeVM.terminal.grid.test.test.animation.detail) {
+            withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 uiVM.isDetail.toggle()
             }
         }
@@ -148,8 +148,7 @@ struct TerminalGrid: View {
     }
     
     func HelpBackground() -> some View {
-        Color.primary
-            .opacity(0.7)
+        themeVM.terminal.help.background
             .frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100)
             .transition(.circular)
     }

@@ -18,56 +18,53 @@ struct PrimaryTheme: Themable {
                 ),
                 animations: [.print(speed: 0.3, animation: .linear), .shake(speed: 0.8, force: 1, type: .wave)]
             ),
+            symbol: FigletTheme(
+                typeface: .ansi(.regular),
+                view: ViewTheme(
+                    font: (name: .terminus, size: 13),
+                    color: Color.primary.opacity(0.2)
+                ),
+                animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: .primary)]
+            ),
             test: TestTheme(
-                symbol: TestTheme.Symbol(
-                    figlet: FigletTheme(
+                
+                active: TestTheme.Active(
+                    figlet: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: .primary
+                        )
+                    ),
+                    op: FigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: .gray
+                        ),
+                        animations: [.shake(speed: 0.8, force: 1, type: .wave)]
+                    )
+                ),
+                passive: TestTheme.Passive(
+                    figlet: LiteFigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
                             color: Color.primary.opacity(0.2)
+                        )
+                    ),
+                    op: FigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: Color.gray.opacity(0.2)
                         ),
-                        animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: .primary)]
+                        animations: []
                     )
                 ),
-                test: TestTheme.Test(
-                    active: TestTheme.Test.Active(
-                        figlet: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: (name: .terminus, size: 13),
-                                color: .primary
-                            )
-                        ),
-                        op: FigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: (name: .terminus, size: 13),
-                                color: .gray
-                            ),
-                            animations: [.shake(speed: 0.8, force: 1, type: .wave)]
-                        )
-                    ),
-                    passive: TestTheme.Test.Passive(
-                        figlet: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: (name: .terminus, size: 13),
-                                color: Color.primary.opacity(0.2)
-                            )
-                        ),
-                        op: FigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: (name: .terminus, size: 13),
-                                color: Color.gray.opacity(0.2)
-                            ),
-                            animations: []
-                        )
-                    ),
-                    animation: TestTheme.Test.TestAnimation(
-                        detail: Animation.spring().speed(0.8),
-                        symbol: Animation.spring().speed(0.8)
-                    )
+                animation: TestTheme.TestAnimation(
+                    detail: Animation.spring().speed(0.8),
+                    symbol: Animation.spring().speed(0.8)
                 )
             ),
             message: MessageTheme(
@@ -79,6 +76,76 @@ struct PrimaryTheme: Themable {
                     ),
                     animations: [.print(), .shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
                 )
+            )
+        ),
+        help: TerminalTheme.Help(
+            background: Color.primary.opacity(0.7),
+            test: TestTheme(
+                active: TestTheme.Active(
+                    figlet: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: .primary
+                        )
+                    ),
+                    op: FigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: .gray
+                        ),
+                        animations: [.shake(speed: 0.8, force: 1, type: .wave)]
+                    )
+                ),
+                passive: TestTheme.Passive(
+                    figlet: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: Color.primary.opacity(0.2)
+                        )
+                    ),
+                    op: FigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: (name: .terminus, size: 13),
+                            color: Color.gray.opacity(0.2)
+                        ),
+                        animations: []
+                    )
+                ),
+                animation: TestTheme.TestAnimation(
+                    detail: Animation.spring().speed(0.8),
+                    symbol: Animation.spring().speed(0.8)
+                )
+            ),
+            message: MessageTheme(
+                figlet: FigletTheme(
+                    typeface: .ansi(.shadow),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 13),
+                        color: .primary
+                    ),
+                    animations: [.print(), .shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
+                )
+            ),
+            history: TerminalTheme.Help.History(
+                _414C: LiteFigletTheme(
+                    typeface: .ansi(.shadow),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 13),
+                        color: .gray
+                    )
+                ),
+                AL: ViewTheme(
+                    font: (name: .proggyTiny, size: 47),
+                    color: .gray
+                )
+            ),
+            answer: ViewTheme(
+                font: (name: .proggyTiny, size: 47),
+                color: .blue
             )
         ),
         cli: TerminalTheme.CommandLine(

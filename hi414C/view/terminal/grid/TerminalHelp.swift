@@ -8,35 +8,22 @@ import SwiftUI
 
 struct TerminalHelp: View {
     @EnvironmentObject var helpVM: HelpViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     
     let item: TerminalHelpItem
-    let theme: FigletTheme
     let wide: Bool
     
-    init(_ item: TerminalHelpItem, _ theme: FigletTheme = FigletTheme(), wide: Bool = false) {
+    init(_ item: TerminalHelpItem, wide: Bool = false) {
         print("TerminalHelp")
         self.item = item
-        self.theme = theme
         self.wide = wide
     }
     
     var body: some View {
         if case let .test(test) = item.type {
             let (id, equation) = getTestData(from: test)
-            TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme:
-                            (
-                                LiteFigletTheme(
-                                    view: ViewTheme(
-                                        color: .black
-                                    )
-                                ),
-                                FigletTheme(
-                                    view: ViewTheme(
-                                        color: .gray
-                                    ),
-                                    animations: []
-                                )), wide: wide
-            )
+            let theme = themeVM.terminal.help.test.active
+            TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme: (theme.figlet, theme.op), wide: wide)
             .onAppear {
                 if helpVM.originalEq.id != test.id {
                     helpVM.setOriginalEq(id: test.id, equation: test.equation)

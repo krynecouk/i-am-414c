@@ -8,31 +8,22 @@
 import SwiftUI
 
 struct TestTheme {
-    var symbol: Symbol
-    var test: Test
+    var active: Active
+    var passive: Passive
+    var animation: TestAnimation
     
-    struct Symbol {
-        var figlet: FigletTheme
+    struct Active {
+        var figlet: LiteFigletTheme
+        var op: FigletTheme
     }
     
-    struct Test {
-        var active: Active
-        var passive: Passive
-        var animation: TestAnimation
-        
-        struct Active {
-            var figlet: LiteFigletTheme
-            var op: FigletTheme
-        }
-        
-        struct Passive {
-            var figlet: LiteFigletTheme
-            var op: FigletTheme
-        }
-        
-        struct TestAnimation {
-            var detail: Animation?
-            var symbol: Animation?
-        }
+    struct Passive {
+        var figlet: LiteFigletTheme
+        var op: FigletTheme
+    }
+    
+    struct TestAnimation {
+        var detail: Animation?
+        var symbol: Animation?
     }
 }

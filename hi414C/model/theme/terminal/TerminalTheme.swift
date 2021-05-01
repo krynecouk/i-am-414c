@@ -9,12 +9,27 @@ import SwiftUI
 
 struct TerminalTheme {
     var grid: Grid
+    var help: Help
     var cli: CommandLine
     
     struct Grid {
         var art: ArtTheme
+        var symbol: FigletTheme
         var test: TestTheme
         var message: MessageTheme
+    }
+    
+    struct Help {
+        var background: Color
+        var test: TestTheme
+        var message: MessageTheme
+        var history: History
+        var answer: ViewTheme
+        
+        struct History {
+            var _414C: LiteFigletTheme
+            var AL: ViewTheme
+        }
     }
     
     struct CommandLine {
