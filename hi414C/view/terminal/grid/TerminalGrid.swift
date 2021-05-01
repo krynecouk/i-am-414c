@@ -58,8 +58,10 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        // TODO fix withAnimation
-                        TerminalMessage(text, theme: animatedMsg ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([.shake()]))
+                        // TODO fix withAnimation shake
+                        TerminalMessage(text, theme: animatedMsg ? themeVM.terminal.grid.message.figlet : FigletTheme(
+                            animations: [.shake()]
+                        ))
                             .onAppear {
                                 helpVM.current = .message
                                 self.printed = []
