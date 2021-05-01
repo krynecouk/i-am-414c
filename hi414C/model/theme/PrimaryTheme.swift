@@ -131,12 +131,13 @@ struct PrimaryTheme: Themable {
                 )
             ),
             history: TerminalTheme.Help.History(
-                _414C: LiteFigletTheme(
+                _414C: FigletTheme(
                     typeface: .ansi(.shadow),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
                         color: .gray
-                    )
+                    ),
+                    animations: [.shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .gray)]
                 ),
                 AL: ViewTheme(
                     font: (name: .proggyTiny, size: 47),

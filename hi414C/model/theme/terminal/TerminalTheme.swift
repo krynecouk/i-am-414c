@@ -27,7 +27,7 @@ struct TerminalTheme {
         var answer: ViewTheme
         
         struct History {
-            var _414C: LiteFigletTheme
+            var _414C: FigletTheme
             var AL: ViewTheme
         }
     }

@@ -13,7 +13,9 @@ class HistoryViewModel: ObservableObject {
     private(set) var history: History = []
     
     func add(message: Message) {
-        self.history.append(message)
+        if !message.text.isEmpty {
+            self.history.append(message)
+        }
     }
     
     func remove() {

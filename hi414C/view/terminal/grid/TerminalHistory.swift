@@ -9,10 +9,16 @@ import SwiftUI
 
 struct TerminalHistory: View {
     @EnvironmentObject var historyVM: HistoryViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     
     var body: some View {
         ForEach(historyVM.history) { message in
-            TerminalMessage(message.text, theme: FigletTheme())
+            if message.author == ._414C {
+                TerminalMessage(message.text, theme: themeVM.terminal.help.history._414C)
+            } else {
+                Text(message.text)
+                    .withTheme(themeVM.terminal.help.history.AL)
+            }
         }
     }
 }

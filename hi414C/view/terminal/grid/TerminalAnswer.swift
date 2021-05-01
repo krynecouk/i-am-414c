@@ -11,9 +11,11 @@ typealias Answers = Set<String>
 
 struct TerminalAnswer: View {
     @EnvironmentObject var helpVM: HelpViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
 
     var body: some View {
-        TerminalMessage(helpVM.answer, theme: FigletTheme())
+        Text(helpVM.answer)
+            .withTheme(themeVM.terminal.help.answer)
     }
 
 }
