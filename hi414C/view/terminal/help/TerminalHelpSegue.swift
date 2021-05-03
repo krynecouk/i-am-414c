@@ -8,8 +8,6 @@ import SwiftUI
 
 struct TerminalHelpSegue: View {
     @EnvironmentObject var segueVM: SegueViewModel
-    //@EnvironmentObject var uiVM: UIViewModel
-    
     @State var segueH: CGFloat = SegueViewModel.header.height
     
     init() {
@@ -29,20 +27,13 @@ struct TerminalHelpSegue: View {
             segueVM.close()
         }
         .onReceive(segueVM.$opened) { opened in
-            withAnimation {
+            //withAnimation {
                 self.segueH = getSegueH(opened)
-            }
+            //}
         }
         .onReceive(segueVM.$help) { value in
             segueVM.close()
         }
-        /*
-        .onReceive(uiVM.$isDetail) { isDetail in
-            withAnimation {
-                segueVM.close()
-            }
-        }
-        */
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
     }
     

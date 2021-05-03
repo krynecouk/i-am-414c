@@ -43,10 +43,10 @@ struct TerminalHelpLine: View {
             .background(self.quitBackground)
             .onTapGesture {
                 self.quitBackground = Color("GoldBck")
-                withAnimation {
-                    segueVM.close()
+                //withAnimation {
+                    //segueVM.close()
                     uiVM.isHelp = false
-                }
+                //}
             }
     }
     

@@ -78,7 +78,7 @@ struct TerminalGrid: View {
                             .onDisappear {
                                 self.printed.append(item.id)
                             }
-                            .animation(nil)
+                            //.animation(nil)
                     }
                 }
                 
@@ -102,11 +102,11 @@ struct TerminalGrid: View {
             }
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        .animation(Animation.spring().speed(0.8), value: self.items)
+        //.animation(Animation.spring().speed(0.8), value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
-                withAnimation(.default) {
+                withAnimation {
                     uiVM.shake()
                 }
             }
@@ -116,7 +116,7 @@ struct TerminalGrid: View {
         }
         .onReceive(graphVM.$result) { result in
             if case .error(_) = result {
-                withAnimation(.default) {
+                withAnimation {
                     uiVM.shake()
                 }
             }
@@ -128,34 +128,34 @@ struct TerminalGrid: View {
                 : TerminalGrid.ADAPTIVE
         }
         .onReceive(uiVM.$isDetail) { isDetail in
-            withAnimation(themeVM.terminal.grid.test.animation.detail) {
+            //withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 if !isDetail {
                     self.columns = TerminalGrid.ADAPTIVE
                 } else {
                     self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
                 }
-            }
+            //}
         }
         .onEdgeDrag(
             left: {
                 if !uiVM.isHelp {
-                    withAnimation {
+                    //withAnimation {
                         uiVM.isHelp = true
-                    }
+                    //}
                 }
             },
             right: {
                 if uiVM.isHelp {
-                    withAnimation {
+                    //withAnimation {
                         uiVM.isHelp = false
-                    }
+                    //}
                 }
             }
         )
         .onTapGesture {
-            withAnimation(themeVM.terminal.grid.test.animation.detail) {
+            //withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 uiVM.isDetail.toggle()
-            }
+            //}
         }
         .contentShape(Rectangle())
     }

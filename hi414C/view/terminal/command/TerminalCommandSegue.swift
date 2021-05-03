@@ -30,9 +30,9 @@ struct TerminalCommandSegue: View {
                 }
             ASCIIKeyboardView() { input in
                 if input == "?" {
-                    withAnimation {
+                    //withAnimation {
                         uiVM.isHelp = uiVM.isHelp ? false : true
-                    }
+                    //}
                     return
                 }
                 if (testVM.test != nil) {
@@ -53,9 +53,9 @@ struct TerminalCommandSegue: View {
             segueVM.close()
         }
         .onReceive(segueVM.$isOpen) { isOpen in
-            withAnimation {
+            //withAnimation {
                 self.segueH = isOpen ? SegueViewModel.header.height + segueVM.keyboard.height : SegueViewModel.header.height
-            }
+            //}
         }
         .onReceive(segueVM.$keyboard) { value in
             segueVM.close()
