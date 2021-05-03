@@ -55,7 +55,6 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        // TODO fix withAnimation shake
                         TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
                             .onAppear {
                                 helpVM.current = .message
@@ -149,8 +148,7 @@ struct TerminalGrid: View {
             }
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .opacity))
-        .animation(Animation.spring(response: 0.4).speed(0.8), value: self.items)
+        .animation(Animation.spring(response: 0.8).speed(0.8), value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {

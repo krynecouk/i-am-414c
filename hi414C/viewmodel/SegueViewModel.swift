@@ -10,6 +10,7 @@ import SwiftUI
 class SegueViewModel: ObservableObject {
     static let header: Size = (.infinity, 64)
     
+    @Published private(set) var segue: Size = header
     @Published private(set) var help: Size = (.infinity, 200)
     @Published private(set) var settings: Size = (.infinity, 200)
     @Published private(set) var themes: Size = (.infinity, 200)
@@ -25,6 +26,10 @@ class SegueViewModel: ObservableObject {
     func close() {
         self.isOpen = false
         self.opened = .none
+    }
+    
+    func setSegueSize(_ size: Size) {
+        self.segue = size
     }
     
     func setKeyboardSize(_ size: Size) {

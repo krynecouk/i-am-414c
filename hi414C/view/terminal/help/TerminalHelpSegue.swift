@@ -8,7 +8,6 @@ import SwiftUI
 
 struct TerminalHelpSegue: View {
     @EnvironmentObject var segueVM: SegueViewModel
-    @State var segueH: CGFloat = SegueViewModel.header.height
     
     init() {
         print("TerminalHelpSegue")
@@ -22,13 +21,13 @@ struct TerminalHelpSegue: View {
                 }
             TerminalHelpSelect()
         }
-        .frame(height: segueH)
+        .frame(height: segueVM.segue.height)
         .onAppear {
             segueVM.close()
         }
         .onReceive(segueVM.$opened) { opened in
             //withAnimation {
-                self.segueH = getSegueH(opened)
+            segueVM.setSegueSize((.infinity, getSegueH(opened)))
             //}
         }
         .onReceive(segueVM.$help) { value in
