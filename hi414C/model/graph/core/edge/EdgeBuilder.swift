@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 11.03.2021.
 //
 
-@_functionBuilder
+@resultBuilder
 struct EdgeBuilder {
     static func buildBlock() -> [Edge] { [] }
 

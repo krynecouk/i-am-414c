@@ -18,7 +18,7 @@ struct TerminalView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack(alignment: .bottom) {
             TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
             TerminalFooter()
         }

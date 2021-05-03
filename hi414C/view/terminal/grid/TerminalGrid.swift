@@ -16,6 +16,7 @@ struct TerminalGrid: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var historyVM: HistoryViewModel
     @EnvironmentObject var helpVM: HelpViewModel
+    @EnvironmentObject var segueVM: SegueViewModel
     
     typealias SymbolId = String
     
@@ -23,7 +24,6 @@ struct TerminalGrid: View {
     @State var printed: [SymbolId] = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = false
-    @State var animatedMsg = true
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
@@ -46,9 +46,6 @@ struct TerminalGrid: View {
                 if case let .help(item) = item.type {
                     if uiVM.isHelp {
                         TerminalHelp(item, wide: wide)
-                            .onAppear {
-                                self.animatedMsg = false
-                            }
                     }
                 }
                 if case let .art(arts) = item.type {
@@ -59,9 +56,7 @@ struct TerminalGrid: View {
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
                         // TODO fix withAnimation shake
-                        TerminalMessage(text, theme: animatedMsg ? themeVM.terminal.grid.message.figlet : FigletTheme(
-                            animations: [.shake()]
-                        ))
+                        TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
                             .onAppear {
                                 helpVM.current = .message
                                 self.printed = []
@@ -93,16 +88,69 @@ struct TerminalGrid: View {
                                 if helpVM.current != .test {
                                     helpVM.current = .test
                                 }
-                                if !animatedMsg {
-                                    animatedMsg = true
-                                }
                             }
                     }
                 }
             }
+            
+            if segueVM.isOpen {
+                Group {
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+
+                }
+                Group {
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+
+                }
+                Group {
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                    Color.clear
+                        .frame(width: 50, height: 80)
+                }
+            }
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        //.animation(Animation.spring().speed(0.8), value: self.items)
+        .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .opacity))
+        .animation(Animation.spring(response: 0.4).speed(0.8), value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
