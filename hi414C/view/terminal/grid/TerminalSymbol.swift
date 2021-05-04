@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TerminalSymbol: View {
-    @State var opacity: Double = 1
     @State var bloom: Bool = true
     
     let symbol: ASCIISymbol
@@ -24,18 +23,16 @@ struct TerminalSymbol: View {
     
     var body: some View {
         FigletView(symbol.rawValue, theme: active ? theme : theme.withAnimation([]))
-            .opacity(self.opacity)
-            .bloom(active: bloom)
+            .opacity(bloom ? 1 : 0.2)
+            .bloom(active: bloom, radius: 5)
             .onAppear {
                 if active {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         withAnimation {
-                            self.opacity = 0.2
                             self.bloom = false
                         }
                     }
                 } else {
-                    self.opacity = 0.2
                     self.bloom = false
                 }
             }

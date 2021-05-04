@@ -10,11 +10,12 @@ import SwiftUI
 struct Bloom: ViewModifier {
     let color: Color
     let active: Bool
+    let radius: CGFloat
     
     func body(content: Content) -> some View {
         if active {
             content
-                .shadow(color: self.color, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                .shadow(color: self.color, radius: self.radius, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
         } else {
             content
         }
@@ -22,7 +23,7 @@ struct Bloom: ViewModifier {
 }
 
 extension View {
-    func bloom(color: Color = .primary, active: Bool = true) -> some View {
-        self.modifier(Bloom(color: color, active: active))
+    func bloom(color: Color = .primary, active: Bool = true, radius: CGFloat = 5) -> some View {
+        self.modifier(Bloom(color: color, active: active, radius: radius))
     }
 }
