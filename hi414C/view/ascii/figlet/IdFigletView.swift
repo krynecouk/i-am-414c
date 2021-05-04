@@ -1,13 +1,13 @@
 //
-//  FigletView.swift
+//  IdFigletView.swift
 //  hi414C
 //
-//  Created by Darius Kryszczuk on 16.03.2021.
+//  Created by Darius Kryszczuk on 04.05.2021.
 //
 
 import SwiftUI
 
-struct FigletView: View {
+struct IdFigletView: View {
     let figlets: [Figlet]
     var theme: FigletTheme
     
@@ -28,8 +28,8 @@ struct FigletView: View {
     
     var body: some View {
         Group {
-            ForEach(figlets.indices) { i in
-                ASCIIArtView(figlets[i], theme: ArtTheme(
+            ForEach(figlets.map { FigletItem(figlet: $0) }) { item in
+                ASCIIArtView(item.figlet, theme: ArtTheme(
                     view: theme.view, animations: theme.animations
                 ))
             }
@@ -43,12 +43,3 @@ private struct FigletItem: Identifiable {
     var figlet: Figlet
 }
 
-struct FigletView_Previews: PreviewProvider {
-    static var previews: some View {
-        HStack {
-            FigletView([.H], theme: FigletTheme(
-                animations: [.print(), .bloom(speed: 0.5)]
-            ))
-        }
-    }
-}

@@ -27,7 +27,7 @@ struct TerminalAnswer: View {
     var body: some View {
         MessageRow(of: answer, wide: wide) {
             //TerminalCommandPrompt(theme: themeVM.terminal.cli.prompt)
-            TerminalMessage(answer, theme: themeVM.terminal.help.answer)
+            IdFigletView(answer, theme: themeVM.terminal.help.answer)
                 .onReceive(helpVM.$answers) { _ in
                     self.answer = rand(from: answers)
                 }

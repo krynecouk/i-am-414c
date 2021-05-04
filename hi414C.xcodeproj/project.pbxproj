@@ -60,6 +60,7 @@
 		266CA41426411F4E001A07E0 /* TerminalPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41326411F4E001A07E0 /* TerminalPadding.swift */; };
 		266CA416264155F9001A07E0 /* TerminalTestThemed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA415264155F9001A07E0 /* TerminalTestThemed.swift */; };
 		266CA418264191CD001A07E0 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA417264191CD001A07E0 /* MessageRow.swift */; };
+		266CA41A2641A24C001A07E0 /* IdFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4192641A24C001A07E0 /* IdFigletView.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -204,6 +205,7 @@
 		266CA41326411F4E001A07E0 /* TerminalPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalPadding.swift; sourceTree = "<group>"; };
 		266CA415264155F9001A07E0 /* TerminalTestThemed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTestThemed.swift; sourceTree = "<group>"; };
 		266CA417264191CD001A07E0 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
+		266CA4192641A24C001A07E0 /* IdFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFigletView.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			children = (
 				2620921A2600B2FE0001904B /* FigletView.swift */,
 				2695155F26151B2F0020DD11 /* LiteFigletView.swift */,
+				266CA4192641A24C001A07E0 /* IdFigletView.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
 				2620921B2600B2FE0001904B /* FigletView.swift in Sources */,
 				264404242619014000CA7EA1 /* PrimaryTheme.swift in Sources */,
+				266CA41A2641A24C001A07E0 /* IdFigletView.swift in Sources */,
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26500159260F3C6200414E89 /* Keyboards.swift in Sources */,
 				267A0D55260C823E00844927 /* ASCIIArtEdge.swift in Sources */,
