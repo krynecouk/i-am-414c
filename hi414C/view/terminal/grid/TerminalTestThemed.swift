@@ -23,10 +23,8 @@ struct TerminalTestThemed: View {
     }
     
     var body: some View {
-
-        
-        return TerminalTest(items, theme: (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.sign), wide: wide)
-            //.bloom(active: bloom)
+        TerminalTest(items, theme: (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.sign), wide: wide)
+            //.bloom(active: bloom, radius: 10)
             .opacity(bloom ? 1 : 0.2)
             .onAppear {
                 if active {
@@ -35,7 +33,7 @@ struct TerminalTestThemed: View {
             }
             .onChange(of: active) { isActive in
                 if isActive {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.20) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
                         withAnimation {
                             self.bloom = true
                         }

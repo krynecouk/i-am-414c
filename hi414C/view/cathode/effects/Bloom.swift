@@ -13,12 +13,8 @@ struct Bloom: ViewModifier {
     let radius: CGFloat
     
     func body(content: Content) -> some View {
-        if active {
             content
-                .shadow(color: self.color, radius: self.radius, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-        } else {
-            content
-        }
+                .shadow(color: self.color, radius: active ? self.radius : 0, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
     }
 }
 

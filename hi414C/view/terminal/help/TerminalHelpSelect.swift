@@ -116,7 +116,7 @@ struct TerminalHelpSelect: View {
             }
         }
         //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .background(segueVM.isOpen
+        .background(segueVM.isOpen && segueVM.opened != .keyboard
                         ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
                         : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
     }

@@ -69,7 +69,6 @@ struct TerminalGrid: View {
                             .onDisappear {
                                 self.printed.append(item.id)
                             }
-                            //.animation(nil)
                     }
                 }
                 
