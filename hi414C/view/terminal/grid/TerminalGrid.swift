@@ -18,16 +18,10 @@ struct TerminalGrid: View {
     
     typealias SymbolId = String
     
-    @State var columns = ADAPTIVE
+    @State var grid: GridType = .adaptive
     @State var printed: [SymbolId] = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = false
-    
-    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
-    private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    private static let LANDSLIDE_DETAIL = (1...8).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
     
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
@@ -41,7 +35,7 @@ struct TerminalGrid: View {
     }
     
     var body: some View {
-        Grid(columns: self.columns) {
+        Grid(columns: self.grid.rawValue()) {
             ForEach(items, id: \.id) { item in
                 if case let .help(item) = item.type {
                     if uiVM.isHelp {
@@ -109,16 +103,16 @@ struct TerminalGrid: View {
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()
-            self.columns = uiVM.isDetail
-                ? (wide ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL)
-                : TerminalGrid.ADAPTIVE
+            self.grid = uiVM.isDetail
+                ? (wide ? .landslide_detail : .portrait_detail)
+                : .adaptive
         }
         .onReceive(uiVM.$isDetail) { isDetail in
             withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 if !isDetail {
-                    self.columns = TerminalGrid.ADAPTIVE
+                    self.grid = .adaptive
                 } else {
-                    self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
+                    self.grid = uiVM.isWideScreen() ? .landslide_detail : .portrait_detail
                 }
             }
         }
@@ -157,6 +151,31 @@ struct TerminalGrid: View {
     
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
+    }
+}
+
+enum GridType {
+    case adaptive, portrait_detail, landslide_detail, portrait_message, landslide_message
+    
+    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
+    private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let LANDSLIDE_DETAIL = (1...8).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    
+    func rawValue() -> [GridItem] {
+        switch self {
+        case .adaptive:
+            return GridType.ADAPTIVE
+        case .portrait_detail:
+            return GridType.PORTRAIT_DETAIL
+        case .landslide_detail:
+            return GridType.LANDSLIDE_DETAIL
+        case .portrait_message:
+            return GridType.PORTRAIT_MESSAGE
+        case .landslide_message:
+            return GridType.LANDSLIDE_MESSAGE
+        }
     }
 }
 
