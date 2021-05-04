@@ -97,7 +97,7 @@ struct TerminalGrid: View {
             TerminalPadding()
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        .animation(Animation.easeOut.speed(0.8), value: self.items)
+        .animation(themeVM.terminal.grid.test.animation.symbol, value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {

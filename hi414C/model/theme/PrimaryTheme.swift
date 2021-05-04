@@ -63,8 +63,8 @@ struct PrimaryTheme: Themable {
                     )
                 ),
                 animation: TestTheme.TestAnimation(
-                    detail: Animation.spring().speed(0.8),
-                    symbol: Animation.spring().speed(0.8)
+                    detail: Animation.easeOut.speed(0.8),
+                    symbol: Animation.easeOut.speed(0.8)
                 )
             ),
             message: MessageTheme(

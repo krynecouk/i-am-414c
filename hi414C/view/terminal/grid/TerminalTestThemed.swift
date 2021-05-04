@@ -33,13 +33,12 @@ struct TerminalTestThemed: View {
             }
             .onChange(of: active) { isActive in
                 if isActive {
+                    print("is active")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
                         withAnimation {
                             self.bloom = true
                         }
                     }
-                } else {
-                    bloom = false
                 }
             }
     }

@@ -55,7 +55,6 @@ struct TerminalView: View {
                 
                 var testWasSetup = false
                 tests.forEach { test in
-                    
                     let symbol = test.symbol
                     if ascii.contains(symbol) {
                         items.append(TerminalItem(id: TerminalSymbol.id(from: test), of: .symbol(symbol)))
