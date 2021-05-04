@@ -45,8 +45,10 @@ struct TerminalView: View {
                 if contains(all: symbols, in: ascii) {
                     let text = symbols.map { $0.rawValue }.joined()
                     let answers = getAnswers(from: graphVM.node, ascii: ascii)
-                    items.append(TerminalItem(of: .help(TerminalHelpItem(of: .message(text, answers)))))
-                    items.append(TerminalItem(of: .message(text)))
+                    let id = UUID()
+                    let message = Message(id: id, from: ._414C, text: text)
+                    items.append(TerminalItem(of: .help(TerminalHelpItem(of: .message(message, answers)))))
+                    items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
                     continue
                 }

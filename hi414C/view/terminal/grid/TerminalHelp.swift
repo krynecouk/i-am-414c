@@ -31,12 +31,12 @@ struct TerminalHelp: View {
                 }
             }
         }
-        if case let .message(text, answers) = item.type {
+        if case let .message(message, answers) = item.type {
             if helpVM.isHistory {
                 TerminalHistory(wide: wide)
             }
-            MessageRow(of: text, wide: wide) {
-                TerminalMessage(text, theme: themeVM.terminal.help.message.figlet)
+            MessageRow(of: message.text, wide: wide) {
+                TerminalMessage(message.text, theme: themeVM.terminal.help.message.figlet)
             }
             TerminalAnswer(answers, wide: wide)
         }
@@ -63,5 +63,5 @@ struct TerminalHelpItem: Identifiable {
 
 enum TerminalHelpType {
     case test(Test)
-    case message(String, Answers)
+    case message(Message, Answers)
 }

@@ -24,11 +24,12 @@ class HistoryViewModel: ObservableObject {
 }
 
 struct Message: Identifiable {
-    var id: UUID = UUID()
+    var id: UUID
     var author: MessageAuthor
     var text: String
     
-    init(from author: MessageAuthor, text: String) {
+    init(id: UUID = UUID(), from author: MessageAuthor, text: String) {
+        self.id = id
         self.author = author
         self.text = text
     }

@@ -17,9 +17,11 @@ struct TerminalGrid: View {
     @EnvironmentObject var historyVM: HistoryViewModel
     
     typealias SymbolId = String
+    typealias MessageId = String
     
     @State var grid: GridType = .adaptive
-    @State var printed: [SymbolId] = []
+    @State var printed: Set<SymbolId> = []
+    @State var printedMsg: Set<MessageId> = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = false
     
@@ -40,6 +42,11 @@ struct TerminalGrid: View {
                 if case let .help(item) = item.type {
                     if uiVM.isHelp {
                         TerminalHelp(item, wide: wide)
+                            .onAppear {
+                                if case let .message(message, _) = item.type {
+                                    self.printedMsg.insert(message.id.uuidString)
+                                }
+                            }
                     }
                 }
                 if case let .art(arts) = item.type {
@@ -49,7 +56,7 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
+                        TerminalMessage(text, theme: !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([.shake()]))
                             .onAppear {
                                 uiVM.current = .message
                                 self.printed = []
@@ -65,7 +72,7 @@ struct TerminalGrid: View {
                         TerminalSymbol(symbol, active: !printed.contains(item.id) && solved.contains(symbol), theme: themeVM.terminal.grid.symbol)
                             .matchedGeometryEffect(id: item.id, in: ns)
                             .onDisappear {
-                                self.printed.append(item.id)
+                                self.printed.insert(item.id)
                             }
                     }
                 }
@@ -77,6 +84,9 @@ struct TerminalGrid: View {
                                 if uiVM.current != .test {
                                     uiVM.current = .test
                                 }
+                                if !printedMsg.isEmpty {
+                                    printedMsg = []
+                                }
                                 if grid == .landslide_message || grid == .portrait_message {
                                     grid = .adaptive
                                 }
@@ -87,7 +97,7 @@ struct TerminalGrid: View {
             TerminalPadding()
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
-        .animation(Animation.spring(response: 0.8).speed(0.8), value: self.items)
+        .animation(Animation.easeOut.speed(0.8), value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
             if case .wrong(_) = result {
