@@ -39,15 +39,14 @@ struct TerminalHelpLine: View {
     }
     
     func QuitButton(_ text: String) -> some View {
-        ButtonLabel(text)
-            .background(self.quitBackground)
-            .onTapGesture {
-                self.quitBackground = Color("GoldBck")
-                //withAnimation {
-                    //segueVM.close()
-                    uiVM.isHelp = false
-                //}
+        Button(action: {
+            withAnimation {
+                segueVM.close()
+                uiVM.isHelp = false
             }
+        }) {
+            ButtonLabel(text)
+        }
     }
     
     func SegueButton(_ text: String, _ type: SegueType) -> some View {

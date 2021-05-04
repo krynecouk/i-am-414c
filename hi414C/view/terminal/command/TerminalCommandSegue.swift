@@ -13,9 +13,7 @@ struct TerminalCommandSegue: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var segueVM: SegueViewModel
-    
-    @State var segueH: CGFloat = SegueViewModel.header.height
-    
+        
     init() {
         print("TerminalSegue")
     }
@@ -30,9 +28,9 @@ struct TerminalCommandSegue: View {
                 }
             ASCIIKeyboardView() { input in
                 if input == "?" {
-                    //withAnimation {
+                    withAnimation {
                         uiVM.isHelp = uiVM.isHelp ? false : true
-                    //}
+                    }
                     return
                 }
                 if (testVM.test != nil) {
@@ -48,14 +46,15 @@ struct TerminalCommandSegue: View {
                 }
             }
         }
-        .frame(height: segueH)
+        .frame(height: segueVM.segue.height)
         .onAppear {
             segueVM.close()
         }
         .onReceive(segueVM.$isOpen) { isOpen in
-            //withAnimation {
-                self.segueH = isOpen ? SegueViewModel.header.height + segueVM.keyboard.height : SegueViewModel.header.height
-            //}
+            withAnimation {
+                let segueH = isOpen ? SegueViewModel.header.height + segueVM.keyboard.height : SegueViewModel.header.height
+                segueVM.setSegueSize((.infinity, segueH))
+            }
         }
         .onReceive(segueVM.$keyboard) { value in
             segueVM.close()

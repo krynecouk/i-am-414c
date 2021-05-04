@@ -16,7 +16,7 @@ struct TerminalGrid: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var historyVM: HistoryViewModel
     @EnvironmentObject var helpVM: HelpViewModel
-    @EnvironmentObject var segueVM: SegueViewModel
+    
     
     typealias SymbolId = String
     
@@ -91,61 +91,7 @@ struct TerminalGrid: View {
                     }
                 }
             }
-            
-            if segueVM.isOpen {
-                Group {
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-
-                }
-                Group {
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-
-                }
-                Group {
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                    Color.clear
-                        .frame(width: 50, height: 80)
-                }
-            }
+            TerminalPadding()
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
         .animation(Animation.spring(response: 0.8).speed(0.8), value: self.items)
@@ -174,37 +120,40 @@ struct TerminalGrid: View {
                 : TerminalGrid.ADAPTIVE
         }
         .onReceive(uiVM.$isDetail) { isDetail in
-            //withAnimation(themeVM.terminal.grid.test.animation.detail) {
+            withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 if !isDetail {
                     self.columns = TerminalGrid.ADAPTIVE
                 } else {
                     self.columns = uiVM.isWideScreen() ? TerminalGrid.LANDSLIDE_DETAIL : TerminalGrid.PORTRAIT_DETAIL
                 }
-            //}
+            }
         }
         .onEdgeDrag(
             left: {
                 if !uiVM.isHelp {
-                    //withAnimation {
+                    withAnimation {
                         uiVM.isHelp = true
-                    //}
+                    }
                 }
             },
             right: {
+                // todo theme animation
                 if uiVM.isHelp {
-                    //withAnimation {
+                    withAnimation {
                         uiVM.isHelp = false
-                    //}
+                    }
                 }
             }
         )
         .onTapGesture {
-            //withAnimation(themeVM.terminal.grid.test.animation.detail) {
+            withAnimation(themeVM.terminal.grid.test.animation.detail) {
                 uiVM.isDetail.toggle()
-            //}
+            }
         }
         .contentShape(Rectangle())
     }
+    
+
     
     func HelpBackground() -> some View {
         themeVM.terminal.help.background

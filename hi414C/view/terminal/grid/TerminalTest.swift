@@ -37,7 +37,6 @@ struct TerminalTest: View {
                 }
             }
         }
-        //.animation(Animation.spring().speed(0.8))
     }
     
     public static func getItems(id: UUID, equation: String) -> [TerminalTestItem] {

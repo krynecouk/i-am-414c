@@ -26,9 +26,9 @@ struct TerminalHelpSegue: View {
             segueVM.close()
         }
         .onReceive(segueVM.$opened) { opened in
-            //withAnimation {
-            segueVM.setSegueSize((.infinity, getSegueH(opened)))
-            //}
+            withAnimation {
+                segueVM.setSegueSize((.infinity, getSegueH(opened)))
+            }
         }
         .onReceive(segueVM.$help) { value in
             segueVM.close()
