@@ -54,6 +54,9 @@ struct TerminalGrid: View {
                                 uiVM.current = .message
                                 self.printed = []
                                 self.solved = []
+                                if grid != (wide ? .landslide_message : .portrait_message) {
+                                    grid = (wide ? .landslide_message : .portrait_message)
+                                }
                             }
                     }
                 }
@@ -66,7 +69,6 @@ struct TerminalGrid: View {
                             }
                     }
                 }
-                
                 if case let .test(test, items, active) = item.type {
                     if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
                         TerminalTestThemed(items, wide: wide, active: active)
@@ -74,6 +76,9 @@ struct TerminalGrid: View {
                             .onAppear {
                                 if uiVM.current != .test {
                                     uiVM.current = .test
+                                }
+                                if grid == .landslide_message || grid == .portrait_message {
+                                    grid = .adaptive
                                 }
                             }
                     }
@@ -103,9 +108,13 @@ struct TerminalGrid: View {
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()
-            self.grid = uiVM.isDetail
-                ? (wide ? .landslide_detail : .portrait_detail)
-                : .adaptive
+            if uiVM.current == .message {
+                self.grid = wide ? .landslide_message : .portrait_message
+            } else if uiVM.isDetail {
+                self.grid = wide ? .landslide_detail : .portrait_detail
+            } else {
+                self.grid = .adaptive
+            }
         }
         .onReceive(uiVM.$isDetail) { isDetail in
             withAnimation(themeVM.terminal.grid.test.animation.detail) {

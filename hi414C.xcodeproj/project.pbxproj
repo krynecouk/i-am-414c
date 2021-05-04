@@ -59,6 +59,7 @@
 		266A43B8261C2F7800C7855C /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266A43B7261C2F7800C7855C /* Shake.swift */; };
 		266CA41426411F4E001A07E0 /* TerminalPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41326411F4E001A07E0 /* TerminalPadding.swift */; };
 		266CA416264155F9001A07E0 /* TerminalTestThemed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA415264155F9001A07E0 /* TerminalTestThemed.swift */; };
+		266CA418264191CD001A07E0 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA417264191CD001A07E0 /* MessageRow.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -202,6 +203,7 @@
 		266A43B7261C2F7800C7855C /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 		266CA41326411F4E001A07E0 /* TerminalPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalPadding.swift; sourceTree = "<group>"; };
 		266CA415264155F9001A07E0 /* TerminalTestThemed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTestThemed.swift; sourceTree = "<group>"; };
+		266CA417264191CD001A07E0 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 				269765A7262EBC3800775D71 /* ColSpan.swift */,
 				2665C9BA263AB41300CE724F /* Row.swift */,
 				2665C9C2263C0DC400CE724F /* DetailRow.swift */,
+				266CA417264191CD001A07E0 /* MessageRow.swift */,
 			);
 			path = grid;
 			sourceTree = "<group>";
@@ -1114,6 +1117,7 @@
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
+				266CA418264191CD001A07E0 /* MessageRow.swift in Sources */,
 				26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				2678D978260E5D5B00DDB40F /* KeyboardPart.swift in Sources */,

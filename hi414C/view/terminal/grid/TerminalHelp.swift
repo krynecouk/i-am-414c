@@ -33,10 +33,12 @@ struct TerminalHelp: View {
         }
         if case let .message(text, answers) = item.type {
             if helpVM.isHistory {
-                TerminalHistory()
+                TerminalHistory(wide: wide)
             }
-            TerminalMessage(text, theme: themeVM.terminal.help.message.figlet)
-            TerminalAnswer(answers)
+            MessageRow(of: text, wide: wide) {
+                TerminalMessage(text, theme: themeVM.terminal.help.message.figlet)
+            }
+            TerminalAnswer(answers, wide: wide)
         }
     }
     

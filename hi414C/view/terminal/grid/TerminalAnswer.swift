@@ -15,18 +15,23 @@ struct TerminalAnswer: View {
     @EnvironmentObject var themeVM: ThemeViewModel
 
     let answers: Answers
+    let wide: Bool
     @State var answer: Answer = ""
     
-    init(_ answers: Answers) {
+    init(_ answers: Answers, wide: Bool) {
         self.answers = answers
+        self.wide = wide
         self.answer = rand(from: answers)
     }
     
     var body: some View {
-        TerminalMessage(answer, theme: themeVM.terminal.help.answer)
-            .onReceive(helpVM.$answers) { _ in
-                self.answer = rand(from: answers)
-            }
+        MessageRow(of: answer, wide: wide) {
+            //TerminalCommandPrompt(theme: themeVM.terminal.cli.prompt)
+            TerminalMessage(answer, theme: themeVM.terminal.help.answer)
+                .onReceive(helpVM.$answers) { _ in
+                    self.answer = rand(from: answers)
+                }
+        }
     }
     
     func rand(from answers: Answers) -> Answer {

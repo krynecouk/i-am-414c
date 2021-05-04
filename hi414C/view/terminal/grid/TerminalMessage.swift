@@ -18,8 +18,6 @@ struct TerminalMessage: View {
     }
     
     var body: some View {
-        DetailRow(of: Array(text)) {
-            FigletView(text, theme: theme)
-        }
+        FigletView(text, theme: theme)
     }
 }
