@@ -17,7 +17,6 @@ struct TerminalGrid: View {
     @EnvironmentObject var historyVM: HistoryViewModel
     @EnvironmentObject var helpVM: HelpViewModel
     
-    
     typealias SymbolId = String
     
     @State var columns = ADAPTIVE

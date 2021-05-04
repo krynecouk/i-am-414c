@@ -76,7 +76,9 @@ struct KeyboardView: View {
                 self.spaceKeySize = (spaceW, keyH)
                 self.specialKeySize = (specialW, keyH)
                 
-                segueVM.setKeyboardSize(self.size)
+                if segueVM.keyboard.height != self.size.height {
+                    segueVM.setKeyboardSize(self.size)
+                }
             }
             .onReceive(segueVM.$isOpen) { isOpen in
                 withAnimation {
@@ -110,14 +112,12 @@ struct KeyboardView_Previews: PreviewProvider {
         .withEnvironment()
         .previewDisplayName("Portrait")
 
-        /*
         Landscape {
             VStack {
                 Spacer()
                 KeyboardView(Keyboards.qwerty)
             }
         }
-        */
         .withEnvironment()
         .previewDisplayName("Landscape")
     }

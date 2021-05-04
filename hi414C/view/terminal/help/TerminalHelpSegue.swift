@@ -22,16 +22,10 @@ struct TerminalHelpSegue: View {
             TerminalHelpSelect()
         }
         .frame(height: segueVM.segue.height)
-        .onAppear {
-            segueVM.close()
-        }
         .onReceive(segueVM.$opened) { opened in
             withAnimation {
                 segueVM.setSegueSize((.infinity, getSegueH(opened)))
             }
-        }
-        .onReceive(segueVM.$help) { value in
-            segueVM.close()
         }
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
     }
