@@ -15,7 +15,6 @@ struct TerminalGrid: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var historyVM: HistoryViewModel
-    @EnvironmentObject var helpVM: HelpViewModel
     
     typealias SymbolId = String
     
@@ -27,6 +26,8 @@ struct TerminalGrid: View {
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
     private static let LANDSLIDE_DETAIL = (1...8).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
     
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
@@ -56,7 +57,7 @@ struct TerminalGrid: View {
                     if !uiVM.isHelp {
                         TerminalMessage(text, theme: themeVM.terminal.grid.message.figlet)
                             .onAppear {
-                                helpVM.current = .message
+                                uiVM.current = .message
                                 self.printed = []
                                 self.solved = []
                             }
@@ -77,8 +78,8 @@ struct TerminalGrid: View {
                         TerminalTestThemed(items, wide: wide, active: active)
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
                             .onAppear {
-                                if helpVM.current != .test {
-                                    helpVM.current = .test
+                                if uiVM.current != .test {
+                                    uiVM.current = .test
                                 }
                             }
                     }
@@ -139,14 +140,14 @@ struct TerminalGrid: View {
             }
         )
         .onTapGesture {
-            withAnimation(themeVM.terminal.grid.test.animation.detail) {
-                uiVM.isDetail.toggle()
+            if uiVM.current != .message {
+                withAnimation(themeVM.terminal.grid.test.animation.detail) {
+                    uiVM.isDetail.toggle()
+                }
             }
         }
         .contentShape(Rectangle())
     }
-    
-
     
     func HelpBackground() -> some View {
         themeVM.terminal.help.background

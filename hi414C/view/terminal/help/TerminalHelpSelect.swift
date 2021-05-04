@@ -11,6 +11,7 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var helpVM: HelpViewModel
+    @EnvironmentObject var uiVM: UIViewModel
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 90, maximum: .infinity))]
     
@@ -19,7 +20,7 @@ struct TerminalHelpSelect: View {
     var body: some View {
         GeometryReader { metrics in
             Grid(columns: TerminalHelpSelect.ADAPTIVE) {
-                if segueVM.opened == .help && helpVM.current == .message {
+                if segueVM.opened == .help && uiVM.current == .message {
                     Group {
                         Button("History") {
                             helpVM.isHistory.toggle()
@@ -29,7 +30,7 @@ struct TerminalHelpSelect: View {
                         }
                     }
                 }
-                if segueVM.opened == .help && helpVM.current == .test {
+                if segueVM.opened == .help && uiVM.current == .test {
                     Group {
                         Button("-1") {
                             helpVM.decrement()

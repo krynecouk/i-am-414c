@@ -13,7 +13,6 @@ class HelpViewModel: ObservableObject {
     @Published private(set) var answers: Int = 0
     
     private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
-    var current: HelpType = .test
     
     func increment() {
         let (result, builder) = getResultBuilder()
