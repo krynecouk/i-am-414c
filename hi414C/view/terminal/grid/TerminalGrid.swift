@@ -64,9 +64,7 @@ struct TerminalGrid: View {
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.isDetail && !uiVM.isHelp {
-                        TerminalSymbol(symbol, theme: (!printed.contains(item.id) && solved.contains(symbol))
-                                        ? themeVM.terminal.grid.symbol
-                                        : themeVM.terminal.grid.symbol.withAnimation([]))
+                        TerminalSymbol(symbol, active: !printed.contains(item.id) && solved.contains(symbol), theme: themeVM.terminal.grid.symbol)
                             .matchedGeometryEffect(id: item.id, in: ns)
                             .onDisappear {
                                 self.printed.append(item.id)

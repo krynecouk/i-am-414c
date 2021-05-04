@@ -9,15 +9,20 @@ import SwiftUI
 
 struct Bloom: ViewModifier {
     let color: Color
+    let active: Bool
     
     func body(content: Content) -> some View {
-        content
-            .shadow(color: self.color, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+        if active {
+            content
+                .shadow(color: self.color, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+        } else {
+            content
+        }
     }
 }
 
 extension View {
-    func bloom(color: Color = .primary) -> some View {
-        self.modifier(Bloom(color: color))
+    func bloom(color: Color = .primary, active: Bool = true) -> some View {
+        self.modifier(Bloom(color: color, active: active))
     }
 }
