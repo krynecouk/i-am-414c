@@ -13,7 +13,7 @@ struct ASCIIArtView: View {
     @State var shakeLines: [Line:LineOffset] = [:]
     @State var isPrintDelayFinished = true
     
-    var print: ASCIIPrintable
+    var toPrint: ASCIIPrintable
     var printAnimation: Animation?
     var printDelay: Double?
     var lines: [String]
@@ -28,7 +28,7 @@ struct ASCIIArtView: View {
     var bloom: (speed: Double, color: Color) = (0.0, .primary)
     
     init(_ print: ASCIIPrintable, theme: ArtTheme = ArtTheme()) {
-        self.print = print
+        self.toPrint = print
         self.lines = print.lines
         self.theme = theme
         
@@ -96,6 +96,7 @@ struct ASCIIArtView: View {
             }
         }
         .onReceive(shakeTimer!) { _ in
+            print("shake")
             if !shakeable {
                 self.shakeTimer!.upstream.connect().cancel()
                 return

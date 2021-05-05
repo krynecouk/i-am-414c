@@ -16,7 +16,7 @@ struct PrimaryTheme: Themable {
                     font: (name: .terminus, size: 13),
                     color: .primary
                 ),
-                animations: [.print(speed: 0.3, animation: .linear), .shake(speed: 0.8, force: 1, type: .wave)]
+                animations: [.print(speed: 0.3, animation: .linear)]
             ),
             symbol: FigletTheme(
                 typeface: .ansi(.regular),
@@ -42,7 +42,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: .gray
                         ),
-                        animations: [.shake(speed: 0.8, force: 1, type: .wave)]
+                        animations: []
                     )
                 ),
                 passive: TestTheme.Passive(
@@ -74,7 +74,7 @@ struct PrimaryTheme: Themable {
                         font: (name: .terminus, size: 13),
                         color: .primary
                     ),
-                    animations: [.print(), .shake(speed: 0.8, force: 1, type: .wave), .bloom(speed: 1, color: .primary)]
+                    animations: [.print(), .bloom(speed: 1, color: .primary)]
                 )
             )
         ),
@@ -95,7 +95,7 @@ struct PrimaryTheme: Themable {
                             font: (name: .terminus, size: 13),
                             color: .gray
                         ),
-                        animations: [.shake(speed: 0.8, force: 1, type: .wave)]
+                        animations: []
                     )
                 ),
                 passive: TestTheme.Passive(
@@ -127,7 +127,7 @@ struct PrimaryTheme: Themable {
                         font: (name: .terminus, size: 13),
                         color: .black
                     ),
-                    animations: [.shake(speed: 0.8, force: 1, type: .wave)]
+                    animations: []
                 )
             ),
             history: TerminalTheme.Help.History(
