@@ -19,7 +19,7 @@ struct TerminalView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            TerminalGrid(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
+            TerminalContent(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
             TerminalFooter()
         }
     }
