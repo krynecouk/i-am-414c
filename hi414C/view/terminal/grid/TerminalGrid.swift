@@ -78,7 +78,7 @@ struct TerminalGrid: View {
                 }
                 if case let .test(test, items, active) = item.type {
                     if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
-                        TerminalTestThemed(items, wide: wide, active: active)
+                        TerminalTestThemed(test, items: items, wide: wide, active: active)
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
                             .onAppear {
                                 if uiVM.current != .test {

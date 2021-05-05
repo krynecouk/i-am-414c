@@ -9,14 +9,17 @@ import SwiftUI
 
 struct TerminalTestThemed: View {
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var testVM: TestViewModel
     @State var bloom = false
     
+    let test: Test
     let items: [TerminalTestItem]
     let wide: Bool
     let active: Bool
     
-    init(_ items: [TerminalTestItem], wide: Bool = false, active: Bool = false) {
+    init(_ test: Test, items: [TerminalTestItem], wide: Bool = false, active: Bool = false) {
         print("TerminalTestThemed")
+        self.test = test
         self.items = items
         self.wide = wide
         self.active = active
@@ -32,8 +35,7 @@ struct TerminalTestThemed: View {
                 }
             }
             .onChange(of: active) { isActive in
-                if isActive {
-                    print("is active")
+                if isActive && test.id == testVM.test?.id {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
                         withAnimation {
                             self.bloom = true
