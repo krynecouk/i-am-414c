@@ -25,7 +25,7 @@ struct ASCIIArtLineView: View {
     var body: some View {
         if visible && bloom.speed > 0 {
             Line()
-                .bloomFadeOut(speed: bloom.speed, color: bloom.color)
+                .fadeOut(speed: bloom.speed, color: bloom.color)
         } else {
             Line()
         }

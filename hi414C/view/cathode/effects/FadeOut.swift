@@ -1,5 +1,5 @@
 //
-//  BloomFadeOut.swift
+//  FadeOut.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 02.04.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BloomFadeOut: ViewModifier {
+struct FadeOut: ViewModifier {
     @State var opacity: Double = 1
     
     var color: Color
@@ -25,7 +25,7 @@ struct BloomFadeOut: ViewModifier {
 }
 
 extension View {
-    func bloomFadeOut(speed: Double = 0.8, color: Color = Color("Primary")) -> some View {
-        self.modifier(BloomFadeOut(color: color, speed: speed))
+    func fadeOut(speed: Double = 0.8, color: Color = Color("Primary")) -> some View {
+        self.modifier(FadeOut(color: color, speed: speed))
     }
 }

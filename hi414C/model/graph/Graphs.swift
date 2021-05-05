@@ -17,6 +17,15 @@ class Graphs {
             E("HI") {
                 N("HI")
             }
+            E("HIIII") {
+                N("HIHI")
+            }
+            E("HIHI") {
+                N("HIHI")
+            }
+            E("IHIHIH") {
+                N("HI")
+            }
             E("I", variants: ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
                 N("AL") {
                     E("AL?") {

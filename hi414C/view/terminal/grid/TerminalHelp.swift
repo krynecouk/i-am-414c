@@ -24,20 +24,18 @@ struct TerminalHelp: View {
             let (id, equation) = getTestData(from: test)
             let theme = themeVM.terminal.help.test.active
             TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
-            .onAppear {
-                if helpVM.originalEq.id != test.id {
-                    helpVM.setOriginalEq(id: test.id, equation: test.equation)
-                    helpVM.removeUpdatedEq()
+                .onAppear {
+                    if helpVM.originalEq.id != test.id {
+                        helpVM.setOriginalEq(id: test.id, equation: test.equation)
+                        helpVM.removeUpdatedEq()
+                    }
                 }
-            }
         }
         if case let .message(message, answers) = item.type {
             if helpVM.isHistory {
                 TerminalHistory(wide: wide)
             }
-            MessageRow(of: message.text, wide: wide) {
-                TerminalMessage(message.text, theme: themeVM.terminal.help.message.figlet)
-            }
+            TerminalMessageRow(message.text, wide: wide, theme: themeVM.terminal.help.message.figlet)
             TerminalAnswer(answers, wide: wide)
         }
     }

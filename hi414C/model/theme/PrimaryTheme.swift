@@ -69,7 +69,7 @@ struct PrimaryTheme: Themable {
             ),
             message: MessageTheme(
                 figlet: FigletTheme(
-                    typeface: .ansi(.shadow),
+                    typeface: .ansi(.regular),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
                         color: .primary
@@ -122,7 +122,7 @@ struct PrimaryTheme: Themable {
             ),
             message: MessageTheme(
                 figlet: FigletTheme(
-                    typeface: .ansi(.shadow),
+                    typeface: .ansi(.regular),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
                         color: .black
@@ -132,20 +132,16 @@ struct PrimaryTheme: Themable {
             ),
             history: TerminalTheme.Help.History(
                 _414C: FigletTheme(
-                    typeface: .ansi(.shadow),
-                    view: ViewTheme(
-                        font: (name: .terminus, size: 13),
-                        color: .gray
-                    ),
-                    animations: []
-                ),
-                AL: FigletTheme(
                     typeface: .ansi(.regular),
                     view: ViewTheme(
                         font: (name: .terminus, size: 13),
-                        color: .gray
+                        color: .black
                     ),
                     animations: []
+                ),
+                AL: ViewTheme(
+                    font: (.proggyTiny, 110),
+                    color: .primary
                 )
             ),
             answer: FigletTheme(
@@ -208,6 +204,23 @@ struct PrimaryTheme: Themable {
                     active: Color("GoldBck"),
                     passive: Color("BlackBck")
                 )
+            ),
+            prompt: TerminalTheme.CommandLine.Prompt(
+                figlet: FigletTheme(
+                    typeface: .ansi(.regular),
+                    view: ViewTheme(
+                        font: (name: .terminus, size: 9),
+                        color: .primary
+                    ),
+                    animations: []
+                )
+            ),
+            cursor: TerminalTheme.CommandLine.Cursor(
+                view: ViewTheme(
+                    color: .primary,
+                    background: .primary
+                ),
+                blink: (0.9, .easeIn)
             )
         )
     )

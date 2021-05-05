@@ -24,6 +24,7 @@ struct TerminalHelpSelect: View {
                     Group {
                         Button("History") {
                             helpVM.isHistory.toggle()
+                            
                         }
                         Button("Rand") {
                             helpVM.randAnswer()
@@ -89,7 +90,7 @@ struct TerminalHelpSelect: View {
                     Button("medium")
                     Button("hard")
                 }
-
+                
                 if segueVM.opened == .themes {
                     Button("orange")
                     Button("blue")

@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct TerminalCommandCursor: View {
-    @State var visible = true
+    @State var visible: Bool
     
     var theme: TerminalTheme.CommandLine.Cursor
     var timer: ViewTimer
     var animation: Animation?
+    var size: Size
     
-    init(theme: TerminalTheme.CommandLine.Cursor) {
+    init(theme: TerminalTheme.CommandLine.Cursor, size: Size = (20.5, 34), initVisible: Bool = true) {
         self.theme = theme
         self.timer = Timer.publish(every: theme.blink.speed, on: .main, in: .common).autoconnect()
         self.animation = theme.blink.animation
+        self.size = size
+        self.visible = initVisible
     }
     
     var body: some View {
         Rectangle()
             .fill(theme.view.background!)
             .opacity(visible ? 1 : 0)
-            .frame(width: 20.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: size.width, height: size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .onReceive(timer) { _ in
                 withAnimation(self.animation) {
                     self.visible.toggle()

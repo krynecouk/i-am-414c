@@ -56,7 +56,8 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        TerminalMessage(text, theme: !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([]))
+                        let theme = !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([])
+                        TerminalMessageRow(text, wide: wide, theme: theme)
                             .onAppear {
                                 uiVM.current = .message
                                 self.printed = []
