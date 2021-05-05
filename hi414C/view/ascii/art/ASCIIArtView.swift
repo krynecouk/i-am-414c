@@ -19,11 +19,13 @@ struct ASCIIArtView: View {
     var lines: [String]
     var theme: ArtTheme
     var printTimer: ViewTimer?
+    /*
     var shakeTimer: ViewTimer?
     var shaker: Shaker?
     var shakeAnimation: Animation?
+     var shakeable = false
+    */
     var printable = false
-    var shakeable = false
     var bloomable = false
     var bloom: (speed: Double, color: Color) = (0.0, .primary)
     
@@ -39,12 +41,14 @@ struct ASCIIArtView: View {
                 self.printAnimation = animation
                 self.printDelay = delay
             }
+            /*
             if case let .shake(speed, force, type, animation) = animation {
                 self.shakeTimer = Timer.publish(every: speed, on: .main, in: .common).autoconnect()
                 self.shaker = ASCIIArtShaker.of(lines: lines.count, force: force, type: type)
                 self.shakeable = true
                 self.shakeAnimation = animation
             }
+            */
             if case let .bloom(speed, color) = animation {
                 self.bloomable = true
                 self.bloom = (speed, color)
@@ -53,9 +57,11 @@ struct ASCIIArtView: View {
         if self.printTimer == nil {
             self.printTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
+        /*
         if self.shakeTimer == nil {
             self.shakeTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
+        */
     }
     
     var body: some View {
@@ -65,11 +71,14 @@ struct ASCIIArtView: View {
                     lines.count > idx ? lines[idx] : lines[0],
                     theme: theme.view,
                     visible: !printable || idx < printLine,
-                    bloom: bloom,
+                    bloom: bloom
+                    /*
                     offset: (
                         x: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.x,
                         y: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.y
-                    ))
+                    )
+                    */
+                )
             }
         }
         .onAppear {
@@ -95,6 +104,7 @@ struct ASCIIArtView: View {
                 printLine += 1
             }
         }
+        /*
         .onReceive(shakeTimer!) { _ in
             print("shake")
             if !shakeable {
@@ -103,7 +113,7 @@ struct ASCIIArtView: View {
             }
             self.shakeLines = shaker!()
         }
-        
+        */
     }
 }
 
