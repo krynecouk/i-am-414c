@@ -35,11 +35,12 @@ struct TerminalMessages: View {
                     }
                     .border(Color.blue)
                 }
-                .frame(width: metrics.size.width - 20, height: metrics.size.height - 114)
+                .frame(width: metrics.size.width, height: metrics.size.height - 114)
             }
             
             .border(Color.green)
         }
+        .helpEdgeDrag()
     }
     
     func rand(from answers: Answers) -> Answer {
