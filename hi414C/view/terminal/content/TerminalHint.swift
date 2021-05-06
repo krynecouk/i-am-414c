@@ -41,29 +41,31 @@ struct TerminalHintText: View {
 }
 
 struct TerminalHintScroll: View {
+    /*
     @State var index: Int = 0
     @State var offset: Int = getOffset()
     
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
         .autoconnect()
-    
-    let timer = Timer.publish(every: 0.8, on: .main, in: .common).autoconnect()
+    */
+    //let timer = Timer.publish(every: 0.8, on: .main, in: .common).autoconnect()
     
     private let hint = "Turn help screen on/off by dragging from each edge of the screen."
     
     var body: some View {
         let chars = Array(hint)
         return
-            ScrollViewReader { scrollView in
+            //ScrollViewReader { scrollView in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 0) {
                         ForEach(chars.indices) { i in
                             TerminalHintText(String(chars[i]))
-                                .id(i)
+                                //.id(i)
                         }
                     }
-                }
+              //  }
+                /*
                 .onReceive(timer) { _ in
                     self.index += 1
                     
@@ -76,6 +78,7 @@ struct TerminalHintScroll: View {
                         scrollView.scrollTo(offset + index)
                     }
                 }
+                
                 .onReceive(orientationChanged) { _ in
                     self.index = 0
                     self.offset = TerminalHintScroll.getOffset()
@@ -86,22 +89,28 @@ struct TerminalHintScroll: View {
                         cancel()
                     }
                 }
+                 */
             }
+            /*
             .gesture(
                 DragGesture()
                     .onChanged { _ in
                         cancel()
                     }
             )
+            */
     }
     
+    /*
     private func cancel() {
         self.timer.upstream.connect().cancel()
     }
     
+    
     private static func getOffset() -> Int {
         Int((UIScreen.main.bounds.width / 15).rounded())
     }
+     */
 }
 
 

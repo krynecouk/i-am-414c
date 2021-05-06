@@ -85,9 +85,6 @@ class HelpViewModel: ObservableObject {
     }
 }
 
-enum HelpType {
-    case message, test
-}
 
 struct HelpEquation: Identifiable {
     var id: UUID = UUID()

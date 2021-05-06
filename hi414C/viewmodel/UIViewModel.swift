@@ -11,7 +11,7 @@ class UIViewModel: ObservableObject {
     @Published var isDetail = false
     @Published var isHelp = false
     @Published private(set) var errors: Int = 0
-    var current: HelpType = .test
+    var current: ContentType = .test
     
     func shake() {
         self.errors += 1
@@ -20,4 +20,8 @@ class UIViewModel: ObservableObject {
     func isWideScreen() -> Bool {
         UIScreen.main.bounds.width > 500
     }
+}
+
+enum ContentType {
+    case message, test
 }

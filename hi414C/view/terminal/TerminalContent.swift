@@ -13,7 +13,13 @@ struct TerminalContent: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            TerminalGrid(items: items)
+            ZStack(alignment: .topLeading) {
+                TerminalGrid(items: items)
+                if uiVM.isHelp && uiVM.current == .message {
+                    Text("HI MY NAME IS")
+                }
+            }
+            
             if uiVM.isHelp {
                 TerminalHint()
             }
