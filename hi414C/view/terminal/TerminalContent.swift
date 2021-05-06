@@ -26,7 +26,5 @@ struct TerminalContent: View {
                 TerminalHint()
             }
         }
-        
-        
     }
 }
