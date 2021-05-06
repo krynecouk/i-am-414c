@@ -21,37 +21,47 @@ struct TerminalMessages: View {
         GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 10) {
-                    Message414C(frame: metrics.size)
-                    MessageAl(frame: metrics.size)
+                    if helpVM.isHistory {
+                        ForEach(messages.history) { message in
+                            if message.author == ._414C {
+                                Message414C(message.text, frame: metrics.size)
+                            } else {
+                                MessageAl(message.text, frame: metrics.size)
+                            }
+                        }
+                    }
+                    Message414C(messages.current.text, frame: metrics.size)
+                    MessageAl(rand(from: messages.answers), frame: metrics.size)
                         .onReceive(helpVM.$answers) { _ in
                             self.answer = rand(from: messages.answers)
                         }
-                        .padding(.trailing, 10)
                         .padding(.bottom, 250)
                     
                     //.border(Color.blue)
                 }
-                 // TODO presne kolik podle segue.open || isHint
+                // TODO presne kolik podle segue.open || isHint
                 //.border(Color.green)
             }
         }
     }
     
-    func Message414C(frame: CGSize) -> some View {
+    func Message414C(_ text: String, frame: CGSize) -> some View {
         Grid(columns: [GridItem(.adaptive(minimum: 45, maximum: .infinity))], alignment: .center) {
-            FigletView(messages.current.text, theme: FigletTheme().withAnimation([]))
+            FigletView(text, theme: FigletTheme().withAnimation([]))
             //.border(Color.red)
         }
         .offset(x: 3)
         .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
-        .frame(maxWidth: getGridWidth(frame: frame, content: messages.current.text), alignment: .leading)
+        .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
         .padding(.leading, 10)
+        .transition(.scale)
+        .animation(.easeOut.speed(1.3))
     }
     
-    func MessageAl(frame: CGSize) -> some View {
+    func MessageAl(_ text: String, frame: CGSize) -> some View {
         HStack(spacing: 10) {
             Spacer()
-            Text(rand(from: messages.answers))
+            Text(text)
                 .withTheme(themeVM.terminal.help.history.AL)
                 .offset(x: 4, y: 5)
                 .padding([.top, .bottom], 8)
@@ -61,6 +71,7 @@ struct TerminalMessages: View {
                 .transition(.scale)
                 .animation(.easeOut.speed(1.3))
         }
+        .padding(.trailing, 10)
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
