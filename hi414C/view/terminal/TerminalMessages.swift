@@ -19,20 +19,25 @@ struct TerminalMessages: View {
     
     var body: some View {
         GeometryReader { metrics in
-            VStack(alignment: .leading, spacing: 0) {
-                HStack(spacing: 10) {
-                    TerminalMessage(messages.current.text, theme: FigletTheme().withAnimation([]))
-                        .border(Color.red)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(spacing: 10) {
+                        TerminalMessage(messages.current.text, theme: FigletTheme().withAnimation([]))
+                            .border(Color.red)
+                    }
+                    .border(Color.red)
+                    HStack(spacing: 10) {
+                        AlMessage(rand(from: messages.answers), theme: ViewTheme())
+                            .onReceive(helpVM.$answers) { _ in
+                                self.answer = rand(from: messages.answers)
+                            }
+                            .border(Color.blue)
+                    }
+                    .border(Color.blue)
                 }
-                HStack(spacing: 10) {
-                    AlMessage(rand(from: messages.answers), theme: ViewTheme())
-                        .onReceive(helpVM.$answers) { _ in
-                            self.answer = rand(from: messages.answers)
-                        }
-                        .border(Color.blue)
-                }
+                .frame(width: metrics.size.width - 20, height: metrics.size.height - 114)
             }
-            .frame(width: metrics.frame(in: .global).width, height: metrics.frame(in: .global).height)
+            
             .border(Color.green)
         }
     }

@@ -136,23 +136,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .onEdgeDrag(
-            left: {
-                if !uiVM.isHelp {
-                    withAnimation {
-                        uiVM.isHelp = true
-                    }
-                }
-            },
-            right: {
-                // todo theme animation
-                if uiVM.isHelp {
-                    withAnimation {
-                        uiVM.isHelp = false
-                    }
-                }
-            }
-        )
+
         .onTapGesture {
             if uiVM.current != .message {
                 withAnimation(themeVM.terminal.grid.test.animation.detail) {
@@ -160,6 +144,7 @@ struct TerminalGrid: View {
                 }
             }
         }
+        .helpEdgeDrag()
         .contentShape(Rectangle())
     }
     
