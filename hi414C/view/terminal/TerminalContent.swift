@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TerminalContent: View {
     @EnvironmentObject var uiVM: UIViewModel
+    
     var items: [TerminalItem]
     var messages: Messages?
     
@@ -25,5 +26,7 @@ struct TerminalContent: View {
                 TerminalHint()
             }
         }
+        
+        
     }
 }

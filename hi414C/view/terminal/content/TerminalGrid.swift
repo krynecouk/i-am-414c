@@ -144,7 +144,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-        .helpEdgeDrag()
+        //.helpEdgeDrag()
         .contentShape(Rectangle())
     }
     

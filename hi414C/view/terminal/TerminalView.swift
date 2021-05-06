@@ -24,6 +24,7 @@ struct TerminalView: View {
             TerminalContent(items: items, messages: messages)
             TerminalFooter()
         }
+        .helpEdgeDrag()
     }
     
     private func getContent(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> ([TerminalItem], Messages?) {

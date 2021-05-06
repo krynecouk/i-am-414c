@@ -40,7 +40,7 @@ struct TerminalMessages: View {
             
             .border(Color.green)
         }
-        .helpEdgeDrag()
+
     }
     
     func rand(from answers: Answers) -> Answer {
