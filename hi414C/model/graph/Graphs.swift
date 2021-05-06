@@ -17,7 +17,7 @@ class Graphs {
             E("HI") {
                 N("HI")
             }
-            E("HIIII") {
+            E("HIIIIIIIIIIIIIIHIIIIIIIHIIIIIIIIIIIIIIIIIIHHH") {
                 N("HIHI")
             }
             E("HIHI") {
