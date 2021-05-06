@@ -18,28 +18,37 @@ struct TerminalMessages: View {
     let messages: Messages
     
     var body: some View {
-        GeometryReader { metrics in
+        //GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack(spacing: 10) {
-                        TerminalMessage(messages.current.text, theme: FigletTheme().withAnimation([]))
-                            .border(Color.red)
+                    HStack(spacing: 0) {
+                        HStack(spacing: 10) {
+                            TerminalMessage(messages.current.text, theme: FigletTheme().withAnimation([]))
+                                .border(Color.red)
+                        }.frame(maxWidth: 200)
+
+                        Spacer()
                     }
                     .border(Color.red)
                     HStack(spacing: 10) {
-                        AlMessage(rand(from: messages.answers), theme: ViewTheme())
+                        Spacer()
+                        AlMessage(rand(from: messages.answers), theme: themeVM.terminal.help.history.AL)
                             .onReceive(helpVM.$answers) { _ in
                                 self.answer = rand(from: messages.answers)
                             }
+                            .frame(maxWidth: 250, alignment: .trailing)
                             .border(Color.blue)
                     }
+                    
                     .border(Color.blue)
                 }
-                .frame(width: metrics.size.width, height: metrics.size.height - 114)
+                .border(Color.green)
+                //.frame(width: metrics.size.width, height: metrics.size.height - 114, alignment: .topLeading)
+                //.border(Color.green)
             }
-            
-            .border(Color.green)
-        }
+            //.border(Color.pink)
+        //}
+        //.border(Color.yellow)
 
     }
     
