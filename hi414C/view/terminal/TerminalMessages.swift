@@ -22,34 +22,39 @@ struct TerminalMessages: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 0) {
-                        Grid(columns: [GridItem(.adaptive(minimum: 45, maximum: .infinity))]) {
+                        Grid(columns: [GridItem(.adaptive(minimum: 60, maximum: .infinity))], alignment: .leading) {
                             LiteFigletView(messages.current.text, theme: LiteFigletTheme())
+                                .border(Color.red)
                         }
-                        .frame(maxWidth: metrics.size.width * 0.7, alignment: .leading)
+                        .border(Color.yellow)
+                        .frame(maxWidth: getGridWidth(frame: metrics.size, content: messages.current.text), alignment: .leading)
                         .border(Color.red)
                     }
                     
                     HStack(spacing: 10) {
                         Spacer()
-                        AlMessage(rand(from: messages.answers), theme: themeVM.terminal.help.history.AL)
-                            .onReceive(helpVM.$answers) { _ in
-                                self.answer = rand(from: messages.answers)
-                            }
+                        Text(rand(from: messages.answers))
+                            .withTheme(themeVM.terminal.help.history.AL)
+
                             .frame(maxWidth: metrics.size.width * 0.7, alignment: .trailing)
-                            .border(Color.blue)
+                    }
+                    .onReceive(helpVM.$answers) { _ in
+                        self.answer = rand(from: messages.answers)
                     }
                     
                     .border(Color.blue)
                 }
                 .padding(.bottom, 250) // TODO presne kolik podle segue.open || isHint
                 .border(Color.green)
-                //.frame(width: metrics.size.width, height: metrics.size.height - 114, alignment: .topLeading)
-                //.border(Color.green)
             }
-            //.border(Color.pink)
         }
-        //.border(Color.yellow)
-
+    }
+    
+    func getGridWidth(frame: CGSize, content: String) -> CGFloat {
+        let contentW: CGFloat = CGFloat(content.count * 90)
+        let maxW: CGFloat = frame.width * 0.7
+        
+        return contentW > maxW ? maxW : contentW
     }
     
     func rand(from answers: Answers) -> Answer {
@@ -63,21 +68,6 @@ struct Messages {
     var answers: Answers
 }
 
-struct AlMessage: View {
-    let text: String
-    let theme: ViewTheme
-    
-    init(_ text: String, theme: ViewTheme) {
-        self.text = text
-        self.theme = theme
-    }
-    
-    var body: some View {
-        Text(text)
-            //.frame(width: 35, height: 60, alignment: .center)
-            .withTheme(theme)
-    }
-}
 
 /*
  struct TerminalConversation_Previews: PreviewProvider {

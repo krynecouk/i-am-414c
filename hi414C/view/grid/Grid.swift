@@ -11,15 +11,18 @@ struct Grid<Content: View> : View {
     let content: Content
     let spacing: CGFloat
     let padding: CGFloat
+    let alignment: HorizontalAlignment
     let columns: [GridItem]
     
     init(
         columns: [GridItem] = [GridItem(.adaptive(minimum: 60, maximum: .infinity))],
+        alignment: HorizontalAlignment = .center,
         spacing: CGFloat = 10,
         padding: CGFloat = 20,
         @ViewBuilder content: () -> Content) {
         
         self.columns = columns
+        self.alignment = alignment
         self.spacing = spacing
         self.padding = padding
         self.content = content()
@@ -27,7 +30,7 @@ struct Grid<Content: View> : View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVGrid(columns: columns, alignment: .center, spacing: spacing) {
+            LazyVGrid(columns: columns, alignment: alignment, spacing: spacing) {
                 content
             }
             .padding(self.padding)
