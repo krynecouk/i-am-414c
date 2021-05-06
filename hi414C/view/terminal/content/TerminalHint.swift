@@ -50,7 +50,7 @@ struct TerminalHintScroll: View {
     
     let timer = Timer.publish(every: 0.8, on: .main, in: .common).autoconnect()
     
-    private let hint = "You can fuck yourself when you want"
+    private let hint = "Turn help screen on/off by dragging from each edge of the screen."
     
     var body: some View {
         let chars = Array(hint)
