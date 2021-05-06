@@ -21,38 +21,45 @@ struct TerminalMessages: View {
         GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 10) {
-                    Grid(columns: [GridItem(.adaptive(minimum: 45, maximum: .infinity))], alignment: .center) {
-                        FigletView(messages.current.text, theme: FigletTheme().withAnimation([]))
-                        //.border(Color.red)
-                    }
-                    .offset(x: 3)
-                    .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
-                    .frame(maxWidth: getGridWidth(frame: metrics.size, content: messages.current.text), alignment: .leading)
-                    .padding(.leading, 10)
-                    
-                    HStack(spacing: 10) {
-                        Spacer()
-                        Text(rand(from: messages.answers))
-                            .withTheme(themeVM.terminal.help.history.AL)
-                            .offset(x: 4, y: 5)
-                            .padding([.top, .bottom], 8)
-                            .padding([.trailing, .leading], 25)
-                            .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
-                            .frame(maxWidth: metrics.size.width * 0.7, alignment: .trailing)
-                            .transition(.scale)
-                            .animation(.easeOut.speed(1.3))
-                    }
-                    .onReceive(helpVM.$answers) { _ in
-                        self.answer = rand(from: messages.answers)
-                    }
-                    .padding(.trailing, 10)
-                    .padding(.bottom, 250)
+                    Message414C(frame: metrics.size)
+                    MessageAl(frame: metrics.size)
+                        .onReceive(helpVM.$answers) { _ in
+                            self.answer = rand(from: messages.answers)
+                        }
+                        .padding(.trailing, 10)
+                        .padding(.bottom, 250)
                     
                     //.border(Color.blue)
                 }
                  // TODO presne kolik podle segue.open || isHint
                 //.border(Color.green)
             }
+        }
+    }
+    
+    func Message414C(frame: CGSize) -> some View {
+        Grid(columns: [GridItem(.adaptive(minimum: 45, maximum: .infinity))], alignment: .center) {
+            FigletView(messages.current.text, theme: FigletTheme().withAnimation([]))
+            //.border(Color.red)
+        }
+        .offset(x: 3)
+        .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
+        .frame(maxWidth: getGridWidth(frame: frame, content: messages.current.text), alignment: .leading)
+        .padding(.leading, 10)
+    }
+    
+    func MessageAl(frame: CGSize) -> some View {
+        HStack(spacing: 10) {
+            Spacer()
+            Text(rand(from: messages.answers))
+                .withTheme(themeVM.terminal.help.history.AL)
+                .offset(x: 4, y: 5)
+                .padding([.top, .bottom], 8)
+                .padding([.trailing, .leading], 25)
+                .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
+                .frame(maxWidth: frame.width * 0.7, alignment: .trailing)
+                .transition(.scale)
+                .animation(.easeOut.speed(1.3))
         }
     }
     
