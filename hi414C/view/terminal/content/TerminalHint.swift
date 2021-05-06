@@ -15,7 +15,7 @@ struct TerminalHint: View {
                 .frame(height: 114)
                 .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
             HStack(spacing: 0) {
-                TerminalHintText("Hint: ")
+                TerminalHintText("Hint: ") // TODO generate next hint
                     .padding(.leading, 15)
                 TerminalHintScroll()
             }

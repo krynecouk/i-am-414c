@@ -31,6 +31,7 @@ struct TerminalHelp: View {
                     }
                 }
         }
+        /*
         if case let .message(message, answers) = item.type {
             if helpVM.isHistory {
                 TerminalHistory(wide: wide)
@@ -38,6 +39,7 @@ struct TerminalHelp: View {
             TerminalMessageRow(message.text, wide: wide, theme: themeVM.terminal.help.message.figlet)
             TerminalAnswer(answers, wide: wide)
         }
+        */
     }
     
     func getTestData(from test: Test) -> (id: UUID, equation: Equation) {

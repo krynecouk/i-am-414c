@@ -10,13 +10,14 @@ import SwiftUI
 struct TerminalContent: View {
     @EnvironmentObject var uiVM: UIViewModel
     var items: [TerminalItem]
+    var messages: Messages?
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topLeading) {
                 TerminalGrid(items: items)
                 if uiVM.isHelp && uiVM.current == .message {
-                    Text("HI MY NAME IS")
+                    TerminalMessages(messages: messages!)
                 }
             }
             

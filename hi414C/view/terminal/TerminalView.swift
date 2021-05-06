@@ -12,6 +12,7 @@ struct TerminalView: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     
     init() {
         print("TerminalView")
@@ -19,23 +20,13 @@ struct TerminalView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            TerminalContent(items: getItems(from: terminalVM.content, ascii: asciiVM.symbols))
+            let (items, messages) = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
+            TerminalContent(items: items, messages: messages)
             TerminalFooter()
         }
     }
     
-    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
-        var paths: Set<String> = []
-        for edge in node.edges {
-            paths.insert(edge.id)
-            if let asciiEdge = edge as? ASCIITestEdge {
-                paths.formUnion(Set(asciiEdge.variants))
-            }
-        }
-        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
-    }
-    
-    private func getItems(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> [TerminalItem] {
+    private func getContent(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> ([TerminalItem], Messages?) {
         print("Calculating Test Content Items")
 
         var items: [TerminalItem] = []
@@ -47,10 +38,10 @@ struct TerminalView: View {
                     let answers = getAnswers(from: graphVM.node, ascii: ascii)
                     let id = UUID()
                     let message = Message(id: id, from: ._414C, text: text)
-                    items.append(TerminalItem(of: .help(TerminalHelpItem(of: .message(message, answers)))))
+                    let messages = Messages(history: historyVM.history, current: message, answers: answers)
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
-                    continue
+                    return (items, messages)
                 }
                 
                 var testWasSetup = false
@@ -76,7 +67,18 @@ struct TerminalView: View {
                 items.append(TerminalItem(of: .art(arts)))
             }
         }
-        return items
+        return (items, .none)
+    }
+    
+    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
+        var paths: Set<String> = []
+        for edge in node.edges {
+            paths.insert(edge.id)
+            if let asciiEdge = edge as? ASCIITestEdge {
+                paths.formUnion(Set(asciiEdge.variants))
+            }
+        }
+        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
     }
 }
 

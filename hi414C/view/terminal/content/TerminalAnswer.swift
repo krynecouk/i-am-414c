@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-typealias Answer = String
-typealias Answers = Set<Answer>
+
 
 struct TerminalAnswer: View {
     @EnvironmentObject var helpVM: HelpViewModel
@@ -35,7 +34,6 @@ struct TerminalAnswer: View {
                 .id(answer)
         }
     }
-    
     
     func rand(from answers: Answers) -> Answer {
         answers.randomElement() ?? "??"

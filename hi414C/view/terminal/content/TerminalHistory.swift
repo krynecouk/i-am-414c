@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct TerminalHistory: View {
-    @EnvironmentObject var historyVM: HistoryViewModel
+    //@EnvironmentObject var historyVM: HistoryViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let wide: Bool
     
     var body: some View {
+        Text("FOO")
+        /*
         ForEach(historyVM.history) { message in
             MessageRow(of: message.text, wide: wide) {
                 if message.author == ._414C {
@@ -23,5 +25,6 @@ struct TerminalHistory: View {
                 }
             }
         }
+        */
     }
 }
