@@ -51,36 +51,36 @@ struct TerminalHelpSelect: View {
                     }
                     Group {
                         Button("AND") {
-                            helpVM.changeTo(type: .AND)
+                            helpVM.change(to: .AND)
                         }
                         Button("OR") {
-                            helpVM.changeTo(type: .OR)
+                            helpVM.change(to: .OR)
                         }
                         Button("XOR") {
-                            helpVM.changeTo(type: .XOR)
+                            helpVM.change(to: .XOR)
                         }
                         Button("NOT") {
-                            helpVM.changeTo(type: .NOT)
+                            helpVM.change(to: .NOT)
                         }
                         Button("SHL") {
-                            helpVM.changeTo(type: .SHL)
+                            helpVM.change(to: .SHL)
                         }
                         Button("SHR") {
-                            helpVM.changeTo(type: .SHR)
+                            helpVM.change(to: .SHR)
                         }
                     }
                     Group {
                         Button("ADD") {
-                            helpVM.changeTo(type: .ADD)
+                            helpVM.change(to: .ADD)
                         }
                         Button("SUB") {
-                            helpVM.changeTo(type: .SUB)
+                            helpVM.change(to: .SUB)
                         }
                         Button("DIV") {
-                            helpVM.changeTo(type: .DIV)
+                            helpVM.change(to: .DIV)
                         }
                         Button("MUL") {
-                            helpVM.changeTo(type: .MUL)
+                            helpVM.change(to: .MUL)
                         }
                     }
                 }

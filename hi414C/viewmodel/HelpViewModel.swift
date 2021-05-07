@@ -47,7 +47,7 @@ class HelpViewModel: ObservableObject {
         self.updatedEq = HelpEquation(equation: builder.eq(0))
     }
     
-    func changeTo(type: EquationType) {
+    func change(to type: EquationType) {
         let (result, _) = getResultBuilder()
         self.updatedEq = HelpEquation(equation: type.build().eq(result))
     }
@@ -68,7 +68,7 @@ class HelpViewModel: ObservableObject {
         self.answers += 1
     }
     
-    func setRadix(radix: EquationRadix?) {
+    func radix(of radix: EquationRadix?) {
         self.radix = radix
     }
     

@@ -34,7 +34,7 @@ struct TerminalHelpTest: View {
     
     func getTestData(from test: Test) -> (id: UUID, equation: Equation, radix: EquationRadix) {
         if helpVM.originalEq.id != test.id || helpVM.updatedEq == nil {
-            helpVM.setRadix(radix: nil)
+            helpVM.radix(of: nil)
             return (test.id, test.equation, testVM.radix)
         } else {
             return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation, helpVM.radix ?? testVM.radix)
