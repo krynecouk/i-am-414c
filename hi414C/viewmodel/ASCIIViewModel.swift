@@ -11,9 +11,7 @@ class ASCIIViewModel: ObservableObject {
     @Published private(set) var symbols: [ASCIISymbol] = defaultSymbols // TODO persistently store
     
     private static let defaultSymbols: [ASCIISymbol] = [
-        .questionMark,
-        .H,
-        .I
+        .questionMark
     ]
     
     func add(symbol: ASCIISymbol) {

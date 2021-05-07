@@ -53,7 +53,7 @@ struct TerminalView: View {
                         return
                     }
                     
-                    let testItems = TerminalTest.getItems(from: test)
+                    let testItems = TerminalTest.getItems(from: test, radix: testVM.radix)
                     if testWasSetup {
                         items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, false)))
                         return

@@ -13,6 +13,7 @@ class HelpViewModel: ObservableObject {
     @Published private(set) var answers: Int = 0
     
     private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
+    private(set) var radix: EquationRadix?
     
     func increment() {
         let (result, builder) = getResultBuilder()
@@ -65,6 +66,10 @@ class HelpViewModel: ObservableObject {
     
     func randAnswer() {
         self.answers += 1
+    }
+    
+    func setRadix(radix: EquationRadix?) {
+        self.radix = radix
     }
     
     private func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {

@@ -8,6 +8,7 @@ import SwiftUI
 
 struct TerminalHelpTest: View {
     @EnvironmentObject var helpVM: HelpViewModel
+    @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let test: Test
@@ -20,22 +21,23 @@ struct TerminalHelpTest: View {
     }
     
     var body: some View {
-            let (id, equation) = getTestData(from: test)
-            let theme = themeVM.terminal.help.test.active
-            TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
-                .onAppear {
-                    if helpVM.originalEq.id != test.id {
-                        helpVM.setOriginalEq(id: test.id, equation: test.equation)
-                        helpVM.removeUpdatedEq()
-                    }
+        let (id, equation, radix) = getTestData(from: test)
+        let theme = themeVM.terminal.help.test.active
+        TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(radix: radix, result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
+            .onAppear {
+                if helpVM.originalEq.id != test.id {
+                    helpVM.setOriginalEq(id: test.id, equation: test.equation)
+                    helpVM.removeUpdatedEq()
                 }
+            }
     }
     
-    func getTestData(from test: Test) -> (id: UUID, equation: Equation) {
+    func getTestData(from test: Test) -> (id: UUID, equation: Equation, radix: EquationRadix) {
         if helpVM.originalEq.id != test.id || helpVM.updatedEq == nil {
-            return (test.id, test.equation)
+            helpVM.setRadix(radix: nil)
+            return (test.id, test.equation, testVM.radix)
         } else {
-            return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation)
+            return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation, helpVM.radix ?? testVM.radix)
         }
     }
 }

@@ -11,17 +11,19 @@ class GraphViewModel: ObservableObject {
     @Published private(set) var node: Node = Graphs.HI
     @Published private(set) var result: GraphTraverseResult = .ok
     
+    private(set) var graph: Node = Graphs.HI
+    
     let toolkit: GraphToolkit
 
     init(toolkit: GraphToolkit) {
         self.toolkit = toolkit
         self.toolkit.graphVM = self
-        self.node.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
+        self.start()
     }
     
     func traverse(ctx: GraphContext) {
         self.node.onExit(ctx: ctx, toolkit: toolkit)
-        let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(Graphs.HI.edges, ctx: ctx)
+        let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(graph.edges, ctx: ctx)
         if let node = targetNode {
             self.node = node
             self.node.onEnter(ctx: ctx, toolkit: toolkit)
@@ -39,9 +41,14 @@ class GraphViewModel: ObservableObject {
         }
         return .none
     }
-    
-    func setNode(node: Node) {
+
+    func setGraph(node: Node) {
+        self.graph = node
         self.node = node
+    }
+    
+    func start() {
+        self.node.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
 }
 

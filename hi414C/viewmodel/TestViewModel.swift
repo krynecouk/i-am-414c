@@ -12,12 +12,17 @@ class TestViewModel: ObservableObject {
     private(set) var level: Int = 0
     
     @Published private(set) var result: TestResult = .right(.NUL)
+    @Published private(set) var radix: EquationRadix = .bin
     
     func set(test: Test?) {
         if let test = self.test {
             print("current test: ", test.equation.toString())
         }
         self.test = test
+    }
+    
+    func radix(of type: EquationRadix) {
+        self.radix = type
     }
     
     func solve(with value: String) -> TestResult {
@@ -75,8 +80,13 @@ class TestViewModel: ObservableObject {
         }
     }
     
-    func level(up: Int = 0, down: Int = 0) {
-        self.level += (up + down)
-        print("leveling up to \(self.level)")
+    func level(reset: Bool = false, up: Int = 0, down: Int = 0) {
+        if reset {
+            self.level = 0
+        }
+        if up != 0 || down != 0 {
+            self.level += (up + down)
+            print("leveling up to \(self.level)")
+        }
     }
 }

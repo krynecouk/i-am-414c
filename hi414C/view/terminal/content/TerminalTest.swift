@@ -69,8 +69,8 @@ struct TerminalTest: View {
         return items
     }
     
-    public static func getItems(from test: Test) -> [TerminalTestItem] {
-        getItems(id: test.id, equation: test.equation.toString())
+    public static func getItems(from test: Test, radix: EquationRadix) -> [TerminalTestItem] {
+        getItems(id: test.id, equation: test.equation.toString(radix: radix))
     }
     
     public static func isEquationSign(_ char: Character) -> Bool {
