@@ -54,8 +54,8 @@ struct TerminalMessages: View {
         .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
         .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
         .padding(.leading, 10)
-        .transition(.scale)
-        .animation(.easeOut.speed(1.3))
+        //.transition(.scale)
+        .animation(.spring().speed(1.3))
     }
     
     func MessageAl(_ text: String, frame: CGSize) -> some View {
@@ -67,16 +67,16 @@ struct TerminalMessages: View {
                 .padding([.top, .bottom], 8)
                 .padding([.trailing, .leading], 25)
                 .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
-                .frame(maxWidth: frame.width * 0.7, alignment: .trailing)
-                .transition(.scale)
-                .animation(.easeOut.speed(1.3))
+                .frame(maxWidth: frame.width * 0.75, alignment: .trailing)
+                //.transition(.scale)
+                .animation(.spring().speed(1.3))
         }
         .padding(.trailing, 10)
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
         let contentW: CGFloat = CGFloat(content.count * 80)
-        let maxW: CGFloat = frame.width * 0.7
+        let maxW: CGFloat = frame.width * 0.75
         return contentW > maxW ? maxW : contentW
     }
     

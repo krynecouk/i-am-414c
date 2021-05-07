@@ -140,7 +140,7 @@ struct PrimaryTheme: Themable {
                     animations: []
                 ),
                 AL: ViewTheme(
-                    font: (.proggyTiny, 110),
+                    font: (.proggyTiny, 60),
                     color: .primary
                 )
             ),
