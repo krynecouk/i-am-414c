@@ -29,8 +29,10 @@ struct LiteFigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
+                //let figlet = figlets[safe: i] ?? Figlet.of(.questionMark)
                 Text(figlets[i].lines.joined(separator: "\n"))
                     .withTheme(theme.view)
+
             }
         }
     }

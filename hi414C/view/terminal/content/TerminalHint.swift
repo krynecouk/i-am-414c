@@ -51,7 +51,7 @@ struct TerminalHintScroll: View {
     */
     //let timer = Timer.publish(every: 0.8, on: .main, in: .common).autoconnect()
     
-    private let hint = "Turn help screen on/off by dragging from each edge of the screen."
+    private let hint = "This is help and settings screen. Turn it on with left edge drag. Turn it off with right edge drag."
     
     var body: some View {
         let chars = Array(hint)

@@ -50,6 +50,15 @@ struct TerminalHelpSelect: View {
                         }
                     }
                     Group {
+                        Button("BIN") {
+                            helpVM.radix(of: .bin)
+                        }
+                        Button("HEX") {
+                            helpVM.radix(of: .hex)
+                        }
+                        Button("DEC") {
+                            helpVM.radix(of: .dec)
+                        }
                         Button("AND") {
                             helpVM.change(to: .AND)
                         }

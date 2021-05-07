@@ -13,7 +13,7 @@ class HelpViewModel: ObservableObject {
     @Published private(set) var answers: Int = 0
     
     private(set) var originalEq: HelpEquation = HelpEquation(equation: ID() => 0)
-    private(set) var radix: EquationRadix?
+    private(set) var radix: EquationRadix = .bin
     
     func increment() {
         let (result, builder) = getResultBuilder()
@@ -68,8 +68,9 @@ class HelpViewModel: ObservableObject {
         self.answers += 1
     }
     
-    func radix(of radix: EquationRadix?) {
+    func radix(of radix: EquationRadix) {
         self.radix = radix
+        self.updatedEq = updatedEq ?? originalEq
     }
     
     private func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {
