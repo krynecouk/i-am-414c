@@ -13,17 +13,8 @@ class Graphs {
     private init() {}
     
     static let HI =
-        R("HIIIHI") {
+        R("HI") {
             E("HI") {
-                N("HI")
-            }
-            E("HIIIIIIIIIIIIIIHIIIIIIIHIIIIIIIIIIIIIIIIIIHHH") {
-                N("HIHI")
-            }
-            E("HIHI") {
-                N("HIHI")
-            }
-            E("IHIHIH") {
                 N("HI")
             }
             E("I", variants: ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
