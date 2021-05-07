@@ -1,26 +1,25 @@
 //
-//  TerminalHelp.swift
+//  TerminalHelpTest.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 23.04.2021.
 //
 import SwiftUI
 
-struct TerminalHelp: View {
+struct TerminalHelpTest: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
-    let item: TerminalHelpItem
+    let test: Test
     let wide: Bool
     
-    init(_ item: TerminalHelpItem, wide: Bool = false) {
+    init(_ test: Test, wide: Bool = false) {
         print("TerminalHelp")
-        self.item = item
+        self.test = test
         self.wide = wide
     }
     
     var body: some View {
-        if case let .test(test) = item.type {
             let (id, equation) = getTestData(from: test)
             let theme = themeVM.terminal.help.test.active
             TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
@@ -30,16 +29,6 @@ struct TerminalHelp: View {
                         helpVM.removeUpdatedEq()
                     }
                 }
-        }
-        /*
-        if case let .message(message, answers) = item.type {
-            if helpVM.isHistory {
-                TerminalHistory(wide: wide)
-            }
-            TerminalMessageRow(message.text, wide: wide, theme: themeVM.terminal.help.message.figlet)
-            TerminalAnswer(answers, wide: wide)
-        }
-        */
     }
     
     func getTestData(from test: Test) -> (id: UUID, equation: Equation) {
@@ -49,19 +38,4 @@ struct TerminalHelp: View {
             return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation)
         }
     }
-}
-
-struct TerminalHelpItem: Identifiable {
-    var id: UUID
-    var type: TerminalHelpType
-    
-    init(id: UUID = UUID(), of type: TerminalHelpType) {
-        self.id = id
-        self.type = type
-    }
-}
-
-enum TerminalHelpType {
-    case test(Test)
-    case message(Message, Answers)
 }

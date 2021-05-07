@@ -15,6 +15,8 @@ struct TerminalMessages: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @State var answer: Answer = ""
     
+    private static let grid = [GridItem(.adaptive(minimum: 45, maximum: .infinity))]
+    
     let messages: Messages
     
     var body: some View {
@@ -36,25 +38,19 @@ struct TerminalMessages: View {
                             self.answer = rand(from: messages.answers)
                         }
                         .padding(.bottom, 250)
-                    
-                    //.border(Color.blue)
                 }
-                // TODO presne kolik podle segue.open || isHint
-                //.border(Color.green)
             }
         }
     }
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
-        Grid(columns: [GridItem(.adaptive(minimum: 45, maximum: .infinity))], alignment: .center) {
+        Grid(columns: TerminalMessages.grid, alignment: .center) {
             FigletView(text, theme: FigletTheme().withAnimation([]))
-            //.border(Color.red)
         }
         .offset(x: 3)
-        .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
+        .background(rounded)
         .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
         .padding(.leading, 10)
-        //.transition(.scale)
         .animation(.spring().speed(1.3))
     }
     
@@ -66,12 +62,15 @@ struct TerminalMessages: View {
                 .offset(x: 4, y: 5)
                 .padding([.top, .bottom], 8)
                 .padding([.trailing, .leading], 25)
-                .background(RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck")))
+                .background(rounded)
                 .frame(maxWidth: frame.width * 0.75, alignment: .trailing)
-                //.transition(.scale)
                 .animation(.spring().speed(1.3))
         }
         .padding(.trailing, 10)
+    }
+    
+    var rounded: some View {
+        RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck"))
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
@@ -90,12 +89,3 @@ struct Messages {
     var current: Message
     var answers: Answers
 }
-
-
-/*
- struct TerminalConversation_Previews: PreviewProvider {
- static var previews: some View {
- TerminalConversation()
- }
- }
- */

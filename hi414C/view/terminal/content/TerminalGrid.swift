@@ -39,14 +39,9 @@ struct TerminalGrid: View {
     var body: some View {
         Grid(columns: self.grid.rawValue()) {
             ForEach(items, id: \.id) { item in
-                if case let .help(item) = item.type {
+                if case let .help(test) = item.type {
                     if uiVM.isHelp {
-                        TerminalHelp(item, wide: wide)
-                            .onAppear {
-                                if case let .message(message, _) = item.type {
-                                    self.printedMsg.insert(message.id.uuidString)
-                                }
-                            }
+                        TerminalHelpTest(test, wide: wide)
                     }
                 }
                 if case let .art(arts) = item.type {
@@ -136,7 +131,6 @@ struct TerminalGrid: View {
                 }
             }
         }
-        //.helpEdgeDrag()
         .contentShape(Rectangle())
     }
     
@@ -189,7 +183,7 @@ enum TerminalItemType {
     case test(Test, [TerminalTestItem], Bool)
     case message(String)
     case art([ASCIIPrintable])
-    case help(TerminalHelpItem)
+    case help(Test)
 }
 
 struct TerminalGrid_Previews: PreviewProvider {
