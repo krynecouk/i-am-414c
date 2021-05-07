@@ -6,46 +6,61 @@
 //
 
 class Graphs {
+    typealias ROOT = ASCIITestNode
     typealias R = ASCIITestNode
-    typealias N = ASCIITestNode
-    typealias E = ASCIITestEdge
+    typealias AL = ASCIITestEdge
     
     private init() {}
     
     static let HI =
         R("HI") {
-            E("HI") {
-                N("HI")
+            AL("HI") {
+                R("HI")
             }
-            E("I", variants: ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
-                N("AL") {
-                    E("AL?") {
-                        N("YES")
+            AL("HIHI") {
+                GraphNode("FOO")
+            }
+            AL("I", variants: ["I?", "ME", "ME?", "NAME"]) {
+                R("AL") {
+                    AL("AL?") {
+                        R("YES")
                     }
                 }
             }
-            E("AL") {
-                N("YOU") {
-                    E("AL?") {
-                        N("YES")
+            AL("AL") {
+                R("YOU") {
+                    AL("AL?") {
+                        R("YES")
                     }
                 }
             }
-            E("YOU") {
-                N("414C") {
-                    E("414C?") {
-                        N("YES")
+            AL("YOU") {
+                R("414C") {
+                    AL("414C?") {
+                        R("YES")
                     }
                 }
             }
-            E("414C") {
-                ASCIIArtNode("cat") {
-                    E("YES") {
-                        N("TRULY")
-                    }
-                    E("NO") {
-                        N("WAT")
-                    }
+            AL("414C") {
+                R("I")
+            }
+            
+            AL("HOSE") {
+                R("REPAIRABLE") {
+                    REPAIR
+                }
+            }
+            REPAIR
+        }
+    
+    static let REPAIR =
+        AL("REPAIR") {
+            R("Y/N?") {
+                AL("Y") {
+                    R("OK")
+                }
+                AL("N") {
+                    R("NOTOK")
                 }
             }
         }

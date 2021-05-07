@@ -15,6 +15,7 @@ class GraphViewModel: ObservableObject {
 
     init(toolkit: GraphToolkit) {
         self.toolkit = toolkit
+        self.toolkit.graphVM = self
         self.node.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
@@ -37,6 +38,10 @@ class GraphViewModel: ObservableObject {
             }
         }
         return .none
+    }
+    
+    func setNode(node: Node) {
+        self.node = node
     }
 }
 

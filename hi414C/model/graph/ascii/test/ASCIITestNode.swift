@@ -34,14 +34,3 @@ class ASCIITestNode : Node {
         toolkit.historyVM.add(message: Message(from: ._414C, text: id))
     }
 }
-
-class RootASCIITestNode: ASCIITestNode {
-    override init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        super.init(id, edges)
-    }
-    
-    override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        super.onEnter(ctx: ctx, toolkit: toolkit)
-        toolkit.historyVM.remove()
-    }
-}
