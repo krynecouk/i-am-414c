@@ -35,7 +35,7 @@ struct TerminalTestThemed: View {
                 }
             }
             .onChange(of: active) { isActive in
-                if isActive && test.id == testVM.test?.id {
+                if isActive && test.id == TestViewModel.test?.id {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
                         withAnimation {
                             self.bloom = true

@@ -22,9 +22,9 @@ class GraphViewModel: ObservableObject {
     }
     
     func traverse(ctx: GraphContext) {
-        self.node.onExit(ctx: ctx, toolkit: toolkit)
         let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(graph.edges, ctx: ctx)
         if let node = targetNode {
+            self.node.onExit(ctx: ctx, toolkit: toolkit)
             self.node = node
             self.node.onEnter(ctx: ctx, toolkit: toolkit)
             self.result = .ok

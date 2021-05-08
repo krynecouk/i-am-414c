@@ -13,18 +13,23 @@ typealias Answers = Set<Answer>
 struct TerminalMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
+    
+    @State var answers: Answers = []
     @State var answer: Answer = ""
     
     private static let grid = [GridItem(.adaptive(minimum: 45, maximum: .infinity))]
     
-    let messages: Messages
+    let message: Message
     
     var body: some View {
         GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if helpVM.isHistory {
-                        ForEach(messages.history) { message in
+                        ForEach(historyVM.history) { message in
                             if message.author == ._414C {
                                 Message414C(message.text, frame: metrics.size)
                             } else {
@@ -32,10 +37,13 @@ struct TerminalMessages: View {
                             }
                         }
                     }
-                    Message414C(messages.current.text, frame: metrics.size)
-                    MessageAl(rand(from: messages.answers), frame: metrics.size)
+                    Message414C(message.text, frame: metrics.size)
+                    MessageAl(rand(from: self.answers), frame: metrics.size)
                         .onReceive(helpVM.$answers) { _ in
-                            self.answer = rand(from: messages.answers)
+                            self.answer = rand(from: self.answers)
+                        }
+                        .onAppear {
+                            self.answers = getAnswers(from: graphVM.node, ascii: asciiVM.symbols)
                         }
                         .padding(.bottom, 250)
                 }
@@ -82,10 +90,24 @@ struct TerminalMessages: View {
     func rand(from answers: Answers) -> Answer {
         answers.randomElement() ?? "??"
     }
-}
-
-struct Messages {
-    var history: [Message]
-    var current: Message
-    var answers: Answers
+    
+    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
+        var paths: Set<String> = []
+        for edge in node.edges {
+            paths.insert(edge.id)
+            if let asciiEdge = edge as? ASCIITestEdge {
+                paths.formUnion(Set(asciiEdge.variants))
+            }
+        }
+        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
+    }
+    
+    private func contains(all symbols: [ASCIISymbol], in basket: [ASCIISymbol]) -> Bool {
+        for symbol in symbols {
+            if !basket.contains(symbol) {
+                return false
+            }
+        }
+        return true
+    }
 }

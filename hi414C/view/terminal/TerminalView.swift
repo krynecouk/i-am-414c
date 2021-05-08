@@ -10,9 +10,6 @@ import SwiftUI
 struct TerminalView: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
-    @EnvironmentObject var testVM: TestViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var historyVM: HistoryViewModel
     
     init() {
         print("TerminalView")
@@ -20,14 +17,14 @@ struct TerminalView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            let (items, messages) = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
-            TerminalContent(items: items, messages: messages)
+            let (items, message) = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
+            TerminalContent(items: items, message: message)
             TerminalFooter()
         }
         .helpEdgeDrag()
     }
     
-    private func getContent(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> ([TerminalItem], Messages?) {
+    private func getContent(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> ([TerminalItem], Message?) {
         print("Calculating Test Content Items")
 
         var items: [TerminalItem] = []
@@ -36,13 +33,11 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if contains(all: symbols, in: ascii) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    let answers = getAnswers(from: graphVM.node, ascii: ascii)
                     let id = UUID()
                     let message = Message(id: id, from: ._414C, text: text)
-                    let messages = Messages(history: historyVM.history, current: message, answers: answers)
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
-                    testVM.set(test: .none)
-                    return (items, messages)
+                    TestViewModel.set(test: .none)
+                    return (items, message)
                 }
                 
                 var testWasSetup = false
@@ -53,7 +48,7 @@ struct TerminalView: View {
                         return
                     }
                     
-                    let testItems = TerminalTest.getItems(from: test, radix: testVM.radix)
+                    let testItems = TerminalTest.getItems(from: test, radix: .bin)
                     if testWasSetup {
                         items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, false)))
                         return
@@ -61,7 +56,7 @@ struct TerminalView: View {
                     testWasSetup.toggle()
                     items.append(TerminalItem(of: .help(test)))
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
-                    testVM.set(test: test)
+                    TestViewModel.set(test: test)
                 }
             }
             if case let .art(arts) = type {
@@ -70,17 +65,7 @@ struct TerminalView: View {
         }
         return (items, .none)
     }
-    
-    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
-        var paths: Set<String> = []
-        for edge in node.edges {
-            paths.insert(edge.id)
-            if let asciiEdge = edge as? ASCIITestEdge {
-                paths.formUnion(Set(asciiEdge.variants))
-            }
-        }
-        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
-    }
+
 }
 
 private func contains(all symbols: [ASCIISymbol], in basket: [ASCIISymbol]) -> Bool {
