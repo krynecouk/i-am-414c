@@ -12,6 +12,7 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var testVM: TestViewModel
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 90, maximum: .infinity))]
     
@@ -53,15 +54,18 @@ struct TerminalHelpSelect: View {
                         Button("BIN") {
                             helpVM.radix(of: .bin)
                         }
-                        Button("HEX") {
-                            helpVM.radix(of: .hex)
+                        if testVM.radix == .hex {
+                            Button("HEX") {
+                                helpVM.radix(of: .hex)
+                            }
                         }
-                        Button("DEC") {
-                            helpVM.radix(of: .dec)
-                        }
+
+
+                        /*
                         Button("AND") {
                             helpVM.change(to: .AND)
                         }
+                        
                         Button("OR") {
                             helpVM.change(to: .OR)
                         }
@@ -77,20 +81,34 @@ struct TerminalHelpSelect: View {
                         Button("SHR") {
                             helpVM.change(to: .SHR)
                         }
+                        */
                     }
                     Group {
-                        Button("ADD") {
-                            helpVM.change(to: .ADD)
+                        if testVM.level >= 3 {
+                            Button("ADD") {
+                                helpVM.change(to: .ADD)
+                            }
                         }
-                        Button("SUB") {
-                            helpVM.change(to: .SUB)
+
+                        if testVM.level >= 4 {
+                            Button("SUB") {
+                                helpVM.change(to: .SUB)
+                            }
                         }
-                        Button("DIV") {
-                            helpVM.change(to: .DIV)
+
+                        if testVM.level >= 5 {
+                            Button("DIV") {
+                                helpVM.change(to: .DIV)
+                            }
                         }
-                        Button("MUL") {
-                            helpVM.change(to: .MUL)
+                        
+                        if testVM.level >= 6 {
+                            Button("MUL") {
+                                helpVM.change(to: .MUL)
+                            }
                         }
+
+
                     }
                 }
                 

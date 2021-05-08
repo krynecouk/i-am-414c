@@ -18,9 +18,6 @@ class Graphs {
             AL("HI") {
                 R("HI")
             }
-            AL("HIHI") {
-                UPGRADE("OK")
-            }
             AL("I", variants: ["I?", "ME", "ME?", "NAME"]) {
                 R("AL") {
                     AL("AL?") {
