@@ -8,7 +8,6 @@
 import SwiftUI
 
 typealias Answer = String
-typealias Answers = Set<Answer>
 
 struct TerminalMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
@@ -16,9 +15,9 @@ struct TerminalMessages: View {
     @EnvironmentObject var historyVM: HistoryViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
-    
-    @State var answers: Answers = []
+
     @State var answer: Answer = ""
+    @State var answers: Set<Answer> = []
     
     private static let grid = [GridItem(.adaptive(minimum: 45, maximum: .infinity))]
     
@@ -38,9 +37,9 @@ struct TerminalMessages: View {
                         }
                     }
                     Message414C(message.text, frame: metrics.size)
-                    MessageAl(rand(from: self.answers), frame: metrics.size)
+                    MessageAl(next(from: self.answers), frame: metrics.size)
                         .onReceive(helpVM.$answers) { _ in
-                            self.answer = rand(from: self.answers)
+                            self.answer = next(from: self.answers)
                         }
                         .onAppear {
                             self.answers = getAnswers(from: graphVM.node, ascii: asciiVM.symbols)
@@ -87,10 +86,24 @@ struct TerminalMessages: View {
         return contentW > maxW ? maxW : contentW
     }
     
-    func rand(from answers: Answers) -> Answer {
-        answers.randomElement() ?? "??"
+    func next(from answers: Set<Answer>) -> Answer {
+        if answers.isEmpty {
+            return ""
+        }
+        else if answers.count == 1 {
+            return answers.first!
+        }
+        else {
+            let random = answers.randomElement()!
+            if self.answer == random {
+                return next(from: answers)
+            } else {
+                return random
+            }
+        }
     }
     
+    // TODO horrible
     private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
         var paths: Set<String> = []
         for edge in node.edges {
@@ -98,6 +111,19 @@ struct TerminalMessages: View {
             if let asciiEdge = edge as? ASCIITestEdge {
                 paths.formUnion(Set(asciiEdge.variants))
             }
+        }
+        
+        var i = 0
+        for edge in graphVM.graph.edges {
+            if i < 5 {
+                paths.insert(edge.id)
+                if let asciiEdge = edge as? ASCIITestEdge {
+                    paths.formUnion(Set(asciiEdge.variants))
+                }
+            } else {
+                break
+            }
+            i += 1
         }
         return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
     }
