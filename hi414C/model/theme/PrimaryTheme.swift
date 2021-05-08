@@ -86,7 +86,7 @@ struct PrimaryTheme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: (name: .terminus, size: 13),
-                            color: .primary
+                            color: .black
                         )
                     ),
                     sign: FigletTheme(

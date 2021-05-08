@@ -51,8 +51,10 @@ struct TerminalHelpSelect: View {
                         }
                     }
                     Group {
-                        Button("BIN") {
-                            helpVM.radix(of: .bin)
+                        if testVM.radix == .hex {
+                            Button("BIN") {
+                                helpVM.radix(of: .hex)
+                            }
                         }
                         if testVM.radix == .hex {
                             Button("HEX") {
