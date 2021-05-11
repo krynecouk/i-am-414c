@@ -11,7 +11,7 @@ struct TerminalPadding: View {
     @EnvironmentObject var segueVM: SegueViewModel
     
     var body: some View {
-        ForEach((0..<getPadding()).map { _ in ID() }) { _ in
+        ForEach((0..<getPadding()).map { Item($0) }) { _ in
             Color.clear
                 .frame(width: 60, height: 80)
         }
@@ -25,9 +25,5 @@ struct TerminalPadding: View {
     func getCols() -> Int {
         let cols = (UIScreen.main.bounds.width - 40) / 70
         return Int(cols.rounded())
-    }
-    
-    struct ID: Identifiable {
-        var id: UUID = UUID()
     }
 }

@@ -28,19 +28,14 @@ struct FigletView: View {
     
     var body: some View {
         Group {
-            ForEach(figlets.map { FigletItem(figlet: $0) }) { item in
-                ASCIIArtView(item.figlet, theme: ArtTheme(
+            ForEach(figlets.map { Item($0) }) { item in
+                ASCIIArtView(item.content, theme: ArtTheme(
                     view: theme.view, animations: theme.animations
                 ))
             }
         }
         .compositingGroup()
     }
-}
-
-private struct FigletItem: Identifiable {
-    var id = UUID()
-    var figlet: Figlet
 }
 
 struct FigletView_Previews: PreviewProvider {

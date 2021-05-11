@@ -90,9 +90,9 @@ class Graphs {
     static let WHITMAN =
         R("O ME! O LIFE!") {
             AL("") {
-                R("Of the endless trains of the faithless,") {
+                R("OF THE ENDLESS TRAINS OF THE FAITHLESS,") {
                     AL("") {
-                        R("of cities fill’d with the foolish")
+                        R("OF CITIES FILL’D WITH THE FOOLISH")
                     }
                 }
             }

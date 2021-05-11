@@ -15,7 +15,8 @@ struct TerminalMessages: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @State var answer: Answer = ""
     
-    private static let grid = [GridItem(.adaptive(minimum: 45, maximum: .infinity))]
+    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
+    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
     
     let messages: Messages
     
@@ -25,10 +26,12 @@ struct TerminalMessages: View {
                 VStack(alignment: .leading, spacing: 10) {
                     if helpVM.isHistory {
                         ForEach(messages.history) { message in
-                            if message.author == ._414C {
-                                Message414C(message.text, frame: metrics.size)
-                            } else {
-                                MessageAl(message.text, frame: metrics.size)
+                            if !message.text.isEmpty {
+                                if message.author == ._414C {
+                                    Message414C(message.text, frame: metrics.size)
+                                } else {
+                                    MessageAl(message.text, frame: metrics.size)
+                                }
                             }
                         }
                     }
@@ -44,8 +47,8 @@ struct TerminalMessages: View {
     }
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
-        Grid(columns: TerminalMessages.grid, alignment: .center) {
-            FigletView(text, theme: FigletTheme().withAnimation([]))
+        Grid(columns: frame.width > 500 ? TerminalMessages.LANDSLIDE_MESSAGE : TerminalMessages.PORTRAIT_MESSAGE, alignment: .center) {
+            TerminalMessageRow(text, wide: frame.width > 500, theme: FigletTheme().withAnimation([]))
         }
         .offset(x: 3)
         .background(rounded)

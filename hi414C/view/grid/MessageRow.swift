@@ -26,6 +26,10 @@ struct MessageRow<Content: View>: View {
         self.init(of: item.count, wide: wide, content: content)
     }
     
+    init(of item: Substring, wide: Bool = false, @ViewBuilder content: @escaping () -> Content) {
+        self.init(of: item.count, wide: wide, content: content)
+    }
+    
     var body: some View {
         Row(size: wide ? 10 : 5, contentLength: length, content: content)
     }

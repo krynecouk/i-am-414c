@@ -54,9 +54,12 @@ struct TerminalGrid: View {
                         let theme = !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([])
                         TerminalMessageRow(text, wide: wide, theme: theme)
                             .onAppear {
-                                uiVM.current = .message
-                                self.printed = []
-                                self.solved = []
+                                if uiVM.current != .message {
+                                    self.grid = wide ? .landslide_message : .portrait_message
+                                    uiVM.current = .message
+                                    self.printed = []
+                                    self.solved = []
+                                }
                             }
                     }
                 }
@@ -75,6 +78,7 @@ struct TerminalGrid: View {
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
                             .onAppear {
                                 if uiVM.current != .test {
+                                    self.grid = .adaptive
                                     uiVM.current = .test
                                 }
                                 if !printedMsg.isEmpty {
@@ -146,11 +150,13 @@ struct TerminalGrid: View {
 }
 
 enum GridType {
-    case adaptive, portrait_detail, landslide_detail
+    case adaptive, portrait_detail, landslide_detail, portrait_message, landslide_message
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
     private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
     private static let LANDSLIDE_DETAIL = (1...8).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
     
     func rawValue() -> [GridItem] {
         switch self {
@@ -160,6 +166,10 @@ enum GridType {
             return GridType.PORTRAIT_DETAIL
         case .landslide_detail:
             return GridType.LANDSLIDE_DETAIL
+        case .portrait_message:
+            return GridType.PORTRAIT_MESSAGE
+        case .landslide_message:
+            return GridType.LANDSLIDE_MESSAGE
         }
     }
 }
