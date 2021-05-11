@@ -86,4 +86,15 @@ class Graphs {
                 }
             }
         }
+    
+    static let WHITMAN =
+        R("O ME! O LIFE!") {
+            AL("") {
+                R("Of the endless trains of the faithless,") {
+                    AL("") {
+                        R("of cities fill’d with the foolish")
+                    }
+                }
+            }
+        }
 }
