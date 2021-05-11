@@ -77,13 +77,23 @@ struct TerminalMessages: View {
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
-        let contentW: CGFloat = CGFloat(content.count * 80)
+        let contentCount = findLongestWord(from: content).count
+        print(contentCount)
+        let contentW: CGFloat = CGFloat(contentCount * 80)
         let maxW: CGFloat = frame.width * 0.75
         return contentW > maxW ? maxW : contentW
     }
     
     func rand(from answers: Answers) -> Answer {
         answers.randomElement() ?? "??"
+    }
+    
+    func findLongestWord(from sentence: String) -> String {
+        let words = sentence.components(separatedBy: " ")
+        if let longest = words.max(by: { $1.count > $0.count }) {
+            return longest
+        }
+        return words[0]
     }
 }
 
