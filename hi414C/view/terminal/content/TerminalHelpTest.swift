@@ -27,6 +27,7 @@ struct TerminalHelpTest: View {
             .onAppear {
                 if helpVM.originalEq.id != test.id {
                     helpVM.setOriginalEq(id: test.id, equation: test.equation)
+                    helpVM.radix(of: testVM.radix)
                     helpVM.removeUpdatedEq()
                 }
             }
@@ -34,7 +35,6 @@ struct TerminalHelpTest: View {
     
     func getTestData(from test: Test) -> (id: UUID, equation: Equation, radix: EquationRadix) {
         if helpVM.originalEq.id != test.id || helpVM.updatedEq == nil {
-            helpVM.radix(of: testVM.radix)
             return (test.id, test.equation, testVM.radix)
         } else {
             return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation, helpVM.radix)

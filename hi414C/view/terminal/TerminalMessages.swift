@@ -8,27 +8,23 @@
 import SwiftUI
 
 typealias Answer = String
+typealias Answers = Set<Answer>
 
 struct TerminalMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
-    @EnvironmentObject var historyVM: HistoryViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var asciiVM: ASCIIViewModel
-
     @State var answer: Answer = ""
-    @State var answers: Set<Answer> = []
     
     private static let grid = [GridItem(.adaptive(minimum: 45, maximum: .infinity))]
     
-    let message: Message
+    let messages: Messages
     
     var body: some View {
         GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if helpVM.isHistory {
-                        ForEach(historyVM.history) { message in
+                        ForEach(messages.history) { message in
                             if message.author == ._414C {
                                 Message414C(message.text, frame: metrics.size)
                             } else {
@@ -36,13 +32,10 @@ struct TerminalMessages: View {
                             }
                         }
                     }
-                    Message414C(message.text, frame: metrics.size)
-                    MessageAl(next(from: self.answers), frame: metrics.size)
+                    Message414C(messages.current.text, frame: metrics.size)
+                    MessageAl(rand(from: messages.answers), frame: metrics.size)
                         .onReceive(helpVM.$answers) { _ in
-                            self.answer = next(from: self.answers)
-                        }
-                        .onAppear {
-                            self.answers = getAnswers(from: graphVM.node, ascii: asciiVM.symbols)
+                            self.answer = rand(from: messages.answers)
                         }
                         .padding(.bottom, 250)
                 }
@@ -86,54 +79,13 @@ struct TerminalMessages: View {
         return contentW > maxW ? maxW : contentW
     }
     
-    func next(from answers: Set<Answer>) -> Answer {
-        if answers.isEmpty {
-            return ""
-        }
-        else if answers.count == 1 {
-            return answers.first!
-        }
-        else {
-            let random = answers.randomElement()!
-            if self.answer == random {
-                return next(from: answers)
-            } else {
-                return random
-            }
-        }
+    func rand(from answers: Answers) -> Answer {
+        answers.randomElement() ?? "??"
     }
-    
-    // TODO horrible
-    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
-        var paths: Set<String> = []
-        for edge in node.edges {
-            paths.insert(edge.id)
-            if let asciiEdge = edge as? ASCIITestEdge {
-                paths.formUnion(Set(asciiEdge.variants))
-            }
-        }
-        
-        var i = 0
-        for edge in graphVM.graph.edges {
-            if i < 5 {
-                paths.insert(edge.id)
-                if let asciiEdge = edge as? ASCIITestEdge {
-                    paths.formUnion(Set(asciiEdge.variants))
-                }
-            } else {
-                break
-            }
-            i += 1
-        }
-        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
-    }
-    
-    private func contains(all symbols: [ASCIISymbol], in basket: [ASCIISymbol]) -> Bool {
-        for symbol in symbols {
-            if !basket.contains(symbol) {
-                return false
-            }
-        }
-        return true
-    }
+}
+
+struct Messages {
+    var history: [Message]
+    var current: Message
+    var answers: Answers
 }

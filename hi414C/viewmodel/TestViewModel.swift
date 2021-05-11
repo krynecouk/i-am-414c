@@ -8,13 +8,13 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    static private(set) var test: Test? = .none
+    private(set) var test: Test? = .none
     private(set) var level: Int = 0
     
     @Published private(set) var result: TestResult = .right(.NUL)
     @Published private(set) var radix: EquationRadix = .bin
     
-    static func set(test: Test?) {
+    func set(test: Test?) {
         if let test = self.test {
             print("current test: ", test.equation.toString())
         }
@@ -26,7 +26,7 @@ class TestViewModel: ObservableObject {
     }
     
     func solve(with value: String) -> TestResult {
-        if let test = TestViewModel.test {
+        if let test = self.test {
             self.result = test.equation.result == UInt8(value) ? .right(test.symbol) : .wrong("wrong result \(value)")
         } else {
             self.result = .wrong("No test was provided")

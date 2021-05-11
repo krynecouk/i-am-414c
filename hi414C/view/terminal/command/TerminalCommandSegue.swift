@@ -34,11 +34,11 @@ struct TerminalCommandSegue: View {
                     }
                     return
                 }
-                if (TestViewModel.test != nil) {
+                if (testVM.test != nil) {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                        asciiVM.add(symbol: TestViewModel.test!.symbol)
+                        asciiVM.add(symbol: testVM.test!.symbol)
                     default:
                         print("not correct")
                     }

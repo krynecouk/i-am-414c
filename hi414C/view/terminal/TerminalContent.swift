@@ -11,14 +11,14 @@ struct TerminalContent: View {
     @EnvironmentObject var uiVM: UIViewModel
     
     var items: [TerminalItem]
-    var message: Message?
+    var messages: Messages?
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topLeading) {
                 TerminalGrid(items: items)
                 if uiVM.isHelp && uiVM.current == .message {
-                    TerminalMessages(message: message!)
+                    TerminalMessages(messages: messages!)
                 }
             }
             
