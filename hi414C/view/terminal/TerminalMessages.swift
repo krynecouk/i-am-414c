@@ -51,8 +51,8 @@ struct TerminalMessages: View {
             TerminalMessageRow(text, wide: frame.width > 500, theme: FigletTheme().withAnimation([]))
         }
         .offset(x: 3)
-        .background(rounded)
         .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
+        .background(rounded)
         .padding(.leading, 10)
         .animation(.spring().speed(1.3))
     }
@@ -79,7 +79,7 @@ struct TerminalMessages: View {
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
         let contentCount = findLongestWord(from: content).count
         print(contentCount)
-        let contentW: CGFloat = CGFloat(contentCount * 80)
+        let contentW: CGFloat = CGFloat(contentCount * 90)
         let maxW: CGFloat = frame.width * 0.75
         return contentW > maxW ? maxW : contentW
     }
@@ -88,11 +88,14 @@ struct TerminalMessages: View {
         answers.randomElement() ?? "??"
     }
     
+    // TODO test for empty sentence
     func findLongestWord(from sentence: String) -> String {
         let words = sentence.components(separatedBy: " ")
         if let longest = words.max(by: { $1.count > $0.count }) {
+            print(longest)
             return longest
         }
+        print(words[0])
         return words[0]
     }
 }
