@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 10.03.2021.
 //
 
-enum ASCIISymbol: String, Hashable {
+enum ASCIISymbol: String, Hashable, Decodable, Encodable {
     case NUL
     case SOH
     case STX
@@ -151,7 +151,7 @@ extension ASCIISymbol {
     }
 }
 
-extension Array where Element == ASCIISymbol {
+extension Set where Element == ASCIISymbol {
     func contains(all symbols: [ASCIISymbol]) -> Bool {
         for symbol in symbols {
             if !self.contains(symbol) {

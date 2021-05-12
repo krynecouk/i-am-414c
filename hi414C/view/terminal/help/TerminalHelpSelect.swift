@@ -13,6 +13,8 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var testVM: TestViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 90, maximum: .infinity))]
     
@@ -115,9 +117,20 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .settings {
-                    Button("easy")
-                    Button("medium")
-                    Button("hard")
+                    Button("Reset") {
+                        asciiVM.reset()
+                    }
+                    /*
+                    Button("story") {
+                        asciiVM.change(to: .story)
+                        graphVM.setGraph(root: Graphs.HI)
+
+                    }
+                    Button("practice") {
+                        asciiVM.change(to: .practice)
+                        graphVM.setGraph(root: Graphs.WHITMAN)
+                    }
+                    */
                 }
                 
                 if segueVM.opened == .themes {

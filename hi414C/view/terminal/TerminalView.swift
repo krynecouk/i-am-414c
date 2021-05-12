@@ -27,7 +27,7 @@ struct TerminalView: View {
         .helpEdgeDrag()
     }
     
-    private func getContent(from types: [TerminalContentType], ascii: [ASCIISymbol]) -> ([TerminalItem], Messages?) {
+    private func getContent(from types: [TerminalContentType], ascii: Set<ASCIISymbol>) -> ([TerminalItem], Messages?) {
         print("Calculating Test Content Items")
 
         var items: [TerminalItem] = []

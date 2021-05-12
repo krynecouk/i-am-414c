@@ -9,11 +9,10 @@ import SwiftUI
 
 class GraphViewModel: ObservableObject {
     @Published private(set) var result: GraphTraverseResult = .ok
-    @Published private(set) var root: Node = Graphs.WHITMAN
+    @Published private(set) var root: Node = Graphs.HI
     
-    private var current: Node = Graphs.WHITMAN
-    
-    let toolkit: GraphToolkit
+    private var current: Node = Graphs.HI
+    private let toolkit: GraphToolkit
 
     init(toolkit: GraphToolkit) {
         self.toolkit = toolkit
@@ -45,13 +44,14 @@ class GraphViewModel: ObservableObject {
     func setGraph(root: Node) {
         self.root = root
         self.current = root
+        self.start()
     }
     
-    func start() {
+    private func start() {
         self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
-    func getAnswers(ascii: [ASCIISymbol]) -> Set<String> {
+    func getAnswers(ascii: Set<ASCIISymbol>) -> Set<String> {
         var paths: Set<String> = []
         for edge in current.edges {
             paths.insert(edge.id)
@@ -59,7 +59,7 @@ class GraphViewModel: ObservableObject {
                 paths.formUnion(Set(asciiEdge.variants))
             }
         }
-        return paths.filter { ascii.contains(all: $0.map { ASCIISymbol.from($0) }) }
+        return paths.filter { path in ascii.contains(all: path.map { ASCIISymbol.from($0) }) }
     }
 }
 
