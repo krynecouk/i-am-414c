@@ -5,12 +5,12 @@
 //  Created by Darius Kryszczuk on 12.03.2021.
 //
 
+typealias ROOT = ASCIITestNode
+typealias R = ASCIITestNode
+typealias AL = ASCIITestEdge
+typealias UPGRADE = UpgradeASCIITestNode
+
 class Graphs {
-    typealias ROOT = ASCIITestNode
-    typealias R = ASCIITestNode
-    typealias AL = ASCIITestEdge
-    typealias UPGRADE = UpgradeASCIITestNode
-    
     private init() {}
     
     static let HI =
@@ -86,17 +86,6 @@ class Graphs {
                 }
                 AL("N") {
                     R("OK")
-                }
-            }
-        }
-    
-    static let WHITMAN =
-        R("O ME! O LIFE!") {
-            AL("") {
-                R("OF THE ENDLESS TRAINS OF THE FAITHLESS,") {
-                    AL("") {
-                        R("OF CITIES FILL’D WITH THE FOOLISH")
-                    }
                 }
             }
         }
