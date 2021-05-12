@@ -118,6 +118,7 @@ struct TerminalHelpSelect: View {
                 
                 if segueVM.opened == .settings {
                     Button("Reset") {
+                        graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
                     }
                     /*

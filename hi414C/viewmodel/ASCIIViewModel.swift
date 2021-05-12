@@ -9,9 +9,7 @@ import SwiftUI
 
 class ASCIIViewModel: ObservableObject {
     @Published private(set) var symbols: Set<ASCIISymbol> // TODO persistently store
-    
-    private let key = "ASCIISymbols"
-    
+        
     /*
      private var story: [ASCIISymbol] = defaultSymbols
      private var practice: [ASCIISymbol] = defaultSymbols

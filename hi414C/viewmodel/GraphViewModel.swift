@@ -63,6 +63,10 @@ class GraphViewModel: ObservableObject {
     }
 }
 
+enum GraphType {
+    case HI, HI2, WHITMAN
+}
+
 enum GraphTraverseResult {
     case ok
     case error(String)
