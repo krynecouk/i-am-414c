@@ -22,27 +22,13 @@ class ASCIIViewModel: ObservableObject {
     ]
     
     init() {
-        if let stored = UserDefaults.standard.data(forKey: key) {
-            print("FOUND stored: ", stored)
-            if let decoded = try? JSONDecoder().decode(Set<ASCIISymbol>.self, from: stored) {
-                self.symbols = decoded
-                return
-            }
-        }
-        print("Stored not found")
-        self.symbols = ASCIIViewModel.defaultSymbols
-    }
-    
-    func save() {
-        if let encoded = try? JSONEncoder().encode(symbols) {
-            UserDefaults.standard.set(encoded, forKey: key)
-        }
+        self.symbols = ASCIIDao.find() ?? ASCIIViewModel.defaultSymbols
     }
     
     func add(symbol: ASCIISymbol) {
         print("adding \(symbol)")
         self.symbols.insert(symbol)
-        save()
+        ASCIIDao.store(symbols)
     }
     
     /*
@@ -61,7 +47,7 @@ class ASCIIViewModel: ObservableObject {
     
     func reset() {
         self.symbols = ASCIIViewModel.defaultSymbols
-        save()
+        ASCIIDao.store([])
     }
 }
 

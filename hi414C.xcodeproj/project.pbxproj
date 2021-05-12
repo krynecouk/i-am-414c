@@ -139,6 +139,8 @@
 		26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */; };
 		26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
+		26E090D1264C0060002E404D /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D0264C0060002E404D /* Dao.swift */; };
+		26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D2264C01D0002E404D /* ASCIIDao.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -290,6 +292,8 @@
 		26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtShaker.swift; sourceTree = "<group>"; };
 		26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIIArtShakerTests.swift; path = hi414CTests/model/ascii/art/ASCIIArtShakerTests.swift; sourceTree = SOURCE_ROOT; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		26E090D0264C0060002E404D /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
+		26E090D2264C01D0002E404D /* ASCIIDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIDao.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -542,6 +546,7 @@
 		267463DC25DED19600624D7C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				26E090CF264C0025002E404D /* dao */,
 				269764D12624839900775D71 /* les */,
 				26040D8125F15745005BF921 /* ascii */,
 				2641EF5125E41D1A0005ABF7 /* font */,
@@ -887,6 +892,15 @@
 			path = art;
 			sourceTree = "<group>";
 		};
+		26E090CF264C0025002E404D /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				26E090D0264C0060002E404D /* Dao.swift */,
+				26E090D2264C01D0002E404D /* ASCIIDao.swift */,
+			);
+			path = dao;
+			sourceTree = "<group>";
+		};
 		26F7A6BF25FA4FCE00F04156 /* hi414CTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,10 +1164,12 @@
 				264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */,
 				2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */,
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
+				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
 				266CA416264155F9001A07E0 /* TerminalTestThemed.swift in Sources */,
 				2697650126249D0900775D71 /* UInt8.swift in Sources */,
+				26E090D1264C0060002E404D /* Dao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
