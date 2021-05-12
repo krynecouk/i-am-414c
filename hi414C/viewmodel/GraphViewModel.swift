@@ -9,8 +9,8 @@ import SwiftUI
 
 class GraphViewModel: ObservableObject {
     @Published private(set) var result: GraphTraverseResult = .ok
+    @Published private(set) var root: Node = Graphs.WHITMAN
     
-    private var root: Node = Graphs.WHITMAN
     private var current: Node = Graphs.WHITMAN
     
     let toolkit: GraphToolkit
