@@ -8,10 +8,10 @@
 import SwiftUI
 
 class GraphViewModel: ObservableObject {
-    @Published private(set) var node: Node = Graphs.WHITMAN
     @Published private(set) var result: GraphTraverseResult = .ok
     
-    private(set) var graph: Node = Graphs.WHITMAN
+    private var root: Node = Graphs.WHITMAN
+    private var current: Node = Graphs.WHITMAN
     
     let toolkit: GraphToolkit
 
@@ -22,11 +22,11 @@ class GraphViewModel: ObservableObject {
     }
     
     func traverse(ctx: GraphContext) {
-        let targetNode = traverse(self.node.edges, ctx: ctx) ?? traverse(graph.edges, ctx: ctx)
+        let targetNode = traverse(self.current.edges, ctx: ctx) ?? traverse(root.edges, ctx: ctx)
         if let node = targetNode {
-            self.node.onExit(ctx: ctx, toolkit: toolkit)
-            self.node = node
-            self.node.onEnter(ctx: ctx, toolkit: toolkit)
+            self.current.onExit(ctx: ctx, toolkit: toolkit)
+            self.current = node
+            self.current.onEnter(ctx: ctx, toolkit: toolkit)
             self.result = .ok
         } else {
             self.result = .error("Node \(ctx.input) was not found")
@@ -42,13 +42,24 @@ class GraphViewModel: ObservableObject {
         return .none
     }
 
-    func setGraph(node: Node) {
-        self.graph = node
-        self.node = node
+    func setGraph(root: Node) {
+        self.root = root
+        self.current = root
     }
     
     func start() {
-        self.node.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
+        self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
+    }
+    
+    func getAnswers(ascii: [ASCIISymbol]) -> Set<String> {
+        var paths: Set<String> = []
+        for edge in current.edges {
+            paths.insert(edge.id)
+            if let asciiEdge = edge as? ASCIITestEdge {
+                paths.formUnion(Set(asciiEdge.variants))
+            }
+        }
+        return paths.filter { ascii.contains(all: $0.map { ASCIISymbol.from($0) }) }
     }
 }
 

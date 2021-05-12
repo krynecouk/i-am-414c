@@ -34,9 +34,9 @@ struct TerminalView: View {
         for type in types {
             if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
-                if contains(all: symbols, in: ascii) {
+                if ascii.contains(all: symbols) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    let answers = getAnswers(from: graphVM.node, ascii: ascii)
+                    let answers = graphVM.getAnswers(ascii: ascii)
                     let id = UUID()
                     let message = Message(id: id, from: ._414C, text: text)
                     let messages = Messages(history: historyVM.history, current: message, answers: answers)
@@ -70,26 +70,6 @@ struct TerminalView: View {
         }
         return (items, .none)
     }
-    
-    private func getAnswers(from node: Node, ascii: [ASCIISymbol]) -> Set<String> {
-        var paths: Set<String> = []
-        for edge in node.edges {
-            paths.insert(edge.id)
-            if let asciiEdge = edge as? ASCIITestEdge {
-                paths.formUnion(Set(asciiEdge.variants))
-            }
-        }
-        return paths.filter { contains(all: $0.map { ASCIISymbol.from($0) }, in: ascii ) }
-    }
-}
-
-private func contains(all symbols: [ASCIISymbol], in basket: [ASCIISymbol]) -> Bool {
-    for symbol in symbols {
-        if !basket.contains(symbol) {
-            return false
-        }
-    }
-    return true
 }
 
 struct TerminalView_Previews: PreviewProvider {

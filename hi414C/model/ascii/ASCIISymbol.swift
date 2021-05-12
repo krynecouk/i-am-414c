@@ -150,3 +150,14 @@ extension ASCIISymbol {
         }
     }
 }
+
+extension Array where Element == ASCIISymbol {
+    func contains(all symbols: [ASCIISymbol]) -> Bool {
+        for symbol in symbols {
+            if !self.contains(symbol) {
+                return false
+            }
+        }
+        return true
+    }
+}

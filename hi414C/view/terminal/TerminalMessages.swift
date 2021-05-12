@@ -77,7 +77,7 @@ struct TerminalMessages: View {
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
-        let contentCount = findLongestWord(from: content).count
+        let contentCount = content.isEmpty ? 0 : findLongestWord(from: content).count
         print(contentCount)
         let contentW: CGFloat = CGFloat(contentCount * 90)
         let maxW: CGFloat = frame.width * 0.75
@@ -88,7 +88,6 @@ struct TerminalMessages: View {
         answers.randomElement() ?? "??"
     }
     
-    // TODO test for empty sentence
     func findLongestWord(from sentence: String) -> String {
         let words = sentence.components(separatedBy: " ")
         if let longest = words.max(by: { $1.count > $0.count }) {

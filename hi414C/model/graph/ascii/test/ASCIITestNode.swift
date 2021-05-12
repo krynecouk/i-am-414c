@@ -45,7 +45,7 @@ class UpgradeASCIITestNode: ASCIITestNode {
         toolkit.testVM.level(reset: true)
         toolkit.testVM.radix(of: .hex)
         toolkit.asciiVM.reset()
-        toolkit.graphVM?.setGraph(node: Graphs.HI2)
+        toolkit.graphVM?.setGraph(root: Graphs.HI2)
         toolkit.graphVM?.start()
     }
 }
