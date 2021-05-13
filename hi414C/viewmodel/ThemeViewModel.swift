@@ -8,20 +8,20 @@
 import SwiftUI
 
 class ThemeViewModel: ObservableObject {
-    @Published var theme: Theme
+    @Published var theme: Themable
     
     var keyboard: KeyboardTheme { theme.keyboard }
     var terminal: TerminalTheme { theme.terminal }
     
-    init(theme: Theme = Theme()) {
-        self.theme = Theme()
+    init(theme: Themable = PrimaryTheme()) {
+        self.theme = PrimaryTheme()
     }
     
     func font(_ font: FontTheme) {
-        self.theme = Theme(font: font)
+        self.theme = PrimaryTheme(font: font)
     }
     
     func reset() {
-        self.theme = Theme()
+        self.theme = PrimaryTheme()
     }
 }

@@ -12,16 +12,18 @@ struct FontTheme {
     var al: FontProps = FontProps(.proggyTiny, 60)
 }
 
+struct ColorTheme {
+    var primary: Color = Color.primary
+    var secondary: Color = Color("BlackBck")
+    var tertiary: Color = Color.gray
+}
+
 class Theme: Themable {
     private(set) var font: FontTheme
     var terminal: TerminalTheme
     var keyboard: KeyboardTheme
     
-    // FontTheme {test, symbol, message, art, }
-    // ColorTheme
-    // AnimationTheme
-    
-    init(font: FontTheme = FontTheme()) {
+    init(font: FontTheme) {
         print("PRIMARY THEME")
         self.font = font
         self.terminal = Theme.terminal(font: font)
