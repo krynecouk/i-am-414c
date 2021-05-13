@@ -31,7 +31,7 @@ struct TerminalTest: View {
                     LiteFigletView(String(chars), theme: theme.num)
                 }
             }
-            if case let .sym(chars) = item.type {
+            if case let .sign(chars) = item.type {
                 DetailRow(of: chars, wide: wide) {
                     FigletView(String(chars), theme: theme.sym)
                 }
@@ -52,7 +52,7 @@ struct TerminalTest: View {
                 if chars.endIndex > (i + 1) && isEquationSign(chars[i + 1]) {
                     continue
                 } else {
-                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sym(syms)))
+                    items.append(TerminalTestItem(id: "\(id)-\(i)", of: .sign(syms)))
                     syms = []
                 }
             } else {
@@ -94,5 +94,5 @@ protocol IdentifiableString {
 
 enum TerminalTestType {
     case num([Character])
-    case sym([Character])
+    case sign([Character])
 }

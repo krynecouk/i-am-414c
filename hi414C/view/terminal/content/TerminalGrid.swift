@@ -89,7 +89,6 @@ struct TerminalGrid: View {
                 }
             }
             TerminalPadding()
-                .border(Color.blue)
         }
         .background(uiVM.isHelp ? HelpBackground() : nil)
         .animation(themeVM.terminal.grid.test.animation.symbol, value: self.items)
