@@ -65,8 +65,6 @@ struct TerminalTheme {
         var background: Color
         var button: Button
         var select: Select
-        var prompt: CommandLine.Prompt
-        var cursor: CommandLine.Cursor
         
         struct Button {
             var view: ViewTheme

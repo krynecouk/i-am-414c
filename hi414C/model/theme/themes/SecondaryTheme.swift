@@ -12,9 +12,9 @@ class SecondaryTheme: Theme {
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
-            primary: Color.blue,
-            secondary: Color.green,
-            tertiary: Color.red,
+            primary: (Color.blue, Color.white),
+            secondary: (Color.white, Color.black),
+            tertiary: (Color.gray, Color.black),
             background: Color.white
         )) {
         super.init(font: font, color: color)

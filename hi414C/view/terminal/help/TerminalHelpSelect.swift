@@ -143,7 +143,6 @@ struct TerminalHelpSelect: View {
                     Button("blue") {
                         themeVM.change(to: .secondary)
                     }
-                    Button("green")
                 }
             }
             .id(metrics.frame(in: .global).size.width)
@@ -152,12 +151,12 @@ struct TerminalHelpSelect: View {
                 let frameW = frame.size.width
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setSettingsSize((.infinity, 70))
-                    segueVM.setThemesSize((.infinity, 70))
+                    segueVM.setSettingsSize((.infinity, 140))
+                    segueVM.setThemesSize((.infinity, 100))
                 } else {
                     segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setSettingsSize((.infinity, 70))
-                    segueVM.setThemesSize((.infinity, 70))
+                    segueVM.setSettingsSize((.infinity, 140))
+                    segueVM.setThemesSize((.infinity, 100))
                 }
             }
             .onReceive(segueVM.$isOpen) { isOpen in
