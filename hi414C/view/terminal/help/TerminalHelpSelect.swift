@@ -121,17 +121,6 @@ struct TerminalHelpSelect: View {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
                     }
-                    /*
-                    Button("story") {
-                        asciiVM.change(to: .story)
-                        graphVM.setGraph(root: Graphs.HI)
-
-                    }
-                    Button("practice") {
-                        asciiVM.change(to: .practice)
-                        graphVM.setGraph(root: Graphs.WHITMAN)
-                    }
-                    */
                 }
                 
                 if segueVM.opened == .themes {
