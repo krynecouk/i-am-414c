@@ -137,8 +137,12 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .themes {
-                    Button("orange")
-                    Button("blue")
+                    Button("orange") {
+                        themeVM.change(to: .primary)
+                    }
+                    Button("blue") {
+                        themeVM.change(to: .secondary)
+                    }
                     Button("green")
                 }
             }

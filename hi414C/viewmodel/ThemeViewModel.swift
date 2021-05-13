@@ -8,8 +8,9 @@
 import SwiftUI
 
 class ThemeViewModel: ObservableObject {
-    @Published var theme: Themable
+    @Published private(set) var theme: Themable
     
+    var font: FontTheme { theme.font }
     var keyboard: KeyboardTheme { theme.keyboard }
     var terminal: TerminalTheme { theme.terminal }
     
@@ -23,5 +24,22 @@ class ThemeViewModel: ObservableObject {
     
     func reset() {
         self.theme = PrimaryTheme()
+    }
+    
+    func change(to type: ThemeType) {
+        self.theme = type.rawValue()
+    }
+}
+
+enum ThemeType {
+    case primary, secondary
+    
+    func rawValue() -> Themable {
+        switch self {
+        case .primary:
+            return PrimaryTheme()
+        case .secondary:
+            return SecondaryTheme()
+        }
     }
 }

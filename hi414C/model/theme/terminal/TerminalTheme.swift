@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct TerminalTheme {
+    var cathode: Cathode
     var grid: Grid
     var help: Help
     var cli: CommandLine
     var hli: HelpLine
+    
+    struct Cathode {
+        var blurIn: Color
+        var background: Color
+        var wave: Color
+    }
     
     struct Grid {
         var art: ArtTheme
@@ -25,6 +32,7 @@ struct TerminalTheme {
         var test: TestTheme
         var message: MessageTheme
         var history: History
+        var hint: ViewTheme
         
         struct History {
             var robot: FigletTheme

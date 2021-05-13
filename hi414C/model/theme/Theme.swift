@@ -13,30 +13,37 @@ struct FontTheme {
 }
 
 struct ColorTheme {
-    var primary: Color = Color.primary
-    var secondary: Color = Color("BlackBck")
-    var tertiary: Color = Color.gray
+    var primary: Color
+    var secondary: Color
+    var tertiary: Color
+    var background: Color
 }
 
 class Theme: Themable {
     private(set) var font: FontTheme
+    private(set) var color: ColorTheme
     var terminal: TerminalTheme
     var keyboard: KeyboardTheme
     
-    init(font: FontTheme) {
-        print("PRIMARY THEME")
+    init(font: FontTheme, color: ColorTheme) {
         self.font = font
-        self.terminal = Theme.terminal(font: font)
-        self.keyboard = Theme.keyboard(font: font)
+        self.color = color
+        self.terminal = Theme.terminal(font: font, color: color)
+        self.keyboard = Theme.keyboard(font: font, color: color)
     }
     
-    static func terminal(font: FontTheme) -> TerminalTheme {
+    static func terminal(font: FontTheme, color: ColorTheme) -> TerminalTheme {
         TerminalTheme(
+            cathode: TerminalTheme.Cathode(
+                blurIn: color.primary.opacity(0.8),
+                background: color.background,
+                wave: color.primary
+            ),
             grid: TerminalTheme.Grid(
                 art: ArtTheme(
                     view: ViewTheme(
                         font: font.robot,
-                        color: .primary
+                        color: color.primary
                     ),
                     animations: [.print(speed: 0.3, animation: .linear)]
                 ),
@@ -44,25 +51,24 @@ class Theme: Themable {
                     typeface: .ansi(.regular),
                     view: ViewTheme(
                         font: font.robot,
-                        color: Color.primary
+                        color: color.primary
                     ),
-                    animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: .primary)]
+                    animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary)]
                 ),
                 test: TestTheme(
-                    
                     active: TestTheme.Active(
                         figlet: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: .primary
+                                color: color.primary
                             )
                         ),
                         sign: FigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: .gray
+                                color: color.tertiary
                             ),
                             animations: []
                         )
@@ -72,14 +78,14 @@ class Theme: Themable {
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: Color.primary.opacity(0.2)
+                                color: color.primary.opacity(0.2)
                             )
                         ),
                         sign: FigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: Color.gray.opacity(0.2)
+                                color: color.tertiary.opacity(0.2)
                             ),
                             animations: []
                         )
@@ -94,28 +100,28 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
-                            color: .primary
+                            color: color.primary
                         ),
-                        animations: [.print(), .bloom(speed: 1, color: .primary)]
+                        animations: [.print(), .bloom(speed: 1, color: color.primary)]
                     )
                 )
             ),
             help: TerminalTheme.Help(
-                background: Color.primary.opacity(0.7),
+                background: color.primary.opacity(0.7),
                 test: TestTheme(
                     active: TestTheme.Active(
                         figlet: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: .black
+                                color: color.secondary
                             )
                         ),
                         sign: FigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: .gray
+                                color: color.tertiary
                             ),
                             animations: []
                         )
@@ -125,14 +131,14 @@ class Theme: Themable {
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: Color.primary.opacity(0.2)
+                                color: color.primary.opacity(0.2)
                             )
                         ),
                         sign: FigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: Color.gray.opacity(0.2)
+                                color: color.tertiary.opacity(0.2)
                             ),
                             animations: []
                         )
@@ -147,7 +153,7 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
-                            color: .black
+                            color: color.secondary
                         ),
                         animations: []
                     )
@@ -157,54 +163,59 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
-                            color: .primary
+                            color: color.primary,
+                            background: color.secondary
                         ),
                         animations: []
                     ),
                     al: ViewTheme(
                         font: font.al,
-                        color: .primary
+                        color: color.primary,
+                        background: color.secondary
                     )
+                ),
+                hint: ViewTheme(
+                    background: color.secondary
                 )
             ),
             cli: TerminalTheme.CommandLine(
                 view: ViewTheme(
-                    background: Color("GoldBck") // TODO
+                    background: color.primary
                 ),
                 prompt: TerminalTheme.CommandLine.Prompt(
                     figlet: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: FontProps(.terminus, 6),
-                            color: .primary
+                            color: color.secondary
                         ),
                         animations: []
                     )
                 ),
                 cursor: TerminalTheme.CommandLine.Cursor(
                     view: ViewTheme(
-                        color: .primary,
-                        background: .primary
+                        color: color.secondary,
+                        background: color.secondary
                     ),
                     blink: (1, .linear)
                 ),
                 text: TerminalTheme.CommandLine.Text(
                     view: ViewTheme(
                         font: FontProps(.proggyTiny, 55),
-                        color: .primary
+                        color: color.secondary
                     ),
-                    bloom: (1, .primary)
+                    bloom: (1, color.secondary)
                 )
             ),
             hli: TerminalTheme.HelpLine(
-                background: Color("BlackBck"),
+                background: color.secondary,
                 button: TerminalTheme.HelpLine.Button(
                     view: ViewTheme(
                         font: FontProps(.proggyTiny, 32),
                         color: .white
                     ),
                     background: TerminalTheme.HelpLine.Background(
-                        active: Color("GoldBck"),
+                        active: color.tertiary,
                         passive: .clear
                     )
                 ),
@@ -212,11 +223,11 @@ class Theme: Themable {
                     button: ViewTheme(
                         font: FontProps(.proggyTiny, 32),
                         color: .white,
-                        background: .primary
+                        background: color.primary
                     ),
                     background: TerminalTheme.HelpLine.Background(
-                        active: Color("GoldBck"),
-                        passive: Color("BlackBck")
+                        active: color.tertiary,
+                        passive: color.secondary
                     )
                 ),
                 prompt: TerminalTheme.CommandLine.Prompt(
@@ -224,15 +235,15 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: FontProps(.terminus, 9),
-                            color: .primary
+                            color: color.primary
                         ),
                         animations: []
                     )
                 ),
                 cursor: TerminalTheme.CommandLine.Cursor(
                     view: ViewTheme(
-                        color: .primary,
-                        background: .primary
+                        color: color.primary,
+                        background: color.primary
                     ),
                     blink: (0.9, .easeIn)
                 )
@@ -240,37 +251,37 @@ class Theme: Themable {
         )
     }
     
-    static func keyboard(font: FontTheme) -> KeyboardTheme {
+    static func keyboard(font: FontTheme, color: ColorTheme) -> KeyboardTheme {
         KeyboardTheme(
             view: ViewTheme(
                 opacity: 1,
-                background: Color("GoldBck") // TODO
+                background: color.primary
             ),
             key: KeyboardTheme.Key(
                 default: ViewTheme(
                     font: FontProps(.proggyTiny, 35),
-                    color: .black,
-                    background: .orange
+                    color: color.secondary,
+                    background: color.tertiary
                 ),
                 special: ViewTheme(
                     font: FontProps(.proggyTiny, 35),
-                    color: .black,
-                    background: .primary
+                    color: .white,
+                    background: color.secondary
                 ),
                 ABC: ViewTheme(
                     font: FontProps(.proggyTiny, 35),
                     color: .white,
-                    background: .gray
+                    background: color.tertiary
                 ),
                 BS: ViewTheme(
                     font: FontProps(.proggyTiny, 35),
                     color: .white,
-                    background: .gray
+                    background: color.tertiary
                 ),
                 CR: ViewTheme(
                     font: FontProps(.proggyTiny, 35),
                     color: .white,
-                    background: .blue
+                    background: color.tertiary
                 )
             )
         )

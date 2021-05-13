@@ -8,7 +8,7 @@
 import SwiftUI
 
 class ASCIIViewModel: ObservableObject {
-    @Published private(set) var symbols: Set<ASCIISymbol> // TODO persistently store
+    @Published private(set) var symbols: Set<ASCIISymbol>
         
     private static let defaultSymbols: Set<ASCIISymbol> = [
         .questionMark
@@ -26,6 +26,6 @@ class ASCIIViewModel: ObservableObject {
     
     func reset() {
         self.symbols = ASCIIViewModel.defaultSymbols
-        ASCIIDao.store([])
+        ASCIIDao.store(self.symbols)
     }
 }

@@ -73,7 +73,7 @@ struct TerminalMessages: View {
     }
     
     var rounded: some View {
-        RoundedRectangle(cornerRadius: 35).fill(Color("BlackBck"))
+        RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {

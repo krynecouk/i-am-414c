@@ -143,6 +143,7 @@
 		26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D2264C01D0002E404D /* ASCIIDao.swift */; };
 		26E090D5264C0EF0002E404D /* LeavesOfGrass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D4264C0EF0002E404D /* LeavesOfGrass.swift */; };
 		26E090D8264D5E6E002E404D /* PrimaryTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D7264D5E6E002E404D /* PrimaryTheme.swift */; };
+		26E090DA264D664C002E404D /* SecondaryTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D9264D664C002E404D /* SecondaryTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -298,6 +299,7 @@
 		26E090D2264C01D0002E404D /* ASCIIDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIDao.swift; sourceTree = "<group>"; };
 		26E090D4264C0EF0002E404D /* LeavesOfGrass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavesOfGrass.swift; sourceTree = "<group>"; };
 		26E090D7264D5E6E002E404D /* PrimaryTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTheme.swift; sourceTree = "<group>"; };
+		26E090D9264D664C002E404D /* SecondaryTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 			isa = PBXGroup;
 			children = (
 				26E090D7264D5E6E002E404D /* PrimaryTheme.swift */,
+				26E090D9264D664C002E404D /* SecondaryTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1165,6 +1168,7 @@
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
 				266CA418264191CD001A07E0 /* MessageRow.swift in Sources */,
 				26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */,
+				26E090DA264D664C002E404D /* SecondaryTheme.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				2678D978260E5D5B00DDB40F /* KeyboardPart.swift in Sources */,
 				266CA4202642F4E9001A07E0 /* TerminalHint.swift in Sources */,

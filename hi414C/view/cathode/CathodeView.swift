@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CathodeView<Content: View>: View {
+    @EnvironmentObject var themeVM: ThemeViewModel
+
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
@@ -16,11 +18,11 @@ struct CathodeView<Content: View>: View {
     
     var body: some View {
         ZStack {
-            BlurIn()
+            BlurIn(of: themeVM.terminal.cathode.blurIn)
                 .opacity(0.9)
-            Curtain()
+            Curtain(of: themeVM.terminal.cathode.background)
                 .opacity(0.8)
-            RefreshWave()
+            RefreshWave(of: themeVM.terminal.cathode.wave)
                 .opacity(0.04)
             content
         }
