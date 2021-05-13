@@ -12,7 +12,7 @@ struct TerminalCommandLine: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
                 TerminalCommandPrompt(theme: themeVM.terminal.cli.prompt)
                 .padding(.trailing, 17)
