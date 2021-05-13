@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ViewTheme {
     var opacity: Double = 1
-    var font: (name: FontName, size: CGFloat) = (.terminus, 13)
+    var font: FontProps = FontProps()
     var color: Color = .primary
     var background: Color?
 }
@@ -23,6 +23,34 @@ struct ViewThemeModifier: ViewModifier {
             .font(Font.custom(theme.font.name.rawValue, size: theme.font.size))
             .foregroundColor(theme.color)
             .background(theme.background)
+    }
+}
+
+struct FontProps {
+    var name: FontName
+    var size: CGFloat
+    
+    init(_ name: FontName = .terminus, _ size: CGFloat = 13) {
+        self.init(name: name, size: size)
+    }
+    
+    init(name: FontName = .terminus, size: CGFloat = 13) {
+        self.name = name
+        self.size = size
+    }
+}
+
+extension Font {
+    static func create() -> Font {
+        Font.of()
+    }
+    
+    static func of(props: FontProps) -> Font {
+        Font.of(name: props.name, size: props.size)
+    }
+    
+    static func of(name: FontName = .terminus, size: CGFloat = 13) -> Font {
+        Font.custom(name.rawValue, size: size)
     }
 }
 

@@ -6,6 +6,6 @@
 //
 
 protocol Themable {
-    static var terminal: TerminalTheme { get }
-    static var keyboard: KeyboardTheme { get }
+    var terminal: TerminalTheme { get }
+    var keyboard: KeyboardTheme { get }
 }

@@ -36,5 +36,5 @@ struct Message: Identifiable {
 }
 
 enum MessageAuthor {
-    case _414C, AL
+    case robot, al
 }

@@ -27,7 +27,7 @@ struct TerminalMessages: View {
                     if helpVM.isHistory {
                         ForEach(messages.history) { message in
                             if !message.text.isEmpty {
-                                if message.author == ._414C {
+                                if message.author == .robot {
                                     Message414C(message.text, frame: metrics.size)
                                 } else {
                                     MessageAl(message.text, frame: metrics.size)
@@ -48,7 +48,7 @@ struct TerminalMessages: View {
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
         Grid(columns: frame.width > 500 ? TerminalMessages.LANDSLIDE_MESSAGE : TerminalMessages.PORTRAIT_MESSAGE, alignment: .center) {
-            TerminalMessageRow(text, wide: frame.width > 500, theme: FigletTheme().withAnimation([]))
+            TerminalMessageRow(text, wide: frame.width > 500, theme: themeVM.terminal.help.history.robot)
         }
         .offset(x: 3)
         .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
@@ -61,7 +61,7 @@ struct TerminalMessages: View {
         HStack(spacing: 10) {
             Spacer()
             Text(text)
-                .withTheme(themeVM.terminal.help.history.AL)
+                .withTheme(themeVM.terminal.help.history.al)
                 .offset(x: 4, y: 5)
                 .padding([.top, .bottom], 8)
                 .padding([.trailing, .leading], 25)

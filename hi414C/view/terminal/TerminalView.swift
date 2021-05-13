@@ -38,7 +38,7 @@ struct TerminalView: View {
                     let text = symbols.map { $0.rawValue }.joined()
                     let answers = graphVM.getAnswers(ascii: ascii)
                     let id = UUID()
-                    let message = Message(id: id, from: ._414C, text: text)
+                    let message = Message(id: id, from: .robot, text: text)
                     let messages = Messages(history: historyVM.history, current: message, answers: answers)
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)

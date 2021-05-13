@@ -25,11 +25,10 @@ struct TerminalTheme {
         var test: TestTheme
         var message: MessageTheme
         var history: History
-        var answer: FigletTheme
         
         struct History {
-            var _414C: FigletTheme
-            var AL: ViewTheme
+            var robot: FigletTheme
+            var al: ViewTheme
         }
     }
     

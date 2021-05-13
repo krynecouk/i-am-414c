@@ -26,7 +26,7 @@
 		264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404112618FAF400CA7EA1 /* KeyboardTheme.swift */; };
 		264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404162618FE2A00CA7EA1 /* TerminalTheme.swift */; };
 		2644041E2619007300CA7EA1 /* Themable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644041D2619007300CA7EA1 /* Themable.swift */; };
-		264404242619014000CA7EA1 /* PrimaryTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404232619014000CA7EA1 /* PrimaryTheme.swift */; };
+		264404242619014000CA7EA1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404232619014000CA7EA1 /* Theme.swift */; };
 		26440444261907B000CA7EA1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440443261907B000CA7EA1 /* ColorTheme.swift */; };
 		264404572619135E00CA7EA1 /* TerminalCommandCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */; };
 		2649527E260267DA0045BC21 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649527D260267DA0045BC21 /* Environment.swift */; };
@@ -178,7 +178,7 @@
 		264404112618FAF400CA7EA1 /* KeyboardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTheme.swift; sourceTree = "<group>"; };
 		264404162618FE2A00CA7EA1 /* TerminalTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTheme.swift; sourceTree = "<group>"; };
 		2644041D2619007300CA7EA1 /* Themable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themable.swift; sourceTree = "<group>"; };
-		264404232619014000CA7EA1 /* PrimaryTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTheme.swift; sourceTree = "<group>"; };
+		264404232619014000CA7EA1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26440443261907B000CA7EA1 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandCursor.swift; sourceTree = "<group>"; };
 		2649527D260267DA0045BC21 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -426,7 +426,7 @@
 				264404102618FAE300CA7EA1 /* keyboard */,
 				264404152618FE1F00CA7EA1 /* terminal */,
 				2644041D2619007300CA7EA1 /* Themable.swift */,
-				264404232619014000CA7EA1 /* PrimaryTheme.swift */,
+				264404232619014000CA7EA1 /* Theme.swift */,
 			);
 			path = theme;
 			sourceTree = "<group>";
@@ -1129,7 +1129,7 @@
 				266CA41E2642F2DE001A07E0 /* TerminalContent.swift in Sources */,
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
 				2620921B2600B2FE0001904B /* FigletView.swift in Sources */,
-				264404242619014000CA7EA1 /* PrimaryTheme.swift in Sources */,
+				264404242619014000CA7EA1 /* Theme.swift in Sources */,
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26500159260F3C6200414E89 /* Keyboards.swift in Sources */,
 				267A0D55260C823E00844927 /* ASCIIArtEdge.swift in Sources */,

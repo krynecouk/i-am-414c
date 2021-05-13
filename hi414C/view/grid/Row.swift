@@ -26,6 +26,7 @@ struct Row<Content: View>: View {
             if mod > 0 {
                 ForEach((0 ..< (size - mod)).map { Item($0) }) { _ in
                     Color.clear
+                        .border(Color.red)
                 }
             }
         }

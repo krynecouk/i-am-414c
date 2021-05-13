@@ -122,7 +122,7 @@ typealias ViewTimer = Publishers.Autoconnect<Timer.TimerPublisher>
 struct ASCIIArtView_Previews: PreviewProvider {
     static var previews: some View {
         ASCIIArtView(ASCIIArt.of(.cat), theme: ArtTheme(
-            view: ViewTheme(font: (.terminus, 25)),
+            view: ViewTheme(font: FontProps(.terminus, 25)),
                         animations: [.print(),.bloom(speed: 0.5)])
         )
     }

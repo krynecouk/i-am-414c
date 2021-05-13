@@ -118,8 +118,21 @@ struct TerminalHelpSelect: View {
                 
                 if segueVM.opened == .settings {
                     Button("Reset") {
+                        themeVM.reset()
+                    }
+                    Button("NewGame") {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
+                    }
+                    Button("Font-1") {
+                        themeVM.font(FontTheme(
+                            robot: FontProps(size: themeVM.theme.font.robot.size - 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size - 5)
+                        ))
+                    }
+                    Button("Font+1") {
+                        themeVM.font(FontTheme(
+                            robot: FontProps(size: themeVM.theme.font.robot.size + 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size + 5)
+                        ))
                     }
                 }
                 
