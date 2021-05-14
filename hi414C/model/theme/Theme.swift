@@ -192,24 +192,24 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: FontProps(.terminus, 6),
-                            color: color.secondary.value
+                            color: color.primary.contrast
                         ),
                         animations: []
                     )
                 ),
                 cursor: TerminalTheme.CommandLine.Cursor(
                     view: ViewTheme(
-                        color: color.secondary.value,
-                        background: color.secondary.value
+                        color: color.primary.contrast,
+                        background: color.primary.contrast
                     ),
                     blink: (1, .linear)
                 ),
                 text: TerminalTheme.CommandLine.Text(
                     view: ViewTheme(
                         font: FontProps(.proggyTiny, 55),
-                        color: color.secondary.value
+                        color: color.primary.contrast
                     ),
-                    bloom: (1, color.secondary.value)
+                    bloom: (1, color.primary.contrast)
                 )
             ),
             hli: TerminalTheme.HelpLine(
