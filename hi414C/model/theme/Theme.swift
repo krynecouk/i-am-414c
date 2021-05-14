@@ -70,7 +70,7 @@ class Theme: Themable {
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: color.tertiary.value
+                                color: color.secondary.contrast.opacity(0.7)
                             ),
                             animations: []
                         )
@@ -87,7 +87,7 @@ class Theme: Themable {
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: color.tertiary.value.opacity(0.2)
+                                color: color.secondary.contrast.opacity(0.7)
                             ),
                             animations: []
                         )
