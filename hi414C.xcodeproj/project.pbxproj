@@ -143,6 +143,7 @@
 		26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D2264C01D0002E404D /* ASCIIDao.swift */; };
 		26E090D5264C0EF0002E404D /* LeavesOfGrass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D4264C0EF0002E404D /* LeavesOfGrass.swift */; };
 		26E090D8264D5E6E002E404D /* OrangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D7264D5E6E002E404D /* OrangeTheme.swift */; };
+		26E090DE264ED610002E404D /* GreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090DD264ED610002E404D /* GreenTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -298,6 +299,7 @@
 		26E090D2264C01D0002E404D /* ASCIIDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIDao.swift; sourceTree = "<group>"; };
 		26E090D4264C0EF0002E404D /* LeavesOfGrass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavesOfGrass.swift; sourceTree = "<group>"; };
 		26E090D7264D5E6E002E404D /* OrangeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeTheme.swift; sourceTree = "<group>"; };
+		26E090DD264ED610002E404D /* GreenTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 			isa = PBXGroup;
 			children = (
 				26E090D7264D5E6E002E404D /* OrangeTheme.swift */,
+				26E090DD264ED610002E404D /* GreenTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
 				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */,
+				26E090DE264ED610002E404D /* GreenTheme.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */,
 				265A00AB25ED49EA00F479FA /* FontName.swift in Sources */,
