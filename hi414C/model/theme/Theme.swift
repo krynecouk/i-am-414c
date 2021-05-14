@@ -123,7 +123,7 @@ class Theme: Themable {
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: color.tertiary.contrast
+                                color: color.tertiary.contrast.opacity(0.7)
                             ),
                             animations: []
                         )
@@ -192,15 +192,15 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: FontProps(.terminus, 6),
-                            color: color.background
+                            color: color.secondary.value
                         ),
                         animations: []
                     )
                 ),
                 cursor: TerminalTheme.CommandLine.Cursor(
                     view: ViewTheme(
-                        color: color.background,
-                        background: color.background
+                        color: color.secondary.value,
+                        background: color.secondary.value
                     ),
                     blink: (1, .linear)
                 ),

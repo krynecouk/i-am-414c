@@ -14,8 +14,8 @@ class PrimaryTheme: Theme {
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
             primary: (Color("PrimaryOrange"), Color("SecondaryOrange")),
-            secondary: (Color("SecondaryOrange"), Color("BackgroundOrange")),
-            tertiary: (Color("TertiaryOrange"), Color("BackgroundOrange")),
+            secondary: (Color("SecondaryOrange"), Color("WhiteOrange")),
+            tertiary: (Color("TertiaryOrange"), Color("WhiteOrange")),
             background: Color.black
         )) {
         super.init(font: font, color: color)
