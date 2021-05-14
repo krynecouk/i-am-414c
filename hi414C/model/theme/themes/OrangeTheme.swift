@@ -2,7 +2,8 @@
 //  OrangeTheme.swift
 //  hi414C
 //
-//  Created by Darius Kryszczuk on 14.05.2021.
+//  Created by Darius Kryszczuk on 13.05.2021.
+//  palette: https://colorhunt.co/palette/192064
 //
 
 import SwiftUI
@@ -12,10 +13,10 @@ class OrangeTheme: Theme {
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
-            primary: (Color("PrimaryOrange"), Color("BlackBck")),
-            secondary: (Color("BlackBck"), Color("BackgroundOrange")),
-            tertiary: (Color("SecondaryOrange"), Color("SecondaryOrange")),
-            background: Color.black
+            primary: (Color("PrimaryOrange"), Color("SecondaryOrange")),
+            secondary: (Color("SecondaryOrange"), Color("WhiteOrange")),
+            tertiary: (Color("TertiaryOrange"), Color("WhiteOrange")),
+            background: .black
         )) {
         super.init(font: font, color: color)
     }

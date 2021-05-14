@@ -14,16 +14,16 @@ class ThemeViewModel: ObservableObject {
     var keyboard: KeyboardTheme { theme.keyboard }
     var terminal: TerminalTheme { theme.terminal }
     
-    init(theme: Themable = PrimaryTheme()) {
-        self.theme = PrimaryTheme()
+    init(theme: Themable = OrangeTheme()) {
+        self.theme = OrangeTheme()
     }
     
     func font(_ font: FontTheme) {
-        self.theme = PrimaryTheme(font: font)
+        self.theme = OrangeTheme(font: font)
     }
     
     func reset() {
-        self.theme = PrimaryTheme()
+        self.theme = OrangeTheme()
     }
     
     func change(to type: ThemeType) {
@@ -32,14 +32,10 @@ class ThemeViewModel: ObservableObject {
 }
 
 enum ThemeType {
-    case primary, secondary, orange
+    case orange
     
     func rawValue() -> Themable {
         switch self {
-        case .primary:
-            return PrimaryTheme()
-        case .secondary:
-            return SecondaryTheme()
         case .orange:
             return OrangeTheme()
         }

@@ -207,9 +207,9 @@ class Theme: Themable {
                 text: TerminalTheme.CommandLine.Text(
                     view: ViewTheme(
                         font: FontProps(.proggyTiny, 55),
-                        color: color.background
+                        color: color.secondary.value
                     ),
-                    bloom: (1, color.background)
+                    bloom: (1, color.secondary.value)
                 )
             ),
             hli: TerminalTheme.HelpLine(
@@ -217,7 +217,7 @@ class Theme: Themable {
                 button: TerminalTheme.HelpLine.Button(
                     view: ViewTheme(
                         font: FontProps(.proggyTiny, 32),
-                        color: color.tertiary.contrast
+                        color: color.secondary.contrast
                     ),
                     background: TerminalTheme.HelpLine.Background(
                         active: color.tertiary.value,
