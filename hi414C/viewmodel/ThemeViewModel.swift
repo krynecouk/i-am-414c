@@ -32,7 +32,7 @@ class ThemeViewModel: ObservableObject {
 }
 
 enum ThemeType {
-    case primary, secondary
+    case primary, secondary, orange
     
     func rawValue() -> Themable {
         switch self {
@@ -40,6 +40,8 @@ enum ThemeType {
             return PrimaryTheme()
         case .secondary:
             return SecondaryTheme()
+        case .orange:
+            return OrangeTheme()
         }
     }
 }

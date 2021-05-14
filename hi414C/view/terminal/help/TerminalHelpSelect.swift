@@ -143,6 +143,9 @@ struct TerminalHelpSelect: View {
                     Button("blue") {
                         themeVM.change(to: .secondary)
                     }
+                    Button("blue") {
+                        themeVM.change(to: .orange)
+                    }
                 }
             }
             .id(metrics.frame(in: .global).size.width)
