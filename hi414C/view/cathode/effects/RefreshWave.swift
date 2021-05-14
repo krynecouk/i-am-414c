@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RefreshWave: View {
-    @State private var y: CGFloat = -1000
+    @State private var y: CGFloat = -1500
 
     let gradient: Gradient
     let linearGradient: LinearGradient
@@ -25,8 +25,8 @@ struct RefreshWave: View {
             .offset(y: y)
             //.bloom()
             .onAppear {
-                withAnimation(Animation.linear(duration: 7).repeatForever(autoreverses: false)) {
-                    self.y = 1000
+                withAnimation(Animation.linear(duration: 10).repeatForever(autoreverses: false)) {
+                    self.y = 1500
                 }
             }
     }
