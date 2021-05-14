@@ -166,14 +166,14 @@ class Theme: Themable {
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
-                            color: color.primary.value,
+                            color: color.secondary.contrast.opacity(0.7),
                             background: color.secondary.value
                         ),
                         animations: []
                     ),
                     al: ViewTheme(
                         font: font.al,
-                        color: color.primary.value,
+                        color: color.secondary.contrast.opacity(0.7),
                         background: color.secondary.value
                     )
                 ),
