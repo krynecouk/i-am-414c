@@ -140,11 +140,11 @@ struct TerminalHelpSelect: View {
                     Button("orange") {
                         themeVM.change(to: .orange)
                     }
-                    Button("blue") {
-                        //themeVM.change(to: .secondary)
+                    Button("green") {
+                        themeVM.change(to: .green)
                     }
                     Button("blue") {
-                        //themeVM.change(to: .orange)
+                        themeVM.change(to: .blue)
                     }
                 }
             }
