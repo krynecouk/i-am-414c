@@ -12,9 +12,9 @@ class OrangeTheme: Theme {
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
-            primary: (Color("Primary"), Color("BlackBck")),
-            secondary: (Color("SecondaryOrange"), Color("BackgroundOrange")),
-            tertiary: (Color("TertiaryOrange"), Color("BackgroundOrange")),
+            primary: (Color("PrimaryOrange"), Color("BlackBck")),
+            secondary: (Color("BlackBck"), Color("BackgroundOrange")),
+            tertiary: (Color("SecondaryOrange"), Color("SecondaryOrange")),
             background: Color.black
         )) {
         super.init(font: font, color: color)
