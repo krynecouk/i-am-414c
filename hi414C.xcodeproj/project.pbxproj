@@ -145,6 +145,7 @@
 		26E090D8264D5E6E002E404D /* OrangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D7264D5E6E002E404D /* OrangeTheme.swift */; };
 		26E090DE264ED610002E404D /* GreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090DD264ED610002E404D /* GreenTheme.swift */; };
 		26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090DF264EDB0A002E404D /* BlueTheme.swift */; };
+		26E090E2265033FD002E404D /* GreenGoldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E1265033FD002E404D /* GreenGoldTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -302,6 +303,7 @@
 		26E090D7264D5E6E002E404D /* OrangeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeTheme.swift; sourceTree = "<group>"; };
 		26E090DD264ED610002E404D /* GreenTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenTheme.swift; sourceTree = "<group>"; };
 		26E090DF264EDB0A002E404D /* BlueTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTheme.swift; sourceTree = "<group>"; };
+		26E090E1265033FD002E404D /* GreenGoldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenGoldTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -917,6 +919,7 @@
 				26E090D7264D5E6E002E404D /* OrangeTheme.swift */,
 				26E090DD264ED610002E404D /* GreenTheme.swift */,
 				26E090DF264EDB0A002E404D /* BlueTheme.swift */,
+				26E090E1265033FD002E404D /* GreenGoldTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1159,6 +1162,7 @@
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
 				269765262625705A00775D71 /* SHL.swift in Sources */,
 				26682CB32611FAAA00F7C943 /* ASCIIKeyboardView.swift in Sources */,
+				26E090E2265033FD002E404D /* GreenGoldTheme.swift in Sources */,
 				265848E9260BB48E009C0975 /* ArtTheme.swift in Sources */,
 				26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */,
 				266A43B4261C229700C7855C /* Metrics.swift in Sources */,
