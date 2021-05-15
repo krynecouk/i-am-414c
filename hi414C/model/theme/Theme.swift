@@ -116,7 +116,7 @@ class Theme: Themable {
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: color.secondary.value
+                                color: color.primary.contrast
                             )
                         ),
                         sign: FigletTheme(
