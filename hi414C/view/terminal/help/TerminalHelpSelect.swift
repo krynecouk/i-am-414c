@@ -146,6 +146,18 @@ struct TerminalHelpSelect: View {
                     Button("blue") {
                         themeVM.change(to: .blue)
                     }
+                    Button("lorange") {
+                        themeVM.change(to: .light_orange)
+                    }
+                    Button("lgreen") {
+                        themeVM.change(to: .light_green)
+                    }
+                    Button("lblue") {
+                        themeVM.change(to: .light_blue)
+                    }
+                    Button("greengold") {
+                        themeVM.change(to: .green_gold)
+                    }
                 }
             }
             .id(metrics.frame(in: .global).size.width)

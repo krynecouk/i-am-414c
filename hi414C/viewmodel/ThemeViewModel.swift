@@ -15,7 +15,7 @@ class ThemeViewModel: ObservableObject {
     var terminal: TerminalTheme { theme.terminal }
     
     init(theme: Themable = OrangeTheme()) {
-        self.theme = LightOrangeTheme()
+        self.theme = OrangeTheme()
     }
     
     func font(_ font: FontTheme) {
@@ -32,7 +32,7 @@ class ThemeViewModel: ObservableObject {
 }
 
 enum ThemeType {
-    case orange, green, blue
+    case orange, green, blue, light_orange, light_green, light_blue, green_gold
     
     func rawValue() -> Themable {
         switch self {
@@ -42,6 +42,14 @@ enum ThemeType {
             return GreenTheme()
         case .blue:
             return BlueTheme()
+        case .light_orange:
+            return LightOrangeTheme()
+        case .light_green:
+            return LightGreenTheme()
+        case .light_blue:
+            return LightBlueTheme()
+        case .green_gold:
+            return GreenGoldTheme()
         }
     }
 }

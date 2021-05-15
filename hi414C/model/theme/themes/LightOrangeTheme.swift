@@ -13,8 +13,8 @@ class LightOrangeTheme: Theme {
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
             primary: (Color("PrimaryLightOrange"), Color("SecondaryLightOrange")),
-            secondary: (Color("SecondaryLightOrange"), .black),
-            tertiary: (Color("TertiaryLightOrange"), .black),
+            secondary: (Color("SecondaryLightOrange"), Color("BlackLightOrange")),
+            tertiary: (Color("TertiaryLightOrange"), Color("BlackLightOrange")),
             background: Color("WhiteLightOrange")
         )) {
         super.init(font: font, color: color)

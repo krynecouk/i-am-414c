@@ -12,9 +12,9 @@ class GreenGoldTheme: Theme {
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
-            primary: (Color("PrimaryGreenGold"), Color("TertiaryGreenGold")),
-            secondary: (Color("SecondaryGreenGold"), Color.black),
-            tertiary: (Color("TertiaryGreenGold"), Color.black),
+            primary: (Color("PrimaryGreenGold"), Color("SecondaryGreenGold")),
+            secondary: (Color("SecondaryGreenGold"), Color("BlackLightOrange")), // TODO
+            tertiary: (Color("TertiaryGreenGold"), Color("BlackLightOrange")), // TODO
             background: Color("WhiteGreenGold")
         )) {
         super.init(font: font, color: color)
