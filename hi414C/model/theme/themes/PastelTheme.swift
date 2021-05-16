@@ -13,8 +13,8 @@ class PastelTheme: Theme {
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
             primary: (Color("PrimaryPastel"), Color("SecondaryPastel")),
-            secondary: (Color("SecondaryPastel"), Color("WhiteOrange")),
-            tertiary: (Color("TertiaryPastel"), Color("WhiteOrange")),
+            secondary: (Color("SecondaryPastel"), Color("WhitePastel")),
+            tertiary: (Color("TertiaryPastel"), Color("WhitePastel")),
             background: Color("SecondaryPastel")
         )) {
         super.init(font: font, color: color)

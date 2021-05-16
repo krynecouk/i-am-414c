@@ -33,7 +33,6 @@ struct TerminalHelpLine: View {
     
     func ButtonLabel(_ text: String) -> some View {
         Text(text)
-            .withTheme(themeVM.terminal.hli.button.view)
             .padding(.all, 15)
             .frame(height: SegueViewModel.header.height)
     }
@@ -46,12 +45,13 @@ struct TerminalHelpLine: View {
             }
         }) {
             ButtonLabel(text)
+                .withTheme(themeVM.terminal.hli.button.passive)
         }
     }
     
     func SegueButton(_ text: String, _ type: SegueType) -> some View {
         ButtonLabel(text)
-            .background(segueVM.opened == type ? themeVM.terminal.hli.button.background.active : themeVM.terminal.hli.button.background.passive)
+            .withTheme(segueVM.opened == type ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
                 .onTapGesture {
                     openSegue(type)
                 }
