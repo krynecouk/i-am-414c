@@ -154,6 +154,7 @@
 		26E090EE2651B37C002E404D /* RetroTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090ED2651B37C002E404D /* RetroTheme.swift */; };
 		26E090F02651B45E002E404D /* SeaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090EF2651B45E002E404D /* SeaTheme.swift */; };
 		26E090F22651B56E002E404D /* GrayTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F12651B56E002E404D /* GrayTheme.swift */; };
+		26E090F42651B9A5002E404D /* FooTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F32651B9A5002E404D /* FooTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -320,6 +321,7 @@
 		26E090ED2651B37C002E404D /* RetroTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroTheme.swift; sourceTree = "<group>"; };
 		26E090EF2651B45E002E404D /* SeaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaTheme.swift; sourceTree = "<group>"; };
 		26E090F12651B56E002E404D /* GrayTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTheme.swift; sourceTree = "<group>"; };
+		26E090F32651B9A5002E404D /* FooTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 				26E090ED2651B37C002E404D /* RetroTheme.swift */,
 				26E090EF2651B45E002E404D /* SeaTheme.swift */,
 				26E090F12651B56E002E404D /* GrayTheme.swift */,
+				26E090F32651B9A5002E404D /* FooTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */,
 				2665C9BB263AB41300CE724F /* Row.swift in Sources */,
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
+				26E090F42651B9A5002E404D /* FooTheme.swift in Sources */,
 				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */,
 				26E090DE264ED610002E404D /* GreenTheme.swift in Sources */,
