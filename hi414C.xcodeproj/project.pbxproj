@@ -161,6 +161,7 @@
 		26E090FC2651C181002E404D /* IceTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090FB2651C181002E404D /* IceTheme.swift */; };
 		26E090FE2651C261002E404D /* BananaSkyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090FD2651C261002E404D /* BananaSkyTheme.swift */; };
 		26E091002651C600002E404D /* SwampTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090FF2651C600002E404D /* SwampTheme.swift */; };
+		26E091022651C86E002E404D /* SunsetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091012651C86E002E404D /* SunsetTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -334,6 +335,7 @@
 		26E090FB2651C181002E404D /* IceTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceTheme.swift; sourceTree = "<group>"; };
 		26E090FD2651C261002E404D /* BananaSkyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BananaSkyTheme.swift; sourceTree = "<group>"; };
 		26E090FF2651C600002E404D /* SwampTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwampTheme.swift; sourceTree = "<group>"; };
+		26E091012651C86E002E404D /* SunsetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -965,6 +967,7 @@
 				26E090FB2651C181002E404D /* IceTheme.swift */,
 				26E090FD2651C261002E404D /* BananaSkyTheme.swift */,
 				26E090FF2651C600002E404D /* SwampTheme.swift */,
+				26E091012651C86E002E404D /* SunsetTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1253,6 +1256,7 @@
 				2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */,
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
+				26E091022651C86E002E404D /* SunsetTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
 				266CA416264155F9001A07E0 /* TerminalTestThemed.swift in Sources */,
