@@ -41,3 +41,10 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 ### others
 - other name? Something with shifting? been shifted? being shift? 414C
 - SHL and SHR need to be fixed
+
+### Themes
+- Swamp
+- BananaSky
+- Vintage
+- Palete
+- Ice
