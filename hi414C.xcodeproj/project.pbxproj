@@ -155,6 +155,7 @@
 		26E090F02651B45E002E404D /* SeaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090EF2651B45E002E404D /* SeaTheme.swift */; };
 		26E090F22651B56E002E404D /* GrayTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F12651B56E002E404D /* GrayTheme.swift */; };
 		26E090F42651B9A5002E404D /* FooTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F32651B9A5002E404D /* FooTheme.swift */; };
+		26E090F62651BCAD002E404D /* YellowTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F52651BCAD002E404D /* YellowTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -322,6 +323,7 @@
 		26E090EF2651B45E002E404D /* SeaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaTheme.swift; sourceTree = "<group>"; };
 		26E090F12651B56E002E404D /* GrayTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTheme.swift; sourceTree = "<group>"; };
 		26E090F32651B9A5002E404D /* FooTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooTheme.swift; sourceTree = "<group>"; };
+		26E090F52651BCAD002E404D /* YellowTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -947,6 +949,7 @@
 				26E090EF2651B45E002E404D /* SeaTheme.swift */,
 				26E090F12651B56E002E404D /* GrayTheme.swift */,
 				26E090F32651B9A5002E404D /* FooTheme.swift */,
+				26E090F52651BCAD002E404D /* YellowTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				268D92DB2608E18A00A43802 /* ThemeViewModel.swift in Sources */,
 				2654883B26051B8B0044297D /* TestViewModel.swift in Sources */,
 				2620922E2600C5420001904B /* ASCIIViewModel.swift in Sources */,
+				26E090F62651BCAD002E404D /* YellowTheme.swift in Sources */,
 				268D92E92609025400A43802 /* ASCIIArt.swift in Sources */,
 				2678D982260E818700DDB40F /* KeyboardSide.swift in Sources */,
 				269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */,
