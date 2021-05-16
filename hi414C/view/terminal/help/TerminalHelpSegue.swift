@@ -15,19 +15,19 @@ struct TerminalHelpSegue: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            TerminalHelpSelect()
             TerminalHelpLine()
                 .onTapGesture {
                     segueVM.close()
                 }
-            TerminalHelpSelect()
         }
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$opened) { opened in
-            withAnimation {
+          //  withAnimation {
                 segueVM.setSegueSize((.infinity, getSegueH(opened)))
-            }
+          //  }
         }
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
+        //.transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
     }
     
     func getSegueH(_ opened: SegueType?) -> CGFloat {

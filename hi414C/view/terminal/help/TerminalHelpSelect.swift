@@ -179,6 +179,7 @@ struct TerminalHelpSelect: View {
                     self.offset = isOpen ? (0,0) : (0, 100)
                 }
             }
+            .overlay(Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(themeVM.terminal.hli.background), alignment: .top)
         }
         //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
         .background(segueVM.isOpen && segueVM.opened != .keyboard
