@@ -14,7 +14,7 @@ class FooTheme: Theme {
         color: ColorTheme = ColorTheme(
             primary: (Color("PrimaryFoo"), Color("SecondaryFoo")),
             secondary: (Color("SecondaryFoo"), Color("WhiteFoo")),
-            tertiary: (Color("TertiaryFoo"), Color("BlackFoo")),
+            tertiary: (Color("TertiaryFoo"), Color("WhiteFoo")),
             background: Color("SecondaryFoo")
         )) {
         super.init(font: font, color: color)
