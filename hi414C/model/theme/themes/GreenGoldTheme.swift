@@ -15,7 +15,7 @@ class GreenGoldTheme: Theme {
             primary: (Color("PrimaryGreenGold"), Color("SecondaryGreenGold")),
             secondary: (Color("SecondaryGreenGold"), Color("BlackLightGreenGold")),
             tertiary: (Color("TertiaryGreenGold"), Color("BlackLightGreenGold")),
-            background: Color("WhiteGreenGold")
+            background: .white
         )) {
         super.init(font: font, color: color)
     }

@@ -42,7 +42,7 @@ class TestViewModel: ObservableObject {
         
         switch level {
         case 0..<3:
-            return Test(symbol: symbol, equation: ID() => dec)
+            return Test(symbol: symbol, equation: ET.rand().build().eq(dec))
         case 0..<4:
             return Test(symbol: symbol, equation: ADD() => dec)
         case 0..<5:
