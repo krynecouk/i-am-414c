@@ -23,11 +23,11 @@ struct TerminalHelpSegue: View {
         }
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$opened) { opened in
-          //  withAnimation {
+            withAnimation(Animation.easeOut.speed(4)) {
                 segueVM.setSegueSize((.infinity, getSegueH(opened)))
-          //  }
+            }
         }
-        //.transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
     }
     
     func getSegueH(_ opened: SegueType?) -> CGFloat {
