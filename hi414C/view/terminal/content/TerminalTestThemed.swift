@@ -27,7 +27,7 @@ struct TerminalTestThemed: View {
     
     var body: some View {
         TerminalTest(items, theme: (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.sign), wide: wide)
-            //.bloom(active: bloom, radius: 10)
+            //.bloom(color: themeVM.terminal.grid.test.active.figlet.view.color, active: bloom, radius: 5)
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {

@@ -26,5 +26,6 @@ struct TerminalContent: View {
                 TerminalHint()
             }
         }
+        .padding(.top, 10)
     }
 }
