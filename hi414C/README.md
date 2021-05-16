@@ -48,3 +48,4 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 - Vintage
 - Palete
 - Ice
+- Sunset

@@ -137,26 +137,46 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .themes {
-                    Button("orange") {
-                        themeVM.change(to: .orange)
+                    Group {
+                        Button("orange") {
+                            themeVM.change(to: .orange)
+                        }
+                        Button("green") {
+                            themeVM.change(to: .green)
+                        }
+                        Button("blue") {
+                            themeVM.change(to: .blue)
+                        }
+                        Button("lorange") {
+                            themeVM.change(to: .light_orange)
+                        }
+                        Button("lgreen") {
+                            themeVM.change(to: .light_green)
+                        }
+                        Button("lblue") {
+                            themeVM.change(to: .light_blue)
+                        }
                     }
-                    Button("green") {
-                        themeVM.change(to: .green)
-                    }
-                    Button("blue") {
-                        themeVM.change(to: .blue)
-                    }
-                    Button("lorange") {
-                        themeVM.change(to: .light_orange)
-                    }
-                    Button("lgreen") {
-                        themeVM.change(to: .light_green)
-                    }
-                    Button("lblue") {
-                        themeVM.change(to: .light_blue)
-                    }
-                    Button("greengold") {
-                        themeVM.change(to: .green_gold)
+                    
+                    Group {
+                        Button("swamp") {
+                            themeVM.change(to: .swamp)
+                        }
+                        Button("bananaSky") {
+                            themeVM.change(to: .bananaSky)
+                        }
+                        Button("vintage") {
+                            themeVM.change(to: .vintage)
+                        }
+                        Button("pastel") {
+                            themeVM.change(to: .pastel)
+                        }
+                        Button("ice") {
+                            themeVM.change(to: .ice)
+                        }
+                        Button("sunset") {
+                            themeVM.change(to: .sunset)
+                        }
                     }
                 }
             }
@@ -167,11 +187,11 @@ struct TerminalHelpSelect: View {
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 150))
                     segueVM.setSettingsSize((.infinity, 140))
-                    segueVM.setThemesSize((.infinity, 100))
+                    segueVM.setThemesSize((.infinity, 300))
                 } else {
                     segueVM.setHelpSize((.infinity, 150))
                     segueVM.setSettingsSize((.infinity, 140))
-                    segueVM.setThemesSize((.infinity, 100))
+                    segueVM.setThemesSize((.infinity, 300))
                 }
             }
             .onReceive(segueVM.$isOpen) { isOpen in
