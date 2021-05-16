@@ -13,8 +13,8 @@ class GreenGoldTheme: Theme {
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
             primary: (Color("PrimaryGreenGold"), Color("SecondaryGreenGold")),
-            secondary: (Color("SecondaryGreenGold"), Color("BlackLightOrange")), // TODO
-            tertiary: (Color("TertiaryGreenGold"), Color("BlackLightOrange")), // TODO
+            secondary: (Color("SecondaryGreenGold"), Color("BlackLightGreenGold")),
+            tertiary: (Color("TertiaryGreenGold"), Color("BlackLightGreenGold")),
             background: Color("WhiteGreenGold")
         )) {
         super.init(font: font, color: color)
