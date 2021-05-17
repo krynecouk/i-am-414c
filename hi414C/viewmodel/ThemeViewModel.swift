@@ -15,7 +15,7 @@ class ThemeViewModel: ObservableObject {
     var terminal: TerminalTheme { theme.terminal }
     
     init(theme: Themable = OrangeTheme()) {
-        self.theme = OrangeTheme()
+        self.theme = FooTheme()
     }
     
     func font(_ font: FontTheme) {
