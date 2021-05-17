@@ -127,7 +127,6 @@ struct TerminalGrid: View {
                 }
             }
         }
-
         .onTapGesture {
             if uiVM.current != .message {
                 withAnimation(themeVM.terminal.grid.test.animation.detail) {

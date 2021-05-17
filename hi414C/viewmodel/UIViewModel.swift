@@ -10,6 +10,7 @@ import SwiftUI
 class UIViewModel: ObservableObject {
     @Published var isDetail = false
     @Published var isHelp = false
+    @Published var isHelpDetail = false
     @Published private(set) var errors: Int = 0
     var current: ContentType = .test
     

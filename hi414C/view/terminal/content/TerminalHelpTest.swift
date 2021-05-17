@@ -21,23 +21,7 @@ struct TerminalHelpTest: View {
     }
     
     var body: some View {
-        let (id, equation, radix) = getTestData(from: test)
         let theme = themeVM.terminal.help.test.active
-        TerminalTest(TerminalTest.getItems(id: id, equation: equation.toString(radix: radix, result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
-            .onAppear {
-                if helpVM.originalEq.id != test.id {
-                    helpVM.setOriginalEq(id: test.id, equation: test.equation)
-                    helpVM.radix(of: testVM.radix)
-                    helpVM.removeUpdatedEq()
-                }
-            }
-    }
-    
-    func getTestData(from test: Test) -> (id: UUID, equation: Equation, radix: EquationRadix) {
-        if helpVM.originalEq.id != test.id || helpVM.updatedEq == nil {
-            return (test.id, test.equation, testVM.radix)
-        } else {
-            return (helpVM.updatedEq!.id, helpVM.updatedEq!.equation, helpVM.radix)
-        }
+        TerminalTest(TerminalTest.getItems(id: UUID(), equation: helpVM.equation.toString(radix: helpVM.radix, result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
     }
 }

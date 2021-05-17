@@ -45,9 +45,6 @@ struct TerminalHelpSelect: View {
                         Button("Rand") {
                             helpVM.rand()
                         }
-                        Button("Reset") {
-                            helpVM.reset()
-                        }
                         Button("0000") {
                             helpVM.resetToZero()
                         }
