@@ -15,15 +15,16 @@ struct TerminalHelpSegue: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            TerminalHelpSelect()
             TerminalHelpLine()
                 .onTapGesture {
                     segueVM.close()
                 }
+            TerminalHelpSelect()
+
         }
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$opened) { opened in
-            withAnimation(Animation.easeOut.speed(4)) {
+            withAnimation(Animation.easeOut.speed(2)) {
                 segueVM.setSegueSize((.infinity, getSegueH(opened)))
             }
         }

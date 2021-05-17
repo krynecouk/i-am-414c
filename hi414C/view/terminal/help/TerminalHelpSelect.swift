@@ -210,17 +210,17 @@ struct TerminalHelpSelect: View {
                     self.offset = isOpen ? (0,0) : (0, 100)
                 }
             }
-            .overlay(Border(), alignment: .top)
+            .background(segueVM.isOpen && segueVM.opened != .keyboard
+                            ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
+                            : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
         }
         //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
-        .background(segueVM.isOpen && segueVM.opened != .keyboard
-                        ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
-                        : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
+
     }
     
     func Border() -> some View {
         Rectangle()
-            .frame(width: nil, height: 1, alignment: .top)
+            .frame(width: nil, height: 5, alignment: .top)
             .foregroundColor(themeVM.terminal.hli.select.background.active)
             
     }
