@@ -171,11 +171,20 @@ struct TerminalHelpSelect: View {
                         Button("pastel") {
                             themeVM.change(to: .pastel)
                         }
-                        Button("ice") {
-                            themeVM.change(to: .ice)
-                        }
                         Button("sunset") {
                             themeVM.change(to: .sunset)
+                        }
+                    }
+                    
+                    Group {
+                        Button("orangina") {
+                            themeVM.change(to: .orangina)
+                        }
+                        Button("forest") {
+                            themeVM.change(to: .forest)
+                        }
+                        Button("ice") {
+                            themeVM.change(to: .ice)
                         }
                     }
                 }
