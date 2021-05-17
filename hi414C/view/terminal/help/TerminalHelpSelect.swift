@@ -159,6 +159,18 @@ struct TerminalHelpSelect: View {
                     }
                     
                     Group {
+                        Button("orangina") {
+                            themeVM.change(to: .orangina)
+                        }
+                        Button("forest") {
+                            themeVM.change(to: .forest)
+                        }
+                        Button("ice") {
+                            themeVM.change(to: .ice)
+                        }
+                    }
+                    
+                    Group {
                         Button("swamp") {
                             themeVM.change(to: .swamp)
                         }
@@ -176,17 +188,7 @@ struct TerminalHelpSelect: View {
                         }
                     }
                     
-                    Group {
-                        Button("orangina") {
-                            themeVM.change(to: .orangina)
-                        }
-                        Button("forest") {
-                            themeVM.change(to: .forest)
-                        }
-                        Button("ice") {
-                            themeVM.change(to: .ice)
-                        }
-                    }
+
                 }
             }
             .id(metrics.frame(in: .global).size.width)
