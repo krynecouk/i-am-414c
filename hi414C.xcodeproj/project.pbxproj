@@ -164,6 +164,7 @@
 		26E091022651C86E002E404D /* SunsetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091012651C86E002E404D /* SunsetTheme.swift */; };
 		26E091042652A693002E404D /* ForestTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091032652A693002E404D /* ForestTheme.swift */; };
 		26E091062652ABFF002E404D /* OranginaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091052652ABFF002E404D /* OranginaTheme.swift */; };
+		26EA2FD726541953004A78F2 /* TerminalHelpColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FD626541953004A78F2 /* TerminalHelpColorButton.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -340,6 +341,7 @@
 		26E091012651C86E002E404D /* SunsetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetTheme.swift; sourceTree = "<group>"; };
 		26E091032652A693002E404D /* ForestTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestTheme.swift; sourceTree = "<group>"; };
 		26E091052652ABFF002E404D /* OranginaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OranginaTheme.swift; sourceTree = "<group>"; };
+		26EA2FD626541953004A78F2 /* TerminalHelpColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpColorButton.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 				269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */,
 				269BCC75263927DA00229E8A /* TerminalHelpLine.swift */,
 				269BCC79263927F600229E8A /* TerminalHelpSelect.swift */,
+				26EA2FD626541953004A78F2 /* TerminalHelpColorButton.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -1210,6 +1213,7 @@
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
 				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */,
+				26EA2FD726541953004A78F2 /* TerminalHelpColorButton.swift in Sources */,
 				263612332631DB7800341B60 /* EquationType.swift in Sources */,
 				269BCC872639A07900229E8A /* EdgeDrag.swift in Sources */,
 				269765382625F09700775D71 /* SUB.swift in Sources */,

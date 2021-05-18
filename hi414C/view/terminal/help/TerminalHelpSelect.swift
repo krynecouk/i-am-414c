@@ -124,54 +124,26 @@ struct TerminalHelpSelect: View {
                 
                 if segueVM.opened == .themes {
                     Group {
-                        HelpButton("orange") {
-                            themeVM.change(to: .orange)
-                        }
-                        HelpButton("green") {
-                            themeVM.change(to: .green)
-                        }
-                        HelpButton("blue") {
-                            themeVM.change(to: .blue)
-                        }
-                        HelpButton("lorange") {
-                            themeVM.change(to: .light_orange)
-                        }
-                        HelpButton("lgreen") {
-                            themeVM.change(to: .light_green)
-                        }
-                        HelpButton("lblue") {
-                            themeVM.change(to: .light_blue)
-                        }
+                        HelpColorButton("Orange", .orange)
+                        HelpColorButton("Green", .green)
+                        HelpColorButton("Blue", .blue)
+                        HelpColorButton("LightOrange", .light_orange)
+                        HelpColorButton("LightGreen", .light_green)
+                        HelpColorButton("LightBlue", .light_blue)
                     }
                     
                     Group {
-                        HelpButton("orangina") {
-                            themeVM.change(to: .orangina)
-                        }
-                        HelpButton("forest") {
-                            themeVM.change(to: .forest)
-                        }
-                        HelpButton("ice") {
-                            themeVM.change(to: .ice)
-                        }
+                        HelpColorButton("Orangina", .orangina)
+                        HelpColorButton("Forest", .forest)
+                        HelpColorButton("Ice", .ice)
                     }
                     
                     Group {
-                        HelpButton("swamp") {
-                            themeVM.change(to: .swamp)
-                        }
-                        HelpButton("bananaSky") {
-                            themeVM.change(to: .bananaSky)
-                        }
-                        HelpButton("vintage") {
-                            themeVM.change(to: .vintage)
-                        }
-                        HelpButton("pastel") {
-                            themeVM.change(to: .pastel)
-                        }
-                        HelpButton("sunset") {
-                            themeVM.change(to: .sunset)
-                        }
+                        HelpColorButton("Swamp", .swamp)
+                        HelpColorButton("BananaSky", .bananaSky)
+                        HelpColorButton("Vintage", .vintage)
+                        HelpColorButton("Pastel", .pastel)
+                        HelpColorButton("Sunset", .sunset)
                     }
                     
                     
@@ -201,12 +173,11 @@ struct TerminalHelpSelect: View {
                             : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
         }
     }
-    
-    func Border() -> some View {
-        Rectangle()
-            .frame(width: nil, height: 5, alignment: .top)
-            .foregroundColor(themeVM.terminal.hli.select.background.active)
-        
+
+    func HelpColorButton(_ name: String, _ theme: ThemeType) -> some View {
+        ColorButton(size: (70, 70), left: Color("Primary\(name)"), right: Color("Secondary\(name)")) {
+            themeVM.change(to: theme)
+        }
     }
     
     func HelpButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
@@ -220,10 +191,9 @@ struct TerminalHelpSelect: View {
     
     @Namespace private var ns
 
-    
     func BinHexButton() -> some View {
         Button(action: {
-            withAnimation() {
+            withAnimation(.easeOut) {
                 helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
             }
         }) {
