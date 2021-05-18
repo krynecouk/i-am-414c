@@ -16,7 +16,7 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
     
-    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 90, maximum: .infinity))]
+    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 100, maximum: .infinity))]
     
     @State var offset: Offset = (0, 0)
     
@@ -50,83 +50,76 @@ struct TerminalHelpSelect: View {
                         }
                     }
                     Group {
-                        HelpRadioButton("bin", active: helpVM.radix == .bin) {
-                            helpVM.radix(of: .bin)
-                        }
-                        HelpRadioButton("hex", active: helpVM.radix == .hex) {
-                            helpVM.radix(of: .hex)
-                        }
-                        
-                        
-                        /*
-                         HelpButton("AND") {
-                         helpVM.change(to: .AND)
-                         }
-                         
-                         HelpButton("OR") {
-                         helpVM.change(to: .OR)
-                         }
-                         HelpButton("XOR") {
-                         helpVM.change(to: .XOR)
-                         }
-                         HelpButton("NOT") {
-                         helpVM.change(to: .NOT)
-                         }
-                         HelpButton("SHL") {
-                         helpVM.change(to: .SHL)
-                         }
-                         HelpButton("SHR") {
-                         helpVM.change(to: .SHR)
-                         }
-                         */
+                        BinHexButton()
                     }
                     Group {
-                        if testVM.level >= 3 {
-                            HelpButton("ADD") {
-                                helpVM.change(to: .ADD)
-                            }
+                        HelpButton("=") {
+                            helpVM.change(to: .ID)
                         }
                         
-                        if testVM.level >= 4 {
-                            HelpButton("SUB") {
-                                helpVM.change(to: .SUB)
-                            }
+                        HelpButton("+") {
+                            helpVM.change(to: .ADD)
                         }
                         
-                        if testVM.level >= 5 {
-                            HelpButton("DIV") {
-                                helpVM.change(to: .DIV)
-                            }
+                        HelpButton("-") {
+                            helpVM.change(to: .SUB)
                         }
                         
-                        if testVM.level >= 6 {
-                            HelpButton("MUL") {
-                                helpVM.change(to: .MUL)
-                            }
+                        HelpButton("/") {
+                            helpVM.change(to: .DIV)
                         }
                         
+                        HelpButton("*") {
+                            helpVM.change(to: .MUL)
+                        }
+                    }
+                    Group{
+                        HelpButton("&") {
+                            helpVM.change(to: .AND)
+                        }
+                        
+                        HelpButton("|") {
+                            helpVM.change(to: .OR)
+                        }
+                        HelpButton("^") {
+                            helpVM.change(to: .XOR)
+                        }
+                        HelpButton("~") {
+                            helpVM.change(to: .NOT)
+                        }
+                        HelpButton("<<") {
+                            helpVM.change(to: .SHL)
+                        }
+                        HelpButton(">>") {
+                            helpVM.change(to: .SHR)
+                        }
                         
                     }
+
                 }
                 
                 if segueVM.opened == .settings {
-                    HelpButton("Reset") {
+                    HelpButton("font-1") {
+                        themeVM.font(FontTheme(
+                            robot: FontProps(size: themeVM.theme.font.robot.size - 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size - 5)
+                        ))
+                    }
+                    HelpButton("font+1") {
+                        themeVM.font(FontTheme(
+                            robot: FontProps(size: themeVM.theme.font.robot.size + 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size + 5)
+                        ))
+                    }
+                    HelpButton("font=0") {
+                        themeVM.reset()
+                    }
+                    HelpRadioButton("Hint") {
                         themeVM.reset()
                     }
                     HelpButton("NewGame") {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
                     }
-                    HelpButton("Font-1") {
-                        themeVM.font(FontTheme(
-                            robot: FontProps(size: themeVM.theme.font.robot.size - 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size - 5)
-                        ))
-                    }
-                    HelpButton("Font+1") {
-                        themeVM.font(FontTheme(
-                            robot: FontProps(size: themeVM.theme.font.robot.size + 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size + 5)
-                        ))
-                    }
+
                 }
                 
                 if segueVM.opened == .themes {
@@ -221,8 +214,35 @@ struct TerminalHelpSelect: View {
             Text(text)
                 .padding()
                 .withTheme(themeVM.terminal.hli.select.button)
-                .offset(x: self.offset.x, y: self.offset.y)
         }
+        .offset(x: self.offset.x, y: self.offset.y)
+    }
+    
+    @Namespace private var ns
+
+    
+    func BinHexButton() -> some View {
+        Button(action: {
+            withAnimation() {
+                helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
+            }
+        }) {
+            HStack(spacing: 0) {
+                Text("0b")
+                    .padding()
+                    .background(helpVM.radix == .bin ? themeVM.terminal.hli.select.button.background.matchedGeometryEffect(id: "radix", in: ns) : nil)
+                    .background(Color.gray)
+                    .withTheme(themeVM.terminal.hli.select.button)
+                
+                Text("0x")
+                    .padding()
+                    .background(helpVM.radix == .hex ? themeVM.terminal.hli.select.button.background.matchedGeometryEffect(id: "radix", in: ns) : nil)
+                    .background(Color.gray)
+                    .withTheme(themeVM.terminal.hli.select.button)
+            }
+            //.padding()
+        }
+        .offset(x: self.offset.x, y: self.offset.y)
     }
     
     func HelpRadioButton(_ text: String, active: Bool = false, perform action: @escaping () -> Void = {}) -> some View {

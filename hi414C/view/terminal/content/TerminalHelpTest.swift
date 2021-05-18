@@ -8,7 +8,6 @@ import SwiftUI
 
 struct TerminalHelpTest: View {
     @EnvironmentObject var helpVM: HelpViewModel
-    @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let test: Test
@@ -22,6 +21,8 @@ struct TerminalHelpTest: View {
     
     var body: some View {
         let theme = themeVM.terminal.help.test.active
-        TerminalTest(TerminalTest.getItems(id: UUID(), equation: helpVM.equation.toString(radix: helpVM.radix, result: (true, .dec))), theme: (theme.figlet, theme.sign), wide: wide)
+        let equation = helpVM.equation
+        let resultRadix = equation.builder is ID ? EquationRadix.dec : helpVM.radix
+        TerminalTest(TerminalTest.getItems(id: UUID(), equation: equation.toString(radix: helpVM.radix, result: (true, resultRadix))), theme: (theme.figlet, theme.sign), wide: wide)
     }
 }
