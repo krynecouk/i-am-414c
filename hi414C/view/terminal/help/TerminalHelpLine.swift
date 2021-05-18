@@ -39,7 +39,9 @@ struct TerminalHelpLine: View {
     
     func QuitButton(_ text: String) -> some View {
         Button(action: {
-            uiVM.detail = (false, false)
+            if uiVM.detail.0 == true {
+                uiVM.detail = (false, false)
+            }
             withAnimation {
                 segueVM.close()
                 uiVM.isHelp = false

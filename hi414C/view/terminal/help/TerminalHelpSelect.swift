@@ -25,86 +25,86 @@ struct TerminalHelpSelect: View {
             Grid(columns: TerminalHelpSelect.ADAPTIVE) {
                 if segueVM.opened == .help && uiVM.current == .message {
                     Group {
-                        Button("History") {
+                        HelpButton("History") {
                             helpVM.isHistory.toggle()
                             
                         }
-                        Button("Rand") {
+                        HelpButton("Rand") {
                             helpVM.randAnswer()
                         }
                     }
                 }
                 if segueVM.opened == .help && uiVM.current == .test {
                     Group {
-                        Button("-1") {
+                        HelpButton("-1") {
                             helpVM.decrement()
                         }
-                        Button("+1") {
+                        HelpButton("+1") {
                             helpVM.increment()
                         }
-                        Button("Rand") {
+                        HelpButton("Rand") {
                             helpVM.rand()
                         }
-                        Button("0000") {
+                        HelpButton("0000") {
                             helpVM.resetToZero()
                         }
                     }
                     Group {
                         if testVM.radix == .hex {
-                            Button("BIN") {
+                            HelpButton("BIN") {
                                 helpVM.radix(of: .hex)
                             }
                         }
                         if testVM.radix == .hex {
-                            Button("HEX") {
+                            HelpButton("HEX") {
                                 helpVM.radix(of: .hex)
                             }
                         }
 
 
                         /*
-                        Button("AND") {
+                        HelpButton("AND") {
                             helpVM.change(to: .AND)
                         }
                         
-                        Button("OR") {
+                        HelpButton("OR") {
                             helpVM.change(to: .OR)
                         }
-                        Button("XOR") {
+                        HelpButton("XOR") {
                             helpVM.change(to: .XOR)
                         }
-                        Button("NOT") {
+                        HelpButton("NOT") {
                             helpVM.change(to: .NOT)
                         }
-                        Button("SHL") {
+                        HelpButton("SHL") {
                             helpVM.change(to: .SHL)
                         }
-                        Button("SHR") {
+                        HelpButton("SHR") {
                             helpVM.change(to: .SHR)
                         }
                         */
                     }
                     Group {
                         if testVM.level >= 3 {
-                            Button("ADD") {
+                            HelpButton("ADD") {
                                 helpVM.change(to: .ADD)
                             }
                         }
 
                         if testVM.level >= 4 {
-                            Button("SUB") {
+                            HelpButton("SUB") {
                                 helpVM.change(to: .SUB)
                             }
                         }
 
                         if testVM.level >= 5 {
-                            Button("DIV") {
+                            HelpButton("DIV") {
                                 helpVM.change(to: .DIV)
                             }
                         }
                         
                         if testVM.level >= 6 {
-                            Button("MUL") {
+                            HelpButton("MUL") {
                                 helpVM.change(to: .MUL)
                             }
                         }
@@ -114,19 +114,19 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .settings {
-                    Button("Reset") {
+                    HelpButton("Reset") {
                         themeVM.reset()
                     }
-                    Button("NewGame") {
+                    HelpButton("NewGame") {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
                     }
-                    Button("Font-1") {
+                    HelpButton("Font-1") {
                         themeVM.font(FontTheme(
                             robot: FontProps(size: themeVM.theme.font.robot.size - 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size - 5)
                         ))
                     }
-                    Button("Font+1") {
+                    HelpButton("Font+1") {
                         themeVM.font(FontTheme(
                             robot: FontProps(size: themeVM.theme.font.robot.size + 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size + 5)
                         ))
@@ -135,52 +135,52 @@ struct TerminalHelpSelect: View {
                 
                 if segueVM.opened == .themes {
                     Group {
-                        Button("orange") {
+                        HelpButton("orange") {
                             themeVM.change(to: .orange)
                         }
-                        Button("green") {
+                        HelpButton("green") {
                             themeVM.change(to: .green)
                         }
-                        Button("blue") {
+                        HelpButton("blue") {
                             themeVM.change(to: .blue)
                         }
-                        Button("lorange") {
+                        HelpButton("lorange") {
                             themeVM.change(to: .light_orange)
                         }
-                        Button("lgreen") {
+                        HelpButton("lgreen") {
                             themeVM.change(to: .light_green)
                         }
-                        Button("lblue") {
+                        HelpButton("lblue") {
                             themeVM.change(to: .light_blue)
                         }
                     }
                     
                     Group {
-                        Button("orangina") {
+                        HelpButton("orangina") {
                             themeVM.change(to: .orangina)
                         }
-                        Button("forest") {
+                        HelpButton("forest") {
                             themeVM.change(to: .forest)
                         }
-                        Button("ice") {
+                        HelpButton("ice") {
                             themeVM.change(to: .ice)
                         }
                     }
                     
                     Group {
-                        Button("swamp") {
+                        HelpButton("swamp") {
                             themeVM.change(to: .swamp)
                         }
-                        Button("bananaSky") {
+                        HelpButton("bananaSky") {
                             themeVM.change(to: .bananaSky)
                         }
-                        Button("vintage") {
+                        HelpButton("vintage") {
                             themeVM.change(to: .vintage)
                         }
-                        Button("pastel") {
+                        HelpButton("pastel") {
                             themeVM.change(to: .pastel)
                         }
-                        Button("sunset") {
+                        HelpButton("sunset") {
                             themeVM.change(to: .sunset)
                         }
                     }
@@ -211,8 +211,6 @@ struct TerminalHelpSelect: View {
                             ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
                             : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
         }
-        //.frame(maxWidth: self.size.width, maxHeight: self.size.height)
-
     }
     
     func Border() -> some View {
@@ -222,24 +220,13 @@ struct TerminalHelpSelect: View {
             
     }
     
-    func Button(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
-        Text(text)
-            .padding()
-            .withTheme(themeVM.terminal.hli.select.button)
-            .offset(x: self.offset.x, y: self.offset.y)
-            .onTapGesture {
-                action()
-            }
-    }
-    
-    func RadioButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
-        Text(text)
-            .padding()
-            .withTheme(themeVM.terminal.hli.select.button)
-            .offset(x: self.offset.x, y: self.offset.y)
-            .onTapGesture {
-                action()
-            }
+    func HelpButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
+        Button(action: action) {
+            Text(text)
+                .padding()
+                .withTheme(themeVM.terminal.hli.select.button)
+                .offset(x: self.offset.x, y: self.offset.y)
+        }
     }
 }
 
