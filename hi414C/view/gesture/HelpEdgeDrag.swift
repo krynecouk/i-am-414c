@@ -16,6 +16,9 @@ struct HelpEdgeDrag: ViewModifier {
                 left: {
                     if !uiVM.isHelp {
                         withAnimation {
+                            if uiVM.detail.0 == true {
+                                uiVM.detail = (false, false)
+                            }
                             uiVM.isHelp = true
                         }
                     }
@@ -23,7 +26,9 @@ struct HelpEdgeDrag: ViewModifier {
                 right: {
                     // todo theme animation
                     if uiVM.isHelp {
-                        uiVM.detail = (false, false)
+                        if uiVM.detail.0 == true {
+                            uiVM.detail = (false, false)
+                        }
                         withAnimation {
                             uiVM.isHelp = false
                         }

@@ -125,7 +125,15 @@ struct TerminalGrid: View {
                         self.grid = .adaptive
                     }
                 } else {
-                    self.grid = uiVM.isWideScreen() ? .landslide_detail : .portrait_detail
+                    if uiVM.isWideScreen() {
+                        if self.grid != .landslide_detail {
+                            self.grid = .landslide_detail
+                        }
+                    } else {
+                        if self.grid != .portrait_detail {
+                            self.grid = .portrait_detail
+                        }
+                    }
                 }
             }
         }

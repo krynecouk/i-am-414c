@@ -12,26 +12,34 @@ struct EdgeDrag: ViewModifier {
     let right: () -> Void
     
     func body(content: Content) -> some View {
-        GeometryReader { metrics in
-            content
-                .gesture(
-                    DragGesture()
-                        .onChanged({ gesture in
-                            if slope(gesture) < 1 {
-                                if gesture.startLocation.x < CGFloat(40) {
-                                    left()
-                                }
-                                if gesture.startLocation.x > CGFloat(metrics.size.width - 40) {
-                                    right()
-                                }
-                            }
-                        })
-                )
-        }
+        content
+            .gesture(
+                DragGesture()
+                    .onEnded { gesture in
+                        let direction = getDirection(from: gesture)
+                        if direction == .left {
+                            left()
+                        }
+                        if direction == .right {
+                            right()
+                        }
+                    }
+            )
     }
     
-    func slope(_ gesture: DragGesture.Value) -> CGFloat {
-        abs((gesture.startLocation.y - gesture.location.y)/(gesture.startLocation.x - gesture.location.x))
+    enum Direction: String {
+        case left, right, none
+    }
+    
+    func getDirection(from value: DragGesture.Value) -> Direction {
+        let minDistance: CGFloat = 34
+        if value.startLocation.x < value.location.x - minDistance {
+            return .left
+        }
+        if value.startLocation.x > value.location.x + minDistance {
+            return .right
+        }
+        return .none
     }
 }
 
