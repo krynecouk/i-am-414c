@@ -11,6 +11,8 @@ struct TerminalPadding: View {
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
+    let frameW: CGFloat = UIScreen.main.bounds.width
+    
     var body: some View {
         ForEach((0..<getPadding()).map { Item($0) }) { _ in
             Color.clear
@@ -24,11 +26,11 @@ struct TerminalPadding: View {
     }
     
     func getCols() -> Int {
-        let cols = (UIScreen.main.bounds.width - 40) / 70
+        let cols = (frameW - 40) / 70
         return Int(cols.rounded())
     }
     
     func getHeight() -> CGFloat {
-        (themeVM.theme.font.robot.size * 6.15).rounded()
+        (themeVM.theme.font.robot.size * 5.2)
     }
 }

@@ -29,7 +29,7 @@ struct TerminalHelpSelect: View {
                             helpVM.isHistory.toggle()
                             
                         }
-                        HelpButton("Rand") {
+                        HelpButton("rnd") {
                             helpVM.randAnswer()
                         }
                     }
@@ -42,47 +42,43 @@ struct TerminalHelpSelect: View {
                         HelpButton("+1") {
                             helpVM.increment()
                         }
-                        HelpButton("Rand") {
+                        HelpButton("rnd") {
                             helpVM.rand()
                         }
-                        HelpButton("0000") {
+                        HelpButton("000") {
                             helpVM.resetToZero()
                         }
                     }
                     Group {
-                        if testVM.radix == .hex {
-                            HelpButton("BIN") {
-                                helpVM.radix(of: .hex)
-                            }
+                        HelpRadioButton("bin", active: helpVM.radix == .bin) {
+                            helpVM.radix(of: .bin)
                         }
-                        if testVM.radix == .hex {
-                            HelpButton("HEX") {
-                                helpVM.radix(of: .hex)
-                            }
-                        }
-
-
-                        /*
-                        HelpButton("AND") {
-                            helpVM.change(to: .AND)
+                        HelpRadioButton("hex", active: helpVM.radix == .hex) {
+                            helpVM.radix(of: .hex)
                         }
                         
-                        HelpButton("OR") {
-                            helpVM.change(to: .OR)
-                        }
-                        HelpButton("XOR") {
-                            helpVM.change(to: .XOR)
-                        }
-                        HelpButton("NOT") {
-                            helpVM.change(to: .NOT)
-                        }
-                        HelpButton("SHL") {
-                            helpVM.change(to: .SHL)
-                        }
-                        HelpButton("SHR") {
-                            helpVM.change(to: .SHR)
-                        }
-                        */
+                        
+                        /*
+                         HelpButton("AND") {
+                         helpVM.change(to: .AND)
+                         }
+                         
+                         HelpButton("OR") {
+                         helpVM.change(to: .OR)
+                         }
+                         HelpButton("XOR") {
+                         helpVM.change(to: .XOR)
+                         }
+                         HelpButton("NOT") {
+                         helpVM.change(to: .NOT)
+                         }
+                         HelpButton("SHL") {
+                         helpVM.change(to: .SHL)
+                         }
+                         HelpButton("SHR") {
+                         helpVM.change(to: .SHR)
+                         }
+                         */
                     }
                     Group {
                         if testVM.level >= 3 {
@@ -90,13 +86,13 @@ struct TerminalHelpSelect: View {
                                 helpVM.change(to: .ADD)
                             }
                         }
-
+                        
                         if testVM.level >= 4 {
                             HelpButton("SUB") {
                                 helpVM.change(to: .SUB)
                             }
                         }
-
+                        
                         if testVM.level >= 5 {
                             HelpButton("DIV") {
                                 helpVM.change(to: .DIV)
@@ -108,8 +104,8 @@ struct TerminalHelpSelect: View {
                                 helpVM.change(to: .MUL)
                             }
                         }
-
-
+                        
+                        
                     }
                 }
                 
@@ -185,7 +181,7 @@ struct TerminalHelpSelect: View {
                         }
                     }
                     
-
+                    
                 }
             }
             .id(metrics.frame(in: .global).size.width)
@@ -194,10 +190,10 @@ struct TerminalHelpSelect: View {
                 let frameW = frame.size.width
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setSettingsSize((.infinity, 140))
-                    segueVM.setThemesSize((.infinity, 300))
+                    segueVM.setSettingsSize((.infinity, 150))
+                    segueVM.setThemesSize((.infinity, 150))
                 } else {
-                    segueVM.setHelpSize((.infinity, 150))
+                    segueVM.setHelpSize((.infinity, 210))
                     segueVM.setSettingsSize((.infinity, 140))
                     segueVM.setThemesSize((.infinity, 300))
                 }
@@ -217,7 +213,7 @@ struct TerminalHelpSelect: View {
         Rectangle()
             .frame(width: nil, height: 5, alignment: .top)
             .foregroundColor(themeVM.terminal.hli.select.background.active)
-            
+        
     }
     
     func HelpButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
@@ -227,6 +223,17 @@ struct TerminalHelpSelect: View {
                 .withTheme(themeVM.terminal.hli.select.button)
                 .offset(x: self.offset.x, y: self.offset.y)
         }
+    }
+    
+    func HelpRadioButton(_ text: String, active: Bool = false, perform action: @escaping () -> Void = {}) -> some View {
+        Button(action: action) {
+            Text(text)
+                .padding()
+                .background(active ? Color.blue : Color.gray)
+                .withTheme(themeVM.terminal.hli.select.button)
+                .offset(x: self.offset.x, y: self.offset.y)
+        }
+        .border(active ? Color.blue : Color.clear, width: 3)
     }
 }
 
