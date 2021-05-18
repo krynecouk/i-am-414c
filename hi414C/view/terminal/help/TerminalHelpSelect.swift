@@ -17,9 +17,7 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var graphVM: GraphViewModel
     
     private static let ADAPTIVE = [GridItem(.adaptive(minimum: 100, maximum: .infinity))]
-    
-    @State var offset: Offset = (0, 0)
-    
+        
     var body: some View {
         GeometryReader { metrics in
             Grid(columns: TerminalHelpSelect.ADAPTIVE) {
@@ -163,11 +161,6 @@ struct TerminalHelpSelect: View {
                     segueVM.setThemesSize((.infinity, 300))
                 }
             }
-            .onReceive(segueVM.$isOpen) { isOpen in
-                withAnimation {
-                    self.offset = isOpen ? (0,0) : (0, 100)
-                }
-            }
             .background(segueVM.isOpen && segueVM.opened != .keyboard
                             ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
                             : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
@@ -186,7 +179,6 @@ struct TerminalHelpSelect: View {
                 .padding()
                 .withTheme(themeVM.terminal.hli.select.button)
         }
-        .offset(x: self.offset.x, y: self.offset.y)
     }
     
     @Namespace private var ns
@@ -210,9 +202,7 @@ struct TerminalHelpSelect: View {
                     .background(Color.gray)
                     .withTheme(themeVM.terminal.hli.select.button)
             }
-            //.padding()
         }
-        .offset(x: self.offset.x, y: self.offset.y)
     }
     
     func HelpRadioButton(_ text: String, active: Bool = false, perform action: @escaping () -> Void = {}) -> some View {
@@ -221,7 +211,6 @@ struct TerminalHelpSelect: View {
                 .padding()
                 .background(active ? Color.blue : Color.gray)
                 .withTheme(themeVM.terminal.hli.select.button)
-                .offset(x: self.offset.x, y: self.offset.y)
         }
         .border(active ? Color.blue : Color.clear, width: 3)
     }
