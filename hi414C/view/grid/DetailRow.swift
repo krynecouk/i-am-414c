@@ -29,6 +29,6 @@ struct DetailRow<Content: View>: View {
     }
     
     var body: some View {
-        Row(size: uiVM.isDetail ? (wide ? 8 : 4) : 0, contentLength: length, content: content)
+        Row(size: uiVM.detail.is ? (wide ? 8 : 4) : 0, contentLength: length, content: content)
     }
 }

@@ -64,7 +64,7 @@ struct TerminalGrid: View {
                     }
                 }
                 if case let .symbol(symbol) = item.type {
-                    if !uiVM.isDetail && !uiVM.isHelp {
+                    if !uiVM.detail.is && !uiVM.isHelp {
                         TerminalSymbol(symbol, active: !printed.contains(item.id) && solved.contains(symbol), theme: themeVM.terminal.grid.symbol)
                             .matchedGeometryEffect(id: item.id, in: ns)
                             .onDisappear {
@@ -73,7 +73,7 @@ struct TerminalGrid: View {
                     }
                 }
                 if case let .test(test, items, active) = item.type {
-                    if !uiVM.isHelp && (!uiVM.isDetail || (uiVM.isDetail && active)) {
+                    if !uiVM.isHelp && (!uiVM.detail.is || (uiVM.detail.is && active)) {
                         TerminalTestThemed(test, items: items, wide: wide, active: active)
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
                             .onAppear {
@@ -112,16 +112,18 @@ struct TerminalGrid: View {
         }
         .onReceive(orientationChanged) { _ in
             self.wide = uiVM.isWideScreen()
-            if uiVM.isDetail {
+            if uiVM.detail.is {
                 self.grid = wide ? .landslide_detail : .portrait_detail
             } else {
                 self.grid = .adaptive
             }
         }
-        .onReceive(uiVM.$isDetail) { isDetail in
-            withAnimation(themeVM.terminal.grid.test.animation.detail) {
-                if !isDetail {
-                    self.grid = .adaptive
+        .onReceive(uiVM.$detail) { detail in
+            withAnimation(detail.animated ? themeVM.terminal.grid.test.animation.detail : nil) {
+                if !detail.is {
+                    if self.grid != .adaptive {
+                        self.grid = .adaptive
+                    }
                 } else {
                     self.grid = uiVM.isWideScreen() ? .landslide_detail : .portrait_detail
                 }
@@ -130,7 +132,7 @@ struct TerminalGrid: View {
         .onTapGesture {
             if uiVM.current != .message {
                 withAnimation(themeVM.terminal.grid.test.animation.detail) {
-                    uiVM.isDetail.toggle()
+                    uiVM.detail = (!uiVM.detail.is, true)
                 }
             }
         }

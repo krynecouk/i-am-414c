@@ -16,7 +16,7 @@ struct TerminalFooter: View {
             TerminalHelpSegue()
                 .matchedGeometryEffect(id: "segue", in: ns)
         } else {
-            if !uiVM.isDetail {
+            if !uiVM.detail.is {
                 TerminalCommandSegue()
                     .matchedGeometryEffect(id: "segue", in: ns)
             }
