@@ -8,9 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isVideo = false // TODO true
+    @State var isIntro = true
+    
+    init() {
+        print("WARN: CONTENT VIEW")
+    }
+    
     var body: some View {
-        CathodeView {
-            TerminalView()
+        if isVideo {
+            IntroVideo()
+                .onTapGesture {
+                    isVideo = false
+                    isIntro = true
+                }
+        } else {
+            CathodeView {
+                if isIntro {
+                    IntroScreen()
+                } else {
+                    TerminalView()
+                }
+            }
+            .onTapGesture {
+                if isIntro {
+                    self.isIntro = false
+                }
+            }
+            .statusBar(hidden: true)
         }
     }
 }
@@ -21,3 +46,4 @@ struct ContentView_Previews: PreviewProvider {
             .withEnvironment()
     }
 }
+
