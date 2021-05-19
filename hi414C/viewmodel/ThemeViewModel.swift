@@ -32,9 +32,11 @@ class ThemeViewModel: ObservableObject {
 }
 
 enum ThemeType {
-    case orange, green, blue, light_orange, light_green, light_blue, green_gold
-    case swamp, bananaSky, vintage, pastel, sunset
+    case orange, green, blue
+    case light_orange, light_green, light_blue
     case orangina, forest, ice
+    case swamp, bananaSky, vintage, pastel, sunset
+    case green_gold, summer, sea, gray, yellow, melon
     
     func rawValue() -> Themable {
         switch self {
@@ -50,8 +52,6 @@ enum ThemeType {
             return LightGreenTheme()
         case .light_blue:
             return LightBlueTheme()
-        case .green_gold:
-            return GreenGoldTheme()
         case .swamp:
             return SwampTheme()
         case .bananaSky:
@@ -68,6 +68,18 @@ enum ThemeType {
             return ForestTheme()
         case .ice:
             return IceTheme()
+        case .green_gold:
+            return GreenGoldTheme()
+        case .summer:
+            return SummerTheme()
+        case .sea:
+            return SeaTheme()
+        case .gray:
+            return GrayTheme()
+        case .yellow:
+            return YellowTheme()
+        case .melon:
+            return MelonTheme()
         }
     }
 }

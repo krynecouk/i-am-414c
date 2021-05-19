@@ -102,19 +102,23 @@ struct TerminalHelpSelect: View {
                         HelpColorButton("LightGreen", .light_green)
                         HelpColorButton("LightBlue", .light_blue)
                     }
-                    
                     Group {
                         HelpColorButton("Orangina", .orangina)
                         HelpColorButton("Forest", .forest)
                         HelpColorButton("Ice", .ice)
                     }
-                    
                     Group {
-                        HelpColorButton("Swamp", .swamp)
-                        HelpColorButton("BananaSky", .bananaSky)
                         HelpColorButton("Vintage", .vintage)
-                        HelpColorButton("Pastel", .pastel)
+                        HelpColorButton("Melon", .melon)
+                        HelpColorButton("Sea", .sea)
+                        
                         HelpColorButton("Sunset", .sunset)
+                        HelpColorButton("GreenGold", .green_gold)
+                        HelpColorButton("Pastel", .pastel)
+                        
+                        HelpColorButton("BananaSky", .bananaSky)
+                        HelpColorButton("Swamp", .swamp)
+                        HelpColorButton("Gray", .gray)
                     }
                 }
             }

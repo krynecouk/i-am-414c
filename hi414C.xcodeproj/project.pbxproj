@@ -151,7 +151,6 @@
 		26E090E8265076D8002E404D /* LightBlueTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E7265076D8002E404D /* LightBlueTheme.swift */; };
 		26E090EA2651AB69002E404D /* PastelTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E92651AB69002E404D /* PastelTheme.swift */; };
 		26E090EC2651B044002E404D /* SummerTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090EB2651B044002E404D /* SummerTheme.swift */; };
-		26E090EE2651B37C002E404D /* RetroTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090ED2651B37C002E404D /* RetroTheme.swift */; };
 		26E090F02651B45E002E404D /* SeaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090EF2651B45E002E404D /* SeaTheme.swift */; };
 		26E090F22651B56E002E404D /* GrayTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F12651B56E002E404D /* GrayTheme.swift */; };
 		26E090F42651B9A5002E404D /* FooTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F32651B9A5002E404D /* FooTheme.swift */; };
@@ -328,7 +327,6 @@
 		26E090E7265076D8002E404D /* LightBlueTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBlueTheme.swift; sourceTree = "<group>"; };
 		26E090E92651AB69002E404D /* PastelTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastelTheme.swift; sourceTree = "<group>"; };
 		26E090EB2651B044002E404D /* SummerTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummerTheme.swift; sourceTree = "<group>"; };
-		26E090ED2651B37C002E404D /* RetroTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroTheme.swift; sourceTree = "<group>"; };
 		26E090EF2651B45E002E404D /* SeaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaTheme.swift; sourceTree = "<group>"; };
 		26E090F12651B56E002E404D /* GrayTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTheme.swift; sourceTree = "<group>"; };
 		26E090F32651B9A5002E404D /* FooTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooTheme.swift; sourceTree = "<group>"; };
@@ -964,7 +962,6 @@
 				26E090E7265076D8002E404D /* LightBlueTheme.swift */,
 				26E090E92651AB69002E404D /* PastelTheme.swift */,
 				26E090EB2651B044002E404D /* SummerTheme.swift */,
-				26E090ED2651B37C002E404D /* RetroTheme.swift */,
 				26E090EF2651B45E002E404D /* SeaTheme.swift */,
 				26E090F12651B56E002E404D /* GrayTheme.swift */,
 				26E090F32651B9A5002E404D /* FooTheme.swift */,
@@ -1201,7 +1198,6 @@
 				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,
 				26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
-				26E090EE2651B37C002E404D /* RetroTheme.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
 				263612372632100800341B60 /* Set.swift in Sources */,
 				26647D2E25F94D4B00E32DE0 /* GraphContext.swift in Sources */,
