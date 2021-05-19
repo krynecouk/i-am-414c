@@ -10,9 +10,9 @@ import SwiftUI
 class UIViewModel: ObservableObject {
     @Published var detail = (is: false, animated: true)
     @Published var isHelp = false
+    @Published var current: ContentType = .test
     @Published private(set) var errors: Int = 0
-    var current: ContentType = .test
-    
+
     func shake() {
         self.errors += 1
     }

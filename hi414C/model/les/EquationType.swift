@@ -5,7 +5,6 @@
 //  Created by Darius Kryszczuk on 22.04.2021.
 //
 
-
 enum EquationType {
     typealias id = ID
     typealias add = ADD

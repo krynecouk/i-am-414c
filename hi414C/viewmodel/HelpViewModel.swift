@@ -54,13 +54,13 @@ class HelpViewModel: ObservableObject {
         self.radix = radix
     }
         
-    private func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {
+    func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {
         let result = equation.result
         let builder = getBuilder(equation)
         return (result, builder)
     }
     
-    private func getBuilder(_ equation: Equation) -> EquationBuilder {
+    func getBuilder(_ equation: Equation) -> EquationBuilder {
         if equation.types.contains(.SHL) {
             return SHL()
         } else if equation.types.contains(.SHR) {

@@ -20,7 +20,7 @@ struct TerminalHelpSelect: View {
         
     var body: some View {
         GeometryReader { metrics in
-            Grid(columns: TerminalHelpSelect.ADAPTIVE) {
+            Grid(columns: TerminalHelpSelect.ADAPTIVE, spacing: 10, padding: 15) {
                 if segueVM.opened == .help && uiVM.current == .message {
                     Group {
                         HelpButton("History") {
@@ -48,52 +48,25 @@ struct TerminalHelpSelect: View {
                         }
                     }
                     Group {
-                        BinHexButton()
+                        HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
+                            helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
+                        }
                     }
                     Group {
-                        HelpButton("=") {
-                            helpVM.change(to: .ID)
-                        }
-                        
-                        HelpButton("+") {
-                            helpVM.change(to: .ADD)
-                        }
-                        
-                        HelpButton("-") {
-                            helpVM.change(to: .SUB)
-                        }
-                        
-                        HelpButton("/") {
-                            helpVM.change(to: .DIV)
-                        }
-                        
-                        HelpButton("*") {
-                            helpVM.change(to: .MUL)
-                        }
+                        HelpSignButton("=", ID.self, .ID)
+                        HelpSignButton("+", ADD.self, .ADD)
+                        HelpSignButton("-", SUB.self, .SUB)
+                        HelpSignButton("/", DIV.self, .DIV)
+                        HelpSignButton("*", MUL.self, .MUL)
                     }
                     Group{
-                        HelpButton("&") {
-                            helpVM.change(to: .AND)
-                        }
-                        
-                        HelpButton("|") {
-                            helpVM.change(to: .OR)
-                        }
-                        HelpButton("^") {
-                            helpVM.change(to: .XOR)
-                        }
-                        HelpButton("~") {
-                            helpVM.change(to: .NOT)
-                        }
-                        HelpButton("<<") {
-                            helpVM.change(to: .SHL)
-                        }
-                        HelpButton(">>") {
-                            helpVM.change(to: .SHR)
-                        }
-                        
+                        HelpSignButton("&", AND.self, .AND)
+                        HelpSignButton("|", OR.self, .OR)
+                        HelpSignButton("^", XOR.self, .XOR)
+                        HelpSignButton("~", NOT.self, .NOT)
+                        HelpSignButton("<<", SHL.self, .SHL)
+                        HelpSignButton(">>", SHR.self, .SHR)
                     }
-
                 }
                 
                 if segueVM.opened == .settings {
@@ -116,8 +89,8 @@ struct TerminalHelpSelect: View {
                     HelpButton("NewGame") {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
+                        uiVM.current = .test
                     }
-
                 }
                 
                 if segueVM.opened == .themes {
@@ -143,8 +116,6 @@ struct TerminalHelpSelect: View {
                         HelpColorButton("Pastel", .pastel)
                         HelpColorButton("Sunset", .sunset)
                     }
-                    
-                    
                 }
             }
             .id(metrics.frame(in: .global).size.width)
@@ -167,6 +138,12 @@ struct TerminalHelpSelect: View {
         }
     }
 
+    func HelpSignButton<T>(_ text: String, _ type: T.Type, _ equationType: EquationType) -> some View {
+        HelpRadioButton(text, active: helpVM.getBuilder(helpVM.equation) is T) {
+            helpVM.change(to: equationType)
+        }
+    }
+    
     func HelpColorButton(_ name: String, _ theme: ThemeType) -> some View {
         ColorButton(size: (70, 70), left: Color("Primary\(name)"), right: Color("Secondary\(name)")) {
             themeVM.change(to: theme)
@@ -181,39 +158,13 @@ struct TerminalHelpSelect: View {
         }
     }
     
-    @Namespace private var ns
-
-    func BinHexButton() -> some View {
-        Button(action: {
-            withAnimation(.easeOut) {
-                helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
-            }
-        }) {
-            HStack(spacing: 0) {
-                Text("0b")
-                    .padding()
-                    .background(helpVM.radix == .bin ? themeVM.terminal.hli.select.button.background.matchedGeometryEffect(id: "radix", in: ns) : nil)
-                    .background(Color.gray)
-                    .withTheme(themeVM.terminal.hli.select.button)
-                
-                Text("0x")
-                    .padding()
-                    .background(helpVM.radix == .hex ? themeVM.terminal.hli.select.button.background.matchedGeometryEffect(id: "radix", in: ns) : nil)
-                    .background(Color.gray)
-                    .withTheme(themeVM.terminal.hli.select.button)
-            }
-        }
-    }
-    
     func HelpRadioButton(_ text: String, active: Bool = false, perform action: @escaping () -> Void = {}) -> some View {
         Button(action: action) {
             Text(text)
                 .padding()
-                .background(active ? Color.blue : Color.gray)
-                .withTheme(themeVM.terminal.hli.select.button)
+                .background(active ? themeVM.terminal.hli.select.button.background : themeVM.terminal.hli.button.passive.color.opacity(0.6))
+                .font(Font.of(props: themeVM.terminal.hli.select.button.font))
+                .foregroundColor(themeVM.terminal.hli.select.button.color.opacity(active ? 1 : 0.5))
         }
-        .border(active ? Color.blue : Color.clear, width: 3)
     }
 }
-
-
