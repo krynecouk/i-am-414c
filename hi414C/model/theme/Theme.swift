@@ -30,19 +30,11 @@ struct FontSize: Encodable, Decodable {
     }
     
     func isIncreasable() -> Bool {
-        robot < 16
+        robot < 15
     }
     
     func isDecreasable() -> Bool {
         robot > 4 && al > 20
-    }
-    
-    static postfix func ++ (lhs: Self) -> FontSize {
-        lhs.inc()
-    }
-    
-    static postfix func -- (lhs: Self) -> FontSize {
-        lhs.dec()
     }
 }
 

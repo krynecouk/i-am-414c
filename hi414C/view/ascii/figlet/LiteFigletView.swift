@@ -32,7 +32,6 @@ struct LiteFigletView: View {
                 //let figlet = figlets[safe: i] ?? Figlet.of(.questionMark)
                 Text(figlets[i].lines.joined(separator: "\n"))
                     .withTheme(theme.view)
-
             }
         }
     }

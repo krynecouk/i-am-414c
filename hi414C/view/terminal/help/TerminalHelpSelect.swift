@@ -156,9 +156,13 @@ struct TerminalHelpSelect: View {
     }
     
     func HelpColorButton(_ name: String, _ theme: ThemeType) -> some View {
-        ColorButton(size: (70, 70), left: Color("Primary\(name)"), right: Color("Secondary\(name)")) {
+        ColorButton(size: (70, 70), left: Color.primary(name), right: Color.secondary(name)) {
             themeVM.change(to: theme)
         }
+        .border(Color.tertiary(name), width: 15)
+        //.border(Color.secondary(name), width: 1)
+        .padding(5)
+        .border(themeVM.theme.type == theme ? Color.primary(name) : Color.clear, width: 5)
     }
     
     func HelpButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
