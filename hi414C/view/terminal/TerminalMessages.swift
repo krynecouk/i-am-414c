@@ -15,6 +15,7 @@ struct TerminalMessages: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @State var answer: Answer = ""
     
+    private let currentMsgId = "current_msg_id"
     private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
     private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
     
@@ -23,26 +24,32 @@ struct TerminalMessages: View {
     var body: some View {
         GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 10) {
-                    if helpVM.isHistory {
-                        ForEach(messages.history) { message in
-                            if !message.text.isEmpty {
-                                if message.author == .robot {
-                                    Message414C(message.text, frame: metrics.size)
-                                } else {
-                                    MessageAl(message.text, frame: metrics.size)
+                ScrollViewReader { reader in
+                    VStack(alignment: .leading, spacing: 10) {
+                        if themeVM.history {
+                            ForEach(messages.history) { message in
+                                if !message.text.isEmpty {
+                                    if message.author == .robot {
+                                        Message414C(message.text, frame: metrics.size)
+                                    } else {
+                                        MessageAl(message.text, frame: metrics.size)
+                                    }
                                 }
                             }
                         }
+                        Message414C(messages.current.text, frame: metrics.size)
+                            .id(currentMsgId)
+                        MessageAl(rand(from: messages.answers), frame: metrics.size)
+                            .onReceive(helpVM.$answers) { _ in
+                                self.answer = rand(from: messages.answers)
+                            }
+                            .padding(.bottom, 250)
                     }
-                    Message414C(messages.current.text, frame: metrics.size)
-                    MessageAl(rand(from: messages.answers), frame: metrics.size)
-                        .onReceive(helpVM.$answers) { _ in
-                            self.answer = rand(from: messages.answers)
-                        }
-                        .padding(.bottom, 250)
+                    .padding(.top, 10)
+                    .onAppear {
+                        reader.scrollTo(currentMsgId)
+                    }
                 }
-                .padding(.top, 10)
             }
         }
     }

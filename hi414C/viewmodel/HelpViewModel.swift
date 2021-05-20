@@ -10,7 +10,6 @@ import SwiftUI
 class HelpViewModel: ObservableObject {
     @Published private(set) var equation: Equation = ID() => 0
     @Published private(set) var radix: EquationRadix = .bin
-    @Published var isHistory: Bool = false
     @Published private(set) var answers: Int = 0
     
     func increment() {

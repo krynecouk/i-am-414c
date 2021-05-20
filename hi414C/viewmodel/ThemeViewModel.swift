@@ -11,6 +11,7 @@ class ThemeViewModel: ObservableObject {
     @Published private(set) var theme: Themable
     @Published private(set) var hint: Bool
     @Published private(set) var wave: Bool
+    @Published private(set) var history: Bool
     
     var font: FontTheme { theme.font }
     var fontSize: FontSize = FontSize()
@@ -26,6 +27,7 @@ class ThemeViewModel: ObservableObject {
         self.fontSize = size
         self.hint = HintDao.find() ?? true
         self.wave = WaveDao.find() ?? true
+        self.history = true
     }
     
     func reset() {
@@ -66,6 +68,14 @@ class ThemeViewModel: ObservableObject {
     func showWave() {
         self.wave = true
         HintDao.store(self.wave)
+    }
+    
+    func showHistory() {
+        self.history = true
+    }
+    
+    func hideHistory() {
+        self.history = false
     }
     
     func fontSize(_ operation: FontOperation) -> FontSize {

@@ -15,18 +15,23 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     
-    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 100, maximum: .infinity))]
-        
+    @State var newGame = false
+    
+    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 110, maximum: .infinity))]
+    
     var body: some View {
         GeometryReader { metrics in
             Grid(columns: TerminalHelpSelect.ADAPTIVE, spacing: 10, padding: 15) {
                 if segueVM.opened == .help && uiVM.current == .message {
                     Group {
-                        HelpButton("History") {
-                            helpVM.isHistory.toggle()
-                            
+                        let messages = historyVM.history.count
+                        HelpRadioButton("history", active: themeVM.history && messages > 1) {
+                            themeVM.history ? themeVM.hideHistory() : themeVM.showHistory()
                         }
+                        .disabled(messages < 2)
+                        
                         HelpButton("rnd") {
                             helpVM.randAnswer()
                         }
@@ -76,6 +81,7 @@ struct TerminalHelpSelect: View {
                             themeVM.font(.decrease)
                         }
                     }
+                    .opacity(newGame ? 0.3 : 1)
                     .disabled(!isDecreasable)
                     
                     let isIncreasable = themeVM.fontSize.isIncreasable()
@@ -84,29 +90,59 @@ struct TerminalHelpSelect: View {
                             themeVM.font(.increase)
                         }
                     }
+                    .opacity(newGame ? 0.3 : 1)
                     .disabled(!isIncreasable)
                     
                     HelpButton("font0") {
                         themeVM.font(.reset)
                     }
+                    .opacity(newGame ? 0.3 : 1)
                     
                     HelpRadioButton("hint", active: themeVM.hint) {
                         themeVM.hint ? themeVM.hideHint() : themeVM.showHint()
                     }
+                    .opacity(newGame ? 0.3 : 1)
                     
                     HelpRadioButton("wave", active: themeVM.wave) {
                         themeVM.wave ? themeVM.hideWave() : themeVM.showWave()
                     }
+                    .opacity(newGame ? 0.3 : 1)
                     
                     HelpButton("reset") {
                         themeVM.reset()
                     }
+                    .opacity(newGame ? 0.3 : 1)
                     
-                    HelpButton("new") {
-                        themeVM.reset()
-                        graphVM.setGraph(root: Graphs.HI)
-                        asciiVM.reset()
-                        uiVM.current = .test
+                    if !newGame {
+                        HelpWarnButton("delete") {
+                            withAnimation {
+                                self.newGame = true
+                            }
+                        }
+                    } else {
+                        HelpButton("no") {
+                            withAnimation {
+                                self.newGame = false
+                            }
+                        }
+                        HelpWarnButton("yes") {
+                            themeVM.reset()
+                            graphVM.setGraph(root: Graphs.HI)
+                            asciiVM.reset()
+                            uiVM.current = .test
+                            helpVM.resetToZero()
+                            uiVM.isHelp = false
+                            withAnimation {
+                                self.newGame = false
+                            }
+                        }
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    self.newGame = false
+                                }
+                            }
+                        }
                     }
                 }
                 
@@ -158,7 +194,7 @@ struct TerminalHelpSelect: View {
                             : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
         }
     }
-
+    
     func HelpSignButton<T>(_ text: String, _ type: T.Type, _ equationType: EquationType) -> some View {
         HelpRadioButton(text, active: helpVM.getBuilder(helpVM.equation) is T) {
             helpVM.change(to: equationType)
@@ -179,6 +215,16 @@ struct TerminalHelpSelect: View {
         Button(action: action) {
             Text(text)
                 .padding()
+                .withTheme(themeVM.terminal.hli.select.button)
+        }
+    }
+    
+    func HelpWarnButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
+        Button(action: action) {
+            Text(text)
+                .padding()
+                .background(Color.red.opacity(0.7))
+                .foregroundColor(Color("WhiteOrange"))
                 .withTheme(themeVM.terminal.hli.select.button)
         }
     }
