@@ -36,7 +36,9 @@ struct MessagesSelect: View {
         MessageLabel(text)
             .onTapGesture {
                 uiVM.isHelp = false
-                graphVM.traverse(ctx: GraphContext(input: text))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    graphVM.traverse(ctx: GraphContext(input: text))
+                }
             }
     }
     
