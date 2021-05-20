@@ -6,7 +6,7 @@
 //
 
 class ASCIIDao {
-    static var key: String = "ASCIISymbols"
+    static var key: String = "414C_ASCIISymbols"
     
     public static func store(_ symbols: Set<ASCIISymbol>) {
         Dao.store(key: key, content: symbols)

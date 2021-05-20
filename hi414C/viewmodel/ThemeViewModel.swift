@@ -15,8 +15,9 @@ class ThemeViewModel: ObservableObject {
     var keyboard: KeyboardTheme { theme.keyboard }
     var terminal: TerminalTheme { theme.terminal }
     
-    init(theme: Themable = OrangeTheme()) {
-        self.theme = OrangeTheme()
+    init(type: ThemeType = .orange) {
+        let type = ThemeDao.find() ?? type
+        self.theme = type.toTheme()
     }
     
     func font(_ font: FontTheme) {
@@ -25,21 +26,23 @@ class ThemeViewModel: ObservableObject {
     
     func reset() {
         self.theme = OrangeTheme()
+        ThemeDao.store(.orange)
     }
     
     func change(to type: ThemeType) {
-        self.theme = type.rawValue()
+        self.theme = type.toTheme()
+        ThemeDao.store(type)
     }
 }
 
-enum ThemeType {
+enum ThemeType: String, Encodable, Decodable {
     case orange, green, blue
     case light_orange, light_green, light_blue
     case orangina, forest, ice
     case swamp, bananaSky, vintage, pastel, sunset
     case green_gold, summer, sea, gray, yellow, melon
     
-    func rawValue() -> Themable {
+    func toTheme() -> Themable {
         switch self {
         case .orange:
             return OrangeTheme()
