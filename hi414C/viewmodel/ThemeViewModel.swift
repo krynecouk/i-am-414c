@@ -11,6 +11,7 @@ class ThemeViewModel: ObservableObject {
     @Published private(set) var theme: Themable
     
     var font: FontTheme { theme.font }
+    var intro: IntroTheme { theme.intro }
     var keyboard: KeyboardTheme { theme.keyboard }
     var terminal: TerminalTheme { theme.terminal }
     

@@ -26,12 +26,38 @@ class Theme: Themable {
     private(set) var color: ColorTheme
     var terminal: TerminalTheme
     var keyboard: KeyboardTheme
+    var intro: IntroTheme
     
     init(font: FontTheme, color: ColorTheme) {
         self.font = font
         self.color = color
         self.terminal = Theme.terminal(font: font, color: color)
         self.keyboard = Theme.keyboard(font: font, color: color)
+        self.intro = Theme.intro(font: font, color: color)
+    }
+    
+    static func intro(font: FontTheme, color: ColorTheme) -> IntroTheme {
+        IntroTheme(
+            cursor: TerminalTheme.CommandLine.Cursor(
+                view: ViewTheme(
+                    color: color.primary.value,
+                    background: color.primary.value
+                ),
+                blink: (1, .linear)
+            ),
+            banner: FigletTheme(
+                typeface: .ansi(.shadow),
+                view: ViewTheme(
+                    font: FontProps(.terminus, 23),
+                    color: color.primary.value
+                ),
+                animations: [.print(speed: 0.4, delay: 0.3), .bloom(speed: 0.3, color: color.primary.value)]
+            ),
+            text: ViewTheme(
+                font: FontProps(.proggyTiny, 32),
+                color: color.primary.value
+            )
+        )
     }
     
     static func terminal(font: FontTheme, color: ColorTheme) -> TerminalTheme {

@@ -7,4 +7,6 @@
 
 struct IntroTheme {
     var cursor: TerminalTheme.CommandLine.Cursor
+    var banner: FigletTheme
+    var text: ViewTheme
 }
