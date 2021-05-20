@@ -71,17 +71,13 @@ struct TerminalHelpSelect: View {
                 
                 if segueVM.opened == .settings {
                     HelpButton("font-1") {
-                        themeVM.font(FontTheme(
-                            robot: FontProps(size: themeVM.theme.font.robot.size - 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size - 5)
-                        ))
+                        themeVM.font(.decrease)
                     }
                     HelpButton("font+1") {
-                        themeVM.font(FontTheme(
-                            robot: FontProps(size: themeVM.theme.font.robot.size + 1), al: FontProps(name: .proggyTiny, size: themeVM.theme.font.al.size + 5)
-                        ))
+                        themeVM.font(.increase)
                     }
                     HelpButton("font=0") {
-                        themeVM.reset()
+                        themeVM.font(.reset)
                     }
                     HelpRadioButton("Hint") {
                         themeVM.reset()

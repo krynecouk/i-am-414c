@@ -7,9 +7,62 @@
 
 import SwiftUI
 
+struct FontSize: Encodable, Decodable {
+    var robot: CGFloat = 13
+    var al: CGFloat = 60
+    
+    func inc() -> FontSize {
+        print("robot: \(robot); al: \(al)")
+        if isIncreasable() {
+            return FontSize(robot: self.robot + 1, al: self.al + 5)
+        }
+        return FontSize()
+    }
+    
+    func dec() -> FontSize {
+        print("robot: \(robot); al: \(al)")
+
+        if isDecreasable() {
+            return FontSize(robot: self.robot - 1, al: self.al - 5)
+        }
+        return FontSize()
+    }
+    
+    func reset() -> FontSize {
+        print("robot: \(robot); al: \(al)")
+
+        return FontSize(robot: 13, al: 60)
+    }
+    
+    func isIncreasable() -> Bool {
+        robot < 16
+    }
+    
+    func isDecreasable() -> Bool {
+        robot > 6 && al > 20
+    }
+    
+    static postfix func ++ (lhs: Self) -> FontSize {
+        lhs.inc()
+    }
+    
+    static postfix func -- (lhs: Self) -> FontSize {
+        lhs.dec()
+    }
+}
+
 struct FontTheme {
-    var robot: FontProps = FontProps(.terminus, 13)
-    var al: FontProps = FontProps(.proggyTiny, 60)
+    let robot: FontProps
+    let al: FontProps
+    
+    init(robot: FontProps = FontProps(.terminus, 13), al: FontProps = FontProps(.proggyTiny, 60)) {
+        self.robot = robot
+        self.al = al
+    }
+    
+    init(size: FontSize = FontSize()) {
+        self.init(robot: FontProps(.terminus, size.robot), al: FontProps(.proggyTiny, size.al))
+    }
 }
 
 typealias ContrastColor = (value: Color, contrast: Color)
