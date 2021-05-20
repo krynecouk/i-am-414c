@@ -169,6 +169,7 @@
 		26EA2FE7265639B3004A78F2 /* IntroTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FE6265639B3004A78F2 /* IntroTheme.swift */; };
 		26EA2FE926565621004A78F2 /* ThemeDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FE826565621004A78F2 /* ThemeDao.swift */; };
 		26EA2FEB265668DD004A78F2 /* FontDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FEA265668DD004A78F2 /* FontDao.swift */; };
+		26EA2FED265693A9004A78F2 /* HintDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FEC265693A9004A78F2 /* HintDao.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -350,6 +351,7 @@
 		26EA2FE6265639B3004A78F2 /* IntroTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTheme.swift; sourceTree = "<group>"; };
 		26EA2FE826565621004A78F2 /* ThemeDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDao.swift; sourceTree = "<group>"; };
 		26EA2FEA265668DD004A78F2 /* FontDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDao.swift; sourceTree = "<group>"; };
+		26EA2FEC265693A9004A78F2 /* HintDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintDao.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -960,6 +962,7 @@
 				26E090D2264C01D0002E404D /* ASCIIDao.swift */,
 				26EA2FE826565621004A78F2 /* ThemeDao.swift */,
 				26EA2FEA265668DD004A78F2 /* FontDao.swift */,
+				26EA2FEC265693A9004A78F2 /* HintDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1228,6 +1231,7 @@
 				268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,
+				26EA2FED265693A9004A78F2 /* HintDao.swift in Sources */,
 				26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,

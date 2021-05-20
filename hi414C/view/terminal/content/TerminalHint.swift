@@ -11,18 +11,20 @@ struct TerminalHint: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Rectangle()
-                .fill(themeVM.terminal.help.hint.background ?? Color.clear)
-                .frame(height: 114)
-                .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
-            HStack(spacing: 0) {
-                TerminalHintText("Hint: ", theme: themeVM.terminal.help.hint)
-                    .padding(.leading, 15)
-                TerminalHintScroll(theme: themeVM.terminal.help.hint)
+        if themeVM.hint {
+            ZStack(alignment: .topLeading) {
+                Rectangle()
+                    .fill(themeVM.terminal.help.hint.background ?? Color.clear)
+                    .frame(height: 114)
+                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
+                HStack(spacing: 0) {
+                    TerminalHintText("Hint: ", theme: themeVM.terminal.help.hint)
+                        .padding(.leading, 15)
+                    TerminalHintScroll(theme: themeVM.terminal.help.hint)
+                }
             }
+            .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
         }
-        .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
     }
 }
 

@@ -90,9 +90,11 @@ struct TerminalHelpSelect: View {
                     HelpButton("font=0") {
                         themeVM.font(.reset)
                     }
-                    HelpRadioButton("Hint") {
-                        themeVM.reset()
+                    
+                    HelpRadioButton("Hint", active: themeVM.hint) {
+                        themeVM.hint ? themeVM.hideHint() : themeVM.showHint()
                     }
+                    
                     HelpButton("NewGame") {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
