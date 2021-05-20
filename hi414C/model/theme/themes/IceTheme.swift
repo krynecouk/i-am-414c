@@ -8,7 +8,7 @@
 import SwiftUI
 
 class IceTheme: Theme {
-
+    override var type: ThemeType { .ice }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

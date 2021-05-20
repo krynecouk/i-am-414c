@@ -8,7 +8,7 @@
 import SwiftUI
 
 class PastelTheme: Theme {
-    
+    override var type: ThemeType { .pastel }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

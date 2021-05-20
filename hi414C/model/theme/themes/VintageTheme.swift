@@ -8,7 +8,7 @@
 import SwiftUI
 
 class VintageTheme: Theme {
-
+    override var type: ThemeType { .vintage }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

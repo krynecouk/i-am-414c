@@ -6,7 +6,7 @@
 //
 
 protocol Themable {
-   // var type: ThemeType { get }
+    var type: ThemeType { get }
     var font: FontTheme { get }
     var intro: IntroTheme { get }
     var terminal: TerminalTheme { get }

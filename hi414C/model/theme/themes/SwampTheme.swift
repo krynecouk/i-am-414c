@@ -8,7 +8,7 @@
 import SwiftUI
 
 class SwampTheme: Theme {
-
+    override var type: ThemeType { .swamp }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

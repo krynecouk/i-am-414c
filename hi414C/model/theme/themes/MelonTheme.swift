@@ -8,7 +8,7 @@
 import SwiftUI
 
 class MelonTheme: Theme {
-
+    override var type: ThemeType { .melon }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

@@ -9,7 +9,7 @@
 import SwiftUI
 
 class OrangeTheme: Theme {
-    
+    override var type: ThemeType { .orange }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GreenTheme: Theme {
-    
+    override var type: ThemeType { .green }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

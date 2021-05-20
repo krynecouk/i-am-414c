@@ -8,7 +8,7 @@
 import SwiftUI
 
 class SeaTheme: Theme {
-
+    override var type: ThemeType { .sea }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

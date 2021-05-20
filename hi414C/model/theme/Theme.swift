@@ -22,6 +22,7 @@ struct ColorTheme {
 }
 
 class Theme: Themable {
+    var type: ThemeType { .generic }
     private(set) var font: FontTheme
     private(set) var color: ColorTheme
     var terminal: TerminalTheme

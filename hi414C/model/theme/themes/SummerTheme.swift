@@ -8,7 +8,7 @@
 import SwiftUI
 
 class SummerTheme: Theme {
-    
+    override var type: ThemeType { .summer }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

@@ -36,7 +36,7 @@ class ThemeViewModel: ObservableObject {
 }
 
 enum ThemeType: String, Encodable, Decodable {
-    case orange, green, blue
+    case generic, orange, green, blue
     case light_orange, light_green, light_blue
     case orangina, forest, ice
     case swamp, bananaSky, vintage, pastel, sunset
@@ -84,6 +84,8 @@ enum ThemeType: String, Encodable, Decodable {
             return YellowTheme()
         case .melon:
             return MelonTheme()
+        default:
+            return OrangeTheme()
         }
     }
 }

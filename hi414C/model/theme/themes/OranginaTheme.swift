@@ -8,7 +8,7 @@
 import SwiftUI
 
 class OranginaTheme: Theme {
-
+    override var type: ThemeType { .orangina }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(

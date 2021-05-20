@@ -8,7 +8,7 @@
 import SwiftUI
 
 class BananaSkyTheme: Theme {
-
+    override var type: ThemeType { .bananaSky }
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
