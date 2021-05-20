@@ -11,11 +11,12 @@ struct MessagesSelect: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     
     var body: some View {
-        MessageButton("Hello fegit")
-        MessageButton("HI")
-        MessageButton("How you doin you little fella")
+        ForEach(historyVM.answers.map { Item($0) }) { item in
+            MessageButton(item.content)
+        }
         ReloadButton()
     }
     

@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-typealias Answer = String
-typealias Answers = Set<Answer>
-
 struct TerminalMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
-    @State var answer: Answer = ""
     
     private let currentMsgId = "current_msg_id"
     private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
@@ -26,24 +22,17 @@ struct TerminalMessages: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollViewReader { reader in
                     VStack(alignment: .leading, spacing: 10) {
-                        if themeVM.history {
-                            ForEach(messages.history) { message in
-                                if !message.text.isEmpty {
-                                    if message.author == .robot {
-                                        Message414C(message.text, frame: metrics.size)
-                                    } else {
-                                        MessageAl(message.text, frame: metrics.size)
-                                    }
+                        ForEach(messages.history) { message in
+                            if !message.text.isEmpty {
+                                if message.author == .robot {
+                                    Message414C(message.text, frame: metrics.size)
+                                } else {
+                                    MessageAl(message.text, frame: metrics.size)
                                 }
                             }
                         }
                         Message414C(messages.current.text, frame: metrics.size)
                             .id(currentMsgId)
-                        MessageAl(rand(from: messages.answers), frame: metrics.size)
-                            .onReceive(helpVM.$answers) { _ in
-                                self.answer = rand(from: messages.answers)
-                            }
-                            .padding(.bottom, 250)
                     }
                     .padding(.top, 10)
                     .onAppear {
@@ -92,10 +81,6 @@ struct TerminalMessages: View {
         return contentW > maxW ? maxW : contentW
     }
     
-    func rand(from answers: Answers) -> Answer {
-        answers.randomElement() ?? "??"
-    }
-    
     func findLongestWord(from sentence: String) -> String {
         let words = sentence.components(separatedBy: " ")
         if let longest = words.max(by: { $1.count > $0.count }) {
@@ -110,5 +95,4 @@ struct TerminalMessages: View {
 struct Messages {
     var history: [Message]
     var current: Message
-    var answers: Answers
 }
