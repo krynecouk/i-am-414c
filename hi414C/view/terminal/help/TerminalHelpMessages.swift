@@ -1,5 +1,5 @@
 //
-//  TerminalConversation.swift
+//  TerminalHelpMessages.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 06.05.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TerminalMessages: View {
+struct TerminalHelpMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
@@ -44,7 +44,7 @@ struct TerminalMessages: View {
     }
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
-        Grid(columns: frame.width > 500 ? TerminalMessages.LANDSLIDE_MESSAGE : TerminalMessages.PORTRAIT_MESSAGE, alignment: .center) {
+        Grid(columns: frame.width > 500 ? TerminalHelpMessages.LANDSLIDE_MESSAGE : TerminalHelpMessages.PORTRAIT_MESSAGE, alignment: .center) {
             TerminalMessageRow(text, wide: frame.width > 500, theme: themeVM.terminal.help.history.robot)
         }
         .offset(x: 3)

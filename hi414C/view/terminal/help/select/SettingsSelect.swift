@@ -13,6 +13,7 @@ struct SettingsSelect: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     
     @State var delete = false
     
@@ -72,6 +73,7 @@ struct SettingsSelect: View {
                     uiVM.current = .test
                     helpVM.resetToZero()
                     uiVM.isHelp = false
+                    historyVM.replace(with: [])
                     withAnimation {
                         self.delete = false
                     }

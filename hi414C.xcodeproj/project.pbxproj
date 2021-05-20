@@ -60,7 +60,7 @@
 		266CA418264191CD001A07E0 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA417264191CD001A07E0 /* MessageRow.swift */; };
 		266CA41E2642F2DE001A07E0 /* TerminalContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41D2642F2DE001A07E0 /* TerminalContent.swift */; };
 		266CA4202642F4E9001A07E0 /* TerminalHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41F2642F4E9001A07E0 /* TerminalHint.swift */; };
-		266CA4222643D78F001A07E0 /* TerminalMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4212643D78F001A07E0 /* TerminalMessages.swift */; };
+		266CA4222643D78F001A07E0 /* TerminalHelpMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */; };
 		266CA42426441254001A07E0 /* HelpEdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA42326441254001A07E0 /* HelpEdgeDrag.swift */; };
 		266CA4282645808E001A07E0 /* GraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4272645808E001A07E0 /* GraphNode.swift */; };
 		266CA42A2645A617001A07E0 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4292645A617001A07E0 /* Collection.swift */; };
@@ -249,7 +249,7 @@
 		266CA417264191CD001A07E0 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		266CA41D2642F2DE001A07E0 /* TerminalContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalContent.swift; sourceTree = "<group>"; };
 		266CA41F2642F4E9001A07E0 /* TerminalHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHint.swift; sourceTree = "<group>"; };
-		266CA4212643D78F001A07E0 /* TerminalMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalMessages.swift; sourceTree = "<group>"; };
+		266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpMessages.swift; sourceTree = "<group>"; };
 		266CA42326441254001A07E0 /* HelpEdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEdgeDrag.swift; sourceTree = "<group>"; };
 		266CA4272645808E001A07E0 /* GraphNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNode.swift; sourceTree = "<group>"; };
 		266CA4292645A617001A07E0 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -543,7 +543,6 @@
 				2654882226050B710044297D /* TerminalView.swift */,
 				2636126A2637F70500341B60 /* TerminalFooter.swift */,
 				266CA41D2642F2DE001A07E0 /* TerminalContent.swift */,
-				266CA4212643D78F001A07E0 /* TerminalMessages.swift */,
 			);
 			path = terminal;
 			sourceTree = "<group>";
@@ -818,7 +817,6 @@
 			isa = PBXGroup;
 			children = (
 				2697659B262DB14E00775D71 /* TerminalGrid.swift */,
-				263612522636F8F200341B60 /* TerminalHelpTest.swift */,
 				2665C9C6263C32B100CE724F /* TerminalMessage.swift */,
 				2665C9E0263D2DD500CE724F /* TerminalSymbol.swift */,
 				266CA41326411F4E001A07E0 /* TerminalPadding.swift */,
@@ -837,6 +835,8 @@
 				269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */,
 				269BCC75263927DA00229E8A /* TerminalHelpLine.swift */,
 				269BCC79263927F600229E8A /* TerminalHelpSelect.swift */,
+				266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */,
+				263612522636F8F200341B60 /* TerminalHelpTest.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -1345,7 +1345,7 @@
 				26E090E62650738C002E404D /* LightGreenTheme.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				26E091042652A693002E404D /* ForestTheme.swift in Sources */,
-				266CA4222643D78F001A07E0 /* TerminalMessages.swift in Sources */,
+				266CA4222643D78F001A07E0 /* TerminalHelpMessages.swift in Sources */,
 				269BCC8226396A1700229E8A /* SegueViewModel.swift in Sources */,
 				26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */,
 				26EA30092656C9D4004A78F2 /* HelpWarnButton.swift in Sources */,
