@@ -42,6 +42,7 @@ struct TerminalMessages: View {
                         }
                         .padding(.bottom, 250)
                 }
+                .padding(.top, 10)
             }
         }
     }

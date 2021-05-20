@@ -48,7 +48,7 @@ struct TerminalHintText: View {
 struct TerminalHintScroll: View {
     let theme: ViewTheme
     
-    private let hint = "This is help and settings screen. Turn it on with left edge drag. Turn it off with right edge drag."
+    private let hint = "Swipe left or right to open or close help and settings screen."
     
     var body: some View {
         let chars = Array(hint)
