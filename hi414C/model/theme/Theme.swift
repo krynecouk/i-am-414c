@@ -12,26 +12,21 @@ struct FontSize: Encodable, Decodable {
     var al: CGFloat = 60
     
     func inc() -> FontSize {
-        print("robot: \(robot); al: \(al)")
         if isIncreasable() {
-            return FontSize(robot: self.robot + 1, al: self.al + 5)
+            return FontSize(robot: self.robot + 1, al: self.al + 3)
         }
         return FontSize()
     }
     
     func dec() -> FontSize {
-        print("robot: \(robot); al: \(al)")
-
         if isDecreasable() {
-            return FontSize(robot: self.robot - 1, al: self.al - 5)
+            return FontSize(robot: self.robot - 1, al: self.al - 3)
         }
         return FontSize()
     }
     
     func reset() -> FontSize {
-        print("robot: \(robot); al: \(al)")
-
-        return FontSize(robot: 13, al: 60)
+        FontSize(robot: 13, al: 60)
     }
     
     func isIncreasable() -> Bool {
@@ -39,7 +34,7 @@ struct FontSize: Encodable, Decodable {
     }
     
     func isDecreasable() -> Bool {
-        robot > 6 && al > 20
+        robot > 4 && al > 20
     }
     
     static postfix func ++ (lhs: Self) -> FontSize {

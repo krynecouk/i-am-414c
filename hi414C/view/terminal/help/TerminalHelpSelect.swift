@@ -70,12 +70,23 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .settings {
-                    HelpButton("font-1") {
-                        themeVM.font(.decrease)
+                    let isDecreasable = themeVM.fontSize.isDecreasable()
+                    HelpRadioButton("font-1", active: isDecreasable) {
+                        if isDecreasable {
+                            themeVM.font(.decrease)
+                        }
                     }
-                    HelpButton("font+1") {
-                        themeVM.font(.increase)
+                    .disabled(!isDecreasable)
+                    
+                    let isIncreasable = themeVM.fontSize.isIncreasable()
+                    HelpRadioButton("font+1", active: isIncreasable) {
+                        if isIncreasable {
+                            themeVM.font(.increase)
+                        }
                     }
+                    .disabled(!isIncreasable)
+                    
+                    
                     HelpButton("font=0") {
                         themeVM.font(.reset)
                     }
