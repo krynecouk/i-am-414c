@@ -14,12 +14,12 @@ struct TestTheme {
     
     struct Active {
         var figlet: LiteFigletTheme
-        var sign: FigletTheme
+        var sign: LiteFigletTheme
     }
     
     struct Passive {
         var figlet: LiteFigletTheme
-        var sign: FigletTheme
+        var sign: LiteFigletTheme
     }
     
     struct TestAnimation {

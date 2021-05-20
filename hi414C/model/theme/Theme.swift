@@ -133,13 +133,12 @@ class Theme: Themable {
                                 color: color.primary.value
                             )
                         ),
-                        sign: FigletTheme(
+                        sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.secondary.contrast.opacity(0.7)
-                            ),
-                            animations: []
+                            )
                         )
                     ),
                     passive: TestTheme.Passive(
@@ -150,13 +149,12 @@ class Theme: Themable {
                                 color: color.primary.value.opacity(0.2)
                             )
                         ),
-                        sign: FigletTheme(
+                        sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.secondary.contrast.opacity(0.7)
-                            ),
-                            animations: []
+                            )
                         )
                     ),
                     animation: TestTheme.TestAnimation(
@@ -186,13 +184,12 @@ class Theme: Themable {
                                 color: color.primary.contrast
                             )
                         ),
-                        sign: FigletTheme(
+                        sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.tertiary.contrast.opacity(0.7)
-                            ),
-                            animations: []
+                            )
                         )
                     ),
                     // not needed
@@ -204,13 +201,12 @@ class Theme: Themable {
                                 color: color.primary.value.opacity(0.2)
                             )
                         ),
-                        sign: FigletTheme(
+                        sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.tertiary.value.opacity(0.2)
-                            ),
-                            animations: []
+                            )
                         )
                     ),
                     animation: TestTheme.TestAnimation(

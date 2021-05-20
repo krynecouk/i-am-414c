@@ -10,6 +10,7 @@ import SwiftUI
 class ThemeViewModel: ObservableObject {
     @Published private(set) var theme: Themable
     @Published private(set) var hint: Bool
+    @Published private(set) var wave: Bool
     
     var font: FontTheme { theme.font }
     var fontSize: FontSize = FontSize()
@@ -24,11 +25,14 @@ class ThemeViewModel: ObservableObject {
         self.theme = type.toTheme(font: FontTheme(size: size))
         self.fontSize = size
         self.hint = HintDao.find() ?? true
+        self.wave = WaveDao.find() ?? true
     }
     
     func reset() {
-        self.theme = OrangeTheme()
-        ThemeDao.store(.orange)
+        font(.reset)
+        change(to: .orange)
+        showHint()
+        showWave()
     }
     
     func change(to type: ThemeType) {
@@ -52,6 +56,16 @@ class ThemeViewModel: ObservableObject {
     func showHint() {
         self.hint = true
         HintDao.store(self.hint)
+    }
+    
+    func hideWave() {
+        self.wave = false
+        HintDao.store(self.wave)
+    }
+    
+    func showWave() {
+        self.wave = true
+        HintDao.store(self.wave)
     }
     
     func fontSize(_ operation: FontOperation) -> FontSize {

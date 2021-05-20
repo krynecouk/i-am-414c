@@ -71,7 +71,7 @@ struct TerminalHelpSelect: View {
                 
                 if segueVM.opened == .settings {
                     let isDecreasable = themeVM.fontSize.isDecreasable()
-                    HelpRadioButton("font-1", active: isDecreasable) {
+                    HelpRadioButton("font-", active: isDecreasable) {
                         if isDecreasable {
                             themeVM.font(.decrease)
                         }
@@ -79,23 +79,30 @@ struct TerminalHelpSelect: View {
                     .disabled(!isDecreasable)
                     
                     let isIncreasable = themeVM.fontSize.isIncreasable()
-                    HelpRadioButton("font+1", active: isIncreasable) {
+                    HelpRadioButton("font+", active: isIncreasable) {
                         if isIncreasable {
                             themeVM.font(.increase)
                         }
                     }
                     .disabled(!isIncreasable)
                     
-                    
-                    HelpButton("font=0") {
+                    HelpButton("font0") {
                         themeVM.font(.reset)
                     }
                     
-                    HelpRadioButton("Hint", active: themeVM.hint) {
+                    HelpRadioButton("hint", active: themeVM.hint) {
                         themeVM.hint ? themeVM.hideHint() : themeVM.showHint()
                     }
                     
-                    HelpButton("NewGame") {
+                    HelpRadioButton("wave", active: themeVM.wave) {
+                        themeVM.wave ? themeVM.hideWave() : themeVM.showWave()
+                    }
+                    
+                    HelpButton("reset") {
+                        themeVM.reset()
+                    }
+                    
+                    HelpButton("newGame") {
                         graphVM.setGraph(root: Graphs.HI)
                         asciiVM.reset()
                         uiVM.current = .test

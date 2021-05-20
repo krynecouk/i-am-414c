@@ -13,11 +13,11 @@ struct TerminalTest: View {
     let items: [TerminalTestItem]
     let theme: (
         num: LiteFigletTheme,
-        sym: FigletTheme
+        sign: LiteFigletTheme
     )
     let wide: Bool
     
-    init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, FigletTheme), wide: Bool = false) {
+    init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, LiteFigletTheme), wide: Bool = false) {
         print("TerminalTest")
         self.items = items
         self.theme = theme
@@ -33,7 +33,7 @@ struct TerminalTest: View {
             }
             if case let .sign(chars) = item.type {
                 DetailRow(of: chars, wide: wide) {
-                    FigletView(String(chars), theme: theme.sym)
+                    LiteFigletView(String(chars), theme: theme.sign)
                 }
             }
         }

@@ -21,8 +21,12 @@ struct CathodeView<Content: View>: View {
             Curtain(of: themeVM.terminal.cathode.background)
             BlurIn(of: themeVM.terminal.cathode.blurIn)
                 .opacity(0.2)
-            RefreshWave(of: themeVM.terminal.cathode.wave)
-                .opacity(0.09)
+            
+            if themeVM.wave {
+                RefreshWave(of: themeVM.terminal.cathode.wave)
+                    .opacity(0.09)
+            }
+
             content
         }
     }
