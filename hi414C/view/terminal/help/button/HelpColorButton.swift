@@ -7,6 +7,27 @@
 
 import SwiftUI
 
+struct HelpColorButton: View {
+    @EnvironmentObject var themeVM: ThemeViewModel
+
+    let name: String
+    let theme: ThemeType
+    
+    init(_ name: String, _ theme: ThemeType) {
+        self.name = name
+        self.theme = theme
+    }
+    
+    var body: some View {
+        ColorButton(size: (70, 70), left: Color.primary(name), right: Color.secondary(name)) {
+            themeVM.change(to: theme)
+        }
+        .border(Color.tertiary(name), width: 15)
+        .padding(5)
+        .border(themeVM.theme.type == theme ? Color.primary(name) : Color.clear, width: 5)
+    }
+}
+
 struct ColorButton: View {
     var size: Size = (52, 52)
     var left: Color = .clear

@@ -156,29 +156,29 @@ struct TerminalGrid: View {
     func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
         ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
     }
-}
-
-enum GridType {
-    case adaptive, portrait_detail, landslide_detail, portrait_message, landslide_message
     
-    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
-    private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    private static let LANDSLIDE_DETAIL = (1...8).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
-    
-    func rawValue() -> [GridItem] {
-        switch self {
-        case .adaptive:
-            return GridType.ADAPTIVE
-        case .portrait_detail:
-            return GridType.PORTRAIT_DETAIL
-        case .landslide_detail:
-            return GridType.LANDSLIDE_DETAIL
-        case .portrait_message:
-            return GridType.PORTRAIT_MESSAGE
-        case .landslide_message:
-            return GridType.LANDSLIDE_MESSAGE
+    enum GridType {
+        case adaptive, portrait_detail, landslide_detail, portrait_message, landslide_message
+        
+        private static let ADAPTIVE = [GridItem(.adaptive(minimum: 60, maximum: .infinity))]
+        private static let PORTRAIT_DETAIL = (1...4).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+        private static let LANDSLIDE_DETAIL = (1...8).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+        private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+        private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 60, maximum: .infinity))}
+        
+        func rawValue() -> [GridItem] {
+            switch self {
+            case .adaptive:
+                return GridType.ADAPTIVE
+            case .portrait_detail:
+                return GridType.PORTRAIT_DETAIL
+            case .landslide_detail:
+                return GridType.LANDSLIDE_DETAIL
+            case .portrait_message:
+                return GridType.PORTRAIT_MESSAGE
+            case .landslide_message:
+                return GridType.LANDSLIDE_MESSAGE
+            }
         }
     }
 }

@@ -10,169 +10,46 @@ import SwiftUI
 struct TerminalHelpSelect: View {
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
-    @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var uiVM: UIViewModel
-    @EnvironmentObject var testVM: TestViewModel
-    @EnvironmentObject var asciiVM: ASCIIViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var historyVM: HistoryViewModel
     
-    @State var newGame = false
-    
-    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 110, maximum: .infinity))]
+    @State var gridType: GridType = .adaptive
     
     var body: some View {
         GeometryReader { metrics in
-            Grid(columns: TerminalHelpSelect.ADAPTIVE, spacing: 10, padding: 15) {
+            Grid(columns: gridType.rawValue(), spacing: 10, padding: 15) {
                 if segueVM.opened == .help && uiVM.current == .message {
-                    Group {
-                        let messages = historyVM.history.count
-                        HelpRadioButton("history", active: themeVM.history && messages > 1) {
-                            themeVM.history ? themeVM.hideHistory() : themeVM.showHistory()
-                        }
-                        .disabled(messages < 2)
-                        
-                        HelpButton("rnd") {
-                            helpVM.randAnswer()
+                    MessagesSelect()
+                    .onAppear {
+                        if self.gridType != .messages {
+                            self.gridType = .messages
                         }
                     }
                 }
                 if segueVM.opened == .help && uiVM.current == .test {
-                    Group {
-                        HelpButton("-1") {
-                            helpVM.decrement()
+                    TestSelect()
+                    .onAppear {
+                        if self.gridType != .adaptive {
+                            self.gridType = .adaptive
                         }
-                        HelpButton("+1") {
-                            helpVM.increment()
-                        }
-                        HelpButton("rnd") {
-                            helpVM.rand()
-                        }
-                        HelpButton("000") {
-                            helpVM.resetToZero()
-                        }
-                    }
-                    Group {
-                        HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
-                            helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
-                        }
-                    }
-                    Group {
-                        HelpSignButton("=", ID.self, .ID)
-                        HelpSignButton("+", ADD.self, .ADD)
-                        HelpSignButton("-", SUB.self, .SUB)
-                        HelpSignButton("/", DIV.self, .DIV)
-                        HelpSignButton("*", MUL.self, .MUL)
-                    }
-                    Group{
-                        HelpSignButton("&", AND.self, .AND)
-                        HelpSignButton("|", OR.self, .OR)
-                        HelpSignButton("^", XOR.self, .XOR)
-                        HelpSignButton("~", NOT.self, .NOT)
-                        HelpSignButton("<<", SHL.self, .SHL)
-                        HelpSignButton(">>", SHR.self, .SHR)
                     }
                 }
                 
                 if segueVM.opened == .settings {
-                    let isDecreasable = themeVM.fontSize.isDecreasable()
-                    HelpRadioButton("font-", active: isDecreasable) {
-                        if isDecreasable {
-                            themeVM.font(.decrease)
-                        }
-                    }
-                    .opacity(newGame ? 0.3 : 1)
-                    .disabled(!isDecreasable)
-                    
-                    let isIncreasable = themeVM.fontSize.isIncreasable()
-                    HelpRadioButton("font+", active: isIncreasable) {
-                        if isIncreasable {
-                            themeVM.font(.increase)
-                        }
-                    }
-                    .opacity(newGame ? 0.3 : 1)
-                    .disabled(!isIncreasable)
-                    
-                    HelpButton("font0") {
-                        themeVM.font(.reset)
-                    }
-                    .opacity(newGame ? 0.3 : 1)
-                    
-                    HelpRadioButton("hint", active: themeVM.hint) {
-                        themeVM.hint ? themeVM.hideHint() : themeVM.showHint()
-                    }
-                    .opacity(newGame ? 0.3 : 1)
-                    
-                    HelpRadioButton("wave", active: themeVM.wave) {
-                        themeVM.wave ? themeVM.hideWave() : themeVM.showWave()
-                    }
-                    .opacity(newGame ? 0.3 : 1)
-                    
-                    HelpButton("reset") {
-                        themeVM.reset()
-                    }
-                    .opacity(newGame ? 0.3 : 1)
-                    
-                    if !newGame {
-                        HelpWarnButton("delete") {
-                            withAnimation {
-                                self.newGame = true
-                            }
-                        }
-                    } else {
-                        HelpButton("no") {
-                            withAnimation {
-                                self.newGame = false
-                            }
-                        }
-                        HelpWarnButton("yes") {
-                            themeVM.reset()
-                            graphVM.setGraph(root: Graphs.HI)
-                            asciiVM.reset()
-                            uiVM.current = .test
-                            helpVM.resetToZero()
-                            uiVM.isHelp = false
-                            withAnimation {
-                                self.newGame = false
-                            }
-                        }
+                    SettingsSelect()
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation {
-                                    self.newGame = false
-                                }
+                            if self.gridType != .adaptive {
+                                self.gridType = .adaptive
                             }
                         }
-                    }
                 }
                 
                 if segueVM.opened == .themes {
-                    Group {
-                        HelpColorButton("Orange", .orange)
-                        HelpColorButton("Green", .green)
-                        HelpColorButton("Blue", .blue)
-                        HelpColorButton("LightOrange", .light_orange)
-                        HelpColorButton("LightGreen", .light_green)
-                        HelpColorButton("LightBlue", .light_blue)
-                    }
-                    Group {
-                        HelpColorButton("Orangina", .orangina)
-                        HelpColorButton("Forest", .forest)
-                        HelpColorButton("Ice", .ice)
-                    }
-                    Group {
-                        HelpColorButton("Vintage", .vintage)
-                        HelpColorButton("Melon", .melon)
-                        HelpColorButton("Sea", .sea)
-                        
-                        HelpColorButton("Sunset", .sunset)
-                        HelpColorButton("GreenGold", .green_gold)
-                        HelpColorButton("Pastel", .pastel)
-                        
-                        HelpColorButton("BananaSky", .bananaSky)
-                        HelpColorButton("Swamp", .swamp)
-                        HelpColorButton("Gray", .gray)
-                    }
+                    ThemesSelect()
+                        .onAppear {
+                            if self.gridType != .adaptive {
+                                self.gridType = .adaptive
+                            }
+                        }
                 }
             }
             .id(metrics.frame(in: .global).size.width)
@@ -195,47 +72,19 @@ struct TerminalHelpSelect: View {
         }
     }
     
-    func HelpSignButton<T>(_ text: String, _ type: T.Type, _ equationType: EquationType) -> some View {
-        HelpRadioButton(text, active: helpVM.getBuilder(helpVM.equation) is T) {
-            helpVM.change(to: equationType)
-        }
-    }
-    
-    func HelpColorButton(_ name: String, _ theme: ThemeType) -> some View {
-        ColorButton(size: (70, 70), left: Color.primary(name), right: Color.secondary(name)) {
-            themeVM.change(to: theme)
-        }
-        .border(Color.tertiary(name), width: 15)
-        //.border(Color.secondary(name), width: 1)
-        .padding(5)
-        .border(themeVM.theme.type == theme ? Color.primary(name) : Color.clear, width: 5)
-    }
-    
-    func HelpButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
-        Button(action: action) {
-            Text(text)
-                .padding()
-                .withTheme(themeVM.terminal.hli.select.button)
-        }
-    }
-    
-    func HelpWarnButton(_ text: String, perform action: @escaping () -> Void = {}) -> some View {
-        Button(action: action) {
-            Text(text)
-                .padding()
-                .background(Color.red.opacity(0.7))
-                .foregroundColor(Color("WhiteOrange"))
-                .withTheme(themeVM.terminal.hli.select.button)
-        }
-    }
-    
-    func HelpRadioButton(_ text: String, active: Bool = false, perform action: @escaping () -> Void = {}) -> some View {
-        Button(action: action) {
-            Text(text)
-                .padding()
-                .background(active ? themeVM.terminal.hli.select.button.background : themeVM.terminal.hli.button.passive.color.opacity(0.6))
-                .font(Font.of(props: themeVM.terminal.hli.select.button.font))
-                .foregroundColor(themeVM.terminal.hli.select.button.color.opacity(active ? 1 : 0.5))
+    enum GridType {
+        case adaptive, messages
+        
+        private static let ADAPTIVE = [GridItem(.adaptive(minimum: 110, maximum: .infinity))]
+        private static let MESSAGES = [GridItem(.adaptive(minimum: 150, maximum: .infinity))]
+        
+        func rawValue() -> [GridItem] {
+            switch self {
+            case .adaptive:
+                return GridType.ADAPTIVE
+            case .messages:
+                return GridType.MESSAGES
+            }
         }
     }
 }
