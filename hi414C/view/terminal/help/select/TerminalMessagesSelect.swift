@@ -13,11 +13,19 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var historyVM: HistoryViewModel
     
+    @State var pageLimit = 3
+    
     var body: some View {
-        ForEach(historyVM.answers.map { Item($0) }) { item in
+        ForEach(historyVM.answers.prefix(pageLimit).map { Item($0) }) { item in
             MessageButton(item.content)
         }
-        ReloadButton()
+        if historyVM.answers.count > pageLimit {
+            ReloadButton()
+                .onAppear {
+                    print(historyVM.answers.count)
+                    print(pageLimit)
+                }
+        }
     }
     
     func MessageLabel(_ text: String) -> some View {
@@ -42,7 +50,11 @@ struct TerminalMessagesSelect: View {
     func ReloadButton(_ text: String = "...") -> some View {
         MessageLabel(text)
             .onTapGesture {
-                // TODO
+                if historyVM.answers.count > pageLimit {
+                    withAnimation {
+                        self.pageLimit += 3
+                    }
+                }
             }
     }
     

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -179,6 +179,7 @@
 		26EA30092656C9D4004A78F2 /* HelpWarnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30082656C9D4004A78F2 /* HelpWarnButton.swift */; };
 		26EA300B2656CA1B004A78F2 /* HelpRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300A2656CA1B004A78F2 /* HelpRadioButton.swift */; };
 		26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300C2656CB68004A78F2 /* HelpSignButton.swift */; };
+		26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 26EA30142657FDB9004A78F2 /* OrderedCollections */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -383,6 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,6 +1112,9 @@
 			dependencies = (
 			);
 			name = hi414C;
+			packageProductDependencies = (
+				26EA30142657FDB9004A78F2 /* OrderedCollections */,
+			);
 			productName = hi414C;
 			productReference = 26BEC22625DD3B0A0035065E /* hi414C.app */;
 			productType = "com.apple.product-type.application";
@@ -1159,6 +1164,9 @@
 				Base,
 			);
 			mainGroup = 26BEC21D25DD3B0A0035065E;
+			packageReferences = (
+				26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 26BEC22725DD3B0A0035065E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1619,6 +1627,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26EA30142657FDB9004A78F2 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 26BEC21E25DD3B0A0035065E /* Project object */;
 }

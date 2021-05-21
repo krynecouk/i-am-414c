@@ -37,7 +37,7 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if ascii.contains(all: symbols) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    historyVM.replace(with: graphVM.getAnswers(ascii: ascii))
+                    historyVM.replace(with: graphVM.getPaths(ascii: ascii))
                     let id = UUID()
                     let message = Message(id: id, from: .robot, text: text)
                     let messages = Messages(history: historyVM.history, current: message)

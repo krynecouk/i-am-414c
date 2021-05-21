@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OrderedCollections
 
 class GraphViewModel: ObservableObject {
     @Published private(set) var result: GraphTraverseResult = .ok
@@ -51,26 +52,26 @@ class GraphViewModel: ObservableObject {
         self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
-    func getAnswers(ascii: Set<ASCIISymbol>) -> [String] {
+    func getPaths(ascii: Set<ASCIISymbol>) -> OrderedSet<String> {
         let precondition: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
-        let current = getPaths(from: current, precondition: precondition)
-        let root = getPaths(from: root, precondition: precondition)
-        let result = Array(current) + Array(root)
-        return result
+        var current = getPaths(from: current, precondition: precondition)
+        let root = Set(getPaths(from: root, precondition: precondition))
+        current.formUnion(root)
+        return current
     }
     
-    func getPaths(from node: Node, precondition: (String) -> Bool) -> Set<String> {
-        var paths: Set<String> = []
+    func getPaths(from node: Node, precondition: (String) -> Bool) -> OrderedSet<String> {
+        var paths: OrderedSet<String> = []
         for edge in node.edges {
             if precondition(edge.id) {
-                paths.insert(edge.id)
+                paths.append(edge.id)
             }
             if let asciiEdge = edge as? ASCIITestEdge {
                 asciiEdge.variants.forEach { variant in
                     if precondition(variant) {
-                        paths.insert(variant)
+                        paths.append(variant)
                     }
                 }
             }

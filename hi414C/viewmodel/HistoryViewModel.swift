@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import OrderedCollections
 
 typealias History = [Message]
 typealias Answer = String
-typealias Answers = [Answer]
+typealias Answers = OrderedSet<Answer>
 
 class HistoryViewModel: ObservableObject {
     private(set) var history: History = []
