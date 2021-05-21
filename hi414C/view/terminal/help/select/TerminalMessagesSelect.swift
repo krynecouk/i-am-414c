@@ -1,5 +1,5 @@
 //
-//  MessagesSelect.swift
+//  TerminalMessagesSelect.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 20.05.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MessagesSelect: View {
+struct TerminalMessagesSelect: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
@@ -22,10 +22,7 @@ struct MessagesSelect: View {
     
     func MessageLabel(_ text: String) -> some View {
         Text(text)
-            .withTheme(ViewTheme(
-                font: FontProps(.proggyTiny, 32),
-                color: .white
-            ))
+            .withTheme(themeVM.terminal.hli.select.messageButton)
             .offset(x: 4, y: 5)
             .padding([.top, .bottom], 8)
             .padding([.trailing, .leading], 25)
@@ -56,6 +53,6 @@ struct MessagesSelect: View {
 
 struct MessagesSelect_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesSelect()
+        TerminalMessagesSelect()
     }
 }

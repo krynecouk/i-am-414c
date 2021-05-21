@@ -18,7 +18,7 @@ struct TerminalHelpSelect: View {
         GeometryReader { metrics in
             Grid(columns: gridType.rawValue(), spacing: 10, padding: 15) {
                 if segueVM.opened == .help && uiVM.current == .message {
-                    MessagesSelect()
+                    TerminalMessagesSelect()
                     .onAppear {
                         if self.gridType != .messages {
                             self.gridType = .messages
@@ -26,7 +26,7 @@ struct TerminalHelpSelect: View {
                     }
                 }
                 if segueVM.opened == .help && uiVM.current == .test {
-                    TestSelect()
+                    TerminalTestSelect()
                     .onAppear {
                         if self.gridType != .adaptive {
                             self.gridType = .adaptive
@@ -35,7 +35,7 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .settings {
-                    SettingsSelect()
+                    TerminalSettingsSelect()
                         .onAppear {
                             if self.gridType != .adaptive {
                                 self.gridType = .adaptive
@@ -44,7 +44,7 @@ struct TerminalHelpSelect: View {
                 }
                 
                 if segueVM.opened == .themes {
-                    ThemesSelect()
+                    TerminalThemesSelect()
                         .onAppear {
                             if self.gridType != .adaptive {
                                 self.gridType = .adaptive

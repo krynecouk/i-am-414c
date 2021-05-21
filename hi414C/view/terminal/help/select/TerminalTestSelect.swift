@@ -1,5 +1,5 @@
 //
-//  TestSelect.swift
+//  TerminalTestSelect.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 20.05.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestSelect: View {
+struct TerminalTestSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
 
     var body: some View {
@@ -50,6 +50,6 @@ struct TestSelect: View {
 
 struct TestSelect_Previews: PreviewProvider {
     static var previews: some View {
-        TestSelect()
+        TerminalTestSelect()
     }
 }

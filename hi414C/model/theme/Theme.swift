@@ -295,6 +295,11 @@ class Theme: Themable {
                         color: color.primary.contrast,
                         background: color.primary.value
                     ),
+                    messageButton: ViewTheme(
+                        font: FontProps(.proggyTiny, 46),
+                        color: color.secondary.contrast.opacity(0.7),
+                        background: color.secondary.value
+                    ),
                     background: TerminalTheme.HelpLine.Background(
                         active: color.tertiary.value,
                         passive: color.secondary.value

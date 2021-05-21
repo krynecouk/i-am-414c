@@ -1,5 +1,5 @@
 //
-//  ThemesSelect.swift
+//  TerminalThemesSelect.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 20.05.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ThemesSelect: View {
+struct TerminalThemesSelect: View {
     var body: some View {
         Group {
             HelpColorButton("Orange", .orange)

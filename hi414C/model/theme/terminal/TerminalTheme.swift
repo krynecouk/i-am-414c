@@ -73,6 +73,7 @@ struct TerminalTheme {
         
         struct Select {
             var button: ViewTheme
+            var messageButton: ViewTheme
             var background: Background
         }
         
