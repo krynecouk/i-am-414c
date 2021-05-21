@@ -180,6 +180,7 @@
 		26EA300B2656CA1B004A78F2 /* HelpRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300A2656CA1B004A78F2 /* HelpRadioButton.swift */; };
 		26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300C2656CB68004A78F2 /* HelpSignButton.swift */; };
 		26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 26EA30142657FDB9004A78F2 /* OrderedCollections */; };
+		26EA3017265813DC004A78F2 /* TerminalHelpPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -371,6 +372,7 @@
 		26EA30082656C9D4004A78F2 /* HelpWarnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWarnButton.swift; sourceTree = "<group>"; };
 		26EA300A2656CA1B004A78F2 /* HelpRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRadioButton.swift; sourceTree = "<group>"; };
 		26EA300C2656CB68004A78F2 /* HelpSignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSignButton.swift; sourceTree = "<group>"; };
+		26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpPadding.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 				269BCC79263927F600229E8A /* TerminalHelpSelect.swift */,
 				266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */,
 				263612522636F8F200341B60 /* TerminalHelpTest.swift */,
+				26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -1258,6 +1261,7 @@
 				26645DC22639B1930086F26C /* CircleTransition.swift in Sources */,
 				262092252600B7250001904B /* FigletTypeface.swift in Sources */,
 				2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */,
+				26EA3017265813DC004A78F2 /* TerminalHelpPadding.swift in Sources */,
 				26782B4026177AC800BA9C4E /* FadeOut.swift in Sources */,
 				269765092624A2C100775D71 /* ID.swift in Sources */,
 				26E090FA2651BE66002E404D /* VintageTheme.swift in Sources */,
