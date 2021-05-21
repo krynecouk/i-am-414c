@@ -51,15 +51,31 @@ class GraphViewModel: ObservableObject {
         self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
-    func getAnswers(ascii: Set<ASCIISymbol>) -> Set<String> {
+    func getAnswers(ascii: Set<ASCIISymbol>) -> [String] {
+        let precondition: (String) -> Bool = { path in
+            ascii.contains(all: path.map { ASCIISymbol.from($0) })
+        }
+        let current = getPaths(from: current, precondition: precondition)
+        let root = getPaths(from: root, precondition: precondition)
+        let result = Array(current) + Array(root)
+        return result
+    }
+    
+    func getPaths(from node: Node, precondition: (String) -> Bool) -> Set<String> {
         var paths: Set<String> = []
-        for edge in current.edges {
-            paths.insert(edge.id)
+        for edge in node.edges {
+            if precondition(edge.id) {
+                paths.insert(edge.id)
+            }
             if let asciiEdge = edge as? ASCIITestEdge {
-                paths.formUnion(Set(asciiEdge.variants))
+                asciiEdge.variants.forEach { variant in
+                    if precondition(variant) {
+                        paths.insert(variant)
+                    }
+                }
             }
         }
-        return paths.filter { path in ascii.contains(all: path.map { ASCIISymbol.from($0) }) }
+        return paths
     }
 }
 

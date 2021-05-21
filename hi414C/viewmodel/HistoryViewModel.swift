@@ -9,7 +9,7 @@ import SwiftUI
 
 typealias History = [Message]
 typealias Answer = String
-typealias Answers = Set<Answer>
+typealias Answers = [Answer]
 
 class HistoryViewModel: ObservableObject {
     private(set) var history: History = []
@@ -21,20 +21,12 @@ class HistoryViewModel: ObservableObject {
         }
     }
     
-    func add(answer: Answer) {
-        self.answers.insert(answer)
-    }
-    
     func replace(with answers: Answers) {
         self.answers = answers
     }
     
     func remove() {
         self.history = []
-    }
-    
-    func clearAnswers() {
-        self.answers = []
     }
 }
 

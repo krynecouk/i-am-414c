@@ -297,7 +297,7 @@ class Theme: Themable {
                     ),
                     messageButton: ViewTheme(
                         font: FontProps(.proggyTiny, 46),
-                        color: color.secondary.contrast.opacity(0.7),
+                        color: color.secondary.contrast.opacity(0.8),
                         background: color.secondary.value
                     ),
                     background: TerminalTheme.HelpLine.Background(
