@@ -22,6 +22,7 @@ struct TerminalHelpMessages: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollViewReader { reader in
                     VStack(alignment: .leading) {
+                        Color.clear.frame(height: 10)
                         VStack(alignment: .leading, spacing: 10) {
                             ForEach(messages.history) { message in
                                 if !message.text.isEmpty {
@@ -35,7 +36,6 @@ struct TerminalHelpMessages: View {
                             Message414C(messages.current.text, frame: metrics.size)
                                 .id(currentMsgId)
                         }
-                        .padding(.top, 10)
                         .onAppear {
                             reader.scrollTo(currentMsgId)
                         }
@@ -50,7 +50,7 @@ struct TerminalHelpMessages: View {
         Grid(columns: frame.width > 500 ? TerminalHelpMessages.LANDSLIDE_MESSAGE : TerminalHelpMessages.PORTRAIT_MESSAGE, alignment: .center) {
             TerminalMessageRow(text, wide: frame.width > 500, theme: themeVM.terminal.help.history.robot)
         }
-        .offset(x: 3)
+        .offset(x: text.count == 1 ? -5 : 3)
         .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
         .background(rounded)
         .padding(.leading, 10)
@@ -62,25 +62,25 @@ struct TerminalHelpMessages: View {
             Spacer()
             Text(text)
                 .withTheme(themeVM.terminal.help.history.al)
-                .offset(x: 4, y: 5)
+                .offset(x: 2, y: 3.5)
                 .padding([.top, .bottom], 8)
                 .padding([.trailing, .leading], 25)
                 .background(rounded)
-                .frame(maxWidth: frame.width * 0.75, alignment: .trailing)
+                .frame(maxWidth: frame.width * 0.8, alignment: .trailing)
                 .animation(.spring().speed(1.3))
         }
         .padding(.trailing, 10)
     }
     
     var rounded: some View {
-        RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
+        RoundedRectangle(cornerRadius: 35)
+            .fill(themeVM.terminal.help.history.al.background ?? Color.clear)
     }
     
     func getGridWidth(frame: CGSize, content: String) -> CGFloat {
         let contentCount = content.isEmpty ? 0 : findLongestWord(from: content).count
-        print(contentCount)
-        let contentW: CGFloat = CGFloat(contentCount * 90)
-        let maxW: CGFloat = frame.width * 0.75
+        let contentW: CGFloat = CGFloat(contentCount * 80)
+        let maxW: CGFloat = frame.width * 0.9
         return contentW > maxW ? maxW : contentW
     }
     
@@ -90,7 +90,6 @@ struct TerminalHelpMessages: View {
             print(longest)
             return longest
         }
-        print(words[0])
         return words[0]
     }
 }
@@ -103,9 +102,17 @@ struct Messages {
 struct TerminalHelpMessages_Previews: PreviewProvider {
     static var previews: some View {
         let messages = Messages(
-            history: [Message(from: .robot, text: "REPAIRABLE")],
-            current: Message(from: .al, text: "OK"))
+            history: [
+                Message(from: .robot, text: "REPAIRABLE"),
+                Message(from: .al, text: "OK")
+            ],
+            current: Message(from: .al, text: "I"))
         TerminalHelpMessages(messages: messages)
             .withEnvironment()
+        
+        Landscape {
+            TerminalHelpMessages(messages: messages)
+                .withEnvironment()
+        }
     }
 }

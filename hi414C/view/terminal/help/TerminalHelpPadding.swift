@@ -13,7 +13,7 @@ struct TerminalHelpPadding: View {
     
     var body: some View {
         Color.clear
-            .padding(.bottom, getPadding())
+            .frame(height: getPadding())
     }
     
     func getPadding() -> CGFloat {

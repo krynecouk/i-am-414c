@@ -31,7 +31,7 @@ struct TerminalMessagesSelect: View {
     func MessageLabel(_ text: String) -> some View {
         Text(text)
             .withTheme(themeVM.terminal.hli.select.messageButton)
-            .offset(x: 4, y: 5)
+            .offset(x: 2, y: 3.5)
             .padding([.top, .bottom], 8)
             .padding([.trailing, .leading], 25)
             .background(rounded)
