@@ -14,10 +14,11 @@ class GraphViewModel: ObservableObject {
     
     private var current: Node = Graphs.HI
     private let toolkit: GraphToolkit
-
-    init(toolkit: GraphToolkit) {
+    
+    init(graph: GraphType = .BIN, toolkit: GraphToolkit) {
         self.toolkit = toolkit
         self.toolkit.graphVM = self
+        self.setGraph(GraphDao.find() ?? graph)
         self.start()
     }
     
@@ -41,11 +42,13 @@ class GraphViewModel: ObservableObject {
         }
         return .none
     }
-
-    func setGraph(root: Node) {
-        self.root = root
-        self.current = root
+    
+    func setGraph(_ type: GraphType) {
+        let graph = type.toGraph()
+        self.root = graph
+        self.current = graph
         self.start()
+        GraphDao.store(type)
     }
     
     private func start() {
@@ -80,8 +83,17 @@ class GraphViewModel: ObservableObject {
     }
 }
 
-enum GraphType {
+enum GraphType: String, Storable {
     case BIN, HEX
+    
+    func toGraph() -> Node {
+        switch self {
+        case .BIN:
+            return Graphs.HI
+        case .HEX:
+            return Graphs.HI2
+        }
+    }
 }
 
 enum GraphTraverseResult {

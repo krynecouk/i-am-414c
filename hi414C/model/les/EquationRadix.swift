@@ -5,6 +5,6 @@
 //  Created by Darius Kryszczuk on 14.04.2021.
 //
 
-enum EquationRadix {
+enum EquationRadix: String, Storable {
     case bin, hex, dec
 }

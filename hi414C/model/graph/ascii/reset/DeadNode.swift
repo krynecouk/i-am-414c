@@ -18,7 +18,7 @@ class DeadNode: Node {
         toolkit.testVM.radix(of: .bin)
         toolkit.helpVM.radix(of: .bin)
         toolkit.asciiVM.reset()
-        toolkit.graphVM?.setGraph(root: Graphs.HI)
+        toolkit.graphVM?.setGraph(.BIN)
         toolkit.uiVM.isIntroVideo = false // TODO
         toolkit.uiVM.isIntro = true
         toolkit.themeVM.reset()

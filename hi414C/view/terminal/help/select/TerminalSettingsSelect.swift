@@ -68,7 +68,7 @@ struct TerminalSettingsSelect: View {
                 }
                 HelpWarnButton("yes") {
                     themeVM.reset()
-                    graphVM.setGraph(root: Graphs.HI)
+                    graphVM.setGraph(.BIN)
                     asciiVM.reset()
                     uiVM.current = .test
                     helpVM.resetToZero()
