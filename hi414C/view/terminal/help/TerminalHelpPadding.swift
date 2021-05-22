@@ -17,7 +17,7 @@ struct TerminalHelpPadding: View {
     }
     
     func getPadding() -> CGFloat {
-        var padding: CGFloat = 0
+        var padding: CGFloat = 20
         if segueVM.isOpen {
             padding += segueVM.segue.height
         } else {

@@ -181,6 +181,8 @@
 		26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300C2656CB68004A78F2 /* HelpSignButton.swift */; };
 		26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 26EA30142657FDB9004A78F2 /* OrderedCollections */; };
 		26EA3017265813DC004A78F2 /* TerminalHelpPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */; };
+		26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3019265951A8004A78F2 /* UpgradeNode.swift */; };
+		26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301B265951B6004A78F2 /* DeadNode.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -373,6 +375,8 @@
 		26EA300A2656CA1B004A78F2 /* HelpRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRadioButton.swift; sourceTree = "<group>"; };
 		26EA300C2656CB68004A78F2 /* HelpSignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSignButton.swift; sourceTree = "<group>"; };
 		26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpPadding.swift; sourceTree = "<group>"; };
+		26EA3019265951A8004A78F2 /* UpgradeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeNode.swift; sourceTree = "<group>"; };
+		26EA301B265951B6004A78F2 /* DeadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadNode.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 		2634DE4925FBC17200FE8A65 /* ascii */ = {
 			isa = PBXGroup;
 			children = (
+				26EA301826595196004A78F2 /* reset */,
 				267A0D4D260C821C00844927 /* art */,
 				267A0D4C260C821700844927 /* test */,
 			);
@@ -1060,6 +1065,15 @@
 			path = button;
 			sourceTree = "<group>";
 		};
+		26EA301826595196004A78F2 /* reset */ = {
+			isa = PBXGroup;
+			children = (
+				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
+				26EA301B265951B6004A78F2 /* DeadNode.swift */,
+			);
+			path = reset;
+			sourceTree = "<group>";
+		};
 		26F7A6BF25FA4FCE00F04156 /* hi414CTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1237,6 +1251,7 @@
 				26E091062652ABFF002E404D /* OranginaTheme.swift in Sources */,
 				2665C9BB263AB41300CE724F /* Row.swift in Sources */,
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
+				26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */,
 				26E090F42651B9A5002E404D /* FooTheme.swift in Sources */,
 				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */,
@@ -1301,6 +1316,7 @@
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */,
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
+				26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */,
 				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */,
 				26EA2FD726541953004A78F2 /* HelpColorButton.swift in Sources */,

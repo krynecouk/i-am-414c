@@ -12,4 +12,8 @@ struct EdgeBuilder {
     static func buildBlock(_ edges: Edge...) -> [Edge] {
         edges
     }
+    
+    static func buildArray(_ edges: [[Edge]]) -> [Edge] {
+        edges.flatMap {$0}
+    }
 }

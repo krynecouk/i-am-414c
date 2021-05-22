@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RefreshWave: View {
-    @State private var y: CGFloat = -1500
+    @State private var y: CGFloat = -UIScreen.main.bounds.height
 
     let gradient: Gradient
     let linearGradient: LinearGradient
@@ -19,16 +19,18 @@ struct RefreshWave: View {
     }
 
     var body: some View {
-        Rectangle()
-            .fill(linearGradient)
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
-            .offset(y: y)
-            //.bloom()
-            .onAppear {
-                withAnimation(Animation.linear(duration: 10).repeatForever(autoreverses: false)) {
-                    self.y = 1500
+        GeometryReader { metrics in
+            Rectangle()
+                .fill(linearGradient)
+                .edgesIgnoringSafeArea( .all)
+                .offset(y: y)
+                //.bloom()
+                .onAppear {
+                    withAnimation(Animation.linear(duration: 7).delay(3).repeatForever(autoreverses: false)) {
+                        self.y = metrics.size.height
+                    }
                 }
-            }
+        }
     }
 }
 

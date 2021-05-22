@@ -8,31 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isVideo = false // TODO true
-    @State var isIntro = true
+    @EnvironmentObject var uiVM: UIViewModel
     
     init() {
         print("WARN: CONTENT VIEW")
     }
     
     var body: some View {
-        if isVideo {
+        if uiVM.isIntroVideo {
             IntroVideo()
                 .onTapGesture {
-                    isVideo = false
-                    isIntro = true
+                    uiVM.isIntroVideo = false
+                    uiVM.isIntro = true
                 }
         } else {
             CathodeView {
-                if isIntro {
+                if uiVM.isIntro {
                     IntroScreen()
                 } else {
                     TerminalView()
                 }
             }
             .onTapGesture {
-                if isIntro {
-                    self.isIntro = false
+                if uiVM.isIntro {
+                    uiVM.isIntro = false
                 }
             }
             .statusBar(hidden: true)

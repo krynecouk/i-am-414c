@@ -8,34 +8,23 @@
 typealias ROOT = ASCIITestNode
 typealias R = ASCIITestNode
 typealias AL = ASCIITestEdge
-typealias UPGRADE = UpgradeASCIITestNode
+typealias UPGRADE = UpgradeNode
+typealias DEAD = DeadNode
 
 class Graphs {
     private init() {}
     
     static let HI =
         R("HI") {
-            AL("HI") {
+            // INTRO
+            AL("HI", variants: ["HELLO", "YO", "AHOY"]) {
                 R("HI")
             }
-            /*
-            AL("HIHI") {
-                UPGRADE("DONE")
-            }
-            */
-            AL("I", variants: ["I?", "ME", "ME?", "NAME"]) {
-                R("AL") {
-                    AL("AL?") {
-                        R("YES")
-                    }
-                }
+            AL("I", variants: ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
+                R("AL")
             }
             AL("AL") {
-                R("YOU") {
-                    AL("AL?") {
-                        R("YES")
-                    }
-                }
+                R("YOU")
             }
             AL("YOU") {
                 R("414C") {
@@ -45,15 +34,48 @@ class Graphs {
                 }
             }
             AL("414C") {
-                R("I")
-            }
-            
-            AL("HOSE") {
-                R("REPAIRABLE") {
-                    REPAIR
+                R("I") {
+                    AL("414C?") {
+                        R("YES")
+                    }
                 }
             }
-            REPAIR
+            // UPGRADE
+            AL("COIL", variants: ["COILS"]) {
+                R("BROKEN") {
+                    AL("HOW") {
+                        R("BADLY")
+                    }
+                    FIX()
+                }
+            }
+            AL("HOSE", variants: ["HOSES", "HOSE?", "PIPE", "PIPES"]) {
+                R("BURST") {
+                    FIX()
+                }
+            }
+            /*
+            AL("OIL") {
+                R("LEAKING") {
+                    FIX()
+                }
+            }
+            */
+            AL("HISS", variants: ["NOISE"]) {
+                R("HOSE") {
+                    FIX()
+                }
+            }
+            AL("CACHE", variants: ["MEMORY", "PROCESSOR"]) {
+                R("CORRUPTED") {
+                    FIX(["CLEAR", "INVALIDATE", "REFRESH"])
+                }
+            }
+            FIX()
+            
+            // DEAD
+            DIE()
+            
         }
     
     static let HI2 =
@@ -80,15 +102,36 @@ class Graphs {
             }
         }
     
-    static let REPAIR =
-        AL("REPAIR") {
+    static func FIX(text: String = "FIX", _ variants: [String] = []) -> Edge {
+        AL(text, variants: ["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {
             R("Y/N?") {
                 AL("Y") {
-                    UPGRADE("DONE")
+                    UPGRADE()
                 }
                 AL("N") {
                     R("OK")
                 }
             }
         }
+    }
+    
+    static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
+        AL(text, variants: ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET"] + variants) {
+            R("Y/N?") {
+                AL("Y") {
+                    R("SURE?") {
+                        AL("Y") {
+                            DEAD()
+                        }
+                        AL("N") {
+                            R("OK")
+                        }
+                    }
+                }
+                AL("N") {
+                    R("OK")
+                }
+            }
+        }
+    }
 }

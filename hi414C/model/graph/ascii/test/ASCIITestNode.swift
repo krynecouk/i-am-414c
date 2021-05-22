@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 10.03.2021.
 //
 
-class ASCIITestNode : Node {
+class ASCIITestNode: Node {
     let id: String
     let edges: [Edge]
     
@@ -26,26 +26,9 @@ class ASCIITestNode : Node {
         }
         let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
         toolkit.terminalVM.setContent([.test(tests)])
-        
-        print(toolkit.historyVM.history)
     }
     
     func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.historyVM.add(message: Message(from: .robot, text: id))
-    }
-}
-
-class UpgradeASCIITestNode: ASCIITestNode {
-    override init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        super.init(id, edges)
-    }
-    
-    override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        super.onEnter(ctx: ctx, toolkit: toolkit)
-        toolkit.testVM.level(reset: true)
-        toolkit.testVM.radix(of: .hex)
-        toolkit.helpVM.radix(of: .hex)
-        toolkit.asciiVM.reset()
-        toolkit.graphVM?.setGraph(root: Graphs.HI2)
     }
 }

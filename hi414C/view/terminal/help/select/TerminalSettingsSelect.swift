@@ -74,9 +74,10 @@ struct TerminalSettingsSelect: View {
                     helpVM.resetToZero()
                     uiVM.isHelp = false
                     historyVM.replace(with: [])
-                    withAnimation {
-                        self.delete = false
-                    }
+                    self.delete = false
+                    uiVM.isIntroVideo = false // TODO true
+                    uiVM.isIntro = true
+                    
                 }
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

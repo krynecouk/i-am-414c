@@ -8,6 +8,8 @@
 import SwiftUI
 
 class UIViewModel: ObservableObject {
+    @Published var isIntro = true
+    @Published var isIntroVideo = false // TODO true
     @Published var detail = (is: false, animated: true)
     @Published var isHelp = false
     @Published var current: ContentType = .test
