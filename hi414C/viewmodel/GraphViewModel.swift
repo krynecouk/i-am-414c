@@ -10,9 +10,9 @@ import OrderedCollections
 
 class GraphViewModel: ObservableObject {
     @Published private(set) var result: GraphTraverseResult = .ok
-    @Published private(set) var root: Node = Graphs.HI
+    @Published private(set) var root: Node = Graphs.BIN
     
-    private var current: Node = Graphs.HI
+    private var current: Node = Graphs.BIN
     private let toolkit: GraphToolkit
     
     init(graph: GraphType = .BIN, toolkit: GraphToolkit) {
@@ -89,9 +89,9 @@ enum GraphType: String, Storable {
     func toGraph() -> Node {
         switch self {
         case .BIN:
-            return Graphs.HI
+            return Graphs.BIN
         case .HEX:
-            return Graphs.HI2
+            return Graphs.HEX
         }
     }
 }

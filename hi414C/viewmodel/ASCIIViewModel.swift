@@ -14,8 +14,11 @@ class ASCIIViewModel: ObservableObject {
         .questionMark
     ]
     
+    private static let testSymbols: Set<ASCIISymbol> = [ .questionMark, .Q, .W, .E, .R, .T, .Y, .U, .I, .O, .P, .A, .S, .D, .F, .G, .H, .J, .K, .L, .Z, .X, .C, .V, .B, .N, .M, .space, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .dash, .slash, .colon, .semicolon, .leftParen, .rightParen, .dollar, .exclamationMark, .asterisk, .backslash, .dot, .comma, .questionMark, .singleQuote, .ampersand,
+    ]
+    
     init() {
-        self.symbols = ASCIIDao.find() ?? ASCIIViewModel.defaultSymbols
+        self.symbols = ASCIIDao.find() ?? ASCIIViewModel.testSymbols
     }
     
     func add(symbol: ASCIISymbol) {
@@ -25,7 +28,7 @@ class ASCIIViewModel: ObservableObject {
     }
     
     func reset() {
-        self.symbols = ASCIIViewModel.defaultSymbols
+        self.symbols = ASCIIViewModel.testSymbols
         ASCIIDao.store(self.symbols)
     }
 }

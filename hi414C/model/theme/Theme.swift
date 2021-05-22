@@ -34,7 +34,7 @@ struct FontSize: Encodable, Decodable {
     }
     
     func isDecreasable() -> Bool {
-        robot > 4 && al > 20
+        robot > 6 && al > 20
     }
 }
 
@@ -228,14 +228,14 @@ class Theme: Themable {
                     robot: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
-                            font: font.robot,
+                            font: FontProps(font.robot.name, font.robot.size - 3),
                             color: color.secondary.contrast.opacity(0.7),
                             background: color.secondary.value
                         ),
                         animations: []
                     ),
                     al: ViewTheme(
-                        font: font.al,
+                        font: FontProps(font.al.name, font.al.size - 9),
                         color: color.secondary.contrast.opacity(0.7),
                         background: color.secondary.value
                     )

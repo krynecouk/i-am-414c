@@ -185,6 +185,7 @@
 		26EA301E265968F1004A78F2 /* GraphDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301D265968F1004A78F2 /* GraphDao.swift */; };
 		26EA302026596915004A78F2 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301F26596915004A78F2 /* Storable.swift */; };
 		26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3021265969AA004A78F2 /* RadixDao.swift */; };
+		26EA302426597456004A78F2 /* PasswordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302326597456004A78F2 /* PasswordNode.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -381,6 +382,7 @@
 		26EA301D265968F1004A78F2 /* GraphDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDao.swift; sourceTree = "<group>"; };
 		26EA301F26596915004A78F2 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		26EA3021265969AA004A78F2 /* RadixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixDao.swift; sourceTree = "<group>"; };
+		26EA302326597456004A78F2 /* PasswordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNode.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -446,7 +448,6 @@
 		2634DE4925FBC17200FE8A65 /* ascii */ = {
 			isa = PBXGroup;
 			children = (
-				26EA301826595196004A78F2 /* reset */,
 				267A0D4D260C821C00844927 /* art */,
 				267A0D4C260C821700844927 /* test */,
 			);
@@ -603,6 +604,7 @@
 			children = (
 				26F7A6DC25FA5B3400F04156 /* core */,
 				2634DE4925FBC17200FE8A65 /* ascii */,
+				26EA301826595196004A78F2 /* reset */,
 				26ADBC1925FBAAA10003AD54 /* Graphs.swift */,
 			);
 			path = graph;
@@ -1076,6 +1078,7 @@
 			children = (
 				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
 				26EA301B265951B6004A78F2 /* DeadNode.swift */,
+				26EA302326597456004A78F2 /* PasswordNode.swift */,
 			);
 			path = reset;
 			sourceTree = "<group>";
@@ -1243,6 +1246,7 @@
 				26645DCA2639D3570086F26C /* HelpViewModel.swift in Sources */,
 				2697655826273C1B00775D71 /* SHR.swift in Sources */,
 				2654884F2605247C0044297D /* KeyboardView.swift in Sources */,
+				26EA302426597456004A78F2 /* PasswordNode.swift in Sources */,
 				2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */,
 				26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */,
 				263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */,

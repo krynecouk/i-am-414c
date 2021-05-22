@@ -10,7 +10,7 @@ class ASCIITestEdge: Edge {
     var variants: [String]
     var target: Node
     
-    init(_ id: String, variants: [String] = [], _ content: () -> Node) {
+    init(_ id: String, _ variants: [String] = [], _ content: () -> Node) {
         self.id = id
         self.variants = variants
         self.target = content()
@@ -23,5 +23,11 @@ class ASCIITestEdge: Edge {
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
         target
+    }
+}
+
+class TraverseAllEdge: ASCIITestEdge {
+    override func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
+        return true
     }
 }

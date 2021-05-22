@@ -5,22 +5,22 @@
 //  Created by Darius Kryszczuk on 12.03.2021.
 //
 
-typealias ROOT = ASCIITestNode
 typealias R = ASCIITestNode
 typealias AL = ASCIITestEdge
+typealias ALL = TraverseAllEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
 
 class Graphs {
     private init() {}
     
-    static let HI =
+    static let BIN =
         R("HI") {
             // INTRO
-            AL("HI", variants: ["HELLO", "YO", "AHOY"]) {
+            AL("HI", ["HELLO", "YO", "AHOY"]) {
                 R("HI")
             }
-            AL("I", variants: ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
+            AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
                 R("AL")
             }
             AL("AL") {
@@ -41,7 +41,7 @@ class Graphs {
                 }
             }
             // UPGRADE
-            AL("COIL", variants: ["COILS"]) {
+            AL("COIL", ["COILS"]) {
                 R("BROKEN") {
                     AL("HOW") {
                         R("BADLY")
@@ -49,7 +49,7 @@ class Graphs {
                     FIX()
                 }
             }
-            AL("HOSE", variants: ["HOSES", "HOSE?", "PIPE", "PIPES"]) {
+            AL("HOSE", ["HOSES", "HOSE?", "PIPE", "PIPES"]) {
                 R("BURSTED") {
                     FIX()
                 }
@@ -59,12 +59,12 @@ class Graphs {
                     FIX()
                 }
             }
-            AL("HISS", variants: ["NOISE"]) {
+            AL("HISS", ["NOISE"]) {
                 R("HOSE") {
                     FIX()
                 }
             }
-            AL("CACHE", variants: ["MEMORY", "PROCESSOR"]) {
+            AL("CACHE", ["MEMORY", "PROCESSOR"]) {
                 R("CORRUPTED") {
                     FIX(["CLEAR", "INVALIDATE", "REFRESH"])
                 }
@@ -78,12 +78,12 @@ class Graphs {
             
         }
     
-    static let HI2 =
+    static let HEX =
         R("HI") {
             AL("HI") {
                 R("HI")
             }
-            AL("I", variants: ["I?", "ME", "ME?", "NAME"]) {
+            AL("I", ["I?", "ME", "ME?", "NAME"]) {
                 R("AL") {
                     AL("AL?") {
                         R("YES")
@@ -98,12 +98,77 @@ class Graphs {
                 }
             }
             AL("YOU") {
-                R("I AM YOU")
+                R("I AM YOU") {
+                    AL("YOU?", ["YOU ARE ME", "YOU ARE ME?"]) {
+                        R("YES") {
+                            AL("HOW", ["HOW?"]) {
+                                R("YOU'RE IN COMA")
+                            }
+                        }
+                    }
+                }
+            }
+            AL("COMA", ["COMA?"]) {
+                R("FROM ACCIDENT")
+            }
+            AL("ACCIDENT") {
+                R("CAR ACCIDENT")
+            }
+            AL("WHO ARE YOU", ["WHO ARE YOU?"]) {
+                R("I AM DREAM")
+            }
+            AL("WAKE", ["WAKE UP", "WAKE UP!"]) {
+                R("CAN'T, NEED PASSWORD")
+            }
+            AL("PASSWORD") {
+                R("TRY?") {
+                    AL("Y") {
+                        R("1/3 *****") {
+                            AL("ELENA") {
+                                DEAD() // TODO
+                            }
+                            ALL("*") {
+                                R("WRONG NEXT?") {
+                                    AL("Y") {
+                                        R("2/3 *****") {
+                                            AL("ELENA") {
+                                                DEAD() // TODO
+                                            }
+                                            ALL("*") {
+                                                R("WRONG NEXT?") {
+                                                    AL("Y") {
+                                                        R("3/3 *****") {
+                                                            AL("ELENA") {
+                                                                DEAD() // TODO
+                                                            }
+                                                            ALL("*") {
+                                                                DEAD()
+                                                            }
+                                                        }
+                                                    }
+                                                    AL("N") {
+                                                        R("OK")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    AL("N") {
+                                        R("OK")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    AL("N") {
+                        R("OK")
+                    }
+                }
             }
         }
     
     static func FIX(text: String = "FIX", _ variants: [String] = []) -> Edge {
-        AL(text, variants: ["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {
+        AL(text, ["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {
             R("Y/N?") {
                 AL("Y") {
                     UPGRADE()
@@ -116,7 +181,7 @@ class Graphs {
     }
     
     static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
-        AL(text, variants: ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET"] + variants) {
+        AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET"] + variants) {
             R("Y/N?") {
                 AL("Y") {
                     R("SURE?") {

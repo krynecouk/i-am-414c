@@ -77,7 +77,7 @@ struct ASCIIKeyboardView: View {
                     ASCIIKeyboardKey(.rightParen),
                     ASCIIKeyboardKey(.dollar),
                     ASCIIKeyboardKey(.exclamationMark),
-                    ASCIIKeyboardKey(.atSign),
+                    ASCIIKeyboardKey(.asterisk),
                     ASCIIKeyboardKey(.backslash),
                 ],
                 .row3: [
