@@ -50,17 +50,15 @@ class Graphs {
                 }
             }
             AL("HOSE", variants: ["HOSES", "HOSE?", "PIPE", "PIPES"]) {
-                R("BURST") {
+                R("BURSTED") {
                     FIX()
                 }
             }
-            /*
             AL("OIL") {
                 R("LEAKING") {
                     FIX()
                 }
             }
-            */
             AL("HISS", variants: ["NOISE"]) {
                 R("HOSE") {
                     FIX()
@@ -75,6 +73,8 @@ class Graphs {
             
             // DEAD
             DIE()
+            
+            // OTHER
             
         }
     

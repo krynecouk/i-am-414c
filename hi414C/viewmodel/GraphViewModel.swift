@@ -81,7 +81,7 @@ class GraphViewModel: ObservableObject {
 }
 
 enum GraphType {
-    case HI, HI2, WHITMAN
+    case BIN, HEX
 }
 
 enum GraphTraverseResult {

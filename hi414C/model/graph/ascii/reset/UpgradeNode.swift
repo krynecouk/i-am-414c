@@ -20,5 +20,6 @@ class UpgradeNode: Node {
         toolkit.helpVM.radix(of: .hex)
         toolkit.asciiVM.reset()
         toolkit.graphVM?.setGraph(root: Graphs.HI2)
+        toolkit.uiVM.isIntro = true
     }
 }
