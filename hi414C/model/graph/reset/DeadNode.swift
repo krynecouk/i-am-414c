@@ -22,6 +22,6 @@ class DeadNode: Node {
         toolkit.uiVM.isIntroVideo = false // TODO
         toolkit.uiVM.isIntro = true
         toolkit.themeVM.reset()
-        toolkit.historyVM.replace(with: [])
+        toolkit.chatVM.clear()
     }
 }

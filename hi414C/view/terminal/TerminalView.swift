@@ -12,7 +12,7 @@ struct TerminalView: View {
     @EnvironmentObject var asciiVM: ASCIIViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var historyVM: HistoryViewModel
+    @EnvironmentObject var chatVM: ChatViewModel
     
     init() {
         print("TerminalView")
@@ -29,7 +29,7 @@ struct TerminalView: View {
     }
     
     private func getContent(from types: [TerminalContentType], ascii: Set<ASCIISymbol>) -> ([TerminalItem], Messages?) {
-        print("Calculating Test Content Items")
+        print("Calculating Terminal Content Items")
 
         var items: [TerminalItem] = []
         for type in types {
@@ -37,10 +37,10 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if ascii.contains(all: symbols) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    historyVM.replace(with: graphVM.getPaths(ascii: ascii))
+                    chatVM.setReplies(graphVM.getReplies(ascii: ascii))
                     let id = UUID()
                     let message = Message(id: id, from: .robot, text: text)
-                    let messages = Messages(history: historyVM.history, current: message)
+                    let messages = Messages(history: chatVM.messages, current: message)
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
                     return (items, messages)

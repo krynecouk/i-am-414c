@@ -55,7 +55,7 @@ class GraphViewModel: ObservableObject {
         self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
-    func getPaths(ascii: Set<ASCIISymbol>) -> OrderedSet<String> {
+    func getReplies(ascii: Set<ASCIISymbol>) -> OrderedSet<String> {
         let precondition: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
@@ -65,7 +65,7 @@ class GraphViewModel: ObservableObject {
         return current
     }
     
-    func getPaths(from node: Node, precondition: (String) -> Bool) -> OrderedSet<String> {
+    private func getPaths(from node: Node, precondition: (String) -> Bool) -> OrderedSet<String> {
         var paths: OrderedSet<String> = []
         for edge in node.edges {
             if precondition(edge.id) {

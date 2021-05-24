@@ -14,7 +14,7 @@ struct TerminalGrid: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
-    //@EnvironmentObject var historyVM: HistoryViewModel
+    //@EnvironmentObject var chatVM: HistoryViewModel
     
     typealias SymbolId = String
     typealias MessageId = String

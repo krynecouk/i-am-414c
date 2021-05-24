@@ -13,7 +13,7 @@ struct TerminalSettingsSelect: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var uiVM: UIViewModel
-    @EnvironmentObject var historyVM: HistoryViewModel
+    @EnvironmentObject var chatVM: ChatViewModel
     
     @State var delete = false
     
@@ -70,7 +70,7 @@ struct TerminalSettingsSelect: View {
                     themeVM.reset()
                     graphVM.setGraph(.BIN)
                     asciiVM.reset()
-                    historyVM.replace(with: [])
+                    chatVM.clear()
                     uiVM.current = .test
                     helpVM.resetToZero()
                     uiVM.isHelp = false

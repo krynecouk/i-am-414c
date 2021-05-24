@@ -11,20 +11,16 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var graphVM: GraphViewModel
-    @EnvironmentObject var historyVM: HistoryViewModel
+    @EnvironmentObject var chatVM: ChatViewModel
     
     @State var pageLimit = 100
     
     var body: some View {
-        ForEach(historyVM.answers.prefix(pageLimit).map { Item($0) }) { item in
+        ForEach(chatVM.replies.prefix(pageLimit).map { Item($0) }) { item in
             MessageButton(item.content)
         }
-        if historyVM.answers.count > pageLimit {
+        if chatVM.replies.count > pageLimit {
             ReloadButton()
-                .onAppear {
-                    print(historyVM.answers.count)
-                    print(pageLimit)
-                }
         }
     }
     
@@ -50,7 +46,7 @@ struct TerminalMessagesSelect: View {
     func ReloadButton(_ text: String = "...") -> some View {
         MessageLabel(text)
             .onTapGesture {
-                if historyVM.answers.count > pageLimit {
+                if chatVM.replies.count > pageLimit {
                     withAnimation {
                         self.pageLimit += 3
                     }

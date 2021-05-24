@@ -15,7 +15,7 @@ class GraphNode : Node {
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        toolkit.historyVM.add(message: Message(from: .al, text: ctx.input))
+        toolkit.chatVM.add(message: Message(from: .al, text: ctx.input))
         toolkit.terminalVM.setContent(.test([Test(symbol: .H, equation: ID().eq(ASCII.from(.H).dec))]))
     }
 }

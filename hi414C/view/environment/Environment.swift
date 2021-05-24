@@ -15,7 +15,7 @@ struct EnvironmentModifier: ViewModifier {
     @ObservedObject var themeVM: ThemeViewModel
     @ObservedObject var graphVM: GraphViewModel
     @ObservedObject var uiVM: UIViewModel
-    @ObservedObject var historyVM: HistoryViewModel
+    @ObservedObject var chatVM: ChatViewModel
     @ObservedObject var segueVM: SegueViewModel
     @ObservedObject var helpVM: HelpViewModel
     
@@ -26,7 +26,7 @@ struct EnvironmentModifier: ViewModifier {
         themeVM: ThemeViewModel = ThemeViewModel(),
         testVM: TestViewModel = TestViewModel(),
         uiVM: UIViewModel = UIViewModel(),
-        historyVM: HistoryViewModel = HistoryViewModel(),
+        chatVM: ChatViewModel = ChatViewModel(),
         segueVM: SegueViewModel = SegueViewModel(),
         helpVM: HelpViewModel = HelpViewModel())
     {
@@ -36,11 +36,11 @@ struct EnvironmentModifier: ViewModifier {
         self.themeVM = themeVM
         self.testVM = testVM
         self.uiVM = uiVM
-        self.historyVM = historyVM
+        self.chatVM = chatVM
         self.segueVM = segueVM
         self.helpVM = helpVM
         self.graphVM = GraphViewModel(toolkit: GraphToolkit(
-            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM, uiVM: uiVM, historyVM: historyVM, segueVM: segueVM, helpVM: helpVM
+            asciiVM: asciiVM, terminalVM: terminalVM, keyboardVM: keyboardVM, testVM: testVM, themeVM: themeVM, uiVM: uiVM, chatVM: chatVM, segueVM: segueVM, helpVM: helpVM
         ))
     }
     
@@ -53,7 +53,7 @@ struct EnvironmentModifier: ViewModifier {
             .environmentObject(testVM)
             .environmentObject(themeVM)
             .environmentObject(uiVM)
-            .environmentObject(historyVM)
+            .environmentObject(chatVM)
             .environmentObject(segueVM)
             .environmentObject(helpVM)
     }

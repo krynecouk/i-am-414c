@@ -12,7 +12,7 @@ class GraphToolkit {
     var testVM: TestViewModel
     var themeVM: ThemeViewModel
     var uiVM: UIViewModel
-    var historyVM: HistoryViewModel
+    var chatVM: ChatViewModel
     var segueVM: SegueViewModel
     var helpVM: HelpViewModel
     var graphVM: GraphViewModel?
@@ -24,7 +24,7 @@ class GraphToolkit {
         testVM: TestViewModel,
         themeVM: ThemeViewModel,
         uiVM: UIViewModel,
-        historyVM: HistoryViewModel,
+        chatVM: ChatViewModel,
         segueVM: SegueViewModel,
         helpVM: HelpViewModel
     ) {
@@ -34,7 +34,7 @@ class GraphToolkit {
         self.testVM = testVM
         self.themeVM = themeVM
         self.uiVM = uiVM
-        self.historyVM = historyVM
+        self.chatVM = chatVM
         self.segueVM = segueVM
         self.helpVM = helpVM
     }
