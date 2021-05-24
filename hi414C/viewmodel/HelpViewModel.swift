@@ -9,6 +9,7 @@ import SwiftUI
 
 class HelpViewModel: ObservableObject {
     @Published var current: HelpContent = .learn
+    @Published var settings: HelpSettingsType = .font
     @Published private(set) var equation: Equation = ID() => 0
     @Published private(set) var radix: EquationRadix = .bin
     @Published private(set) var answers: Int = 0
@@ -71,6 +72,10 @@ class HelpViewModel: ObservableObject {
     }
     
     enum HelpContent {
-        case learn, chat, settings_font, settings_theme, settings_delete
+        case learn, chat, settings
+    }
+    
+    enum HelpSettingsType {
+        case font, theme, hint, delete
     }
 }
