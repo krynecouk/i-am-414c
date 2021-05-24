@@ -20,15 +20,15 @@ struct TerminalView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            let (items, messages) = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
-            TerminalContent(items: items, messages: messages)
+            let items = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
+            TerminalContent(items: items)
             TerminalFooter()
         }
         .helpEdgeDrag()
         .statusBar(hidden: true)
     }
     
-    private func getContent(from types: [TerminalContentType], ascii: Set<ASCIISymbol>) -> ([TerminalItem], Messages?) {
+    private func getContent(from types: [TerminalContentType], ascii: Set<ASCIISymbol>) -> [TerminalItem] {
         print("Calculating Terminal Content Items")
 
         var items: [TerminalItem] = []
@@ -37,13 +37,13 @@ struct TerminalView: View {
                 let symbols = tests.map { $0.symbol }
                 if ascii.contains(all: symbols) {
                     let text = symbols.map { $0.rawValue }.joined()
-                    chatVM.setReplies(graphVM.getReplies(ascii: ascii))
                     let id = UUID()
                     let message = Message(id: id, from: .robot, text: text)
-                    let messages = Messages(history: chatVM.messages, current: message)
+                    let replies = graphVM.getReplies(ascii: ascii)
+                    chatVM.setCurrent(message: message, replies: replies)
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
-                    return (items, messages)
+                    return items
                 }
                 
                 var testWasSetup = false
@@ -69,7 +69,7 @@ struct TerminalView: View {
                 items.append(TerminalItem(of: .art(arts)))
             }
         }
-        return (items, .none)
+        return items
     }
 }
 

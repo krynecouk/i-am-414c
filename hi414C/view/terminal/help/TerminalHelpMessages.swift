@@ -10,13 +10,12 @@ import SwiftUI
 struct TerminalHelpMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var chatVM: ChatViewModel
     
     private let currentMsgId = "current_msg_id"
     private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
     private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
-    
-    let messages: Messages
-    
+        
     var body: some View {
         GeometryReader { metrics in
             ScrollView(.vertical, showsIndicators: false) {
@@ -24,7 +23,7 @@ struct TerminalHelpMessages: View {
                     VStack(alignment: .leading) {
                         Color.clear.frame(height: 10)
                         VStack(alignment: .leading, spacing: 10) {
-                            ForEach(messages.history) { message in
+                            ForEach(chatVM.messages) { message in
                                 if !message.text.isEmpty {
                                     if message.author == .robot {
                                         Message414C(message.text, frame: metrics.size)
@@ -33,8 +32,10 @@ struct TerminalHelpMessages: View {
                                     }
                                 }
                             }
-                            Message414C(messages.current.text, frame: metrics.size)
-                                .id(currentMsgId)
+                            if chatVM.current.message != nil {
+                                Message414C(chatVM.current.message!.text, frame: metrics.size)
+                                    .id(currentMsgId)
+                            }
                         }
                         .onAppear {
                             withAnimation {
@@ -89,7 +90,6 @@ struct TerminalHelpMessages: View {
     func findLongestWord(from sentence: String) -> String {
         let words = sentence.components(separatedBy: " ")
         if let longest = words.max(by: { $1.count > $0.count }) {
-            print(longest)
             return longest
         }
         return words[0]
@@ -99,22 +99,4 @@ struct TerminalHelpMessages: View {
 struct Messages {
     var history: [Message]
     var current: Message
-}
-
-struct TerminalHelpMessages_Previews: PreviewProvider {
-    static var previews: some View {
-        let messages = Messages(
-            history: [
-                Message(from: .robot, text: "REPAIRABLE"),
-                Message(from: .al, text: "OK")
-            ],
-            current: Message(from: .al, text: "I"))
-        TerminalHelpMessages(messages: messages)
-            .withEnvironment()
-        
-        Landscape {
-            TerminalHelpMessages(messages: messages)
-                .withEnvironment()
-        }
-    }
 }

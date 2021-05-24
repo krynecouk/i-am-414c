@@ -8,9 +8,11 @@
 import SwiftUI
 import OrderedCollections
 
+typealias Conversation = (message: Message?, replies: OrderedSet<String>)
+
 class ChatViewModel: ObservableObject {
     private(set) var messages: [Message] = []
-    private(set) var replies: OrderedSet<String> = []
+    private(set) var current: Conversation = (.none, [])
     
     func add(message: Message) {
         if !message.text.isEmpty {
@@ -22,8 +24,8 @@ class ChatViewModel: ObservableObject {
         self.messages = []
     }
 
-    func setReplies(_ replies: OrderedSet<String>) {
-        self.replies = replies
+    func setCurrent(message: Message, replies: OrderedSet<String>) {
+        self.current = (message, replies)
     }
 }
 

@@ -16,10 +16,10 @@ struct TerminalMessagesSelect: View {
     @State var pageLimit = 100
     
     var body: some View {
-        ForEach(chatVM.replies.prefix(pageLimit).map { Item($0) }) { item in
+        ForEach(chatVM.current.replies.prefix(pageLimit).map { Item($0) }) { item in
             MessageButton(item.content)
         }
-        if chatVM.replies.count > pageLimit {
+        if chatVM.current.replies.count > pageLimit {
             ReloadButton()
         }
     }
@@ -46,7 +46,7 @@ struct TerminalMessagesSelect: View {
     func ReloadButton(_ text: String = "...") -> some View {
         MessageLabel(text)
             .onTapGesture {
-                if chatVM.replies.count > pageLimit {
+                if chatVM.current.replies.count > pageLimit {
                     withAnimation {
                         self.pageLimit += 3
                     }
