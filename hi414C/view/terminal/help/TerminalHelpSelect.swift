@@ -25,6 +25,14 @@ struct TerminalHelpSelect: View {
                         }
                     }
                 }
+                if segueVM.opened == .chat {
+                    Text("Chat here")
+                        .onAppear {
+                            if self.gridType != .adaptive {
+                                self.gridType = .adaptive
+                            }
+                        }
+                }
                 if segueVM.opened == .help && uiVM.current == .test {
                     TerminalTestSelect()
                     .onAppear {
@@ -42,15 +50,6 @@ struct TerminalHelpSelect: View {
                             }
                         }
                 }
-                
-                if segueVM.opened == .themes {
-                    TerminalThemesSelect()
-                        .onAppear {
-                            if self.gridType != .adaptive {
-                                self.gridType = .adaptive
-                            }
-                        }
-                }
             }
             .id(metrics.frame(in: .global).size.width)
             .onAppear {
@@ -58,11 +57,11 @@ struct TerminalHelpSelect: View {
                 let frameW = frame.size.width
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setThemesSize((.infinity, 150))
+                    segueVM.setChatSize((.infinity, 100))
                     segueVM.setSettingsSize((.infinity, 150))
                 } else {
                     segueVM.setHelpSize((.infinity, 210))
-                    segueVM.setThemesSize((.infinity, 300))
+                    segueVM.setChatSize((.infinity, 100))
                     segueVM.setSettingsSize((.infinity, 210))
                 }
             }

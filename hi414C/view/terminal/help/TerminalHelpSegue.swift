@@ -38,10 +38,10 @@ struct TerminalHelpSegue: View {
         switch opened {
         case .help:
             return SegueViewModel.header.height + segueVM.help.height
+        case .chat:
+            return SegueViewModel.header.height + segueVM.chat.height
         case .settings:
             return SegueViewModel.header.height + segueVM.settings.height
-        case .themes:
-            return SegueViewModel.header.height + segueVM.themes.height
         default:
             return SegueViewModel.header.height
         }
