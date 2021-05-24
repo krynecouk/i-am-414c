@@ -45,35 +45,21 @@ class TestViewModel: ObservableObject {
             return Test(symbol: symbol, equation: ID() => dec)
             //return Test(symbol: symbol, equation: ET.rand().build().eq(dec))
         case 0..<4:
-            return Test(symbol: symbol, equation: ADD() => dec)
-        case 0..<5:
-            return Test(symbol: symbol, equation: SUB() => dec)
-        case 0..<6:
             return Test(symbol: symbol, equation: ET.rand(of: [.ADD, .SUB]).build().eq(dec))
-        case 0..<7:
-            return Test(symbol: symbol, equation: DIV() => dec)
-        case 0..<8:
-            return Test(symbol: symbol, equation: MUL() => dec)
-        case 0..<9:
-            return Test(symbol: symbol, equation: ET.rand(of: [.DIV, .MUL]).build().eq(dec))
-        case 0..<10:
+        case 0..<5:
+            return Test(symbol: symbol, equation: ET.rand(of: [.MUL, .SUB]).build().eq(dec))
+        case 0..<6:
             return Test(symbol: symbol, equation: AND() => dec)
-        case 0..<11:
+        case 0..<7:
             return Test(symbol: symbol, equation: OR() => dec)
-        case 0..<12:
-            return Test(symbol: symbol, equation: ET.rand(of: [.AND, .OR]).build().eq(dec))
-        case 0..<13:
+        case 0..<8:
             return Test(symbol: symbol, equation: XOR() => dec)
-        case 0..<14:
+        case 0..<8:
             return Test(symbol: symbol, equation: NOT() => dec)
-        case 0..<15:
-            return Test(symbol: symbol, equation: ET.rand(of: [.XOR, .NOT]).build().eq(dec))
-        case 0..<16:
+        case 0..<9:
             return Test(symbol: symbol, equation: SHL() => dec)
-        case 0..<17:
+        case 0..<10:
             return Test(symbol: symbol, equation: SHR() => dec)
-        case 0..<18:
-            return Test(symbol: symbol, equation: ET.rand(of: [.SHL, .SHR]).build().eq(dec))
         case 0..<30:
             return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand()).eq(dec))
         default:

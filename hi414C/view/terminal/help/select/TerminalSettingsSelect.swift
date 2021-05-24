@@ -70,10 +70,10 @@ struct TerminalSettingsSelect: View {
                     themeVM.reset()
                     graphVM.setGraph(.BIN)
                     asciiVM.reset()
+                    historyVM.replace(with: [])
                     uiVM.current = .test
                     helpVM.resetToZero()
                     uiVM.isHelp = false
-                    historyVM.replace(with: [])
                     self.delete = false
                     uiVM.isIntroVideo = false // TODO true
                     uiVM.isIntro = true

@@ -25,10 +25,6 @@ class HistoryViewModel: ObservableObject {
     func replace(with answers: Answers) {
         self.answers = answers
     }
-    
-    func remove() {
-        self.history = []
-    }
 }
 
 struct Message: Identifiable {

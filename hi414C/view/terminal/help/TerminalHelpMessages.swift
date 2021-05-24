@@ -37,7 +37,9 @@ struct TerminalHelpMessages: View {
                                 .id(currentMsgId)
                         }
                         .onAppear {
-                            reader.scrollTo(currentMsgId)
+                            withAnimation {
+                                reader.scrollTo(currentMsgId)
+                            }
                         }
                         TerminalHelpPadding()
                     }
