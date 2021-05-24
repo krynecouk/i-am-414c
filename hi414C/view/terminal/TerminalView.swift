@@ -35,7 +35,7 @@ struct TerminalView: View {
         for type in types {
             if case let .test(tests) = type {
                 let symbols = tests.map { $0.symbol }
-                if ascii.contains(all: symbols) {
+                if ascii.contains(all: symbols) { // message node
                     let text = symbols.map { $0.rawValue }.joined()
                     let id = UUID()
                     let message = Message(id: id, from: .robot, text: text)
@@ -47,7 +47,7 @@ struct TerminalView: View {
                 }
                 
                 var testWasSetup = false
-                tests.forEach { test in
+                tests.forEach { test in // test node
                     let symbol = test.symbol
                     if ascii.contains(symbol) {
                         items.append(TerminalItem(id: TerminalSymbol.id(from: test), of: .symbol(symbol)))
