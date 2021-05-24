@@ -19,8 +19,12 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton("Learn", .help)
-                    SegueButton("Chat", .chat)
+                    SegueButton("Learn", .help) {
+                        helpVM.content(of: .learn)
+                    }
+                    SegueButton("Chat", .chat) {
+                        helpVM.content(of: .chat)
+                    }
                     SegueButton("Settings", .settings)
                 }
             }
@@ -52,11 +56,12 @@ struct TerminalHelpLine: View {
         }
     }
     
-    func SegueButton(_ text: String, _ type: SegueType) -> some View {
+    func SegueButton(_ text: String, _ type: SegueType, perform action: @escaping () -> Void = {}) -> some View {
         ButtonLabel(text)
             .withTheme(segueVM.opened == type ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
                 .onTapGesture {
                     openSegue(type)
+                    action()
                 }
     }
 

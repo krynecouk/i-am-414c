@@ -17,32 +17,34 @@ struct TerminalHelpMessages: View {
     private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
         
     var body: some View {
-        GeometryReader { metrics in
-            ScrollView(.vertical, showsIndicators: false) {
-                ScrollViewReader { reader in
-                    VStack(alignment: .leading) {
-                        Color.clear.frame(height: 10)
-                        VStack(alignment: .leading, spacing: 10) {
-                            ForEach(chatVM.messages) { message in
-                                if !message.text.isEmpty {
-                                    if message.author == .robot {
-                                        Message414C(message.text, frame: metrics.size)
-                                    } else {
-                                        MessageAl(message.text, frame: metrics.size)
+        if helpVM.content == .chat {
+            GeometryReader { metrics in
+                ScrollView(.vertical, showsIndicators: false) {
+                    ScrollViewReader { reader in
+                        VStack(alignment: .leading) {
+                            Color.clear.frame(height: 10)
+                            VStack(alignment: .leading, spacing: 10) {
+                                ForEach(chatVM.messages) { message in
+                                    if !message.text.isEmpty {
+                                        if message.author == .robot {
+                                            Message414C(message.text, frame: metrics.size)
+                                        } else {
+                                            MessageAl(message.text, frame: metrics.size)
+                                        }
                                     }
                                 }
+                                if chatVM.current.message != nil {
+                                    Message414C(chatVM.current.message!.text, frame: metrics.size)
+                                        .id(currentMsgId)
+                                }
                             }
-                            if chatVM.current.message != nil {
-                                Message414C(chatVM.current.message!.text, frame: metrics.size)
-                                    .id(currentMsgId)
+                            .onAppear {
+                                withAnimation {
+                                    reader.scrollTo(currentMsgId)
+                                }
                             }
+                            TerminalHelpPadding()
                         }
-                        .onAppear {
-                            withAnimation {
-                                reader.scrollTo(currentMsgId)
-                            }
-                        }
-                        TerminalHelpPadding()
                     }
                 }
             }

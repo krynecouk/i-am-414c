@@ -60,7 +60,6 @@ struct TerminalView: View {
                         return
                     }
                     testWasSetup.toggle()
-                    items.append(TerminalItem(of: .help(test)))
                     items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
                     testVM.set(test: test)
                 }
