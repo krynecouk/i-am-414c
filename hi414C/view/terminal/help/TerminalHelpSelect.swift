@@ -50,12 +50,12 @@ struct TerminalHelpSelect: View {
                 let frameW = frame.size.width
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setChatSize((.infinity, 100))
+                    segueVM.setChatSize((.infinity, 150))
                     segueVM.setSettingsSize((.infinity, 150))
                 } else {
-                    segueVM.setHelpSize((.infinity, 210))
-                    segueVM.setChatSize((.infinity, 100))
-                    segueVM.setSettingsSize((.infinity, 210))
+                    segueVM.setHelpSize((.infinity, 150))
+                    segueVM.setChatSize((.infinity, 150))
+                    segueVM.setSettingsSize((.infinity, 150))
                 }
             }
             .background(segueVM.isOpen && segueVM.opened != .keyboard

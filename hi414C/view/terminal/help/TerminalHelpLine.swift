@@ -25,7 +25,9 @@ struct TerminalHelpLine: View {
                     SegueButton("Chat", .chat) {
                         helpVM.current = .chat
                     }
-                    SegueButton("Settings", .settings)
+                    SegueButton("Settings", .settings) {
+                        helpVM.current = .settings_font
+                    }
                 }
             }
             Spacer()

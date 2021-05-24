@@ -18,6 +18,7 @@ struct TerminalContent: View {
                 TerminalGrid(items: items)
                 if uiVM.isHelp {
                     TerminalHelpMessages()
+                    TerminalHelpSettings()
                 }
             }
             

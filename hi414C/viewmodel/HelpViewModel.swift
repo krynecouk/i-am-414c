@@ -71,6 +71,6 @@ class HelpViewModel: ObservableObject {
     }
     
     enum HelpContent {
-        case learn, chat
+        case learn, chat, settings_font, settings_theme, settings_delete
     }
 }

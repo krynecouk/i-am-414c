@@ -186,6 +186,7 @@
 		26EA302026596915004A78F2 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301F26596915004A78F2 /* Storable.swift */; };
 		26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3021265969AA004A78F2 /* RadixDao.swift */; };
 		26EA302426597456004A78F2 /* PasswordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302326597456004A78F2 /* PasswordNode.swift */; };
+		26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -383,6 +384,7 @@
 		26EA301F26596915004A78F2 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		26EA3021265969AA004A78F2 /* RadixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixDao.swift; sourceTree = "<group>"; };
 		26EA302326597456004A78F2 /* PasswordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNode.swift; sourceTree = "<group>"; };
+		26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSettings.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -852,6 +854,7 @@
 				266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */,
 				263612522636F8F200341B60 /* TerminalHelpTest.swift */,
 				26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */,
+				26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -1345,6 +1348,7 @@
 				267A0D55260C823E00844927 /* ASCIIArtEdge.swift in Sources */,
 				2665C9C7263C32B100CE724F /* TerminalMessage.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
+				26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */,
 				26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */,
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
 				269765262625705A00775D71 /* SHL.swift in Sources */,
