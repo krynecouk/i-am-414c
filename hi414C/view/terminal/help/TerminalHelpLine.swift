@@ -20,10 +20,10 @@ struct TerminalHelpLine: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     SegueButton("Learn", .help) {
-                        helpVM.content(of: .learn)
+                        helpVM.current = .learn
                     }
                     SegueButton("Chat", .chat) {
-                        helpVM.content(of: .chat)
+                        helpVM.current = .chat
                     }
                     SegueButton("Settings", .settings)
                 }
@@ -31,6 +31,7 @@ struct TerminalHelpLine: View {
             Spacer()
             QuitButton("X")
         }
+        //.onReceive(uiVM.$current) { helpVM.content(of: $0 == .message ? .chat : .learn) }
         .frame(height: SegueViewModel.header.height)
         .background(themeVM.terminal.hli.background.edgesIgnoringSafeArea(.all))
     }

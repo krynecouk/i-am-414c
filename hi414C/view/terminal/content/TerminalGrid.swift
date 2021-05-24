@@ -14,6 +14,7 @@ struct TerminalGrid: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
+    @EnvironmentObject var helpVM: HelpViewModel
     
     typealias SymbolId = String
     typealias MessageId = String
@@ -37,10 +38,10 @@ struct TerminalGrid: View {
     
     var body: some View {
         Grid(columns: self.grid.rawValue()) {
+            if uiVM.isHelp {
+                TerminalHelpTest(wide: wide)
+            }
             ForEach(items, id: \.id) { item in
-                if uiVM.isHelp {
-                    TerminalHelpTest(wide: wide)
-                }
                 if case let .art(arts) = item.type {
                     if !uiVM.isHelp {
                         TerminalArt(arts)
@@ -54,6 +55,7 @@ struct TerminalGrid: View {
                                 if uiVM.current != .message {
                                     self.grid = wide ? .landslide_message : .portrait_message
                                     uiVM.current = .message
+                                    helpVM.current = .chat
                                     self.printed = []
                                     self.solved = []
                                 }
@@ -77,6 +79,7 @@ struct TerminalGrid: View {
                                 if uiVM.current != .test {
                                     self.grid = .adaptive
                                     uiVM.current = .test
+                                    helpVM.current = .learn
                                 }
                                 if !printedMsg.isEmpty {
                                     printedMsg = []
@@ -135,11 +138,11 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-            if uiVM.current != .message {
+            //if uiVM.current != .message {
                 withAnimation(themeVM.terminal.grid.test.animation.detail) {
                     uiVM.detail = (!uiVM.detail.is, true)
                 }
-            }
+            //}
         }
         .contentShape(Rectangle())
     }

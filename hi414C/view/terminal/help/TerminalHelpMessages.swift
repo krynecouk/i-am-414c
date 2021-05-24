@@ -17,7 +17,7 @@ struct TerminalHelpMessages: View {
     private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
         
     var body: some View {
-        if helpVM.content == .chat {
+        if helpVM.current == .chat {
             GeometryReader { metrics in
                 ScrollView(.vertical, showsIndicators: false) {
                     ScrollViewReader { reader in

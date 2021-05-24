@@ -19,7 +19,7 @@ struct TerminalHelpTest: View {
     }
     
     var body: some View {
-        if helpVM.content == .learn {
+        if helpVM.current == .learn {
             let theme = themeVM.terminal.help.test.active
             let equation = helpVM.equation
             let resultRadix = equation.builder is ID ? EquationRadix.dec : helpVM.radix

@@ -8,10 +8,10 @@
 import SwiftUI
 
 class HelpViewModel: ObservableObject {
+    @Published var current: HelpContent = .learn
     @Published private(set) var equation: Equation = ID() => 0
     @Published private(set) var radix: EquationRadix = .bin
     @Published private(set) var answers: Int = 0
-    @Published private(set) var content: HelpContent = .learn
     
     func increment() {
         let (result, builder) = getResultBuilder()
@@ -52,10 +52,6 @@ class HelpViewModel: ObservableObject {
     
     func radix(of radix: EquationRadix) {
         self.radix = radix
-    }
-    
-    func content(of type: HelpContent) {
-        self.content = type
     }
         
     func getResultBuilder() -> (result: UInt8, builder: EquationBuilder) {

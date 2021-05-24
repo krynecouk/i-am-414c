@@ -16,7 +16,7 @@ struct TerminalContent: View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .topLeading) {
                 TerminalGrid(items: items)
-                if uiVM.isHelp && uiVM.current == .message {
+                if uiVM.isHelp {
                     TerminalHelpMessages()
                 }
             }
