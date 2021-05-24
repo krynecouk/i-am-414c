@@ -17,27 +17,20 @@ struct TerminalHelpSelect: View {
     var body: some View {
         GeometryReader { metrics in
             Grid(columns: gridType.rawValue(), spacing: 10, padding: 15) {
-                if segueVM.opened == .help && uiVM.current == .message {
-                    TerminalMessagesSelect()
-                    .onAppear {
-                        if self.gridType != .messages {
-                            self.gridType = .messages
-                        }
-                    }
-                }
-                if segueVM.opened == .chat {
-                    Text("Chat here")
-                        .onAppear {
-                            if self.gridType != .adaptive {
-                                self.gridType = .adaptive
-                            }
-                        }
-                }
-                if segueVM.opened == .help && uiVM.current == .test {
+                if segueVM.opened == .help {
                     TerminalTestSelect()
                     .onAppear {
                         if self.gridType != .adaptive {
                             self.gridType = .adaptive
+                        }
+                    }
+                }
+                
+                if segueVM.opened == .chat {
+                    TerminalMessagesSelect()
+                    .onAppear {
+                        if self.gridType != .messages {
+                            self.gridType = .messages
                         }
                     }
                 }
