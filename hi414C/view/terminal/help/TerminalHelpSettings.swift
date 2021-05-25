@@ -28,7 +28,7 @@ struct TerminalHelpSettings: View {
                 .onAppear {
                     self.height = height
                 }
-                .animation(.default.speed(1.5))
+                .animation(.default.speed(2.3), value: height)
             }
         }
     }
@@ -49,11 +49,7 @@ struct TerminalHelpSettings: View {
     }
     
     func SettingsButton(_ text: String, _ type: HelpSettingsType, frame: CGSize, perform action: @escaping () -> Void = {}) -> some View {
-        Button(action: {
-            helpVM.settings = helpVM.settings == type ? .none : type
-            segueVM.open(type: .settings)
-            action()
-        }) {
+
             ZStack {
                 if helpVM.settings == type {
                     Rectangle()
@@ -71,7 +67,12 @@ struct TerminalHelpSettings: View {
                     LiteFigletView(text, theme: helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
                 }
             }
-        }
+            .onTapGesture {
+                    helpVM.settings = helpVM.settings == type ? .none : type
+                    segueVM.open(type: .settings)
+                    action()
+            }
+        
     }
     
     enum GridType {

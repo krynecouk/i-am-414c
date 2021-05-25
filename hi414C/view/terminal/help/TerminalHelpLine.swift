@@ -67,7 +67,6 @@ struct TerminalHelpLine: View {
                         .border(themeVM.terminal.hli.button.active.color, width: 1.7)
                         .offset(y: -1.4)
                         .padding(.all, 13)
-                        //.padding(.trailing, 8)
                 }
 
         }
