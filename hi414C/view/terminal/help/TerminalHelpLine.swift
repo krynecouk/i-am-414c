@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TerminalHelpLine: View {
+    @Namespace private var ns
+    
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var uiVM: UIViewModel
@@ -34,7 +36,6 @@ struct TerminalHelpLine: View {
             MinButton()
             QuitButton("X")
         }
-        //.onReceive(uiVM.$current) { helpVM.content(of: $0 == .message ? .chat : .learn) }
         .frame(height: SegueViewModel.header.height)
         .background(themeVM.terminal.hli.background.edgesIgnoringSafeArea(.all))
     }
@@ -73,24 +74,22 @@ struct TerminalHelpLine: View {
         }
     }
     
-    @Namespace private var ns
-    
     func SegueButton(_ text: String, _ type: SegueType, perform action: @escaping () -> Void = {}) -> some View {
         let currentSegue = getCurrentSegue()
+        let isCurrent = currentSegue == type
+        let isOpen = segueVM.isOpen
+        let theme = themeVM.terminal.hli.button
         return
             ButtonLabel(text)
-            .background(currentSegue == type && !segueVM.isOpen
-                            ? themeVM.terminal.hli.button.background.active.frame(height: 5).offset(y: 29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
-            .background(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
-            
-            
-            .withTheme(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
-            .animation(.easeIn.speed(2.3))
+            .background(isCurrent && !isOpen ? theme.background.active.frame(height: 5).offset(y: 29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
+            .background(isCurrent && isOpen ? theme.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
+            .withTheme(isCurrent && isOpen ? theme.active : theme.passive)
+            .animation(.easeOut.speed(2.3))
             .onTapGesture {
-                if segueVM.isOpen {
+                if isOpen {
                     openSegue(type)
                 } else {
-                    if currentSegue == type {
+                    if isCurrent {
                         openSegue(type)
                     }
                 }
