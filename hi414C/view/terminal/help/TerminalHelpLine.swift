@@ -29,6 +29,9 @@ struct TerminalHelpLine: View {
                     }
                     SegueButton("Settings", .settings) {
                         helpVM.current = .settings
+                        if !segueVM.isOpen {
+                            helpVM.settings = .none
+                        }
                     }
                 }
             }
@@ -54,8 +57,19 @@ struct TerminalHelpLine: View {
                     segueVM.open(type: getCurrentSegue())
                 }
         }) {
-            ButtonLabel(segueVM.isOpen ? "-" : "[]")
-                .withTheme(themeVM.terminal.hli.button.passive)
+                if segueVM.isOpen {
+                    ButtonLabel("-")
+                        .withTheme(themeVM.terminal.hli.button.passive)
+                } else {
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(width: 15, height: 15)
+                        .border(themeVM.terminal.hli.button.active.color, width: 1.7)
+                        .offset(y: -1.4)
+                        .padding(.all, 13)
+                        //.padding(.trailing, 8)
+                }
+
         }
     }
     
