@@ -11,6 +11,7 @@ struct Grid<Content: View> : View {
     let content: Content
     let spacing: CGFloat
     let padding: CGFloat
+    let top: CGFloat
     let alignment: HorizontalAlignment
     let columns: [GridItem]
     
@@ -19,12 +20,14 @@ struct Grid<Content: View> : View {
         alignment: HorizontalAlignment = .center,
         spacing: CGFloat = 10,
         padding: CGFloat = 20,
+        top: CGFloat = 0,
         @ViewBuilder content: () -> Content) {
         
         self.columns = columns
         self.alignment = alignment
         self.spacing = spacing
         self.padding = padding
+        self.top = top
         self.content = content()
     }
     
@@ -34,6 +37,7 @@ struct Grid<Content: View> : View {
                 content
             }
             .padding(self.padding)
+            .padding(.top, top)
         }
     }
 }

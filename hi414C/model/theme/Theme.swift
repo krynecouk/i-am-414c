@@ -249,14 +249,14 @@ class Theme: Themable {
                     active: LiteFigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
-                            font: FontProps(font.robot.name, font.robot.size - 3),
+                            font: FontProps(font.robot.name, font.robot.size - 5),
                             color: color.secondary.contrast.opacity(0.7)
                         )
                     ),
                     passive: LiteFigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
-                            font: FontProps(font.robot.name, font.robot.size - 3),
+                            font: FontProps(font.robot.name, font.robot.size - 5),
                             color: color.tertiary.contrast.opacity(0.7)
                         )
                     ),

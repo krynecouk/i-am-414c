@@ -11,19 +11,18 @@ struct TerminalHelpSettings: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
-    
-    private static let ADAPTIVE = [GridItem(.adaptive(minimum: 300, maximum: .infinity))]
-    
+        
     var body: some View {
         if helpVM.current == .settings {
             GeometryReader { metrics in
-                Grid(columns: TerminalHelpSettings.ADAPTIVE, spacing: 10, padding: 20) {
+                let height = getHeight(frame: metrics.size)
+                Grid(columns: height > 320 ? GridType.one.rawValue() : GridType.double.rawValue(), spacing: 10, top: height > 500 ? (height/2 - (2*80) - 15) : 0) {
                     SettingsButton("FONT", .font, frame: metrics.size)
                     SettingsButton("THEME", .theme, frame: metrics.size)
                     SettingsButton("HINT", .hint, frame: metrics.size)
                     SettingsButton("DELETE", .delete, frame: metrics.size)
                 }
-                .frame(width: metrics.size.width, height: getHeight(frame: metrics.size), alignment: .center)
+                .frame(width: metrics.size.width, height: height, alignment: .center)
             }
         }
     }
@@ -50,17 +49,14 @@ struct TerminalHelpSettings: View {
             action()
         }) {
             ZStack {
-                let rect = Rectangle()
-                    .frame(width: 350, height: 80)
-                
                 if helpVM.settings == type {
                     Rectangle()
                         .fill(themeVM.terminal.help.settings.background.active)
-                        .frame(width: 350, height: 80)
+                        .frame(width: 340, height: 80)
                 } else {
                     Rectangle()
                         .fill(themeVM.terminal.help.settings.background.passive)
-                        .frame(width: 350, height: 80)
+                        .frame(width: 340, height: 80)
                         .bevelBorder(light: themeVM.terminal.help.settings.active.view.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
                     
                 }
