@@ -13,7 +13,7 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var chatVM: ChatViewModel
     
-    @State var pageLimit = 100
+    @State var pageLimit = 3
     
     var body: some View {
         ForEach(chatVM.current.replies.prefix(pageLimit).map { Item($0) }) { item in

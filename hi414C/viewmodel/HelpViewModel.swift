@@ -70,12 +70,12 @@ class HelpViewModel: ObservableObject {
             return equation.builder
         }
     }
-    
-    enum HelpContent {
-        case learn, chat, settings
-    }
-    
-    enum HelpSettingsType {
-        case font, theme, hint, delete
-    }
+}
+
+enum HelpContent {
+    case learn, chat, settings
+}
+
+enum HelpSettingsType {
+    case font, theme, hint, delete
 }

@@ -33,10 +33,22 @@ struct TerminalTheme {
         var message: MessageTheme
         var history: History
         var hint: ViewTheme
+        var settings: Settings
         
         struct History {
             var robot: FigletTheme
             var al: ViewTheme
+        }
+        
+        struct Settings {
+            var active: LiteFigletTheme
+            var passive: LiteFigletTheme
+            var background: Background
+        }
+        
+        struct Background {
+            var active: Color
+            var passive: Color
         }
     }
     

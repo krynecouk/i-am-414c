@@ -244,6 +244,26 @@ class Theme: Themable {
                     font: FontProps(.proggyTiny, 32),
                     color: color.secondary.contrast,
                     background: color.secondary.value
+                ),
+                settings: TerminalTheme.Help.Settings(
+                    active: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: FontProps(font.robot.name, font.robot.size - 3),
+                            color: color.secondary.contrast.opacity(0.7)
+                        )
+                    ),
+                    passive: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: FontProps(font.robot.name, font.robot.size - 3),
+                            color: color.tertiary.contrast.opacity(0.7)
+                        )
+                    ),
+                    background: TerminalTheme.Help.Background(
+                        active: color.secondary.value,
+                        passive: color.tertiary.value
+                    )
                 )
             ),
             cli: TerminalTheme.CommandLine(
