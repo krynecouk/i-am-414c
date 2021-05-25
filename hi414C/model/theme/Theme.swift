@@ -300,13 +300,15 @@ class Theme: Themable {
                 button: TerminalTheme.HelpLine.Button(
                     active: ViewTheme(
                         font: FontProps(.proggyTiny, 32),
-                        color: color.tertiary.contrast,
-                        background: color.tertiary.value
+                        color: color.tertiary.contrast
                     ),
                     passive: ViewTheme(
                         font: FontProps(.proggyTiny, 32),
-                        color: color.secondary.contrast,
-                        background: color.secondary.value
+                        color: color.secondary.contrast
+                    ),
+                    background: TerminalTheme.HelpLine.Background(
+                        active: color.tertiary.value,
+                        passive: color.secondary.value
                     )
                 ),
                 select: TerminalTheme.HelpLine.Select(

@@ -75,10 +75,19 @@ struct TerminalHelpLine: View {
         }
     }
     
+    @Namespace private var ns
+    
     func SegueButton(_ text: String, _ type: SegueType, perform action: @escaping () -> Void = {}) -> some View {
         let currentSegue = getCurrentSegue()
-        return ButtonLabel(text)
-            .withTheme(currentSegue == type ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
+        return
+            ButtonLabel(text)
+            //.background(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.background.active : themeVM.terminal.hli.button.background.passive)
+            .background(currentSegue == type && !segueVM.isOpen
+                            ? themeVM.terminal.hli.button.background.active.frame(height: 5).offset(y: 29.5).matchedGeometryEffect(id: "border", in: ns)
+                            : nil)
+            
+            .withTheme(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
+            .animation(Animation.easeOut.speed(1.2))
             .onTapGesture {
                 if segueVM.isOpen {
                     openSegue(type)
