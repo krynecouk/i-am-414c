@@ -31,6 +31,7 @@ struct TerminalHelpLine: View {
                 }
             }
             Spacer()
+            MinButton()
             QuitButton("X")
         }
         //.onReceive(uiVM.$current) { helpVM.content(of: $0 == .message ? .chat : .learn) }
@@ -40,8 +41,23 @@ struct TerminalHelpLine: View {
     
     func ButtonLabel(_ text: String) -> some View {
         Text(text)
-            .padding(.all, 15)
+            .padding(.all, 13)
             .frame(height: SegueViewModel.header.height)
+    }
+    
+    func MinButton() -> some View {
+        Button(action: {
+            withAnimation {
+                if segueVM.isOpen {
+                    segueVM.close()
+                } else {
+                    segueVM.open(type: getCurrentSegue())
+                }
+            }
+        }) {
+            ButtonLabel(segueVM.isOpen ? "-" : "[]")
+                .withTheme(themeVM.terminal.hli.button.passive)
+        }
     }
     
     func QuitButton(_ text: String) -> some View {
@@ -60,14 +76,32 @@ struct TerminalHelpLine: View {
     }
     
     func SegueButton(_ text: String, _ type: SegueType, perform action: @escaping () -> Void = {}) -> some View {
-        ButtonLabel(text)
-            .withTheme(segueVM.opened == type ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
-                .onTapGesture {
+        let currentSegue = getCurrentSegue()
+        return ButtonLabel(text)
+            .withTheme(currentSegue == type ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
+            .onTapGesture {
+                if segueVM.isOpen {
                     openSegue(type)
-                    action()
+                } else {
+                    if currentSegue == type {
+                        openSegue(type)
+                    }
                 }
+                action()
+            }
     }
-
+    
+    func getCurrentSegue() -> SegueType {
+        switch helpVM.current {
+        case .learn:
+            return .help
+        case .chat:
+            return .chat
+        case .settings:
+            return .settings
+        }
+    }
+    
     func openSegue(_ type: SegueType) {
         if segueVM.isOpen {
             segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)

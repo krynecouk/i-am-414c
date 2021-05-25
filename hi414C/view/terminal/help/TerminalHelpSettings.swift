@@ -12,17 +12,23 @@ struct TerminalHelpSettings: View {
     @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
         
+    @State var height: CGFloat = 0
+    
     var body: some View {
         if helpVM.current == .settings {
             GeometryReader { metrics in
                 let height = getHeight(frame: metrics.size)
-                Grid(columns: height > 320 ? GridType.one.rawValue() : GridType.double.rawValue(), spacing: 10, top: height > 500 ? (height/2 - (2*80) - 15) : 0) {
+                Grid(columns: height > 320 ? GridType.one.rawValue() : GridType.double.rawValue(), spacing: 10, top: height > 500 ? (height/2 - (2*80) - 45) : 0) {
                     SettingsButton("FONT", .font, frame: metrics.size)
                     SettingsButton("THEME", .theme, frame: metrics.size)
                     SettingsButton("HINT", .hint, frame: metrics.size)
                     SettingsButton("DELETE", .delete, frame: metrics.size)
                 }
                 .frame(width: metrics.size.width, height: height, alignment: .center)
+                .onAppear {
+                    self.height = height
+                }
+                .animation(.default)
             }
         }
     }
@@ -44,7 +50,7 @@ struct TerminalHelpSettings: View {
     
     func SettingsButton(_ text: String, _ type: HelpSettingsType, frame: CGSize, perform action: @escaping () -> Void = {}) -> some View {
         Button(action: {
-            helpVM.settings = type
+            helpVM.settings = helpVM.settings == type ? .none : type
             segueVM.open(type: .settings)
             action()
         }) {
