@@ -47,13 +47,11 @@ struct TerminalHelpLine: View {
     
     func MinButton() -> some View {
         Button(action: {
-            withAnimation {
                 if segueVM.isOpen {
                     segueVM.close()
                 } else {
                     segueVM.open(type: getCurrentSegue())
                 }
-            }
         }) {
             ButtonLabel(segueVM.isOpen ? "-" : "[]")
                 .withTheme(themeVM.terminal.hli.button.passive)
@@ -81,13 +79,13 @@ struct TerminalHelpLine: View {
         let currentSegue = getCurrentSegue()
         return
             ButtonLabel(text)
-            //.background(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.background.active : themeVM.terminal.hli.button.background.passive)
             .background(currentSegue == type && !segueVM.isOpen
-                            ? themeVM.terminal.hli.button.background.active.frame(height: 5).offset(y: 29.5).matchedGeometryEffect(id: "border", in: ns)
-                            : nil)
+                            ? themeVM.terminal.hli.button.background.active.frame(height: 5).offset(y: 29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
+            .background(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
+            
             
             .withTheme(currentSegue == type && segueVM.isOpen ? themeVM.terminal.hli.button.active : themeVM.terminal.hli.button.passive)
-            .animation(Animation.easeOut.speed(1.2))
+            .animation(.easeIn.speed(2.3))
             .onTapGesture {
                 if segueVM.isOpen {
                     openSegue(type)

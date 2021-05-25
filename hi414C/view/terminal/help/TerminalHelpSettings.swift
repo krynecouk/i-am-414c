@@ -28,7 +28,7 @@ struct TerminalHelpSettings: View {
                 .onAppear {
                     self.height = height
                 }
-                .animation(.default)
+                .animation(.default.speed(1.5))
             }
         }
     }
