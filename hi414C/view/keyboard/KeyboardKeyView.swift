@@ -45,7 +45,7 @@ struct KeyboardKeyView: View {
     func KeyboardKeyBackground() -> some View {
         Rectangle()
             .fill(theme.background ?? Color.white)
-            .frame(width: self.width, height: self.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: self.width, height: self.height, alignment: .center)
             .onLongPressGesture(minimumDuration: 0) {
                 onClick(value)
             }

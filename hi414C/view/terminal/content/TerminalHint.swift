@@ -24,6 +24,7 @@ struct TerminalHint: View {
                 }
             }
             .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
+            .background(themeVM.terminal.help.hint.background.edgesIgnoringSafeArea(.all))
         }
     }
 }

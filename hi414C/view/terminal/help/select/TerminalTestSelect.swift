@@ -10,7 +10,7 @@ import SwiftUI
 struct TerminalTestSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var testVM: TestViewModel
-
+    
     var body: some View {
         Group {
             HelpButton("-1") {
@@ -19,10 +19,7 @@ struct TerminalTestSelect: View {
             HelpButton("+1") {
                 helpVM.increment()
             }
-            HelpButton("rnd") {
-                helpVM.rand()
-            }
-            HelpButton("000") {
+            HelpButton("0") {
                 helpVM.resetToZero()
             }
         }
@@ -34,39 +31,27 @@ struct TerminalTestSelect: View {
             }
         }
         Group {
-            if testVM.level > 1 {
-                HelpSignButton<ID>("=", .ID)
-                HelpSignButton<ADD>("+", .ADD)
-                HelpSignButton<SUB>("-", .SUB)
-            }
-            if testVM.level > 2 {
-                HelpSignButton<DIV>("/", .DIV)
-                HelpSignButton<MUL>("*", .MUL)
-            }
+            HelpSignButton<ADD>("+", .ADD)
+            HelpSignButton<SUB>("-", .SUB)
+            HelpSignButton<DIV>("/", .DIV)
+            HelpSignButton<MUL>("*", .MUL)
         }
         Group{
-            if testVM.level > 3 {
-                HelpSignButton<AND>("&", .AND)
-            }
-            if testVM.level > 4 {
-                HelpSignButton<OR>("|", .OR)
-            }
-            if testVM.level > 5 {
-                HelpSignButton<XOR>("^", .XOR)
-            }
-            if testVM.level > 6 {
-                HelpSignButton<NOT>("~", .NOT)
-            }
-            if testVM.level > 7 {
-                HelpSignButton<SHL>("<<", .SHL)
-                HelpSignButton<SHR>(">>", .SHR)
-            }
+            HelpSignButton<AND>("&", .AND)
+            HelpSignButton<OR>("|", .OR)
+            HelpSignButton<XOR>("^", .XOR)
+            HelpSignButton<NOT>("~", .NOT)
+            HelpSignButton<SHL>("<<", .SHL)
+            HelpSignButton<SHR>(">>", .SHR)
         }
     }
 }
 
 struct TestSelect_Previews: PreviewProvider {
     static var previews: some View {
-        TerminalTestSelect()
+        HStack {
+            TerminalTestSelect()
+                .withEnvironment()
+        }
     }
 }

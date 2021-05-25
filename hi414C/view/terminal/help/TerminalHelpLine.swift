@@ -29,9 +29,6 @@ struct TerminalHelpLine: View {
                     }
                     SegueButton("Settings", .settings) {
                         helpVM.current = .settings
-                        if !segueVM.isOpen {
-                            helpVM.settings = .none
-                        }
                     }
                 }
             }
@@ -100,10 +97,10 @@ struct TerminalHelpLine: View {
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
                 if isOpen {
-                    openSegue(type)
+                    toggleSegue(type)
                 } else {
                     if isCurrent {
-                        openSegue(type)
+                        toggleSegue(type)
                     }
                 }
                 action()
@@ -121,7 +118,7 @@ struct TerminalHelpLine: View {
         }
     }
     
-    func openSegue(_ type: SegueType) {
+    func toggleSegue(_ type: SegueType) {
         if segueVM.isOpen {
             segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)
         } else {

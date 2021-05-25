@@ -23,7 +23,7 @@ struct TerminalGrid: View {
     @State var printed: Set<SymbolId> = []
     @State var printedMsg: Set<MessageId> = []
     @State var solved: [ASCIISymbol] = []
-    @State var wide = false
+    @State var wide = UIScreen.main.bounds.width > 500
     
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()

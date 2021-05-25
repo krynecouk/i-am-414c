@@ -97,34 +97,40 @@ struct BevelBorder: ViewModifier {
     let dark: Color
     let width: CGFloat
     let offset: CGFloat
+    let visible: Bool
     
-    init(light: Color, dark: Color, width: CGFloat = 4) {
+    init(light: Color, dark: Color, width: CGFloat = 4, visible: Bool = true) {
         self.light = light
         self.dark = dark
         self.width = width
         self.offset = width/2
+        self.visible = visible
     }
     
     func body(content: Content) -> some View {
-        content
-            .overlay(
-                Rectangle()
-                    .stroke(self.light, lineWidth: self.width)
-                    .offset(x: self.offset, y: self.offset)
-                    .clipped()
-            )
-            .overlay(
-                Rectangle()
-                    .stroke(self.dark, lineWidth: width)
-                    .offset(x: -self.offset, y: -self.offset)
-                    .clipped()
-            )
+        if visible {
+            content
+                .overlay(
+                    Rectangle()
+                        .stroke(self.light, lineWidth: self.width)
+                        .offset(x: self.offset, y: self.offset)
+                        .clipped()
+                )
+                .overlay(
+                    Rectangle()
+                        .stroke(self.dark, lineWidth: width)
+                        .offset(x: -self.offset, y: -self.offset)
+                        .clipped()
+                )
+        } else {
+            content
+        }
     }
 }
 
 extension View {
-    func bevelBorder(light: Color, dark: Color, width: CGFloat) -> some View {
-        self.modifier(BevelBorder(light: light, dark: dark, width: width))
+    func bevelBorder(light: Color, dark: Color, width: CGFloat, visible: Bool = true) -> some View {
+        self.modifier(BevelBorder(light: light, dark: dark, width: width, visible: visible))
     }
 }
 

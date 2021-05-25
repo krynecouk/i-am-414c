@@ -20,8 +20,14 @@ struct HelpSignButton<T>: View {
     }
     
     var body: some View {
-        HelpRadioButton(text, active: helpVM.getBuilder(helpVM.equation) is T) {
-            helpVM.change(to: equationType)
+        let active = helpVM.getBuilder(helpVM.equation) is T
+        HelpRadioButton(text, active: active) {
+            if active {
+                helpVM.change(to: .ID)
+            } else {
+                helpVM.change(to: equationType)
+            }
         }
+        //.bevelBorder(light: .white, dark: .black, width: 3, visible: !active)
     }
 }
