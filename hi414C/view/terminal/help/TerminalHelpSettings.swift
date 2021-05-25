@@ -61,7 +61,7 @@ struct TerminalHelpSettings: View {
                     Rectangle()
                         .fill(themeVM.terminal.help.settings.background.passive)
                         .frame(width: 350, height: 80)
-                        .windowsBorder(light: themeVM.terminal.help.settings.active.view.color, dark: themeVM.terminal.help.settings.background.active)
+                        .bevelBorder(light: themeVM.terminal.help.settings.active.view.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
                     
                 }
                 
@@ -89,30 +89,39 @@ struct TerminalHelpSettings: View {
     }
 }
 
-struct WindowsBorder: ViewModifier {
+struct BevelBorder: ViewModifier {
     let light: Color
     let dark: Color
+    let width: CGFloat
+    let offset: CGFloat
+    
+    init(light: Color, dark: Color, width: CGFloat = 4) {
+        self.light = light
+        self.dark = dark
+        self.width = width
+        self.offset = width/2
+    }
     
     func body(content: Content) -> some View {
         content
             .overlay(
                 Rectangle()
-                    .stroke(self.light, lineWidth: 4)
-                    .offset(x: 2, y: 2)
+                    .stroke(self.light, lineWidth: self.width)
+                    .offset(x: self.offset, y: self.offset)
                     .clipped()
             )
             .overlay(
                 Rectangle()
-                    .stroke(self.dark, lineWidth: 4)
-                    .offset(x: -2, y: -2)
+                    .stroke(self.dark, lineWidth: width)
+                    .offset(x: -self.offset, y: -self.offset)
                     .clipped()
             )
     }
 }
 
 extension View {
-    func windowsBorder(light: Color, dark: Color) -> some View {
-        self.modifier(WindowsBorder(light: light, dark: dark))
+    func bevelBorder(light: Color, dark: Color, width: CGFloat) -> some View {
+        self.modifier(BevelBorder(light: light, dark: dark, width: width))
     }
 }
 
