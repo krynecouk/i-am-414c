@@ -8,6 +8,8 @@
 import SwiftUI
 
 class ThemeViewModel: ObservableObject {
+    static let hint: Size = (.infinity, 54)
+    
     @Published private(set) var theme: Themable
     @Published private(set) var hint: Bool
     @Published private(set) var wave: Bool
