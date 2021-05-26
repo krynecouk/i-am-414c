@@ -45,34 +45,20 @@ struct TerminalHelpMessages: View {
                             }
                             TerminalHelpPadding()
                         }
-                        .frame(width: metrics.size.width)
-                        .border(Color.green)
                     }
                 }
             }
         }
     }
     
-    /*
-    func Message414C(_ text: String, frame: CGSize) -> some View {
-        Grid(columns: frame.width > 500 ? TerminalHelpMessages.LANDSLIDE_MESSAGE : TerminalHelpMessages.PORTRAIT_MESSAGE, alignment: .center) {
-            TerminalMessageRow(text, wide: frame.width > 500, theme: themeVM.terminal.help.history.robot)
-        }
-        .offset(x: text.count == 1 ? -5 : 3)
-        .frame(maxWidth: getGridWidth(frame: frame, content: text), alignment: .leading)
-        .background(rounded)
-        .padding(.leading, 10)
-        .animation(.spring().speed(1.3))
-    }
-    */
-    
     func Message414C(_ text: String, frame: CGSize) -> some View {
             Text(text)
-                .font(Font.of(props: FontProps(.ansiRegular, 70)))
                 .lineSpacing(15)
-                .foregroundColor(.white)
-                .padding([.top, .bottom], 15)
-                .padding([.trailing, .leading], 30)
+                .font(Font.of(props: FontProps(.ansiRegular, 63)))
+                .padding(.leading, 28)
+                .padding(.trailing, 20)
+                .padding(.top, 18)
+                .padding(.bottom, 5)
                 .background(rounded)
                 .frame(maxWidth: frame.width * 0.8, alignment: .leading)
                 .animation(.spring().speed(1.3))
