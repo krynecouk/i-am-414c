@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FontSize: Encodable, Decodable {
     var robot: CGFloat = 13
-    var robotMsg: CGFloat = 63
+    var robotMsg: CGFloat = 55
     var al: CGFloat = 60
 
     func inc() -> FontSize {
@@ -27,7 +27,7 @@ struct FontSize: Encodable, Decodable {
     }
     
     func reset() -> FontSize {
-        FontSize(robot: 13, robotMsg: 63, al: 60)
+        FontSize(robot: 13, robotMsg: 55, al: 60)
     }
     
     func isIncreasable() -> Bool {
@@ -44,7 +44,7 @@ struct FontTheme {
     let robotMsg: FontProps
     let al: FontProps
     
-    init(robot: FontProps = FontProps(.terminus, 13), robotMsg: FontProps = FontProps(.ansiRegular, 63), al: FontProps = FontProps(.proggyTiny, 60)) {
+    init(robot: FontProps = FontProps(.terminus, 13), robotMsg: FontProps = FontProps(.ansiRegular, 55), al: FontProps = FontProps(.proggyTiny, 60)) {
         self.robot = robot
         self.robotMsg = robotMsg
         self.al = al
