@@ -15,4 +15,5 @@ enum FontName: String {
     
     case terminus = "Terminus (TTF)"
     case proggyTiny = "ProggyTinyTTSZ"
+    case ansiRegular = "ansiregular"
 }

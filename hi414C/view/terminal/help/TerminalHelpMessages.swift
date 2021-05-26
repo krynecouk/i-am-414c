@@ -67,19 +67,16 @@ struct TerminalHelpMessages: View {
     */
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
-        HStack(spacing: 10) {
-            Spacer()
             Text(text)
-                .withTheme(themeVM.terminal.help.history.al)
-                .offset(x: 2, y: 3.5)
-                .padding([.top, .bottom], 8)
-                .padding([.trailing, .leading], 25)
+                .font(Font.of(props: FontProps(.ansiRegular, 70)))
+                .lineSpacing(15)
+                .foregroundColor(.white)
+                .padding([.top, .bottom], 15)
+                .padding([.trailing, .leading], 30)
                 .background(rounded)
                 .frame(maxWidth: frame.width * 0.8, alignment: .leading)
                 .animation(.spring().speed(1.3))
-        }
-        .border(Color.red)
-        //.padding(.leading, 10)
+                .padding(.leading, 10)
     }
     
     func MessageAl(_ text: String, frame: CGSize) -> some View {

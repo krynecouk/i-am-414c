@@ -187,6 +187,10 @@
 		26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3021265969AA004A78F2 /* RadixDao.swift */; };
 		26EA302426597456004A78F2 /* PasswordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302326597456004A78F2 /* PasswordNode.swift */; };
 		26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */; };
+		26EA302C265E6EA8004A78F2 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3029265E6EA8004A78F2 /* license.txt */; };
+		26EA302D265E6EA8004A78F2 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA302A265E6EA8004A78F2 /* readme.txt */; };
+		26EA3030265E72D6004A78F2 /* TextFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302F265E72D6004A78F2 /* TextFigletView.swift */; };
+		26EA3032265E90BA004A78F2 /* ansiregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3031265E90BA004A78F2 /* ansiregular.ttf */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -385,6 +389,10 @@
 		26EA3021265969AA004A78F2 /* RadixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixDao.swift; sourceTree = "<group>"; };
 		26EA302326597456004A78F2 /* PasswordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNode.swift; sourceTree = "<group>"; };
 		26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSettings.swift; sourceTree = "<group>"; };
+		26EA3029265E6EA8004A78F2 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		26EA302A265E6EA8004A78F2 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		26EA302F265E72D6004A78F2 /* TextFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFigletView.swift; sourceTree = "<group>"; };
+		26EA3031265E90BA004A78F2 /* ansiregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ansiregular.ttf; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -461,6 +469,7 @@
 			children = (
 				2620921A2600B2FE0001904B /* FigletView.swift */,
 				2695155F26151B2F0020DD11 /* LiteFigletView.swift */,
+				26EA302F265E72D6004A78F2 /* TextFigletView.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -680,6 +689,7 @@
 		26782B382617734F00BA9C4E /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				26EA3027265E6E83004A78F2 /* ansi */,
 				264404052618342E00CA7EA1 /* terminus */,
 				26782B772617BE4300BA9C4E /* proggy */,
 			);
@@ -1086,6 +1096,24 @@
 			path = reset;
 			sourceTree = "<group>";
 		};
+		26EA3027265E6E83004A78F2 /* ansi */ = {
+			isa = PBXGroup;
+			children = (
+				26EA3028265E6E8C004A78F2 /* regular */,
+			);
+			path = ansi;
+			sourceTree = "<group>";
+		};
+		26EA3028265E6E8C004A78F2 /* regular */ = {
+			isa = PBXGroup;
+			children = (
+				26EA3031265E90BA004A78F2 /* ansiregular.ttf */,
+				26EA3029265E6EA8004A78F2 /* license.txt */,
+				26EA302A265E6EA8004A78F2 /* readme.txt */,
+			);
+			path = regular;
+			sourceTree = "<group>";
+		};
 		26F7A6BF25FA4FCE00F04156 /* hi414CTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,9 +1241,12 @@
 			files = (
 				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
+				26EA3032265E90BA004A78F2 /* ansiregular.ttf in Resources */,
 				26782B742617BE3F00BA9C4E /* Licence.txt in Resources */,
 				264404022618342B00CA7EA1 /* COPYING in Resources */,
+				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
+				26EA302D265E6EA8004A78F2 /* readme.txt in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
 				26782B732617BE3F00BA9C4E /* ProggyTinySZ.ttf in Resources */,
 			);
@@ -1297,6 +1328,7 @@
 				269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */,
 				267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */,
 				268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */,
+				26EA3030265E72D6004A78F2 /* TextFigletView.swift in Sources */,
 				266CA42A2645A617001A07E0 /* Collection.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* ASCIITestEdge.swift in Sources */,

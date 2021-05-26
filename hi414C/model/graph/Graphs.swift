@@ -15,7 +15,7 @@ class Graphs {
     private init() {}
     
     static let BIN =
-        R("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") {
+        R("HI") {
             // INTRO
             AL("HI", ["HELLO", "YO", "AHOY"]) {
                 R("HI")

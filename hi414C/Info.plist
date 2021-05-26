@@ -29,6 +29,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>ansiregular.ttf</string>
 		<string>ProggyTinySZ.ttf</string>
 		<string>TerminusTTF-4.46.0.ttf</string>
 	</array>

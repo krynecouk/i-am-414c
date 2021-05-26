@@ -367,22 +367,6 @@ enum ANSIRegularFiglets {
             "██  ██  ",
             "██████  ",
         ]),
-        /*
-         .ampersand: Figlet(symbol: .ampersand, lines: [
-             "██▀▀▀▀▀ ",
-             "██  ██   ",
-             "████████",
-             "██  ██  ",
-             "██████  ",
-         ]),
-         .ampersand: Figlet(symbol: .ampersand, lines: [
-             " ██████",
-             "██     ",
-             " ██████  ",
-             "██   ██ ",
-             " ██████",
-         ]),
-         */
         .atSign: Figlet(symbol: .atSign, lines: [
             "  ██████  ",
             " ██    ██ ",
@@ -427,7 +411,7 @@ enum ANSIRegularFiglets {
         ]),
         .singleQuote: Figlet(symbol: .singleQuote, lines: [
             "  █ ",
-            " █▀  ",
+            " █▀ ",
             "    ",
             "    ",
             "    ",
@@ -516,11 +500,11 @@ enum ANSIRegularFiglets {
             " ▀█         ",
         ]),
         .space: Figlet(symbol: .space, lines: [
-            "      ",
-            "      ",
-            "      ",
-            "      ",
-            "      ",
+            "    ",
+            "    ",
+            "    ",
+            "    ",
+            "    ",
         ])
     ]
 }
