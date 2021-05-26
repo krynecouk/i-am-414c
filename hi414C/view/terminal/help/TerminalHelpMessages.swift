@@ -54,12 +54,12 @@ struct TerminalHelpMessages: View {
     func Message414C(_ text: String, frame: CGSize) -> some View {
             Text(text)
                 .lineSpacing(15)
-                .font(Font.of(props: FontProps(.ansiRegular, 63)))
-                .padding(.leading, 28)
-                .padding(.trailing, 20)
+                .withTheme(themeVM.terminal.help.history.robot)
+                .padding(.leading, 29)
+                .padding(.trailing, 19)
                 .padding(.top, 18)
                 .padding(.bottom, 5)
-                .background(rounded)
+                .background(rounded(color: themeVM.terminal.help.history.robot.background ?? Color.clear))
                 .frame(maxWidth: frame.width * 0.8, alignment: .leading)
                 .animation(.spring().speed(1.3))
                 .padding(.leading, 10)
@@ -73,31 +73,16 @@ struct TerminalHelpMessages: View {
                 .offset(x: 2, y: 3.5)
                 .padding([.top, .bottom], 8)
                 .padding([.trailing, .leading], 25)
-                .background(rounded)
+                .background(rounded(color: themeVM.terminal.help.history.al.background ?? Color.clear))
                 .frame(maxWidth: frame.width * 0.8, alignment: .trailing)
                 .animation(.spring().speed(1.3))
         }
         .padding(.trailing, 10)
     }
     
-    var rounded: some View {
+    func rounded(color: Color) -> some View {
         RoundedRectangle(cornerRadius: 35)
-            .fill(themeVM.terminal.help.history.al.background ?? Color.clear)
-    }
-    
-    func getGridWidth(frame: CGSize, content: String) -> CGFloat {
-        let contentCount = content.isEmpty ? 0 : findLongestWord(from: content).count
-        let contentW: CGFloat = CGFloat(contentCount * 80)
-        let maxW: CGFloat = frame.width * 0.9
-        return contentW > maxW ? maxW : contentW
-    }
-    
-    func findLongestWord(from sentence: String) -> String {
-        let words = sentence.components(separatedBy: " ")
-        if let longest = words.max(by: { $1.count > $0.count }) {
-            return longest
-        }
-        return words[0]
+            .fill(color)
     }
 }
 

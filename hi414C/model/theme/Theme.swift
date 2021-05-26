@@ -9,24 +9,25 @@ import SwiftUI
 
 struct FontSize: Encodable, Decodable {
     var robot: CGFloat = 13
+    var robotMsg: CGFloat = 63
     var al: CGFloat = 60
-    
+
     func inc() -> FontSize {
         if isIncreasable() {
-            return FontSize(robot: self.robot + 1, al: self.al + 3)
+            return FontSize(robot: self.robot + 1, robotMsg: self.robotMsg + 3, al: self.al + 3)
         }
         return FontSize()
     }
     
     func dec() -> FontSize {
         if isDecreasable() {
-            return FontSize(robot: self.robot - 1, al: self.al - 3)
+            return FontSize(robot: self.robot - 1, robotMsg: self.robotMsg - 3, al: self.al - 3)
         }
         return FontSize()
     }
     
     func reset() -> FontSize {
-        FontSize(robot: 13, al: 60)
+        FontSize(robot: 13, robotMsg: 63, al: 60)
     }
     
     func isIncreasable() -> Bool {
@@ -40,15 +41,17 @@ struct FontSize: Encodable, Decodable {
 
 struct FontTheme {
     let robot: FontProps
+    let robotMsg: FontProps
     let al: FontProps
     
-    init(robot: FontProps = FontProps(.terminus, 13), al: FontProps = FontProps(.proggyTiny, 60)) {
+    init(robot: FontProps = FontProps(.terminus, 13), robotMsg: FontProps = FontProps(.ansiRegular, 63), al: FontProps = FontProps(.proggyTiny, 60)) {
         self.robot = robot
+        self.robotMsg = robotMsg
         self.al = al
     }
     
     init(size: FontSize = FontSize()) {
-        self.init(robot: FontProps(.terminus, size.robot), al: FontProps(.proggyTiny, size.al))
+        self.init(robot: FontProps(.terminus, size.robot), robotMsg: FontProps(.ansiRegular, size.robotMsg), al: FontProps(.proggyTiny, size.al))
     }
 }
 
@@ -225,14 +228,10 @@ class Theme: Themable {
                     )
                 ),
                 history: TerminalTheme.Help.History(
-                    robot: FigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: FontProps(font.robot.name, font.robot.size - 3),
-                            color: color.secondary.contrast.opacity(0.7),
-                            background: color.secondary.value
-                        ),
-                        animations: []
+                    robot: ViewTheme(
+                        font: FontProps(font.robotMsg.name, font.robotMsg.size),
+                        color: color.secondary.contrast.opacity(0.7),
+                        background: color.secondary.value
                     ),
                     al: ViewTheme(
                         font: FontProps(font.al.name, font.al.size - 9),

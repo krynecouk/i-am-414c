@@ -36,7 +36,7 @@ struct TerminalTheme {
         var settings: Settings
         
         struct History {
-            var robot: FigletTheme
+            var robot: ViewTheme
             var al: ViewTheme
         }
         
