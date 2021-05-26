@@ -46,6 +46,7 @@ struct TerminalView: View {
                     return items
                 }
                 
+                chatVM.setCurrent(message: .none, replies: [])
                 var testWasSetup = false
                 tests.forEach { test in // test node
                     let symbol = test.symbol

@@ -111,7 +111,7 @@ struct BevelBorder: ViewModifier {
             content
                 .overlay(
                     Rectangle()
-                        .stroke(self.light, lineWidth: self.width)
+                        .stroke(self.light.opacity(0.6), lineWidth: self.width)
                         .offset(x: self.offset, y: self.offset)
                         .clipped()
                 )

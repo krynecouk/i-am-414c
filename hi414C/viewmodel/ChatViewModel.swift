@@ -24,7 +24,7 @@ class ChatViewModel: ObservableObject {
         self.messages = []
     }
 
-    func setCurrent(message: Message, replies: OrderedSet<String>) {
+    func setCurrent(message: Message?, replies: OrderedSet<String>) {
         self.current = (message, replies)
     }
 }
