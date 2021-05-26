@@ -9,7 +9,7 @@ import SwiftUI
 
 class HelpViewModel: ObservableObject {
     @Published var current: HelpContent = .learn
-    @Published var settings: HelpSettingsType? = .none
+    @Published var settings: HelpSettingsType = .font
     @Published private(set) var equation: Equation = ID() => 0
     @Published private(set) var radix: EquationRadix = .bin
     @Published private(set) var answers: Int = 0

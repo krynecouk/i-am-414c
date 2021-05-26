@@ -17,11 +17,6 @@ struct TerminalSettingsSelect: View {
     
     var body: some View {
         Group{
-            if helpVM.settings == nil {
-                HelpButton("reset") {
-                    themeVM.reset()
-                }
-            }
             if helpVM.settings == .font {
                 Group {
                     let isDecreasable = themeVM.fontSize.isDecreasable()

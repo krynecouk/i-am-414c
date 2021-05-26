@@ -49,7 +49,6 @@ struct TerminalHelpSettings: View {
     }
     
     func SettingsButton(_ text: String, _ type: HelpSettingsType, frame: CGSize, perform action: @escaping () -> Void = {}) -> some View {
-
             ZStack {
                 if helpVM.settings == type {
                     Rectangle()
@@ -68,7 +67,7 @@ struct TerminalHelpSettings: View {
                 }
             }
             .onTapGesture {
-                    helpVM.settings = helpVM.settings == type ? .none : type
+                    helpVM.settings = type
                     segueVM.open(type: .settings)
                     action()
             }
