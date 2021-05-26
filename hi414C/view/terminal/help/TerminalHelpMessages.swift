@@ -11,18 +11,16 @@ struct TerminalHelpMessages: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var chatVM: ChatViewModel
+    @EnvironmentObject var segueVM: SegueViewModel
     
-    private let currentMsgId = "current_msg_id"
-    private static let PORTRAIT_MESSAGE = (1...5).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
-    private static let LANDSLIDE_MESSAGE = (1...10).map { _ in  GridItem(.flexible(minimum: 55, maximum: .infinity))}
-        
+    private let paddingId = "padding"
+    
     var body: some View {
         if helpVM.current == .chat {
             GeometryReader { metrics in
                 ScrollView(.vertical, showsIndicators: false) {
                     ScrollViewReader { reader in
                         VStack(alignment: .leading) {
-                            Color.clear.frame(height: 10)
                             VStack(alignment: .leading, spacing: 10) {
                                 ForEach(chatVM.messages) { message in
                                     if !message.text.isEmpty {
@@ -35,34 +33,41 @@ struct TerminalHelpMessages: View {
                                 }
                                 if chatVM.current.message != nil {
                                     Message414C(chatVM.current.message!.text, frame: metrics.size)
-                                        .id(currentMsgId)
                                 }
                             }
-                            .onAppear {
-                                withAnimation {
-                                    reader.scrollTo(currentMsgId)
-                                }
-                            }
+                            
                             TerminalHelpPadding()
+                                .id(paddingId)
+                                .onAppear {
+                                    withAnimation {
+                                        reader.scrollTo(paddingId)
+                                    }
+                                }
+                                .onReceive(segueVM.$isOpen) { isOpen in
+                                    withAnimation {
+                                        reader.scrollTo(paddingId)
+                                    }
+                                }
                         }
+                        .padding(.top, 10)
                     }
                 }
             }
+            //.animation(.default)
         }
     }
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
-            Text(text)
-                .lineSpacing(10)
-                .withTheme(themeVM.terminal.help.history.robot)
-                .padding(.leading, 29)
-                .padding(.trailing, 19)
-                .padding(.top, 18)
-                .padding(.bottom, 5)
-                .background(rounded(color: themeVM.terminal.help.history.robot.background ?? Color.clear))
-                .frame(maxWidth: frame.width * 0.8, alignment: .leading)
-                .animation(.spring().speed(1.3))
-                .padding(.leading, 10)
+        Text(text)
+            .lineSpacing(10)
+            .withTheme(themeVM.terminal.help.history.robot)
+            .padding(.leading, 29)
+            .padding(.trailing, 19)
+            .padding(.top, 18)
+            .padding(.bottom, 5)
+            .background(rounded(color: themeVM.terminal.help.history.robot.background ?? Color.clear))
+            .frame(maxWidth: frame.width * 0.8, alignment: .leading)
+            .padding(.leading, 10)
     }
     
     func MessageAl(_ text: String, frame: CGSize) -> some View {
@@ -75,7 +80,6 @@ struct TerminalHelpMessages: View {
                 .padding([.trailing, .leading], 25)
                 .background(rounded(color: themeVM.terminal.help.history.al.background ?? Color.clear))
                 .frame(maxWidth: frame.width * 0.8, alignment: .trailing)
-                .animation(.spring().speed(1.3))
         }
         .padding(.trailing, 10)
     }

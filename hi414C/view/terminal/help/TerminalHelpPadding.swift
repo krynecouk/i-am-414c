@@ -13,18 +13,19 @@ struct TerminalHelpPadding: View {
     
     var body: some View {
         Color.clear
-            .frame(height: getPadding())
+            .frame(height: getHeight())
+            .animation(.default)
     }
     
-    func getPadding() -> CGFloat {
+    func getHeight() -> CGFloat {
         var padding: CGFloat = 20
         if segueVM.isOpen {
             padding += segueVM.segue.height
         } else {
             if themeVM.hint {
-                padding += 54
+                padding += ThemeViewModel.hint.height
             }
-            padding += 60
+            padding += SegueViewModel.header.height
         }
         return padding
     }
