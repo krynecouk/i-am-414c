@@ -25,6 +25,7 @@ struct TerminalMessagesSelect: View {
         if chatVM.messages.isEmpty && chatVM.current.message == nil {
             MessageNoReply()
         }
+        ReloadButton3()
     }
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -70,8 +71,55 @@ struct TerminalMessagesSelect: View {
     }
 }
 
-struct MessagesSelect_Previews: PreviewProvider {
-    static var previews: some View {
-        TerminalMessagesSelect()
+struct ReloadButton2: View {
+    @EnvironmentObject var themeVM: ThemeViewModel
+    @State var animated = false
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ReloadButtonDot(animated: animated, startDelay: 0, repeatDelay: 1)
+            ReloadButtonDot(animated: animated, startDelay: 0.5, repeatDelay: 2)
+            ReloadButtonDot(animated: animated, startDelay: 1, repeatDelay: 3)
+        }
+        .offset(x: 2, y: 3.5)
+        .padding([.top, .bottom], 8)
+        .padding([.trailing, .leading], 25)
+        .background(rounded)
+        .onTapGesture {
+            animated.toggle()
+        }
+    }
+    
+    var rounded: some View {
+        RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
+    }
+    
+    struct ReloadButton2_Previews: PreviewProvider {
+        static var previews: some View {
+            ReloadButton2()
+                .withEnvironment()
+        }
+    }
+}
+
+struct ReloadButtonDot: View {
+    @EnvironmentObject var themeVM: ThemeViewModel
+    @State var offset: Offset = (0, 0)
+    
+    let animated: Bool
+    let startDelay: Double
+    let repeatDelay: Double
+    
+    var body: some View {
+        Text(".")
+            .offset(x: self.offset.x, y: self.offset.y)
+            .onChange(of: animated) { animated in
+                if animated {
+                    withAnimation(Animation.linear.repeatCount(1, autoreverses: true)) {
+                        self.offset = (0, -20)
+                    }
+                }
+            }
+            .withTheme(themeVM.terminal.hli.select.messageButton)
     }
 }
