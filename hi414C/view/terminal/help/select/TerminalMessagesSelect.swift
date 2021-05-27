@@ -20,18 +20,11 @@ struct TerminalMessagesSelect: View {
             MessageButton(item.content)
         }
         if chatVM.current.replies.count > pageLimit {
-            ReloadButton2() {
-                if chatVM.current.replies.count > pageLimit {
-                    withAnimation {
-                        self.pageLimit += 3
-                    }
-                }
-            }
+            MessageReload()
         }
         if chatVM.current.message == nil {
             MessageNoReply()
         }
-
     }
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -46,12 +39,12 @@ struct TerminalMessagesSelect: View {
     func MessageNoReply(_ text: String = "N/A") -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.noMessageButton)
             .padding([.leading, .trailing], 25)
-            .background(rounded)
+            .background(RoundedBackground())
     }
     
     func MessageButton(_ text: String) -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
-            .background(rounded)
+            .background(RoundedBackground())
             .onTapGesture {
                 uiVM.isHelp = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -60,24 +53,25 @@ struct TerminalMessagesSelect: View {
             }
     }
     
-    func ReloadButton(_ text: String = "...") -> some View {
-        MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
-            .background(rounded)
-            .onTapGesture {
-                if chatVM.current.replies.count > pageLimit {
-                    withAnimation {
-                        self.pageLimit += 3
-                    }
+    func MessageReload() -> some View {
+        ReloadButton() {
+            if chatVM.current.replies.count > pageLimit {
+                withAnimation {
+                    self.pageLimit += 3
                 }
             }
+        }
     }
-    
-    var rounded: some View {
+}
+
+struct RoundedBackground: View {
+    @EnvironmentObject var themeVM: ThemeViewModel
+    var body: some View {
         RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
     }
 }
 
-struct ReloadButton2: View {
+struct ReloadButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @State var animated = false
     @State var disabled = false
@@ -97,29 +91,27 @@ struct ReloadButton2: View {
         .offset(x: 2, y: 3.5)
         .padding([.top, .bottom], 8)
         .padding([.trailing, .leading], 25)
-        .background(rounded)
+        .background(RoundedBackground())
         .disabled(self.disabled)
         .onTapGesture {
             if !disabled {
                 print("CLICKED")
                 self.animated = true
                 self.disabled = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                    self.animated = false
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.disabled = false
-                    self.animated = false
                     action()
                 }
             }
         }
     }
-    
-    var rounded: some View {
-        RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
-    }
-    
-    struct ReloadButton2_Previews: PreviewProvider {
+
+    struct ReloadButton_Previews: PreviewProvider {
         static var previews: some View {
-            ReloadButton2()
+            ReloadButton()
                 .withEnvironment()
         }
     }
