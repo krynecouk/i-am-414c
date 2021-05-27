@@ -34,6 +34,9 @@ struct TerminalHelpMessages: View {
                                 if chatVM.current.message != nil {
                                     Message414C(chatVM.current.message!.text, frame: metrics.size)
                                 }
+                                if chatVM.messages.isEmpty && chatVM.current.message == nil {
+                                    MessageEmpty(frame: metrics.size)
+                                }
                             }
                             TerminalHelpPadding()
                                 .id(paddingId)
@@ -81,6 +84,18 @@ struct TerminalHelpMessages: View {
                 .frame(maxWidth: frame.width * 0.8, alignment: .trailing)
         }
         .padding(.trailing, 10)
+    }
+    
+    func MessageEmpty(_ text: String = "You Have No New Messages", frame: CGSize) -> some View {
+        Text(text)
+            .withTheme(themeVM.terminal.help.history.al)
+            .multilineTextAlignment(.center)
+            .offset(x: 2, y: 3.5)
+            .padding([.top, .bottom], 8)
+            .padding([.trailing, .leading], 25)
+            .background(rounded(color: themeVM.terminal.help.history.al.background ?? Color.clear))
+            .frame(maxWidth: frame.width, alignment: .center)
+            .padding([.leading, .trailing], 10)
     }
     
     func rounded(color: Color) -> some View {

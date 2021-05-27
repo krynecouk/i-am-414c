@@ -87,6 +87,7 @@ struct TerminalTheme {
         struct Select {
             var button: ViewTheme
             var messageButton: ViewTheme
+            var noMessageButton: ViewTheme
             var background: Background
         }
         

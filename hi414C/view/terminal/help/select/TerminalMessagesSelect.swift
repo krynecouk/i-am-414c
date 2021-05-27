@@ -22,19 +22,29 @@ struct TerminalMessagesSelect: View {
         if chatVM.current.replies.count > pageLimit {
             ReloadButton()
         }
+        if chatVM.messages.isEmpty && chatVM.current.message == nil {
+            MessageNoReply()
+        }
     }
     
-    func MessageLabel(_ text: String) -> some View {
+    func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
         Text(text)
-            .withTheme(themeVM.terminal.hli.select.messageButton)
+            .multilineTextAlignment(.center)
+            .withTheme(theme)
             .offset(x: 2, y: 3.5)
             .padding([.top, .bottom], 8)
             .padding([.trailing, .leading], 25)
+    }
+    
+    func MessageNoReply(_ text: String = "N/A") -> some View {
+        MessageLabel(text, theme: themeVM.terminal.hli.select.noMessageButton)
+            .padding([.leading, .trailing], 25)
             .background(rounded)
     }
     
     func MessageButton(_ text: String) -> some View {
-        MessageLabel(text)
+        MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
+            .background(rounded)
             .onTapGesture {
                 uiVM.isHelp = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -44,7 +54,8 @@ struct TerminalMessagesSelect: View {
     }
     
     func ReloadButton(_ text: String = "...") -> some View {
-        MessageLabel(text)
+        MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
+            .background(rounded)
             .onTapGesture {
                 if chatVM.current.replies.count > pageLimit {
                     withAnimation {
