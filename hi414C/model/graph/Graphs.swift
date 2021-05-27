@@ -17,7 +17,7 @@ class Graphs {
     static let BIN =
         R("HI") {
             // INTRO
-            AL("HI", ["HELLO", "YO", "AHOY"]) {
+            AL("HI", ["HELLO"]) {
                 R("HI")
             }
             AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {

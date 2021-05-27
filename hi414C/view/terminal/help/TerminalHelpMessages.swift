@@ -61,6 +61,7 @@ struct TerminalHelpMessages: View {
     
     func Message414C(_ text: String, frame: CGSize) -> some View {
         Text(text)
+            .minimumScaleFactor(0.1)
             .lineSpacing(10)
             .withTheme(themeVM.terminal.help.history.robot)
             .padding(.leading, 29)
@@ -68,7 +69,7 @@ struct TerminalHelpMessages: View {
             .padding(.top, 18)
             .padding(.bottom, 5)
             .background(rounded(color: themeVM.terminal.help.history.robot.background ?? Color.clear))
-            .frame(maxWidth: frame.width * 0.8, alignment: .leading)
+            .frame(maxWidth: frame.width * 0.95, alignment: .leading)
             .padding(.leading, 10)
     }
     

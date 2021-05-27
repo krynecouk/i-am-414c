@@ -25,6 +25,7 @@ struct HelpButton: View {
                 .withTheme(themeVM.terminal.hli.select.button)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
+                .allowsTightening(true)
         }
     }
 }

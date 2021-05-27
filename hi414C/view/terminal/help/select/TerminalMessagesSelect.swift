@@ -29,11 +29,14 @@ struct TerminalMessagesSelect: View {
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
         Text(text)
+            .allowsTightening(true)
+            .minimumScaleFactor(0.1)
             .multilineTextAlignment(.center)
             .withTheme(theme)
             .offset(x: 2, y: 3.5)
             .padding([.top, .bottom], 8)
             .padding([.trailing, .leading], 25)
+
     }
     
     func MessageNoReply(_ text: String = "N/A") -> some View {
@@ -68,6 +71,7 @@ struct RoundedBackground: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     var body: some View {
         RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
+            .padding([.leading, .trailing], 10)
     }
 }
 
