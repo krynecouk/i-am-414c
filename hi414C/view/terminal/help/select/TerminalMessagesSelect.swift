@@ -25,7 +25,6 @@ struct TerminalMessagesSelect: View {
         if chatVM.messages.isEmpty && chatVM.current.message == nil {
             MessageNoReply()
         }
-        ReloadButton3()
     }
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -113,11 +112,9 @@ struct ReloadButtonDot: View {
     var body: some View {
         Text(".")
             .offset(x: self.offset.x, y: self.offset.y)
-            .onChange(of: animated) { animated in
-                if animated {
-                    withAnimation(Animation.linear.repeatCount(1, autoreverses: true)) {
-                        self.offset = (0, -20)
-                    }
+            .onTapGesture {
+                withAnimation(Animation.linear.repeatCount(2, autoreverses: true)) {
+                    self.offset = (0, -20)
                 }
             }
             .withTheme(themeVM.terminal.hli.select.messageButton)
