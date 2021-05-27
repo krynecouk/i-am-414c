@@ -51,7 +51,7 @@ struct TerminalHelpSelect: View {
                 if frameW > 500 {
                     segueVM.setHelpSize((.infinity, 80))
                     segueVM.setChatSize((.infinity, 80))
-                    segueVM.setSettingsSize((.infinity, 80))
+                    segueVM.setSettingsSize((.infinity, 105))
                 } else {
                     segueVM.setHelpSize((.infinity, 200))
                     segueVM.setChatSize((.infinity, 200))

@@ -72,15 +72,23 @@ struct TerminalSettingsSelect: View {
             }
             
             if helpVM.settings == .reset {
-                HelpWarnButton("reset") {
+                WarnText("Reset font and theme settings to default?")
+                
+                Color.clear
+                HelpWarnButton("ok") {
                     withAnimation {
                         themeVM.reset()
                     }
                 }
+                .padding(.bottom, 20)
+                .padding(.top, 5)
             }
             
             if helpVM.settings == .delete {
-                HelpWarnButton("delete") {
+                WarnText("Delete all progress and start again?")
+                
+                Color.clear
+                HelpWarnButton("ok") {
                     withAnimation {
                         themeVM.reset()
                         graphVM.setGraph(.BIN)
@@ -94,7 +102,23 @@ struct TerminalSettingsSelect: View {
                         uiVM.isIntro = true
                     }
                 }
+                .padding(.bottom, 20)
+                .padding(.top, 5)
             }
+        }
+    }
+    
+    func WarnText(_ text: String) -> some View {
+        Group {
+            Color.clear
+            Text(text)
+                .lineLimit(2)
+                .withTheme(themeVM.terminal.hli.button.active)
+                .multilineTextAlignment(.center)
+                .frame(width: 350)
+                .padding(.bottom, 20)
+                .padding(.top, 5)
+            Color.clear
         }
     }
 }

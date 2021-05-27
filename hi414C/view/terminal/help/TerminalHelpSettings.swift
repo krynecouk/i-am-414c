@@ -29,6 +29,8 @@ struct TerminalHelpSettings: View {
                     self.height = height
                 }
                 .animation(.default.speed(2.3), value: height)
+                .animation(.default.speed(0.7), value: themeVM.theme.type)
+                .animation(.default.speed(1), value: themeVM.fontSize.robot)
             }
         }
     }

@@ -22,7 +22,7 @@ struct Grid<Content: View> : View {
         padding: CGFloat = 20,
         top: CGFloat = 0,
         @ViewBuilder content: () -> Content) {
-        
+                
         self.columns = columns
         self.alignment = alignment
         self.spacing = spacing
