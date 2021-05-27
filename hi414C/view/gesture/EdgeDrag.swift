@@ -14,7 +14,7 @@ struct EdgeDrag: ViewModifier {
     func body(content: Content) -> some View {
         content
             .simultaneousGesture(
-                DragGesture(minimumDistance: 5)
+                DragGesture()
                     .onEnded { gesture in
                         let direction = getDirection(from: gesture)
                         if direction == .left {
