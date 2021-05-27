@@ -22,7 +22,7 @@ struct TerminalMessagesSelect: View {
         if chatVM.current.replies.count > pageLimit {
             ReloadButton()
         }
-        if chatVM.messages.isEmpty && chatVM.current.message == nil {
+        if chatVM.current.message == nil {
             MessageNoReply()
         }
     }
