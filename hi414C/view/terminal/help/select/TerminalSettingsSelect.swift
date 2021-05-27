@@ -71,9 +71,11 @@ struct TerminalSettingsSelect: View {
                 }
             }
             
-            if helpVM.settings == .hint {
-                HelpRadioButton("hint", active: themeVM.hint) {
-                    themeVM.hint ? themeVM.hideHint() : themeVM.showHint()
+            if helpVM.settings == .reset {
+                HelpWarnButton("reset") {
+                    withAnimation {
+                        themeVM.reset()
+                    }
                 }
             }
             

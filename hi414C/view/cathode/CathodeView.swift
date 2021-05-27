@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CathodeView<Content: View>: View {
     @EnvironmentObject var themeVM: ThemeViewModel
-
+    
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
@@ -22,11 +22,9 @@ struct CathodeView<Content: View>: View {
             BlurIn(of: themeVM.terminal.cathode.blurIn)
                 .opacity(0.2)
             
-            if themeVM.wave {
-                RefreshWave(of: themeVM.terminal.cathode.wave)
-                    .opacity(0.09)
-            }
-
+            RefreshWave(of: themeVM.terminal.cathode.wave)
+                .opacity(0.09)
+            
             content
         }
     }

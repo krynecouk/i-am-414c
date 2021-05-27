@@ -22,9 +22,6 @@ struct TerminalHelpPadding: View {
         if segueVM.isOpen {
             padding += segueVM.segue.height
         } else {
-            if themeVM.hint {
-                padding += ThemeViewModel.hint.height
-            }
             padding += SegueViewModel.header.height
         }
         return padding

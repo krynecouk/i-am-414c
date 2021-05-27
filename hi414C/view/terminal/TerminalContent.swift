@@ -21,10 +21,6 @@ struct TerminalContent: View {
                     TerminalHelpSettings()
                 }
             }
-            
-            if uiVM.isHelp {
-                TerminalHint()
-            }
         }
     }
 }

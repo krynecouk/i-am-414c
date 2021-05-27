@@ -168,8 +168,6 @@
 		26EA2FE7265639B3004A78F2 /* IntroTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FE6265639B3004A78F2 /* IntroTheme.swift */; };
 		26EA2FE926565621004A78F2 /* ThemeDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FE826565621004A78F2 /* ThemeDao.swift */; };
 		26EA2FEB265668DD004A78F2 /* FontDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FEA265668DD004A78F2 /* FontDao.swift */; };
-		26EA2FED265693A9004A78F2 /* HintDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FEC265693A9004A78F2 /* HintDao.swift */; };
-		26EA2FEF265696C4004A78F2 /* WaveDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FEE265696C4004A78F2 /* WaveDao.swift */; };
 		26EA2FFE2656C772004A78F2 /* TerminalMessagesSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FFD2656C772004A78F2 /* TerminalMessagesSelect.swift */; };
 		26EA30002656C77C004A78F2 /* TerminalTestSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FFF2656C77C004A78F2 /* TerminalTestSelect.swift */; };
 		26EA30022656C78D004A78F2 /* TerminalSettingsSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30012656C78D004A78F2 /* TerminalSettingsSelect.swift */; };
@@ -371,8 +369,6 @@
 		26EA2FE6265639B3004A78F2 /* IntroTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTheme.swift; sourceTree = "<group>"; };
 		26EA2FE826565621004A78F2 /* ThemeDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDao.swift; sourceTree = "<group>"; };
 		26EA2FEA265668DD004A78F2 /* FontDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDao.swift; sourceTree = "<group>"; };
-		26EA2FEC265693A9004A78F2 /* HintDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintDao.swift; sourceTree = "<group>"; };
-		26EA2FEE265696C4004A78F2 /* WaveDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveDao.swift; sourceTree = "<group>"; };
 		26EA2FFD2656C772004A78F2 /* TerminalMessagesSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalMessagesSelect.swift; sourceTree = "<group>"; };
 		26EA2FFF2656C77C004A78F2 /* TerminalTestSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTestSelect.swift; sourceTree = "<group>"; };
 		26EA30012656C78D004A78F2 /* TerminalSettingsSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalSettingsSelect.swift; sourceTree = "<group>"; };
@@ -1009,8 +1005,6 @@
 				26E090D2264C01D0002E404D /* ASCIIDao.swift */,
 				26EA2FE826565621004A78F2 /* ThemeDao.swift */,
 				26EA2FEA265668DD004A78F2 /* FontDao.swift */,
-				26EA2FEC265693A9004A78F2 /* HintDao.swift */,
-				26EA2FEE265696C4004A78F2 /* WaveDao.swift */,
 				26EA301D265968F1004A78F2 /* GraphDao.swift */,
 				26EA301F26596915004A78F2 /* Storable.swift */,
 				26EA3021265969AA004A78F2 /* RadixDao.swift */,
@@ -1346,7 +1340,6 @@
 				268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,
-				26EA2FED265693A9004A78F2 /* HintDao.swift in Sources */,
 				26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
@@ -1391,7 +1384,6 @@
 				266A43B4261C229700C7855C /* Metrics.swift in Sources */,
 				264404572619135E00CA7EA1 /* TerminalCommandCursor.swift in Sources */,
 				26E090F22651B56E002E404D /* GrayTheme.swift in Sources */,
-				26EA2FEF265696C4004A78F2 /* WaveDao.swift in Sources */,
 				2678D972260E5D4A00DDB40F /* KeyboardSet.swift in Sources */,
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
 				26E090EC2651B044002E404D /* SummerTheme.swift in Sources */,

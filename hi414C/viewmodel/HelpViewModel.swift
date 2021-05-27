@@ -77,5 +77,5 @@ enum HelpContent {
 }
 
 enum HelpSettingsType {
-    case font, theme, hint, delete
+    case font, theme, reset, delete
 }

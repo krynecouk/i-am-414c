@@ -11,21 +11,19 @@ struct TerminalHint: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     var body: some View {
-        if themeVM.hint {
-            ZStack(alignment: .topLeading) {
-                Rectangle()
-                    .fill(themeVM.terminal.help.hint.background ?? Color.clear)
-                    .frame(height: 114)
-                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
-                HStack(spacing: 0) {
-                    TerminalHintText("Hint: ", theme: themeVM.terminal.help.hint)
-                        .padding(.leading, 15)
-                    TerminalHintScroll(theme: themeVM.terminal.help.hint)
-                }
+        ZStack(alignment: .topLeading) {
+            Rectangle()
+                .fill(themeVM.terminal.help.hint.background ?? Color.clear)
+                .frame(height: 114)
+                .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
+            HStack(spacing: 0) {
+                TerminalHintText("Hint: ", theme: themeVM.terminal.help.hint)
+                    .padding(.leading, 15)
+                TerminalHintScroll(theme: themeVM.terminal.help.hint)
             }
-            .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
-            .background(themeVM.terminal.help.hint.background.edgesIgnoringSafeArea(.all))
         }
+        .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .identity))
+        .background(themeVM.terminal.help.hint.background.edgesIgnoringSafeArea(.all))
     }
 }
 

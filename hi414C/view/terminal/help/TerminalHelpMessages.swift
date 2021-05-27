@@ -39,8 +39,6 @@ struct TerminalHelpMessages: View {
                             TerminalHelpPadding()
                                 .id(paddingId)
                                 .onAppear {
-                                    print(chatVM.messages)
-                                    print("current: \(chatVM.current.message)")
                                     withAnimation {
                                         reader.scrollTo(paddingId)
                                     }

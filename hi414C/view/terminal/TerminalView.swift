@@ -24,7 +24,6 @@ struct TerminalView: View {
             TerminalContent(items: items)
             TerminalFooter()
         }
-        .helpEdgeDrag()
         .statusBar(hidden: true)
     }
     
