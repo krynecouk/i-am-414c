@@ -20,6 +20,9 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 
 ## TODO
 
+### Important
+- Turn off memory analyzer!! Project scheme -> edit -> diagnostics
+
 ### Visuals
 
 - BlurIn animated (slow transition)

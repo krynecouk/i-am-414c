@@ -18,7 +18,7 @@ class GraphTests: XCTestCase {
             E("HI") {
                 N("HI")
             }
-            E("I", variants: ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
+            E("I", ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
                 N("AL") {
                     E("AL?") {
                         N("YES")

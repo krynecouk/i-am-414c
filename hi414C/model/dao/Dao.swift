@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Dao<T: Decodable & Encodable> {
+struct Dao<T: Decodable & Encodable> {
     
     public static func store(key: String, content: T) {
         if let encoded = try? JSONEncoder().encode(content) {

@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 20.05.2021.
 //
 
-class FontDao {
+struct FontDao {
     static var key: String = "414C_Font"
     
     public static func store(_ size: FontSize) {

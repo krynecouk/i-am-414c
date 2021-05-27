@@ -53,9 +53,9 @@ struct TerminalHelpSelect: View {
                     segueVM.setChatSize((.infinity, 80))
                     segueVM.setSettingsSize((.infinity, 80))
                 } else {
-                    segueVM.setHelpSize((.infinity, 150))
-                    segueVM.setChatSize((.infinity, 150))
-                    segueVM.setSettingsSize((.infinity, 150))
+                    segueVM.setHelpSize((.infinity, 200))
+                    segueVM.setChatSize((.infinity, 200))
+                    segueVM.setSettingsSize((.infinity, 200))
                 }
             }
             .background(segueVM.isOpen && segueVM.opened != .keyboard

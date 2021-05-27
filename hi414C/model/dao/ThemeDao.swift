@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 20.05.2021.
 //
 
-class ThemeDao {
+struct ThemeDao {
     static var key: String = "414C_Theme"
     
     public static func store(_ type: ThemeType) {

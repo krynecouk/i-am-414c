@@ -35,25 +35,24 @@ struct TerminalHelpMessages: View {
                                     Message414C(chatVM.current.message!.text, frame: metrics.size)
                                 }
                             }
-                            
                             TerminalHelpPadding()
                                 .id(paddingId)
-                                .onAppear {
-                                    withAnimation {
-                                        reader.scrollTo(paddingId)
-                                    }
-                                }
-                                .onReceive(segueVM.$isOpen) { isOpen in
-                                    withAnimation {
-                                        reader.scrollTo(paddingId)
-                                    }
-                                }
                         }
                         .padding(.top, 10)
+                        .onAppear {
+                            withAnimation {
+                                reader.scrollTo(paddingId)
+                            }
+                        }
+                        .onChange(of: segueVM.isOpen) { isOpen in
+                            withAnimation {
+                                reader.scrollTo(paddingId)
+                            }
+                        }
                     }
                 }
             }
-            //.animation(.default)
+            .animation(.default)
         }
     }
     

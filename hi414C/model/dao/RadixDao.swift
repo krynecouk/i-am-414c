@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 22.05.2021.
 //
 
-class RadixDao {
+struct RadixDao {
     static var key: String = "414C_Radix"
     
     public static func store(_ radix: EquationRadix) {
