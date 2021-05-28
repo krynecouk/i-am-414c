@@ -14,6 +14,7 @@ struct TerminalSettingsSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var chatVM: ChatViewModel
+    @EnvironmentObject var testVM: TestViewModel
     
     var body: some View {
         Group{
@@ -89,14 +90,17 @@ struct TerminalSettingsSelect: View {
                 
                 Color.clear
                 HelpWarnButton("ok") {
+                    testVM.level(reset: true)
+                    testVM.radix(of: .bin)
+                    asciiVM.reset()
+                    chatVM.clear()
+                    helpVM.current = .learn
+                    helpVM.settings = .font
+                    helpVM.resetToZero()
+                    themeVM.reset()
+                    uiVM.current = .test
+                    graphVM.setGraph(.BIN)
                     withAnimation {
-                        themeVM.reset()
-                        graphVM.setGraph(.BIN)
-                        asciiVM.reset()
-                        chatVM.clear()
-                        uiVM.current = .test
-                        helpVM.current = .learn
-                        helpVM.resetToZero()
                         uiVM.isHelp = false
                         uiVM.isIntroVideo = false // TODO true
                         uiVM.isIntro = true

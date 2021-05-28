@@ -19,11 +19,6 @@ class ASCIITestNode: Node {
         let symbols = id.map { char in
             ASCIISymbol.from(String(char))
         }
-        let unknown = symbols.filter { !toolkit.asciiVM.symbols.contains($0) }
-        if !unknown.isEmpty {
-            // level up only if node contains unknown symbols
-            toolkit.testVM.level(up: 1)
-        }
         let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
         toolkit.terminalVM.setContent([.test(tests)])
     }

@@ -8,18 +8,19 @@
 import SwiftUI
 
 class TestViewModel: ObservableObject {
-    private(set) var test: Test? = .none
-    private(set) var level: Int = TestDao.find() ?? 0
+    typealias ET = EquationType
     
     @Published private(set) var result: TestResult = .right(.NUL)
     @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
     
+    private(set) var test: Test? = .none
+    private(set) var level: Int = TestDao.find() ?? 0
+        
     func set(test: Test?) {
         if let test = self.test {
             print("current test: ", test.equation.toString())
         }
         self.test = test
-        TestDao.store(self.level)
     }
     
     func radix(of type: EquationRadix) {
@@ -36,8 +37,6 @@ class TestViewModel: ObservableObject {
         print("test solved with \(self.result)")
         return self.result
     }
-    
-    typealias ET = EquationType
     
     func generate(for symbol: ASCIISymbol) -> Test {
         let dec = ASCII.from(symbol).dec
@@ -77,5 +76,6 @@ class TestViewModel: ObservableObject {
             self.level += (up + down)
             print("leveling up to \(self.level)")
         }
+        TestDao.store(self.level)
     }
 }
