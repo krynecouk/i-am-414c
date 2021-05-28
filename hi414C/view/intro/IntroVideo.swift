@@ -9,13 +9,13 @@ import SwiftUI
 import AVKit
 
 struct IntroVideo: View {
-    
+    @EnvironmentObject var uiVM: UIViewModel
     let player = AVPlayer(url: Bundle.main.url(forResource: "video", withExtension: "mp4")!)
     
     var body: some View {
         VideoPlayer(player: player)
             .edgesIgnoringSafeArea(.all)
-            .frame(width: UIScreen.main.bounds.width + 1500, height: UIScreen.main.bounds.height + 500)
+            .frame(width: UIScreen.main.bounds.width + 130, height: UIScreen.main.bounds.height + 80)
             .statusBar(hidden: true)
             .onAppear {
                 player.play()

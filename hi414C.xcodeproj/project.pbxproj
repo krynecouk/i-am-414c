@@ -189,6 +189,7 @@
 		26EA302D265E6EA8004A78F2 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA302A265E6EA8004A78F2 /* readme.txt */; };
 		26EA3030265E72D6004A78F2 /* TextFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302F265E72D6004A78F2 /* TextFigletView.swift */; };
 		26EA3032265E90BA004A78F2 /* ansiregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3031265E90BA004A78F2 /* ansiregular.ttf */; };
+		26EA303526610036004A78F2 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26EA303426610036004A78F2 /* video.mp4 */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -389,6 +390,7 @@
 		26EA302A265E6EA8004A78F2 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		26EA302F265E72D6004A78F2 /* TextFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFigletView.swift; sourceTree = "<group>"; };
 		26EA3031265E90BA004A78F2 /* ansiregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ansiregular.ttf; sourceTree = "<group>"; };
+		26EA303426610036004A78F2 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 		26782B372617730300BA9C4E /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				26EA303326610009004A78F2 /* video */,
 				26782B382617734F00BA9C4E /* fonts */,
 			);
 			path = assets;
@@ -1108,6 +1111,14 @@
 			path = regular;
 			sourceTree = "<group>";
 		};
+		26EA303326610009004A78F2 /* video */ = {
+			isa = PBXGroup;
+			children = (
+				26EA303426610036004A78F2 /* video.mp4 */,
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
 		26F7A6BF25FA4FCE00F04156 /* hi414CTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1241,6 +1252,7 @@
 				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
 				26EA302D265E6EA8004A78F2 /* readme.txt in Resources */,
+				26EA303526610036004A78F2 /* video.mp4 in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
 				26782B732617BE3F00BA9C4E /* ProggyTinySZ.ttf in Resources */,
 			);

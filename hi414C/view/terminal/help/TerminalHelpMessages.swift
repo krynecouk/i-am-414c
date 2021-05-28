@@ -41,7 +41,7 @@ struct TerminalHelpMessages: View {
                             TerminalHelpPadding()
                                 .id(paddingId)
                         }
-                        .padding(.top, 10)
+                        .padding(.top, 20)
                         .onAppear {
                             withAnimation {
                                 reader.scrollTo(paddingId)
@@ -70,7 +70,7 @@ struct TerminalHelpMessages: View {
             .padding(.bottom, 5)
             .background(rounded(color: themeVM.terminal.help.history.robot.background ?? Color.clear))
             .frame(maxWidth: frame.width * 0.95, alignment: .leading)
-            .padding(.leading, 10)
+            .padding(.leading, 20)
     }
     
     func MessageAl(_ text: String, frame: CGSize) -> some View {
@@ -84,7 +84,7 @@ struct TerminalHelpMessages: View {
                 .background(rounded(color: themeVM.terminal.help.history.al.background ?? Color.clear))
                 .frame(maxWidth: frame.width * 0.8, alignment: .trailing)
         }
-        .padding(.trailing, 10)
+        .padding(.trailing, 20)
     }
     
     func MessageEmpty(_ text: String = "You Have No New Messages", frame: CGSize) -> some View {
