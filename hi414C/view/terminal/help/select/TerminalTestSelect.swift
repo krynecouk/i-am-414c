@@ -24,11 +24,11 @@ struct TerminalTestSelect: View {
             }
         }
         Group {
-            if testVM.radix == .hex {
+            //if testVM.radix == .hex {
                 HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
                     helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
                 }
-            }
+            //}
         }
         Group {
             HelpSignButton<ADD>("+", .ADD)

@@ -9,20 +9,22 @@ import SwiftUI
 
 class TestViewModel: ObservableObject {
     private(set) var test: Test? = .none
-    private(set) var level: Int = 0
+    private(set) var level: Int = TestDao.find() ?? 0
     
     @Published private(set) var result: TestResult = .right(.NUL)
-    @Published private(set) var radix: EquationRadix = .bin
+    @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
     
     func set(test: Test?) {
         if let test = self.test {
             print("current test: ", test.equation.toString())
         }
         self.test = test
+        TestDao.store(self.level)
     }
     
     func radix(of type: EquationRadix) {
         self.radix = type
+        RadixDao.store(self.radix)
     }
     
     func solve(with value: String) -> TestResult {
