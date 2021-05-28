@@ -13,7 +13,7 @@ struct RefreshWave: View {
     let gradient: Gradient
     let linearGradient: LinearGradient
 
-    init(of color: Color = Color("Primary")) {
+    init(of color: Color = .primary("Orange")) {
         gradient = Gradient(colors: [Color.white.opacity(0), color])
         linearGradient = LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
     }

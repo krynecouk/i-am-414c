@@ -21,6 +21,7 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 ## TODO
 
 ### Important
+- Launch screen!
 - Turn off memory analyzer!! Project scheme -> edit -> diagnostics
 
 ### Visuals
