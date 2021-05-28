@@ -12,17 +12,21 @@ struct TerminalTestThemed: View {
     @EnvironmentObject var testVM: TestViewModel
     @State var bloom = false
     
+    let delay: Double = 1.9
+    
     let test: Test
     let items: [TerminalTestItem]
     let wide: Bool
     let active: Bool
+    let withDelay: Bool
     
-    init(_ test: Test, items: [TerminalTestItem], wide: Bool = false, active: Bool = false) {
+    init(_ test: Test, items: [TerminalTestItem], wide: Bool = false, active: Bool = false, withDelay: Bool = false) {
         print("TerminalTestThemed")
         self.test = test
         self.items = items
         self.wide = wide
         self.active = active
+        self.withDelay = withDelay
     }
     
     var body: some View {
@@ -31,12 +35,20 @@ struct TerminalTestThemed: View {
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {
-                    self.bloom = true
+                    if withDelay {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + self.delay) {
+                            withAnimation {
+                                self.bloom = true
+                            }
+                        }
+                    } else {
+                        self.bloom = true
+                    }
                 }
             }
             .onChange(of: active) { isActive in
                 if isActive && test.id == testVM.test?.id {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + self.delay) {
                         withAnimation {
                             self.bloom = true
                         }
