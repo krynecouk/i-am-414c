@@ -21,8 +21,8 @@ struct TerminalHelpSettings: View {
                 Grid(columns: height > 320 ? GridType.one.rawValue() : GridType.double.rawValue(), spacing: 10, top: height > 500 ? (height/2 - (2*80) - 45) : 0) {
                     SettingsButton("FONT", .font, frame: metrics.size)
                     SettingsButton("THEME", .theme, frame: metrics.size)
-                    SettingsButton("DEFAULT", .reset, frame: metrics.size)
-                    SettingsButton("DELETE", .delete, frame: metrics.size)
+                    SettingsButton("DIFFICULTY", .reset, frame: metrics.size)
+                    SettingsButton("NEW GAME", .delete, frame: metrics.size)
                 }
                 .frame(width: metrics.size.width, height: height, alignment: .center)
                 .onAppear {
