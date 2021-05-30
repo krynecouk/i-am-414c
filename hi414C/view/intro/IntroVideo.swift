@@ -16,7 +16,7 @@ struct IntroVideo: View {
     var body: some View {
         VideoPlayer(player: player)
             .edgesIgnoringSafeArea(.all)
-            .frame(width: UIScreen.main.bounds.width + 250, height: UIScreen.main.bounds.height + 100)
+            .frame(width: UIScreen.main.bounds.width + 300, height: UIScreen.main.bounds.height + 100)
             .statusBar(hidden: true)
             .onAppear {
                 player.play()
