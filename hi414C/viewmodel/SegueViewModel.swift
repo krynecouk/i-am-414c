@@ -13,7 +13,7 @@ class SegueViewModel: ObservableObject {
     @Published private(set) var segue: Size = header
     @Published private(set) var help: Size = (.infinity, 200)
     @Published private(set) var chat: Size = (.infinity, 100)
-    @Published private(set) var settings: Size = (.infinity, 200)
+    @Published private(set) var settings: Size = (.infinity, 150)
     @Published private(set) var keyboard: Size = (.infinity, 200)
     @Published private(set) var isOpen: Bool = false
     @Published private(set) var opened: SegueType?
