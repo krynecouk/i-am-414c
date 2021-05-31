@@ -116,7 +116,7 @@ struct TerminalSettingsSelect: View {
         Group {
             Color.clear
             Text(text)
-                .lineLimit(2)
+                .lineLimit(3)
                 .withTheme(themeVM.terminal.hli.button.active)
                 .multilineTextAlignment(.center)
                 .frame(width: 350)

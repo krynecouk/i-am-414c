@@ -58,10 +58,10 @@ struct TerminalHelpSettings: View {
                         .fill(themeVM.terminal.help.settings.background.passive)
                         .frame(width: 340, height: 80)
                         .bevelBorder(light: themeVM.terminal.help.settings.active.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
-                    
                 }
                 
                 Text(text)
+                    .lineLimit(1)
                     .allowsTightening(true)
                     .withTheme(helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
             }
