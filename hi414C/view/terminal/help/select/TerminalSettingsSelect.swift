@@ -35,11 +35,11 @@ struct TerminalSettingsSelect: View {
                         }
                     }
                     .disabled(!isIncreasable)
-
+                    
                     HelpButton("default") {
                         themeVM.font(.reset)
                     }
-
+                    
                 }
             }
             
@@ -75,7 +75,9 @@ struct TerminalSettingsSelect: View {
             if helpVM.settings == .reset {
                 WarnText("Reset font and theme settings to default?")
                 
-                Color.clear
+                if !isSmallPhone {
+                    Color.clear
+                }
                 HelpWarnButton("ok") {
                     withAnimation {
                         themeVM.reset()
@@ -88,7 +90,9 @@ struct TerminalSettingsSelect: View {
             if helpVM.settings == .delete {
                 WarnText("Delete all progress and start again?")
                 
-                Color.clear
+                if !isSmallPhone {
+                    Color.clear
+                }
                 HelpWarnButton("ok") {
                     testVM.level(reset: true)
                     testVM.radix(of: .bin)
@@ -112,46 +116,27 @@ struct TerminalSettingsSelect: View {
         }
     }
     
+
+    
     func WarnText(_ text: String) -> some View {
         Group {
-            Color.clear
+            if !isSmallPhone {
+                Color.clear
+            }
             Text(text)
                 .lineLimit(3)
                 .withTheme(themeVM.terminal.hli.button.active)
                 .multilineTextAlignment(.center)
-                .frame(width: 350)
+                .frame(width: isSmallPhone ? nil : 350)
                 .padding(.bottom, 20)
                 .padding(.top, 5)
-            Color.clear
+            if !isSmallPhone {
+                Color.clear
+            }
         }
     }
+    
+    var isSmallPhone: Bool {
+        UIScreen.main.bounds.width < 400
+    }
 }
-
-
-/*
- HelpButton("no") {
- withAnimation {
- self.delete = false
- }
- }
- HelpWarnButton("yes") {
- themeVM.reset()
- graphVM.setGraph(.BIN)
- asciiVM.reset()
- chatVM.clear()
- uiVM.current = .test
- helpVM.resetToZero()
- uiVM.isHelp = false
- self.delete = false
- uiVM.isIntroVideo = false // TODO true
- uiVM.isIntro = true
- 
- }
- .onAppear {
- DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
- withAnimation {
- self.delete = false
- }
- }
- }
- */
