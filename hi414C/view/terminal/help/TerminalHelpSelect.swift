@@ -50,7 +50,7 @@ struct TerminalHelpSelect: View {
                 let frameW = frame.size.width
                 
                 // ipad
-                if frame.maxY > 800 {
+                if frame.maxY > 900 {
                     segueVM.setHelpSize((.infinity, 270))
                     segueVM.setChatSize((.infinity, 270))
                     segueVM.setSettingsSize((.infinity, 270))

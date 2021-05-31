@@ -28,7 +28,7 @@ struct TerminalHelpSegue: View {
                 segueVM.setSegueSize((.infinity, getSegueH(opened)))
             }
         }
-        .onAppear {
+        .onReceive(segueVM.$help) { _ in
             segueVM.close()
         }
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
