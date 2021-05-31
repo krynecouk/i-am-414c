@@ -12,7 +12,9 @@ class TestViewModel: ObservableObject {
     
     @Published private(set) var result: TestResult = .right(.NUL)
     @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
+    @Published private(set) var difficulty: TestDifficulty = TestDifficultyDao.find() ?? .easy
     
+    // IMPORTANT: must not be published
     private(set) var test: Test? = .none
     private(set) var level: Int = TestDao.find() ?? 0
         
@@ -41,10 +43,17 @@ class TestViewModel: ObservableObject {
     func generate(for symbol: ASCIISymbol) -> Test {
         let dec = ASCII.from(symbol).dec
         
+        if self.difficulty == .medium {
+            return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand()).eq(dec))
+        }
+        
+        if self.difficulty == .hard {
+            return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand(), y: ET.rand()).eq(dec))
+        }
+        
         switch level {
         case 0..<3:
             return Test(symbol: symbol, equation: ID() => dec)
-            //return Test(symbol: symbol, equation: ET.rand().build().eq(dec))
         case 0..<4:
             return Test(symbol: symbol, equation: ET.rand(of: [.ADD, .SUB]).build().eq(dec))
         case 0..<5:
@@ -61,11 +70,14 @@ class TestViewModel: ObservableObject {
             return Test(symbol: symbol, equation: SHL() => dec)
         case 0..<10:
             return Test(symbol: symbol, equation: SHR() => dec)
-        case 0..<30:
-            return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand()).eq(dec))
         default:
-            return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand(), y: ET.rand()).eq(dec))
+            return Test(symbol: symbol, equation: ET.rand().build().eq(dec))
         }
+    }
+    
+    func difficulty(_ difficulty: TestDifficulty) {
+        self.difficulty = difficulty
+        TestDifficultyDao.store(self.difficulty)
     }
     
     func level(reset: Bool = false, up: Int = 0, down: Int = 0) {
@@ -78,4 +90,8 @@ class TestViewModel: ObservableObject {
         }
         TestDao.store(self.level)
     }
+}
+
+enum TestDifficulty: String, Storable {
+    case easy, medium, hard
 }

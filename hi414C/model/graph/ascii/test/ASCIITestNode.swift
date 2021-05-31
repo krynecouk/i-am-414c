@@ -16,11 +16,7 @@ class ASCIITestNode: Node {
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.chatVM.add(message: Message(from: .al, text: ctx.input))
-        let symbols = id.map { char in
-            ASCIISymbol.from(String(char))
-        }
-        let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
-        toolkit.terminalVM.setContent([.test(tests)])
+        toolkit.graphVM?.generateTests(for: id)
     }
     
     func onExit(ctx: GraphContext, toolkit: GraphToolkit) {

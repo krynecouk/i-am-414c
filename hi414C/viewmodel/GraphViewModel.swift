@@ -12,8 +12,8 @@ class GraphViewModel: ObservableObject {
     @Published private(set) var result: GraphTraverseResult = .ok
     @Published private(set) var root: Node = Graphs.BIN
     
-    private var current: Node = Graphs.BIN
-    private let toolkit: GraphToolkit
+    var current: Node = Graphs.BIN
+    let toolkit: GraphToolkit
     
     init(graph: GraphType = .BIN, toolkit: GraphToolkit) {
         self.toolkit = toolkit
@@ -53,6 +53,14 @@ class GraphViewModel: ObservableObject {
     
     private func start() {
         self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
+    }
+    
+    func generateTests(for text: String) {
+        let symbols = text.map { char in
+            ASCIISymbol.from(String(char))
+        }
+        let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
+        toolkit.terminalVM.setContent([.test(tests)])
     }
     
     func getReplies(ascii: Set<ASCIISymbol>) -> OrderedSet<String> {

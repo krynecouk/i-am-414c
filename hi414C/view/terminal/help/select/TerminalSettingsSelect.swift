@@ -73,18 +73,18 @@ struct TerminalSettingsSelect: View {
             }
             
             if helpVM.settings == .reset {
-                WarnText("Reset font and theme settings to default?")
-                
-                if !isSmallPhone {
-                    Color.clear
+                HelpRadioButton("easy", active: true) {
+                    testVM.difficulty(.easy)
+                    graphVM.generateTests(for: graphVM.current.id)
                 }
-                HelpWarnButton("ok") {
-                    withAnimation {
-                        themeVM.reset()
-                    }
+                HelpRadioButton("medium", active: true) {
+                    testVM.difficulty(.medium)
+                    graphVM.generateTests(for: graphVM.current.id)
                 }
-                .padding(.bottom, 20)
-                .padding(.top, 5)
+                HelpRadioButton("hard", active: true) {
+                    testVM.difficulty(.hard)
+                    graphVM.generateTests(for: graphVM.current.id)
+                }
             }
             
             if helpVM.settings == .delete {
