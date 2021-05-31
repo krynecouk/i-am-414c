@@ -16,14 +16,17 @@ struct TerminalMessagesSelect: View {
     @State var pageLimit = 3
     
     var body: some View {
-        ForEach(chatVM.current.replies.prefix(pageLimit).map { Item($0) }) { item in
-            MessageButton(item.content)
-        }
-        if chatVM.current.replies.count > pageLimit {
-            MessageReload()
-        }
-        if chatVM.current.message == nil {
-            MessageNoReply()
+        Grid(columns: [GridItem(.adaptive(minimum: 150, maximum: .infinity))], spacing: 10, padding: 15) {
+            
+            ForEach(chatVM.current.replies.prefix(pageLimit).map { Item($0) }) { item in
+                MessageButton(item.content)
+            }
+            if chatVM.current.replies.count > pageLimit {
+                MessageReload()
+            }
+            if chatVM.current.message == nil {
+                MessageNoReply()
+            }
         }
     }
     
@@ -36,7 +39,7 @@ struct TerminalMessagesSelect: View {
             .offset(x: 2, y: 3.5)
             .padding([.top, .bottom], 8)
             .padding([.trailing, .leading], 25)
-
+        
     }
     
     func MessageNoReply(_ text: String = "N/A") -> some View {
@@ -112,7 +115,7 @@ struct ReloadButton: View {
             }
         }
     }
-
+    
     struct ReloadButton_Previews: PreviewProvider {
         static var previews: some View {
             ReloadButton()
@@ -141,7 +144,7 @@ struct ReloadButtonDot: View {
                         self.offset = (0, 0)
                     }
                 }
-
+                
             }
             .withTheme(themeVM.terminal.hli.select.messageButton)
     }

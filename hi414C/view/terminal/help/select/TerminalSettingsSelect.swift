@@ -19,31 +19,35 @@ struct TerminalSettingsSelect: View {
     var body: some View {
         Group{
             if helpVM.settings == .font {
-                Group {
-                    let isDecreasable = themeVM.fontSize.isDecreasable()
-                    HelpRadioButton("-1", active: isDecreasable) {
-                        if isDecreasable {
-                            themeVM.font(.decrease)
+                SelectContainer {
+                    HStack {
+                        let isDecreasable = themeVM.fontSize.isDecreasable()
+                        HelpRadioButton("-1", active: isDecreasable) {
+                            if isDecreasable {
+                                themeVM.font(.decrease)
+                            }
+                        }
+                        .disabled(!isDecreasable)
+                        .padding(.trailing, 20)
+                        
+                        let isIncreasable = themeVM.fontSize.isIncreasable()
+                        HelpRadioButton("+1", active: isIncreasable) {
+                            if isIncreasable {
+                                themeVM.font(.increase)
+                            }
+                        }
+                        .disabled(!isIncreasable)
+                        .padding(.trailing, 20)
+                        HelpButton("default") {
+                            themeVM.font(.reset)
                         }
                     }
-                    .disabled(!isDecreasable)
-                    
-                    let isIncreasable = themeVM.fontSize.isIncreasable()
-                    HelpRadioButton("+1", active: isIncreasable) {
-                        if isIncreasable {
-                            themeVM.font(.increase)
-                        }
-                    }
-                    .disabled(!isIncreasable)
-
-                    HelpButton("default") {
-                        themeVM.font(.reset)
-                    }
-
                 }
             }
-            
-            if helpVM.settings == .theme {
+        }
+        
+        if helpVM.settings == .theme {
+            Grid(columns: [GridItem(.adaptive(minimum: 110, maximum: .infinity))], spacing: 10, padding: 15) {
                 Group {
                     HelpColorButton("Orange", .orange)
                     HelpColorButton("Green", .green)
@@ -71,62 +75,83 @@ struct TerminalSettingsSelect: View {
                     HelpColorButton("Gray", .gray)
                 }
             }
-            
-            if helpVM.settings == .reset {
-                WarnText("Reset font and theme settings to default?")
-                
-                Color.clear
-                HelpWarnButton("ok") {
-                    withAnimation {
-                        themeVM.reset()
+        }
+        
+        if helpVM.settings == .reset {
+            SelectContainer {
+                VStack {
+                    WarnText("Can be unlocked after finishing the game.")
+                        .padding(.bottom, 10)
+                    HStack {
+                        HelpRadioButton("easy", active: true)
+                            .padding(.trailing, 20)
+                        HelpRadioButton("medium", active: true)
+                            .padding(.trailing, 20)
+                        HelpRadioButton("hard", active: true)
                     }
                 }
-                .padding(.bottom, 20)
-                .padding(.top, 5)
             }
-            
-            if helpVM.settings == .delete {
-                WarnText("Delete all progress and start again?")
-                
-                Color.clear
-                HelpWarnButton("ok") {
-                    testVM.level(reset: true)
-                    testVM.radix(of: .bin)
-                    asciiVM.reset()
-                    chatVM.clear()
-                    helpVM.current = .learn
-                    helpVM.settings = .font
-                    helpVM.resetToZero()
-                    themeVM.reset()
-                    uiVM.current = .test
-                    graphVM.setGraph(.BIN)
-                    withAnimation {
-                        uiVM.isHelp = false
-                        uiVM.isIntroVideo = false // TODO true
-                        uiVM.isIntro = true
+        }
+        
+        if helpVM.settings == .delete {
+            SelectContainer {
+                VStack {
+                    WarnText("Delete all progress and start again?")
+                        .padding(.bottom, 10)
+                    HelpWarnButton("ok") {
+                        testVM.level(reset: true)
+                        testVM.radix(of: .bin)
+                        asciiVM.reset()
+                        chatVM.clear()
+                        helpVM.current = .learn
+                        helpVM.settings = .font
+                        helpVM.resetToZero()
+                        themeVM.reset()
+                        uiVM.current = .test
+                        graphVM.setGraph(.BIN)
+                        withAnimation {
+                            uiVM.isHelp = false
+                            uiVM.isIntroVideo = false // TODO true
+                            uiVM.isIntro = true
+                        }
                     }
                 }
-                .padding(.bottom, 20)
-                .padding(.top, 5)
             }
         }
     }
     
     func WarnText(_ text: String) -> some View {
-        Group {
-            Color.clear
-            Text(text)
-                .lineLimit(3)
-                .withTheme(themeVM.terminal.hli.button.active)
-                .multilineTextAlignment(.center)
-                .frame(width: 350)
-                .padding(.bottom, 20)
-                .padding(.top, 5)
-            Color.clear
-        }
+        //Group {
+        //  Color.clear
+        Text(text)
+            .withTheme(themeVM.terminal.hli.button.active)
+            .multilineTextAlignment(.center)
+        //Color.clear
+        //}
     }
 }
 
+
+struct SelectContainer<Content: View>: View {
+    
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        GeometryReader { metrics in
+            ScrollView(showsIndicators: false) {
+                content
+                    .padding(15)
+                    .frame(width: metrics.size.width)
+            }
+            
+        }
+    }
+    
+}
 
 /*
  HelpButton("no") {

@@ -295,11 +295,11 @@ class Theme: Themable {
                 background: color.secondary.value,
                 button: TerminalTheme.HelpLine.Button(
                     active: ViewTheme(
-                        font: FontProps(.proggyTiny, 32),
+                        font: FontProps(.proggyTiny, 30),
                         color: color.tertiary.contrast
                     ),
                     passive: ViewTheme(
-                        font: FontProps(.proggyTiny, 32),
+                        font: FontProps(.proggyTiny, 30),
                         color: color.secondary.contrast
                     ),
                     background: TerminalTheme.HelpLine.Background(

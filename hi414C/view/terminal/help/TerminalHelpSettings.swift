@@ -52,11 +52,11 @@ struct TerminalHelpSettings: View {
                 if helpVM.settings == type {
                     Rectangle()
                         .fill(themeVM.terminal.help.settings.background.active)
-                        .frame(width: 340, height: 80)
+                        .frame(width: 325, height: 80)
                 } else {
                     Rectangle()
                         .fill(themeVM.terminal.help.settings.background.passive)
-                        .frame(width: 340, height: 80)
+                        .frame(width: 325, height: 80)
                         .bevelBorder(light: themeVM.terminal.help.settings.active.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
                 }
                 
