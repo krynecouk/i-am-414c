@@ -18,7 +18,7 @@ struct TerminalHelpSettings: View {
         if helpVM.current == .settings {
             GeometryReader { metrics in
                 let height = getHeight(frame: metrics.size)
-                Grid(columns: height > 320 ? GridType.one.rawValue() : GridType.double.rawValue(), spacing: 10, top: height > 500 ? (height/2 - (2*80) - 45) : 0) {
+                Grid(columns: height > 320 ? GridType.one.rawValue() : GridType.double.rawValue(), spacing: 10, padding: 10, top: height > 500 ? (height/2 - (2*80) - 45) : 10) {
                     SettingsButton("FONT", .font, frame: metrics.size)
                     SettingsButton("THEME", .theme, frame: metrics.size)
                     SettingsButton("DIFFICULTY", .reset, frame: metrics.size)
@@ -57,21 +57,22 @@ struct TerminalHelpSettings: View {
                     Rectangle()
                         .fill(themeVM.terminal.help.settings.background.passive)
                         .frame(width: 340, height: 80)
-                        .bevelBorder(light: themeVM.terminal.help.settings.active.view.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
+                        .bevelBorder(light: themeVM.terminal.help.settings.active.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
                     
                 }
                 
-                HStack {
-                    LiteFigletView(text, theme: helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
-                }
+                Text(text)
+                    .allowsTightening(true)
+                    .withTheme(helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
             }
             .onTapGesture {
                     helpVM.settings = type
                     segueVM.open(type: .settings)
                     action()
             }
-        
     }
+    
+    
     
     enum GridType {
         case one, double

@@ -10,23 +10,19 @@ import SwiftUI
 struct TextFigletView: View {
     let text: String
     let chars: [Character]
-    var theme: LiteFigletTheme
+    var theme: ViewTheme
     
-    init(_ text: String, theme: LiteFigletTheme = LiteFigletTheme()) {
+    init(_ text: String, theme: ViewTheme = ViewTheme()) {
         self.text = text
         self.chars = Array(text)
         self.theme = theme
     }
     
     var body: some View {
-        Group {
-            ForEach(chars.indices) { i in
-                Text(String(chars[i]))
-                    .font(Font.of(props: FontProps(.ansiRegular, 70)))
-                    .lineSpacing(15)
-                    .foregroundColor(Color.primary("Orange"))
-                    .withTheme(theme.view)
-            }
+        ForEach(chars.indices) { i in
+            Text(String(chars[i]))
+                .lineSpacing(15)
+                .withTheme(theme)
         }
     }
 }

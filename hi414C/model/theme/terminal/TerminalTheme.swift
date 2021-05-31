@@ -41,8 +41,8 @@ struct TerminalTheme {
         }
         
         struct Settings {
-            var active: LiteFigletTheme
-            var passive: LiteFigletTheme
+            var active: ViewTheme
+            var passive: ViewTheme
             var background: Background
         }
         

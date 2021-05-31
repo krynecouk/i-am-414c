@@ -11,23 +11,24 @@ struct FontSize: Encodable, Decodable {
     var robot: CGFloat = 13
     var robotMsg: CGFloat = 55
     var al: CGFloat = 60
+    var settings: CGFloat = 30
 
     func inc() -> FontSize {
         if isIncreasable() {
-            return FontSize(robot: self.robot + 1, robotMsg: self.robotMsg + 3, al: self.al + 3)
+            return FontSize(robot: self.robot + 1, robotMsg: self.robotMsg + 3, al: self.al + 3, settings: self.settings + 3)
         }
         return FontSize()
     }
     
     func dec() -> FontSize {
         if isDecreasable() {
-            return FontSize(robot: self.robot - 1, robotMsg: self.robotMsg - 3, al: self.al - 3)
+            return FontSize(robot: self.robot - 1, robotMsg: self.robotMsg - 3, al: self.al - 3, settings: self.settings - 3)
         }
         return FontSize()
     }
     
     func reset() -> FontSize {
-        FontSize(robot: 13, robotMsg: 55, al: 60)
+        FontSize(robot: 13, robotMsg: 55, al: 60, settings: 30)
     }
     
     func isIncreasable() -> Bool {
@@ -43,15 +44,17 @@ struct FontTheme {
     let robot: FontProps
     let robotMsg: FontProps
     let al: FontProps
+    let settings: FontProps
     
-    init(robot: FontProps = FontProps(.terminus, 13), robotMsg: FontProps = FontProps(.ansiRegular, 55), al: FontProps = FontProps(.proggyTiny, 60)) {
+    init(robot: FontProps = FontProps(.terminus, 13), robotMsg: FontProps = FontProps(.ansiRegular, 55), al: FontProps = FontProps(.proggyTiny, 60), settings: FontProps = FontProps(.ansiRegular, 30)) {
         self.robot = robot
         self.robotMsg = robotMsg
         self.al = al
+        self.settings = settings
     }
     
     init(size: FontSize = FontSize()) {
-        self.init(robot: FontProps(.terminus, size.robot), robotMsg: FontProps(.ansiRegular, size.robotMsg), al: FontProps(.proggyTiny, size.al))
+        self.init(robot: FontProps(.terminus, size.robot), robotMsg: FontProps(.ansiRegular, size.robotMsg), al: FontProps(.proggyTiny, size.al), settings: FontProps(.ansiRegular, size.settings))
     }
 }
 
@@ -245,19 +248,13 @@ class Theme: Themable {
                     background: color.secondary.value
                 ),
                 settings: TerminalTheme.Help.Settings(
-                    active: LiteFigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: FontProps(font.robot.name, font.robot.size - 5),
-                            color: color.secondary.contrast.opacity(0.7)
-                        )
+                    active: ViewTheme(
+                        font: FontProps(font.settings.name, font.settings.size),
+                        color: color.secondary.contrast.opacity(0.7)
                     ),
-                    passive: LiteFigletTheme(
-                        typeface: .ansi(.regular),
-                        view: ViewTheme(
-                            font: FontProps(font.robot.name, font.robot.size - 5),
-                            color: color.tertiary.contrast.opacity(0.7)
-                        )
+                    passive: ViewTheme(
+                        font: FontProps(font.settings.name, font.settings.size),
+                        color: color.tertiary.contrast.opacity(0.7)
                     ),
                     background: TerminalTheme.Help.Background(
                         active: color.secondary.value,
