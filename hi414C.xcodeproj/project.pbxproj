@@ -191,6 +191,7 @@
 		26EA3032265E90BA004A78F2 /* ansiregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3031265E90BA004A78F2 /* ansiregular.ttf */; };
 		26EA30372661829B004A78F2 /* TestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30362661829B004A78F2 /* TestDao.swift */; };
 		26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */; };
+		26EA303D26666532004A78F2 /* ProgressDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303C26666532004A78F2 /* ProgressDao.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -393,6 +394,7 @@
 		26EA3031265E90BA004A78F2 /* ansiregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ansiregular.ttf; sourceTree = "<group>"; };
 		26EA30362661829B004A78F2 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
 		26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDifficultyDao.swift; sourceTree = "<group>"; };
+		26EA303C26666532004A78F2 /* ProgressDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDao.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1014,6 +1016,7 @@
 				26EA3021265969AA004A78F2 /* RadixDao.swift */,
 				26EA30362661829B004A78F2 /* TestDao.swift */,
 				26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */,
+				26EA303C26666532004A78F2 /* ProgressDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1431,6 +1434,7 @@
 				2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */,
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
+				26EA303D26666532004A78F2 /* ProgressDao.swift in Sources */,
 				26E091022651C86E002E404D /* SunsetTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
