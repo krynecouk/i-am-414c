@@ -39,7 +39,6 @@ struct TerminalCommandSegue: View {
                     switch solution {
                     case .right:
                         asciiVM.add(symbol: testVM.test!.symbol)
-                        testVM.level(up: 1)
                     default:
                         print("not correct")
                     }

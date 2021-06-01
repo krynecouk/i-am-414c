@@ -31,33 +31,32 @@ struct TerminalTestSelect: View {
             }
         }
         Group {
-            if testVM.level > 3 {
+            if testVM.level >= 3 {
                 HelpSignButton<ADD>("+", .ADD)
                 HelpSignButton<SUB>("-", .SUB)
             }
-            if testVM.level > 4 {
+            if testVM.level >= 4 {
                 HelpSignButton<DIV>("/", .DIV)
                 HelpSignButton<MUL>("*", .MUL)
             }
         }
         Group{
-            if testVM.level > 5 {
+            if testVM.level >= 5 {
                 HelpSignButton<AND>("&", .AND)
             }
-            if testVM.level > 6 {
+            if testVM.level >= 6 {
                 HelpSignButton<OR>("|", .OR)
             }
-            if testVM.level > 7 {
+            if testVM.level >= 7 {
                 HelpSignButton<XOR>("^", .XOR)
             }
-            if testVM.level > 8 {
+            if testVM.level >= 8 {
                 HelpSignButton<NOT>("~", .NOT)
             }
-            if testVM.level > 9 {
+            if testVM.level >= 9 {
                 HelpSignButton<SHL>("<<", .SHL)
                 HelpSignButton<SHR>(">>", .SHR)
             }
-
         }
     }
 }

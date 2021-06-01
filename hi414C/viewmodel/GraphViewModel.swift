@@ -59,6 +59,10 @@ class GraphViewModel: ObservableObject {
         let symbols = text.map { char in
             ASCIISymbol.from(String(char))
         }
+        generateTests(for: symbols)
+    }
+    
+    func generateTests(for symbols: [ASCIISymbol]) {
         let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
         toolkit.terminalVM.setContent([.test(tests)])
     }

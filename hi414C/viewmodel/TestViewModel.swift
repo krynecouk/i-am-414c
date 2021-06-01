@@ -57,7 +57,7 @@ class TestViewModel: ObservableObject {
         case 0..<4:
             return Test(symbol: symbol, equation: ET.rand(of: [.ADD, .SUB]).build().eq(dec))
         case 0..<5:
-            return Test(symbol: symbol, equation: ET.rand(of: [.MUL, .SUB]).build().eq(dec))
+            return Test(symbol: symbol, equation: ET.rand(of: [.MUL, .DIV]).build().eq(dec))
         case 0..<6:
             return Test(symbol: symbol, equation: AND() => dec)
         case 0..<7:
