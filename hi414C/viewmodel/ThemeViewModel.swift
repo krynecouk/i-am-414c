@@ -13,6 +13,7 @@ class ThemeViewModel: ObservableObject {
     @Published var theme: Themable
     
     var font: FontTheme { theme.font }
+    var color: ColorTheme { theme.color }
     var fontSize: FontSize = FontSize()
     var intro: IntroTheme { theme.intro }
     var keyboard: KeyboardTheme { theme.keyboard }

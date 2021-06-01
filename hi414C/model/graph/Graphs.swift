@@ -99,7 +99,7 @@ class Graphs {
                 }
             }
             AL("YOU") {
-                R("I AM YOU") {
+                PANIC("I AM YOU") {
                     AL("YOU?", ["YOU ARE ME", "YOU ARE ME?"]) {
                         R("YES") {
                             AL("HOW", ["HOW?"]) {

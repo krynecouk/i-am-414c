@@ -10,7 +10,7 @@ import SwiftUI
 struct FigletTheme {
     var typeface: FigletTypeface = .ansi()
     var view: ViewTheme = ViewTheme()
-    var animations: [ArtAnimation] = [.print(speed: 0.3), .shake(speed: 0.8, force: 1, type: .wave)]
+    var animations: [ArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
 struct LiteFigletTheme {
@@ -34,12 +34,12 @@ extension FigletTheme {
 
 struct ArtTheme {
     var view: ViewTheme = ViewTheme()
-    var animations: [ArtAnimation] = [.print(speed: 0.3), .shake(speed: 0.8, force: 1, type: .wave)]
+    var animations: [ArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
 }
 
 enum ArtAnimation {
-    case print(speed: Double = 0.3, delay: Double = 0, animation: Animation? = .linear)
-    case shake(speed: Double = 0.8, force: Float = 1, type: ASCIIArtShakeType = .wave, animation: Animation? = .none)
+    case print(dt: Double = 0.3, delay: Double = 0, animation: Animation? = .linear)
+    case shake(dt: Double = 0.8, force: Float = 1, type: ASCIIArtShakeType = .wave, animation: Animation? = .none)
     case bloom(speed: Double = 0.8, color: Color = .primary)
 }
 
@@ -60,8 +60,8 @@ extension ArtTheme {
 private func add(delay: Double, to animations: [ArtAnimation]) -> [ArtAnimation] {
     var result: [ArtAnimation] = []
     for animation in animations {
-        if case let .print(speed, _, animation) = animation {
-            result.append(ArtAnimation.print(speed: speed, delay: delay, animation: animation))
+        if case let .print(dt, _, animation) = animation {
+            result.append(ArtAnimation.print(dt: dt, delay: delay, animation: animation))
         } else {
             result.append(animation)
         }

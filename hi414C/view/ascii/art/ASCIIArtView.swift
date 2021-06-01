@@ -53,17 +53,23 @@ struct ASCIIArtView: View {
     }
     
     var body: some View {
-        if printable {
-            ASCIIArtPrintable()
+        if printable && shakeable {
+            makePrintable(
+                makeShakeable(
+                    ASCIIArt()
+                )
+            )
+        } else if printable {
+            makePrintable(ASCIIArt())
         } else if shakeable {
-            ASCIIArtShakeable()
+            makeShakeable(ASCIIArt())
         } else {
             ASCIIArt()
         }
     }
     
-    func ASCIIArtPrintable() -> some View {
-        ASCIIArt()
+    func makePrintable<T: View>(_ content: T) -> some View {
+        content
             .onAppear {
                 guard let printDelay = printDelay else {
                     return
@@ -88,8 +94,8 @@ struct ASCIIArtView: View {
             }
     }
     
-    func ASCIIArtShakeable() -> some View {
-        ASCIIArt()
+    func makeShakeable<T: View>(_ content: T) -> some View {
+        content
             .onReceive(shakeTimer!) { _ in
                 if !shakeable {
                     self.shakeTimer!.upstream.connect().cancel()

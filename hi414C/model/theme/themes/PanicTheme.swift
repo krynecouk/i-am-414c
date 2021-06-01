@@ -9,18 +9,14 @@ import SwiftUI
 
 class PanicTheme: Theme {
     override var type: ThemeType { .panic }
-    override init(
-        font: FontTheme = FontTheme(),
-        color: ColorTheme = ColorTheme(
-            primary: (Color("PrimaryPanic"), Color("SecondaryPanic")),
-            secondary: (Color("SecondaryPanic"), Color("WhitePanic")),
-            tertiary: (Color("TertiaryPanic"), Color("BlackPanic")),
-            background: Color("SecondaryPanic")
-        )) {
+    init(font: FontTheme, color: ColorTheme, withTestStyle: Bool = false) {
         super.init(font: font, color: color)
-        self.terminal.grid.test.active.figlet.typeface = .ansi(.shadow)
+        if withTestStyle {
+            self.terminal.grid.test.active.figlet.typeface = .ansi(.shadow)
+            self.terminal.grid.test.passive.figlet.typeface = .ansi(.shadow)
+        }
         self.terminal.grid.symbol.typeface = .ansi(.shadow)
         self.terminal.grid.message.figlet.typeface = .ansi(.shadow)
-        self.terminal.grid.message.figlet.animations = [.shake(speed: 0.3, force: 3, type: .baba, animation: .none)]
+        self.terminal.grid.message.figlet.animations = [.print(dt: 0.4, delay: 0.3), .shake(dt: 0.3, force: 3, type: .baba, animation: .none), .bloom(speed: 0.3, color: color.primary.value)]
     }
 }

@@ -332,5 +332,12 @@ struct ANSIShadowFiglets {
             "███████╗",
             "╚══════╝",
         ]),
+        .space: Figlet(symbol: .space, lines: [
+            "    ",
+            "    ",
+            "    ",
+            "    ",
+            "    ",
+        ])
     ]
 }

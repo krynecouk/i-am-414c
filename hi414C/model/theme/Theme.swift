@@ -98,7 +98,7 @@ class Theme: Themable {
                     font: FontProps(.terminus, 23),
                     color: color.primary.value
                 ),
-                animations: [.print(speed: 0.4, delay: 0.3), .bloom(speed: 0.3, color: color.primary.value)]
+                animations: [.print(dt: 0.4, delay: 0.3), .bloom(speed: 0.3, color: color.primary.value)]
             ),
             text: ViewTheme(
                 font: FontProps(.proggyTiny, 32),
@@ -120,7 +120,7 @@ class Theme: Themable {
                         font: font.robot,
                         color: color.primary.value
                     ),
-                    animations: [.print(speed: 0.3, animation: .linear)]
+                    animations: [.print(dt: 0.3, animation: .linear)]
                 ),
                 symbol: FigletTheme(
                     typeface: .ansi(.regular),
