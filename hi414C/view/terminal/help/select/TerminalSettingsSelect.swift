@@ -73,7 +73,6 @@ struct TerminalSettingsSelect: View {
             }
             
             if helpVM.settings == .reset {
-                WarnText("Finish the game to unlock medium and hard difficulty.")
                 HelpRadioButton("easy", active: testVM.difficulty == .easy) {
                     testVM.difficulty(.easy)
                     graphVM.generateTests(for: graphVM.current.id)
