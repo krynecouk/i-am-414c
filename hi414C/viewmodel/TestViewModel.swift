@@ -86,6 +86,10 @@ class TestViewModel: ObservableObject {
         TestDao.store(self.level)
     }
     
+    func storeProgress(_ progress: Progress) {
+        ProgressDao.store(progress)
+    }
+    
     func level(reset: Bool = false, up: Int = 0, down: Int = 0) {
         if reset {
             self.level = 0

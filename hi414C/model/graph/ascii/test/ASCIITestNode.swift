@@ -35,3 +35,15 @@ class ASCIITestNode: Node {
         toolkit.testVM.storeLevel()
     }
 }
+
+class ASSCIITestNode414C: ASCIITestNode {
+    override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
+        super.onEnter(ctx: ctx, toolkit: toolkit)
+        
+    }
+    
+    override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
+        super.onExit(ctx: ctx, toolkit: toolkit)
+        toolkit.themeVM.reset()
+    }
+}

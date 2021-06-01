@@ -26,8 +26,10 @@ class ThemeViewModel: ObservableObject {
     }
     
     func reset() {
-        font(.reset)
-        change(to: .orange)
+        let type = ThemeDao.find() ?? .orange
+        let size = FontDao.find() ?? FontSize()
+        self.theme = type.toTheme(font: FontTheme(size: size))
+        self.fontSize = size
     }
     
     func change(to type: ThemeType) {

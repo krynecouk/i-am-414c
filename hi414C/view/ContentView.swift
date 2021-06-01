@@ -25,6 +25,12 @@ struct ContentView: View {
             CathodeView {
                 if uiVM.isIntro {
                     IntroScreen()
+                        .onAppear {
+                            print("info screen: \(uiVM.isIntro)")
+                        }
+                        .onDisappear {
+                            print("info screen diss: \(uiVM.isIntro)")
+                        }
                 } else {
                     TerminalView()
                 }

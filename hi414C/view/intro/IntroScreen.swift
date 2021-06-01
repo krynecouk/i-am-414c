@@ -10,6 +10,7 @@ import SwiftUI
 struct IntroScreen: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var asciiVM: ASCIIViewModel
+    
     @State var isCursor = true
     @State var textOpacity: Double = 0
     
