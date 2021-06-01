@@ -44,11 +44,11 @@ class TestViewModel: ObservableObject {
         let dec = ASCII.from(symbol).dec
         
         if self.difficulty == .medium {
-            return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand()).eq(dec))
+            return Test(symbol: symbol, equation: ET.optimalRand(for: dec).build(x: ET.rand()).eq(dec))
         }
         
         if self.difficulty == .hard {
-            return Test(symbol: symbol, equation: ET.rand().build(x: ET.rand(), y: ET.rand()).eq(dec))
+            return Test(symbol: symbol, equation: ET.optimalRand(for: dec).build(x: ET.rand(), y: ET.rand()).eq(dec))
         }
         
         switch level {
@@ -64,20 +64,26 @@ class TestViewModel: ObservableObject {
             return Test(symbol: symbol, equation: OR() => dec)
         case 0..<8:
             return Test(symbol: symbol, equation: XOR() => dec)
-        case 0..<8:
-            return Test(symbol: symbol, equation: NOT() => dec)
         case 0..<9:
-            return Test(symbol: symbol, equation: SHL() => dec)
-        case 0..<10:
-            return Test(symbol: symbol, equation: SHR() => dec)
+            return Test(symbol: symbol, equation: NOT() => dec)
+        case 0..<11:
+            if dec % 2 == 0 {
+                return Test(symbol: symbol, equation: SHL() => dec)
+            } else {
+                return Test(symbol: symbol, equation: SHR() => dec)
+            }
         default:
-            return Test(symbol: symbol, equation: ET.rand().build().eq(dec))
+            return Test(symbol: symbol, equation: ET.optimalRand(for: dec).build().eq(dec))
         }
     }
     
     func difficulty(_ difficulty: TestDifficulty) {
         self.difficulty = difficulty
         TestDifficultyDao.store(self.difficulty)
+    }
+    
+    func storeLevel() {
+        TestDao.store(self.level)
     }
     
     func level(reset: Bool = false, up: Int = 0, down: Int = 0) {
@@ -88,7 +94,7 @@ class TestViewModel: ObservableObject {
             self.level += (up + down)
             print("leveling up to \(self.level)")
         }
-        TestDao.store(self.level)
+        print("TEST LEVEL: ", self.level)
     }
 }
 

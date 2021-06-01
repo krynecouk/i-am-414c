@@ -24,8 +24,19 @@ enum EquationType {
         return self.builder(x: x.builder(), y: y.builder())
     }
     
-    static func rand(of types: [EquationType] = [AND, OR, XOR, NOT, SHL, SHR, ADD, SUB, DIV, MUL], withId: Bool = false) -> EquationType {
-        withId ? (types + [ID]).randomElement()! : types.randomElement()!
+    static func rand(of types: Set<EquationType> = [AND, OR, XOR, NOT, SHL, SHR, ADD, SUB, DIV, MUL]) -> EquationType {
+        types.randomElement()!
+    }
+    
+    static func optimalRand(for result: UInt8) -> EquationType {
+        var types: Set<EquationType> = [AND, OR, XOR, NOT, ADD, SUB, DIV, MUL]
+        if result % 2 == 0 {
+            types.insert(.SHL)
+        }
+        if result < 128 {
+            types.insert(.SHR)
+        }
+        return EquationType.rand(of: types)
     }
     
     private func builder(x: EquationBuilder = id(), y: EquationBuilder = id()) -> EquationBuilder {

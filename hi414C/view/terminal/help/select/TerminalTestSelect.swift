@@ -24,25 +24,40 @@ struct TerminalTestSelect: View {
             }
         }
         Group {
-            //if testVM.radix == .hex {
+            if testVM.radix == .hex {
                 HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
                     helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
                 }
-            //}
+            }
         }
         Group {
-            HelpSignButton<ADD>("+", .ADD)
-            HelpSignButton<SUB>("-", .SUB)
-            HelpSignButton<DIV>("/", .DIV)
-            HelpSignButton<MUL>("*", .MUL)
+            if testVM.level > 3 {
+                HelpSignButton<ADD>("+", .ADD)
+                HelpSignButton<SUB>("-", .SUB)
+            }
+            if testVM.level > 4 {
+                HelpSignButton<DIV>("/", .DIV)
+                HelpSignButton<MUL>("*", .MUL)
+            }
         }
         Group{
-            HelpSignButton<AND>("&", .AND)
-            HelpSignButton<OR>("|", .OR)
-            HelpSignButton<XOR>("^", .XOR)
-            HelpSignButton<NOT>("~", .NOT)
-            HelpSignButton<SHL>("<<", .SHL)
-            HelpSignButton<SHR>(">>", .SHR)
+            if testVM.level > 5 {
+                HelpSignButton<AND>("&", .AND)
+            }
+            if testVM.level > 6 {
+                HelpSignButton<OR>("|", .OR)
+            }
+            if testVM.level > 7 {
+                HelpSignButton<XOR>("^", .XOR)
+            }
+            if testVM.level > 8 {
+                HelpSignButton<NOT>("~", .NOT)
+            }
+            if testVM.level > 9 {
+                HelpSignButton<SHL>("<<", .SHL)
+                HelpSignButton<SHR>(">>", .SHR)
+            }
+
         }
     }
 }

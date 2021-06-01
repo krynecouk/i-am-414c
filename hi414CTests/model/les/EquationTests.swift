@@ -34,7 +34,7 @@ class EquationTests: XCTestCase {
     }
     
     func test_of_SHR() {
-        test(SHR(), debug: true)
+        test(SHR(), debug: false)
     }
     
     func test_of_ADD() {
