@@ -49,7 +49,9 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        let theme = !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([])
+                        let theme = !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([
+                            .shake(dt: 0.8, force: 1, type: .wave, animation: .none)
+                        ])
                         TerminalMessageRow(text, wide: wide, theme: theme)
                             .onAppear {
                                 if uiVM.current != .message {
@@ -58,6 +60,14 @@ struct TerminalGrid: View {
                                     helpVM.current = .chat
                                     self.printed = []
                                     self.solved = []
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                    if !self.printedMsg.contains(item.id) {
+                                        let _ = withAnimation(.linear.speed(0.3)) {
+                                            self.printedMsg.insert(item.id)
+                                        }
+                                    }
                                 }
                             }
                     }
@@ -138,10 +148,11 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
+            // TODO will stop working for learn mode in help
             //if uiVM.current != .message {
-                withAnimation(themeVM.terminal.grid.test.animation.detail) {
-                    uiVM.detail = (!uiVM.detail.is, true)
-                }
+            withAnimation(themeVM.terminal.grid.test.animation.detail) {
+                uiVM.detail = (!uiVM.detail.is, true)
+            }
             //}
         }
         .contentShape(Rectangle())
