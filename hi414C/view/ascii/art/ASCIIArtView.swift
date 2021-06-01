@@ -77,7 +77,6 @@ struct ASCIIArtView: View {
                 }
             }
             .onReceive(printTimer!) { _ in
-                print("print")
                 if !printable || printLine == lines.count {
                     self.printTimer!.upstream.connect().cancel()
                     return
@@ -92,7 +91,6 @@ struct ASCIIArtView: View {
     func ASCIIArtShakeable() -> some View {
         ASCIIArt()
             .onReceive(shakeTimer!) { _ in
-                print("shake")
                 if !shakeable {
                     self.shakeTimer!.upstream.connect().cancel()
                     return

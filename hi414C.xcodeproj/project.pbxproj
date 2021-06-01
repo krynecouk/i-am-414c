@@ -192,6 +192,7 @@
 		26EA30372661829B004A78F2 /* TestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30362661829B004A78F2 /* TestDao.swift */; };
 		26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */; };
 		26EA303D26666532004A78F2 /* ProgressDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303C26666532004A78F2 /* ProgressDao.swift */; };
+		26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303E26669120004A78F2 /* PanicTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -395,6 +396,7 @@
 		26EA30362661829B004A78F2 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
 		26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDifficultyDao.swift; sourceTree = "<group>"; };
 		26EA303C26666532004A78F2 /* ProgressDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDao.swift; sourceTree = "<group>"; };
+		26EA303E26669120004A78F2 /* PanicTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1045,6 +1047,7 @@
 				26E091012651C86E002E404D /* SunsetTheme.swift */,
 				26E091032652A693002E404D /* ForestTheme.swift */,
 				26E091052652ABFF002E404D /* OranginaTheme.swift */,
+				26EA303E26669120004A78F2 /* PanicTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1286,6 +1289,7 @@
 				26EA302426597456004A78F2 /* PasswordNode.swift in Sources */,
 				2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */,
 				26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */,
+				26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */,
 				263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */,
 				268D92DB2608E18A00A43802 /* ThemeViewModel.swift in Sources */,
 				2654883B26051B8B0044297D /* TestViewModel.swift in Sources */,

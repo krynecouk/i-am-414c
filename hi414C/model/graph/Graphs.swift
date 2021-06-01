@@ -10,6 +10,7 @@ typealias AL = ASCIITestEdge
 typealias ALL = TraverseAllEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
+typealias PANIC = ASSCIITestNode414C
 
 class Graphs {
     private init() {}
@@ -84,7 +85,7 @@ class Graphs {
                 R("HI")
             }
             AL("I", ["I?", "ME", "ME?", "NAME"]) {
-                R("AL") {
+                PANIC("AL") {
                     AL("AL?") {
                         R("YES")
                     }

@@ -9,6 +9,6 @@ protocol Themable {
     var type: ThemeType { get }
     var font: FontTheme { get }
     var intro: IntroTheme { get }
-    var terminal: TerminalTheme { get }
+    var terminal: TerminalTheme { get set }
     var keyboard: KeyboardTheme { get }
 }

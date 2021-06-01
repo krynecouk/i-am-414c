@@ -61,7 +61,7 @@ struct TerminalHelpLine: View {
                     Rectangle()
                         .fill(Color.clear)
                         .frame(width: 15, height: 15)
-                        .border(themeVM.terminal.hli.button.active.color, width: 1.7)
+                        .border(themeVM.terminal.hli.button.passive.color, width: 1.7)
                         .offset(y: -1.4)
                         .padding(.all, 13)
                 }

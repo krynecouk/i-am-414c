@@ -101,7 +101,7 @@ struct TerminalSettingsSelect: View {
                     helpVM.current = .learn
                     helpVM.settings = .font
                     helpVM.resetToZero()
-                    themeVM.reset()
+                    themeVM.default()
                     uiVM.current = .test
                     graphVM.setGraph(.BIN)
                     withAnimation {

@@ -37,9 +37,13 @@ class ASCIITestNode: Node {
 }
 
 class ASSCIITestNode414C: ASCIITestNode {
+    override init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(id, edges)
+    }
+    
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         super.onEnter(ctx: ctx, toolkit: toolkit)
-        
+        toolkit.themeVM.theme = PanicTheme()
     }
     
     override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {

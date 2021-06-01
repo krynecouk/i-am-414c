@@ -10,7 +10,7 @@ import SwiftUI
 class ThemeViewModel: ObservableObject {
     static let hint: Size = (.infinity, 54)
     
-    @Published private(set) var theme: Themable
+    @Published var theme: Themable
     
     var font: FontTheme { theme.font }
     var fontSize: FontSize = FontSize()
@@ -30,6 +30,11 @@ class ThemeViewModel: ObservableObject {
         let size = FontDao.find() ?? FontSize()
         self.theme = type.toTheme(font: FontTheme(size: size))
         self.fontSize = size
+    }
+    
+    func `default`() {
+        font(.reset)
+        change(to: .orange)
     }
     
     func change(to type: ThemeType) {
@@ -67,6 +72,7 @@ enum ThemeType: String, Encodable, Decodable {
     case orangina, forest, ice
     case swamp, bananaSky, vintage, pastel, sunset
     case green_gold, summer, sea, gray, yellow, melon
+    case panic
     
     func toTheme(font: FontTheme = FontTheme()) -> Themable {
         switch self {
