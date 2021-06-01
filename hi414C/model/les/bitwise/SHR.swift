@@ -17,31 +17,23 @@ struct SHR: EquationBuilder {
     }
     
     func eq(_ result: UInt8) -> Equation {
-        // TODO wrong - compute empty places before 1 and random
         var x: UInt8
         var y: UInt8
-        var toSHR: UInt8
+        
+        let resultStr = result.toBinStr()
+        let leading0 = resultStr.index(of: "1")
         
         if result == 0 {
             x = 0
             y = 0
-            toSHR = 0
+        } else if leading0 == 0 || leading0 == nil {
+            x = result
+            y = 0
         } else {
-            let modulo = result % 2
-            toSHR = result - modulo
-            
-            if modulo != 0 {
-                return ADD(SHR(), (ID(), modulo)) => result
-            }
-            
-            var multiplications = getMultiplications(from: toSHR)
-            // prefer less of: >> 0000 0000
-            if multiplications.count > 1 {
-                multiplications = multiplications.filter { $0 != toSHR }
-            }
-            
-            x = multiplications.randomElement() ?? 0
-            y = x == 0 ? 0 : UInt8(log2(Double(x/result)))
+            y = UInt8((1...leading0!).randomElement()!)
+            let resultWithoutLeading0 = resultStr.substring(from: y)
+            let trailing0 = (0..<y).map { _ in "0" }.joined()
+            x = UInt8.from(bin: resultWithoutLeading0 + trailing0)
         }
       
         let xResult = self.x.eq(x)
@@ -50,7 +42,7 @@ struct SHR: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.SHR)] + yParts, types: [.SHR] + xResult.types + yResult.types, test: { x >> y == toSHR })
+        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.SHR)] + yParts, types: [.SHR] + xResult.types + yResult.types, test: { x >> y == result })
     }
     
     func getMultiplications(from value: UInt8, max: UInt8 = UInt8.max) -> [UInt8] {
