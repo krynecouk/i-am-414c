@@ -15,14 +15,14 @@ struct FontSize: Encodable, Decodable {
 
     func inc() -> FontSize {
         if isIncreasable() {
-            return FontSize(robot: self.robot + 1, robotMsg: self.robotMsg + 3, al: self.al + 3, settings: self.settings + 3)
+            return FontSize(robot: self.robot + 1, robotMsg: self.robotMsg + 3, al: self.al + 3, settings: self.settings + 2)
         }
         return FontSize()
     }
     
     func dec() -> FontSize {
         if isDecreasable() {
-            return FontSize(robot: self.robot - 1, robotMsg: self.robotMsg - 3, al: self.al - 3, settings: self.settings - 3)
+            return FontSize(robot: self.robot - 1, robotMsg: self.robotMsg - 3, al: self.al - 3, settings: self.settings - 2)
         }
         return FontSize()
     }
