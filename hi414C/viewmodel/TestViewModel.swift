@@ -90,6 +90,10 @@ class TestViewModel: ObservableObject {
         ProgressDao.store(progress)
     }
     
+    func restoreLevel() {
+        self.level = TestDao.find() ?? 0
+    }
+    
     func level(reset: Bool = false, up: Int = 0, down: Int = 0) {
         if reset {
             self.level = 0

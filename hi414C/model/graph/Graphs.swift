@@ -93,11 +93,7 @@ class Graphs {
                 }
             }
             AL("AL") {
-                R("YOU") {
-                    AL("AL?") {
-                        R("YES")
-                    }
-                }
+                PANIC("YOU?")
             }
             AL("YOU") {
                 PANIC("I AM YOU") {
