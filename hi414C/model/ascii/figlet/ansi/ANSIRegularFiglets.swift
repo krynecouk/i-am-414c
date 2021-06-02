@@ -500,11 +500,11 @@ enum ANSIRegularFiglets {
             " ▀█         ",
         ]),
         .space: Figlet(symbol: .space, lines: [
-            "  ",
-            "  ",
-            "  ",
-            "  ",
-            "  ",
+            "    ",
+            "    ",
+            "    ",
+            "    ",
+            "    ",
         ])
     ]
 }
