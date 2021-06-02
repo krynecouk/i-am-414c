@@ -170,13 +170,13 @@ class Theme: Themable {
                 ),
                 message: MessageTheme(
                     figlet: FigletTheme(
-                        typeface: .ansi(.shadow),
+                        typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
                             color: color.primary.value
                         ),
                         animations: [
-                            .print(dt: 0.3, delay: 0.3, animation: .linear),
+                            .print(dt: 0.3, delay: 0, animation: .linear),
                             .shake(dt: 0.8, force: 1, type: .wave, animation: .none),
                             .bloom(speed: 0.3, color: color.primary.value)
                         ]

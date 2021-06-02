@@ -50,7 +50,7 @@ struct TerminalGrid: View {
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
                         let theme = !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([
-                            .shake(dt: 0.8, force: 1, type: .wave, animation: .none)
+                            getShakeAnimation(from: themeVM.terminal.grid.message.figlet.animations)!
                         ])
                         TerminalMessageRow(text, wide: wide, theme: theme)
                             .onAppear {
@@ -156,6 +156,15 @@ struct TerminalGrid: View {
             //}
         }
         .contentShape(Rectangle())
+    }
+    
+    func getShakeAnimation(from animations: [ArtAnimation]) -> ArtAnimation? {
+        for animation in animations {
+            if case .shake(_, _, _, _) = animation {
+                return animation
+            }
+        }
+        return .none
     }
     
     func HelpBackground() -> some View {
