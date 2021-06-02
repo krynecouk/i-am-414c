@@ -23,7 +23,7 @@ class UpgradeNode: Node {
         toolkit.helpVM.radix(of: .hex)
         toolkit.asciiVM.reset()
         toolkit.graphVM?.setGraph(.HEX)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.isHelp = false
             toolkit.uiVM.isIntroVideo = false
             toolkit.uiVM.isIntro = true

@@ -51,3 +51,22 @@ class ASSCIITestNode414C: ASCIITestNode {
         toolkit.themeVM.reset()
     }
 }
+
+class ThemeNode: ASCIITestNode {
+    let theme: Themable
+    
+    init(_ id: String, theme: Themable, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        self.theme = theme
+        super.init(id, edges)
+    }
+    
+    override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
+        super.onEnter(ctx: ctx, toolkit: toolkit)
+        toolkit.themeVM.theme = theme
+    }
+    
+    override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
+        super.onExit(ctx: ctx, toolkit: toolkit)
+        toolkit.themeVM.reset()
+    }
+}

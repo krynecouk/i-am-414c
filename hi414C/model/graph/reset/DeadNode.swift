@@ -5,6 +5,8 @@
 //  Created by Darius Kryszczuk on 22.05.2021.
 //
 
+import SwiftUI
+
 class DeadNode: Node {
     let id: String
     let edges: [Edge]
@@ -19,9 +21,13 @@ class DeadNode: Node {
         toolkit.helpVM.radix(of: .bin)
         toolkit.asciiVM.reset()
         toolkit.graphVM?.setGraph(.BIN)
-        toolkit.uiVM.isIntroVideo = false // TODO
-        toolkit.uiVM.isIntro = true
         toolkit.themeVM.reset()
         toolkit.chatVM.clear()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            toolkit.uiVM.isHelp = false
+            toolkit.uiVM.isIntroVideo = false
+            toolkit.uiVM.isIntro = true
+        }
     }
 }

@@ -23,6 +23,7 @@ class ThemeViewModel: ObservableObject {
         let type = ThemeDao.find() ?? type
         let size = FontDao.find() ?? size
         self.theme = type.toTheme(font: FontTheme(size: size))
+        //self.theme = WarnTheme()
         self.fontSize = size
     }
     
@@ -73,7 +74,7 @@ enum ThemeType: String, Encodable, Decodable {
     case orangina, forest, ice
     case swamp, bananaSky, vintage, pastel, sunset
     case green_gold, summer, sea, gray, yellow, melon
-    case panic
+    case panic, warn
     
     func toTheme(font: FontTheme = FontTheme()) -> Themable {
         switch self {

@@ -11,6 +11,7 @@ typealias ALL = TraverseAllEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
 typealias PANIC = ASSCIITestNode414C
+typealias WARN = ThemeNode
 
 class Graphs {
     private init() {}
@@ -182,10 +183,10 @@ class Graphs {
     }
     
     static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
-        AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET"] + variants) {
+        AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK"] + variants) {
             R("Y/N?") {
                 AL("Y") {
-                    R("SURE?") {
+                    WARN("SURE?", theme: WarnTheme()) {
                         AL("Y") {
                             DEAD()
                         }
