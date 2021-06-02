@@ -339,18 +339,18 @@ enum ANSIRegularFiglets {
             " ▀",
         ]),
         .leftParen: Figlet(symbol: .leftParen, lines: [
-            "  ██",
-            " ██ ",
-            "██  ",
-            " ██ ",
-            "  ██",
+            " ██",
+            "██ ",
+            "██ ",
+            "██ ",
+            " ██",
         ]),
         .rightParen: Figlet(symbol: .rightParen, lines: [
-            "██  ",
-            " ██ ",
-            "  ██",
-            " ██ ",
-            "██  ",
+            "██ ",
+            " ██",
+            " ██",
+            " ██",
+            "██ ",
         ]),
         .dollar: Figlet(symbol: .dollar, lines: [
             "▄▄███▄▄",
@@ -500,11 +500,11 @@ enum ANSIRegularFiglets {
             " ▀█         ",
         ]),
         .space: Figlet(symbol: .space, lines: [
-            "    ",
-            "    ",
-            "    ",
-            "    ",
-            "    ",
+            "  ",
+            "  ",
+            "  ",
+            "  ",
+            "  ",
         ])
     ]
 }

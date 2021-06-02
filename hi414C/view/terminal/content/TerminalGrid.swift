@@ -49,9 +49,11 @@ struct TerminalGrid: View {
                 }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
-                        let theme = !printedMsg.contains(item.id) ? themeVM.terminal.grid.message.figlet : themeVM.terminal.grid.message.figlet.withAnimation([
-                            getShakeAnimation(from: themeVM.terminal.grid.message.figlet.animations)!
-                        ])
+                        let shakeAnimation = getShakeAnimation(from: themeVM.terminal.grid.message.figlet.animations)
+                        let animations = shakeAnimation != nil ? [shakeAnimation!] : []
+                        let theme = !printedMsg.contains(item.id)
+                            ? themeVM.terminal.grid.message.figlet
+                            : themeVM.terminal.grid.message.figlet.withAnimation(animations)
                         TerminalMessageRow(text, wide: wide, theme: theme)
                             .onAppear {
                                 if uiVM.current != .message {
