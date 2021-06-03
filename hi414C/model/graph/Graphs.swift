@@ -10,6 +10,7 @@ typealias AL = ASCIITestEdge
 typealias ALL = TraverseAllEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
+typealias FINISH = FinishNode
 typealias PANIC414C = PanicNode414C
 typealias PANIC = PanicNode
 typealias WARN = WarnNode
@@ -22,6 +23,12 @@ class Graphs {
             // INTRO
             AL("HI", ["HELLO"]) {
                 R("HI")
+            }
+            AL("HIHI") {
+                FINISH(with: .dawn)
+            }
+            AL("HIHI?") {
+                FINISH(with: .sunset)
             }
             AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
                 R("AL")
@@ -124,24 +131,24 @@ class Graphs {
                     AL("Y") {
                         R("*****") {
                             AL("ELENA") {
-                                DEAD() // TODO
+                                FINISH(with: .dawn)
                             }
                             ALL("*") {
                                 R("BAD. NEXT?") {
                                     AL("Y") {
                                         R("*****") {
                                             AL("ELENA") {
-                                                DEAD() // TODO
+                                                FINISH(with: .dawn)
                                             }
                                             ALL("*") {
                                                 R("BAD. NEXT?") {
                                                     AL("Y") {
                                                         R("*****") {
                                                             AL("ELENA") {
-                                                                DEAD() // TODO
+                                                                FINISH(with: .dawn)
                                                             }
                                                             ALL("*") {
-                                                                DEAD()
+                                                                FINISH(with: .sunset)
                                                             }
                                                         }
                                                     }

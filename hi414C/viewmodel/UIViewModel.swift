@@ -27,7 +27,6 @@ class UIViewModel: ObservableObject, Resetable {
     func reset() {
         self.current = .test
         self.isHelp = false
-        self.video = .none
         self.isIntro = true
         self.detail = (false, false)
     }
