@@ -11,7 +11,7 @@ struct FinishedGameScreen: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
-    let text = "Congratulations!\nYou have finished the main story.\n\nContinue finding missing letters or start again at a different difficulty.\n\nThank you for playing!"
+    let text = "*** Congratulations ***\nYou have finished the main story!\n\nContinue finding missing letters or start again at a different difficulty.\n\nThank you for playing!"
     
     var body: some View {
         Modal(
@@ -27,6 +27,7 @@ struct FinishedGameScreen: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(themeVM.intro.finish.body.color)
         }
+        .frame(maxWidth: 600)
     }
     
 }
