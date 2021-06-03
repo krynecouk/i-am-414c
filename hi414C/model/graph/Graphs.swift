@@ -24,12 +24,6 @@ class Graphs {
             AL("HI", ["HELLO"]) {
                 R("HI")
             }
-            AL("HIHI") {
-                FINISH(with: .dawn)
-            }
-            AL("HIHI?") {
-                FINISH(with: .sunset)
-            }
             AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
                 R("AL")
             }
@@ -80,12 +74,7 @@ class Graphs {
                 }
             }
             FIX()
-            
-            // DEAD
             DIE()
-            
-            // OTHER
-            
         }
     
     static let HEX =
