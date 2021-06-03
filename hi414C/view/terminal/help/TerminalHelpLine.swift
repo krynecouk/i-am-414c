@@ -34,7 +34,7 @@ struct TerminalHelpLine: View {
             }
             Spacer()
             MinButton()
-            QuitButton("X")
+            QuitButton("x")
         }
         .frame(height: SegueViewModel.header.height)
         .background(themeVM.terminal.hli.background.edgesIgnoringSafeArea(.all))
@@ -80,7 +80,8 @@ struct TerminalHelpLine: View {
             }
         }) {
             ButtonLabel(text)
-                .withTheme(themeVM.terminal.hli.button.passive)
+                .offset(y: -1.4)
+                .withTheme(themeVM.terminal.hli.quit)
         }
     }
     

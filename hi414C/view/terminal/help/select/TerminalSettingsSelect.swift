@@ -106,7 +106,7 @@ struct TerminalSettingsSelect: View {
                     graphVM.setGraph(.BIN)
                     withAnimation {
                         uiVM.isHelp = false
-                        uiVM.isIntroVideo = false // TODO true
+                        uiVM.video = .none // TODO intro
                         uiVM.isIntro = true
                     }
                 }

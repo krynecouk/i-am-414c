@@ -15,24 +15,22 @@ struct ContentView: View {
     }
     
     var body: some View {
-        if uiVM.isIntroVideo {
-            IntroVideo()
+        if let video = uiVM.video {
+            Video(video)
                 .onTapGesture {
-                    uiVM.isIntroVideo = false
+                    uiVM.video = .none
                     uiVM.isIntro = true
                 }
         } else {
             CathodeView {
                 if uiVM.isIntro {
                     IntroScreen()
-                        .onAppear {
-                            print("info screen: \(uiVM.isIntro)")
-                        }
-                        .onDisappear {
-                            print("info screen diss: \(uiVM.isIntro)")
-                        }
                 } else {
-                    TerminalView()
+                    if uiVM.isFinishedGame {
+                        FinishedGameScreen()
+                    } else {
+                        TerminalView()
+                    }
                 }
             }
             .onTapGesture {

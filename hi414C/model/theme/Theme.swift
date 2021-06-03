@@ -103,6 +103,23 @@ class Theme: Themable {
             text: ViewTheme(
                 font: FontProps(.proggyTiny, 32),
                 color: color.primary.value
+            ),
+            finish: ModalTheme(
+                header: ViewTheme(
+                    font: FontProps(.proggyTiny, 32),
+                    color: color.secondary.contrast,
+                    background: color.secondary.value
+                ),
+                body: ViewTheme(
+                    font: FontProps(.proggyTiny, 32),
+                    color: color.tertiary.contrast,
+                    background: color.tertiary.value
+                ),
+                button: ViewTheme(
+                    font: FontProps(.proggyTiny, 32),
+                    color: color.primary.contrast,
+                    background: color.primary.value
+                )
             )
         )
     }
@@ -310,6 +327,10 @@ class Theme: Themable {
                         active: color.tertiary.value,
                         passive: color.secondary.value
                     )
+                ),
+                quit: ViewTheme(
+                    font: FontProps(.proggyTiny, 40),
+                    color: color.secondary.contrast
                 ),
                 select: TerminalTheme.HelpLine.Select(
                     button: ViewTheme(

@@ -26,7 +26,7 @@ class DeadNode: Node {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.isHelp = false
-            toolkit.uiVM.isIntroVideo = false
+            toolkit.uiVM.video = .none // TODO intro
             toolkit.uiVM.isIntro = true
         }
     }

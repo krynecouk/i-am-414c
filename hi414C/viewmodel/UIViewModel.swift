@@ -9,7 +9,8 @@ import SwiftUI
 
 class UIViewModel: ObservableObject {
     @Published var isIntro = true
-    @Published var isIntroVideo = false // TODO true
+    @Published var isFinishedGame = false
+    @Published var video: VideoType? = .none
     @Published var detail = (is: false, animated: true)
     @Published var isHelp = false
     @Published var current: ContentType = .test
@@ -23,6 +24,8 @@ class UIViewModel: ObservableObject {
         UIScreen.main.bounds.width > 500
     }
 }
+
+
 
 enum ContentType {
     case message, test

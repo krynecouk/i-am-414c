@@ -9,4 +9,11 @@ struct IntroTheme {
     var cursor: TerminalTheme.CommandLine.Cursor
     var banner: FigletTheme
     var text: ViewTheme
+    var finish: ModalTheme
+}
+
+struct ModalTheme {
+    var header: ViewTheme
+    var body: ViewTheme
+    var button: ViewTheme
 }

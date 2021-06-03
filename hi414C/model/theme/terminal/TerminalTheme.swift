@@ -76,6 +76,7 @@ struct TerminalTheme {
     struct HelpLine {
         var background: Color
         var button: Button
+        var quit: ViewTheme
         var select: Select
         
         struct Button {
