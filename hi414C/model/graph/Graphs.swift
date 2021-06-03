@@ -23,7 +23,7 @@ class Graphs {
             AL("HI", ["HELLO"]) {
                 R("HI")
             }
-            AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
+            AL("I", ["ME", "NAME", "WHO AM I", "WHO AM I?"]) {
                 R("AL")
             }
             AL("AL") {

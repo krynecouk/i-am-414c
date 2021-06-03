@@ -7,6 +7,8 @@
 
 import Foundation
 
+protocol Storable: Encodable, Decodable {}
+
 struct Dao<T: Decodable & Encodable> {
     
     public static func store(key: String, content: T) {

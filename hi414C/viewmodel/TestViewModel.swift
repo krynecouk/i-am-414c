@@ -86,11 +86,7 @@ class TestViewModel: ObservableObject, Resetable {
     func storeLevel() {
         TestDao.store(self.level)
     }
-    
-    func storeProgress(_ progress: Progress) {
-        ProgressDao.store(progress)
-    }
-    
+
     func restoreLevel() {
         self.level = TestDao.find() ?? 0
     }

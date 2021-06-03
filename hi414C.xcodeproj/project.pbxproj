@@ -187,7 +187,6 @@
 		26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3019265951A8004A78F2 /* UpgradeNode.swift */; };
 		26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301B265951B6004A78F2 /* DeadNode.swift */; };
 		26EA301E265968F1004A78F2 /* GraphDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301D265968F1004A78F2 /* GraphDao.swift */; };
-		26EA302026596915004A78F2 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301F26596915004A78F2 /* Storable.swift */; };
 		26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3021265969AA004A78F2 /* RadixDao.swift */; };
 		26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */; };
 		26EA302C265E6EA8004A78F2 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3029265E6EA8004A78F2 /* license.txt */; };
@@ -196,7 +195,6 @@
 		26EA3032265E90BA004A78F2 /* ansiregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3031265E90BA004A78F2 /* ansiregular.ttf */; };
 		26EA30372661829B004A78F2 /* TestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30362661829B004A78F2 /* TestDao.swift */; };
 		26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */; };
-		26EA303D26666532004A78F2 /* ProgressDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303C26666532004A78F2 /* ProgressDao.swift */; };
 		26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303E26669120004A78F2 /* PanicTheme.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
@@ -396,7 +394,6 @@
 		26EA3019265951A8004A78F2 /* UpgradeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeNode.swift; sourceTree = "<group>"; };
 		26EA301B265951B6004A78F2 /* DeadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadNode.swift; sourceTree = "<group>"; };
 		26EA301D265968F1004A78F2 /* GraphDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDao.swift; sourceTree = "<group>"; };
-		26EA301F26596915004A78F2 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		26EA3021265969AA004A78F2 /* RadixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixDao.swift; sourceTree = "<group>"; };
 		26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSettings.swift; sourceTree = "<group>"; };
 		26EA3029265E6EA8004A78F2 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
@@ -405,7 +402,6 @@
 		26EA3031265E90BA004A78F2 /* ansiregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ansiregular.ttf; sourceTree = "<group>"; };
 		26EA30362661829B004A78F2 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
 		26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDifficultyDao.swift; sourceTree = "<group>"; };
-		26EA303C26666532004A78F2 /* ProgressDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDao.swift; sourceTree = "<group>"; };
 		26EA303E26669120004A78F2 /* PanicTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicTheme.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
@@ -1043,11 +1039,9 @@
 				26EA2FE826565621004A78F2 /* ThemeDao.swift */,
 				26EA2FEA265668DD004A78F2 /* FontDao.swift */,
 				26EA301D265968F1004A78F2 /* GraphDao.swift */,
-				26EA301F26596915004A78F2 /* Storable.swift */,
 				26EA3021265969AA004A78F2 /* RadixDao.swift */,
 				26EA30362661829B004A78F2 /* TestDao.swift */,
 				26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */,
-				26EA303C26666532004A78F2 /* ProgressDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1453,7 +1447,6 @@
 				269764DE262483F800775D71 /* EquationBuilder.swift in Sources */,
 				26EA300B2656CA1B004A78F2 /* HelpRadioButton.swift in Sources */,
 				26E090FC2651C181002E404D /* IceTheme.swift in Sources */,
-				26EA302026596915004A78F2 /* Storable.swift in Sources */,
 				2665C9C3263C0DC400CE724F /* DetailRow.swift in Sources */,
 				2697653C26260E4B00775D71 /* DIV.swift in Sources */,
 				26EA2FE426559186004A78F2 /* IntroScreen.swift in Sources */,
@@ -1474,7 +1467,6 @@
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
 				266F97FB2668CEBB0012619B /* FinishedGameScreen.swift in Sources */,
-				26EA303D26666532004A78F2 /* ProgressDao.swift in Sources */,
 				26E091022651C86E002E404D /* SunsetTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,

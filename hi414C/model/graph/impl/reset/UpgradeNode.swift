@@ -19,7 +19,6 @@ class UpgradeNode: Node {
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.testVM.level(reset: true)
         toolkit.testVM.radix(of: .hex)
-        toolkit.testVM.storeProgress(.hex)
         toolkit.helpVM.radix(of: .hex)
         toolkit.asciiVM.reset()
         toolkit.graphVM?.setGraph(.HEX)
