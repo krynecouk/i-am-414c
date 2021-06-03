@@ -84,9 +84,6 @@ class GraphViewModel: ObservableObject, Resetable {
     private func getPaths(from node: Node, precondition: (String) -> Bool) -> OrderedSet<String> {
         var paths: OrderedSet<String> = []
         for edge in node.edges {
-            if precondition(edge.id) {
-                paths.append(edge.id)
-            }
             if let asciiEdge = edge as? ASCIITestEdge {
                 asciiEdge.variants.forEach { variant in
                     if precondition(variant) {

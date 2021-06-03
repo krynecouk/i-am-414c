@@ -8,9 +8,9 @@
 class ThemeNode: ASCIITestNode {
     let theme: Themable
     
-    init(_ id: String, theme: Themable, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+    init(_ msg: String, theme: Themable, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         self.theme = theme
-        super.init(id, edges)
+        super.init(msg, edges)
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {

@@ -5,20 +5,24 @@
 //  Created by Darius Kryszczuk on 11.03.2021.
 //
 
+import Foundation
+
 class ASCIITestEdge: Edge {
-    var id: String
+    let id: String
+    let msg: String
     var variants: [String]
-    var target: Node
+    let target: Node
     
-    init(_ id: String, _ variants: [String] = [], _ content: () -> Node) {
-        self.id = id
+    init(_ msg: String, _ variants: [String] = [], _ content: () -> Node) {
+        self.id = UUID().uuidString
+        self.msg = msg
         self.variants = variants
         self.target = content()
-        self.variants.append(id)
+        self.variants.append(msg)
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        self.variants.contains(ctx.input) // TODO need to be smarter
+        self.variants.contains(ctx.input)
     }
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {

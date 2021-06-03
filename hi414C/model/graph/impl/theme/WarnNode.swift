@@ -6,7 +6,7 @@
 //
 
 class WarnNode: ThemeNode {
-    init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        super.init(id, theme: WarnTheme(), edges)
+    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(msg, theme: WarnTheme(), edges)
     }
 }

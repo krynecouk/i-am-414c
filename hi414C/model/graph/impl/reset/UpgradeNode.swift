@@ -5,16 +5,11 @@
 //  Created by Darius Kryszczuk on 22.05.2021.
 //
 
-import SwiftUI
+import Foundation
 
 class UpgradeNode: Node {
-    let id: String
-    let edges: [Edge]
-    
-    init(_ id: String = "upgrade_node", @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        self.id = id
-        self.edges = edges()
-    }
+    let id: String = UUID().uuidString
+    let edges: [Edge] = []
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.testVM.level(reset: true)

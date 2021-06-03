@@ -8,9 +8,9 @@
 class PanicNode: ASCIITestNode {
     let styled: Bool
     
-    init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}, styled: Bool = false) {
+    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}, styled: Bool = false) {
         self.styled = styled
-        super.init(id, edges)
+        super.init(msg, edges)
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
@@ -25,8 +25,8 @@ class PanicNode: ASCIITestNode {
 }
 
 class PanicNode414C: PanicNode {
-    init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        super.init(id, edges, styled: true)
+    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(msg, edges, styled: true)
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {

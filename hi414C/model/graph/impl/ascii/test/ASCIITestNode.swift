@@ -5,19 +5,23 @@
 //  Created by Darius Kryszczuk on 10.03.2021.
 //
 
+import Foundation
+
 class ASCIITestNode: Node {
     let id: String
+    let msg: String
     let edges: [Edge]
     
-    init(_ id: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        self.id = id
+    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        self.id = UUID().uuidString
+        self.msg = msg
         self.edges = edges()
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.chatVM.add(message: Message(from: .al, text: ctx.input))
         
-        let symbols = id.map { char in
+        let symbols = msg.map { char in
             ASCIISymbol.from(String(char))
         }
         
@@ -31,7 +35,7 @@ class ASCIITestNode: Node {
     }
     
     func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
-        toolkit.chatVM.add(message: Message(from: .robot, text: id))
+        toolkit.chatVM.add(message: Message(from: .robot, text: msg))
         toolkit.testVM.storeLevel()
     }
 }
