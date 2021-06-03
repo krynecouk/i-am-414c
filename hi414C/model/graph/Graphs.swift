@@ -10,8 +10,9 @@ typealias AL = ASCIITestEdge
 typealias ALL = TraverseAllEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
-typealias PANIC = ASSCIITestNode414C
-typealias WARN = ThemeNode
+typealias PANIC414C = PanicNode414C
+typealias PANIC = PanicNode
+typealias WARN = WarnNode
 
 class Graphs {
     private init() {}
@@ -86,17 +87,17 @@ class Graphs {
                 R("HI")
             }
             AL("I", ["I?", "ME", "ME?", "NAME"]) {
-                PANIC("AL") {
+                PANIC414C("AL") {
                     AL("AL?") {
                         R("YES")
                     }
                 }
             }
             AL("AL") {
-                PANIC("YOU?")
+                R("YOU")
             }
             AL("YOU") {
-                PANIC("I AM YOU") {
+                R("I AM YOU") {
                     AL("YOU?", ["YOU ARE ME", "YOU ARE ME?"]) {
                         R("YES") {
                             AL("HOW", ["HOW?"]) {
@@ -182,7 +183,7 @@ class Graphs {
         AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK"] + variants) {
             R("Y/N?") {
                 AL("Y") {
-                    WARN("SURE?", theme: WarnTheme()) {
+                    WARN("SURE?") {
                         AL("Y") {
                             DEAD()
                         }
