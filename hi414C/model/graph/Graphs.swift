@@ -20,7 +20,6 @@ class Graphs {
     
     static let BIN =
         R("HI") {
-            // INTRO
             AL("HI", ["HELLO"]) {
                 R("HI")
             }
@@ -44,7 +43,6 @@ class Graphs {
                     }
                 }
             }
-            // UPGRADE
             AL("COIL", ["COILS"]) {
                 R("BROKEN") {
                     AL("HOW") {
@@ -115,52 +113,57 @@ class Graphs {
             AL("WAKE", ["WAKE UP", "WAKE UP!"]) {
                 R("CAN'T, NEED PASSWORD")
             }
-            AL("PASSWORD") {
-                R("TRY?") {
-                    AL("Y") {
-                        R("*****") {
-                            AL("ELENA") {
-                                FINISH(with: .dawn)
-                            }
-                            ALL("*") {
-                                R("BAD. NEXT?") {
-                                    AL("Y") {
-                                        R("*****") {
-                                            AL("ELENA") {
-                                                FINISH(with: .dawn)
-                                            }
-                                            ALL("*") {
-                                                R("BAD. NEXT?") {
-                                                    AL("Y") {
-                                                        R("*****") {
-                                                            AL("ELENA") {
-                                                                FINISH(with: .dawn)
-                                                            }
-                                                            ALL("*") {
-                                                                FINISH(with: .sunset)
-                                                            }
+            PASSWORD()
+        }
+    
+    
+    static func PASSWORD() -> Edge {
+        AL("PASSWORD") {
+            R("TRY?") {
+                AL("Y") {
+                    R("*****") {
+                        AL("ELENA") {
+                            FINISH(with: .dawn)
+                        }
+                        ALL("*") {
+                            R("BAD. NEXT?") {
+                                AL("Y") {
+                                    R("*****") {
+                                        AL("ELENA") {
+                                            FINISH(with: .dawn)
+                                        }
+                                        ALL("*") {
+                                            R("BAD. NEXT?") {
+                                                AL("Y") {
+                                                    R("*****") {
+                                                        AL("ELENA") {
+                                                            FINISH(with: .dawn)
+                                                        }
+                                                        ALL("*") {
+                                                            FINISH(with: .sunset)
                                                         }
                                                     }
-                                                    AL("N") {
-                                                        R("OK")
-                                                    }
+                                                }
+                                                AL("N") {
+                                                    R("OK")
                                                 }
                                             }
                                         }
                                     }
-                                    AL("N") {
-                                        R("OK")
-                                    }
+                                }
+                                AL("N") {
+                                    R("OK")
                                 }
                             }
                         }
                     }
-                    AL("N") {
-                        R("OK")
-                    }
+                }
+                AL("N") {
+                    R("OK")
                 }
             }
         }
+    }
     
     static func FIX(text: String = "FIX", _ variants: [String] = []) -> Edge {
         AL(text, ["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {

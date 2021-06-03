@@ -62,11 +62,14 @@
 		266CA4202642F4E9001A07E0 /* TerminalHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41F2642F4E9001A07E0 /* TerminalHint.swift */; };
 		266CA4222643D78F001A07E0 /* TerminalHelpMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */; };
 		266CA42426441254001A07E0 /* HelpEdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA42326441254001A07E0 /* HelpEdgeDrag.swift */; };
-		266CA4282645808E001A07E0 /* GraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4272645808E001A07E0 /* GraphNode.swift */; };
 		266CA42A2645A617001A07E0 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4292645A617001A07E0 /* Collection.swift */; };
 		266F97F7266757050012619B /* WarnTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97F6266757050012619B /* WarnTheme.swift */; };
 		266F97FB2668CEBB0012619B /* FinishedGameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FA2668CEBB0012619B /* FinishedGameScreen.swift */; };
 		266F97FD26693A4E0012619B /* Resetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FC26693A4E0012619B /* Resetable.swift */; };
+		266F97FF2669452D0012619B /* FinishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FE2669452D0012619B /* FinishNode.swift */; };
+		266F9803266946620012619B /* ThemeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9802266946620012619B /* ThemeNode.swift */; };
+		266F9805266946750012619B /* WarnNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9804266946750012619B /* WarnNode.swift */; };
+		266F9807266946860012619B /* PanicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9806266946860012619B /* PanicNode.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -186,7 +189,6 @@
 		26EA301E265968F1004A78F2 /* GraphDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301D265968F1004A78F2 /* GraphDao.swift */; };
 		26EA302026596915004A78F2 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301F26596915004A78F2 /* Storable.swift */; };
 		26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3021265969AA004A78F2 /* RadixDao.swift */; };
-		26EA302426597456004A78F2 /* PasswordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302326597456004A78F2 /* PasswordNode.swift */; };
 		26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */; };
 		26EA302C265E6EA8004A78F2 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3029265E6EA8004A78F2 /* license.txt */; };
 		26EA302D265E6EA8004A78F2 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA302A265E6EA8004A78F2 /* readme.txt */; };
@@ -268,11 +270,14 @@
 		266CA41F2642F4E9001A07E0 /* TerminalHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHint.swift; sourceTree = "<group>"; };
 		266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpMessages.swift; sourceTree = "<group>"; };
 		266CA42326441254001A07E0 /* HelpEdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEdgeDrag.swift; sourceTree = "<group>"; };
-		266CA4272645808E001A07E0 /* GraphNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNode.swift; sourceTree = "<group>"; };
 		266CA4292645A617001A07E0 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		266F97F6266757050012619B /* WarnTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnTheme.swift; sourceTree = "<group>"; };
 		266F97FA2668CEBB0012619B /* FinishedGameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGameScreen.swift; sourceTree = "<group>"; };
 		266F97FC26693A4E0012619B /* Resetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resetable.swift; sourceTree = "<group>"; };
+		266F97FE2669452D0012619B /* FinishNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishNode.swift; sourceTree = "<group>"; };
+		266F9802266946620012619B /* ThemeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNode.swift; sourceTree = "<group>"; };
+		266F9804266946750012619B /* WarnNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnNode.swift; sourceTree = "<group>"; };
+		266F9806266946860012619B /* PanicNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicNode.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -393,7 +398,6 @@
 		26EA301D265968F1004A78F2 /* GraphDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDao.swift; sourceTree = "<group>"; };
 		26EA301F26596915004A78F2 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		26EA3021265969AA004A78F2 /* RadixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixDao.swift; sourceTree = "<group>"; };
-		26EA302326597456004A78F2 /* PasswordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNode.swift; sourceTree = "<group>"; };
 		26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSettings.swift; sourceTree = "<group>"; };
 		26EA3029265E6EA8004A78F2 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		26EA302A265E6EA8004A78F2 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
@@ -625,8 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				26F7A6DC25FA5B3400F04156 /* core */,
-				2634DE4925FBC17200FE8A65 /* ascii */,
-				26EA301826595196004A78F2 /* reset */,
+				266F98012669461F0012619B /* impl */,
 				26ADBC1925FBAAA10003AD54 /* Graphs.swift */,
 			);
 			path = graph;
@@ -638,6 +641,26 @@
 				26682CB22611FAAA00F7C943 /* ASCIIKeyboardView.swift */,
 			);
 			path = ascii;
+			sourceTree = "<group>";
+		};
+		266F9800266945570012619B /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				266F9802266946620012619B /* ThemeNode.swift */,
+				266F9804266946750012619B /* WarnNode.swift */,
+				266F9806266946860012619B /* PanicNode.swift */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		266F98012669461F0012619B /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				2634DE4925FBC17200FE8A65 /* ascii */,
+				26EA301826595196004A78F2 /* reset */,
+				266F9800266945570012619B /* theme */,
+			);
+			path = impl;
 			sourceTree = "<group>";
 		};
 		267463DB25DED18000624D7C /* view */ = {
@@ -734,7 +757,6 @@
 			children = (
 				26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */,
 				26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */,
-				266CA4272645808E001A07E0 /* GraphNode.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -1106,7 +1128,7 @@
 			children = (
 				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
 				26EA301B265951B6004A78F2 /* DeadNode.swift */,
-				26EA302326597456004A78F2 /* PasswordNode.swift */,
+				266F97FE2669452D0012619B /* FinishNode.swift */,
 			);
 			path = reset;
 			sourceTree = "<group>";
@@ -1281,21 +1303,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266F9803266946620012619B /* ThemeNode.swift in Sources */,
 				2644041E2619007300CA7EA1 /* Themable.swift in Sources */,
 				26E090FE2651C261002E404D /* BananaSkyTheme.swift in Sources */,
 				26E090F02651B45E002E404D /* SeaTheme.swift in Sources */,
+				266F9807266946860012619B /* PanicNode.swift in Sources */,
 				269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */,
 				266CA41426411F4E001A07E0 /* TerminalPadding.swift in Sources */,
 				2654882326050B710044297D /* TerminalView.swift in Sources */,
 				267A0D4F260C823400844927 /* ASCIIArtNode.swift in Sources */,
 				263612412634A6B600341B60 /* ChatViewModel.swift in Sources */,
-				266CA4282645808E001A07E0 /* GraphNode.swift in Sources */,
 				26440444261907B000CA7EA1 /* ColorTheme.swift in Sources */,
 				268D92D12608D83000A43802 /* GraphToolkit.swift in Sources */,
 				26645DCA2639D3570086F26C /* HelpViewModel.swift in Sources */,
 				2697655826273C1B00775D71 /* SHR.swift in Sources */,
 				2654884F2605247C0044297D /* KeyboardView.swift in Sources */,
-				26EA302426597456004A78F2 /* PasswordNode.swift in Sources */,
 				2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */,
 				26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */,
 				26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */,
@@ -1319,6 +1341,7 @@
 				26E090DE264ED610002E404D /* GreenTheme.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
 				26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */,
+				266F9805266946750012619B /* WarnNode.swift in Sources */,
 				265A00AB25ED49EA00F479FA /* FontName.swift in Sources */,
 				2695156026151B2F0020DD11 /* LiteFigletView.swift in Sources */,
 				2649527E260267DA0045BC21 /* Environment.swift in Sources */,
@@ -1338,6 +1361,7 @@
 				26EA3017265813DC004A78F2 /* TerminalHelpPadding.swift in Sources */,
 				26782B4026177AC800BA9C4E /* FadeOut.swift in Sources */,
 				269765092624A2C100775D71 /* ID.swift in Sources */,
+				266F97FF2669452D0012619B /* FinishNode.swift in Sources */,
 				26E090FA2651BE66002E404D /* VintageTheme.swift in Sources */,
 				26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewTheme.swift in Sources */,
