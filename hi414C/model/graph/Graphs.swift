@@ -122,21 +122,21 @@ class Graphs {
             AL("PASSWORD") {
                 R("TRY?") {
                     AL("Y") {
-                        R("1/3 *****") {
+                        R("*****") {
                             AL("ELENA") {
                                 DEAD() // TODO
                             }
                             ALL("*") {
-                                R("WRONG NEXT?") {
+                                R("WRONG. NEXT?") {
                                     AL("Y") {
-                                        R("2/3 *****") {
+                                        R("*****") {
                                             AL("ELENA") {
                                                 DEAD() // TODO
                                             }
                                             ALL("*") {
-                                                R("WRONG NEXT?") {
+                                                R("WRONG. NEXT?") {
                                                     AL("Y") {
-                                                        R("3/3 *****") {
+                                                        R("*****") {
                                                             AL("ELENA") {
                                                                 DEAD() // TODO
                                                             }
