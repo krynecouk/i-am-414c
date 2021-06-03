@@ -76,9 +76,11 @@ class TestViewModel: ObservableObject {
         }
     }
     
-    func difficulty(_ difficulty: TestDifficulty) {
+    func difficulty(_ difficulty: TestDifficulty, store: Bool = true) {
         self.difficulty = difficulty
-        TestDifficultyDao.store(self.difficulty)
+        if store {
+            TestDifficultyDao.store(self.difficulty)
+        }
     }
     
     func storeLevel() {
@@ -91,6 +93,10 @@ class TestViewModel: ObservableObject {
     
     func restoreLevel() {
         self.level = TestDao.find() ?? 0
+    }
+    
+    func restoreDifficulty() {
+        self.difficulty = TestDifficultyDao.find() ?? .easy
     }
     
     func level(reset: Bool = false, up: Int = 0, down: Int = 0) {

@@ -43,12 +43,14 @@ class ASSCIITestNode414C: ASCIITestNode {
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.testVM.level(reset: true)
+        toolkit.testVM.difficulty(.easy, store: false)
         super.onEnter(ctx: ctx, toolkit: toolkit)
         toolkit.themeVM.theme = PanicTheme(font: toolkit.themeVM.font, color: toolkit.themeVM.color, withTestStyle: true)
     }
     
     override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.testVM.restoreLevel()
+        toolkit.testVM.restoreDifficulty()
         super.onExit(ctx: ctx, toolkit: toolkit)
         toolkit.themeVM.reset()
     }
