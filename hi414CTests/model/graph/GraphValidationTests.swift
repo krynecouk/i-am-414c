@@ -13,7 +13,11 @@ class GraphValidationTests: XCTestCase {
     
     var visited: Set<String> = []
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        visited = []
+    }
+    
+    override func tearDown() {
         visited = []
     }
 
@@ -24,7 +28,7 @@ class GraphValidationTests: XCTestCase {
     func walkGraph(node: Node) {
         for edge in node.edges {
             print(edge.id)
-            //XCTAssertFalse(visited.contains(edge.id), "Graph already contains edge with id \"\(edge.id)\"")
+            XCTAssertFalse(visited.contains(edge.id), "Graph already contains edge with id \"\(edge.id)\"")
             visited.insert(edge.id)
             walkGraph(node: edge.target)
         }
