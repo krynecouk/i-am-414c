@@ -24,39 +24,39 @@ struct TerminalTestSelect: View {
             }
         }
         Group {
-            if testVM.radix == .hex {
+            //if testVM.radix == .hex {
                 HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
                     helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
                 }
-            }
+            //}
         }
         Group {
-            if testVM.level >= 3 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //if testVM.level >= 3 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<ADD>("+", .ADD)
                 HelpSignButton<SUB>("-", .SUB)
-            }
-            if testVM.level >= 4 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //}
+            //if testVM.level >= 4 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<DIV>("/", .DIV)
                 HelpSignButton<MUL>("*", .MUL)
-            }
+            //}
         }
         Group{
-            if testVM.level >= 5 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //if testVM.level >= 5 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<AND>("&", .AND)
-            }
-            if testVM.level >= 6 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //}
+            //if testVM.level >= 6 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<OR>("|", .OR)
-            }
-            if testVM.level >= 7 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //}
+            //if testVM.level >= 7 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<XOR>("^", .XOR)
-            }
-            if testVM.level >= 8 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //}
+            //if testVM.level >= 8 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<NOT>("~", .NOT)
-            }
-            if testVM.level >= 9 || testVM.difficulty == .medium || testVM.difficulty == .hard {
+            //}
+            //if testVM.level >= 9 || testVM.difficulty == .medium || testVM.difficulty == .hard {
                 HelpSignButton<SHL>("<<", .SHL)
                 HelpSignButton<SHR>(">>", .SHR)
-            }
+            //}
         }
     }
 }

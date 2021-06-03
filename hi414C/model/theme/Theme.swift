@@ -177,7 +177,7 @@ class Theme: Themable {
                         ),
                         animations: [
                             .print(dt: 0.3, delay: 0, animation: .linear),
-                            .shake(dt: 0.8, force: 1, type: .wave, animation: .none),
+                            //.shake(dt: 0.8, force: 1, type: .wave, animation: .none),
                             .bloom(speed: 0.3, color: color.primary.value)
                         ]
                     )

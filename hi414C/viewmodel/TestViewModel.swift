@@ -10,7 +10,7 @@ import SwiftUI
 class TestViewModel: ObservableObject {
     typealias ET = EquationType
     
-    @Published private(set) var result: TestResult = .right(.NUL)
+    @Published private(set) var result: TestResult?
     @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
     @Published private(set) var difficulty: TestDifficulty = TestDifficultyDao.find() ?? .easy
     
@@ -30,13 +30,12 @@ class TestViewModel: ObservableObject {
         RadixDao.store(self.radix)
     }
     
-    func solve(with value: String) -> TestResult {
+    func solve(with value: String) -> TestResult? {
         if let test = self.test {
             self.result = test.equation.result == UInt8(value) ? .right(test.symbol) : .wrong("wrong result \(value)")
         } else {
             self.result = .wrong("No test was provided")
         }
-        print("test solved with \(self.result)")
         return self.result
     }
     

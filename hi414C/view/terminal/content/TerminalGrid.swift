@@ -64,7 +64,7 @@ struct TerminalGrid: View {
                                     self.solved = []
                                 }
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                     if !self.printedMsg.contains(item.id) {
                                         let _ = withAnimation(.linear.speed(0.3)) {
                                             self.printedMsg.insert(item.id)
