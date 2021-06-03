@@ -94,20 +94,14 @@ struct TerminalSettingsSelect: View {
                     Color.clear
                 }
                 HelpWarnButton("ok") {
-                    testVM.level(reset: true)
-                    testVM.radix(of: .bin)
+                    testVM.reset()
                     asciiVM.reset()
-                    chatVM.clear()
-                    helpVM.current = .learn
-                    helpVM.settings = .font
-                    helpVM.resetToZero()
-                    themeVM.default()
-                    uiVM.current = .test
-                    graphVM.setGraph(.BIN)
+                    chatVM.reset()
+                    helpVM.reset()
+                    themeVM.reset()
+                    graphVM.reset()
                     withAnimation {
-                        uiVM.isHelp = false
-                        uiVM.video = .none // TODO intro
-                        uiVM.isIntro = true
+                        uiVM.reset()
                     }
                 }
                 .padding(.bottom, 20)

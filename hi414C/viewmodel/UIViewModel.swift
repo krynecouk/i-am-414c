@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class UIViewModel: ObservableObject {
+class UIViewModel: ObservableObject, Resetable {
     @Published var isIntro = true
     @Published var isFinishedGame = false
     @Published var video: VideoType? = .none
@@ -22,6 +22,14 @@ class UIViewModel: ObservableObject {
     
     func isWideScreen() -> Bool {
         UIScreen.main.bounds.width > 500
+    }
+    
+    func reset() {
+        self.current = .test
+        self.isHelp = false
+        self.video = .none
+        self.isIntro = true
+        self.detail = (false, false)
     }
 }
 

@@ -51,7 +51,7 @@ class ThemeNode: ASCIITestNode {
     
     override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
         super.onExit(ctx: ctx, toolkit: toolkit)
-        toolkit.themeVM.reset()
+        toolkit.themeVM.restore()
     }
 }
 
@@ -76,7 +76,7 @@ class PanicNode: ASCIITestNode {
     
     override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
         super.onExit(ctx: ctx, toolkit: toolkit)
-        toolkit.themeVM.reset()
+        toolkit.themeVM.restore()
     }
 }
 

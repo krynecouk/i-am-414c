@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class HelpViewModel: ObservableObject {
+class HelpViewModel: ObservableObject, Resetable {
     @Published var current: HelpContent = .learn
     @Published var settings: HelpSettingsType = .font
     @Published private(set) var equation: Equation = ID() => 0
@@ -69,6 +69,13 @@ class HelpViewModel: ObservableObject {
         } else {
             return equation.builder
         }
+    }
+    
+    func reset() {
+        self.current = .learn
+        self.radix(of: .bin)
+        self.settings = .font
+        self.resetToZero()
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class TestViewModel: ObservableObject {
+class TestViewModel: ObservableObject, Resetable {
     typealias ET = EquationType
     
     @Published private(set) var result: TestResult?
@@ -108,6 +108,12 @@ class TestViewModel: ObservableObject {
             print("leveling up to \(self.level)")
         }
         print("TEST LEVEL: ", self.level)
+    }
+    
+    func reset() {
+        self.level(reset: true)
+        self.radix(of: .bin)
+        self.difficulty(.easy)
     }
 }
 

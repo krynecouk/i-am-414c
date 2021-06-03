@@ -8,7 +8,7 @@
 import SwiftUI
 import OrderedCollections
 
-class GraphViewModel: ObservableObject {
+class GraphViewModel: ObservableObject, Resetable {
     @Published private(set) var result: GraphTraverseResult = .ok
     @Published private(set) var root: Node = Graphs.BIN
     
@@ -49,6 +49,10 @@ class GraphViewModel: ObservableObject {
         self.current = graph
         self.start()
         GraphDao.store(type)
+    }
+    
+    func reset() {
+        self.setGraph(.BIN)
     }
     
     private func start() {

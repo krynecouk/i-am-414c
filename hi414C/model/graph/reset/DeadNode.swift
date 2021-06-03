@@ -17,17 +17,14 @@ class DeadNode: Node {
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        toolkit.testVM.radix(of: .bin)
-        toolkit.helpVM.radix(of: .bin)
+        toolkit.testVM.reset()
         toolkit.asciiVM.reset()
-        toolkit.graphVM?.setGraph(.BIN)
+        toolkit.chatVM.reset()
+        toolkit.helpVM.reset()
         toolkit.themeVM.reset()
-        toolkit.chatVM.clear()
-        
+        toolkit.graphVM?.reset()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            toolkit.uiVM.isHelp = false
-            toolkit.uiVM.video = .none // TODO intro
-            toolkit.uiVM.isIntro = true
+            toolkit.uiVM.reset()
         }
     }
 }

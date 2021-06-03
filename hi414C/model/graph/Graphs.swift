@@ -127,14 +127,14 @@ class Graphs {
                                 DEAD() // TODO
                             }
                             ALL("*") {
-                                R("WRONG. NEXT?") {
+                                R("BAD. NEXT?") {
                                     AL("Y") {
                                         R("*****") {
                                             AL("ELENA") {
                                                 DEAD() // TODO
                                             }
                                             ALL("*") {
-                                                R("WRONG. NEXT?") {
+                                                R("BAD. NEXT?") {
                                                     AL("Y") {
                                                         R("*****") {
                                                             AL("ELENA") {

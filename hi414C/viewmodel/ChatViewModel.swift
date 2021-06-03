@@ -10,7 +10,7 @@ import OrderedCollections
 
 typealias Conversation = (message: Message?, replies: OrderedSet<String>)
 
-class ChatViewModel: ObservableObject {
+class ChatViewModel: ObservableObject, Resetable {
     private(set) var messages: [Message] = []
     private(set) var current: Conversation = (.none, [])
     
@@ -20,7 +20,7 @@ class ChatViewModel: ObservableObject {
         }
     }
     
-    func clear() {
+    func reset() {
         self.messages = []
     }
 
