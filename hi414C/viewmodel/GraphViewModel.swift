@@ -12,7 +12,10 @@ class GraphViewModel: ObservableObject, Resetable {
     @Published private(set) var result: GraphTraverseResult = .ok
     @Published private(set) var root: Node = Graphs.BIN
     
+    typealias EdgeId = String
+    
     var current: Node = Graphs.BIN
+    var visited: Set<EdgeId> = []
     let toolkit: GraphToolkit
     
     init(graph: GraphType = .BIN, toolkit: GraphToolkit) {
@@ -76,22 +79,32 @@ class GraphViewModel: ObservableObject, Resetable {
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
         var current = getPaths(from: current, precondition: precondition)
-        let root = Set(getPaths(from: root, precondition: precondition))
-        current.formUnion(root)
+        let root = getPaths(from: root, precondition: precondition, visitedLast: true)
+        current.append(contentsOf: root)
         return current
     }
     
-    private func getPaths(from node: Node, precondition: (String) -> Bool) -> OrderedSet<String> {
+    private func getPaths(from node: Node, precondition: (String) -> Bool, visitedLast: Bool = false) -> OrderedSet<String> {
         var paths: OrderedSet<String> = []
+        var visited: OrderedSet<String> = []
         for edge in node.edges {
             if let asciiEdge = edge as? ASCIITestEdge {
                 asciiEdge.variants.forEach { variant in
                     if precondition(variant) {
-                        paths.append(variant)
+                        if visitedLast {
+                            if self.visited.contains(asciiEdge.id) {
+                                visited.append(variant)
+                            } else {
+                                paths.append(variant)
+                            }
+                        } else {
+                            paths.append(variant)
+                        }
                     }
                 }
             }
         }
+        paths.append(contentsOf: visited)
         return paths
     }
 }

@@ -26,7 +26,8 @@ class ASCIITestEdge: Edge {
     }
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
-        target
+        toolkit.graphVM?.visited.insert(self.id)
+        return target
     }
 }
 

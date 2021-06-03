@@ -37,11 +37,7 @@ class Graphs {
                 }
             }
             AL("414C") {
-                R("I") {
-                    AL("414C?") {
-                        R("YES")
-                    }
-                }
+                R("I")
             }
             AL("COIL", ["COILS"]) {
                 R("BROKEN") {
