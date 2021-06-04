@@ -8,6 +8,7 @@
 typealias R = ASCIITestNode
 typealias AL = ASCIITestEdge
 typealias ALL = TraverseAllEdge
+typealias IF = TraverseIfEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
 typealias FINISH = FinishNode
@@ -23,7 +24,7 @@ class Graphs {
             AL("HI", ["HELLO"]) {
                 R("HI")
             }
-            AL("I", ["ME", "NAME", "WHO AM I", "WHO AM I?"]) {
+            AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
                 R("AL")
             }
             AL("AL") {
@@ -57,7 +58,7 @@ class Graphs {
                     FIX()
                 }
             }
-            AL("HISS", ["NOISE"]) {
+            AL("HISS", ["NOISE", "NOISES"]) {
                 R("HOSE") {
                     FIX()
                 }
@@ -67,8 +68,135 @@ class Graphs {
                     FIX(["CLEAR", "INVALIDATE", "REFRESH"])
                 }
             }
+            AL("CAUSE", ["CAUSE?"]) {
+                R("OF...?") {
+                    AL("INJURY", ["INJURIES", "DAMAGE", "DAMAGES"]) {
+                        R("ACCIDENT")
+                    }
+                }
+            }
+            AL("ACCIDENT") {
+                R("MEMORY")
+            }
+            BINCLUE
+            /*
+             - clue (clueless)
+             - cool?
+             - heal
+             - hole
+             - ill
+             - soule?
+             - aches (boli)
+             - ache (bolest)
+               --------------
+             - upgrade
+             - fix
+             - repair
+             - wake
+             ----------------
+             - choose
+             - loose
+             - holy
+             - ash(es)
+             - echo
+             - hill
+             - hoise (zvednout)
+             - hell
+             - lousy (mizerny)
+             - noise
+             - silly
+             - yell
+             - calculus
+             - cheese
+             - ice
+             - us
+             - aha
+             - all
+             - lie
+             - sea
+             - say
+             - shy
+             - use (usualy)
+             - also
+             - case
+             - else
+             - eye
+             - hall
+             - sail
+             - see (sees)
+             - seel (zavrit oci)
+             - seal
+             - sell
+             - soil (answer: sucha?)
+             - slay
+             - slee (spat)
+             - chaos
+             - chill
+             - sally
+             - scall (strasidlo)
+             - accuse
+             - casual
+             - school
+             - claches (kleste)
+             - year
+             - leak
+
+
+             
+             
+             */
+            
+            
+            AL("LIE") {
+                R("")
+            }
             FIX()
             DIE()
+        }
+    
+    static let BINCLUE =
+        AL("CLUE", ["BINARY", "BIN"]) {
+            R("0001=2^0") {
+                AL("2", ["20"]) {
+                    R("WRONG")
+                }
+                IF("[0-255]", if: { Int($0.input) != nil && $0.input != "1" }) {
+                    R("WRONG")
+                }
+                AL("1") {
+                    R("0010=2^1") {
+                        AL("1", ["21"]) {
+                            R("WRONG")
+                        }
+                        IF("[0-255]", if: { Int($0.input) != nil && $0.input != "2" }) {
+                            R("WRONG")
+                        }
+                        AL("2") {
+                            R("0100=2^2") {
+                                AL("2", ["22"]) {
+                                    R("WRONG")
+                                }
+                                IF("[0-255]", if: { Int($0.input) != nil && $0.input != "4"}) {
+                                    R("WRONG")
+                                }
+                                AL("4") {
+                                    R("1000=2^3") {
+                                        AL("6", ["23"]) {
+                                            R("WRONG")
+                                        }
+                                        IF("[0-255]", if: { Int($0.input) != nil && $0.input != "8"}) {
+                                            R("WRONG")
+                                        }
+                                        AL("8") {
+                                            R("GREAT!")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     
     static let HEX =
@@ -175,7 +303,7 @@ class Graphs {
     }
     
     static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
-        AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK"] + variants) {
+        AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP"] + variants) {
             R("Y/N?") {
                 AL("Y") {
                     WARN("SURE?") {

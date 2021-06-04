@@ -88,6 +88,7 @@ struct TerminalGrid: View {
                         TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty)
                             .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
                             .onAppear {
+                                print("SOLUTION: \(test.equation.result)")
                                 if uiVM.current != .test {
                                     self.grid = .adaptive
                                     uiVM.current = .test
