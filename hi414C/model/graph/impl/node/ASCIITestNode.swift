@@ -9,19 +9,19 @@ import Foundation
 
 class ASCIITestNode: Node {
     let id: String
-    let msg: String
+    var name: String
     let edges: [Edge]
     
-    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+    init(_ name: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         self.id = UUID().uuidString
-        self.msg = msg
+        self.name = name
         self.edges = edges()
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.chatVM.add(message: Message(from: .al, text: ctx.input))
         
-        let symbols = msg.map { char in
+        let symbols = name.map { char in
             ASCIISymbol.from(String(char))
         }
         
@@ -35,7 +35,7 @@ class ASCIITestNode: Node {
     }
     
     func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
-        toolkit.chatVM.add(message: Message(from: .robot, text: msg))
+        toolkit.chatVM.add(message: Message(from: .robot, text: name))
         toolkit.testVM.storeLevel()
     }
 }

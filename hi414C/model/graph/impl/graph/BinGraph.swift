@@ -86,18 +86,21 @@ class BinGraph {
             AL(["ACHES", "ACHE", "PAIN", "PAIN?"]) {
                 R("NO")
             }
-            
+            AL("CHOOSE") {
+                R("WHAT?") {
+                    FIX()
+                    DIE()
+                }
+            }
+            AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
+                R("WHAT?") {
+                    ALL {
+                        ECHO()
+                    }
+                }
+            }
             /*
-             
-             - upgrade
-             - fix
-             - repair
-             - wake
-             ----------------
-             - choose
-             - loose
-             - holy
-             - ash(es)
+
              - echo
              - hill
              - hoise (zvednout)
@@ -203,8 +206,8 @@ class BinGraph {
             }
         }
     
-    static func FIX(text: String = "FIX", _ variants: [String] = []) -> Edge {
-        AL([text, "FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {
+    static func FIX(_ names: [String] = []) -> Edge {
+        AL(["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + names) {
             R("Y/N?") {
                 AL("Y") {
                     UPGRADE()
@@ -216,8 +219,8 @@ class BinGraph {
         }
     }
     
-    static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
-        AL([text, "DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE"] + variants) {
+    static func DIE(_ names: [String] = []) -> Edge {
+        AL(["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE"] + names) {
             R("Y/N?") {
                 AL("Y") {
                     WARN("SURE?") {

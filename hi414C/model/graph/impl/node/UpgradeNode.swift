@@ -8,7 +8,8 @@
 import Foundation
 
 class UpgradeNode: Node {
-    let id: String = UUID().uuidString
+    let id = UUID().uuidString
+    let name = "upgrade"
     let edges: [Edge] = []
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {

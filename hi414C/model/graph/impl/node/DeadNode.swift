@@ -8,7 +8,8 @@
 import SwiftUI
 
 class DeadNode: Node {
-    let id: String = UUID().uuidString
+    let id = UUID().uuidString
+    let name = "dead"
     let edges: [Edge] = []
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {

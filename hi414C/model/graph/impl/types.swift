@@ -12,6 +12,7 @@ typealias FINISH = FinishNode
 typealias PANIC414C = PanicNode414C
 typealias PANIC = PanicNode
 typealias WARN = WarnNode
+typealias ECHO = EchoNode
 
 typealias AL = ASCIITestEdge
 typealias ALL = TraverseAllEdge

@@ -8,7 +8,8 @@
 import SwiftUI
 
 class FinishNode: Node {
-    let id: String = UUID().uuidString
+    let id = UUID().uuidString
+    let name = "finish"
     let edges: [Edge] = []
     let end: VideoType
     
