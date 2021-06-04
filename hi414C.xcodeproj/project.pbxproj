@@ -202,6 +202,7 @@
 		26F00B5E266AB800008DACE5 /* BinGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B5D266AB800008DACE5 /* BinGraph.swift */; };
 		26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B5F266AB92A008DACE5 /* HexGraph.swift */; };
 		26F00B62266ABD1C008DACE5 /* EchoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B61266ABD1C008DACE5 /* EchoNode.swift */; };
+		26F00B64266AC0ED008DACE5 /* YellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B63266AC0ED008DACE5 /* YellNode.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -415,6 +416,7 @@
 		26F00B5D266AB800008DACE5 /* BinGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinGraph.swift; sourceTree = "<group>"; };
 		26F00B5F266AB92A008DACE5 /* HexGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexGraph.swift; sourceTree = "<group>"; };
 		26F00B61266ABD1C008DACE5 /* EchoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoNode.swift; sourceTree = "<group>"; };
+		26F00B63266AC0ED008DACE5 /* YellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellNode.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 				266F9804266946750012619B /* WarnNode.swift */,
 				266F9806266946860012619B /* PanicNode.swift */,
 				26F00B61266ABD1C008DACE5 /* EchoNode.swift */,
+				26F00B63266AC0ED008DACE5 /* YellNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -1396,6 +1399,7 @@
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
 				26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */,
 				2697659C262DB14E00775D71 /* TerminalGrid.swift in Sources */,
+				26F00B64266AC0ED008DACE5 /* YellNode.swift in Sources */,
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */,
 				26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */,

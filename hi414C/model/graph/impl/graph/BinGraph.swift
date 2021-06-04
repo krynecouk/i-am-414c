@@ -35,26 +35,31 @@ class BinGraph {
                         R("BADLY")
                     }
                     FIX()
+                    DIE()
                 }
             }
             AL(["HOSE", "HOSES", "HOSE?", "PIPE", "PIPES"]) {
                 R("BURSTED") {
                     FIX()
+                    DIE()
                 }
             }
             AL("OIL") {
                 R("LEAKING") {
                     FIX()
+                    DIE()
                 }
             }
             AL(["HISS", "NOISE", "NOISES"]) {
                 R("HOSE") {
                     FIX()
+                    DIE()
                 }
             }
             AL(["CACHE", "MEMORY", "PROCESSOR"]) {
                 R("CORRUPTED") {
                     FIX(["CLEAR", "INVALIDATE", "REFRESH"])
+                    DIE()
                 }
             }
             AL(["CAUSE", "CAUSE?"]) {
@@ -99,14 +104,48 @@ class BinGraph {
                     }
                 }
             }
+            AL(["YELL", "SHOUT", "LOUD", "LOUDLY"]) {
+                R("WHAT?") {
+                    ALL {
+                        YELL()
+                    }
+                }
+            }
+            AL(["SOIL", "LAND", "HILL"]) {
+                R("DRY")
+            }
+            AL(["HELL", "HELL?", "HEAVEN", "HEAVEN?"]) {
+                R("NO")
+            }
+            AL("SEE") {
+                R("WHAT?") {
+                    AL(["LAND", "STARS", "TREE", "ME", "YOU"]) {
+                        R("CAN'T") {
+                            AL(["WHY", "WHY?"]) {
+                                R("MALFUNCTION") {
+                                    FIX()
+                                    DIE()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            AL(["LEAK", "LEAKING"]) {
+                R("YES") {
+                    AL(["WHAT", "WHAT?"]) {
+                        R("OIL") {
+                            FIX()
+                            DIE()
+                        }
+                    }
+                }
+            }
             /*
 
-             - echo
-             - hill
-             - hoise (zvednout)
              - hell
              - lousy (mizerny)
-             - noise
+
              - silly
              - yell
              - calculus
@@ -115,9 +154,7 @@ class BinGraph {
              - us
              - aha
              - all
-             - lie
-             - sea
-             - say
+
              - shy
              - use (usualy)
              - also

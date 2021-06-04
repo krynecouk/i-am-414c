@@ -73,7 +73,7 @@ struct ASCIIKeyboardView: View {
                     ASCIIKeyboardKey(.slash),
                     ASCIIKeyboardKey(.colon),
                     ASCIIKeyboardKey(.plus),
-                    ASCIIKeyboardKey(.leftParen),
+                    ASCIIKeyboardKey(.singleQuote),
                     ASCIIKeyboardKey(.rightParen),
                     ASCIIKeyboardKey(.caret),
                     ASCIIKeyboardKey(.exclamationMark),
