@@ -199,6 +199,9 @@
 		26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */; };
 		26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303E26669120004A78F2 /* PanicTheme.swift */; };
 		26F00B59266AAF03008DACE5 /* HelpEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B58266AAF03008DACE5 /* HelpEdge.swift */; };
+		26F00B5C266AB7D8008DACE5 /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B5B266AB7D8008DACE5 /* types.swift */; };
+		26F00B5E266AB800008DACE5 /* BinGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B5D266AB800008DACE5 /* BinGraph.swift */; };
+		26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B5F266AB92A008DACE5 /* HexGraph.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
@@ -409,6 +412,9 @@
 		26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDifficultyDao.swift; sourceTree = "<group>"; };
 		26EA303E26669120004A78F2 /* PanicTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicTheme.swift; sourceTree = "<group>"; };
 		26F00B58266AAF03008DACE5 /* HelpEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEdge.swift; sourceTree = "<group>"; };
+		26F00B5B266AB7D8008DACE5 /* types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
+		26F00B5D266AB800008DACE5 /* BinGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinGraph.swift; sourceTree = "<group>"; };
+		26F00B5F266AB92A008DACE5 /* HexGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexGraph.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -641,6 +647,8 @@
 			children = (
 				266F980C266A86580012619B /* node */,
 				266F980D266A865F0012619B /* edge */,
+				26F00B5A266AB7A4008DACE5 /* graph */,
+				26F00B5B266AB7D8008DACE5 /* types.swift */,
 			);
 			path = impl;
 			sourceTree = "<group>";
@@ -1130,6 +1138,15 @@
 			path = regular;
 			sourceTree = "<group>";
 		};
+		26F00B5A266AB7A4008DACE5 /* graph */ = {
+			isa = PBXGroup;
+			children = (
+				26F00B5D266AB800008DACE5 /* BinGraph.swift */,
+				26F00B5F266AB92A008DACE5 /* HexGraph.swift */,
+			);
+			path = graph;
+			sourceTree = "<group>";
+		};
 		26F7A6BF25FA4FCE00F04156 /* hi414CTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1316,6 +1333,7 @@
 				26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */,
 				26E090F42651B9A5002E404D /* FooTheme.swift in Sources */,
 				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
+				26F00B5E266AB800008DACE5 /* BinGraph.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */,
 				26EA2FEB265668DD004A78F2 /* FontDao.swift in Sources */,
 				26E090DE264ED610002E404D /* GreenTheme.swift in Sources */,
@@ -1369,6 +1387,7 @@
 				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,
 				26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
+				26F00B5C266AB7D8008DACE5 /* types.swift in Sources */,
 				26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */,
 				263612372632100800341B60 /* Set.swift in Sources */,
 				26EA2FFE2656C772004A78F2 /* TerminalMessagesSelect.swift in Sources */,
@@ -1380,6 +1399,7 @@
 				2697659C262DB14E00775D71 /* TerminalGrid.swift in Sources */,
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */,
+				26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */,
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
 				26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */,
 				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
