@@ -6,15 +6,17 @@
 //
 
 typealias R = ASCIITestNode
-typealias AL = ASCIITestEdge
-typealias ALL = TraverseAllEdge
-typealias IF = TraverseIfEdge
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
 typealias FINISH = FinishNode
 typealias PANIC414C = PanicNode414C
 typealias PANIC = PanicNode
 typealias WARN = WarnNode
+
+typealias AL = ASCIITestEdge
+typealias ALL = TraverseAllEdge
+typealias IF = TraverseIfEdge
+typealias HELP = HelpEdge
 
 class Graphs {
     private init() {}
@@ -79,6 +81,21 @@ class Graphs {
                 R("MEMORY")
             }
             BINCLUE
+            HELP(["LEARN", "HELP", "TEACH"], .learn) {
+                R("OK")
+            }
+            HELP(["CHAT", "SPEAK"], .chat) {
+                R("OK")
+            }
+            HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
+                R("OK")
+            }
+            HELP(["THEMES", "COLOR", "COLORS"], .settings, .theme) {
+                R("OK")
+            }
+            HELP("DIFFICULTY", .settings, .difficulty) {
+                R("OK")
+            }
             /*
              - clue (clueless)
              - cool?
@@ -303,7 +320,7 @@ class Graphs {
     }
     
     static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
-        AL([text, "DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP"] + variants) {
+        AL([text, "DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE"] + variants) {
             R("Y/N?") {
                 AL("Y") {
                     WARN("SURE?") {

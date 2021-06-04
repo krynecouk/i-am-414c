@@ -50,5 +50,5 @@ class SegueViewModel: ObservableObject {
 }
 
 enum SegueType {
-    case keyboard, help, chat, settings
+    case keyboard, learn, chat, settings
 }

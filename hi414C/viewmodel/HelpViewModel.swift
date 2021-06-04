@@ -8,7 +8,7 @@
 import SwiftUI
 
 class HelpViewModel: ObservableObject, Resetable {
-    @Published var current: HelpContent = .learn
+    @Published var current: HelpType = .learn
     @Published var settings: HelpSettingsType = .font
     @Published private(set) var equation: Equation = ID() => 0
     @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
@@ -79,10 +79,21 @@ class HelpViewModel: ObservableObject, Resetable {
     }
 }
 
-enum HelpContent {
+enum HelpType {
     case learn, chat, settings
+    
+    func toSegueType() -> SegueType {
+        switch self {
+        case .learn:
+            return SegueType.learn
+        case .chat:
+            return SegueType.chat
+        case .settings:
+            return SegueType.settings
+        }
+    }
 }
 
 enum HelpSettingsType {
-    case font, theme, reset, delete
+    case font, theme, difficulty, delete
 }

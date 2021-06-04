@@ -21,7 +21,7 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton("Learn", .help) {
+                    SegueButton("Learn", .learn) {
                         helpVM.current = .learn
                     }
                     SegueButton("Chat", .chat) {
@@ -111,7 +111,7 @@ struct TerminalHelpLine: View {
     func getCurrentSegue() -> SegueType {
         switch helpVM.current {
         case .learn:
-            return .help
+            return .learn
         case .chat:
             return .chat
         case .settings:

@@ -17,7 +17,7 @@ struct TerminalHelpSelect: View {
     var body: some View {
         GeometryReader { metrics in
             Grid(columns: gridType.rawValue(), spacing: 10, padding: 15) {
-                if segueVM.opened == .help {
+                if segueVM.opened == .learn {
                     TerminalTestSelect()
                     .onAppear {
                         if self.gridType != .adaptive {

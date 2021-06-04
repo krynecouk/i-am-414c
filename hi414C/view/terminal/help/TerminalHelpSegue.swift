@@ -36,7 +36,7 @@ struct TerminalHelpSegue: View {
     
     func getSegueH(_ opened: SegueType?) -> CGFloat {
         switch opened {
-        case .help:
+        case .learn:
             return SegueViewModel.header.height + segueVM.help.height
         case .chat:
             return SegueViewModel.header.height + segueVM.chat.height
