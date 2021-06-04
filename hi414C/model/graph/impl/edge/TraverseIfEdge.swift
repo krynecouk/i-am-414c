@@ -10,7 +10,7 @@ class TraverseIfEdge: ASCIITestEdge {
     
     init(_ precondition: @escaping (GraphContext) -> Bool, _ content: () -> Node) {
         self.precondition = precondition
-        super.init(content)
+        super.init([], content)
     }
     
     override func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {

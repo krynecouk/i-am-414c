@@ -88,7 +88,6 @@
 		2678D982260E818700DDB40F /* KeyboardSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D981260E818700DDB40F /* KeyboardSide.swift */; };
 		2678D986260E81BD00DDB40F /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D985260E81BD00DDB40F /* Keyboard.swift */; };
 		267A0D4F260C823400844927 /* ASCIIArtNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D4E260C823400844927 /* ASCIIArtNode.swift */; };
-		267A0D55260C823E00844927 /* ASCIIArtEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D54260C823E00844927 /* ASCIIArtEdge.swift */; };
 		267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D5C260C847400844927 /* ASCIIPrintable.swift */; };
 		267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D60260C84E300844927 /* ASCIIArtType.swift */; };
 		267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D64260C852000844927 /* ASCIIArtCollection.swift */; };
@@ -297,7 +296,6 @@
 		2678D981260E818700DDB40F /* KeyboardSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSide.swift; sourceTree = "<group>"; };
 		2678D985260E81BD00DDB40F /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		267A0D4E260C823400844927 /* ASCIIArtNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtNode.swift; sourceTree = "<group>"; };
-		267A0D54260C823E00844927 /* ASCIIArtEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtEdge.swift; sourceTree = "<group>"; };
 		267A0D5C260C847400844927 /* ASCIIPrintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIPrintable.swift; sourceTree = "<group>"; };
 		267A0D60260C84E300844927 /* ASCIIArtType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtType.swift; sourceTree = "<group>"; };
 		267A0D64260C852000844927 /* ASCIIArtCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtCollection.swift; sourceTree = "<group>"; };
@@ -664,7 +662,6 @@
 			isa = PBXGroup;
 			children = (
 				26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */,
-				267A0D54260C823E00844927 /* ASCIIArtEdge.swift */,
 				266F980E266A86D00012619B /* TraverseAllEdge.swift */,
 				266F9810266A86EC0012619B /* TraverseIfEdge.swift */,
 			);
@@ -1398,7 +1395,6 @@
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26EA2FE7265639B3004A78F2 /* IntroTheme.swift in Sources */,
 				26500159260F3C6200414E89 /* Keyboards.swift in Sources */,
-				267A0D55260C823E00844927 /* ASCIIArtEdge.swift in Sources */,
 				2665C9C7263C32B100CE724F /* TerminalMessage.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
 				26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */,
