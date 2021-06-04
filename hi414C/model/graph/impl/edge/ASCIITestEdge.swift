@@ -30,22 +30,3 @@ class ASCIITestEdge: Edge {
         return target
     }
 }
-
-class TraverseAllEdge: TraverseIfEdge {
-    init(_ msg: String, _ content: () -> Node) {
-        super.init(msg, if: { _ in true }, content)
-    }
-}
-
-class TraverseIfEdge: ASCIITestEdge {
-    let precondition: (GraphContext) -> Bool
-    
-    init(_ msg: String, if precondition: @escaping (GraphContext) -> Bool, _ content: () -> Node) {
-        self.precondition = precondition
-        super.init(msg, [], content)
-    }
-    
-    override func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        precondition(ctx)
-    }
-}

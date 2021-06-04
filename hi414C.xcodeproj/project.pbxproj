@@ -71,6 +71,8 @@
 		266F9805266946750012619B /* WarnNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9804266946750012619B /* WarnNode.swift */; };
 		266F9807266946860012619B /* PanicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9806266946860012619B /* PanicNode.swift */; };
 		266F980B26694F760012619B /* GraphValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F980A26694F760012619B /* GraphValidationTests.swift */; };
+		266F980F266A86D00012619B /* TraverseAllEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F980E266A86D00012619B /* TraverseAllEdge.swift */; };
+		266F9811266A86EC0012619B /* TraverseIfEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9810266A86EC0012619B /* TraverseIfEdge.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
 		267463E525DED4B300624D7C /* StaticNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E425DED4B300624D7C /* StaticNoise.swift */; };
 		267463E925DED6B000624D7C /* Curtain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E825DED6B000624D7C /* Curtain.swift */; };
@@ -278,6 +280,8 @@
 		266F9804266946750012619B /* WarnNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnNode.swift; sourceTree = "<group>"; };
 		266F9806266946860012619B /* PanicNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicNode.swift; sourceTree = "<group>"; };
 		266F980A26694F760012619B /* GraphValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphValidationTests.swift; sourceTree = "<group>"; };
+		266F980E266A86D00012619B /* TraverseAllEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraverseAllEdge.swift; sourceTree = "<group>"; };
+		266F9810266A86EC0012619B /* TraverseIfEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraverseIfEdge.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
 		267463E425DED4B300624D7C /* StaticNoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticNoise.swift; sourceTree = "<group>"; };
 		267463E825DED6B000624D7C /* Curtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curtain.swift; sourceTree = "<group>"; };
@@ -467,15 +471,6 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		2634DE4925FBC17200FE8A65 /* ascii */ = {
-			isa = PBXGroup;
-			children = (
-				267A0D4D260C821C00844927 /* art */,
-				267A0D4C260C821700844927 /* test */,
-			);
-			path = ascii;
-			sourceTree = "<group>";
-		};
 		2641EF3C25E411B00005ABF7 /* figlet */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,24 +636,39 @@
 			path = ascii;
 			sourceTree = "<group>";
 		};
-		266F9800266945570012619B /* theme */ = {
+		266F98012669461F0012619B /* impl */ = {
 			isa = PBXGroup;
 			children = (
+				266F980C266A86580012619B /* node */,
+				266F980D266A865F0012619B /* edge */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		266F980C266A86580012619B /* node */ = {
+			isa = PBXGroup;
+			children = (
+				26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */,
+				267A0D4E260C823400844927 /* ASCIIArtNode.swift */,
+				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
+				26EA301B265951B6004A78F2 /* DeadNode.swift */,
+				266F97FE2669452D0012619B /* FinishNode.swift */,
 				266F9802266946620012619B /* ThemeNode.swift */,
 				266F9804266946750012619B /* WarnNode.swift */,
 				266F9806266946860012619B /* PanicNode.swift */,
 			);
-			path = theme;
+			path = node;
 			sourceTree = "<group>";
 		};
-		266F98012669461F0012619B /* impl */ = {
+		266F980D266A865F0012619B /* edge */ = {
 			isa = PBXGroup;
 			children = (
-				2634DE4925FBC17200FE8A65 /* ascii */,
-				26EA301826595196004A78F2 /* reset */,
-				266F9800266945570012619B /* theme */,
+				26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */,
+				267A0D54260C823E00844927 /* ASCIIArtEdge.swift */,
+				266F980E266A86D00012619B /* TraverseAllEdge.swift */,
+				266F9810266A86EC0012619B /* TraverseIfEdge.swift */,
 			);
-			path = impl;
+			path = edge;
 			sourceTree = "<group>";
 		};
 		267463DB25DED18000624D7C /* view */ = {
@@ -748,24 +758,6 @@
 				2678D981260E818700DDB40F /* KeyboardSide.swift */,
 			);
 			path = keyboard;
-			sourceTree = "<group>";
-		};
-		267A0D4C260C821700844927 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */,
-				26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */,
-			);
-			path = test;
-			sourceTree = "<group>";
-		};
-		267A0D4D260C821C00844927 /* art */ = {
-			isa = PBXGroup;
-			children = (
-				267A0D4E260C823400844927 /* ASCIIArtNode.swift */,
-				267A0D54260C823E00844927 /* ASCIIArtEdge.swift */,
-			);
-			path = art;
 			sourceTree = "<group>";
 		};
 		267A0D72260C8B9B00844927 /* animal */ = {
@@ -1120,16 +1112,6 @@
 			path = button;
 			sourceTree = "<group>";
 		};
-		26EA301826595196004A78F2 /* reset */ = {
-			isa = PBXGroup;
-			children = (
-				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
-				26EA301B265951B6004A78F2 /* DeadNode.swift */,
-				266F97FE2669452D0012619B /* FinishNode.swift */,
-			);
-			path = reset;
-			sourceTree = "<group>";
-		};
 		26EA3027265E6E83004A78F2 /* ansi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,6 +1420,7 @@
 				26EA30022656C78D004A78F2 /* TerminalSettingsSelect.swift in Sources */,
 				26645DC62639B2790086F26C /* IrisTransition.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
+				266F980F266A86D00012619B /* TraverseAllEdge.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
 				266CA418264191CD001A07E0 /* MessageRow.swift in Sources */,
@@ -1455,6 +1438,7 @@
 				26EA2FE426559186004A78F2 /* IntroScreen.swift in Sources */,
 				26E090CE264AA701002E404D /* Item.swift in Sources */,
 				26E090EA2651AB69002E404D /* PastelTheme.swift in Sources */,
+				266F9811266A86EC0012619B /* TraverseIfEdge.swift in Sources */,
 				26E090E62650738C002E404D /* LightGreenTheme.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				26E091042652A693002E404D /* ForestTheme.swift in Sources */,
