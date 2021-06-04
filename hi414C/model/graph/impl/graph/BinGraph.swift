@@ -141,6 +141,19 @@ class BinGraph {
                     }
                 }
             }
+            AL(["WE", "US"]) {
+                R("AL+414C")
+            }
+            AL(["MEANING"]) {
+                R("WHAT?") {
+                    AL("414C") {
+                        PANIC("ERROR")
+                    }
+                    AL("THIS") {
+                        PANIC("ERROR")
+                    }
+                }
+            }
             /*
 
              - hell
@@ -257,7 +270,7 @@ class BinGraph {
     }
     
     static func DIE(_ names: [String] = []) -> Edge {
-        AL(["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE"] + names) {
+        AL(["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE", "TURN OFF"] + names) {
             R("Y/N?") {
                 AL("Y") {
                     WARN("SURE?") {
