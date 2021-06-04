@@ -21,10 +21,10 @@ class Graphs {
     
     static let BIN =
         R("HI") {
-            AL("HI", ["HELLO"]) {
+            AL(["HI", "HELLO"]) {
                 R("HI")
             }
-            AL("I", ["ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
+            AL(["I", "ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
                 R("AL")
             }
             AL("AL") {
@@ -40,7 +40,7 @@ class Graphs {
             AL("414C") {
                 R("I")
             }
-            AL("COIL", ["COILS"]) {
+            AL(["COIL", "COILS"]) {
                 R("BROKEN") {
                     AL("HOW") {
                         R("BADLY")
@@ -48,7 +48,7 @@ class Graphs {
                     FIX()
                 }
             }
-            AL("HOSE", ["HOSES", "HOSE?", "PIPE", "PIPES"]) {
+            AL(["HOSE", "HOSES", "HOSE?", "PIPE", "PIPES"]) {
                 R("BURSTED") {
                     FIX()
                 }
@@ -58,19 +58,19 @@ class Graphs {
                     FIX()
                 }
             }
-            AL("HISS", ["NOISE", "NOISES"]) {
+            AL(["HISS", "NOISE", "NOISES"]) {
                 R("HOSE") {
                     FIX()
                 }
             }
-            AL("CACHE", ["MEMORY", "PROCESSOR"]) {
+            AL(["CACHE", "MEMORY", "PROCESSOR"]) {
                 R("CORRUPTED") {
                     FIX(["CLEAR", "INVALIDATE", "REFRESH"])
                 }
             }
-            AL("CAUSE", ["CAUSE?"]) {
+            AL(["CAUSE", "CAUSE?"]) {
                 R("OF...?") {
-                    AL("INJURY", ["INJURIES", "DAMAGE", "DAMAGES"]) {
+                    AL(["INJURY", "INJURIES", "DAMAGE", "DAMAGES"]) {
                         R("ACCIDENT")
                     }
                 }
@@ -155,36 +155,36 @@ class Graphs {
         }
     
     static let BINCLUE =
-        AL("CLUE", ["BINARY", "BIN"]) {
+        AL(["CLUE", "BINARY", "BIN"]) {
             R("0001=2^0") {
-                AL("2", ["20"]) {
+                AL(["2", "20"]) {
                     R("WRONG")
                 }
-                IF("[0-255]", if: { Int($0.input) != nil && $0.input != "1" }) {
+                IF({ Int($0.input) != nil && $0.input != "1" }) {
                     R("WRONG")
                 }
                 AL("1") {
                     R("0010=2^1") {
-                        AL("1", ["21"]) {
+                        AL(["1", "21"]) {
                             R("WRONG")
                         }
-                        IF("[0-255]", if: { Int($0.input) != nil && $0.input != "2" }) {
+                        IF({ Int($0.input) != nil && $0.input != "2" }) {
                             R("WRONG")
                         }
                         AL("2") {
                             R("0100=2^2") {
-                                AL("2", ["22"]) {
+                                AL(["2", "22"]) {
                                     R("WRONG")
                                 }
-                                IF("[0-255]", if: { Int($0.input) != nil && $0.input != "4"}) {
+                                IF({ Int($0.input) != nil && $0.input != "4"}) {
                                     R("WRONG")
                                 }
                                 AL("4") {
                                     R("1000=2^3") {
-                                        AL("6", ["23"]) {
+                                        AL(["6", "23"]) {
                                             R("WRONG")
                                         }
-                                        IF("[0-255]", if: { Int($0.input) != nil && $0.input != "8"}) {
+                                        IF({ Int($0.input) != nil && $0.input != "8"}) {
                                             R("WRONG")
                                         }
                                         AL("8") {
@@ -204,7 +204,7 @@ class Graphs {
             AL("HI") {
                 R("HI")
             }
-            AL("I", ["I?", "ME", "ME?", "NAME"]) {
+            AL(["I", "I?", "ME", "ME?", "NAME"]) {
                 PANIC414C("AL") {
                     AL("AL?") {
                         R("YES")
@@ -216,25 +216,25 @@ class Graphs {
             }
             AL("YOU") {
                 R("I AM YOU") {
-                    AL("YOU?", ["YOU ARE ME", "YOU ARE ME?"]) {
+                    AL(["YOU?", "YOU ARE ME", "YOU ARE ME?"]) {
                         R("YES") {
-                            AL("HOW", ["HOW?"]) {
+                            AL(["HOW", "HOW?"]) {
                                 R("YOU'RE IN COMA")
                             }
                         }
                     }
                 }
             }
-            AL("COMA", ["COMA?"]) {
+            AL(["COMA", "COMA?"]) {
                 R("FROM ACCIDENT")
             }
             AL("ACCIDENT") {
                 R("CAR ACCIDENT")
             }
-            AL("WHO ARE YOU", ["WHO ARE YOU?"]) {
+            AL(["WHO ARE YOU", "WHO ARE YOU?"]) {
                 R("I AM DREAM")
             }
-            AL("WAKE", ["WAKE UP", "WAKE UP!"]) {
+            AL(["WAKE", "WAKE UP", "WAKE UP!"]) {
                 R("CAN'T, NEED PASSWORD")
             }
             PASSWORD()
@@ -249,21 +249,21 @@ class Graphs {
                         AL("ELENA") {
                             FINISH(with: .dawn)
                         }
-                        ALL("*") {
+                        ALL {
                             R("BAD. NEXT?") {
                                 AL("Y") {
                                     R("*****") {
                                         AL("ELENA") {
                                             FINISH(with: .dawn)
                                         }
-                                        ALL("*") {
+                                        ALL {
                                             R("BAD. NEXT?") {
                                                 AL("Y") {
                                                     R("*****") {
                                                         AL("ELENA") {
                                                             FINISH(with: .dawn)
                                                         }
-                                                        ALL("*") {
+                                                        ALL {
                                                             FINISH(with: .sunset)
                                                         }
                                                     }
@@ -290,7 +290,7 @@ class Graphs {
     }
     
     static func FIX(text: String = "FIX", _ variants: [String] = []) -> Edge {
-        AL(text, ["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {
+        AL([text, "FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + variants) {
             R("Y/N?") {
                 AL("Y") {
                     UPGRADE()
@@ -303,7 +303,7 @@ class Graphs {
     }
     
     static func DIE(text: String = "DIE", _ variants: [String] = []) -> Edge {
-        AL(text, ["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP"] + variants) {
+        AL([text, "DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP"] + variants) {
             R("Y/N?") {
                 AL("Y") {
                     WARN("SURE?") {

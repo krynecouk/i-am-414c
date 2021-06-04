@@ -9,20 +9,25 @@ import Foundation
 
 class ASCIITestEdge: Edge {
     let id: String
-    let msg: String
-    var variants: [String]
+    let names: [String]
     let target: Node
     
-    init(_ msg: String, _ variants: [String] = [], _ content: () -> Node) {
+    convenience init(_ content: () -> Node) {
+        self.init([], content)
+    }
+    
+    convenience init (_ name: String, _ content: () -> Node) {
+        self.init([name], content)
+    }
+    
+    init(_ names: [String] = [], _ content: () -> Node) {
         self.id = UUID().uuidString
-        self.msg = msg
-        self.variants = variants
+        self.names = names
         self.target = content()
-        self.variants.append(msg)
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        self.variants.contains(ctx.input)
+        self.names.contains(ctx.input)
     }
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {

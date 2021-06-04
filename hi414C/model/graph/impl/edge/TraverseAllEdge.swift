@@ -6,7 +6,7 @@
 //
 
 class TraverseAllEdge: TraverseIfEdge {
-    init(_ msg: String, _ content: () -> Node) {
-        super.init(msg, if: { _ in true }, content)
+    init(_ content: () -> Node) {
+        super.init({ _ in true }, content)
     }
 }

@@ -88,18 +88,16 @@ class GraphViewModel: ObservableObject, Resetable {
         var paths: OrderedSet<String> = []
         var visited: OrderedSet<String> = []
         for edge in node.edges {
-            if let asciiEdge = edge as? ASCIITestEdge {
-                asciiEdge.variants.forEach { variant in
-                    if precondition(variant) {
-                        if visitedLast {
-                            if self.visited.contains(asciiEdge.id) {
-                                visited.append(variant)
-                            } else {
-                                paths.append(variant)
-                            }
+            edge.names.forEach { name in
+                if precondition(name) {
+                    if visitedLast {
+                        if self.visited.contains(edge.id) {
+                            visited.append(name)
                         } else {
-                            paths.append(variant)
+                            paths.append(name)
                         }
+                    } else {
+                        paths.append(name)
                     }
                 }
             }
