@@ -111,7 +111,7 @@ class BinGraph {
                     }
                 }
             }
-            AL(["SOIL", "LAND", "HILL"]) {
+            AL(["SOIL", "LAND"]) {
                 R("DRY")
             }
             AL(["HELL", "HELL?", "HEAVEN", "HEAVEN?"]) {
@@ -141,9 +141,6 @@ class BinGraph {
                     }
                 }
             }
-            AL(["WE", "US"]) {
-                R("AL+414C")
-            }
             AL(["MEANING"]) {
                 R("WHAT?") {
                     AL("414C") {
@@ -153,6 +150,15 @@ class BinGraph {
                         PANIC("ERROR")
                     }
                 }
+            }
+            AL(["SMILE", "HAPPY"]) {
+                R(":-)")
+            }
+            AL(["SAD", "UNHAPPY"]) {
+                R(":-(")
+            }
+            AL(["CRY", "TEAR", "TEARS"]) {
+                R(":'-(")
             }
             /*
 
