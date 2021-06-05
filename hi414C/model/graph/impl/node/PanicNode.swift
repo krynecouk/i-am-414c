@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 03.06.2021.
 //
 
-class PanicNode: ASCIITestNode {
+class PanicNode: TestNode {
     let styled: Bool
     
     init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}, styled: Bool = false) {

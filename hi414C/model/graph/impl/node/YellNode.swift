@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 04.06.2021.
 //
 
-class YellNode: ASCIITestNode {
+class YellNode: TestNode {
     init(_ edges: () -> [Edge] = {[]}) {
         super.init("echo", edges)
     }

@@ -46,7 +46,7 @@
 		26645DCA2639D3570086F26C /* HelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26645DC92639D3570086F26C /* HelpViewModel.swift */; };
 		26647D2025F8FD2900E32DE0 /* Figlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D1F25F8FD2900E32DE0 /* Figlet.swift */; };
 		26647D2425F906D900E32DE0 /* ASCIISymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2325F906D900E32DE0 /* ASCIISymbol.swift */; };
-		26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */; };
+		26647D2A25F94D1700E32DE0 /* TestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2925F94D1700E32DE0 /* TestNode.swift */; };
 		26647D2E25F94D4B00E32DE0 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26647D2D25F94D4B00E32DE0 /* GraphContext.swift */; };
 		2665C9BB263AB41300CE724F /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9BA263AB41300CE724F /* Row.swift */; };
 		2665C9C3263C0DC400CE724F /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C9C2263C0DC400CE724F /* DetailRow.swift */; };
@@ -206,7 +206,7 @@
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
 		26F7A6CF25FA583100F04156 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CE25FA583100F04156 /* Edge.swift */; };
-		26F7A6D925FA592200F04156 /* ASCIITestEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */; };
+		26F7A6D925FA592200F04156 /* TestEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6D825FA592200F04156 /* TestEdge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,7 +259,7 @@
 		26645DC92639D3570086F26C /* HelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
 		26647D1F25F8FD2900E32DE0 /* Figlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figlet.swift; sourceTree = "<group>"; };
 		26647D2325F906D900E32DE0 /* ASCIISymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIISymbol.swift; sourceTree = "<group>"; };
-		26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITestNode.swift; sourceTree = "<group>"; };
+		26647D2925F94D1700E32DE0 /* TestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNode.swift; sourceTree = "<group>"; };
 		26647D2D25F94D4B00E32DE0 /* GraphContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContext.swift; sourceTree = "<group>"; };
 		2665C9BA263AB41300CE724F /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		2665C9C2263C0DC400CE724F /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 		26F7A6C225FA4FCE00F04156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26F7A6CA25FA4FF800F04156 /* GraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTests.swift; sourceTree = "<group>"; };
 		26F7A6CE25FA583100F04156 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
-		26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIITestEdge.swift; sourceTree = "<group>"; };
+		26F7A6D825FA592200F04156 /* TestEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEdge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -658,7 +658,7 @@
 		266F980C266A86580012619B /* node */ = {
 			isa = PBXGroup;
 			children = (
-				26647D2925F94D1700E32DE0 /* ASCIITestNode.swift */,
+				26647D2925F94D1700E32DE0 /* TestNode.swift */,
 				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
 				26EA301B265951B6004A78F2 /* DeadNode.swift */,
 				266F97FE2669452D0012619B /* FinishNode.swift */,
@@ -674,7 +674,7 @@
 		266F980D266A865F0012619B /* edge */ = {
 			isa = PBXGroup;
 			children = (
-				26F7A6D825FA592200F04156 /* ASCIITestEdge.swift */,
+				26F7A6D825FA592200F04156 /* TestEdge.swift */,
 				266F980E266A86D00012619B /* TraverseAllEdge.swift */,
 				266F9810266A86EC0012619B /* TraverseIfEdge.swift */,
 				26F00B58266AAF03008DACE5 /* HelpEdge.swift */,
@@ -1336,7 +1336,7 @@
 				26E090F42651B9A5002E404D /* FooTheme.swift in Sources */,
 				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
 				26F00B5E266AB800008DACE5 /* BinGraph.swift in Sources */,
-				26647D2A25F94D1700E32DE0 /* ASCIITestNode.swift in Sources */,
+				26647D2A25F94D1700E32DE0 /* TestNode.swift in Sources */,
 				26EA2FEB265668DD004A78F2 /* FontDao.swift in Sources */,
 				26E090DE264ED610002E404D /* GreenTheme.swift in Sources */,
 				267463F025DEDBDB00624D7C /* RefreshWave.swift in Sources */,
@@ -1371,7 +1371,7 @@
 				26EA3030265E72D6004A78F2 /* TextFigletView.swift in Sources */,
 				266CA42A2645A617001A07E0 /* Collection.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
-				26F7A6D925FA592200F04156 /* ASCIITestEdge.swift in Sources */,
+				26F7A6D925FA592200F04156 /* TestEdge.swift in Sources */,
 				2678D96D260E4D2700DDB40F /* KeyboardKeyView.swift in Sources */,
 				263612532636F8F200341B60 /* TerminalHelpTest.swift in Sources */,
 				269765542627367A00775D71 /* EquationRadix.swift in Sources */,

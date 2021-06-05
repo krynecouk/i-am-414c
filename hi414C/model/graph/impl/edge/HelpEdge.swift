@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HelpEdge: ASCIITestEdge {
+class HelpEdge: TestEdge {
     let type: HelpType
     let settings: HelpSettingsType
     

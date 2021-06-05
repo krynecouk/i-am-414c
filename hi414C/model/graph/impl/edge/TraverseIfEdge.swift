@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 04.06.2021.
 //
 
-class TraverseIfEdge: ASCIITestEdge {
+class TraverseIfEdge: TestEdge {
     let precondition: (GraphContext) -> Bool
     
     init(_ precondition: @escaping (GraphContext) -> Bool, _ content: () -> Node) {

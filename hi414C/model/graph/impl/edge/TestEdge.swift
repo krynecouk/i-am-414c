@@ -1,5 +1,5 @@
 //
-//  ASCIIEdge.swift
+//  TestEdge.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 11.03.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ASCIITestEdge: Edge {
+class TestEdge: Edge {
     let id: String
     let names: [String]
     let target: Node

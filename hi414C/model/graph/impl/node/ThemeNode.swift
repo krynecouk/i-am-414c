@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 03.06.2021.
 //
 
-class ThemeNode: ASCIITestNode {
+class ThemeNode: TestNode {
     let theme: Themable
     
     init(_ msg: String, theme: Themable, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
