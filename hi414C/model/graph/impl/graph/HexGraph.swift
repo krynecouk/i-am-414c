@@ -10,30 +10,7 @@ class HexGraph {
     
     static let ROOT =
         R("HI") {
-            AL("HI") {
-                R("HI")
-            }
-            AL(["I", "I?", "ME", "ME?", "NAME"]) {
-                PANIC414C("AL") {
-                    AL("AL?") {
-                        R("YES")
-                    }
-                }
-            }
-            AL("AL") {
-                R("YOU")
-            }
-            AL("YOU") {
-                R("I AM YOU") {
-                    AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
-                        R("YOU ARE IN COMA") {
-                            AL(["COMA", "COMA?", "COMA?!"]) {
-                                R("AFTER A CRASH")
-                            }
-                        }
-                    }
-                }
-            }
+
             AL(["WHERE AM I?"]) {
                 R("IN HOSPITAL")
             }
@@ -80,6 +57,31 @@ class HexGraph {
                 }
             }
             PASSWORD
+            
+            AL("HI") {
+                R("HI")
+            }
+            AL(["I", "I?", "ME", "ME?", "NAME"]) {
+                PANIC414C("AL") {
+                    AL("AL?") {
+                        R("YES")
+                    }
+                }
+            }
+            AL("AL") {
+                R("YOU")
+            }
+            AL("YOU") {
+                R("I AM YOU") {
+                    AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
+                        R("YOU ARE IN COMA") {
+                            AL(["COMA", "COMA?", "COMA?!"]) {
+                                R("AFTER A CRASH")
+                            }
+                        }
+                    }
+                }
+            }
         }
     
     

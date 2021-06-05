@@ -10,25 +10,7 @@ class BinGraph {
     
     static let ROOT =
         R("HI") {
-            AL(["HI", "HELLO"]) {
-                R("HI")
-            }
-            AL(["I", "ME?", "NAME", "WHO AM I", "WHO AM I?", "ME"]) {
-                R("AL")
-            }
-            AL("AL") {
-                R("YOU")
-            }
-            AL("YOU") {
-                R("414C") {
-                    AL("414C?") {
-                        R("YES")
-                    }
-                }
-            }
-            AL("414C") {
-                R("I")
-            }
+
             AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
                 R("OF?") {
                     AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
@@ -148,6 +130,28 @@ class BinGraph {
                     DIE()
                 }
             }
+            
+            AL(["HI", "HELLO"]) {
+                R("HI")
+            }
+            AL(["I", "ME?", "NAME", "WHO AM I", "WHO AM I?", "ME"]) {
+                R("AL")
+            }
+            AL("AL") {
+                R("YOU")
+            }
+            AL("YOU") {
+                R("414C") {
+                    AL("414C?") {
+                        R("YES")
+                    }
+                }
+            }
+            AL("414C") {
+                R("I")
+            }
+            
+            
             AL("OIL") {
                 R("LEAKING") {
                     FIX()
