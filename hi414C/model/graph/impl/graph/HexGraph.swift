@@ -39,7 +39,7 @@ class HexGraph {
             }
             AL(["LIE", "IT'S A LIE"]) {
                 R("WHAT?") {
-                    AL(["ABOUT YOU"]) {
+                    AL(["YOU", "ABOUT YOU"]) {
                         R("IT IS TRUE")
                     }
                 }
@@ -75,9 +75,9 @@ class HexGraph {
                                 R("YOUR LIFE")
                             }
                         }
-                    },
+                    }
                     PASSWORD
-                },
+                }
             }
             PASSWORD
         }
