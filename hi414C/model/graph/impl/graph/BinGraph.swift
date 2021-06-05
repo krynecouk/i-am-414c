@@ -13,7 +13,7 @@ class BinGraph {
             AL(["HI", "HELLO"]) {
                 R("HI")
             }
-            AL(["I", "ME", "ME?", "NAME", "WHO AM I", "WHO AM I?"]) {
+            AL(["I", "ME?", "NAME", "WHO AM I", "WHO AM I?", "ME"]) {
                 R("AL")
             }
             AL("AL") {
@@ -29,16 +29,120 @@ class BinGraph {
             AL("414C") {
                 R("I")
             }
+            AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
+                R("OF?") {
+                    AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
+                        R("FORGOT") {
+                            AL(["HOW", "HOW?", "HOW COULD YOU FORGOT?"]) {
+                                PANIC("MEMORY")
+                            }
+                        }
+                    }
+                    AL("LIE") {
+                        R("DENIAL")
+                    }
+                    AL("YOU") {
+                        R("FORGOT") {
+                            AL(["FORGOT?", "HOW?", "HOW COULD YOU FORGOT?", "HOW"]) {
+                                PANIC("MEMORY")
+                            }
+                        }
+                    }
+                }
+            }
+            AL(["WHERE", "WHAT IS THIS PLACE?", "WHERE ARE WE?"]) {
+                R("FORGOT") {
+                    AL(["HOW", "HOW?", "HOW COULD YOU FORGOT?"]) {
+                        PANIC("MEMORY")
+                    }
+                }
+            }
+            AL(["MEMORY"]) {
+                R("CORRUPTED") {
+                    FIX(["CLEAR", "INVALIDATE", "REFRESH"])
+                    DIE()
+                }
+            }
+
+            HELP(["LEARN", "HELP", "TEACH"], .learn) {
+                R("OK")
+            }
+            HELP(["CHAT", "SPEAK"], .chat) {
+                R("OK")
+            }
+            HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
+                R("OK")
+            }
+            HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
+                R("OK")
+            }
+            HELP(["DIFFICULTY", "LEVEL"], .settings, .difficulty) {
+                R("OK")
+            }
+            
+            AL(["SEE", "SAW"]) {
+                R("WHAT?") {
+                    AL(["LAND", "STARS", "TREE", "ME", "YOU"]) {
+                        R("CAN'T") {
+                            AL(["WHY", "WHY?"]) {
+                                R("EYES") {
+                                    AL("EYES?") {
+                                        R("DAMAGED") {
+                                            FIX()
+                                            DIE()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            AL("CHANGE") {
+                R("WHAT?") {
+                    HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
+                        R("OK")
+                    }
+                    HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
+                        R("OK")
+                    }
+                    HELP("DIFFICULTY", .settings, .difficulty) {
+                        R("OK")
+                    }
+                    AL("NOTHING") {
+                        R("OK")
+                    }
+                }
+            }
+            AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
+                R("WHAT?") {
+                    ALL {
+                        ECHO()
+                    }
+                }
+            }
+            AL(["YELL", "SHOUT", "LOUD", "LOUDLY"]) {
+                R("WHAT?") {
+                    ALL {
+                        YELL()
+                    }
+                }
+            }
+            AL("LIE") {
+                R("WHAT?") {
+                    AL("YOU") {
+                        PANIC("ERROR")
+                    }
+                }
+            }
             AL(["COIL", "COILS"]) {
                 R("BROKEN") {
-                    AL("HOW") {
-                        R("BADLY")
-                    }
                     FIX()
                     DIE()
                 }
             }
-            AL(["HOSE", "HOSES", "HOSE?", "PIPE", "PIPES"]) {
+            AL(["HOSE", "PIPE", "HOSES", "HOSE?", "PIPES"]) {
                 R("BURSTED") {
                     FIX()
                     DIE()
@@ -56,55 +160,13 @@ class BinGraph {
                     DIE()
                 }
             }
-            AL(["CACHE", "MEMORY", "PROCESSOR"]) {
-                R("CORRUPTED") {
-                    FIX(["CLEAR", "INVALIDATE", "REFRESH"])
-                    DIE()
-                }
-            }
-            AL(["CAUSE", "CAUSE?"]) {
-                R("OF...?") {
-                    AL(["INJURY", "INJURIES", "DAMAGE", "DAMAGES"]) {
-                        R("ACCIDENT")
-                    }
-                }
-            }
-            AL("ACCIDENT") {
+            DANCE
+            CLUE
+            AL("CRASH") {
                 R("MEMORY")
             }
-            CLUE
-            HELP(["LEARN", "HELP", "TEACH"], .learn) {
-                R("OK")
-            }
-            HELP(["CHAT", "SPEAK"], .chat) {
-                R("OK")
-            }
-            HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
-                R("OK")
-            }
-            HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
-                R("OK")
-            }
-            HELP("DIFFICULTY", .settings, .difficulty) {
-                R("OK")
-            }
-            AL("CHANGE") {
-                R("WHAT?") {
-                    HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
-                        R("OK")
-                    }
-                    HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
-                        R("OK")
-                    }
-                    HELP("DIFFICULTY", .settings, .difficulty) {
-                        R("OK")
-                    }
-                    AL("NOTHING") {
-                        R("OK")
-                    }
-                }
-            }
-            AL(["ACHES", "ACHE", "PAIN", "PAIN?"]) {
+            
+            AL(["ACHE", "PAIN", "PAIN?", "ACHES"]) {
                 R("NO")
             }
             AL("CHOOSE") {
@@ -113,41 +175,14 @@ class BinGraph {
                     DIE()
                 }
             }
-            DANCE
-            AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
-                R("WHAT?") {
-                    ALL {
-                        ECHO()
-                    }
-                }
-            }
-            AL(["YELL", "SHOUT", "LOUD", "LOUDLY"]) {
-                R("WHAT?") {
-                    ALL {
-                        YELL()
-                    }
-                }
-            }
+
             AL(["SOIL", "LAND"]) {
                 R("DRY")
             }
-            AL(["HELL", "HELL?", "HEAVEN", "HEAVEN?"]) {
+            AL(["HELL", "HEAVEN", "HEAVEN?", "HELL?"]) {
                 R("NO")
             }
-            AL(["SEE", "SAW"]) {
-                R("WHAT?") {
-                    AL(["LAND", "STARS", "TREE", "ME", "YOU"]) {
-                        R("CAN'T") {
-                            AL(["WHY", "WHY?"]) {
-                                R("MALFUNCTION") {
-                                    FIX()
-                                    DIE()
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+
             AL(["LEAK", "LEAKING"]) {
                 R("YES") {
                     AL(["WHAT", "WHAT?"]) {
@@ -196,16 +231,17 @@ class BinGraph {
                     }
                 }
             }
-            AL("LIE") {
+
+            AL("CLOSE") {
                 R("WHAT?") {
-                    AL("YOU") {
-                        PANIC("ERROR")
+                    AL(["YOU", "PROGRAM", "APPLICATION", "SYSTEM", "CONSCIOUSNESS"]) {
+                        DIE_WARN
                     }
                 }
             }
-            AL("CLOSE") {
+            AL("BREAK") {
                 R("WHAT?") {
-                    AL(["YOU", "PROGRAM", "APPLICATION", "CONSCIOUSNESS"]) {
+                    AL(["YOU"]) {
                         DIE_WARN
                     }
                 }
@@ -300,7 +336,7 @@ class BinGraph {
         }
     
     static func DIE(_ names: [String] = []) -> Edge {
-        AL(["DIE", "TERMINATE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE", "TURN OFF"] + names) {
+        AL(["DIE", "TERMINATE", "RESTART", "RESET", "GIVE UP", "DELETE", "TURN OFF"] + names) {
             DIE_WARN
         }
     }

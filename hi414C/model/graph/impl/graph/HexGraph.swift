@@ -25,33 +25,66 @@ class HexGraph {
             }
             AL("YOU") {
                 R("I AM YOU") {
-                    AL(["YOU?", "YOU ARE ME", "YOU ARE ME?"]) {
-                        R("YES") {
-                            AL(["HOW", "HOW?"]) {
-                                R("YOU'RE IN COMA")
+                    AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
+                        R("YOU ARE IN COMA") {
+                            AL(["COMA", "COMA?", "COMA?!"]) {
+                                R("AFTER A CRASH")
                             }
                         }
                     }
                 }
             }
-            AL(["COMA", "COMA?"]) {
-                R("FROM ACCIDENT")
+            AL(["WHERE AM I?"]) {
+                R("IN HOSPITAL")
             }
-            AL("ACCIDENT") {
-                R("CAR ACCIDENT")
+            AL(["LIE", "IT'S A LIE"]) {
+                R("WHAT?") {
+                    AL(["ABOUT YOU"]) {
+                        R("IT IS TRUE")
+                    }
+                }
             }
-            AL(["WHO ARE YOU", "WHO ARE YOU?"]) {
-                R("I AM DREAM")
+            AL(["WHAT IS YOUR PURPOSE?", "WHY ARE YOU HERE?", "WHAT DO YOU WANT?"]) {
+                R("TO HELP YOU") {
+                    AL(["WITH WHAT?"]) {
+                        R("TO WAKE UP")
+                    }
+                }
             }
-            AL(["WAKE", "WAKE UP", "WAKE UP!"]) {
-                R("CAN'T, NEED PASSWORD")
+            AL(["THIS PLACE", "WHAT IS THIS PLACE?"]) {
+                R("VOID OF YOUR MIND")
+            }
+            AL(["CRASH", "CRASH?"]) {
+                R("CAR CRASH")
+            }
+            AL(["FAMILY", "FAMILY?"]) {
+                R("DAUGHTER") {
+                    AL("WHAT IS HER NAME?") {
+                        R("ELENA")
+                    }
+                }
+            }
+            AL("DAUGHTER") {
+                R("ELENA")
+            }
+            AL(["WAKE", "HOW DO I WAKE UP?", "WAKE ME UP!", "WAKE UP", "WAKE UP!"]) {
+                R("NEED PASSWORD") {
+                    AL(["WHY?", "WHY?!"]) {
+                        R("TO REMEMBER") {
+                            AL(["WHAT?", "WHAT TO REMEMBER?"]) {
+                                R("YOUR LIFE")
+                            }
+                        }
+                    },
+                    PASSWORD
+                },
             }
             PASSWORD
         }
     
     
     static let PASSWORD =
-        AL("PASSWORD") {
+        AL(["PASSWORD", "TRY PASSWORD", "REMEMBER", "TRY REMEMBER"]) {
             R("TRY?") {
                 AL("Y") {
                     R("*****") {
@@ -59,14 +92,14 @@ class HexGraph {
                             FINISH(with: .dawn)
                         }
                         ALL {
-                            R("BAD. NEXT?") {
+                            R("WRONG NEXT?") {
                                 AL("Y") {
                                     R("*****") {
                                         AL("ELENA") {
                                             FINISH(with: .dawn)
                                         }
                                         ALL {
-                                            R("BAD. NEXT?") {
+                                            R("WRONG NEXT?") {
                                                 AL("Y") {
                                                     R("*****") {
                                                         AL("ELENA") {
