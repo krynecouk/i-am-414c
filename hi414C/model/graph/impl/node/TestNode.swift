@@ -28,7 +28,7 @@ class TestNode: Node {
         let unknown = symbols.filter { !toolkit.asciiVM.symbols.contains($0) }
         if !unknown.isEmpty {
             // level up only if node contains unknown symbols
-            toolkit.testVM.level(up: 1)
+            toolkit.testVM.level(up: 1, store: false)
         }
         
         toolkit.graphVM?.generateTests(for: symbols)

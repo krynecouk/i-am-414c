@@ -17,7 +17,7 @@ class PanicNode414C: PanicNode {
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        toolkit.testVM.level(reset: true)
+        toolkit.testVM.level(reset: true, store: false)
         toolkit.testVM.difficulty(.easy, store: false)
         super.onEnter(ctx: ctx, toolkit: toolkit)
     }

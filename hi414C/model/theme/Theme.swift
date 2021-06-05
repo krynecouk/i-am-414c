@@ -90,7 +90,7 @@ class Theme: Themable {
                     color: color.primary.value,
                     background: color.primary.value
                 ),
-                blink: (1, .linear)
+                blink: (0.6, .easeOut)
             ),
             banner: FigletTheme(
                 typeface: .ansi(.shadow),
