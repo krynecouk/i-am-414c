@@ -9,8 +9,15 @@ import SwiftUI
 import AVKit
 
 struct Video: View {
+    @EnvironmentObject var uiVM: UIViewModel
+    @State var size: Size = (width: UIScreen.main.bounds.width + 300, height: UIScreen.main.bounds.height + 100)
+    
     let type: VideoType
     let player: AVPlayer
+    
+    let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
     
     init(_ type: VideoType = .intro) {
         self.type = type
@@ -20,10 +27,42 @@ struct Video: View {
     var body: some View {
         VideoPlayer(player: player)
             .edgesIgnoringSafeArea(.all)
-            .frame(width: UIScreen.main.bounds.width + 1500, height: UIScreen.main.bounds.height + 500)
+            .frame(width: size.width, height: size.height)
             .statusBar(hidden: true)
             .onAppear {
                 player.play()
+                let duration = player.currentItem!.asset.duration
+                let durationSeconds = CMTimeGetSeconds(duration)
+                DispatchQueue.main.asyncAfter(deadline: .now() + durationSeconds) {
+                    if uiVM.video != nil || !uiVM.isIntro {
+                        uiVM.video = .none
+                        uiVM.isIntro = true
+                    }
+                }
+                
+                let ratio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+                print("ratio: ", ratio)
+                if ratio >= 1 {
+                    self.size = (width: UIScreen.main.bounds.width + 800, height: UIScreen.main.bounds.height + 800)
+                } else {
+                    self.size = (width: UIScreen.main.bounds.width + 300, height: UIScreen.main.bounds.height + 100)
+                }
+            }
+            .onTapGesture {
+                uiVM.video = .none
+                uiVM.isIntro = true
+            }
+            .onReceive(orientationChanged) { _ in
+                print("orientation changed")
+                print("width: ", UIScreen.main.bounds.width)
+                print("height: ", UIScreen.main.bounds.height)
+                let ratio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+                print("ratio: ", ratio)
+                if ratio >= 1 {
+                    self.size = (width: UIScreen.main.bounds.width + 800, height: UIScreen.main.bounds.height + 800)
+                } else {
+                    self.size = (width: UIScreen.main.bounds.width + 300, height: UIScreen.main.bounds.height + 100)
+                }
             }
     }
 }

@@ -17,10 +17,7 @@ struct ContentView: View {
     var body: some View {
         if let video = uiVM.video {
             Video(video)
-                .onTapGesture {
-                    uiVM.video = .none
-                    uiVM.isIntro = true
-                }
+
         } else {
             CathodeView {
                 if uiVM.isIntro {
