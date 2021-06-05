@@ -13,7 +13,7 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var segueVM: SegueViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
+    //@EnvironmentObject var graphVM: GraphViewModel
     
     @State var pageLimit = 3
     

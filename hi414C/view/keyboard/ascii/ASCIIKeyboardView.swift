@@ -72,20 +72,20 @@ struct ASCIIKeyboardView: View {
                     ASCIIKeyboardKey(.dash),
                     ASCIIKeyboardKey(.slash),
                     ASCIIKeyboardKey(.colon),
-                    ASCIIKeyboardKey(.plus),
+                    ASCIIKeyboardKey(.semicolon),
                     ASCIIKeyboardKey(.leftParen),
                     ASCIIKeyboardKey(.rightParen),
                     ASCIIKeyboardKey(.caret),
-                    ASCIIKeyboardKey(.exclamationMark),
+                    ASCIIKeyboardKey(.equal),
                     ASCIIKeyboardKey(.asterisk),
-                    ASCIIKeyboardKey(.singleQuote),
+                    ASCIIKeyboardKey(.plus)
                 ],
                 .row3: [
                     ASCIIKeyboardKey(.dot),
                     ASCIIKeyboardKey(.comma),
                     ASCIIKeyboardKey(.questionMark),
-                    ASCIIKeyboardKey(.equal),
-                    ASCIIKeyboardKey(.ampersand),
+                    ASCIIKeyboardKey(.exclamationMark),
+                    ASCIIKeyboardKey(.singleQuote)
                 ],
                 .space: [
                     ASCIIKeyboardKey(.space, value: " ")

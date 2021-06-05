@@ -171,8 +171,27 @@ class BinGraph {
             AL(["SAD", "UNHAPPY"]) {
                 R(":-(")
             }
+            AL(["WINK"]) {
+                R(";-)")
+            }
             AL(["CRY", "TEAR", "TEARS"]) {
                 R(":'-(")
+            }
+            AL(["EMOTION", "EMOTIONS"]) {
+                R("WHAT?") {
+                    AL(["SMILE", "HAPPY"]) {
+                        R(":-)")
+                    }
+                    AL(["SAD", "UNHAPPY"]) {
+                        R(":-(")
+                    }
+                    AL(["WINK"]) {
+                        R(";-)")
+                    }
+                    AL(["CRY", "TEAR", "TEARS"]) {
+                        R(":'-(")
+                    }
+                }
             }
             AL("LIE") {
                 R("WHAT?") {
