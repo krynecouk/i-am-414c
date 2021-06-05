@@ -111,7 +111,6 @@ class BinGraph {
                 }
             }
             DANCE
-            //AL(["SLOW", "SLOWLY"])
             AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
                 R("WHAT?") {
                     ALL {
@@ -132,7 +131,7 @@ class BinGraph {
             AL(["HELL", "HELL?", "HEAVEN", "HEAVEN?"]) {
                 R("NO")
             }
-            AL("SEE") {
+            AL(["SEE", "SAW"]) {
                 R("WHAT?") {
                     AL(["LAND", "STARS", "TREE", "ME", "YOU"]) {
                         R("CAN'T") {

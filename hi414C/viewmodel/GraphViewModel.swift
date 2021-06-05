@@ -55,6 +55,7 @@ class GraphViewModel: ObservableObject, Resetable {
     }
     
     func reset() {
+        self.visited = []
         self.setGraph(.BIN)
     }
     

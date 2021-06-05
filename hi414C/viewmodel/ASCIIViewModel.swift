@@ -35,7 +35,7 @@ class ASCIIViewModel: ObservableObject {
     ]
     
     init() {
-        self.symbols = ASCIIDao.find() ?? ASCIIViewModel.testSymbols
+        self.symbols = ASCIIDao.find() ?? ASCIIViewModel.defaultSymbols
     }
     
     func add(symbol: ASCIISymbol) {
@@ -45,7 +45,7 @@ class ASCIIViewModel: ObservableObject {
     }
     
     func reset() {
-        self.symbols = ASCIIViewModel.testSymbols
+        self.symbols = ASCIIViewModel.defaultSymbols
         ASCIIDao.store(self.symbols)
     }
 }

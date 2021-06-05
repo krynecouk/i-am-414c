@@ -13,6 +13,7 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var segueVM: SegueViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
     
     @State var pageLimit = 3
     
@@ -50,11 +51,14 @@ struct TerminalMessagesSelect: View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
             .background(RoundedBackground())
             .onTapGesture {
+                
                 uiVM.isHelp = false
                 keyboardVM.set(text)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     segueVM.open(type: .keyboard)
                 }
+                
+                
                 
                 /*
                  // for immediately send to graph
@@ -62,7 +66,8 @@ struct TerminalMessagesSelect: View {
                  DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                      graphVM.traverse(ctx: GraphContext(input: text))
                  }
-                 */
+                */
+                 
             }
     }
     
