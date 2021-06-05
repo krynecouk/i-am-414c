@@ -74,7 +74,7 @@ enum ThemeType: String, Encodable, Decodable {
     case orangina, forest, ice
     case swamp, bananaSky, vintage, pastel, sunset
     case green_gold, summer, sea, gray, yellow, melon
-    case panic, warn
+    case panic, warn, shake
     
     func toTheme(font: FontTheme = FontTheme()) -> Themable {
         switch self {

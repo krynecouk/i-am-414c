@@ -14,8 +14,6 @@ class PanicTheme: Theme {
         if styled {
             self.terminal.grid.test.active.figlet.typeface = .ansi(.shadow)
             self.terminal.grid.test.passive.figlet.typeface = .ansi(.shadow)
-         //   self.terminal.grid.symbol.typeface = .ansi(.shadow)
-         //   self.terminal.grid.message.figlet.typeface = .ansi(.shadow)
         }
 
         self.terminal.grid.message.figlet.animations = [

@@ -14,6 +14,7 @@ typealias PANIC = PanicNode
 typealias WARN = WarnNode
 typealias ECHO = EchoNode
 typealias YELL = YellNode
+typealias SHAKE = ShakeNode
 
 typealias AL = TestEdge
 typealias ALL = TraverseAllEdge

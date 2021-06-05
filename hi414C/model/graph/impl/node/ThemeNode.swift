@@ -6,16 +6,16 @@
 //
 
 class ThemeNode: TestNode {
-    let theme: Themable
+    let themer: (_ font: FontTheme, _ color: ColorTheme) -> Themable
     
-    init(_ msg: String, theme: Themable, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        self.theme = theme
-        super.init(msg, edges)
+    init(_ name: String, themer: @escaping (FontTheme, ColorTheme) -> Themable, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        self.themer = themer
+        super.init(name, edges)
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         super.onEnter(ctx: ctx, toolkit: toolkit)
-        toolkit.themeVM.theme = theme
+        toolkit.themeVM.theme = themer(toolkit.themeVM.font, toolkit.themeVM.color)
     }
     
     override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {

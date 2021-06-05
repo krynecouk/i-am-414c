@@ -5,28 +5,15 @@
 //  Created by Darius Kryszczuk on 03.06.2021.
 //
 
-class PanicNode: TestNode {
-    let styled: Bool
-    
-    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}, styled: Bool = false) {
-        self.styled = styled
-        super.init(msg, edges)
-    }
-    
-    override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        super.onEnter(ctx: ctx, toolkit: toolkit)
-        toolkit.themeVM.theme = PanicTheme(font: toolkit.themeVM.font, color: toolkit.themeVM.color, styled: styled)
-    }
-    
-    override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
-        super.onExit(ctx: ctx, toolkit: toolkit)
-        toolkit.themeVM.restore()
+class PanicNode: ThemeNode {
+    init(_ name: String, styled: Bool = false, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(name, themer: { PanicTheme(font: $0, color: $1, styled: styled) }, edges)
     }
 }
 
 class PanicNode414C: PanicNode {
-    init(_ msg: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        super.init(msg, edges, styled: true)
+    init(_ name: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(name, styled: true, edges)
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {

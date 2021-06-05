@@ -97,6 +97,8 @@ class BinGraph {
                     DIE()
                 }
             }
+            DANCE
+            //AL(["SLOW", "SLOWLY"])
             AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
                 R("WHAT?") {
                     ALL {
@@ -160,52 +162,6 @@ class BinGraph {
             AL(["CRY", "TEAR", "TEARS"]) {
                 R(":'-(")
             }
-            /*
-
-             - hell
-             - lousy (mizerny)
-
-             - silly
-             - yell
-             - calculus
-             - cheese
-             - ice
-             - us
-             - aha
-             - all
-
-             - shy
-             - use (usualy)
-             - also
-             - case
-             - else
-             - eye
-             - hall
-             - sail
-             - see (sees)
-             - seel (zavrit oci)
-             - seal
-             - sell
-             - soil (answer: sucha?)
-             - slay
-             - slee (spat)
-             - chaos
-             - chill
-             - sally
-             - scall (strasidlo)
-             - accuse
-             - casual
-             - school
-             - claches (kleste)
-             - year
-             - leak
-             
-             
-             
-             
-             */
-            
-            
             AL("LIE") {
                 R("WHAT?") {
                     AL("YOU") {
@@ -215,6 +171,30 @@ class BinGraph {
             }
             FIX()
             DIE()
+        }
+    
+    static let DANCE =
+        AL("DANCE") {
+            SHAKE("DANCING", shake: .shake(dt: 1, force: 2, type: .rand, animation: .none)) {
+                AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                    SHAKE("DANCING!", shake: .shake(dt: 0.7, force: 3, type: .rand, animation: .none)) {
+                        AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                            SHAKE("DANCING!!", shake: .shake(dt: 0.4, force: 4, type: .rand, animation: .none)) {
+                                AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                                    SHAKE("DANCING!!!", shake: .shake(dt: 0.2, force: 5, type: .rand, animation: .none)) {
+                                        AL(["ENOUGH", "STOP"]) {
+                                            R("THANKS")
+                                        }
+                                        AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                                            R("ERROR")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     
     static let CLUE =
