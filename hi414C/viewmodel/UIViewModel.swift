@@ -10,7 +10,7 @@ import SwiftUI
 class UIViewModel: ObservableObject, Resetable {
     @Published var isIntro = true
     @Published var isFinishedGame = false
-    @Published var video: VideoType? = .none
+    @Published var video: VideoType? = .intro
     @Published var detail = (is: false, animated: true)
     @Published var isHelp = false
     @Published var current: ContentType = .test

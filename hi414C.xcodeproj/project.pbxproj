@@ -139,6 +139,7 @@
 		26B10A2126027B08007E7B65 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B10A2026027B08007E7B65 /* Grid.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
 		26B61344266BBE6C001F6D7D /* GameOverDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B61343266BBE6C001F6D7D /* GameOverDao.swift */; };
+		26B61347266C1054001F6D7D /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26B61346266C1054001F6D7D /* intro.mp4 */; };
 		26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE1E39263181F700F4AB0F /* MessageTheme.swift */; };
 		26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22925DD3B0A0035065E /* hi414CApp.swift */; };
 		26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22B25DD3B0A0035065E /* ContentView.swift */; };
@@ -355,6 +356,7 @@
 		26B10A2026027B08007E7B65 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
 		26B61343266BBE6C001F6D7D /* GameOverDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDao.swift; sourceTree = "<group>"; };
+		26B61346266C1054001F6D7D /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
 		26BE1E39263181F700F4AB0F /* MessageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTheme.swift; sourceTree = "<group>"; };
 		26BEC22625DD3B0A0035065E /* hi414C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hi414C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BEC22925DD3B0A0035065E /* hi414CApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CApp.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 		26782B372617730300BA9C4E /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				26B61345266C101F001F6D7D /* video */,
 				26782B382617734F00BA9C4E /* fonts */,
 			);
 			path = assets;
@@ -959,6 +962,14 @@
 				266CA417264191CD001A07E0 /* MessageRow.swift */,
 			);
 			path = grid;
+			sourceTree = "<group>";
+		};
+		26B61345266C101F001F6D7D /* video */ = {
+			isa = PBXGroup;
+			children = (
+				26B61346266C1054001F6D7D /* intro.mp4 */,
+			);
+			path = video;
 			sourceTree = "<group>";
 		};
 		26BE1E452631848E00F4AB0F /* art */ = {
@@ -1292,6 +1303,7 @@
 				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
 				26EA302D265E6EA8004A78F2 /* readme.txt in Resources */,
+				26B61347266C1054001F6D7D /* intro.mp4 in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
 				26782B732617BE3F00BA9C4E /* ProggyTinySZ.ttf in Resources */,
 			);
