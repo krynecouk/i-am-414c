@@ -94,6 +94,7 @@ struct TerminalSettingsSelect: View {
                     Color.clear
                 }
                 HelpWarnButton("ok") {
+                    GameOverDao.store(false)
                     testVM.reset()
                     asciiVM.reset()
                     chatVM.reset()

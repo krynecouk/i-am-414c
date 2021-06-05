@@ -19,11 +19,11 @@ class FinishNode: Node {
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.testVM.reset()
-        toolkit.asciiVM.reset()
         toolkit.chatVM.reset()
         toolkit.helpVM.reset()
         toolkit.themeVM.reset()
         toolkit.graphVM?.reset()
+        GameOverDao.store(true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()
             toolkit.uiVM.isFinishedGame = true

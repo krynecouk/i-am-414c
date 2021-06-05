@@ -13,10 +13,13 @@ class UpgradeNode: Node {
     let edges: [Edge] = []
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
+        let gameFinished = GameOverDao.find() ?? false
         toolkit.testVM.level(reset: true)
         toolkit.testVM.radix(of: .hex)
         toolkit.helpVM.radix(of: .hex)
-        toolkit.asciiVM.reset()
+        if !gameFinished {
+            toolkit.asciiVM.reset()
+        }
         toolkit.graphVM?.setGraph(.HEX)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()

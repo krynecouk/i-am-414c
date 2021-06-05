@@ -138,6 +138,7 @@
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26B10A2126027B08007E7B65 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B10A2026027B08007E7B65 /* Grid.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
+		26B61344266BBE6C001F6D7D /* GameOverDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B61343266BBE6C001F6D7D /* GameOverDao.swift */; };
 		26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE1E39263181F700F4AB0F /* MessageTheme.swift */; };
 		26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22925DD3B0A0035065E /* hi414CApp.swift */; };
 		26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22B25DD3B0A0035065E /* ContentView.swift */; };
@@ -353,6 +354,7 @@
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26B10A2026027B08007E7B65 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
+		26B61343266BBE6C001F6D7D /* GameOverDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDao.swift; sourceTree = "<group>"; };
 		26BE1E39263181F700F4AB0F /* MessageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTheme.swift; sourceTree = "<group>"; };
 		26BEC22625DD3B0A0035065E /* hi414C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hi414C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BEC22925DD3B0A0035065E /* hi414CApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CApp.swift; sourceTree = "<group>"; };
@@ -1053,6 +1055,7 @@
 				26EA3021265969AA004A78F2 /* RadixDao.swift */,
 				26EA30362661829B004A78F2 /* TestDao.swift */,
 				26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */,
+				26B61343266BBE6C001F6D7D /* GameOverDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1379,6 +1382,7 @@
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* TestEdge.swift in Sources */,
 				2678D96D260E4D2700DDB40F /* KeyboardKeyView.swift in Sources */,
+				26B61344266BBE6C001F6D7D /* GameOverDao.swift in Sources */,
 				263612532636F8F200341B60 /* TerminalHelpTest.swift in Sources */,
 				269765542627367A00775D71 /* EquationRadix.swift in Sources */,
 				26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */,
