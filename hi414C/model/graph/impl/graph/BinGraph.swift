@@ -99,6 +99,9 @@ class BinGraph {
                     HELP("DIFFICULTY", .settings, .difficulty) {
                         R("OK")
                     }
+                    AL("NOTHING") {
+                        R("OK")
+                    }
                 }
             }
             AL(["ACHES", "ACHE", "PAIN", "PAIN?"]) {
@@ -200,6 +203,13 @@ class BinGraph {
                     }
                 }
             }
+            AL("CLOSE") {
+                R("WHAT?") {
+                    AL(["YOU", "PROGRAM", "APPLICATION", "CONSCIOUSNESS"]) {
+                        DIE_WARN
+                    }
+                }
+            }
             FIX()
             DIE()
         }
@@ -275,35 +285,41 @@ class BinGraph {
     
     static func FIX(_ names: [String] = []) -> Edge {
         AL(["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + names) {
-            R("Y/N?") {
-                AL("Y") {
-                    UPGRADE()
-                }
-                AL("N") {
-                    R("OK")
-                }
-            }
+            FIX_WARN
         }
     }
     
-    static func DIE(_ names: [String] = []) -> Edge {
-        AL(["DIE", "TERMINATE", "CLOSE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE", "TURN OFF"] + names) {
-            R("Y/N?") {
-                AL("Y") {
-                    WARN("SURE?") {
-                        AL("Y") {
-                            DEAD()
-                        }
-                        AL("N") {
-                            R("OK")
-                        }
-                    }
-                }
-                AL("N") {
-                    R("OK")
-                }
+    static let FIX_WARN =
+        R("Y/N?") {
+            AL("Y") {
+                UPGRADE()
+            }
+            AL("N") {
+                R("OK")
             }
         }
+    
+    static func DIE(_ names: [String] = []) -> Edge {
+        AL(["DIE", "TERMINATE", "RESTART", "RESET", "BREAK", "GIVE UP", "DELETE", "TURN OFF"] + names) {
+            DIE_WARN
+        }
     }
+    
+    static let DIE_WARN =
+        R("Y/N?") {
+            AL("Y") {
+                WARN("SURE?") {
+                    AL("Y") {
+                        DEAD()
+                    }
+                    AL("N") {
+                        R("OK")
+                    }
+                }
+            }
+            AL("N") {
+                R("OK")
+            }
+        }
 }
 
