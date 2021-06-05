@@ -10,6 +10,10 @@ import SwiftUI
 class KeyboardViewModel: ObservableObject {
     @Published private(set) var input: String = ""
     
+    func set(_ input: String) {
+        self.input = input
+    }
+    
     func append(_ input: String) {
         self.input += input
     }

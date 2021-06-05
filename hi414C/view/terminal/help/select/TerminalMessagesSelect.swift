@@ -10,8 +10,9 @@ import SwiftUI
 struct TerminalMessagesSelect: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var chatVM: ChatViewModel
+    @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var segueVM: SegueViewModel
     
     @State var pageLimit = 3
     
@@ -50,9 +51,18 @@ struct TerminalMessagesSelect: View {
             .background(RoundedBackground())
             .onTapGesture {
                 uiVM.isHelp = false
+                keyboardVM.set(text)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    graphVM.traverse(ctx: GraphContext(input: text))
+                    segueVM.open(type: .keyboard)
                 }
+                
+                /*
+                 // for immediately send to graph
+                 uiVM.isHelp = false
+                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                     graphVM.traverse(ctx: GraphContext(input: text))
+                 }
+                 */
             }
     }
     
