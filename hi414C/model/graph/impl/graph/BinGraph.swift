@@ -88,6 +88,19 @@ class BinGraph {
             HELP("DIFFICULTY", .settings, .difficulty) {
                 R("OK")
             }
+            AL("CHANGE") {
+                R("WHAT?") {
+                    HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
+                        R("OK")
+                    }
+                    HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
+                        R("OK")
+                    }
+                    HELP("DIFFICULTY", .settings, .difficulty) {
+                        R("OK")
+                    }
+                }
+            }
             AL(["ACHES", "ACHE", "PAIN", "PAIN?"]) {
                 R("NO")
             }
