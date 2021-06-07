@@ -15,6 +15,10 @@ typealias WARN = WarnNode
 typealias ECHO = EchoNode
 typealias YELL = YellNode
 typealias SHAKE = ShakeNode
+typealias RND_NUM = RndNumNode
+typealias RND_WORD = RndWordNode
+typealias DICE = DiceNode
+typealias COIN = CoinNode
 
 typealias AL = TestEdge
 typealias ALL = TraverseAllEdge

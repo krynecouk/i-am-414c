@@ -352,8 +352,19 @@ class BinGraph {
                     }
                 }
             }
-            
-            
+            AL(["DICE", "DICES", "ROLL A DICE"]) {
+                DICE()
+            }
+            AL(["COIN", "TOSS COIN", "FLIP COIN", "COIN FLIP"]) {
+                COIN()
+            }
+            AL("GUESS") {
+                R("WHAT?") {
+                    AL("NUMBER") {
+                        R("")
+                    }
+                }
+            }
         }
     
     static let WHY = ["WHY?", "REASON?", "WHY", "REASON"]

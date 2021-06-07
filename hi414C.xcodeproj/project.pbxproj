@@ -13,6 +13,10 @@
 		2620921B2600B2FE0001904B /* FigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2620921A2600B2FE0001904B /* FigletView.swift */; };
 		262092252600B7250001904B /* FigletTypeface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262092242600B7250001904B /* FigletTypeface.swift */; };
 		2620922E2600C5420001904B /* ASCIIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2620922D2600C5420001904B /* ASCIIViewModel.swift */; };
+		262F4B3A266E4E6700D14D52 /* DiceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B39266E4E6700D14D52 /* DiceNode.swift */; };
+		262F4B3C266E4F5A00D14D52 /* CoinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3B266E4F5A00D14D52 /* CoinNode.swift */; };
+		262F4B3E266E515400D14D52 /* RndNumNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3D266E515400D14D52 /* RndNumNode.swift */; };
+		262F4B40266E515F00D14D52 /* RndWordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3F266E515F00D14D52 /* RndWordNode.swift */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
@@ -229,6 +233,10 @@
 		2620921A2600B2FE0001904B /* FigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletView.swift; sourceTree = "<group>"; };
 		262092242600B7250001904B /* FigletTypeface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletTypeface.swift; sourceTree = "<group>"; };
 		2620922D2600C5420001904B /* ASCIIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIViewModel.swift; sourceTree = "<group>"; };
+		262F4B39266E4E6700D14D52 /* DiceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceNode.swift; sourceTree = "<group>"; };
+		262F4B3B266E4F5A00D14D52 /* CoinNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinNode.swift; sourceTree = "<group>"; };
+		262F4B3D266E515400D14D52 /* RndNumNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndNumNode.swift; sourceTree = "<group>"; };
+		262F4B3F266E515F00D14D52 /* RndWordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndWordNode.swift; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -674,6 +682,10 @@
 				26F00B61266ABD1C008DACE5 /* EchoNode.swift */,
 				26F00B63266AC0ED008DACE5 /* YellNode.swift */,
 				26F00B6B266B8002008DACE5 /* ShakeNode.swift */,
+				262F4B3D266E515400D14D52 /* RndNumNode.swift */,
+				262F4B3F266E515F00D14D52 /* RndWordNode.swift */,
+				262F4B39266E4E6700D14D52 /* DiceNode.swift */,
+				262F4B3B266E4F5A00D14D52 /* CoinNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -1317,6 +1329,7 @@
 				26E090F02651B45E002E404D /* SeaTheme.swift in Sources */,
 				266F9807266946860012619B /* PanicNode.swift in Sources */,
 				269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */,
+				262F4B40266E515F00D14D52 /* RndWordNode.swift in Sources */,
 				266CA41426411F4E001A07E0 /* TerminalPadding.swift in Sources */,
 				2654882326050B710044297D /* TerminalView.swift in Sources */,
 				263612412634A6B600341B60 /* ChatViewModel.swift in Sources */,
@@ -1428,6 +1441,7 @@
 				26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */,
 				2620921B2600B2FE0001904B /* FigletView.swift in Sources */,
 				26EA30002656C77C004A78F2 /* TerminalTestSelect.swift in Sources */,
+				262F4B3A266E4E6700D14D52 /* DiceNode.swift in Sources */,
 				264404242619014000CA7EA1 /* Theme.swift in Sources */,
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26EA2FE7265639B3004A78F2 /* IntroTheme.swift in Sources */,
@@ -1474,6 +1488,7 @@
 				26E090CE264AA701002E404D /* Item.swift in Sources */,
 				26E090EA2651AB69002E404D /* PastelTheme.swift in Sources */,
 				266F9811266A86EC0012619B /* TraverseIfEdge.swift in Sources */,
+				262F4B3C266E4F5A00D14D52 /* CoinNode.swift in Sources */,
 				26E090E62650738C002E404D /* LightGreenTheme.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				26E091042652A693002E404D /* ForestTheme.swift in Sources */,
@@ -1487,6 +1502,7 @@
 				26EA2FE226559178004A78F2 /* Video.swift in Sources */,
 				26EA301E265968F1004A78F2 /* GraphDao.swift in Sources */,
 				2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */,
+				262F4B3E266E515400D14D52 /* RndNumNode.swift in Sources */,
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
 				266F97FB2668CEBB0012619B /* FinishedGameScreen.swift in Sources */,
