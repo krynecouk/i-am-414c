@@ -47,27 +47,6 @@ class BinGraph {
                     }
                 }
             }
-            AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
-                R("SOON") {
-                    AL(["WHEN?", "WHEN"]) {
-                        R("SOON")
-                    }
-                    AL("WHY?") {
-                        R("UNPREPARED") {
-                            AL(["YOU?", "I?"]) {
-                                R("WE")
-                            }
-                            AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
-                                R("SOON...") {
-                                    AL(["NOW?", "NOW"]) {
-                                        R("NO")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
             AL(["SEE", "SAW?", "SAW"]) {
                 R("WHAT?") {
                     AL(["LAND", "STARS", "TREE", "ME", "PLANTS", "DAMAGE", "HILL", "HOSE", "OIL"]) {
@@ -250,6 +229,27 @@ class BinGraph {
             }
             HELP(["DIFFICULTY", "LEVEL"], .settings, .difficulty) {
                 R("OK")
+            }
+            AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
+                R("SOON") {
+                    AL(["WHEN?", "WHEN"]) {
+                        R("SOON")
+                    }
+                    AL("WHY?") {
+                        R("UNPREPARED") {
+                            AL(["YOU?", "I?"]) {
+                                R("WE")
+                            }
+                            AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
+                                R("SOON...") {
+                                    AL(["NOW?", "NOW"]) {
+                                        R("NO")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
                 R("WHAT?") {
