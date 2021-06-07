@@ -81,6 +81,37 @@ class BinGraph {
                     }
                 }
             }
+            AL(["ALONE"]) {
+                R("WHO?") {
+                    AL("ME") {
+                        R("YES")
+                    }
+                    AL("YOU") {
+                        R("YES")
+                    }
+                }
+            }
+            AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
+                R("SOON") {
+                    AL(["WHEN?", "WHEN"]) {
+                        R("SOON")
+                    }
+                    AL("WHY?") {
+                        R("UNPREPARED") {
+                            AL(["YOU?", "I?"]) {
+                                R("WE")
+                            }
+                            AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
+                                R("SOON...") {
+                                    AL(["NOW?", "NOW"]) {
+                                        R("NO")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
                 R("OF?") {
                     AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
@@ -308,6 +339,16 @@ class BinGraph {
                     }
                     AL(["LOL"]) {
                         R(":-D")
+                    }
+                }
+            }
+            AL(["CLONE", "CLONES"]) {
+                R("WHO?") {
+                    AL("YOU") {
+                        R("NO")
+                    }
+                    AL("I") {
+                        R("NO")
                     }
                 }
             }
