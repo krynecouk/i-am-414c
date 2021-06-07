@@ -95,15 +95,16 @@ class TestViewModel: ObservableObject, Resetable {
         self.difficulty = TestDifficultyDao.find() ?? .easy
     }
     
-    func level(reset: Bool = false, up: Int = 0, down: Int = 0) {
+    func level(reset: Bool = false, up: Int = 0, down: Int = 0, store: Bool = true) {
         if reset {
             self.level = 0
         }
         if up != 0 || down != 0 {
             self.level += (up + down)
-            print("leveling up to \(self.level)")
         }
-        print("TEST LEVEL: ", self.level)
+        if store {
+            self.storeLevel()
+        }
     }
     
     func reset() {

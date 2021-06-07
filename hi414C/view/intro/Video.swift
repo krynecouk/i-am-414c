@@ -34,7 +34,7 @@ struct Video: View {
                 let duration = player.currentItem!.asset.duration
                 let durationSeconds = CMTimeGetSeconds(duration)
                 DispatchQueue.main.asyncAfter(deadline: .now() + durationSeconds) {
-                    if uiVM.video != nil || !uiVM.isIntro {
+                    if uiVM.video != .none {
                         uiVM.video = .none
                         uiVM.isIntro = true
                     }
