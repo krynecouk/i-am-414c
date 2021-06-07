@@ -63,7 +63,7 @@ class GraphViewModel: ObservableObject, Resetable {
         self.current.onEnter(ctx: GraphContext(input: ""), toolkit: toolkit)
     }
     
-    func generateTests(for text: String) {
+    func generateTests() {
         generateTests(for: current.name)
     }
     
