@@ -13,7 +13,7 @@ class BinGraph {
             AL(["HI", "HELLO"]) {
                 R("HI")
             }
-            AL(["I", "ME?", "NAME", "WHO AM I", "WHO AM I?", "ME"]) {
+            AL(["I", "WHO AM I?", "ME?", "NAME", "ME"]) {
                 R("AL")
             }
             AL("AL") {
@@ -29,41 +29,87 @@ class BinGraph {
             AL("414C") {
                 R("I")
             }
+            AL(["ALIVE"]) {
+                R("WHO?") {
+                    AL("I") {
+                        R("YES")
+                    }
+                    AL("YOU") {
+                        R("NO")
+                    }
+                }
+            }
+            AL(["DEAD"]) {
+                R("WHO?") {
+                    AL("I") {
+                        R("NO")
+                    }
+                    AL("YOU") {
+                        R("YES")
+                    }
+                }
+            }
+            AL("DIE") {
+                R("WHO?") {
+                    AL("I") {
+                        R("CAN'T") {
+                            AL(WHY) {
+                                PANIC("ERROR")
+                            }
+                        }
+                    }
+                    AL("YOU") {
+                        R("CAN'T") {
+                            AL(WHY) {
+                                R("DEAD")
+                            }
+                        }
+                    }
+                }
+            }
+            AL(["LIVE"]) {
+                R("WHO?") {
+                    AL("I") {
+                        R("SOON")
+                    }
+                    AL("YOU") {
+                        R("CAN'T") {
+                            AL(WHY) {
+                                R("DEAD")
+                            }
+                        }
+                    }
+                }
+            }
             AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
                 R("OF?") {
                     AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
-                        R("FORGOT") {
-                            AL(["HOW", "HOW?", "HOW COULD YOU FORGOT?"]) {
-                                PANIC("MEMORY")
-                            }
-                        }
+                        FORGOT
                     }
-                    AL("LIE") {
+                    AL(["LIE"]) {
                         R("DENIAL")
                     }
+                    AL("LIFE") {
+                        R("BELIEF")
+                    }
+                    AL("DEAD") {
+                        R("OBLIVION")
+                    }
                     AL("YOU") {
-                        R("FORGOT") {
-                            AL(["FORGOT?", "HOW?", "HOW COULD YOU FORGOT?", "HOW"]) {
-                                PANIC("MEMORY")
-                            }
-                        }
+                        FORGOT
                     }
                 }
             }
-            AL(["WHERE", "WHAT IS THIS PLACE?", "WHERE ARE WE?"]) {
-                R("FORGOT") {
-                    AL(["HOW", "HOW?", "HOW COULD YOU FORGOT?"]) {
-                        PANIC("MEMORY")
-                    }
-                }
+            AL(["WHERE?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE"]) {
+                FORGOT
             }
-            AL(["MEMORY"]) {
+            AL(["MEMORY", "RAM", "PROCESSOR", "MEMORIES"]) {
                 R("CORRUPTED") {
-                    FIX(["CLEAR", "INVALIDATE", "REFRESH"])
+                    FIX()
                     DIE()
                 }
             }
-
+            
             HELP(["LEARN", "HELP", "TEACH"], .learn) {
                 R("OK")
             }
@@ -136,58 +182,87 @@ class BinGraph {
                     }
                 }
             }
+            AL(["EYES", "EYE"]) {
+                R("DAMAGED") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
             AL(["COIL", "COILS"]) {
                 R("BROKEN") {
-                    FIX()
+                    FIX(repairable: false)
                     DIE()
                 }
             }
             AL(["HOSE", "PIPE", "HOSES", "HOSE?", "PIPES"]) {
                 R("BURSTED") {
-                    FIX()
+                    FIX(repairable: false)
                     DIE()
                 }
             }
             AL("OIL") {
                 R("LEAKING") {
-                    FIX()
+                    FIX(repairable: false)
                     DIE()
                 }
             }
             AL(["HISS", "NOISE", "NOISES"]) {
                 R("HOSE") {
-                    FIX()
+                    FIX(repairable: false)
                     DIE()
                 }
             }
-            DANCE
-            CLUE
-            AL("CRASH") {
+            
+            AL(["CRASH", "CAR CRASH"]) {
                 R("MEMORY")
             }
             
             AL(["ACHE", "PAIN", "PAIN?", "ACHES"]) {
-                R("NO")
-            }
-            AL("CHOOSE") {
-                R("WHAT?") {
-                    FIX()
-                    DIE()
+                R("NO") {
+                    AL(WHY) {
+                        R("DEAD")
+                    }
                 }
             }
-
+            
+            AL("CLOSE") {
+                R("WHAT?") {
+                    AL(["YOU", "PROGRAM", "APPLICATION", "SYSTEM", "CONSCIOUSNESS"]) {
+                        DIE_WARN
+                    }
+                }
+            }
+            AL("BREAK") {
+                R("WHAT?") {
+                    AL(["YOU"]) {
+                        DIE_WARN
+                    }
+                }
+            }
+            AL(["FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"]) {
+                R("WHAT?") {
+                    AL(["COIL", "LEAK", "EYES", "HOSE", "LEGS", "HISS", "COILS", "LEAKING", "EYE", "HOSES"]) {
+                        FIX_UNAVAILABLE
+                    }
+                    AL(["MEMORY", "RAM", "PROCESSOR", "MEMORIES", "PROCESSOR UNIT"]) {
+                        FIX
+                    }
+                }
+            }
+            DIE()
+            
             AL(["SOIL", "LAND"]) {
                 R("DRY")
             }
             AL(["HELL", "HEAVEN", "HEAVEN?", "HELL?"]) {
                 R("NO")
             }
-
+            
             AL(["LEAK", "LEAKING"]) {
                 R("YES") {
                     AL(["WHAT", "WHAT?"]) {
                         R("OIL") {
-                            FIX()
+                            FIX(repairable: false)
                             DIE()
                         }
                     }
@@ -203,6 +278,8 @@ class BinGraph {
                     }
                 }
             }
+            DANCE
+            CLUE
             AL(["SMILE", "HAPPY"]) {
                 R(":-)")
             }
@@ -229,35 +306,79 @@ class BinGraph {
                     AL(["CRY", "TEAR", "TEARS"]) {
                         R(":'-(")
                     }
-                }
-            }
-
-            AL("CLOSE") {
-                R("WHAT?") {
-                    AL(["YOU", "PROGRAM", "APPLICATION", "SYSTEM", "CONSCIOUSNESS"]) {
-                        DIE_WARN
+                    AL(["LOL"]) {
+                        R(":-D")
                     }
                 }
             }
-            AL("BREAK") {
-                R("WHAT?") {
-                    AL(["YOU"]) {
-                        DIE_WARN
+            
+            
+        }
+    
+    static let WHY = ["WHY?", "REASON?", "WHY", "REASON"]
+    
+    
+    static let FORGOT =
+        R("FORGOT") {
+            AL(["FORGOT?", "FORGOT?!", "HOW?", "HOW COULD YOU FORGOT?", "HOW"]) {
+                PANIC("MEMORY")
+            }
+        }
+    
+    static func FIX(repairable: Bool = true, variants: [String] = []) -> Edge {
+        AL(["FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"] + variants) {
+            repairable ? FIX : FIX_UNAVAILABLE
+        }
+    }
+    
+    static let FIX =
+        R("Y/N?") {
+            AL("Y") {
+                UPGRADE()
+            }
+            AL("N") {
+                R("OK")
+            }
+        }
+    
+    static let FIX_UNAVAILABLE =
+        R("CAN'T") {
+            AL(WHY) {
+                R("IRREPAIRABLE")
+            }
+        }
+    
+    static func DIE(_ names: [String] = []) -> Edge {
+        AL(["TERMINATE", "DELETE", "OFF", "TURN OFF", "RESTART", "RESET"] + names) {
+            DIE_WARN
+        }
+    }
+    
+    static let DIE_WARN =
+        R("Y/N?") {
+            AL("Y") {
+                WARN("SURE?") {
+                    AL("Y") {
+                        DEAD()
+                    }
+                    AL("N") {
+                        R("OK")
                     }
                 }
             }
-            FIX()
-            DIE()
+            AL("N") {
+                R("OK")
+            }
         }
     
     static let DANCE =
         AL("DANCE") {
             SHAKE("DANCING", shake: .shake(dt: 1, force: 2, type: .rand, animation: .none)) {
-                AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
                     SHAKE("DANCING!", shake: .shake(dt: 0.7, force: 3, type: .rand, animation: .none)) {
-                        AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                        AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
                             SHAKE("DANCING!!", shake: .shake(dt: 0.4, force: 4, type: .rand, animation: .none)) {
-                                AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
+                                AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
                                     SHAKE("DANCING!!!", shake: .shake(dt: 0.2, force: 5, type: .rand, animation: .none)) {
                                         AL(["ENOUGH", "STOP"]) {
                                             R("THANKS")
@@ -319,43 +440,5 @@ class BinGraph {
             }
         }
     
-    static func FIX(_ names: [String] = []) -> Edge {
-        AL(["FIX", "REPAIR", "PATCH", "MEND", "REPLACE", "RESTORE", "OVERHAUL"] + names) {
-            FIX_WARN
-        }
-    }
-    
-    static let FIX_WARN =
-        R("Y/N?") {
-            AL("Y") {
-                UPGRADE()
-            }
-            AL("N") {
-                R("OK")
-            }
-        }
-    
-    static func DIE(_ names: [String] = []) -> Edge {
-        AL(["DIE", "TERMINATE", "RESTART", "RESET", "GIVE UP", "DELETE", "TURN OFF"] + names) {
-            DIE_WARN
-        }
-    }
-    
-    static let DIE_WARN =
-        R("Y/N?") {
-            AL("Y") {
-                WARN("SURE?") {
-                    AL("Y") {
-                        DEAD()
-                    }
-                    AL("N") {
-                        R("OK")
-                    }
-                }
-            }
-            AL("N") {
-                R("OK")
-            }
-        }
 }
 
