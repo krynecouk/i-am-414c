@@ -21,6 +21,7 @@ class UpgradeNode: Node {
             toolkit.asciiVM.reset()
         }
         toolkit.graphVM?.setGraph(.HEX)
+        toolkit.graphVM?.visited = []
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()
         }

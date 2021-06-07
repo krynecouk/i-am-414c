@@ -80,6 +80,23 @@ class HexGraph {
                 }
             }
             PASSWORD
+            
+            /*
+             
+             AL(["MEANING"]) {
+                 R("WHAT?") {
+                     AL("414C") {
+                         FORGOT
+                     }
+                     AL("THIS") {
+                         FORGOT
+                     }
+                 }
+             }
+             
+             */
+            
+            
         }
     
     

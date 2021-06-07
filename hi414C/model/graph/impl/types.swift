@@ -24,3 +24,7 @@ typealias AL = TestEdge
 typealias ALL = TraverseAllEdge
 typealias IF = TraverseIfEdge
 typealias HELP = HelpEdge
+
+typealias BIN = BinGraph
+typealias HEX = HexGraph
+typealias COMMON = CommonGraph
