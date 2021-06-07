@@ -6,7 +6,7 @@
 //
 
 class EchoNode: TestNode {
-    init(_ edges: () -> [Edge] = {[]}) {
+    init(@EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         super.init("echo", edges)
     }
     

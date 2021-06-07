@@ -8,7 +8,7 @@
 class RndWordNode: TestNode {
     let words: [String]
     
-    init(words: [String], _ edges: () -> [Edge] = {[]}) {
+    init(_ words: [String], @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         self.words = words
         super.init("rnd_num", edges)
     }

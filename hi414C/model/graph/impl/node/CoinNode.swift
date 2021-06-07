@@ -6,7 +6,7 @@
 //
 
 class CoinNode: RndWordNode {
-    init(_ edges: () -> [Edge] = {[]}) {
-        super.init(words: ["HEAD", "TAIL"], edges)
+    init(@EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(["HEAD", "TAIL"], edges)
     }
 }

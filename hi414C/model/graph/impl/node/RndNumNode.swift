@@ -8,7 +8,7 @@
 class RndNumNode: TestNode {
     let range: ClosedRange<Int>
     
-    init(range: ClosedRange<Int>, _ edges: () -> [Edge] = {[]}) {
+    init(_ range: ClosedRange<Int>, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         self.range = range
         super.init("rnd_num", edges)
     }

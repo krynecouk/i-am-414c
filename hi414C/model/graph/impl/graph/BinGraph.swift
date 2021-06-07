@@ -361,7 +361,24 @@ class BinGraph {
             AL("GUESS") {
                 R("WHAT?") {
                     AL("NUMBER") {
-                        R("")
+                        RND_NUM(0...100) {
+                            AL(["CORRECT", "RIGHT"]) {
+                                R("GOOD")
+                            }
+                            AL(["WRONG", "INCORRECT"]) {
+                                R("BAD")
+                            }
+                        }
+                    }
+                    AL("WORD") {
+                        RND_WORD(["ADDRESS", "MEMORY", "CORRUPTED", "PLEASE", "HELP", "REPAIR"]) {
+                            AL(["CORRECT", "RIGHT"]) {
+                                R("GOOD")
+                            }
+                            AL(["WRONG", "INCORRECT"]) {
+                                R("BAD")
+                            }
+                        }
                     }
                 }
             }
