@@ -114,7 +114,7 @@ class BinGraph {
             }
             AL("LIE") {
                 R("WHAT?") {
-                    AL("THIS PLACE", "YOU", "I", "EVERYTHING") {
+                    AL(["THIS PLACE", "YOU", "I", "EVERYTHING"]) {
                         PANIC("MEMORY")
                     }
                 }
