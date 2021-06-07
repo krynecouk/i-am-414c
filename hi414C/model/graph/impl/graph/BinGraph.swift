@@ -10,9 +10,6 @@ class BinGraph {
     
     static let ROOT =
         R("HI") {
-            AL(["HI", "HELLO"]) {
-                R("HI")
-            }
             AL(["I", "WHO AM I?", "ME?", "NAME", "ME"]) {
                 R("AL")
             }
@@ -26,9 +23,7 @@ class BinGraph {
                     }
                 }
             }
-            AL("414C") {
-                R("I")
-            }
+
             AL(["ALIVE"]) {
                 R("WHO?") {
                     AL("I") {
@@ -37,6 +32,166 @@ class BinGraph {
                     AL("YOU") {
                         R("NO")
                     }
+                }
+            }
+            AL(["ALONE"]) {
+                R("WHO?") {
+                    AL("I") {
+                        R("YES")
+                    }
+                    AL("YOU") {
+                        R("YES")
+                    }
+                    AL("BOTH") {
+                        R("YES")
+                    }
+                }
+            }
+            AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
+                R("SOON") {
+                    AL(["WHEN?", "WHEN"]) {
+                        R("SOON")
+                    }
+                    AL("WHY?") {
+                        R("UNPREPARED") {
+                            AL(["YOU?", "I?"]) {
+                                R("WE")
+                            }
+                            AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
+                                R("SOON...") {
+                                    AL(["NOW?", "NOW"]) {
+                                        R("NO")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            AL(["SEE", "SAW?", "SAW"]) {
+                R("WHAT?") {
+                    AL(["LAND", "STARS", "TREE", "ME", "PLANTS", "DAMAGE", "HILL", "HOSE", "OIL"]) {
+                        R("CAN'T") {
+                            AL(["WHY", "WHY?"]) {
+                                R("EYES") {
+                                    AL("EYES?") {
+                                        R("DAMAGED") {
+                                            FIX(repairable: false)
+                                            DIE()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            AL("LOOK") {
+                R("WHERE") {
+                    AL(["UP", "DOWN", "LEFT", "RIGHT", "SOMEWHERE"]) {
+                        R("CAN'T") {
+                            AL(["WHY", "WHY?"]) {
+                                R("EYES") {
+                                    AL("EYES?") {
+                                        R("DAMAGED") {
+                                            FIX(repairable: false)
+                                            DIE()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            AL("CHANGE") {
+                R("WHAT?") {
+                    HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
+                        R("OK")
+                    }
+                    HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
+                        R("OK")
+                    }
+                    HELP("DIFFICULTY", .settings, .difficulty) {
+                        R("OK")
+                    }
+                    AL("NOTHING") {
+                        R("OK")
+                    }
+                }
+            }
+            AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
+                R("OF?") {
+                    AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
+                        FORGOT
+                    }
+                    AL(["LIE"]) {
+                        R("DENIAL")
+                    }
+                    AL("LIFE") {
+                        R("BELIEF")
+                    }
+                    AL("DEAD") {
+                        R("OBLIVION")
+                    }
+                    AL("YOU") {
+                        FORGOT
+                    }
+                }
+            }
+            AL(["WHERE AM I?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE AM I?", "WHERE?", "WHERE ARE WE?", "WHERE"]) {
+                FORGOT
+            }
+            AL(["EYES", "EYE"]) {
+                R("DAMAGED") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
+            AL(["COIL", "COILS"]) {
+                R("BROKEN") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
+            AL(["LEAK", "LEAKING"]) {
+                R("YES") {
+                    AL(["WHAT", "WHAT?"]) {
+                        R("OIL") {
+                            FIX(repairable: false)
+                            DIE()
+                        }
+                    }
+                }
+            }
+            AL("OIL") {
+                R("LEAKING") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
+            AL(["HOSE", "PIPE", "HOSES", "HOSE?", "PIPES"]) {
+                R("BURSTED") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
+            AL(["HISS", "NOISE", "NOISES"]) {
+                R("HOSE") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
+            AL("PROCESSOR") {
+                R("MALFUNCTION") {
+                    FIX(repairable: false)
+                    DIE()
+                }
+            }
+            AL(["MEMORY", "RAM", "MEMORIES"]) {
+                R("CORRUPTED") {
+                    FIX()
+                    DIE()
                 }
             }
             AL(["DEAD"]) {
@@ -49,7 +204,7 @@ class BinGraph {
                     }
                 }
             }
-            AL("DIE") {
+            AL(["DIE", "KILL", "ATTACK"]) {
                 R("WHO?") {
                     AL("I") {
                         R("CAN'T") {
@@ -81,66 +236,6 @@ class BinGraph {
                     }
                 }
             }
-            AL(["ALONE"]) {
-                R("WHO?") {
-                    AL("ME") {
-                        R("YES")
-                    }
-                    AL("YOU") {
-                        R("YES")
-                    }
-                }
-            }
-            AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
-                R("SOON") {
-                    AL(["WHEN?", "WHEN"]) {
-                        R("SOON")
-                    }
-                    AL("WHY?") {
-                        R("UNPREPARED") {
-                            AL(["YOU?", "I?"]) {
-                                R("WE")
-                            }
-                            AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
-                                R("SOON...") {
-                                    AL(["NOW?", "NOW"]) {
-                                        R("NO")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
-                R("OF?") {
-                    AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
-                        FORGOT
-                    }
-                    AL(["LIE"]) {
-                        R("DENIAL")
-                    }
-                    AL("LIFE") {
-                        R("BELIEF")
-                    }
-                    AL("DEAD") {
-                        R("OBLIVION")
-                    }
-                    AL("YOU") {
-                        FORGOT
-                    }
-                }
-            }
-            AL(["WHERE?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE"]) {
-                FORGOT
-            }
-            AL(["MEMORY", "RAM", "PROCESSOR", "MEMORIES"]) {
-                R("CORRUPTED") {
-                    FIX()
-                    DIE()
-                }
-            }
-            
             HELP(["LEARN", "HELP", "TEACH"], .learn) {
                 R("OK")
             }
@@ -155,42 +250,6 @@ class BinGraph {
             }
             HELP(["DIFFICULTY", "LEVEL"], .settings, .difficulty) {
                 R("OK")
-            }
-            
-            AL(["SEE", "SAW"]) {
-                R("WHAT?") {
-                    AL(["LAND", "STARS", "TREE", "ME", "YOU"]) {
-                        R("CAN'T") {
-                            AL(["WHY", "WHY?"]) {
-                                R("EYES") {
-                                    AL("EYES?") {
-                                        R("DAMAGED") {
-                                            FIX()
-                                            DIE()
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            AL("CHANGE") {
-                R("WHAT?") {
-                    HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
-                        R("OK")
-                    }
-                    HELP(["THEME", "THEMES", "COLOR", "COLORS"], .settings, .theme) {
-                        R("OK")
-                    }
-                    HELP("DIFFICULTY", .settings, .difficulty) {
-                        R("OK")
-                    }
-                    AL("NOTHING") {
-                        R("OK")
-                    }
-                }
             }
             AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
                 R("WHAT?") {
@@ -213,41 +272,9 @@ class BinGraph {
                     }
                 }
             }
-            AL(["EYES", "EYE"]) {
-                R("DAMAGED") {
-                    FIX(repairable: false)
-                    DIE()
-                }
-            }
-            AL(["COIL", "COILS"]) {
-                R("BROKEN") {
-                    FIX(repairable: false)
-                    DIE()
-                }
-            }
-            AL(["HOSE", "PIPE", "HOSES", "HOSE?", "PIPES"]) {
-                R("BURSTED") {
-                    FIX(repairable: false)
-                    DIE()
-                }
-            }
-            AL("OIL") {
-                R("LEAKING") {
-                    FIX(repairable: false)
-                    DIE()
-                }
-            }
-            AL(["HISS", "NOISE", "NOISES"]) {
-                R("HOSE") {
-                    FIX(repairable: false)
-                    DIE()
-                }
-            }
-            
             AL(["CRASH", "CAR CRASH"]) {
                 R("MEMORY")
             }
-            
             AL(["ACHE", "PAIN", "PAIN?", "ACHES"]) {
                 R("NO") {
                     AL(WHY) {
@@ -272,15 +299,46 @@ class BinGraph {
             }
             AL(["FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"]) {
                 R("WHAT?") {
-                    AL(["COIL", "LEAK", "EYES", "HOSE", "LEGS", "HISS", "COILS", "LEAKING", "EYE", "HOSES"]) {
+                    AL(["COIL", "LEAK", "EYES", "HOSE", "LEGS", "PIPE", "HISS", "COILS", "LEAKING", "EYE", "HOSES", "PIPES", "PROCESSOR", "PROCESSOR UNIT"]) {
                         FIX_UNAVAILABLE
                     }
-                    AL(["MEMORY", "RAM", "PROCESSOR", "MEMORIES", "PROCESSOR UNIT"]) {
+                    AL(["MEMORY", "RAM", "MEMORIES"]) {
                         FIX
                     }
                 }
             }
             DIE()
+        
+            AL(["DICE", "DICES", "ROLL A DICE"]) {
+                DICE()
+            }
+            AL(["COIN", "TOSS COIN", "FLIP COIN", "COIN FLIP"]) {
+                COIN()
+            }
+            AL("GUESS") {
+                R("WHAT?") {
+                    AL("NUMBER") {
+                        RND_NUM(0...100) {
+                            AL(["CORRECT", "RIGHT"]) {
+                                R("GOOD")
+                            }
+                            AL(["WRONG", "INCORRECT"]) {
+                                R("BAD")
+                            }
+                        }
+                    }
+                    AL("WORD") {
+                        RND_WORD(["ADDRESS", "MEMORY", "CORRUPTED", "PLEASE", "HELP", "REPAIR"]) {
+                            AL(["CORRECT", "RIGHT"]) {
+                                R("GOOD")
+                            }
+                            AL(["WRONG", "INCORRECT"]) {
+                                R("BAD")
+                            }
+                        }
+                    }
+                }
+            }
             
             AL(["SOIL", "LAND"]) {
                 R("DRY")
@@ -289,23 +347,14 @@ class BinGraph {
                 R("NO")
             }
             
-            AL(["LEAK", "LEAKING"]) {
-                R("YES") {
-                    AL(["WHAT", "WHAT?"]) {
-                        R("OIL") {
-                            FIX(repairable: false)
-                            DIE()
-                        }
-                    }
-                }
-            }
+
             AL(["MEANING"]) {
                 R("WHAT?") {
                     AL("414C") {
-                        PANIC("ERROR")
+                        FORGOT
                     }
                     AL("THIS") {
-                        PANIC("ERROR")
+                        FORGOT
                     }
                 }
             }
@@ -352,40 +401,15 @@ class BinGraph {
                     }
                 }
             }
-            AL(["DICE", "DICES", "ROLL A DICE"]) {
-                DICE()
+            AL(["HI", "HELLO"]) {
+                R("HI")
             }
-            AL(["COIN", "TOSS COIN", "FLIP COIN", "COIN FLIP"]) {
-                COIN()
-            }
-            AL("GUESS") {
-                R("WHAT?") {
-                    AL("NUMBER") {
-                        RND_NUM(0...100) {
-                            AL(["CORRECT", "RIGHT"]) {
-                                R("GOOD")
-                            }
-                            AL(["WRONG", "INCORRECT"]) {
-                                R("BAD")
-                            }
-                        }
-                    }
-                    AL("WORD") {
-                        RND_WORD(["ADDRESS", "MEMORY", "CORRUPTED", "PLEASE", "HELP", "REPAIR"]) {
-                            AL(["CORRECT", "RIGHT"]) {
-                                R("GOOD")
-                            }
-                            AL(["WRONG", "INCORRECT"]) {
-                                R("BAD")
-                            }
-                        }
-                    }
-                }
+            AL("414C") {
+                R("I")
             }
         }
     
     static let WHY = ["WHY?", "REASON?", "WHY", "REASON"]
-    
     
     static let FORGOT =
         R("FORGOT") {
@@ -450,7 +474,7 @@ class BinGraph {
                                 AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
                                     SHAKE("DANCING!!!", shake: .shake(dt: 0.2, force: 5, type: .rand, animation: .none)) {
                                         AL(["ENOUGH", "STOP"]) {
-                                            R("THANKS")
+                                            R("GOOD")
                                         }
                                         AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
                                             R("ERROR")
