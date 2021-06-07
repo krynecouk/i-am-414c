@@ -64,6 +64,10 @@ class GraphViewModel: ObservableObject, Resetable {
     }
     
     func generateTests(for text: String) {
+        generateTests(for: current.name)
+    }
+    
+    func generateTests(for text: String) {
         let symbols = text.map { char in
             ASCIISymbol.from(String(char))
         }

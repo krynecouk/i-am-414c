@@ -75,15 +75,15 @@ struct TerminalSettingsSelect: View {
             if helpVM.settings == .difficulty {
                 HelpRadioButton("easy", active: testVM.difficulty == .easy) {
                     testVM.difficulty(.easy)
-                    graphVM.generateTests(for: graphVM.current.id)
+                    graphVM.generateTests()
                 }
                 HelpRadioButton("medium", active: testVM.difficulty == .medium) {
                     testVM.difficulty(.medium)
-                    graphVM.generateTests(for: graphVM.current.id)
+                    graphVM.generateTests()
                 }
                 HelpRadioButton("hard", active: testVM.difficulty == .hard) {
                     testVM.difficulty(.hard)
-                    graphVM.generateTests(for: graphVM.current.id)
+                    graphVM.generateTests()
                 }
             }
             
