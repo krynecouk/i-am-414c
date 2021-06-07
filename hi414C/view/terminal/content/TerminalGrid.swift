@@ -11,7 +11,6 @@ struct TerminalGrid: View {
     @Namespace private var ns
     
     @EnvironmentObject var themeVM: ThemeViewModel
-    @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var helpVM: HelpViewModel
@@ -107,20 +106,8 @@ struct TerminalGrid: View {
         .animation(themeVM.terminal.grid.test.animation.symbol, value: self.items)
         .withShake(attempt: uiVM.errors)
         .onReceive(testVM.$result) { result in
-            if case .wrong(_) = result {
-                withAnimation {
-                    uiVM.shake()
-                }
-            }
             if case let .right(symbol) = result {
                 self.solved.append(symbol)
-            }
-        }
-        .onReceive(graphVM.$result) { result in
-            if case .error(_) = result {
-                withAnimation {
-                    uiVM.shake()
-                }
             }
         }
         .onReceive(orientationChanged) { _ in

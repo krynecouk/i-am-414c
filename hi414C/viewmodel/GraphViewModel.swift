@@ -9,7 +9,6 @@ import SwiftUI
 import OrderedCollections
 
 class GraphViewModel: ObservableObject, Resetable {
-    @Published private(set) var result: GraphTraverseResult = .ok
     @Published private(set) var root: Node = Graphs.BIN
     
     typealias EdgeId = String
@@ -25,15 +24,15 @@ class GraphViewModel: ObservableObject, Resetable {
         self.start()
     }
     
-    func traverse(ctx: GraphContext) {
+    func traverse(ctx: GraphContext) -> GraphTraverseResult {
         let targetNode = traverse(self.current.edges, ctx: ctx) ?? traverse(root.edges, ctx: ctx)
         if let node = targetNode {
             self.current.onExit(ctx: ctx, toolkit: toolkit)
             self.current = node
             self.current.onEnter(ctx: ctx, toolkit: toolkit)
-            self.result = .ok
+            return .ok
         } else {
-            self.result = .error("Node \(ctx.input) was not found")
+            return .error("Node \(ctx.input) was not found")
         }
     }
     

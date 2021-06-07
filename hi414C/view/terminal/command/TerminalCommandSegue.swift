@@ -39,11 +39,16 @@ struct TerminalCommandSegue: View {
                     switch solution {
                     case .right:
                         asciiVM.add(symbol: testVM.test!.symbol)
-                    default:
-                        print("not correct")
+                    case .wrong(_):
+                        uiVM.shake()
+                    case .none:
+                        print("No test provided")
                     }
                 } else {
-                    graphVM.traverse(ctx: GraphContext(input: input))
+                    let result = graphVM.traverse(ctx: GraphContext(input: input))
+                    if case .error(_) = result {
+                        uiVM.shake()
+                    }
                 }
             }
         }

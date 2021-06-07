@@ -17,7 +17,9 @@ class UIViewModel: ObservableObject, Resetable {
     @Published private(set) var errors: Int = 0
 
     func shake() {
-        self.errors += 1
+        withAnimation {
+            self.errors += 1
+        }
     }
     
     func isWideScreen() -> Bool {
