@@ -23,26 +23,34 @@ class BinGraph {
                     }
                 }
             }
-            AL(["CAUSE?", "ORIGIN?", "REASON?", "CAUSE"]) {
+            AL(["CAUSE?", "REASON?", "CAUSE", "REASON"]) {
                 R("OF?") {
-                    AL(["DAMAGE", "DAMAGES", "YOUR DAMAGES", "OF YOUR DAMAGES"]) {
+                    AL(["YOUR DAMAGES", "DAMAGE", "DAMAGES"]) {
+                        FORGOT
+                    }
+                    AL("YOU") {
                         FORGOT
                     }
                     AL(["LIE"]) {
                         R("DENIAL")
                     }
                     AL("LIFE") {
-                        R("BELIEF")
+                        R("FAITH")
                     }
                     AL("DEAD") {
                         R("OBLIVION")
                     }
+                }
+            }
+            AL(["ORIGIN?", "ORIGIN"]) {
+                R("OF?") {
                     AL("YOU") {
                         FORGOT
                     }
                 }
             }
-            AL(["WHERE AM I?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE AM I?", "WHERE?", "WHERE ARE WE?", "WHERE"]) {
+            
+            AL(["WHERE AM I?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE AM I", "WHERE?", "WHERE ARE WE?", "WHERE"]) {
                 FORGOT
             }
             AL(["MEMORY", "RAM", "MEMORIES"]) {
@@ -53,17 +61,17 @@ class BinGraph {
             }
             AL(["DIE"]) {
                 R("WHO?") {
-                    AL("I") {
+                    AL(["I", "AL"]) {
                         R("CAN'T") {
                             AL(COMMON.WHY) {
                                 PANIC("ERROR")
                             }
                         }
                     }
-                    AL("YOU") {
+                    AL(["YOU", "414C"]) {
                         R("CAN'T") {
                             AL(COMMON.WHY) {
-                                R("DEAD")
+                                R("LIFELESS")
                             }
                         }
                     }
@@ -71,13 +79,13 @@ class BinGraph {
             }
             AL(["LIVE"]) {
                 R("WHO?") {
-                    AL("I") {
+                    AL(["I", "AL"]) {
                         R("SOON")
                     }
-                    AL("YOU") {
+                    AL(["YOU", "414C"]) {
                         R("CAN'T") {
                             AL(COMMON.WHY) {
-                                R("DEAD")
+                                R("LIFELESS")
                             }
                         }
                     }
@@ -106,8 +114,8 @@ class BinGraph {
             }
             AL("LIE") {
                 R("WHAT?") {
-                    AL("YOU") {
-                        PANIC("ERROR")
+                    AL("THIS PLACE", "YOU", "I", "EVERYTHING") {
+                        PANIC("MEMORY")
                     }
                 }
             }
@@ -127,18 +135,15 @@ class BinGraph {
             AL(["SOIL", "LAND"]) {
                 R("DRY")
             }
-            AL(["MEANING"]) {
+            AL(["MEANING", "EXPLAIN"]) {
                 R("WHAT?") {
-                    AL("414C") {
-                        FORGOT
-                    }
-                    AL("ME") {
-                        FORGOT
-                    }
-                    AL("THIS") {
+                    AL(["THIS PLACE", "414C", "YOU", "ME"]) {
                         FORGOT
                     }
                 }
+            }
+            AL(["HOPE"]) {
+                R("PROCESSING")
             }
             AL(["HI", "HELLO"]) {
                 R("HI")
@@ -177,7 +182,7 @@ class BinGraph {
             
             COMMON.DIE()
             COMMON.DICE_ROLL
-            COMMON.COIN_TOSS
+            COMMON.COIN_FLIP
             COMMON.GUESS
             COMMON.DANCE
             COMMON.SMILE
@@ -192,17 +197,15 @@ class BinGraph {
             CLUE
         }
     
-
-    
     private static let FORGOT =
-        R("FORGOT") {
-            AL(["FORGOT?", "FORGOT?!", "HOW?", "HOW COULD YOU FORGOT?", "HOW"]) {
-                PANIC("MEMORY")
+        R("FORGOTTEN") {
+            AL(["WHY?", "WHY DID YOU FORGET?", "HOW DID YOU FORGET?", "HOW COULD YOU FORGET?", "FORGOTTEN?", "FORGOTTEN?!", "HOW?", "HOW", "WHY"]) {
+                PANIC("MEMORY") {
+                    COMMON.FIX()
+                }
             }
         }
-    
-
-    
+ 
     static let CLUE =
         AL(["CLUE", "CLUELESS", "BINARY", "BIN"]) {
             R("0001=2^0") {

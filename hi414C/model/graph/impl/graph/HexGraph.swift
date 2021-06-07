@@ -52,7 +52,7 @@ class HexGraph {
                 }
             }
             AL(["THIS PLACE", "WHAT IS THIS PLACE?"]) {
-                R("VOID OF YOUR MIND")
+                R("JUST YOUR MIND")
             }
             AL(["CRASH", "CRASH?"]) {
                 R("CAR CRASH")
@@ -67,7 +67,7 @@ class HexGraph {
             AL("DAUGHTER") {
                 R("ELENA")
             }
-            AL(["WAKE", "HOW DO I WAKE UP?", "WAKE ME UP!", "WAKE UP", "WAKE UP!"]) {
+            AL(["WAKE", "AWAKE", "HOW DO I WAKE UP?", "WAKE ME UP!", "AWAKE", "WAKE UP", "WAKE UP!"]) {
                 R("NEED PASSWORD") {
                     AL(["WHY?", "WHY?!"]) {
                         R("TO REMEMBER") {
@@ -97,11 +97,52 @@ class HexGraph {
              */
             
             
+            COMMON.ALIVE
+            COMMON.ALONE
+            COMMON.SEE
+            COMMON.LOOK
+            COMMON.CHANGE
+
+            COMMON.EYES
+            COMMON.COIL
+            COMMON.LEAK
+            COMMON.OIL
+            COMMON.HOSE
+            COMMON.HISS
+            COMMON.PROCESSOR
+            
+            COMMON.DEAD_QUESTION
+            
+            COMMON.LEARN
+            COMMON.CHAT
+            COMMON.SETTINGS
+            COMMON.DIFFICULTY
+            
+            COMMON.REPEAT
+            COMMON.SHOUT
+            
+            COMMON.PAIN
+            COMMON.CLOSE
+            COMMON.BREAK
+            
+            COMMON.DIE()
+            COMMON.DICE_ROLL
+            COMMON.COIN_FLIP
+            COMMON.GUESS
+            COMMON.DANCE
+            COMMON.SMILE
+            COMMON.SAD
+            COMMON.WINK
+            COMMON.CRY
+            COMMON.EMOTION
+
+            COMMON.CLONE
+            COMMON.HELL
         }
     
     
     static let PASSWORD =
-        AL(["PASSWORD", "TRY PASSWORD", "REMEMBER", "TRY REMEMBER"]) {
+        AL(["PASSWORD", "LOGIN", "LOGOUT", "TRY PASSWORD", "REMEMBER", "TRY REMEMBER"]) {
             R("TRY?") {
                 AL("Y") {
                     R("*****") {

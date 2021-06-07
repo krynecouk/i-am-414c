@@ -11,13 +11,7 @@ class CommonGraph {
     static let ALONE =
         AL(["ALONE"]) {
             R("WHO?") {
-                AL("I") {
-                    R("YES")
-                }
-                AL("YOU") {
-                    R("YES")
-                }
-                AL("BOTH") {
+                AL(["I", "YOU", "BOTH"]) {
                     R("YES")
                 }
             }
@@ -36,11 +30,11 @@ class CommonGraph {
         }
     
     static let SEE =
-        AL(["SEE", "SAW?", "SAW"]) {
+        AL(["SAW?", "SEE", "SAW"]) {
             R("WHAT?") {
-                AL(["LAND", "STARS", "TREE", "ME", "PLANTS", "DAMAGE", "HILL", "HOSE", "OIL"]) {
+                AL(["LAND", "STARS", "TREE", "ME", "PLANTS", "DAMAGE", "HILL"]) {
                     R("CAN'T") {
-                        AL(["WHY", "WHY?"]) {
+                        AL(["WHY?", "WHY"]) {
                             R("EYES") {
                                 AL("EYES?") {
                                     R("DAMAGED") {
@@ -52,23 +46,23 @@ class CommonGraph {
                         }
                     }
                 }
+                OIL
+                HOSE
+                PROCESSOR
             }
         }
     
     static let LOOK =
         AL("LOOK") {
             R("WHERE") {
-                AL(["UP", "DOWN", "LEFT", "RIGHT", "SOMEWHERE"]) {
+                AL(["FOR HELP", "FOR SOMEBODY ELSE", "UP", "DOWN", "LEFT", "RIGHT", "SOMEBODY", "SOMEWHERE"]) {
                     R("CAN'T") {
-                        AL(["WHY", "WHY?"]) {
-                            R("EYES") {
-                                AL("EYES?") {
-                                    R("DAMAGED") {
-                                        COMMON.FIX(repairable: false)
-                                        COMMON.DIE()
-                                    }
-                                }
+                        AL(["WHY?", "WHY"]) {
+                            R("DAMAGED") {
+                                COMMON.FIX(repairable: false)
+                                COMMON.DIE()
                             }
+                            
                         }
                     }
                 }
@@ -92,14 +86,10 @@ class CommonGraph {
         }
     
     static let LEAK =
-        AL(["LEAK", "LEAKING"]) {
-            R("YES") {
-                AL(["WHAT", "WHAT?"]) {
-                    R("OIL") {
-                        FIX(repairable: false)
-                        COMMON.DIE()
-                    }
-                }
+        AL(["WHAT IS LEAKING?", "WHERE IS IT LEAKING?", "LEAK", "LEAKING"]) {
+            R("OIL") {
+                FIX(repairable: false)
+                COMMON.DIE()
             }
         }
     
@@ -120,7 +110,7 @@ class CommonGraph {
         }
     
     static let HISS =
-        AL(["HISS", "NOISE", "NOISES"]) {
+        AL(["WHAT ARE THOSE NOISES?", "WHERE IS IT HISSING?", "HISS", "HISSING", "NOISE", "NOISES"]) {
             R("HOSE") {
                 FIX(repairable: false)
                 COMMON.DIE()
@@ -128,7 +118,7 @@ class CommonGraph {
         }
     
     static let PROCESSOR =
-        AL(["PROCESSOR", "PROCESSOR UNIT"]) {
+        AL(["WHAT IS THE STATUS OF YOUR PROCESSOR?", "PROCESSOR", "PROCESSOR UNIT"]) {
             R("MALFUNCTION") {
                 FIX(repairable: false)
                 COMMON.DIE()
@@ -136,34 +126,34 @@ class CommonGraph {
         }
     
     static let DICE_ROLL =
-        AL(["DICE", "DICES", "ROLL A DICE"]) {
+        AL(["ROLL A DICE", "DICE", "DICES"]) {
             DICE()
         }
     
-    static let COIN_TOSS =
-        AL(["COIN", "TOSS COIN", "FLIP COIN", "COIN FLIP"]) {
+    static let COIN_FLIP =
+        AL(["FLIP A COIN", "TOSS A COIN", "COIN", "COIN FLIP"]) {
             COIN()
         }
     
     static let GUESS =
-        AL("GUESS") {
+        AL(["TRY TO GUESS", "GUESS"]) {
             R("WHAT?") {
                 AL("NUMBER") {
                     RND_NUM(0...100) {
-                        AL(["CORRECT", "RIGHT"]) {
+                        AL(["YES, THAT'S CORRECT", "CORRECT", "RIGHT"]) {
                             R("GOOD")
                         }
-                        AL(["WRONG", "INCORRECT"]) {
+                        AL(["NO, THAT'S WRONG", "WRONG", "INCORRECT"]) {
                             R("BAD")
                         }
                     }
                 }
                 AL("WORD") {
                     RND_WORD(["ADDRESS", "MEMORY", "CORRUPTED", "PLEASE", "HELP", "REPAIR"]) {
-                        AL(["CORRECT", "RIGHT"]) {
+                        AL(["YES, THAT'S CORRECT", "CORRECT", "RIGHT"]) {
                             R("GOOD")
                         }
-                        AL(["WRONG", "INCORRECT"]) {
+                        AL(["NO, THAT'S WRONG", "WRONG", "INCORRECT"]) {
                             R("BAD")
                         }
                     }
@@ -173,20 +163,16 @@ class CommonGraph {
     
     static let DANCE =
         AL("DANCE") {
-            SHAKE("DANCING", shake: .shake(dt: 1, force: 2, type: .rand, animation: .none)) {
-                AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
-                    SHAKE("DANCING!", shake: .shake(dt: 0.7, force: 3, type: .rand, animation: .none)) {
-                        AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
-                            SHAKE("DANCING!!", shake: .shake(dt: 0.4, force: 4, type: .rand, animation: .none)) {
-                                AL(["FASTER!", "MORE!", "DANCE", "FASTER", "MORE"]) {
-                                    SHAKE("DANCING!!!", shake: .shake(dt: 0.2, force: 5, type: .rand, animation: .none)) {
-                                        AL(["ENOUGH", "STOP"]) {
-                                            R("GOOD")
-                                        }
-                                        AL(["FASTER", "FASTER!", "MORE", "MORE!"]) {
-                                            R("ERROR")
-                                        }
-                                    }
+            SHAKE("DANCING", shake: .shake(dt: 0.5, force: 3, type: .rand, animation: .none)) {
+                AL(["FASTER!", "DANCE!", "MORE!", "DANCE", "FASTER", "MORE"]) {
+                    SHAKE("DANCING!", shake: .shake(dt: 0.3, force: 5, type: .rand, animation: .none)) {
+                        AL(["FASTER!", "DANCE!", "MORE!", "DANCE", "FASTER", "MORE"]) {
+                            SHAKE("DANCING!!", shake: .shake(dt: 0.2, force: 7, type: .rand, animation: .none)) {
+                                AL(["ENOUGH", "STOP"]) {
+                                    R("GOOD")
+                                }
+                                AL(["FASTER!", "DANCE!", "MORE!", "DANCE", "FASTER", "MORE"]) {
+                                    R("ERROR")
                                 }
                             }
                         }
@@ -280,7 +266,7 @@ class CommonGraph {
         }
     
     static let REPEAT =
-        AL(["ECHO", "REPEAT", "SAY", "PRINT"]) {
+        AL(["SAY AGAIN", "ECHO", "REPEAT", "SAY", "PRINT"]) {
             R("WHAT?") {
                 ALL {
                     ECHO()
@@ -289,7 +275,7 @@ class CommonGraph {
         }
     
     static let SHOUT =
-        AL(["YELL", "SHOUT", "LOUD", "LOUDLY"]) {
+        AL(["YELL AT ME", "YELL", "SHOUT", "LOUD", "LOUDLY"]) {
             R("WHAT?") {
                 ALL {
                     YELL()
@@ -300,20 +286,17 @@ class CommonGraph {
     static let CLONE =
         AL(["CLONE", "CLONES"]) {
             R("WHO?") {
-                AL("YOU") {
-                    R("NO")
-                }
-                AL("I") {
+                AL(["YOU", "I"]) {
                     R("NO")
                 }
             }
         }
     
     static let PAIN =
-        AL(["ACHE", "PAIN", "PAIN?", "ACHES"]) {
+        AL(["DO YOU FEEL PAIN?", "ACHE", "PAIN", "PAIN?", "ACHES", "HURT?", "HURTING?", "HURT", "HURTING"]) {
             R("NO") {
                 AL(COMMON.WHY) {
-                    R("DEAD")
+                    R("INANIMATE")
                 }
             }
         }
@@ -321,7 +304,7 @@ class CommonGraph {
     static let CLOSE =
         AL("CLOSE") {
             R("WHAT?") {
-                AL(["YOU", "PROGRAM", "APPLICATION", "SYSTEM", "CONSCIOUSNESS"]) {
+                AL(["EVERYTHING", "YOU", "PROGRAM", "APPLICATION", "SYSTEM", "CONSCIOUSNESS"]) {
                     COMMON.DIE_WARN
                 }
             }
@@ -330,7 +313,7 @@ class CommonGraph {
     static let BREAK =
         AL("BREAK") {
             R("WHAT?") {
-                AL(["YOU"]) {
+                AL(["YOU", "YOURSELF"]) {
                     COMMON.DIE_WARN
                 }
             }
@@ -339,7 +322,7 @@ class CommonGraph {
     static let HELL =
         AL(["IS THIS HELL?", "IS THIS HEAVEN?", "HELL", "HEAVEN", "HEAVEN?", "HELL?"]) {
             R("NO") {
-                AL(["THEN WHAT IS IT?", "WHERE ARE WE?"]) {
+                AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
                     R("YOUR MIND")
                 }
             }
@@ -348,19 +331,19 @@ class CommonGraph {
     static let DEAD_QUESTION =
         AL(["DEAD?", "DEAD"]) {
             R("WHO?") {
-                AL("I") {
+                AL(["I", "ME"]) {
                     R("NO")
                 }
                 AL("YOU") {
-                    R("YES")
+                    R("ALMOST")
                 }
             }
         }
     
-    static let WHY = ["WHY?", "REASON?", "WHY", "REASON"]
+    static let WHY = ["TELL MORE", "TELL ME MORE", "WHY?", "REASON?", "WHY", "REASON", "EXPLAIN"]
     
     static func FIX(repairable: Bool = true, variants: [String] = []) -> Edge {
-        AL(["FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"] + variants) {
+        AL(["RELOAD", "REFRESH", "FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"] + variants) {
             repairable ? FIX : FIX_UNAVAILABLE
         }
     }
@@ -383,7 +366,7 @@ class CommonGraph {
         }
     
     static func DIE(_ names: [String] = []) -> Edge {
-        AL(["TERMINATE", "DELETE", "OFF", "TURN OFF", "RESTART", "RESET"] + names) {
+        AL(["OFF", "TURN OFF", "RESTART", "RESET", "TERMINATE", "DELETE"] + names) {
             DIE_WARN
         }
     }
