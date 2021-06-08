@@ -29,6 +29,9 @@ struct TerminalCommandLine: View {
                         .id(keyboardVM.input)
                 }
                 .padding(.all, 15)
+                .onAppear {
+                    reader.scrollTo(keyboardVM.input)
+                }
                 .onChange(of: keyboardVM.input) { input in
                     reader.scrollTo(input)
                 }

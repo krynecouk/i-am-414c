@@ -12,6 +12,7 @@ struct Grid<Content: View> : View {
     let spacing: CGFloat
     let padding: CGFloat
     let top: CGFloat
+    let showsIndicators: Bool
     let alignment: HorizontalAlignment
     let columns: [GridItem]
     
@@ -21,6 +22,7 @@ struct Grid<Content: View> : View {
         spacing: CGFloat = 10,
         padding: CGFloat = 20,
         top: CGFloat = 0,
+        showsIndicators: Bool = false,
         @ViewBuilder content: () -> Content) {
                 
         self.columns = columns
@@ -28,11 +30,12 @@ struct Grid<Content: View> : View {
         self.spacing = spacing
         self.padding = padding
         self.top = top
+        self.showsIndicators = showsIndicators
         self.content = content()
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: self.showsIndicators) {
             LazyVGrid(columns: columns, alignment: alignment, spacing: spacing) {
                 content
             }
