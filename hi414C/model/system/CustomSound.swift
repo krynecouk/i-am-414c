@@ -17,10 +17,10 @@ class CustomSound {
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
         } catch {
             print(error.localizedDescription)
         }
-        audioPlayer?.play()
     }
 }
 
