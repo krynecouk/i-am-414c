@@ -18,7 +18,8 @@
 		262F4B3E266E515400D14D52 /* RndNumNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3D266E515400D14D52 /* RndNumNode.swift */; };
 		262F4B40266E515F00D14D52 /* RndWordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3F266E515F00D14D52 /* RndWordNode.swift */; };
 		262F4B42266E6B6200D14D52 /* CommonGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B41266E6B6200D14D52 /* CommonGraph.swift */; };
-		262F4B4B266FD52600D14D52 /* KeyboardSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B4A266FD52600D14D52 /* KeyboardSound.swift */; };
+		262F4B4E2670000500D14D52 /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B4D2670000500D14D52 /* SystemSound.swift */; };
+		262F4B50267012FD00D14D52 /* CustomSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B4F267012FD00D14D52 /* CustomSound.swift */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
@@ -240,7 +241,8 @@
 		262F4B3D266E515400D14D52 /* RndNumNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndNumNode.swift; sourceTree = "<group>"; };
 		262F4B3F266E515F00D14D52 /* RndWordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndWordNode.swift; sourceTree = "<group>"; };
 		262F4B41266E6B6200D14D52 /* CommonGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonGraph.swift; sourceTree = "<group>"; };
-		262F4B4A266FD52600D14D52 /* KeyboardSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSound.swift; sourceTree = "<group>"; };
+		262F4B4D2670000500D14D52 /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
+		262F4B4F267012FD00D14D52 /* CustomSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSound.swift; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -504,6 +506,15 @@
 			path = video;
 			sourceTree = "<group>";
 		};
+		262F4B4C266FFFF600D14D52 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				262F4B4D2670000500D14D52 /* SystemSound.swift */,
+				262F4B4F267012FD00D14D52 /* CustomSound.swift */,
+			);
+			path = system;
+			sourceTree = "<group>";
+		};
 		2641EF3C25E411B00005ABF7 /* figlet */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +752,7 @@
 				2678D970260E5D3400DDB40F /* keyboard */,
 				26AF9F4825FF7E9400B77E0A /* test */,
 				2644041C2619005000CA7EA1 /* theme */,
+				262F4B4C266FFFF600D14D52 /* system */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -798,7 +810,6 @@
 				26500158260F3C6200414E89 /* Keyboards.swift */,
 				2678D971260E5D4A00DDB40F /* KeyboardSet.swift */,
 				2678D981260E818700DDB40F /* KeyboardSide.swift */,
-				262F4B4A266FD52600D14D52 /* KeyboardSound.swift */,
 			);
 			path = keyboard;
 			sourceTree = "<group>";
@@ -1417,6 +1428,7 @@
 				269764F02624981700775D71 /* Equation.swift in Sources */,
 				262F4B42266E6B6200D14D52 /* CommonGraph.swift in Sources */,
 				26E090E8265076D8002E404D /* LightBlueTheme.swift in Sources */,
+				262F4B4E2670000500D14D52 /* SystemSound.swift in Sources */,
 				269765052624A25900775D71 /* OR.swift in Sources */,
 				26E090F82651BD97002E404D /* MelonTheme.swift in Sources */,
 				2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */,
@@ -1439,9 +1451,9 @@
 				2697659C262DB14E00775D71 /* TerminalGrid.swift in Sources */,
 				26F00B64266AC0ED008DACE5 /* YellNode.swift in Sources */,
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
+				262F4B50267012FD00D14D52 /* CustomSound.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */,
 				26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */,
-				262F4B4B266FD52600D14D52 /* KeyboardSound.swift in Sources */,
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
 				26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */,
 				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,

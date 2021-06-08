@@ -48,29 +48,31 @@ struct TerminalHelpLine: View {
     
     func MinButton() -> some View {
         Button(action: {
-                if segueVM.isOpen {
-                    segueVM.close()
-                } else {
-                    segueVM.open(type: getCurrentSegue())
-                }
+            SystemSound.play(.modifier)
+            if segueVM.isOpen {
+                segueVM.close()
+            } else {
+                segueVM.open(type: getCurrentSegue())
+            }
         }) {
-                if segueVM.isOpen {
-                    ButtonLabel("-")
-                        .withTheme(themeVM.terminal.hli.button.passive)
-                } else {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(width: 15, height: 15)
-                        .border(themeVM.terminal.hli.button.passive.color, width: 1.7)
-                        .offset(y: -1.4)
-                        .padding(.all, 13)
-                }
-
+            if segueVM.isOpen {
+                ButtonLabel("-")
+                    .withTheme(themeVM.terminal.hli.button.passive)
+            } else {
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(width: 15, height: 15)
+                    .border(themeVM.terminal.hli.button.passive.color, width: 1.7)
+                    .offset(y: -1.4)
+                    .padding(.all, 13)
+            }
+            
         }
     }
     
     func QuitButton(_ text: String) -> some View {
         Button(action: {
+            SystemSound.play(.delete)
             if uiVM.detail.0 == true {
                 uiVM.detail = (false, false)
             }
@@ -97,6 +99,7 @@ struct TerminalHelpLine: View {
             .withTheme(isCurrent && isOpen ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
+                SystemSound.play(.modifier)
                 if isOpen {
                     toggleSegue(type)
                 } else {
