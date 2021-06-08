@@ -13,20 +13,26 @@ struct TerminalCommandLine: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .center, spacing: 0) {
-                TerminalCommandPrompt(theme: themeVM.terminal.cli.prompt)
-                .padding(.trailing, 17)
-                ForEach(Array(keyboardVM.input.enumerated()), id: \.offset) { i, char in
-                    Text(String(char))
-                        .offset(y: 4)
-                        .withTheme(themeVM.terminal.cli.text.view)
-                        .fadeOut(speed: themeVM.terminal.cli.text.bloom.speed, color: themeVM.terminal.cli.text.bloom.color)
-                        .padding(.trailing, 4)
+            ScrollViewReader { reader in
+                HStack(alignment: .center, spacing: 0) {
+                    TerminalCommandPrompt(theme: themeVM.terminal.cli.prompt)
+                        .padding(.trailing, 17)
+                    ForEach(Array(keyboardVM.input.enumerated()), id: \.offset) { i, char in
+                        Text(String(char))
+                            .offset(y: 4)
+                            .withTheme(themeVM.terminal.cli.text.view)
+                            .fadeOut(speed: themeVM.terminal.cli.text.bloom.speed, color: themeVM.terminal.cli.text.bloom.color)
+                            .padding(.trailing, 4)
+                    }
+                    TerminalCommandCursor(theme: themeVM.terminal.cli.cursor)
+                        .padding(.trailing, 7)
+                        .id(keyboardVM.input)
                 }
-                TerminalCommandCursor(theme: themeVM.terminal.cli.cursor)
-                    .id(keyboardVM.input)
+                .padding(.all, 15)
+                .onChange(of: keyboardVM.input) { input in
+                    reader.scrollTo(input)
+                }
             }
-            .padding(.all, 15)
         }
         .frame(height: SegueViewModel.header.height)
         .background(themeVM.terminal.cli.view.background.edgesIgnoringSafeArea(.all))
