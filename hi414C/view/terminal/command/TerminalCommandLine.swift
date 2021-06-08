@@ -22,7 +22,6 @@ struct TerminalCommandLine: View {
                         .withTheme(themeVM.terminal.cli.text.view)
                         .fadeOut(speed: themeVM.terminal.cli.text.bloom.speed, color: themeVM.terminal.cli.text.bloom.color)
                         .padding(.trailing, 4)
-                    
                 }
                 TerminalCommandCursor(theme: themeVM.terminal.cli.cursor)
                     .id(keyboardVM.input)

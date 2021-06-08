@@ -8,11 +8,11 @@
 struct KeyboardKey {
     var label: String
     var value: String
-    var special: Bool
+    var decrypted: Bool
     
-    init(_ label: String, value: String? = nil, special: Bool = false) {
+    init(_ label: String, value: String? = nil, decrypted: Bool = false) {
         self.label = label
         self.value = value ?? label
-        self.special = special
+        self.decrypted = decrypted
     }
 }

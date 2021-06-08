@@ -46,7 +46,7 @@ struct KeyboardView: View {
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
                     let space = keyboard[side]![.space][0]
-                    KeyboardKeyView(space.label, value: space.value, width: self.spaceKeySize.width, height: keySize.height, theme: space.special ? themeVM.keyboard.key.special : themeVM.keyboard.key.default) { value in
+                    KeyboardKeyView(space.decrypted ? "SPC" : space.label, value: space.value, width: self.spaceKeySize.width, height: keySize.height, theme: space.decrypted ? themeVM.keyboard.key.decrypted : themeVM.keyboard.key.default) { value in
                         keyboardVM.append(value)
                     }
                     KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR, sound: .modifier) { _ in
@@ -93,7 +93,7 @@ struct KeyboardView: View {
     func KeyboardRow(_ row: [KeyboardKey]) -> some View {
         HStack(spacing: self.spacing.horizontal) {
             ForEach(row, id: \.label){ key in
-                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, theme: key.special ? themeVM.keyboard.key.special : themeVM.keyboard.key.default) { value in
+                KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, theme: key.decrypted ? themeVM.keyboard.key.decrypted : themeVM.keyboard.key.default) { value in
                     print("Clicked on \(key.label) with value \(key.value)")
                     keyboardVM.append(value)
                 }

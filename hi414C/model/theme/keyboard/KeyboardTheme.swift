@@ -11,7 +11,7 @@ struct KeyboardTheme {
     
     struct Key {
         var `default`: ViewTheme
-        var special: ViewTheme
+        var decrypted: ViewTheme
         var ABC: ViewTheme
         var BS: ViewTheme
         var CR: ViewTheme

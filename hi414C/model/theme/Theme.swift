@@ -369,7 +369,7 @@ class Theme: Themable {
                     color: color.tertiary.contrast,
                     background: color.tertiary.value
                 ),
-                special: ViewTheme(
+                decrypted: ViewTheme(
                     font: FontProps(.proggyTiny, 35),
                     color: color.secondary.contrast,
                     background: color.secondary.value
