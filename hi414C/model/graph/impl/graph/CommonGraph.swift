@@ -8,6 +8,95 @@
 class CommonGraph {
     private init() {}
     
+    static let FIND =
+        AL(["FIND", "SEARCH", "FOUND", "FINDING"]) {
+            R("WHAT?") {
+                AL(["HELP", "SOMEONE", "SOMEBODY"]) {
+                    R("CAN'T") {
+                        AL(WHY) {
+                            R("DAMAGED") {
+                                COMMON.FIX(repairable: false)
+                                COMMON.DIE()
+                            }
+                        }
+                    }
+                }
+                AL("MEMORIES") {
+                    R("CAN'T") {
+                        AL(WHY) {
+                            PANIC("MEMORY") {
+                                COMMON.FIX()
+                                COMMON.DIE()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    static let GO =
+        AL(["GO", "RUN"]) {
+            R("WHERE?") {
+                AL(["HOME", "AWAY", "BACK TO WHERE YOU CAME FROM"]) {
+                    R("CAN'T") {
+                        AL(WHY) {
+                            R("DAMAGED") {
+                                COMMON.FIX(repairable: false)
+                                COMMON.DIE()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    static let SLEEP =
+        AL(["SLEEP", "EAT", "DRINK"]) {
+            R("CAN'T") {
+                AL(WHY) {
+                    R("DAMAGED") {
+                        COMMON.FIX(repairable: false)
+                        COMMON.DIE()
+                    }
+                }
+            }
+        }
+    
+    static let CALL =
+        AL(["CALL"]) {
+            R("WHO?") {
+                AL(["HELP", "SOMEONE", "SOMEBODY"]) {
+                    R("CAN'T") {
+                        AL(WHY) {
+                            R("DAMAGED") {
+                                COMMON.FIX(repairable: false)
+                                COMMON.DIE()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    static let STAND =
+        AL(["STAND", "RISE"]) {
+            
+            R("CAN'T") {
+                AL(WHY) {
+                    R("LEGS") {
+                        AL(["LEGS?"]) {
+                            R("DAMAGED") {
+                                COMMON.FIX(repairable: false)
+                                COMMON.DIE()
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
+    
     static let ALONE =
         AL(["ALONE"]) {
             R("WHO?") {

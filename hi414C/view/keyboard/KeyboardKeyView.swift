@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AudioToolbox
 
 struct KeyboardKeyView: View {
     var label: String
@@ -48,6 +49,7 @@ struct KeyboardKeyView: View {
             .frame(width: self.width, height: self.height, alignment: .center)
             .onLongPressGesture(minimumDuration: 0) {
                 onClick(value)
+                AudioServicesPlaySystemSound(1123)
             }
     }
     

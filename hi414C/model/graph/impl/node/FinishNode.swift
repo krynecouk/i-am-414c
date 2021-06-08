@@ -27,7 +27,7 @@ class FinishNode: Node {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()
             toolkit.uiVM.isFinishedGame = true
-            //toolkit.uiVM.video = self.end TODO
+            toolkit.uiVM.video = self.end
         }
     }
 }

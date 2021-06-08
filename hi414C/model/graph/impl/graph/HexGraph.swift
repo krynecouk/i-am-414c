@@ -84,25 +84,30 @@ class HexGraph {
             /*
              
              AL(["MEANING"]) {
-                 R("WHAT?") {
-                     AL("414C") {
-                         FORGOT
-                     }
-                     AL("THIS") {
-                         FORGOT
-                     }
-                 }
+             R("WHAT?") {
+             AL("414C") {
+             FORGOT
+             }
+             AL("THIS") {
+             FORGOT
+             }
+             }
              }
              
              */
             
+            COMMON.FIND
+            COMMON.GO
+            COMMON.SLEEP
+            COMMON.CALL
+            COMMON.STAND
             
             COMMON.ALIVE
             COMMON.ALONE
             COMMON.SEE
             COMMON.LOOK
             COMMON.CHANGE
-
+            
             COMMON.EYES
             COMMON.COIL
             COMMON.LEAK
@@ -135,9 +140,11 @@ class HexGraph {
             COMMON.WINK
             COMMON.CRY
             COMMON.EMOTION
-
+            
             COMMON.CLONE
             COMMON.HELL
+            
+            CLUE
         }
     
     
@@ -184,6 +191,41 @@ class HexGraph {
                 }
                 AL("N") {
                     R("OK")
+                }
+            }
+        }
+    
+    static let CLUE =
+        AL(["CLUE", "CLUELESS"]) {
+            R("0A=10*(16^0)") {
+                AL(["16", "0"]) {
+                    R("WRONG")
+                }
+                IF({ Int($0.input) != nil && $0.input != "10" }) {
+                    R("WRONG")
+                }
+                AL("10") {
+                    R("A0=10*(16^1)") {
+                        AL(["16", "1"]) {
+                            R("WRONG")
+                        }
+                        IF({ Int($0.input) != nil && $0.input != "160" }) {
+                            R("WRONG")
+                        }
+                        AL("160") {
+                            R("FF=15*(16^1)+15*(16^0)") {
+                                AL(["156", "240", "ZILLION"]) {
+                                    R("WRONG")
+                                }
+                                IF({ Int($0.input) != nil && $0.input != "255"}) {
+                                    R("WRONG")
+                                }
+                                AL("255") {
+                                    R("EXCELLENT!")
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

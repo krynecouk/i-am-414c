@@ -495,6 +495,13 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		262F4B43266E940400D14D52 /* video */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
 		2641EF3C25E411B00005ABF7 /* figlet */ = {
 			isa = PBXGroup;
 			children = (
@@ -755,6 +762,7 @@
 		26782B372617730300BA9C4E /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				262F4B43266E940400D14D52 /* video */,
 				26782B382617734F00BA9C4E /* fonts */,
 			);
 			path = assets;

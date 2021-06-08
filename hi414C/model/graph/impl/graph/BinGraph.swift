@@ -152,6 +152,12 @@ class BinGraph {
                 R("I")
             }
             
+            COMMON.FIND
+            COMMON.GO
+            COMMON.SLEEP
+            COMMON.CALL
+            COMMON.STAND
+            
             COMMON.ALIVE
             COMMON.ALONE
             COMMON.SEE
@@ -240,7 +246,7 @@ class BinGraph {
                                             R("WRONG")
                                         }
                                         AL("8") {
-                                            R("GREAT!")
+                                            R("EXCELLENT!")
                                         }
                                     }
                                 }
