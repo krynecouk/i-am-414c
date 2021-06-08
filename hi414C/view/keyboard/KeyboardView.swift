@@ -37,19 +37,19 @@ struct KeyboardView: View {
                 ZStack(alignment: .trailing) {
                     KeyboardRow(keyboard[side]![.row3])
                         .frame(maxWidth: .infinity)
-                    KeyboardKeyView("<-", width: keySize.width + 10, height: keySize.height, theme: themeVM.keyboard.key.BS, collapsable: false) { _ in
+                    KeyboardKeyView("<-", width: keySize.width + 10, height: keySize.height, theme: themeVM.keyboard.key.BS, collapsable: false, sound: .delete) { _ in
                         keyboardVM.backspace()
                     }
                 }
                 HStack(spacing: self.spacing.horizontal) {
-                    KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.ABC) { value in
+                    KeyboardKeyView(side == .alphabetic ? "123" : "ABC", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.ABC, sound: .modifier) { value in
                         self.side = side == .alphabetic ? .numeric : .alphabetic
                     }
                     let space = keyboard[side]![.space][0]
                     KeyboardKeyView(space.label, value: space.value, width: self.spaceKeySize.width, height: keySize.height, theme: space.special ? themeVM.keyboard.key.special : themeVM.keyboard.key.default) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR) { _ in
+                    KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR, sound: .modifier) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                         segueVM.close()

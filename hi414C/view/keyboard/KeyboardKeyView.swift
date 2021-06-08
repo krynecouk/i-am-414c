@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AudioToolbox
 
 struct KeyboardKeyView: View {
     var label: String
@@ -15,6 +14,7 @@ struct KeyboardKeyView: View {
     var height: CGFloat
     var theme: ViewTheme
     var collapsable: Bool
+    var sound: KeyboardSoundType
     var onClick: (String) -> Void
     
     init(
@@ -25,6 +25,7 @@ struct KeyboardKeyView: View {
         height: CGFloat,
         theme: ViewTheme,
         collapsable: Bool = true,
+        sound: KeyboardSoundType = .click,
         onClick: @escaping (String) -> Void = { _ in }) {
         
         self.label = label
@@ -33,6 +34,7 @@ struct KeyboardKeyView: View {
         self.height = height
         self.theme = theme
         self.collapsable = collapsable
+        self.sound = sound
         self.onClick = onClick
     }
     
@@ -49,7 +51,7 @@ struct KeyboardKeyView: View {
             .frame(width: self.width, height: self.height, alignment: .center)
             .onLongPressGesture(minimumDuration: 0) {
                 onClick(value)
-                AudioServicesPlaySystemSound(1123)
+                KeyboardSound.play(self.sound)
             }
     }
     
