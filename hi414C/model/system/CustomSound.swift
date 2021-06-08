@@ -10,13 +10,13 @@ import AVFoundation
 class CustomSound {
     static var audioPlayer:AVAudioPlayer?
     
+    static let sounds: [CustomSoundType : URL] = [
+        .error : URL.from(.error)
+    ]
+    
     static func play(_ type: CustomSoundType) {
-        guard let soundURL = Bundle.main.url(forResource: type.rawValue, withExtension: nil) else {
-            fatalError("Unable to find \(type.rawValue) in bundle")
-        }
-        
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer = try AVAudioPlayer(contentsOf: sounds[type]!)
             audioPlayer?.play()
         } catch {
             print(error.localizedDescription)
@@ -24,6 +24,12 @@ class CustomSound {
     }
 }
 
+extension URL {
+    static func from(_ type: CustomSoundType) -> URL {
+        Bundle.main.url(forResource: type.rawValue, withExtension: nil)!
+    }
+}
+
 enum CustomSoundType: String {
-    case foo = "FOO"
+    case error = "error.wav"
 }
