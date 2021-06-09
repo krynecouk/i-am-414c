@@ -15,7 +15,7 @@ class CustomSound {
         .click: URL.from(.click),
         .modifier: URL.from(.modifier),
         .delete: URL.from(.delete),
-        .tab: URL.from(.tab)
+        .dulled: URL.from(.dulled)
     ]
     
     static func play(_ type: CustomSoundType) {
@@ -39,5 +39,5 @@ enum CustomSoundType: String {
     case click = "heartbeat_one_toggle.wav"
     case modifier = "heartbeat_two_toggle.wav"
     case delete = "heartbeat_three_toggle.wav"
-    case tab = "proud_click.wav"
+    case dulled = "dulled_toggle.wav"
 }

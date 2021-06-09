@@ -24,6 +24,7 @@
 		262F4B5A2670EE5300D14D52 /* heartbeat_three_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B572670EE5300D14D52 /* heartbeat_three_toggle.wav */; };
 		262F4B5B2670EE5300D14D52 /* heartbeat_one_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B582670EE5300D14D52 /* heartbeat_one_toggle.wav */; };
 		262F4B5D2670F0D000D14D52 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B5C2670F0D000D14D52 /* License.rtf */; };
+		262F4B612670F9FA00D14D52 /* dulled_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B602670F9FA00D14D52 /* dulled_toggle.wav */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
@@ -251,6 +252,7 @@
 		262F4B572670EE5300D14D52 /* heartbeat_three_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_three_toggle.wav; sourceTree = "<group>"; };
 		262F4B582670EE5300D14D52 /* heartbeat_one_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_one_toggle.wav; sourceTree = "<group>"; };
 		262F4B5C2670F0D000D14D52 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
+		262F4B602670F9FA00D14D52 /* dulled_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dulled_toggle.wav; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				262F4B582670EE5300D14D52 /* heartbeat_one_toggle.wav */,
 				262F4B572670EE5300D14D52 /* heartbeat_three_toggle.wav */,
 				262F4B562670EE5300D14D52 /* heartbeat_two_toggle.wav */,
+				262F4B602670F9FA00D14D52 /* dulled_toggle.wav */,
 			);
 			path = sound;
 			sourceTree = "<group>";
@@ -1347,6 +1350,7 @@
 				26782B742617BE3F00BA9C4E /* Licence.txt in Resources */,
 				264404022618342B00CA7EA1 /* COPYING in Resources */,
 				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
+				262F4B612670F9FA00D14D52 /* dulled_toggle.wav in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
 				26EA302D265E6EA8004A78F2 /* readme.txt in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
