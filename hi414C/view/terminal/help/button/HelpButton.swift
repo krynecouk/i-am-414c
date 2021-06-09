@@ -11,10 +11,10 @@ struct HelpButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let text: String
-    let sound: CustomSoundType?
+    let sound: SoundType?
     let action: () -> Void
     
-    init(_ text: String, sound: CustomSoundType? = .click, perform action: @escaping () -> Void = {}) {
+    init(_ text: String, sound: SoundType? = .click, perform action: @escaping () -> Void = {}) {
         self.text = text
         self.sound = sound
         self.action = action
@@ -23,7 +23,7 @@ struct HelpButton: View {
     var body: some View {
         Button(action: {
             if let sound = self.sound {
-                CustomSound.play(sound)
+                Sound.play(sound)
             }
             action()
         }) {

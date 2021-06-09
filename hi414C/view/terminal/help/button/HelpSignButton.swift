@@ -13,7 +13,7 @@ struct HelpSignButton<T>: View {
 
     let text: String
     let equationType: EquationType
-    let sound: (on: CustomSoundType?, off: CustomSoundType?)
+    let sound: (on: SoundType?, off: SoundType?)
     
     init(_ text: String, _ type: EquationType, sound: HelpRadioButtonSound = (.click, .delete)) {
         self.text = text

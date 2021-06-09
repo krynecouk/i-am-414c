@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-typealias HelpRadioButtonSound = (on: CustomSoundType?, off: CustomSoundType?)
+typealias HelpRadioButtonSound = (on: SoundType?, off: SoundType?)
 
 struct HelpRadioButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let text: String
     let active: Bool
-    let sound: (on: CustomSoundType?, off: CustomSoundType?)
+    let sound: (on: SoundType?, off: SoundType?)
     let action: () -> Void
     
     init(_ text: String, active: Bool = false, sound: HelpRadioButtonSound = (.click, .delete), perform action: @escaping () -> Void = {}) {
@@ -28,11 +28,11 @@ struct HelpRadioButton: View {
         Button(action: {
             if !active {
                 if let sound = self.sound.on {
-                    CustomSound.play(sound)
+                    Sound.play(sound)
                 }
             } else {
                 if let sound = self.sound.off {
-                    CustomSound.play(sound)
+                    Sound.play(sound)
                 }
             }
             action()

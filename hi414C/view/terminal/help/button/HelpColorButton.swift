@@ -11,10 +11,10 @@ struct HelpColorButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
 
     let name: String
-    let sound: CustomSoundType?
+    let sound: SoundType?
     let theme: ThemeType
     
-    init(_ name: String, sound: CustomSoundType? = .click, _ theme: ThemeType) {
+    init(_ name: String, sound: SoundType? = .click, _ theme: ThemeType) {
         self.name = name
         self.sound = sound
         self.theme = theme
@@ -23,7 +23,7 @@ struct HelpColorButton: View {
     var body: some View {
         ColorButton(size: (70, 70), left: Color.primary(name), right: Color.secondary(name)) {
             if let sound = self.sound {
-                CustomSound.play(sound)
+                Sound.play(sound)
             }
             themeVM.change(to: theme)
         }

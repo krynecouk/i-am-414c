@@ -19,45 +19,61 @@ struct TerminalTestSelect: View {
             HelpButton("+1") {
                 helpVM.increment()
             }
-            HelpButton("0", sound: .delete) {
+            HelpRadioButton("0", active: helpVM.equation.result != 0, sound: (.delete, .delete)) {
                 helpVM.resetToZero()
+            }
+            .withDisabledSound(if: helpVM.equation.result == 0)
+        }
+        Group {
+            HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
+                helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
             }
         }
         Group {
-            //if testVM.radix == .hex {
-                HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
-                    helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
-                }
-            //}
-        }
-        Group {
-            //if testVM.level >= 3 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<ADD>("+", .ADD)
-                HelpSignButton<SUB>("-", .SUB)
-            //}
-            //if testVM.level >= 4 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-            HelpSignButton<DIV>("/", .DIV, sound: helpVM.equation.result == 0 ? (.dulled, .dulled) : (.click, .delete))
-                HelpSignButton<MUL>("*", .MUL)
-            //}
+            HelpSignButton<ADD>("+", .ADD)
+            HelpSignButton<SUB>("-", .SUB)
+            
+            HelpSignButton<DIV>("/", .DIV, sound: (.click, .delete))
+                .withDisabledSound(if: helpVM.equation.result == 0)
+            
+            HelpSignButton<MUL>("*", .MUL)
         }
         Group{
-            //if testVM.level >= 5 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<AND>("&", .AND)
-            //}
-            //if testVM.level >= 6 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<OR>("|", .OR)
-            //}
-            //if testVM.level >= 7 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<XOR>("^", .XOR)
-            //}
-            //if testVM.level >= 8 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<NOT>("~", .NOT)
-            //}
-            //if testVM.level >= 9 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<SHL>("<<", .SHL)
-                HelpSignButton<SHR>(">>", .SHR)
-            //}
+            HelpSignButton<AND>("&", .AND)
+            
+            HelpSignButton<OR>("|", .OR)
+            
+            HelpSignButton<XOR>("^", .XOR)
+            
+            HelpSignButton<NOT>("~", .NOT)
+            
+            HelpSignButton<SHL>("<<", .SHL)
+            HelpSignButton<SHR>(">>", .SHR)
         }
+    }
+}
+
+struct DisabledSound: ViewModifier {
+    let disabled: Bool
+    
+    init(_ disabled: Bool = false) {
+        self.disabled = disabled
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .disabled(disabled)
+            .onTapGesture {
+                if disabled {
+                    Sound.play(.tiny)
+                }
+            }
+    }
+}
+
+extension View {
+    func withDisabledSound(if condition: Bool) -> some View {
+        self.modifier(DisabledSound(condition))
     }
 }
 

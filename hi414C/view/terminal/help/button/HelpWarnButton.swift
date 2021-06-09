@@ -20,7 +20,7 @@ struct HelpWarnButton: View {
     
     var body: some View {
         Button(action: {
-            CustomSound.play(.delete)
+            Sound.play(.delete)
             action()
         }) {
             Text(text)

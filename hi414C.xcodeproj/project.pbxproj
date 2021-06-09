@@ -18,13 +18,13 @@
 		262F4B3E266E515400D14D52 /* RndNumNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3D266E515400D14D52 /* RndNumNode.swift */; };
 		262F4B40266E515F00D14D52 /* RndWordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B3F266E515F00D14D52 /* RndWordNode.swift */; };
 		262F4B42266E6B6200D14D52 /* CommonGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B41266E6B6200D14D52 /* CommonGraph.swift */; };
-		262F4B4E2670000500D14D52 /* SystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B4D2670000500D14D52 /* SystemSound.swift */; };
 		262F4B50267012FD00D14D52 /* CustomSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B4F267012FD00D14D52 /* CustomSound.swift */; };
 		262F4B592670EE5300D14D52 /* heartbeat_two_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B562670EE5300D14D52 /* heartbeat_two_toggle.wav */; };
 		262F4B5A2670EE5300D14D52 /* heartbeat_three_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B572670EE5300D14D52 /* heartbeat_three_toggle.wav */; };
 		262F4B5B2670EE5300D14D52 /* heartbeat_one_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B582670EE5300D14D52 /* heartbeat_one_toggle.wav */; };
 		262F4B5D2670F0D000D14D52 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B5C2670F0D000D14D52 /* License.rtf */; };
 		262F4B612670F9FA00D14D52 /* dulled_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B602670F9FA00D14D52 /* dulled_toggle.wav */; };
+		262F4B63267105FC00D14D52 /* tiny_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B62267105FC00D14D52 /* tiny_click.wav */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
@@ -246,13 +246,13 @@
 		262F4B3D266E515400D14D52 /* RndNumNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndNumNode.swift; sourceTree = "<group>"; };
 		262F4B3F266E515F00D14D52 /* RndWordNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndWordNode.swift; sourceTree = "<group>"; };
 		262F4B41266E6B6200D14D52 /* CommonGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonGraph.swift; sourceTree = "<group>"; };
-		262F4B4D2670000500D14D52 /* SystemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSound.swift; sourceTree = "<group>"; };
 		262F4B4F267012FD00D14D52 /* CustomSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSound.swift; sourceTree = "<group>"; };
 		262F4B562670EE5300D14D52 /* heartbeat_two_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_two_toggle.wav; sourceTree = "<group>"; };
 		262F4B572670EE5300D14D52 /* heartbeat_three_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_three_toggle.wav; sourceTree = "<group>"; };
 		262F4B582670EE5300D14D52 /* heartbeat_one_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_one_toggle.wav; sourceTree = "<group>"; };
 		262F4B5C2670F0D000D14D52 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
 		262F4B602670F9FA00D14D52 /* dulled_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dulled_toggle.wav; sourceTree = "<group>"; };
+		262F4B62267105FC00D14D52 /* tiny_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiny_click.wav; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -516,13 +516,12 @@
 			path = video;
 			sourceTree = "<group>";
 		};
-		262F4B4C266FFFF600D14D52 /* system */ = {
+		262F4B4C266FFFF600D14D52 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				262F4B4D2670000500D14D52 /* SystemSound.swift */,
 				262F4B4F267012FD00D14D52 /* CustomSound.swift */,
 			);
-			path = system;
+			path = sound;
 			sourceTree = "<group>";
 		};
 		262F4B5126701B1200D14D52 /* sound */ = {
@@ -533,6 +532,7 @@
 				262F4B572670EE5300D14D52 /* heartbeat_three_toggle.wav */,
 				262F4B562670EE5300D14D52 /* heartbeat_two_toggle.wav */,
 				262F4B602670F9FA00D14D52 /* dulled_toggle.wav */,
+				262F4B62267105FC00D14D52 /* tiny_click.wav */,
 			);
 			path = sound;
 			sourceTree = "<group>";
@@ -774,7 +774,7 @@
 				2678D970260E5D3400DDB40F /* keyboard */,
 				26AF9F4825FF7E9400B77E0A /* test */,
 				2644041C2619005000CA7EA1 /* theme */,
-				262F4B4C266FFFF600D14D52 /* system */,
+				262F4B4C266FFFF600D14D52 /* sound */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1347,6 +1347,7 @@
 				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
 				26F00B68266B53F8008DACE5 /* ansiregular.ttf in Resources */,
+				262F4B63267105FC00D14D52 /* tiny_click.wav in Resources */,
 				26782B742617BE3F00BA9C4E /* Licence.txt in Resources */,
 				264404022618342B00CA7EA1 /* COPYING in Resources */,
 				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
@@ -1456,7 +1457,6 @@
 				269764F02624981700775D71 /* Equation.swift in Sources */,
 				262F4B42266E6B6200D14D52 /* CommonGraph.swift in Sources */,
 				26E090E8265076D8002E404D /* LightBlueTheme.swift in Sources */,
-				262F4B4E2670000500D14D52 /* SystemSound.swift in Sources */,
 				269765052624A25900775D71 /* OR.swift in Sources */,
 				26E090F82651BD97002E404D /* MelonTheme.swift in Sources */,
 				2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */,
