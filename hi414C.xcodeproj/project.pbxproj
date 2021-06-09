@@ -22,9 +22,9 @@
 		262F4B5D2670F0D000D14D52 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B5C2670F0D000D14D52 /* License.rtf */; };
 		262F4B612670F9FA00D14D52 /* dulled_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B602670F9FA00D14D52 /* dulled_toggle.wav */; };
 		262F4B63267105FC00D14D52 /* tiny_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B62267105FC00D14D52 /* tiny_click.wav */; };
-		262F4B672671669900D14D52 /* heartbeat_two_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B642671669900D14D52 /* heartbeat_two_toggle.wav */; };
-		262F4B682671669900D14D52 /* heartbeat_three_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B652671669900D14D52 /* heartbeat_three_toggle.wav */; };
-		262F4B692671669900D14D52 /* heartbeat_one_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B662671669900D14D52 /* heartbeat_one_toggle.wav */; };
+		262F4B6D26716A1F00D14D52 /* heartbeat_two_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B6A26716A1F00D14D52 /* heartbeat_two_toggle.wav */; };
+		262F4B6F26716A1F00D14D52 /* heartbeat_three_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B6C26716A1F00D14D52 /* heartbeat_three_toggle.wav */; };
+		262F4B7326716BCB00D14D52 /* heartbeat_one_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B7226716BCB00D14D52 /* heartbeat_one_toggle.wav */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
@@ -250,9 +250,9 @@
 		262F4B5C2670F0D000D14D52 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
 		262F4B602670F9FA00D14D52 /* dulled_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dulled_toggle.wav; sourceTree = "<group>"; };
 		262F4B62267105FC00D14D52 /* tiny_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiny_click.wav; sourceTree = "<group>"; };
-		262F4B642671669900D14D52 /* heartbeat_two_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_two_toggle.wav; sourceTree = "<group>"; };
-		262F4B652671669900D14D52 /* heartbeat_three_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_three_toggle.wav; sourceTree = "<group>"; };
-		262F4B662671669900D14D52 /* heartbeat_one_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_one_toggle.wav; sourceTree = "<group>"; };
+		262F4B6A26716A1F00D14D52 /* heartbeat_two_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_two_toggle.wav; sourceTree = "<group>"; };
+		262F4B6C26716A1F00D14D52 /* heartbeat_three_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_three_toggle.wav; sourceTree = "<group>"; };
+		262F4B7226716BCB00D14D52 /* heartbeat_one_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_one_toggle.wav; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -527,10 +527,10 @@
 		262F4B5126701B1200D14D52 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				262F4B7226716BCB00D14D52 /* heartbeat_one_toggle.wav */,
+				262F4B6C26716A1F00D14D52 /* heartbeat_three_toggle.wav */,
+				262F4B6A26716A1F00D14D52 /* heartbeat_two_toggle.wav */,
 				262F4B5C2670F0D000D14D52 /* License.rtf */,
-				262F4B662671669900D14D52 /* heartbeat_one_toggle.wav */,
-				262F4B652671669900D14D52 /* heartbeat_three_toggle.wav */,
-				262F4B642671669900D14D52 /* heartbeat_two_toggle.wav */,
 				262F4B602670F9FA00D14D52 /* dulled_toggle.wav */,
 				262F4B62267105FC00D14D52 /* tiny_click.wav */,
 			);
@@ -1344,21 +1344,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				262F4B682671669900D14D52 /* heartbeat_three_toggle.wav in Resources */,
 				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
 				26F00B68266B53F8008DACE5 /* ansiregular.ttf in Resources */,
 				262F4B63267105FC00D14D52 /* tiny_click.wav in Resources */,
 				26782B742617BE3F00BA9C4E /* Licence.txt in Resources */,
-				262F4B692671669900D14D52 /* heartbeat_one_toggle.wav in Resources */,
 				264404022618342B00CA7EA1 /* COPYING in Resources */,
-				262F4B672671669900D14D52 /* heartbeat_two_toggle.wav in Resources */,
+				262F4B7326716BCB00D14D52 /* heartbeat_one_toggle.wav in Resources */,
+				262F4B6D26716A1F00D14D52 /* heartbeat_two_toggle.wav in Resources */,
 				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
 				262F4B612670F9FA00D14D52 /* dulled_toggle.wav in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
 				26EA302D265E6EA8004A78F2 /* readme.txt in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,
 				26782B732617BE3F00BA9C4E /* ProggyTinySZ.ttf in Resources */,
+				262F4B6F26716A1F00D14D52 /* heartbeat_three_toggle.wav in Resources */,
 				262F4B5D2670F0D000D14D52 /* License.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

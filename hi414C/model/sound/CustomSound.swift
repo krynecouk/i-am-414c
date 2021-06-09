@@ -8,7 +8,7 @@
 import AVFoundation
 
 class Sound {
-    static var audioPlayer:AVAudioPlayer?
+    static var audioPlayer:AVAudioPlayer!
     
     static let sounds: [SoundType: URL] = [
         .click: URL.from(.click),
@@ -21,7 +21,7 @@ class Sound {
     static func play(_ type: SoundType) {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: sounds[type]!)
-            audioPlayer?.play()
+            audioPlayer.play()
         } catch {
             print(error.localizedDescription)
         }
