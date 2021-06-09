@@ -19,7 +19,7 @@ struct TerminalTestSelect: View {
             HelpButton("+1") {
                 helpVM.increment()
             }
-            HelpButton("0") {
+            HelpButton("0", sound: .delete) {
                 helpVM.resetToZero()
             }
         }
@@ -36,7 +36,7 @@ struct TerminalTestSelect: View {
                 HelpSignButton<SUB>("-", .SUB)
             //}
             //if testVM.level >= 4 || testVM.difficulty == .medium || testVM.difficulty == .hard {
-                HelpSignButton<DIV>("/", .DIV)
+            HelpSignButton<DIV>("/", .DIV, sound: helpVM.equation.result == 0 ? (.dulled, .dulled) : (.click, .delete))
                 HelpSignButton<MUL>("*", .MUL)
             //}
         }

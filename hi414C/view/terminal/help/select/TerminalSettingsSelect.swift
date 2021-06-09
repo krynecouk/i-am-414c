@@ -21,7 +21,7 @@ struct TerminalSettingsSelect: View {
             if helpVM.settings == .font {
                 Group {
                     let isDecreasable = themeVM.fontSize.isDecreasable()
-                    HelpRadioButton("-1", active: isDecreasable) {
+                    HelpRadioButton("-1", active: isDecreasable, sound: (on: .click, off: .click)) {
                         if isDecreasable {
                             themeVM.font(.decrease)
                         }
@@ -29,7 +29,7 @@ struct TerminalSettingsSelect: View {
                     .disabled(!isDecreasable)
                     
                     let isIncreasable = themeVM.fontSize.isIncreasable()
-                    HelpRadioButton("+1", active: isIncreasable) {
+                    HelpRadioButton("+1", active: isIncreasable, sound: (on: .click, off: .click)) {
                         if isIncreasable {
                             themeVM.font(.increase)
                         }

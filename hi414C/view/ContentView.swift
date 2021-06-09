@@ -32,6 +32,7 @@ struct ContentView: View {
             }
             .onTapGesture {
                 if uiVM.isIntro {
+                    CustomSound.play(.click)
                     uiVM.isIntro = false
                 }
             }
