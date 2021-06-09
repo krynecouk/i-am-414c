@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HelpWarnButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
-
+    
     let text: String
     let action: () -> Void
     
@@ -19,7 +19,10 @@ struct HelpWarnButton: View {
     }
     
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            CustomSound.play(.delete)
+            action()
+        }) {
             Text(text)
                 .padding()
                 .background(Color.red.opacity(0.7))

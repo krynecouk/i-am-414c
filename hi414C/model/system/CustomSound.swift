@@ -10,11 +10,12 @@ import AVFoundation
 class CustomSound {
     static var audioPlayer:AVAudioPlayer?
     
-    static let sounds: [CustomSoundType:URL] = [
+    static let sounds: [CustomSoundType: URL] = [
         //.error:URL.from(.error),
-        .click:URL.from(.click),
-        .modifier:URL.from(.modifier),
-        .delete: URL.from(.delete)
+        .click: URL.from(.click),
+        .modifier: URL.from(.modifier),
+        .delete: URL.from(.delete),
+        .tab: URL.from(.tab)
     ]
     
     static func play(_ type: CustomSoundType) {
@@ -38,4 +39,5 @@ enum CustomSoundType: String {
     case click = "heartbeat_one_toggle.wav"
     case modifier = "heartbeat_two_toggle.wav"
     case delete = "heartbeat_three_toggle.wav"
+    case tab = "proud_click.wav"
 }

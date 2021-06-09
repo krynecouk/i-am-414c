@@ -9,24 +9,31 @@ import SwiftUI
 
 struct HelpRadioButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
-
+    
     let text: String
     let active: Bool
+    let sound: CustomSoundType?
     let action: () -> Void
     
-    init(_ text: String, active: Bool = false, perform action: @escaping () -> Void = {}) {
+    init(_ text: String, active: Bool = false, sound: CustomSoundType? = .click, perform action: @escaping () -> Void = {}) {
         self.text = text
         self.active = active
+        self.sound = sound
         self.action = action
     }
     
     var body: some View {
-            Button(action: action) {
-                Text(text)
-                    .padding()
-                    .background(active ? themeVM.terminal.hli.select.button.background : themeVM.terminal.hli.button.passive.color.opacity(0.6))
-                    .font(Font.of(props: themeVM.terminal.hli.select.button.font))
-                    .foregroundColor(themeVM.terminal.hli.select.button.color.opacity(active ? 1 : 0.5))
+        Button(action: {
+            if let sound = self.sound {
+                CustomSound.play(sound)
             }
+            action()
+        }) {
+            Text(text)
+                .padding()
+                .background(active ? themeVM.terminal.hli.select.button.background : themeVM.terminal.hli.button.passive.color.opacity(0.6))
+                .font(Font.of(props: themeVM.terminal.hli.select.button.font))
+                .foregroundColor(themeVM.terminal.hli.select.button.color.opacity(active ? 1 : 0.5))
+        }
     }
 }

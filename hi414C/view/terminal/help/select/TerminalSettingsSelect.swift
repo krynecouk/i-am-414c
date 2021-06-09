@@ -36,10 +36,9 @@ struct TerminalSettingsSelect: View {
                     }
                     .disabled(!isIncreasable)
                     
-                    HelpButton("default") {
+                    HelpButton("default", sound: .delete) {
                         themeVM.font(.reset)
                     }
-                    
                 }
             }
             

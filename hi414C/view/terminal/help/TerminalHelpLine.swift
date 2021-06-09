@@ -48,7 +48,7 @@ struct TerminalHelpLine: View {
     
     func MinButton() -> some View {
         Button(action: {
-            SystemSound.play(.modifier)
+            CustomSound.play(.modifier)
             if segueVM.isOpen {
                 segueVM.close()
             } else {
@@ -72,7 +72,7 @@ struct TerminalHelpLine: View {
     
     func QuitButton(_ text: String) -> some View {
         Button(action: {
-            SystemSound.play(.delete)
+            CustomSound.play(.delete)
             if uiVM.detail.0 == true {
                 uiVM.detail = (false, false)
             }
@@ -99,7 +99,7 @@ struct TerminalHelpLine: View {
             .withTheme(isCurrent && isOpen ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
-                SystemSound.play(.modifier)
+                CustomSound.play(.modifier)
                 if isOpen {
                     toggleSegue(type)
                 } else {

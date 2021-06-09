@@ -9,17 +9,24 @@ import SwiftUI
 
 struct HelpButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
-
+    
     let text: String
+    let sound: CustomSoundType?
     let action: () -> Void
     
-    init(_ text: String, perform action: @escaping () -> Void = {}) {
+    init(_ text: String, sound: CustomSoundType? = .click, perform action: @escaping () -> Void = {}) {
         self.text = text
+        self.sound = sound
         self.action = action
     }
     
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            if let sound = self.sound {
+                CustomSound.play(sound)
+            }
+            action()
+        }) {
             Text(text)
                 .padding()
                 .withTheme(themeVM.terminal.hli.select.button)
