@@ -48,10 +48,11 @@ struct TerminalHelpLine: View {
     
     func MinButton() -> some View {
         Button(action: {
-            Sound.play(.modifier)
             if segueVM.isOpen {
+                Sound.play(.delete)
                 segueVM.close()
             } else {
+                Sound.play(.modifier)
                 segueVM.open(type: getCurrentSegue())
             }
         }) {
@@ -99,12 +100,19 @@ struct TerminalHelpLine: View {
             .withTheme(isCurrent && isOpen ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
-                Sound.play(.modifier)
                 if isOpen {
+                    if isCurrent {
+                        Sound.play(.delete)
+                    } else {
+                        Sound.play(.modifier)
+                    }
                     toggleSegue(type)
                 } else {
                     if isCurrent {
+                        Sound.play(.modifier)
                         toggleSegue(type)
+                    } else {
+                        Sound.play(.modifier)
                     }
                 }
                 action()
