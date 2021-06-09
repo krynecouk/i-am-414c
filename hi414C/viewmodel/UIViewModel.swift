@@ -18,7 +18,7 @@ class UIViewModel: ObservableObject, Resetable {
 
     func shake() {
         //SystemSound.play(.simToolkitNegativeACK)
-        CustomSound.play(.error)
+        //CustomSound.play(.error)
         withAnimation {
             self.errors += 1
         }
