@@ -20,15 +20,12 @@ class Sound {
     ]
     
     static func play(_ type: SoundType) {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: sounds[type]!)
-            audioPlayer.prepareToPlay()
             DispatchQueue.global().async {
+                audioPlayer = AVAudioPlayer.from(type)
+                audioPlayer.prepareToPlay()
                 audioPlayer.play()
             }
-        } catch {
-            print(error.localizedDescription)
-        }
+
     }
 }
 
