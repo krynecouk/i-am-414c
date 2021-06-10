@@ -151,6 +151,7 @@
 		26B95FFC2671FA80001A508D /* heartbeat_two_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26B95FFA2671FA80001A508D /* heartbeat_two_toggle.wav */; };
 		26B95FFF2671FD8E001A508D /* dulled_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26B95FFD2671FD8E001A508D /* dulled_toggle.wav */; };
 		26B960002671FD8E001A508D /* tiny_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26B95FFE2671FD8E001A508D /* tiny_click.wav */; };
+		26B9601026720AAB001A508D /* higher_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26B9600F26720AAB001A508D /* higher_toggle.wav */; };
 		26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE1E39263181F700F4AB0F /* MessageTheme.swift */; };
 		26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22925DD3B0A0035065E /* hi414CApp.swift */; };
 		26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22B25DD3B0A0035065E /* ContentView.swift */; };
@@ -379,6 +380,7 @@
 		26B95FFA2671FA80001A508D /* heartbeat_two_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_two_toggle.wav; sourceTree = "<group>"; };
 		26B95FFD2671FD8E001A508D /* dulled_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dulled_toggle.wav; sourceTree = "<group>"; };
 		26B95FFE2671FD8E001A508D /* tiny_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiny_click.wav; sourceTree = "<group>"; };
+		26B9600F26720AAB001A508D /* higher_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = higher_toggle.wav; sourceTree = "<group>"; };
 		26BE1E39263181F700F4AB0F /* MessageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTheme.swift; sourceTree = "<group>"; };
 		26BEC22625DD3B0A0035065E /* hi414C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hi414C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BEC22925DD3B0A0035065E /* hi414CApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CApp.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		262F4B5126701B1200D14D52 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				26B9600F26720AAB001A508D /* higher_toggle.wav */,
 				26B95FFD2671FD8E001A508D /* dulled_toggle.wav */,
 				26B95FFE2671FD8E001A508D /* tiny_click.wav */,
 				26B95FF92671FA80001A508D /* heartbeat_three_toggle.wav */,
@@ -1347,6 +1350,7 @@
 				2641EF6325E4211D0005ABF7 /* TerminusTTF-4.46.0.ttf in Resources */,
 				26B95FFF2671FD8E001A508D /* dulled_toggle.wav in Resources */,
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
+				26B9601026720AAB001A508D /* higher_toggle.wav in Resources */,
 				26B960002671FD8E001A508D /* tiny_click.wav in Resources */,
 				26F00B68266B53F8008DACE5 /* ansiregular.ttf in Resources */,
 				26B95FF82671F9F3001A508D /* heartbeat_one_toggle.wav in Resources */,

@@ -38,6 +38,7 @@ struct TerminalCommandSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
+                        Sound.play(.high)
                         asciiVM.add(symbol: testVM.test!.symbol)
                     case .wrong(_):
                         uiVM.shake()
