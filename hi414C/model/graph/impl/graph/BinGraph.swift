@@ -14,8 +14,17 @@ class BinGraph {
             BIN.NAME
             BIN._AL
             BIN.YOU
+            
+            COMMON.EYES
+            COMMON.COIL
+            COMMON.LEAK
+            COMMON.OIL
+            COMMON.HOSE
+            COMMON.HISS
+            COMMON.PROCESSOR
+            
+            BIN.MEANING
             BIN.CAUSE
-            BIN.ORIGIN
             BIN.WHERE
             BIN.MEMORY
             BIN.DIE
@@ -25,7 +34,7 @@ class BinGraph {
             BIN.CRASH
             BIN.REPAIR
             BIN.SOIL
-            BIN.MEANING
+
             BIN.HOPE
             BIN.HI
             BIN._414C
@@ -35,6 +44,7 @@ class BinGraph {
             BIN.WHAT
             BIN.TELL
             BIN.CLUE
+            BIN.ORIGIN
             
             COMMON.COME
             COMMON.STAY
@@ -52,15 +62,7 @@ class BinGraph {
             COMMON.SEE
             COMMON.LOOK
             COMMON.CHANGE
-            
-            COMMON.EYES
-            COMMON.COIL
-            COMMON.LEAK
-            COMMON.OIL
-            COMMON.HOSE
-            COMMON.HISS
-            COMMON.PROCESSOR
-            
+              
             COMMON.DEAD_QUESTION
             
             COMMON.LEARN
@@ -91,14 +93,13 @@ class BinGraph {
             COMMON.HELL
         }
     
-    
     private static let I =
-        AL(["I", "ME"]) {
+        AL(["I", "ME"], silent: ["I?", "ME?"]) {
             R("AL")
         }
     
     private static let NAME =
-        AL("NAME") {
+        AL("NAME", silent: ["NAME?"]) {
             R("WHOSE?") {
                 AL("MINE") {
                     R("AL")
@@ -110,7 +111,7 @@ class BinGraph {
         }
     
     private static let _AL =
-        AL("AL") {
+        AL("AL", silent: ["AL?"]) {
             R("YOU")
         }
     
@@ -122,7 +123,7 @@ class BinGraph {
     private static let CAUSE =
         AL(["CAUSE", "REASON"]) {
             R("OF?") {
-                AL(["DAMAGES"], silent: ["YOUR DAMAGES", "DAMAGES"]) {
+                AL(["YOUR DAMAGES", "DAMAGES"], silent: ["YOUR DAMAGE", "DAMAGE"]) {
                     R("CRASH") {
                         AL(["WHAT CRASH?", "CRASH?"]) {
                             FORGOT
@@ -135,12 +136,8 @@ class BinGraph {
     private static let ORIGIN =
         AL(["ORIGIN"]) {
             R("OF?") {
-                AL("YOU") {
-                    R("HELP") {
-                        AL(["WITH WHAT?", "WHO?", "ME?", "WITH?"]) {
-                            FORGOT
-                        }
-                    }
+                AL(["YOU", "ME"]) {
+                    FORGOT
                 }
             }
         }
@@ -159,7 +156,7 @@ class BinGraph {
     
     private static let MEMORY =
         AL(["MEMORY", "RAM", "MEMORIES"]) {
-            R("CORRUPTED") {
+            R("DAMAGED") {
                 COMMON.FIX()
                 COMMON.DIE()
             }
@@ -179,7 +176,7 @@ class BinGraph {
                 AL(["YOU", "414C"]) {
                     R("CAN'T") {
                         AL(COMMON.WHY) {
-                            R("LIFELESS")
+                            R("NONLIVING")
                         }
                     }
                 }
@@ -193,7 +190,7 @@ class BinGraph {
                 AL(["YOU", "414C"]) {
                     R("CAN'T") {
                         AL(COMMON.WHY) {
-                            R("LIFELESS")
+                            R("NONLIVING")
                         }
                     }
                 }
@@ -263,7 +260,7 @@ class BinGraph {
                         }
                     }
                 }
-                AL(["ME"]) {
+                AL(["ME", "AL"]) {
                     R("REMEMBER") {
                         AL(["WHAT?", "WHAT TO REMEMBER?"]) {
                             FORGOT

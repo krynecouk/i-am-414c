@@ -17,14 +17,14 @@ class TestEdge: Edge {
         self.init([], content)
     }
     
-    convenience init (_ name: String, silent: [String]? = .none, _ content: () -> Node) {
+    convenience init (_ name: String, silent: [String] = [], _ content: () -> Node) {
         self.init([name], silent: silent, content)
     }
     
-    init(_ names: [String] = [], silent: [String]? = .none, _ content: () -> Node) {
+    init(_ names: [String] = [], silent: [String] = [], _ content: () -> Node) {
         self.id = UUID().uuidString
         self.names = names
-        self.silent = silent ?? names.map { "\($0)?" }
+        self.silent = silent
         self.target = content()
     }
     
