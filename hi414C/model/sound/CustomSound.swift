@@ -32,6 +32,12 @@ class Sound {
     }
 }
 
+extension AVAudioPlayer {
+    static func from(_ type: SoundType) -> AVAudioPlayer {
+        try! AVAudioPlayer(contentsOf: URL.from(type))
+    }
+}
+
 extension URL {
     static func from(_ type: SoundType) -> URL {
         Bundle.main.url(forResource: type.rawValue, withExtension: nil)!
