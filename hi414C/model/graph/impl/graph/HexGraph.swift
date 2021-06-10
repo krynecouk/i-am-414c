@@ -10,152 +10,116 @@ class HexGraph {
     
     static let ROOT =
         R("HI") {
-            AL("HI") {
-                R("HI")
-            }
-            AL(["I", "I?", "ME", "ME?", "NAME"]) {
-                PANIC414C("AL") {
-                    AL("AL?") {
-                        R("YES")
-                    }
-                }
-            }
-            AL("AL") {
-                R("YOU")
-            }
-            AL("YOU") {
-                R("I AM YOU") {
-                    AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
-                        R("YOU ARE IN COMA") {
-                            AL(["COMA", "COMA?", "COMA?!"]) {
-                                R("AFTER A CRASH")
-                            }
-                        }
-                    }
-                }
-            }
-            AL(["WHERE AM I?"]) {
-                R("IN HOSPITAL")
-            }
-            AL(["LIE", "IT'S A LIE"]) {
-                R("WHAT?") {
-                    AL(["YOU", "ABOUT YOU"]) {
-                        R("IT IS TRUE")
-                    }
-                }
-            }
-            AL(["WHAT IS YOUR PURPOSE?", "WHY ARE YOU HERE?", "WHAT DO YOU WANT?"]) {
-                R("TO HELP YOU") {
-                    AL(["WITH WHAT?"]) {
-                        R("TO WAKE UP")
-                    }
-                }
-            }
-            AL(["THIS PLACE", "WHAT IS THIS PLACE?"]) {
-                R("JUST YOUR MIND")
-            }
-            AL(["CRASH", "CRASH?"]) {
-                R("CAR CRASH")
-            }
-            AL(["FAMILY", "FAMILY?"]) {
-                R("DAUGHTER") {
-                    AL("WHAT IS HER NAME?") {
-                        R("ELENA")
-                    }
-                }
-            }
-            AL("DAUGHTER") {
-                R("ELENA")
-            }
-            AL(["WAKE", "AWAKE", "HOW DO I WAKE UP?", "WAKE ME UP!", "AWAKE", "WAKE UP", "WAKE UP!"]) {
-                R("NEED PASSWORD") {
-                    AL(["WHY?", "WHY?!"]) {
-                        R("TO REMEMBER") {
-                            AL(["WHAT?", "WHAT TO REMEMBER?"]) {
-                                R("YOUR LIFE")
-                            }
-                        }
-                    }
-                    PASSWORD
-                }
-            }
-            PASSWORD
-            
-            /*
-             
-             AL(["MEANING"]) {
-             R("WHAT?") {
-             AL("414C") {
-             FORGOT
-             }
-             AL("THIS") {
-             FORGOT
-             }
-             }
-             }
-             
-             */
-            
-            COMMON.COME
-            COMMON.STAY
-            COMMON.LIKE
-            COMMON.HURRY
-            COMMON.LOVE
-            
-            COMMON.FIND
-            COMMON.GO
-            COMMON.SLEEP
-            COMMON.CALL
-            COMMON.STAND
-            
-            COMMON.ALIVE
-            COMMON.ALONE
-            COMMON.SEE
-            COMMON.LOOK
-            COMMON.CHANGE
-            
-            COMMON.EYES
-            COMMON.COIL
-            COMMON.LEAK
-            COMMON.OIL
-            COMMON.HOSE
-            COMMON.HISS
-            COMMON.PROCESSOR
-            
-            COMMON.DEAD_QUESTION
-            
-            COMMON.LEARN
-            COMMON.CHAT
-            COMMON.SETTINGS
-            COMMON.DIFFICULTY
-            
-            COMMON.REPEAT
-            COMMON.SHOUT
-            
-            COMMON.PAIN
-            COMMON.CLOSE
-            COMMON.BREAK
-            
-            COMMON.DIE()
-            COMMON._DICE
-            COMMON._DICES
-            COMMON._COIN
-            COMMON.GUESS
-            COMMON.DANCE
-            COMMON.SMILE
-            COMMON.SAD
-            COMMON.WINK
-            COMMON.CRY
-            COMMON.EMOTION
-            
-            COMMON.CLONE
-            COMMON.HELL
-            
-            CLUE
+            HEX.HI
+            HEX.I
+            HEX._AL
+            HEX.YOU
+            HEX.WHERE
+            HEX.LIE
+            HEX.PURPOSE
+            HEX.PLACE
+            HEX.CRASH
+            HEX.FAMILY
+            HEX.DAUGHTER
+            HEX.WAKE
+            HEX.PASSWORD
+            HEX.CLUE
         }
     
+    private static let HI =
+        AL("HI") {
+            R("HI")
+        }
     
-    static let PASSWORD =
+    private static let I =
+        AL(["I", "I?", "ME", "ME?", "NAME"]) {
+            PANIC414C("AL") {
+                AL("AL?") {
+                    R("YES")
+                }
+            }
+        }
+    
+    private static let _AL =
+        AL("AL") {
+            R("YOU")
+        }
+    
+    private static let YOU =
+        AL("YOU") {
+            R("I AM YOU") {
+                AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
+                    R("YOU ARE IN COMA") {
+                        AL(["COMA", "COMA?", "COMA?!"]) {
+                            R("AFTER A CRASH")
+                        }
+                    }
+                }
+            }
+        }
+    
+    private static let WHERE =
+        AL(["WHERE AM I?"]) {
+            R("IN HOSPITAL")
+        }
+    
+    private static let LIE =
+        AL(["LIE", "IT'S A LIE"]) {
+            R("WHAT?") {
+                AL(["YOU", "ABOUT YOU"]) {
+                    R("IT IS TRUE")
+                }
+            }
+        }
+    
+    private static let PURPOSE =
+        AL(["WHAT IS YOUR PURPOSE?", "WHY ARE YOU HERE?", "WHAT DO YOU WANT?"]) {
+            R("TO HELP YOU") {
+                AL(["WITH WHAT?"]) {
+                    R("TO WAKE UP")
+                }
+            }
+        }
+    
+    private static let PLACE =
+        AL(["THIS PLACE", "WHAT IS THIS PLACE?"]) {
+            R("JUST YOUR MIND")
+        }
+    
+    private static let CRASH =
+        AL(["CRASH", "CRASH?"]) {
+            R("CAR CRASH")
+        }
+    
+    private static let FAMILY =
+        AL(["FAMILY", "FAMILY?"]) {
+            R("DAUGHTER") {
+                AL("WHAT IS HER NAME?") {
+                    R("ELENA")
+                }
+            }
+        }
+    
+    private static let DAUGHTER =
+        AL("DAUGHTER") {
+            R("ELENA")
+        }
+    
+    private static let WAKE =
+        AL(["WAKE", "AWAKE", "HOW DO I WAKE UP?", "WAKE ME UP!", "AWAKE", "WAKE UP", "WAKE UP!"]) {
+            R("NEED PASSWORD") {
+                AL(["WHY?", "WHY?!"]) {
+                    R("TO REMEMBER") {
+                        AL(["WHAT?", "WHAT TO REMEMBER?"]) {
+                            R("YOUR LIFE")
+                        }
+                    }
+                }
+                PASSWORD
+            }
+        }
+    
+    private static let PASSWORD =
         AL(["PASSWORD", "LOGIN", "LOGOUT", "TRY PASSWORD", "REMEMBER", "TRY REMEMBER"]) {
             R("TRY?") {
                 AL("Y") {
@@ -202,7 +166,7 @@ class HexGraph {
             }
         }
     
-    static let CLUE =
+    private static let CLUE =
         AL(["CLUE", "CLUELESS"]) {
             R("0A=10*(16^0)") {
                 AL(["16", "0"]) {

@@ -14,15 +14,6 @@ class BinGraph {
             BIN.NAME
             BIN._AL
             BIN.YOU
-            
-            COMMON.EYES
-            COMMON.COIL
-            COMMON.LEAK
-            COMMON.OIL
-            COMMON.HOSE
-            COMMON.HISS
-            COMMON.PROCESSOR
-            
             BIN.MEANING
             BIN.CAUSE
             BIN.WHERE
@@ -34,7 +25,6 @@ class BinGraph {
             BIN.CRASH
             BIN.REPAIR
             BIN.SOIL
-
             BIN.HOPE
             BIN.HI
             BIN._414C
@@ -45,6 +35,14 @@ class BinGraph {
             BIN.TELL
             BIN.CLUE
             BIN.ORIGIN
+            
+            COMMON.EYES
+            COMMON.COIL
+            COMMON.LEAK
+            COMMON.OIL
+            COMMON.HOSE
+            COMMON.HISS
+            COMMON.PROCESSOR
             
             COMMON.COME
             COMMON.STAY
@@ -116,12 +114,12 @@ class BinGraph {
         }
     
     private static let YOU =
-        AL("YOU") {
+        AL("YOU", silent: ["YOU?"]) {
             R("414C")
         }
     
     private static let CAUSE =
-        AL(["CAUSE", "REASON"]) {
+        AL(["CAUSE", "REASON"], silent: ["CAUSE?", "REASON?"]) {
             R("OF?") {
                 AL(["YOUR DAMAGES", "DAMAGES"], silent: ["YOUR DAMAGE", "DAMAGE"]) {
                     R("CRASH") {
@@ -134,7 +132,7 @@ class BinGraph {
         }
     
     private static let ORIGIN =
-        AL(["ORIGIN"]) {
+        AL(["ORIGIN"], silent: ["ORIGIN?"]) {
             R("OF?") {
                 AL(["YOU", "ME"]) {
                     FORGOT
@@ -161,7 +159,6 @@ class BinGraph {
                 COMMON.DIE()
             }
         }
-    
     
     private static let DIE =
         AL(["DIE"]) {
