@@ -22,7 +22,10 @@ class Sound {
     static func play(_ type: SoundType) {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: sounds[type]!)
-            audioPlayer.play()
+            audioPlayer.prepareToPlay()
+            DispatchQueue.global().async {
+                audioPlayer.play()
+            }
         } catch {
             print(error.localizedDescription)
         }
