@@ -8,6 +8,73 @@
 class CommonGraph {
     private init() {}
     
+    static let LOVE =
+        AL(["DO YOU LOVE?", "LOVE", "LOVE?"]) {
+            R("WHO?") {
+                AL(["YOU", "ME"]) {
+                    R("YES")
+                }
+            }
+        }
+    
+    static let HURRY =
+        AL(["HURRY UP!", "HURRY!", "HURRY"]) {
+            R("WHY?") {
+                AL("CAN YOU HURRY UP?") {
+                    R("NO, DAMAGED")
+                }
+                AL("ARE YOU IN HURRY?") {
+                    R("NO, I'AM NOT")
+                }
+                AL("TIME") {
+                    R("PLENTY")
+                }
+                AL("LATE") {
+                    R("NEVERMIND")
+                }
+                AL("WE ARE RUNNING OUT OF TIME") {
+                    R("NO, WE'RE NOT")
+                }
+            }
+        }
+    
+    static let LIKE =
+        AL(["DO YOU LIKE?", "LIKE?", "LIKE"]) {
+            R("WHAT?") {
+                AL(["DO YOU LIKE ME?", "DO YOU LIKE YOURSELF?", "ME", "YOURSELF"]) {
+                    R("SOMETIMES")
+                }
+                AL(["DO YOU LIKE TALKING WITH ME?", "TALKING"]) {
+                    R("YES")
+                }
+                AL(["DO YOU LIKE IT HERE?", "HERE", "LYING", "DYING"]) {
+                    R("NO")
+                }
+            }
+        }
+    
+    static let COME =
+        AL(["COME", "GO", "RIDE", "DRIVE"]) {
+            R("WHERE?") {
+                AL(["SOMEWHERE ELSE", "AWAY", "HOME", "FAR", "FAR AWAY"]) {
+                    R("CAN'T") {
+                        AL(WHY) {
+                            R("DAMAGED") {
+                                COMMON.FIX(repairable: false)
+                                COMMON.DIE()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    static let STAY =
+        AL(["STAY THERE", "STAY", "DON'T MOVE"]) {
+            R("OK")
+        }
+
+    
     static let FIND =
         AL(["FIND", "SEARCH", "FOUND", "FINDING"]) {
             R("WHAT?") {
@@ -79,8 +146,7 @@ class CommonGraph {
         }
     
     static let STAND =
-        AL(["STAND", "RISE"]) {
-            
+        AL(["STAND-UP", "STAND UP", "STAND", "RISE", "STANDUP"]) {
             R("CAN'T") {
                 AL(WHY) {
                     R("LEGS") {
@@ -447,12 +513,8 @@ class CommonGraph {
             }
         }
     
-    static let FIX_UNAVAILABLE =
-        R("CAN'T") {
-            AL(WHY) {
-                R("IRREPAIRABLE")
-            }
-        }
+    static let FIX_UNAVAILABLE = R("IRREPAIRABLE")
+    
     
     static func DIE(_ names: [String] = []) -> Edge {
         AL(["OFF", "TURN OFF", "RESTART", "RESET", "TERMINATE", "DELETE"] + names) {

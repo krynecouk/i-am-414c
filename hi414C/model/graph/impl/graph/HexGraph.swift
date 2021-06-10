@@ -96,6 +96,12 @@ class HexGraph {
              
              */
             
+            COMMON.COME
+            COMMON.STAY
+            COMMON.LIKE
+            COMMON.HURRY
+            COMMON.LOVE
+            
             COMMON.FIND
             COMMON.GO
             COMMON.SLEEP

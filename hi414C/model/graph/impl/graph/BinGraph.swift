@@ -152,6 +152,57 @@ class BinGraph {
                 R("I")
             }
             
+            AL(["HOW?", "HOW"]) {
+                R("WHAT?") {
+                    AL(["CAN I HELP?", "CAN WE GET OUT?", "DOES THIS END?", "ARE YOU STILL ALIVE?", "LONG DO YOU LIVE?", "EXIT", "HELP", "REPAIR", "LEAVE", "FIX", "WAKE UP"]) {
+                        FORGOT
+                    }
+                }
+            }
+            
+            AL(["WHY?", "WHY"]) {
+                R("WHAT?") {
+                    AL(["ARE YOU THERE?", "ARE YOU BROKEN?", "AREN'T YOU DEAD", "AM I HERE?", "ARE YOU ALONE?", "ARE WE TALKING?", "DAMAGED?", "SAD?", "BROKEN?"]) {
+                        FORGOT
+                    }
+                }
+            }
+            
+            AL(["WHO?", "WHO"]) {
+                R("WHO?") {
+                    AL(["WHO ARE YOU?", "WHO IS AL?", "WHO IS 414C?", "WHO CAN HELP?", "WHO IS THERE?", "WHO CAN HEAR US?", "WHO DO YOU BELIEVE?", "WHO WILL SURVIVE?", "YOU", "I", "WE"]) {
+                        FORGOT
+                    }
+                }
+            }
+            
+            AL(["WHAT?", "WHAT"]) {
+                R("WHAT?") {
+                    AL(["WHAT CAN BE DONE?", "WHAT DO YOU WANT?", "WHAT CAN WE DO?", "WHAT CAN HELP?", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "HAPPENED?", "YEAR?"]) {
+                        FORGOT
+                    }
+                    AL("DAMAGED?") {
+                        PANIC("MEMORY")
+                    }
+                    AL("NAME?") {
+                        R("414C")
+                    }
+                }
+            }
+            
+            AL(["GREAT", "GOOD", "BAD", "AWFUL", "HORRIBLE"]) {
+                R("WHAT?") {
+                    AL(["YOU", "YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
+                        FORGOT
+                    }
+                }
+            }
+            
+            COMMON.COME
+            COMMON.STAY
+            COMMON.LIKE
+            COMMON.LOVE
+            
             COMMON.FIND
             COMMON.GO
             COMMON.SLEEP
