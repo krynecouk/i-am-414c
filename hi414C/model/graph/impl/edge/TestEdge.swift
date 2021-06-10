@@ -10,24 +10,26 @@ import Foundation
 class TestEdge: Edge {
     let id: String
     let names: [String]
+    let silent: [String]
     let target: Node
     
     convenience init(_ content: () -> Node) {
         self.init([], content)
     }
     
-    convenience init (_ name: String, _ content: () -> Node) {
-        self.init([name], content)
+    convenience init (_ name: String, silent: [String]? = .none, _ content: () -> Node) {
+        self.init([name], silent: silent, content)
     }
     
-    init(_ names: [String] = [], _ content: () -> Node) {
+    init(_ names: [String] = [], silent: [String]? = .none, _ content: () -> Node) {
         self.id = UUID().uuidString
         self.names = names
+        self.silent = silent ?? names.map { "\($0)?" }
         self.target = content()
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        self.names.contains(ctx.input)
+        (self.names + self.silent).contains(ctx.input)
     }
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {

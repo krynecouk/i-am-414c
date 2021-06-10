@@ -11,7 +11,8 @@ class BinGraph {
     static let ROOT =
         R("HI") {
             BIN.I
-            BIN.AL_NAME
+            BIN.NAME
+            BIN._AL
             BIN.YOU
             BIN.CAUSE
             BIN.ORIGIN
@@ -27,12 +28,12 @@ class BinGraph {
             BIN.MEANING
             BIN.HOPE
             BIN.HI
-            BIN.ROBOT414C
+            BIN._414C
             BIN.HOW
             BIN.WHY
             BIN.WHO
             BIN.WHAT
-            BIN.GREAT_GOOD_BAD
+            BIN.TELL
             BIN.CLUE
             
             COMMON.COME
@@ -75,8 +76,9 @@ class BinGraph {
             COMMON.BREAK
             
             COMMON.DIE()
-            COMMON.DICE_ROLL
-            COMMON.COIN_FLIP
+            COMMON._DICE
+            COMMON._DICES
+            COMMON._COIN
             COMMON.GUESS
             COMMON.DANCE
             COMMON.SMILE
@@ -91,57 +93,68 @@ class BinGraph {
     
     
     private static let I =
-        AL(["I", "WHO AM I?", "ME?", "NAME", "ME"]) {
+        AL(["I", "ME"]) {
             R("AL")
         }
     
-    private static let AL_NAME =
+    private static let NAME =
+        AL("NAME") {
+            R("WHOSE?") {
+                AL("MINE") {
+                    R("AL")
+                }
+                AL("YOURS") {
+                    R("414C")
+                }
+            }
+        }
+    
+    private static let _AL =
         AL("AL") {
             R("YOU")
         }
     
     private static let YOU =
         AL("YOU") {
-            R("414C") {
-                AL("414C?") {
-                    R("YES")
-                }
-            }
+            R("414C")
         }
     
     private static let CAUSE =
-        AL(["CAUSE?", "REASON?", "CAUSE", "REASON"]) {
+        AL(["CAUSE", "REASON"]) {
             R("OF?") {
-                AL(["YOUR DAMAGES", "DAMAGE", "DAMAGES"]) {
-                    FORGOT
-                }
-                AL("YOU") {
-                    FORGOT
-                }
-                AL(["LIE"]) {
-                    R("DENIAL")
-                }
-                AL("LIFE") {
-                    R("FAITH")
-                }
-                AL("DEAD") {
-                    R("OBLIVION")
+                AL(["DAMAGES"], silent: ["YOUR DAMAGES", "DAMAGES"]) {
+                    R("CRASH") {
+                        AL(["WHAT CRASH?", "CRASH?"]) {
+                            FORGOT
+                        }
+                    }
                 }
             }
         }
     
     private static let ORIGIN =
-        AL(["ORIGIN?", "ORIGIN"]) {
+        AL(["ORIGIN"]) {
             R("OF?") {
                 AL("YOU") {
-                    FORGOT
+                    R("HELP") {
+                        AL(["WITH WHAT?", "WHO?", "ME?", "WITH?"]) {
+                            FORGOT
+                        }
+                    }
                 }
             }
         }
     
     private static let WHERE =
-        AL(["WHERE AM I?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE AM I", "WHERE?", "WHERE ARE WE?", "WHERE"]) {
-            FORGOT
+        AL(["WHERE"]) {
+            R("WHAT?") {
+                AL("ANYBODY") {
+                    R("GONE")
+                }
+                AL(["WE"]) {
+                    FORGOT
+                }
+            }
         }
     
     private static let MEMORY =
@@ -177,9 +190,6 @@ class BinGraph {
     private static let LIVE =
         AL(["LIVE"]) {
             R("WHO?") {
-                AL(["I", "AL"]) {
-                    R("SOON")
-                }
                 AL(["YOU", "414C"]) {
                     R("CAN'T") {
                         AL(COMMON.WHY) {
@@ -193,21 +203,14 @@ class BinGraph {
     
     private static let LOGIN =
         AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
-            R("SOON") {
-                AL(["WHEN?", "WHEN"]) {
-                    R("SOON")
-                }
-                AL("WHY?") {
+            R("N/A") {
+                AL(["N/A?", "WHY?"]) {
                     R("UNPREPARED") {
                         AL(["YOU?", "I?"]) {
                             R("WE")
                         }
                         AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
-                            R("SOON...") {
-                                AL(["NOW?", "NOW"]) {
-                                    R("NO")
-                                }
-                            }
+                            PANIC("MEMORY")
                         }
                     }
                 }
@@ -253,8 +256,19 @@ class BinGraph {
     private static let MEANING =
         AL(["MEANING", "EXPLAIN"]) {
             R("WHAT?") {
-                AL(["THIS PLACE", "414C", "YOU", "ME"]) {
-                    FORGOT
+                AL(["414C", "YOU"]) {
+                    R("HELP") {
+                        AL(["HELP?", "WHO?", "WITH WHAT?"]) {
+                            FORGOT
+                        }
+                    }
+                }
+                AL(["ME"]) {
+                    R("REMEMBER") {
+                        AL(["WHAT?", "WHAT TO REMEMBER?"]) {
+                            FORGOT
+                        }
+                    }
                 }
             }
         }
@@ -272,16 +286,16 @@ class BinGraph {
         }
     
     
-    private static let ROBOT414C =
+    private static let _414C =
         AL(["414C", "ROBOT"]) {
             R("I")
         }
     
     
     private static let HOW =
-        AL(["HOW?", "HOW"]) {
+        AL(["HOW"]) {
             R("WHAT?") {
-                AL(["CAN I HELP?", "CAN WE GET OUT?", "DOES THIS END?", "ARE YOU STILL ALIVE?", "LONG DO YOU LIVE?", "EXIT", "HELP", "REPAIR", "LEAVE", "FIX", "WAKE UP"]) {
+                AL(["CAN I HELP?", "CAN WE GET OUT?", "DOES THIS END?", "ARE YOU STILL ALIVE?", "LONG DO YOU LIVE?", "EXIT", "HELP", "REPAIR", "LEAVE", "FIX", "WAKE UP", "HELP", "LEAVE", "GET OUT", "EXIT", "REPAIR"]) {
                     FORGOT
                 }
             }
@@ -289,7 +303,7 @@ class BinGraph {
     
     
     private static let WHY =
-        AL(["WHY?", "WHY"]) {
+        AL(["WHY"]) {
             R("WHAT?") {
                 AL(["ARE YOU THERE?", "ARE YOU BROKEN?", "AREN'T YOU DEAD", "AM I HERE?", "ARE YOU ALONE?", "ARE WE TALKING?", "DAMAGED?", "SAD?", "BROKEN?"]) {
                     FORGOT
@@ -299,7 +313,7 @@ class BinGraph {
     
     
     private static let WHO =
-        AL(["WHO?", "WHO"]) {
+        AL(["WHO"]) {
             R("WHO?") {
                 AL(["WHO ARE YOU?", "WHO IS AL?", "WHO IS 414C?", "WHO CAN HELP?", "WHO IS THERE?", "WHO CAN HEAR US?", "WHO DO YOU BELIEVE?", "WHO WILL SURVIVE?", "YOU", "I", "WE"]) {
                     FORGOT
@@ -309,7 +323,7 @@ class BinGraph {
     
     
     private static let WHAT =
-        AL(["WHAT?", "WHAT"]) {
+        AL(["WHAT"]) {
             R("WHAT?") {
                 AL(["WHAT CAN BE DONE?", "WHAT DO YOU WANT?", "WHAT CAN WE DO?", "WHAT CAN HELP?", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "HAPPENED?", "YEAR?"]) {
                     FORGOT
@@ -317,17 +331,17 @@ class BinGraph {
                 AL("DAMAGED?") {
                     PANIC("MEMORY")
                 }
-                AL("NAME?") {
-                    R("414C")
-                }
             }
         }
     
     
-    private static let GREAT_GOOD_BAD =
-        AL(["GREAT", "GOOD", "BAD", "AWFUL", "HORRIBLE", "TELL", "TELL ME"]) {
-            R("WHAT?") {
-                AL(["YOU", "YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
+    private static let TELL =
+        AL(["TELL", "TELL ME"]) {
+            R("ABOUT?") {
+                AL("YOU") {
+                    R("414C")
+                }
+                AL(["YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
                     FORGOT
                 }
             }

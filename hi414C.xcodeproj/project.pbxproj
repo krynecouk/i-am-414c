@@ -801,9 +801,9 @@
 		26782B372617730300BA9C4E /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				26782B382617734F00BA9C4E /* fonts */,
 				262F4B5126701B1200D14D52 /* sound */,
 				262F4B43266E940400D14D52 /* video */,
-				26782B382617734F00BA9C4E /* fonts */,
 			);
 			path = assets;
 			sourceTree = "<group>";

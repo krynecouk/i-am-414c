@@ -6,7 +6,7 @@
 //
 
 class DiceNode: RndNumNode {
-    init(@EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        super.init(1...6, edges)
+    init(range: ClosedRange<Int> = 1...6, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+        super.init(range, edges)
     }
 }

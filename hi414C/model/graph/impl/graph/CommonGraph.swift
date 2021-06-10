@@ -9,10 +9,14 @@ class CommonGraph {
     private init() {}
     
     static let LOVE =
-        AL(["DO YOU LOVE?", "LOVE", "LOVE?"]) {
+        AL(["DO YOU LOVE?", "LOVE"]) {
             R("WHO?") {
-                AL(["YOU", "ME"]) {
-                    R("YES")
+                AL(["YOU", "ME", "ANYBODY"]) {
+                    R("CAN'T") {
+                        AL(WHY) {
+                            R("ROBOT")
+                        }
+                    }
                 }
             }
         }
@@ -76,7 +80,7 @@ class CommonGraph {
 
     
     static let FIND =
-        AL(["FIND", "SEARCH", "FOUND", "FINDING"]) {
+        AL(["FIND", "SEARCH"], silent: ["FOUND", "FINDING"]) {
             R("WHAT?") {
                 AL(["HELP", "SOMEONE", "SOMEBODY"]) {
                     R("CAN'T") {
@@ -104,7 +108,7 @@ class CommonGraph {
     static let GO =
         AL(["GO", "RUN"]) {
             R("WHERE?") {
-                AL(["HOME", "AWAY", "BACK TO WHERE YOU CAME FROM"]) {
+                AL(["HOME", "AWAY"]) {
                     R("CAN'T") {
                         AL(WHY) {
                             R("DAMAGED") {
@@ -121,10 +125,7 @@ class CommonGraph {
         AL(["SLEEP", "EAT", "DRINK"]) {
             R("CAN'T") {
                 AL(WHY) {
-                    R("DAMAGED") {
-                        COMMON.FIX(repairable: false)
-                        COMMON.DIE()
-                    }
+                    R("ROBOT")
                 }
             }
         }
@@ -280,12 +281,17 @@ class CommonGraph {
             }
         }
     
-    static let DICE_ROLL =
-        AL(["ROLL A DICE", "DICE", "DICES"]) {
+    static let _DICE =
+        AL(["ROLL A DICE", "DICE"]) {
             DICE()
         }
     
-    static let COIN_FLIP =
+    static let _DICES =
+        AL(["ROLL TWO DICES", "DICES"]) {
+            DICE(range: 1...12)
+        }
+    
+    static let _COIN =
         AL(["FLIP A COIN", "TOSS A COIN", "COIN", "COIN FLIP"]) {
             COIN()
         }
@@ -495,7 +501,7 @@ class CommonGraph {
             }
         }
     
-    static let WHY = ["TELL MORE", "TELL ME MORE", "WHY?", "REASON?", "WHY", "REASON", "EXPLAIN"]
+    static let WHY = ["WHY", "TELL ME MORE", "EXPLAIN", "REASON", "TELL MORE"]
     
     static func FIX(repairable: Bool = true, variants: [String] = []) -> Edge {
         AL(["RELOAD", "REFRESH", "FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"] + variants) {

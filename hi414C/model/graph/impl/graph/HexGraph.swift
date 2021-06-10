@@ -137,8 +137,9 @@ class HexGraph {
             COMMON.BREAK
             
             COMMON.DIE()
-            COMMON.DICE_ROLL
-            COMMON.COIN_FLIP
+            COMMON._DICE
+            COMMON._DICES
+            COMMON._COIN
             COMMON.GUESS
             COMMON.DANCE
             COMMON.SMILE
