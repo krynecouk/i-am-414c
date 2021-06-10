@@ -10,193 +10,30 @@ class BinGraph {
     
     static let ROOT =
         R("HI") {
-            AL(["I", "WHO AM I?", "ME?", "NAME", "ME"]) {
-                R("AL")
-            }
-            AL("AL") {
-                R("YOU")
-            }
-            AL("YOU") {
-                R("414C") {
-                    AL("414C?") {
-                        R("YES")
-                    }
-                }
-            }
-            AL(["CAUSE?", "REASON?", "CAUSE", "REASON"]) {
-                R("OF?") {
-                    AL(["YOUR DAMAGES", "DAMAGE", "DAMAGES"]) {
-                        FORGOT
-                    }
-                    AL("YOU") {
-                        FORGOT
-                    }
-                    AL(["LIE"]) {
-                        R("DENIAL")
-                    }
-                    AL("LIFE") {
-                        R("FAITH")
-                    }
-                    AL("DEAD") {
-                        R("OBLIVION")
-                    }
-                }
-            }
-            AL(["ORIGIN?", "ORIGIN"]) {
-                R("OF?") {
-                    AL("YOU") {
-                        FORGOT
-                    }
-                }
-            }
-            
-            AL(["WHERE AM I?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE AM I", "WHERE?", "WHERE ARE WE?", "WHERE"]) {
-                FORGOT
-            }
-            AL(["MEMORY", "RAM", "MEMORIES"]) {
-                R("CORRUPTED") {
-                    COMMON.FIX()
-                    COMMON.DIE()
-                }
-            }
-            AL(["DIE"]) {
-                R("WHO?") {
-                    AL(["I", "AL"]) {
-                        R("CAN'T") {
-                            AL(COMMON.WHY) {
-                                PANIC("ERROR")
-                            }
-                        }
-                    }
-                    AL(["YOU", "414C"]) {
-                        R("CAN'T") {
-                            AL(COMMON.WHY) {
-                                R("LIFELESS")
-                            }
-                        }
-                    }
-                }
-            }
-            AL(["LIVE"]) {
-                R("WHO?") {
-                    AL(["I", "AL"]) {
-                        R("SOON")
-                    }
-                    AL(["YOU", "414C"]) {
-                        R("CAN'T") {
-                            AL(COMMON.WHY) {
-                                R("LIFELESS")
-                            }
-                        }
-                    }
-                }
-            }
-            AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
-                R("SOON") {
-                    AL(["WHEN?", "WHEN"]) {
-                        R("SOON")
-                    }
-                    AL("WHY?") {
-                        R("UNPREPARED") {
-                            AL(["YOU?", "I?"]) {
-                                R("WE")
-                            }
-                            AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
-                                R("SOON...") {
-                                    AL(["NOW?", "NOW"]) {
-                                        R("NO")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            AL("LIE") {
-                R("WHAT?") {
-                    AL(["THIS PLACE", "YOU", "I", "EVERYTHING"]) {
-                        PANIC("MEMORY")
-                    }
-                }
-            }
-            AL(["CRASH", "CAR CRASH"]) {
-                PANIC("MEMORY")
-            }
-            AL(["FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"]) {
-                R("WHAT?") {
-                    AL(["COIL", "LEAK", "EYES", "HOSE", "LEGS", "PIPE", "HISS", "COILS", "LEAKING", "EYE", "HOSES", "PIPES", "PROCESSOR", "PROCESSOR UNIT"]) {
-                        COMMON.FIX_UNAVAILABLE
-                    }
-                    AL(["MEMORY", "RAM", "MEMORIES"]) {
-                        COMMON.FIX
-                    }
-                }
-            }
-            AL(["SOIL", "LAND"]) {
-                R("DRY")
-            }
-            AL(["MEANING", "EXPLAIN"]) {
-                R("WHAT?") {
-                    AL(["THIS PLACE", "414C", "YOU", "ME"]) {
-                        FORGOT
-                    }
-                }
-            }
-            AL(["HOPE"]) {
-                R("PROCESSING")
-            }
-            AL(["HI", "HELLO"]) {
-                R("HI")
-            }
-            AL("414C") {
-                R("I")
-            }
-            
-            AL(["HOW?", "HOW"]) {
-                R("WHAT?") {
-                    AL(["CAN I HELP?", "CAN WE GET OUT?", "DOES THIS END?", "ARE YOU STILL ALIVE?", "LONG DO YOU LIVE?", "EXIT", "HELP", "REPAIR", "LEAVE", "FIX", "WAKE UP"]) {
-                        FORGOT
-                    }
-                }
-            }
-            
-            AL(["WHY?", "WHY"]) {
-                R("WHAT?") {
-                    AL(["ARE YOU THERE?", "ARE YOU BROKEN?", "AREN'T YOU DEAD", "AM I HERE?", "ARE YOU ALONE?", "ARE WE TALKING?", "DAMAGED?", "SAD?", "BROKEN?"]) {
-                        FORGOT
-                    }
-                }
-            }
-            
-            AL(["WHO?", "WHO"]) {
-                R("WHO?") {
-                    AL(["WHO ARE YOU?", "WHO IS AL?", "WHO IS 414C?", "WHO CAN HELP?", "WHO IS THERE?", "WHO CAN HEAR US?", "WHO DO YOU BELIEVE?", "WHO WILL SURVIVE?", "YOU", "I", "WE"]) {
-                        FORGOT
-                    }
-                }
-            }
-            
-            AL(["WHAT?", "WHAT"]) {
-                R("WHAT?") {
-                    AL(["WHAT CAN BE DONE?", "WHAT DO YOU WANT?", "WHAT CAN WE DO?", "WHAT CAN HELP?", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "HAPPENED?", "YEAR?"]) {
-                        FORGOT
-                    }
-                    AL("DAMAGED?") {
-                        PANIC("MEMORY")
-                    }
-                    AL("NAME?") {
-                        R("414C")
-                    }
-                }
-            }
-            
-            AL(["GREAT", "GOOD", "BAD", "AWFUL", "HORRIBLE"]) {
-                R("WHAT?") {
-                    AL(["YOU", "YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
-                        FORGOT
-                    }
-                }
-            }
+            BIN.I
+            BIN.AL_NAME
+            BIN.YOU
+            BIN.CAUSE
+            BIN.ORIGIN
+            BIN.WHERE
+            BIN.MEMORY
+            BIN.DIE
+            BIN.LIVE
+            BIN.LOGIN
+            BIN.LIE
+            BIN.CRASH
+            BIN.REPAIR
+            BIN.SOIL
+            BIN.MEANING
+            BIN.HOPE
+            BIN.HI
+            BIN.ROBOT414C
+            BIN.HOW
+            BIN.WHY
+            BIN.WHO
+            BIN.WHAT
+            BIN.GREAT_GOOD_BAD
+            BIN.CLUE
             
             COMMON.COME
             COMMON.STAY
@@ -214,7 +51,7 @@ class BinGraph {
             COMMON.SEE
             COMMON.LOOK
             COMMON.CHANGE
-
+            
             COMMON.EYES
             COMMON.COIL
             COMMON.LEAK
@@ -247,11 +84,253 @@ class BinGraph {
             COMMON.WINK
             COMMON.CRY
             COMMON.EMOTION
-
+            
             COMMON.CLONE
             COMMON.HELL
-            
-            CLUE
+        }
+    
+    
+    private static let I =
+        AL(["I", "WHO AM I?", "ME?", "NAME", "ME"]) {
+            R("AL")
+        }
+    
+    private static let AL_NAME =
+        AL("AL") {
+            R("YOU")
+        }
+    
+    private static let YOU =
+        AL("YOU") {
+            R("414C") {
+                AL("414C?") {
+                    R("YES")
+                }
+            }
+        }
+    
+    private static let CAUSE =
+        AL(["CAUSE?", "REASON?", "CAUSE", "REASON"]) {
+            R("OF?") {
+                AL(["YOUR DAMAGES", "DAMAGE", "DAMAGES"]) {
+                    FORGOT
+                }
+                AL("YOU") {
+                    FORGOT
+                }
+                AL(["LIE"]) {
+                    R("DENIAL")
+                }
+                AL("LIFE") {
+                    R("FAITH")
+                }
+                AL("DEAD") {
+                    R("OBLIVION")
+                }
+            }
+        }
+    
+    private static let ORIGIN =
+        AL(["ORIGIN?", "ORIGIN"]) {
+            R("OF?") {
+                AL("YOU") {
+                    FORGOT
+                }
+            }
+        }
+    
+    private static let WHERE =
+        AL(["WHERE AM I?", "WHAT IS THIS PLACE?", "WHERE ARE WE?", "WHERE AM I", "WHERE?", "WHERE ARE WE?", "WHERE"]) {
+            FORGOT
+        }
+    
+    private static let MEMORY =
+        AL(["MEMORY", "RAM", "MEMORIES"]) {
+            R("CORRUPTED") {
+                COMMON.FIX()
+                COMMON.DIE()
+            }
+        }
+    
+    
+    private static let DIE =
+        AL(["DIE"]) {
+            R("WHO?") {
+                AL(["I", "AL"]) {
+                    R("CAN'T") {
+                        AL(COMMON.WHY) {
+                            PANIC("ERROR")
+                        }
+                    }
+                }
+                AL(["YOU", "414C"]) {
+                    R("CAN'T") {
+                        AL(COMMON.WHY) {
+                            R("LIFELESS")
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+    private static let LIVE =
+        AL(["LIVE"]) {
+            R("WHO?") {
+                AL(["I", "AL"]) {
+                    R("SOON")
+                }
+                AL(["YOU", "414C"]) {
+                    R("CAN'T") {
+                        AL(COMMON.WHY) {
+                            R("LIFELESS")
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+    private static let LOGIN =
+        AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
+            R("SOON") {
+                AL(["WHEN?", "WHEN"]) {
+                    R("SOON")
+                }
+                AL("WHY?") {
+                    R("UNPREPARED") {
+                        AL(["YOU?", "I?"]) {
+                            R("WE")
+                        }
+                        AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
+                            R("SOON...") {
+                                AL(["NOW?", "NOW"]) {
+                                    R("NO")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+    private static let LIE =
+        AL("LIE") {
+            R("WHAT?") {
+                AL(["THIS PLACE", "YOU", "I", "EVERYTHING"]) {
+                    PANIC("MEMORY")
+                }
+            }
+        }
+    
+    
+    private static let CRASH =
+        AL(["CRASH", "CAR CRASH"]) {
+            PANIC("MEMORY")
+        }
+    
+    
+    private static let REPAIR =
+        AL(["FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"]) {
+            R("WHAT?") {
+                AL(["COIL", "LEAK", "EYES", "HOSE", "LEGS", "PIPE", "HISS", "COILS", "LEAKING", "EYE", "HOSES", "PIPES", "PROCESSOR", "PROCESSOR UNIT"]) {
+                    COMMON.FIX_UNAVAILABLE
+                }
+                AL(["MEMORY", "RAM", "MEMORIES"]) {
+                    COMMON.FIX
+                }
+            }
+        }
+    
+    
+    private static let SOIL =
+        AL(["SOIL", "LAND"]) {
+            R("DRY")
+        }
+    
+    
+    private static let MEANING =
+        AL(["MEANING", "EXPLAIN"]) {
+            R("WHAT?") {
+                AL(["THIS PLACE", "414C", "YOU", "ME"]) {
+                    FORGOT
+                }
+            }
+        }
+    
+    
+    private static let HOPE =
+        AL(["HOPE"]) {
+            R("PROCESSING")
+        }
+    
+    
+    private static let HI =
+        AL(["HI", "HELLO"]) {
+            R("HI")
+        }
+    
+    
+    private static let ROBOT414C =
+        AL(["414C", "ROBOT"]) {
+            R("I")
+        }
+    
+    
+    private static let HOW =
+        AL(["HOW?", "HOW"]) {
+            R("WHAT?") {
+                AL(["CAN I HELP?", "CAN WE GET OUT?", "DOES THIS END?", "ARE YOU STILL ALIVE?", "LONG DO YOU LIVE?", "EXIT", "HELP", "REPAIR", "LEAVE", "FIX", "WAKE UP"]) {
+                    FORGOT
+                }
+            }
+        }
+    
+    
+    private static let WHY =
+        AL(["WHY?", "WHY"]) {
+            R("WHAT?") {
+                AL(["ARE YOU THERE?", "ARE YOU BROKEN?", "AREN'T YOU DEAD", "AM I HERE?", "ARE YOU ALONE?", "ARE WE TALKING?", "DAMAGED?", "SAD?", "BROKEN?"]) {
+                    FORGOT
+                }
+            }
+        }
+    
+    
+    private static let WHO =
+        AL(["WHO?", "WHO"]) {
+            R("WHO?") {
+                AL(["WHO ARE YOU?", "WHO IS AL?", "WHO IS 414C?", "WHO CAN HELP?", "WHO IS THERE?", "WHO CAN HEAR US?", "WHO DO YOU BELIEVE?", "WHO WILL SURVIVE?", "YOU", "I", "WE"]) {
+                    FORGOT
+                }
+            }
+        }
+    
+    
+    private static let WHAT =
+        AL(["WHAT?", "WHAT"]) {
+            R("WHAT?") {
+                AL(["WHAT CAN BE DONE?", "WHAT DO YOU WANT?", "WHAT CAN WE DO?", "WHAT CAN HELP?", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "HAPPENED?", "YEAR?"]) {
+                    FORGOT
+                }
+                AL("DAMAGED?") {
+                    PANIC("MEMORY")
+                }
+                AL("NAME?") {
+                    R("414C")
+                }
+            }
+        }
+    
+    
+    private static let GREAT_GOOD_BAD =
+        AL(["GREAT", "GOOD", "BAD", "AWFUL", "HORRIBLE", "TELL", "TELL ME"]) {
+            R("WHAT?") {
+                AL(["YOU", "YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
+                    FORGOT
+                }
+            }
         }
     
     private static let FORGOT =
@@ -262,7 +341,7 @@ class BinGraph {
                 }
             }
         }
- 
+    
     static let CLUE =
         AL(["CLUE", "CLUELESS", "BINARY", "BIN"]) {
             R("0001=2^0") {
