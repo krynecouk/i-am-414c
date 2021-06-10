@@ -47,7 +47,10 @@ struct TerminalCommandSegue: View {
                     }
                 } else {
                     let result = graphVM.traverse(ctx: GraphContext(input: input))
-                    if case .error(_) = result {
+                    switch result {
+                    case .ok:
+                        Sound.play(.modifier)
+                    case .error(_):
                         uiVM.shake()
                     }
                 }

@@ -8,7 +8,7 @@
 import AVFoundation
 
 class Sound {
-    static var audioPlayer:AVAudioPlayer!
+    static var audioPlayer:AVAudioPlayer?
     
     static let sounds: [SoundType: URL] = [
         .click: URL.from(.click),
@@ -22,10 +22,8 @@ class Sound {
     static func play(_ type: SoundType) {
             DispatchQueue.global().async {
                 audioPlayer = AVAudioPlayer.from(type)
-                audioPlayer.prepareToPlay()
-                audioPlayer.play()
+                audioPlayer?.play()
             }
-
     }
 }
 

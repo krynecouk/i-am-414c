@@ -49,7 +49,7 @@ struct KeyboardView: View {
                     KeyboardKeyView(space.decrypted ? "SPC" : space.label, value: space.value, width: self.spaceKeySize.width, height: keySize.height, theme: space.decrypted ? themeVM.keyboard.key.decrypted : themeVM.keyboard.key.default) { value in
                         keyboardVM.append(value)
                     }
-                    KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR, sound: .modifier) { _ in
+                    KeyboardKeyView("ENT", width: specialKeySize.width, height: specialKeySize.height, theme: themeVM.keyboard.key.CR, sound: .none) { _ in
                         self.onEnter(keyboardVM.input)
                         keyboardVM.delete()
                         segueVM.close()
