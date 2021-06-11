@@ -4,7 +4,7 @@
 \margl1440\margr1440\vieww9000\viewh8400\viewkind0
 }
 
-# HI 414C
+# I AM 414C
 
 ## Story
 Hlavni protagonista najde rozbiteho robota. Tomu se rozsviti hlavni display a zacne s nim komunikovat pomoci binary. Hrac se v prvni polovine hry (binary cast) dozvida, ze:

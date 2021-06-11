@@ -7,13 +7,9 @@
 
 @resultBuilder
 struct EdgeBuilder {
-    static func buildBlock() -> [Edge] { [] }
+    //static func buildBlock() -> EdgeArray { [] }
 
-    static func buildBlock(_ edges: Edge...) -> [Edge] {
-        edges
-    }
-    
-    static func buildArray(_ edges: [[Edge]]) -> [Edge] {
-        edges.flatMap {$0}
+    static func buildBlock(_ edges: EdgeArray...) -> [Edge] {
+        edges.flatMap { $0.edges }
     }
 }

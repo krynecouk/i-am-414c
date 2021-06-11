@@ -140,6 +140,7 @@
 		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
 		26AE697E2672B3CE001D5E4D /* higher_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26AE697D2672B3CE001D5E4D /* higher_toggle.wav */; };
 		26AE69802672B49E001D5E4D /* dulled_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26AE697F2672B49E001D5E4D /* dulled_toggle.wav */; };
+		26AE698226737A71001D5E4D /* EdgeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE698126737A71001D5E4D /* EdgeArray.swift */; };
 		26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4325FF7E7400B77E0A /* TestLevel.swift */; };
 		26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5525FF7FAC00B77E0A /* Test.swift */; };
 		26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestResult.swift */; };
@@ -369,6 +370,7 @@
 		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		26AE697D2672B3CE001D5E4D /* higher_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = higher_toggle.wav; sourceTree = "<group>"; };
 		26AE697F2672B49E001D5E4D /* dulled_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dulled_toggle.wav; sourceTree = "<group>"; };
+		26AE698126737A71001D5E4D /* EdgeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeArray.swift; sourceTree = "<group>"; };
 		26AF9F4325FF7E7400B77E0A /* TestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLevel.swift; sourceTree = "<group>"; };
 		26AF9F5525FF7FAC00B77E0A /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		26AF9F5D25FF849800B77E0A /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
@@ -1255,6 +1257,7 @@
 			isa = PBXGroup;
 			children = (
 				26F7A6CE25FA583100F04156 /* Edge.swift */,
+				26AE698126737A71001D5E4D /* EdgeArray.swift */,
 				26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */,
 				26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */,
 			);
@@ -1549,6 +1552,7 @@
 				26E090EA2651AB69002E404D /* PastelTheme.swift in Sources */,
 				266F9811266A86EC0012619B /* TraverseIfEdge.swift in Sources */,
 				262F4B3C266E4F5A00D14D52 /* CoinNode.swift in Sources */,
+				26AE698226737A71001D5E4D /* EdgeArray.swift in Sources */,
 				26E090E62650738C002E404D /* LightGreenTheme.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
 				26E091042652A693002E404D /* ForestTheme.swift in Sources */,

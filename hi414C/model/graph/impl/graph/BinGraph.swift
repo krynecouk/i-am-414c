@@ -13,6 +13,11 @@ class BinGraph {
             BIN.I
             BIN.NAME
             BIN._AL
+            
+            
+            
+            
+            
             BIN.YOU
             BIN.MEANING
             BIN.CAUSE
@@ -92,12 +97,26 @@ class BinGraph {
         }
     
     private static let I =
-        AL(["I", "ME"], silent: ["I?", "ME?"]) {
+        AL(["I", "ME"], silent: ["I?", "ME?", "WHO AM I", "WHO AM I?"]) {
             R("AL")
         }
     
+    private static let _AL: [Edge] = [
+        AL("AL", silent: ["AL?", "WHO IS AL", "WHO IS AL?"]) {
+            R("YOU")
+        },
+        AL("WHO IS FOO") {
+            R("FOO")
+        }
+    ]
+    
+    private static let YOU =
+        AL("YOU", silent: ["YOU?", "WHO ARE YOU", "WHO ARE YOU?"]) {
+            R("I AM 414C")
+        }
+    
     private static let NAME =
-        AL("NAME", silent: ["NAME?"]) {
+        AL("NAME", silent: ["NAME?", "WHAT IS YOUR NAME?", "WHAT IS YOUR NAME"]) {
             R("WHOSE?") {
                 AL("MINE") {
                     R("AL")
@@ -108,19 +127,9 @@ class BinGraph {
             }
         }
     
-    private static let _AL =
-        AL("AL", silent: ["AL?"]) {
-            R("YOU")
-        }
-    
-    private static let YOU =
-        AL("YOU", silent: ["YOU?"]) {
-            R("414C")
-        }
-    
     private static let CAUSE =
-        AL(["CAUSE", "REASON"], silent: ["CAUSE?", "REASON?"]) {
-            R("OF?") {
+        AL(["CAUSE", "REASON"], silent: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
+            R("OF WHAT?") {
                 AL(["YOUR DAMAGES", "DAMAGES"], silent: ["YOUR DAMAGE", "DAMAGE"]) {
                     R("CRASH") {
                         AL(["WHAT CRASH?", "CRASH?"]) {
@@ -344,7 +353,7 @@ class BinGraph {
     private static let FORGOT =
         R("FORGOTTEN") {
             AL(["WHY?", "WHY DID YOU FORGET?", "HOW DID YOU FORGET?", "HOW COULD YOU FORGET?", "FORGOTTEN?", "FORGOTTEN?!", "HOW?", "HOW", "WHY"]) {
-                PANIC("MEMORY") {
+                PANIC("MEMORY ERROR") {
                     COMMON.FIX()
                 }
             }
