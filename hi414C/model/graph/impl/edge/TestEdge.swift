@@ -13,8 +13,8 @@ class TestEdge: Edge {
     let silent: [String]
     let target: Node
     
-    convenience init(_ content: () -> Node) {
-        self.init([], content)
+    convenience init(silent: [String] = [], _ content: () -> Node) {
+        self.init([], silent: silent, content)
     }
     
     convenience init (_ name: String, silent: [String] = [], _ content: () -> Node) {

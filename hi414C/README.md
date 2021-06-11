@@ -22,6 +22,8 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 
 ### Important
 - Turn off memory analyzer!! Project scheme (nahore hi414C > iPhone) -> edit -> diagnostics
+- read: https://useyourloaf.com/blog/xcode-visual-memory-debugger/
+- monitor memory usage over time
 
 ### Visuals
 
