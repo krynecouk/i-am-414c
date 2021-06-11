@@ -10,6 +10,8 @@ class BinGraph {
     
     static let ROOT =
         R("HI") {
+            BIN.HI
+            BIN._414C
             BIN.I
             BIN._AL
             BIN.YOU
@@ -19,30 +21,55 @@ class BinGraph {
             BIN.WHY
             BIN.HOW
             BIN.WHAT
-
+            
+            /*
+             - NAME done
+             - HELP done
+             - RESCUE
+             - MEANING
+             - CAUSE
+             - ORIGIN
+             - TELL
+             - CRASH
+             - LIE
+             */
             
             BIN.NAME
-
-            
+            BIN.HELP
+            // RESCUE
             BIN.MEANING
             BIN.CAUSE
-
-            BIN.MEMORY
-            BIN.DIE
-            BIN.LIVE
-            BIN.LOGIN
-            BIN.LIE
+            BIN.ORIGIN
+            BIN.TELL
             BIN.CRASH
+            BIN.LIE
+
+            /*
+           - REPAIR
+           - DIE
+           - MEMORY
+           - LOGIN
+             */
             BIN.REPAIR
+            BIN.DIE
+            BIN.MEMORY
+            BIN.LOGIN
+
+
+
+            BIN.LIVE
+
+            BIN.LIE
+
+
             BIN.SOIL
             BIN.HOPE
-            BIN.HI
-            BIN._414C
 
 
-            BIN.TELL
+
+
             BIN.CLUE
-            BIN.ORIGIN
+
             
             COMMON.EYES
             COMMON.COIL
@@ -353,17 +380,69 @@ class BinGraph {
         ]
     }
     
-    private static let NAME =
-        AL("NAME", silent: ["NAME?", "WHAT IS YOUR NAME?", "WHAT IS YOUR NAME"]) {
-            R("WHOSE?") {
-                AL("MINE") {
-                    R("AL")
+    private static var NAME: [Edge] {
+        [
+            AL("NAME", silent: ["NAME?", "WHAT IS YOUR NAME?", "WHAT IS YOUR NAME"]) {
+                R("WHOSE?") {
+                    AL(["YOURS"], silent: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
+                        R("414C")
+                    }
+                    AL("MINE", silent: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
+                        R("AL")
+                    }
                 }
-                AL("YOURS") {
-                    R("414C")
-                }
+            },
+            AL(silent: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
+                R("414C")
+            },
+            AL(silent: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
+                R("AL")
             }
-        }
+        ]
+    }
+    
+    private static var HELP: [Edge] {
+        [
+            AL("HELP", silent: ["HELP?", "CAN YOU HELP?"]) {
+                R("WHO?") {
+                    AL("YOU", silent: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
+                        R("YES") {
+                            AL("HOW?", silent: ["HOW"]) {
+                                R("FIX MEMORY") {
+                                    COMMON.FIX(repairable: true, variants: ["REFRESH"])
+                                }
+                            }
+                        }
+                    }
+                    AL("ME", silent: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
+                        R("WITH WHAT?") {
+                            COMMON.LEARN
+                            COMMON.SETTINGS
+                            COMMON.DIFFICULTY
+                            COMMON.THEME
+                            COMMON.CHANGE
+                        }
+                    }
+                }
+            },
+            AL(silent: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
+                R("YES") {
+                    AL("HOW?", silent: ["HOW"]) {
+                        R("FIX MEMORY") {
+                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
+                        }
+                    }
+                }
+            },
+            AL(silent: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
+                R("WITH WHAT?") {
+                    COMMON.LEARN
+                    COMMON.SETTINGS
+                    COMMON.DIFFICULTY
+                }
+            },
+        ]
+    }
     
     private static let CAUSE =
         AL(["CAUSE", "REASON"], silent: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
