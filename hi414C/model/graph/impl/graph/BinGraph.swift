@@ -14,10 +14,6 @@ class BinGraph {
             BIN.NAME
             BIN._AL
             
-            
-            
-            
-            
             BIN.YOU
             BIN.MEANING
             BIN.CAUSE
@@ -65,7 +61,7 @@ class BinGraph {
             COMMON.SEE
             COMMON.LOOK
             COMMON.CHANGE
-              
+            
             COMMON.DEAD_QUESTION
             
             COMMON.LEARN
@@ -101,14 +97,10 @@ class BinGraph {
             R("AL")
         }
     
-    private static let _AL: [Edge] = [
+    private static let _AL =
         AL("AL", silent: ["AL?", "WHO IS AL", "WHO IS AL?"]) {
             R("YOU")
-        },
-        AL("WHO IS FOO") {
-            R("FOO")
         }
-    ]
     
     private static let YOU =
         AL("YOU", silent: ["YOU?", "WHO ARE YOU", "WHO ARE YOU?"]) {
