@@ -22,21 +22,8 @@ class BinGraph {
             BIN.HOW
             BIN.WHAT
             
-            /*
-             - NAME done
-             - HELP done
-             - RESCUE done
-             - MEANING done
-             - CAUSE done
-             - ORIGIN done
-             - TELL done
-             - CRASH done
-             - LIE
-             */
-            
             BIN.NAME
             BIN.HELP
-            // BIN.RESCUE
             BIN.MEANING
             BIN.CAUSE
             BIN.ORIGIN
@@ -44,24 +31,15 @@ class BinGraph {
             BIN.CRASH
             BIN.LIE
             
-            /*
-             - REPAIR
-             - DIE
-             - MEMORY
-             - LOGIN
-             */
-            BIN.REPAIR
-            BIN.DIE
-            BIN.MEMORY
-            BIN.LOGIN
-            
             BIN.LIVE
-            
-            BIN.LIE
+            BIN.DIE
+            BIN.REPAIR
+            BIN.LOGIN
+            BIN.MEMORY
+            BIN.REMEMBER
             
             BIN.SOIL
             BIN.HOPE
-            
             BIN.CLUE
             
             COMMON.EYES
@@ -451,128 +429,145 @@ class BinGraph {
         ]
     }
     
-    // TODO dodelat z rootu
-    private static let CAUSE =
-        AL(["CAUSE", "REASON"], ctx: "WHAT IS THE CAUSE OR REASON?") {
-            R("OF WHAT?") {
-                AL("CAUSE OF YOUR DAMAGES?", ctx: "WHAT IS THE CAUSE OF YOUR DAMAGES?") {
-                    R("CRASH") {
-                        AL(["WHAT CRASH?", "CRASH?"]) {
-                            FORGOT
+    private static var CAUSE: [Edge] {
+        [
+            AL(["CAUSE", "REASON"], ctx: "WHAT IS THE CAUSE OR REASON?") {
+                R("OF WHAT?") {
+                    AL("CAUSE OF YOUR DAMAGES?", ctx: "WHAT IS THE CAUSE OF YOUR DAMAGES?") {
+                        R("CRASH") {
+                            AL(["WHAT CRASH?", "CRASH?"]) {
+                                FORGOT
+                            }
                         }
                     }
                 }
-            }
-        }
-    
-    private static let ORIGIN =
-        AL("ORIGIN", ctx: ["WHAT IS THE ORIGIN?"]) {
-            R("OF?") {
-                AL(["YOU", "ME"], ctx: "WHAT IS THE ORIGIN OF YOU OR ME?") {
-                    FORGOT
+            },
+            AL(ctx: "WHAT IS THE CAUSE OF YOUR DAMAGES?") {
+                R("CRASH") {
+                    AL(["WHAT CRASH?", "CRASH?"]) {
+                        FORGOT
+                    }
                 }
-            }
-        }
+            },
+        ]
+    }
     
-    private static let TELL =
-        AL("TELL ME", ctx: "COULD YOU TELL ME SOMETHING?") {
-            R("ABOUT?") {
-                AL("YOU") {
-                    R("414C") {
+    private static var ORIGIN: [Edge] {
+        [
+            AL("ORIGIN", ctx: ["WHAT IS THE ORIGIN?"]) {
+                R("OF WHAT?") {
+                    AL(["YOU", "ME", "THIS PLACE"], ctx: "WHAT IS THE ORIGIN OF YOU OR ME OR THIS PLACE?") {
+                        FORGOT
+                    }
+                }
+            },
+            AL(ctx: "WHAT IS THE ORIGIN OF YOU OR ME OR THIS PLACE?") {
+                FORGOT
+            },
+        ]
+    }
+    
+    private static var TELL: [Edge] {
+        let _414C =
+            R("414C") {
+                AL("NEXT") {
+                    R("ROBOT") {
                         AL("NEXT") {
-                            R("ROBOT") {
+                            R("DAMAGED") {
                                 AL("NEXT") {
-                                    R("DAMAGED") {
-                                        AL("NEXT") {
-                                            FORGOT
-                                        }
-                                    }
+                                    FORGOT
                                 }
                             }
                         }
                     }
                 }
-                AL(["YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
+            }
+        
+        return
+            [
+                AL("TELL ME", ctx: "COULD YOU TELL ME SOMETHING?") {
+                    R("ABOUT?") {
+                        AL("YOU", ctx: "TELL ME ABOUT YOU") {
+                            _414C
+                        }
+                        AL(["YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"], ctx: "TELL ME ABOUT YOUR HISTORY OR PAST") {
+                            FORGOT
+                        }
+                    }
+                },
+                AL(ctx: "TELL ME ABOUT YOU") {
+                    _414C
+                },
+                AL(["YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"], ctx: "TELL ME ABOUT YOUR HISTORY OR PAST") {
                     FORGOT
-                }
-            }
-        }
-    
-    private static let LIE =
-        AL("LIE") {
-            R("WHAT?") {
-                AL(["THIS PLACE", "YOU", "I", "EVERYTHING"]) {
-                    PANIC("MEMORY")
-                }
-            }
-        }
+                },
+            ]
+    }
     
     private static let CRASH =
         AL("CRASH", hidden: ["CAR CRASH"], ctx: "TELL ME ABOUT YOUR CAR CRASH") {
-            PANIC("MEMORY")
+            FORGOT
         }
     
-    private static let MEMORY =
-        AL(["MEMORY", "RAM", "MEMORIES"]) {
-            R("DAMAGED") {
-                COMMON.FIX()
-                COMMON.DIE()
+    private static let LIE =
+        AL("LIE", ctx: "IT'S A LIE!") {
+            R("WHAT?") {
+                AL("2+2=5") {
+                    R("LIE")
+                }
+                AL("YOUR NAME IS 414C") {
+                    R("NOT A LIE")
+                }
+                AL("MY NAME IS AL") {
+                    R("NOT A LIE")
+                }
+                AL(ctx: ["YOU ARE AL", "WE ARE SAME", "THIS IS JUST A DREAM"]) {
+                    R("NOT A LIE")
+                }
             }
         }
+    
+    private static var LIVE: [Edge] {
+        let NO =
+            R("NO") {
+                AL("WHY?", ctx: "WHY CAN'T YOU LIVE?") {
+                    R("JUST A ROBOT")
+                }
+            }
+        
+        return
+            [
+                AL("LIVE", hidden: ["ALIVE", "LIVING"]) {
+                    R("WHO?") {
+                        AL(["YOU", "414C"]) {
+                            NO
+                        }
+                        AL("ME") {
+                            R("YES")
+                        }
+                    }
+                },
+                AL(ctx: "ARE YOU ALIVE?") {
+                    NO
+                },
+                AL(ctx: "AM I ALIVE?") {
+                    R("YES")
+                },
+            ]
+    }
     
     private static let DIE =
-        AL("DIE") {
-            R("WHO?") {
-                AL(["I", "AL"]) {
-                    R("CAN'T") {
-                        AL(COMMON.WHY) {
-                            PANIC("ERROR")
-                        }
-                    }
-                }
-                AL(["YOU", "414C"]) {
-                    R("CAN'T") {
-                        AL(COMMON.WHY) {
-                            R("NONLIVING")
+        AL("DIE", ctx: "CAN YOU DIE?") {
+            R("CAN'T") {
+                AL("WHY?", ctx: "WHY CAN'T YOU DIE?") {
+                    R("ONLY TURN OFF") {
+                        AL("TURN OFF") {
+                            COMMON.DIE_WARN
                         }
                     }
                 }
             }
         }
-    
-    
-    private static let LIVE =
-        AL(["LIVE"]) {
-            R("WHO?") {
-                AL(["YOU", "414C"]) {
-                    R("CAN'T") {
-                        AL(COMMON.WHY) {
-                            R("NONLIVING")
-                        }
-                    }
-                }
-            }
-        }
-    
-    private static let LOGIN =
-        AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
-            R("N/A") {
-                AL(["N/A?", "WHY?"]) {
-                    R("UNPREPARED") {
-                        AL(["YOU?", "I?"]) {
-                            R("WE")
-                        }
-                        AL(["UNPREPARED?", "UNPREPARED FOR WHAT?", "UNPREPARED"]) {
-                            PANIC("MEMORY")
-                        }
-                    }
-                }
-            }
-        }
-    
-
-    
-
     
     private static let REPAIR =
         AL(["FIX", "REPAIR", "PATCH", "MEND"]) {
@@ -586,15 +581,88 @@ class BinGraph {
             }
         }
     
-    private static let SOIL =
-        AL(["SOIL", "LAND"]) {
-            R("DRY")
+    private static let MEMORY =
+        AL(["MEMORY", "RAM", "MEMORIES", "RANDOM ACCESS MEMORY"]) {
+            R("DAMAGED") {
+                COMMON.FIX()
+                COMMON.DIE()
+            }
         }
     
-    private static let HOPE =
-        AL(["HOPE"]) {
-            R("PROCESSING")
+    private static var REMEMBER: [Edge] {
+        let NO =
+            R("NO") {
+                AL("WHY?", ctx: "WHY YOU CAN'T REMEMBER?") {
+                    PANIC("MEMORY ERROR")
+                }
+            }
+        
+        return
+            [
+                AL("REMEMBER", ctx: "CAN YOU REMEMBER?") {
+                    R("WHAT?") {
+                        AL(["HOW YOU DAMAGED?", "HOW YOU GET THERE?", "YOUR PAST?"]) {
+                            NO
+                        }
+                    }
+                },
+                AL(ctx: ["CAN YOU REMEMBER HOW YOU DAMAGED?", "CAN YOU REMEMBER HOW YOU GET THERE?", "CAN YOU REMEMBER YOUR PAST?"]) {
+                    NO
+                },
+            ]
+    }
+    
+    private static let LOGIN =
+        AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
+            R("N/A") {
+                AL(["N/A?", "WHY?"], ctx: "WHY CAN'T I LOGIN OR LOGOUT?") {
+                    R("UNPREPARED") {
+                        AL(["YOU?", "I?"], ctx: "WHO IS UMPREPARED?") {
+                            R("WE")
+                        }
+                        AL(["UNPREPARED?", "UNPREPARED FOR WHAT?"], ctx: "WHY ARE YOU UMPREPARED") {
+                            PANIC("MEMORY ERROR")
+                        }
+                    }
+                }
+            }
         }
+    
+    private static let SOIL =
+        AL(["SOIL", "LAND", "PLANTS", "FLOWERS"]) {
+            R("DYING") {
+                AL("WHY?") {
+                    R("DON'T KNOW") {
+                        AL("WHY?") {
+                            PANIC("MEMORY ERROR")
+                        }
+                    }
+                }
+            }
+        }
+    
+    private static var HOPE: [Edge] {
+        let NO =
+            R("NO") {
+                AL("WHY?") {
+                    R("JUST A ROBOT")
+                }
+            }
+        
+        return
+            [
+                AL(["HOPE"]) {
+                    R("HOPE?") {
+                        AL("DO YOU HAVE HOPE?", ctx: "DO YOU HAVE HOPE?") {
+                            NO
+                        }
+                    }
+                },
+                AL(ctx: "DO YOU HAVE HOPE?") {
+                    NO
+                }
+            ]
+    }
     
     private static let HI =
         AL(["HI", "HELLO"]) {
@@ -606,11 +674,9 @@ class BinGraph {
             R("I")
         }
     
-
-    
     private static let FORGOT =
         R("CAN'T REMEMBER") {
-            AL(["WHY?", "WHY DID YOU FORGET?", "HOW DID YOU FORGET?", "HOW COULD YOU FORGET?", "FORGOTTEN?", "FORGOTTEN?!", "HOW?", "HOW", "WHY"]) {
+            AL(["WHY?", "WHY YOU CAN'T REMEMBER?"], ctx: "WHY YOU CAN'T REMEMBER?") {
                 PANIC("MEMORY ERROR") {
                     COMMON.FIX()
                 }
@@ -618,7 +684,7 @@ class BinGraph {
         }
     
     static let CLUE =
-        AL(["CLUE", "CLUELESS", "BINARY", "BIN"]) {
+        AL(["CLUE", "CLUELESS", "BINARY", "BIN"], ctx: "DO YOU HAVE ANY CLUE HOW TO DO BINARY?") {
             R("0001=2^0") {
                 AL(["2", "20"]) {
                     R("WRONG")
