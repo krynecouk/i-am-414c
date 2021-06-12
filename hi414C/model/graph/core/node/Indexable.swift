@@ -22,9 +22,12 @@ extension Indexable {
         var index: EdgeIndex = [:]
         for edge in edges {
             var names = edge.names
-            if edge is TestEdge {
-                names += (edge as! TestEdge).silent
+            
+            if let edge = edge as? TestEdge {
+                names += edge.silent
+                names += edge.sentences
             }
+
             for name in names {
                 index[name.tokenizeWord()] = edge
             }
