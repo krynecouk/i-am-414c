@@ -11,6 +11,7 @@ class UpgradeNode: Node {
     let id = UUID().uuidString
     let name = "upgrade"
     let edges: [Edge] = []
+    let index: EdgeIndex = [:]
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         let gameFinished = GameOverDao.find() ?? false

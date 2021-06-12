@@ -25,7 +25,7 @@ class GraphViewModel: ObservableObject, Resetable {
     }
     
     func traverse(ctx: GraphContext) -> GraphTraverseResult {
-        let targetNode = traverse(self.current.edges, ctx: ctx) ?? traverse(root.edges, ctx: ctx)
+        let targetNode = traverse(node: self.current, ctx: ctx) ?? traverse(node: root, ctx: ctx)
         if let node = targetNode {
             self.current.onExit(ctx: ctx, toolkit: toolkit)
             self.current = node
@@ -36,7 +36,18 @@ class GraphViewModel: ObservableObject, Resetable {
         }
     }
     
-    private func traverse(_ edges: [Edge], ctx: GraphContext) -> Node? {
+    private func traverse(node: Node, ctx: GraphContext) -> Node? {
+        if let indexed = node.find(name: ctx.input) {
+            if (indexed.isTraversable(ctx: ctx, toolkit: toolkit)) {
+                print("found \(indexed.names)")
+                return indexed.traverse(ctx: ctx, toolkit: toolkit)
+            }
+        }
+        print("not found, looping node id \(node.name)")
+        return traverse(edges: node.edges, ctx: ctx)
+    }
+    
+    private func traverse(edges: [Edge], ctx: GraphContext) -> Node? {
         for edge in edges {
             if (edge.isTraversable(ctx: ctx, toolkit: toolkit)) {
                 return edge.traverse(ctx: ctx, toolkit: toolkit)

@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 11.03.2021.
 //
 
-protocol Node {
+protocol Node: Indexable {
     var id: String { get }
     var name: String { get }
     @EdgeBuilder var edges: [Edge] { get }

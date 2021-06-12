@@ -12,6 +12,7 @@ class FinishNode: Node {
     let name = "finish"
     let edges: [Edge] = []
     let end: VideoType
+    let index: EdgeIndex = [:]
     
     init(with end: VideoType) {
         self.end = end

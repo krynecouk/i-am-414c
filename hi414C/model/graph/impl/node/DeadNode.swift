@@ -11,6 +11,7 @@ class DeadNode: Node {
     let id = UUID().uuidString
     let name = "dead"
     let edges: [Edge] = []
+    let index: EdgeIndex = [:]
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         let gameFinished = GameOverDao.find() ?? false
