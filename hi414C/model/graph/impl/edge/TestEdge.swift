@@ -74,6 +74,10 @@ extension TestEdge {
         self.init([name], hidden: hidden, ctx: [ctx], content)
     }
     
+    convenience init (_ name: String, hidden: [String] = [], ctx: [String] = [], _ content: () -> Node) {
+        self.init([name], hidden: hidden, ctx: ctx, content)
+    }
+    
     convenience init (_ names: [String] = [], hidden: [String] = [], ctx: String, _ content: () -> Node) {
         self.init(names, hidden: hidden, ctx: [ctx], content)
     }

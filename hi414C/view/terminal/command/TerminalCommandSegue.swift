@@ -14,7 +14,7 @@ struct TerminalCommandSegue: View {
     @EnvironmentObject var terminalVM: TerminalViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var segueVM: SegueViewModel
-        
+    
     init() {
         print("TerminalSegue")
     }
@@ -46,12 +46,13 @@ struct TerminalCommandSegue: View {
                         print("No test provided")
                     }
                 } else {
-                    let result = graphVM.traverse(ctx: GraphContext(input: input))
-                    switch result {
-                    case .ok:
-                        Sound.play(.modifier)
-                    case .error(_):
-                        uiVM.shake()
+                    graphVM.traverse(ctx: GraphContext(input: input)) { result in
+                        switch result {
+                        case .ok:
+                            Sound.play(.modifier)
+                        case .error(_):
+                            uiVM.shake()
+                        }
                     }
                 }
             }

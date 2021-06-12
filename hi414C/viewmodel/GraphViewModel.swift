@@ -24,15 +24,19 @@ class GraphViewModel: ObservableObject, Resetable {
         self.start()
     }
     
-    func traverse(ctx: GraphContext) -> GraphTraverseResult {
-        let targetNode = traverse(node: self.current, ctx: ctx) ?? traverse(node: root, ctx: ctx)
-        if let node = targetNode {
-            self.current.onExit(ctx: ctx, toolkit: toolkit)
-            self.current = node
-            self.current.onEnter(ctx: ctx, toolkit: toolkit)
-            return .ok
-        } else {
-            return .error("Node \(ctx.input) was not found")
+    func traverse(ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
+        DispatchQueue.global().async {
+            let targetNode = self.traverse(node: self.current, ctx: ctx) ?? self.traverse(node: self.root, ctx: ctx)
+            DispatchQueue.main.async {
+                if let node = targetNode {
+                    self.current.onExit(ctx: ctx, toolkit: self.toolkit)
+                    self.current = node
+                    self.current.onEnter(ctx: ctx, toolkit: self.toolkit)
+                    callback(.ok)
+                } else {
+                    callback(.error("Node \(ctx.input) was not found"))
+                }
+            }
         }
     }
     

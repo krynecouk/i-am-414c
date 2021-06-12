@@ -27,10 +27,10 @@ class BinGraph {
              - HELP done
              - RESCUE done
              - MEANING done
-             - CAUSE
-             - ORIGIN
-             - TELL
-             - CRASH
+             - CAUSE done
+             - ORIGIN done
+             - TELL done
+             - CRASH done
              - LIE
              */
             
@@ -384,68 +384,78 @@ class BinGraph {
     }
     
     private static var HELP: [Edge] {
-        [
-            AL("HELP", ctx: "CAN YOU HELP?") {
-                R("WHO?") {
-                    AL("YOU", ctx: "CAN I HELP YOU?") {
-                        R("YES") {
-                            AL("HOW?", ctx: "HOW CAN I HELP YOU?") {
-                                R("HELP ME REMEMBER") {
-                                    AL("HOW?", ctx: "HOW CAN I HELP YOU REMEMBER?") {
-                                        R("FIX MEMORY") {
-                                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                                        }
-                                    }
-                                }
+        let YES_YOU_CAN_HELP_ME =
+            R("YES") {
+                AL("HOW?", ctx: "HOW CAN I HELP YOU?") {
+                    R("HELP ME REMEMBER") {
+                        AL("HOW?", ctx: "HOW CAN I HELP YOU REMEMBER?") {
+                            R("FIX MEMORY") {
+                                COMMON.FIX(repairable: true, variants: ["REFRESH"])
                             }
                         }
                     }
-                    AL("ME", ctx: "CAN YOU HELP ME?") {
-                        R("WITH WHAT?") {
-                            COMMON.LEARN
-                            COMMON.SETTINGS
-                            COMMON.DIFFICULTY
-                            COMMON.THEME
-                            COMMON.CHANGE
+                }
+            }
+        
+        return
+            [
+                AL("HELP", ctx: "CAN YOU HELP?") {
+                    R("WHO?") {
+                        AL("YOU", ctx: "CAN I HELP YOU?") {
+                            YES_YOU_CAN_HELP_ME
+                        }
+                        AL("ME", ctx: "CAN YOU HELP ME?") {
+                            R("WITH WHAT?") {
+                                COMMON.LEARN
+                                COMMON.SETTINGS
+                                COMMON.DIFFICULTY
+                                COMMON.THEME
+                                COMMON.CHANGE
+                            }
                         }
                     }
-                }
-            },
-        ]
+                },
+                AL(ctx: "CAN I HELP YOU?") {
+                    YES_YOU_CAN_HELP_ME
+                },
+                AL(ctx: "CAN YOU HELP ME?") {
+                    R("WITH WHAT?") {
+                        COMMON.LEARN
+                        COMMON.SETTINGS
+                        COMMON.DIFFICULTY
+                        COMMON.THEME
+                        COMMON.CHANGE
+                    }
+                },
+            ]
     }
     
     private static var MEANING: [Edge] {
         [
-            AL(["MEANING", "PURPOSE"]) {
+            AL(["MEANING", "PURPOSE"], ctx: "WHAT IS THE MEANING?") {
                 R("OF WHAT?") {
-                    AL(["ME", "YOU", "414C", "THIS PLACE"]) {
+                    AL(["ME", "YOU", "414C", "THIS PLACE"], ctx: [
+                        "WHAT IS THE MEANING OF YOU?",
+                        "WHAT IS THE MEANING OF ME?",
+                    ]) {
                         FORGOT
                     }
                 }
             },
             AL(ctx: [
-                "MEANING OF YOU",
-                "WHAT IS MEANING OF YOU",
-                "WHAT IS MEANING OF YOU?",
-                "WHAT IS THE MEANING OF YOU",
                 "WHAT IS THE MEANING OF YOU?",
-                "MEANING OF ME",
-                "WHAT IS MEANING OF ME",
-                "WHAT IS MEANING OF ME?",
-                "MEANING OF THIS PLACE",
-                "WHAT IS MEANING OF THIS PLACE",
-                "WHAT IS MEANING OF THIS PLACE?",
-                "WHAT IS MEANING OF 414C?",
+                "WHAT IS THE MEANING OF ME?",
             ]) {
                 FORGOT
             },
         ]
     }
     
+    // TODO dodelat z rootu
     private static let CAUSE =
-        AL(["CAUSE", "REASON"], ctx: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
+        AL(["CAUSE", "REASON"], ctx: "WHAT IS THE CAUSE OR REASON?") {
             R("OF WHAT?") {
-                AL(["YOUR DAMAGES", "DAMAGES"], ctx: ["YOUR DAMAGE", "DAMAGE"]) {
+                AL("CAUSE OF YOUR DAMAGES?", ctx: "WHAT IS THE CAUSE OF YOUR DAMAGES?") {
                     R("CRASH") {
                         AL(["WHAT CRASH?", "CRASH?"]) {
                             FORGOT
@@ -456,12 +466,50 @@ class BinGraph {
         }
     
     private static let ORIGIN =
-        AL(["ORIGIN"], ctx: ["ORIGIN?"]) {
+        AL("ORIGIN", ctx: ["WHAT IS THE ORIGIN?"]) {
             R("OF?") {
-                AL(["YOU", "ME"]) {
+                AL(["YOU", "ME"], ctx: "WHAT IS THE ORIGIN OF YOU OR ME?") {
                     FORGOT
                 }
             }
+        }
+    
+    private static let TELL =
+        AL("TELL ME", ctx: "COULD YOU TELL ME SOMETHING?") {
+            R("ABOUT?") {
+                AL("YOU") {
+                    R("414C") {
+                        AL("NEXT") {
+                            R("ROBOT") {
+                                AL("NEXT") {
+                                    R("DAMAGED") {
+                                        AL("NEXT") {
+                                            FORGOT
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                AL(["YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
+                    FORGOT
+                }
+            }
+        }
+    
+    private static let LIE =
+        AL("LIE") {
+            R("WHAT?") {
+                AL(["THIS PLACE", "YOU", "I", "EVERYTHING"]) {
+                    PANIC("MEMORY")
+                }
+            }
+        }
+    
+    private static let CRASH =
+        AL("CRASH", hidden: ["CAR CRASH"], ctx: "TELL ME ABOUT YOUR CAR CRASH") {
+            PANIC("MEMORY")
         }
     
     private static let MEMORY =
@@ -473,7 +521,7 @@ class BinGraph {
         }
     
     private static let DIE =
-        AL(["DIE"]) {
+        AL("DIE") {
             R("WHO?") {
                 AL(["I", "AL"]) {
                     R("CAN'T") {
@@ -491,6 +539,7 @@ class BinGraph {
                 }
             }
         }
+    
     
     private static let LIVE =
         AL(["LIVE"]) {
@@ -521,19 +570,9 @@ class BinGraph {
             }
         }
     
-    private static let LIE =
-        AL("LIE") {
-            R("WHAT?") {
-                AL(["THIS PLACE", "YOU", "I", "EVERYTHING"]) {
-                    PANIC("MEMORY")
-                }
-            }
-        }
+
     
-    private static let CRASH =
-        AL(["CRASH", "CAR CRASH"]) {
-            PANIC("MEMORY")
-        }
+
     
     private static let REPAIR =
         AL(["FIX", "REPAIR", "PATCH", "MEND"]) {
@@ -567,17 +606,7 @@ class BinGraph {
             R("I")
         }
     
-    private static let TELL =
-        AL(["TELL", "TELL ME"]) {
-            R("ABOUT?") {
-                AL("YOU") {
-                    R("414C")
-                }
-                AL(["YOUR HISTORY", "YOUR PAST", "HISTORY", "PAST"]) {
-                    FORGOT
-                }
-            }
-        }
+
     
     private static let FORGOT =
         R("CAN'T REMEMBER") {

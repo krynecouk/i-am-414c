@@ -94,7 +94,6 @@ struct KeyboardView: View {
         HStack(spacing: self.spacing.horizontal) {
             ForEach(row, id: \.label){ key in
                 KeyboardKeyView(key.label, value: key.value, width: self.keySize.width, height: self.keySize.height, theme: key.decrypted ? themeVM.keyboard.key.decrypted : themeVM.keyboard.key.default) { value in
-                    print("Clicked on \(key.label) with value \(key.value)")
                     keyboardVM.append(value)
                 }
                 .offset(x: keyOffset.x, y: keyOffset.y)
