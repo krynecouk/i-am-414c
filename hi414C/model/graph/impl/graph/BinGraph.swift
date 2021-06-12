@@ -232,62 +232,62 @@ class BinGraph {
     
     private static var WHY: [Edge] {
         [
-            AL(["WHY"], silent: ["WHY?"]) {
+            AL("WHY") {
                 R("WHAT?") {
-                    AL(["WHY ARE YOU THERE?"], silent: ["WHY ARE YOU THERE", "WHY ARE YOU THERE?", "WHY YOU ARE HERE?", "WHY YOU ARE HERE", "WHY WE ARE HERE?"]) {
-                        FORGOT
-                    }
-                    AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?"], silent: ["WHY ARE YOU BROKEN", "WHY ARE YOU BROKEN?"]) {
-                        R("CRASH") {
-                            AL(["CRASH?", "WHAT CRASH?"], silent: ["WHAT CRASH", "WHAT CRASH?"]) {
-                                FORGOT
-                            }
-                        }
-                    }
-                    AL("WHY AM I HERE?", silent: ["WHY AM I HERE"]) {
+                    AL(["WHY ARE YOU THERE?"], sentence: "WHY AM I HERE?") {
                         R("WHY ARE YOU HERE?") {
                             AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"]) {
                                 R("OK")
                             }
                         }
                     }
-                    AL(["ALONE", "WHY ARE YOU ALONE?"], silent: ["WHY ARE YOU ALONE", "WHY ARE YOU ALONE?"]) {
+                    AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?"], sentence: "WHY ARE YOU THERE?") {
+                        FORGOT
+                    }
+                    AL("WHY AM I HERE?", sentence: "WHY ARE YOU BROKEN?") {
+                        R("CRASH") {
+                            AL(["CRASH?", "WHAT CRASH?"], silent: ["WHAT CRASH", "WHAT CRASH?"]) {
+                                FORGOT
+                            }
+                        }
+                    }
+                    AL(["ALONE", "WHY ARE YOU ALONE?"], sentence: "WHY ARE YOU ALONE?") {
                         R("DON'T KNOW") {
                             AL("YOU DON'T KNOW?") {
                                 FORGOT
                             }
                         }
                     }
-                    AL(["TALKING", "WHY ARE WE TALKING?"], silent: ["WHY ARE WE TALKING", "WHY ARE WE TALKING?", "WHY YOU ARE TALKING", "WHY YOU ARE TALKING TO ME?"]) {
+                    AL(["TALKING", "WHY ARE WE TALKING?"], sentence: "WHY ARE WE TALKING?") {
                         R("WHY NOT?")
                     }
                 }
             },
-            AL(silent: ["WHY ARE YOU THERE", "WHY ARE YOU THERE?", "WHY YOU ARE HERE?", "WHY YOU ARE HERE", "WHY WE ARE HERE?"]) {
-                FORGOT
-            },
-            AL(silent: ["WHY ARE YOU BROKEN", "WHY ARE YOU BROKEN?"]) {
-                R("CRASH") {
-                    AL(["CRASH?", "WHAT CRASH?"], silent: ["WHAT CRASH", "WHAT CRASH?"]) {
-                        FORGOT
-                    }
-                }
-            },
-            AL(silent: ["WHY AM I HERE", "WHY AM I HERE?"]) {
+            AL(sentence: "WHY AM I HERE?") {
                 R("WHY ARE YOU HERE?") {
                     AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"]) {
                         R("OK")
                     }
                 }
             },
-            AL(silent: ["WHY ARE YOU ALONE", "WHY ARE YOU ALONE?"]) {
+            AL(sentence: "WHY ARE YOU THERE?") {
+                FORGOT
+            },
+            AL(sentence: "WHY ARE YOU BROKEN?") {
+                R("CRASH") {
+                    AL(["CRASH?", "WHAT CRASH?"], silent: ["WHAT CRASH", "WHAT CRASH?"]) {
+                        FORGOT
+                    }
+                }
+            },
+            AL(sentence: "WHY ARE YOU ALONE?") {
                 R("DON'T KNOW") {
                     AL("YOU DON'T KNOW?") {
                         FORGOT
                     }
                 }
             },
-            AL(silent: ["WHY ARE WE TALKING", "WHY ARE WE TALKING?", "WHY YOU ARE TALKING", "WHY YOU ARE TALKING TO ME?"]) {
+            AL(sentence: "WHY ARE WE TALKING?") {
                 R("WHY NOT?")
             },
         ]

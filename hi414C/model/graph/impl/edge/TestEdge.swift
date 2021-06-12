@@ -19,12 +19,20 @@ class TestEdge: Edge {
         self.init([], silent: [], sentences: [], content)
     }
     
+    convenience init(sentence: String, _ content: () -> Node) {
+        self.init([], silent: [], sentences: [sentence], content)
+    }
+    
     convenience init (_ name: String, silent: [String] = [], _ content: () -> Node) {
         self.init([name], silent: silent, sentences: [], content)
     }
     
     convenience init (_ name: String, silent: [String] = [], sentence: String, _ content: () -> Node) {
         self.init([name], silent: silent, sentences: [sentence], content)
+    }
+    
+    convenience init (_ names: [String] = [], silent: [String] = [], sentence: String, _ content: () -> Node) {
+        self.init(names, silent: silent, sentences: [sentence], content)
     }
     
     init(_ names: [String] = [], silent: [String] = [], sentences: [String] = [], _ content: () -> Node) {
