@@ -16,11 +16,15 @@ class TestEdge: Edge {
     let target: Node
     
     convenience init(_ content: () -> Node) {
-        self.init([], content)
+        self.init([], silent: [], sentences: [], content)
     }
     
     convenience init (_ name: String, silent: [String] = [], _ content: () -> Node) {
-        self.init([name], silent: silent, content)
+        self.init([name], silent: silent, sentences: [], content)
+    }
+    
+    convenience init (_ name: String, silent: [String] = [], sentence: String, _ content: () -> Node) {
+        self.init([name], silent: silent, sentences: [sentence], content)
     }
     
     init(_ names: [String] = [], silent: [String] = [], sentences: [String] = [], _ content: () -> Node) {
