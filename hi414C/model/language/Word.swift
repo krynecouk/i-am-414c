@@ -42,4 +42,10 @@ extension Word {
     func lemmatizeWord() -> Word {
         self.lemmatize().joined()
     }
+    
+    func isWord() -> Bool {
+         let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+         let spaces = trimmed.filter { $0 == " " }
+         return spaces.count == 0
+     }
 }

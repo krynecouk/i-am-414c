@@ -33,16 +33,25 @@ class TestEdge: Edge {
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        if tokens.contains(ctx.input.tokenizeWord()) {
+        let tokenizedInput = ctx.input.tokenizeWord()
+        if tokens.contains(tokenizedInput) {
             return true
         }
         
-        for sentence in sentences {
-            if sentence.isSimilar(sentence: ctx.input) {
-                return true
+        if ctx.input.isWord() {
+            for token in tokens {
+                if token.isSimilar(word: tokenizedInput) {
+                    return true
+                }
+            }
+        } else {
+            for sentence in sentences {
+                if sentence.isSimilar(sentence: ctx.input) {
+                    return true
+                }
             }
         }
-        
+
         return false
     }
     
