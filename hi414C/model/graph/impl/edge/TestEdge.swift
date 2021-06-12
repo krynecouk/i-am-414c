@@ -7,41 +7,23 @@
 
 import Foundation
 
+typealias EdgeName = String
+
 class TestEdge: Edge {
     let id: String
-    let names: [String]
-    let silent: [String]
-    let tokens: [String]
-    let sentences: [String]
+    let names: [EdgeName]
+    let hidden: [EdgeName]
+    let context: [Sentence]
+    let tokens: [EdgeName]
     let target: Node
     
-    convenience init(_ content: () -> Node) {
-        self.init([], silent: [], sentences: [], content)
-    }
-    
-    convenience init(sentence: String, _ content: () -> Node) {
-        self.init([], silent: [], sentences: [sentence], content)
-    }
-    
-    convenience init (_ name: String, silent: [String] = [], _ content: () -> Node) {
-        self.init([name], silent: silent, sentences: [], content)
-    }
-    
-    convenience init (_ name: String, silent: [String] = [], sentence: String, _ content: () -> Node) {
-        self.init([name], silent: silent, sentences: [sentence], content)
-    }
-    
-    convenience init (_ names: [String] = [], silent: [String] = [], sentence: String, _ content: () -> Node) {
-        self.init(names, silent: silent, sentences: [sentence], content)
-    }
-    
-    init(_ names: [String] = [], silent: [String] = [], sentences: [String] = [], _ content: () -> Node) {
+    init(_ names: [String] = [], hidden: [String] = [], ctx context: [Sentence] = [], _ content: () -> Node) {
         self.id = UUID().uuidString
         self.names = names
-        self.silent = silent
-        self.tokens = (names + silent).map { $0.tokenizeWord() }
-        self.sentences = sentences
+        self.hidden = hidden
+        self.context = context
         self.target = content()
+        self.tokens = (names + `hidden`).map { $0.tokenizeWord() }
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
@@ -57,7 +39,7 @@ class TestEdge: Edge {
                 }
             }
         } else {
-            for sentence in sentences {
+            for sentence in context {
                 if sentence.isSimilar(sentence: ctx.input) {
                     return true
                 }
@@ -70,5 +52,27 @@ class TestEdge: Edge {
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
         toolkit.graphVM?.visited.insert(self.id)
         return target
+    }
+}
+
+extension TestEdge {
+    convenience init(_ content: () -> Node) {
+        self.init([], hidden: [], ctx: [], content)
+    }
+    
+    convenience init(ctx: String, _ content: () -> Node) {
+        self.init([], hidden: [], ctx: [ctx], content)
+    }
+    
+    convenience init (_ name: String, hidden: [String] = [], _ content: () -> Node) {
+        self.init([name], hidden: hidden, ctx: [], content)
+    }
+    
+    convenience init (_ name: String, hidden: [String] = [], ctx: String, _ content: () -> Node) {
+        self.init([name], hidden: hidden, ctx: [ctx], content)
+    }
+    
+    convenience init (_ names: [String] = [], hidden: [String] = [], ctx: String, _ content: () -> Node) {
+        self.init(names, hidden: hidden, ctx: [ctx], content)
     }
 }

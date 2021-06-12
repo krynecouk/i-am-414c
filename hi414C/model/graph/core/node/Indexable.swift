@@ -24,8 +24,8 @@ extension Indexable {
             var names = edge.names
             
             if let edge = edge as? TestEdge {
-                names += edge.silent
-                names += edge.sentences
+                names += edge.hidden
+                names += edge.context
             }
 
             for name in names {

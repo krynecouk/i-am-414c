@@ -118,171 +118,140 @@ class BinGraph {
             COMMON.CLONE
             COMMON.HELL
         }
-    
 
     private static let I =
-        AL(["I"], silent: ["I", "ME"], sentence: "WHO AM I?") {
+        AL("I", hidden: ["ME"], ctx: "WHO AM I?") {
             R("AL")
         }
 
     private static let _AL =
-        AL("AL", silent: ["WHO IS AL"], sentence: "WHO IS AL?") {
+        AL("AL", ctx: "WHO IS AL?") {
             R("YOU")
         }
 
     private static let YOU =
-        AL("YOU", silent: ["WHO ARE YOU"], sentence: "WHO ARE YOU?") {
+        AL("YOU", ctx: "WHO ARE YOU?") {
             R("I AM 414C")
         }
 
     private static var WHO: [Edge] {
-        [
-            AL(["WHO"]) {
-                R("WHO?") {
-                    AL("YOU", silent: ["ARE YOU", "ARE YOU?", "WHO ARE YOU", "WHO ARE YOU?"]) {
-                        R("414C")
-                    }
-                    AL("I", silent: ["AM I", "AM I?", "WHO AM I", "WHO AM I?"]) {
-                        R("AL")
-                    }
-                    AL("CAN HELP?", silent: ["CAN HELP"]) {
-                        R("NOBODY") {
-                            AL("WHY?", silent: ["WHY"]) {
-                                R("ALONE")
-                            }
-                        }
-                    }
+        var NOBODY: Node {
+            R("NOBODY") {
+                AL("WHY?", ctx: "WHY CAN NOBODY HELP?") {
+                    R("ALONE")
                 }
             }
+        }
+
+        return [
+            AL("WHO") {
+                R("WHO?") {
+                    YOU
+                    I
+                    AL("CAN HELP?", ctx: "WHO CAN HELP?") {
+                        NOBODY
+                    }
+                }
+            },
+            AL(ctx: "WHO CAN HELP?") {
+                NOBODY
+            },
         ]
     }
 
-    /*
-     private static var WHERE: [Edge] {
-         [
-             AL(["WHERE"], silent: ["WHERE?", "WHERE IS", "WHERE IS?"]) {
-                 R("WHAT?") {
-                     AL("HELP") {
-                         R("NO HELP") {
-                             AL("WHY", silent: ["WHY?"]) {
-                                 R("ALONE")
-                             }
-                         }
-                     }
-                     AL("ANYBODY") {
-                         R("ALONE")
-                     }
-                     AL(["WE"], silent: ["ARE WE", "ARE WE?"]) {
-                         FORGOT
-                     }
-                 }
-             },
-             AL(silent: ["WHERE IS HELP", "WHERE IS HELP?"]) {
-                 R("NO HELP")
-             },
-             AL(silent: ["WHERE IS ANYBODY", "WHERE IS ANYBODY?"]) {
-                 R("GONE")
-             },
-             AL(silent: ["WHERE ARE WE", "WHERE ARE WE?"]) {
-                 FORGOT
-             },
-         ]
-     }
-     */
-
     private static var WHERE: [Edge] {
-        [
-            AL(["WHERE"], sentences: ["WHERE IS IT?"]) {
-                R("WHAT?") {
-                    AL(["HELP"], sentences: ["WHERE IS HELP?"]) {
-                        R("NO HELP") {
-                            AL("WHY", silent: ["WHY?"]) {
-                                R("ALONE")
-                            }
+        let NO_HELP =
+            R("NO HELP") {
+                AL("WHY", hidden: ["WHY?"]) {
+                    R("ALONE")
+                }
+            }
+
+        return
+            [
+                AL("WHERE", ctx: "WHERE IS IT?") {
+                    R("WHAT?") {
+                        AL(["HELP"], ctx: ["WHERE IS HELP?"]) {
+                            NO_HELP
+                        }
+                        AL(["ANYBODY"], ctx: ["WHERE IS ANYBODY?"]) {
+                            R("ALONE")
+                        }
+                        AL(["WE"], ctx: ["WHERE ARE WE?"]) {
+                            FORGOT
                         }
                     }
-                    AL(["ANYBODY"], sentences: ["WHERE IS ANYBODY?"]) {
-                        R("ALONE")
-                    }
-                    AL(["WE"], sentences: ["WHERE ARE WE?"]) {
-                        FORGOT
-                    }
-                }
-            },
-            AL(sentences: ["WHERE IS HELP?"]) {
-                R("NO HELP") {
-                    AL("WHY", silent: ["WHY?"]) {
-                        R("ALONE")
-                    }
-                }
-            },
-            AL(sentences: ["WHERE IS ANYBODY?"]) {
-                R("GONE")
-            },
-            AL(sentences: ["WHERE ARE WE?"]) {
-                FORGOT
-            },
-        ]
+                },
+                AL(ctx: ["WHERE IS HELP?"]) {
+                    NO_HELP
+                },
+                AL(ctx: ["WHERE IS ANYBODY?"]) {
+                    R("GONE")
+                },
+                AL(ctx: ["WHERE ARE WE?"]) {
+                    FORGOT
+                },
+            ]
     }
 
     private static var WHY: [Edge] {
         [
             AL("WHY") {
                 R("WHAT?") {
-                    AL(["WHY AM I HERE?"], sentence: "WHY ARE YOU THERE?") {
+                    AL(["WHY AM I HERE?"], ctx: "WHY ARE YOU THERE?") {
                         R("WHY ARE YOU HERE?") {
                             AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"]) {
                                 R("OK")
                             }
                         }
                     }
-                    AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?"], sentence: "WHY ARE YOU BROKEN?") {
+                    AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?"], ctx: "WHY ARE YOU BROKEN?") {
                         FORGOT
                     }
-                    AL("WHY AM I HERE?", sentence: "WHY AM I HERE?") {
+                    AL("WHY AM I HERE?", ctx: "WHY AM I HERE?") {
                         R("CRASH") {
-                            AL(["CRASH?", "WHAT CRASH?"], silent: ["WHAT CRASH", "WHAT CRASH?"]) {
+                            AL(["CRASH?", "WHAT CRASH?"], hidden: ["WHAT CRASH", "WHAT CRASH?"]) {
                                 FORGOT
                             }
                         }
                     }
-                    AL(["ALONE", "WHY ARE YOU ALONE?"], sentence: "WHY ARE YOU ALONE?") {
+                    AL(["ALONE", "WHY ARE YOU ALONE?"], ctx: "WHY ARE YOU ALONE?") {
                         R("DON'T KNOW") {
                             AL("YOU DON'T KNOW?") {
                                 FORGOT
                             }
                         }
                     }
-                    AL(["TALKING", "WHY ARE WE TALKING?"], sentence: "WHY ARE WE TALKING?") {
+                    AL(["TALKING", "WHY ARE WE TALKING?"], ctx: "WHY ARE WE TALKING?") {
                         R("WHY NOT?")
                     }
                 }
             },
-            AL(sentence: "WHY AM I HERE?") {
+            AL(ctx: "WHY AM I HERE?") {
                 R("WHY ARE YOU HERE?") {
                     AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"]) {
                         R("OK")
                     }
                 }
             },
-            AL(sentence: "WHY ARE YOU THERE?") {
+            AL(ctx: "WHY ARE YOU THERE?") {
                 FORGOT
             },
-            AL(sentence: "WHY ARE YOU BROKEN?") {
+            AL(ctx: "WHY ARE YOU BROKEN?") {
                 R("CRASH") {
-                    AL(["CRASH?", "WHAT CRASH?"], silent: ["WHAT CRASH", "WHAT CRASH?"]) {
+                    AL(["CRASH?", "WHAT CRASH?"], hidden: ["WHAT CRASH", "WHAT CRASH?"]) {
                         FORGOT
                     }
                 }
             },
-            AL(sentence: "WHY ARE YOU ALONE?") {
+            AL(ctx: "WHY ARE YOU ALONE?") {
                 R("DON'T KNOW") {
                     AL("YOU DON'T KNOW?") {
                         FORGOT
                     }
                 }
             },
-            AL(sentence: "WHY ARE WE TALKING?") {
+            AL(ctx: "WHY ARE WE TALKING?") {
                 R("WHY NOT?")
             },
         ]
@@ -290,42 +259,42 @@ class BinGraph {
 
     private static var HOW: [Edge] {
         [
-            AL(["HOW"], silent: ["HOW?"]) {
+            AL(["HOW"], hidden: ["HOW?"]) {
                 R("WHAT?") {
-                    AL("GET OUT", silent: ["HOW CAN WE GET OUT", "HOW CAN WE GET OUT?"]) {
+                    AL("GET OUT", hidden: ["HOW CAN WE GET OUT", "HOW CAN WE GET OUT?"]) {
                         FORGOT
                     }
-                    AL("HELP", silent: ["HOW CAN I HELP", "HOW CAN I HELP?"]) {
+                    AL("HELP", hidden: ["HOW CAN I HELP", "HOW CAN I HELP?"]) {
                         R("FIX") {
-                            AL("WHAT", silent: ["WHAT?"]) {
+                            AL("WHAT", hidden: ["WHAT?"]) {
                                 R("MEMORY")
                             }
                         }
                     }
-                    AL("WILL THIS END?", silent: ["HOW THIS END", "HOW THIS END?", "WILL THIS END"]) {
+                    AL("WILL THIS END?", hidden: ["HOW THIS END", "HOW THIS END?", "WILL THIS END"]) {
                         R("DON'T KNOW")
                     }
-                    AL("LONG YOU LIVE?", silent: ["HOW LONG DO YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
+                    AL("LONG YOU LIVE?", hidden: ["HOW LONG DO YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
                         FORGOT
                     }
                 }
             },
-            AL(silent: ["HOW CAN WE GET OUT", "HOW CAN WE GET OUT?"]) {
+            AL(hidden: ["HOW CAN WE GET OUT", "HOW CAN WE GET OUT?"]) {
                 FORGOT
             },
-            AL(silent: ["HOW CAN I HELP", "HOW CAN I HELP?"]) {
+            AL(hidden: ["HOW CAN I HELP", "HOW CAN I HELP?"]) {
                 R("FIX") {
-                    AL("WHAT", silent: ["WHAT?"]) {
+                    AL("WHAT", hidden: ["WHAT?"]) {
                         R("MEMORY") {
                             COMMON.FIX(repairable: true, variants: ["REFRESH"])
                         }
                     }
                 }
             },
-            AL(silent: ["HOW THIS END", "HOW THIS END?"]) {
+            AL(hidden: ["HOW THIS END", "HOW THIS END?"]) {
                 R("DON'T KNOW")
             },
-            AL(silent: ["HOW LONG DO YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
+            AL(hidden: ["HOW LONG DO YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
                 FORGOT
             },
         ]
@@ -335,68 +304,68 @@ class BinGraph {
         [
             AL(["WHAT"]) {
                 R("WHAT?") {
-                    AL(["YOU SEE?"], silent: ["WHAT DO YOU SEE", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "WHAT CAN YOU SEE"]) {
+                    AL(["YOU SEE?"], hidden: ["WHAT DO YOU SEE", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "WHAT CAN YOU SEE"]) {
                         R("NOTHING") {
-                            AL("WHY?", silent: ["WHY"]) {
+                            AL("WHY?", hidden: ["WHY"]) {
                                 R("EYES BROKEN") {
                                     COMMON.FIX(repairable: false, variants: ["REPLACE"])
                                 }
                             }
                         }
                     }
-                    AL(["YOU HEAR?"], silent: ["WHAT DO YOU HEAR", "WHAT DO YOU HEAR?", "WHAT CAN YOU HEAR?", "WHAT CAN YOU HEAR"]) {
+                    AL(["YOU HEAR?"], hidden: ["WHAT DO YOU HEAR", "WHAT DO YOU HEAR?", "WHAT CAN YOU HEAR?", "WHAT CAN YOU HEAR"]) {
                         R("NOTHING") {
-                            AL("WHY?", silent: ["WHY"]) {
+                            AL("WHY?", hidden: ["WHY"]) {
                                 R("EARS BROKEN") {
                                     COMMON.FIX(repairable: false, variants: ["REPLACE"])
                                 }
                             }
                         }
                     }
-                    AL("CAN HELP?", silent: ["WHAT CAN HELP", "WHAT CAN HELP?", "WHAT DO YOU WANT", "WHAT DO YOU WANT?"]) {
+                    AL("CAN HELP?", hidden: ["WHAT CAN HELP", "WHAT CAN HELP?", "WHAT DO YOU WANT", "WHAT DO YOU WANT?"]) {
                         R("FIX") {
-                            AL("WHAT", silent: ["WHAT?"]) {
+                            AL("WHAT", hidden: ["WHAT?"]) {
                                 R("MEMORY") {
                                     COMMON.FIX(repairable: true, variants: ["REFRESH"])
                                 }
                             }
                         }
                     }
-                    AL("IS DAMAGED?", silent: ["WHAT IS DAMAGED?", "WHAT IS DAMAGED"]) {
+                    AL("IS DAMAGED?", hidden: ["WHAT IS DAMAGED?", "WHAT IS DAMAGED"]) {
                         R("MEMORY") {
                             COMMON.FIX(repairable: true, variants: ["REFRESH"])
                         }
                     }
                 }
             },
-            AL(silent: ["WHAT DO YOU SEE", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "WHAT CAN YOU SEE"]) {
+            AL(hidden: ["WHAT DO YOU SEE", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "WHAT CAN YOU SEE"]) {
                 R("NOTHING") {
-                    AL("WHY?", silent: ["WHY"]) {
+                    AL("WHY?", hidden: ["WHY"]) {
                         R("EYES BROKEN") {
                             COMMON.FIX(repairable: false, variants: ["REPLACE"])
                         }
                     }
                 }
             },
-            AL(silent: ["WHAT DO YOU HEAR", "WHAT DO YOU HEAR?", "WHAT CAN YOU HEAR?", "WHAT CAN YOU HEAR"]) {
+            AL(hidden: ["WHAT DO YOU HEAR", "WHAT DO YOU HEAR?", "WHAT CAN YOU HEAR?", "WHAT CAN YOU HEAR"]) {
                 R("NOTHING") {
-                    AL("WHY?", silent: ["WHY"]) {
+                    AL("WHY?", hidden: ["WHY"]) {
                         R("EARS BROKEN") {
                             COMMON.FIX(repairable: false, variants: ["REPLACE"])
                         }
                     }
                 }
             },
-            AL(silent: ["WHAT CAN HELP", "WHAT CAN HELP?", "WHAT DO YOU WANT", "WHAT DO YOU WANT?"]) {
+            AL(hidden: ["WHAT CAN HELP", "WHAT CAN HELP?", "WHAT DO YOU WANT", "WHAT DO YOU WANT?"]) {
                 R("FIX") {
-                    AL("WHAT", silent: ["WHAT?"]) {
+                    AL("WHAT", hidden: ["WHAT?"]) {
                         R("MEMORY") {
                             COMMON.FIX(repairable: true, variants: ["REFRESH"])
                         }
                     }
                 }
             },
-            AL(silent: ["WHAT IS DAMAGED?", "WHAT IS DAMAGED"]) {
+            AL(hidden: ["WHAT IS DAMAGED?", "WHAT IS DAMAGED"]) {
                 R("MEMORY") {
                     COMMON.FIX(repairable: true, variants: ["REFRESH"])
                 }
@@ -407,20 +376,20 @@ class BinGraph {
 
     private static var NAME: [Edge] {
         [
-            AL("NAME", silent: ["NAME?", "WHAT IS YOUR NAME?", "WHAT IS YOUR NAME"]) {
+            AL("NAME", hidden: ["NAME?", "WHAT IS YOUR NAME?", "WHAT IS YOUR NAME"]) {
                 R("WHOSE?") {
-                    AL(["YOURS"], silent: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
+                    AL(["YOURS"], hidden: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
                         R("414C")
                     }
-                    AL("MINE", silent: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
+                    AL("MINE", hidden: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
                         R("AL")
                     }
                 }
             },
-            AL(silent: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
+            AL(hidden: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
                 R("414C")
             },
-            AL(silent: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
+            AL(hidden: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
                 R("AL")
             },
         ]
@@ -428,18 +397,18 @@ class BinGraph {
 
     private static var HELP: [Edge] {
         [
-            AL("HELP", silent: ["HELP?", "RESCUE", "CAN YOU HELP?"]) {
+            AL("HELP", hidden: ["HELP?", "RESCUE", "CAN YOU HELP?"]) {
                 R("WHO?") {
-                    AL("YOU", silent: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
+                    AL("YOU", hidden: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
                         R("YES") {
-                            AL("HOW?", silent: ["HOW"]) {
+                            AL("HOW?", hidden: ["HOW"]) {
                                 R("FIX MEMORY") {
                                     COMMON.FIX(repairable: true, variants: ["REFRESH"])
                                 }
                             }
                         }
                     }
-                    AL("ME", silent: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
+                    AL("ME", hidden: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
                         R("WITH WHAT?") {
                             COMMON.LEARN
                             COMMON.SETTINGS
@@ -450,16 +419,16 @@ class BinGraph {
                     }
                 }
             },
-            AL(silent: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
+            AL(hidden: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
                 R("YES") {
-                    AL("HOW?", silent: ["HOW"]) {
+                    AL("HOW?", hidden: ["HOW"]) {
                         R("FIX MEMORY") {
                             COMMON.FIX(repairable: true, variants: ["REFRESH"])
                         }
                     }
                 }
             },
-            AL(silent: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
+            AL(hidden: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
                 R("WITH WHAT?") {
                     COMMON.LEARN
                     COMMON.SETTINGS
@@ -478,7 +447,7 @@ class BinGraph {
                     }
                 }
             },
-            AL(silent: [
+            AL(hidden: [
                 "MEANING OF YOU",
                 "WHAT IS MEANING OF YOU",
                 "WHAT IS MEANING OF YOU?",
@@ -498,9 +467,9 @@ class BinGraph {
     }
 
     private static let CAUSE =
-        AL(["CAUSE", "REASON"], silent: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
+        AL(["CAUSE", "REASON"], hidden: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
             R("OF WHAT?") {
-                AL(["YOUR DAMAGES", "DAMAGES"], silent: ["YOUR DAMAGE", "DAMAGE"]) {
+                AL(["YOUR DAMAGES", "DAMAGES"], hidden: ["YOUR DAMAGE", "DAMAGE"]) {
                     R("CRASH") {
                         AL(["WHAT CRASH?", "CRASH?"]) {
                             FORGOT
@@ -511,7 +480,7 @@ class BinGraph {
         }
 
     private static let ORIGIN =
-        AL(["ORIGIN"], silent: ["ORIGIN?"]) {
+        AL(["ORIGIN"], hidden: ["ORIGIN?"]) {
             R("OF?") {
                 AL(["YOU", "ME"]) {
                     FORGOT
