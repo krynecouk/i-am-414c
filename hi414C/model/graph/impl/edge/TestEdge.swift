@@ -10,7 +10,6 @@ import Foundation
 class TestEdge: Edge {
     let id: String
     let names: [String]
-    let embeddings: [EmbeddingType]
     let silent: [String]
     let target: Node
     
@@ -22,10 +21,9 @@ class TestEdge: Edge {
         self.init([name], silent: silent, content)
     }
     
-    init(_ names: [String] = [], silent: [String] = [], embeddings: [EmbeddingType] = [], _ content: () -> Node) {
+    init(_ names: [String] = [], silent: [String] = [], _ content: () -> Node) {
         self.id = UUID().uuidString
         self.names = names
-        self.embeddings = embeddings
         self.silent = silent
         self.target = content()
     }
@@ -41,7 +39,8 @@ class TestEdge: Edge {
             return true
         }
         
-        return LanguageUtils.isSimilar(trimmed, to: self.embeddings)
+        //return LanguageUtils.isSimilar(trimmed, to: self.embeddings)
+        return false // TODO
     }
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {

@@ -120,24 +120,17 @@ class BinGraph {
         }
     
     private static let I =
-        AL(["I"]) {
+        AL(["I"], silent: ["I?", "ME?", "ME", "WHO AM I", "WHO AM I?"]) {
             R("AL")
         }
     
-    /*
     private static let _AL =
         AL("AL", silent: ["AL?", "WHO IS AL", "WHO IS AL?"]) {
             R("YOU")
         }
-    */
     
-    private static let _AL =
-        AL(["AL"]) {
-            R("YOU")
-        }
- 
     private static let YOU =
-        AL("YOU") {
+        AL("YOU", silent: ["YOU?", "WHO ARE YOU", "WHO ARE YOU?"]) {
             R("I AM 414C")
         }
     
@@ -160,14 +153,12 @@ class BinGraph {
                     }
                 }
             },
-            /*
             AL(silent: ["WHO ARE YOU", "WHO ARE YOU?"]) {
                 R("414C")
             },
             AL(silent: ["WHO AM I", "WHO AM I?"]) {
                 R("AL")
             },
-            */
         ]
     }
     
