@@ -162,6 +162,7 @@ class BinGraph {
         ]
     }
     
+    /*
     private static var WHERE: [Edge] {
         [
             AL(["WHERE"], silent: ["WHERE?", "WHERE IS", "WHERE IS?"]) {
@@ -188,6 +189,42 @@ class BinGraph {
                 R("GONE")
             },
             AL(silent: ["WHERE ARE WE", "WHERE ARE WE?"]) {
+                FORGOT
+            },
+        ]
+    }
+    */
+    
+    private static var WHERE: [Edge] {
+        [
+            AL(["WHERE"], sentences: ["WHERE IS IT?"]) {
+                R("WHAT?") {
+                    AL(["HELP"], sentences: ["WHERE IS HELP?"]) {
+                        R("NO HELP") {
+                            AL("WHY", silent: ["WHY?"]) {
+                                R("ALONE")
+                            }
+                        }
+                    }
+                    AL(["ANYBODY"], sentences: ["WHERE IS ANYBODY?"]) {
+                        R("ALONE")
+                    }
+                    AL(["WE"], sentences: ["WHERE ARE WE?"]) {
+                        FORGOT
+                    }
+                }
+            },
+            AL(sentences: ["WHERE IS HELP?"]) {
+                R("NO HELP") {
+                    AL("WHY", silent: ["WHY?"]) {
+                        R("ALONE")
+                    }
+                }
+            },
+            AL(sentences: ["WHERE IS ANYBODY?"]) {
+                R("GONE")
+            },
+            AL(sentences: ["WHERE ARE WE?"]) {
                 FORGOT
             },
         ]

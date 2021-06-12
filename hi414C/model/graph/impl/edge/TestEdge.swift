@@ -11,6 +11,8 @@ class TestEdge: Edge {
     let id: String
     let names: [String]
     let silent: [String]
+    let tokens: [String]
+    let sentences: [String]
     let target: Node
     
     convenience init(_ content: () -> Node) {
@@ -21,33 +23,31 @@ class TestEdge: Edge {
         self.init([name], silent: silent, content)
     }
     
-    init(_ names: [String] = [], silent: [String] = [], _ content: () -> Node) {
+    init(_ names: [String] = [], silent: [String] = [], sentences: [String] = [], _ content: () -> Node) {
         self.id = UUID().uuidString
         self.names = names
         self.silent = silent
+        self.tokens = (names + silent).map { $0.tokenizeWord() }
+        self.sentences = sentences
         self.target = content()
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        let trimmed = ctx.input.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if trimmed.isEmpty {
-            return false
-        }
-        
-        if self.names.contains(trimmed) {
+        if tokens.contains(ctx.input.tokenizeWord()) {
             return true
         }
         
-        //return LanguageUtils.isSimilar(trimmed, to: self.embeddings)
-        return false // TODO
+        for sentence in sentences {
+            if sentence.isSimilar(sentence: ctx.input) {
+                return true
+            }
+        }
+        
+        return false
     }
     
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
         toolkit.graphVM?.visited.insert(self.id)
         return target
     }
-        
-
 }
-
