@@ -35,12 +35,14 @@ class TestEdge: Edge {
         if ctx.input.isWord() {
             for token in tokens {
                 if token.isSimilar(word: tokenizedInput) {
+                    print("SIMILAR WITH DISTANCE:", token.distance(word: ctx.input))
                     return true
                 }
             }
         } else {
             for sentence in context {
                 if sentence.isSimilar(sentence: ctx.input) {
+                    print("SIMILAR WITH DISTANCE:", sentence.distance(sentence: ctx.input))
                     return true
                 }
             }

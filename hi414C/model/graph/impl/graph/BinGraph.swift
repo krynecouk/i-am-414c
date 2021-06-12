@@ -7,7 +7,7 @@
 
 class BinGraph {
     private init() {}
-
+    
     static let ROOT =
         R("HI") {
             BIN.HI
@@ -15,13 +15,13 @@ class BinGraph {
             BIN.I
             BIN._AL
             BIN.YOU
-
+            
             BIN.WHO
             BIN.WHERE
             BIN.WHY
             BIN.HOW
             BIN.WHAT
-
+            
             /*
              - NAME done
              - HELP done
@@ -33,7 +33,7 @@ class BinGraph {
              - CRASH
              - LIE
              */
-
+            
             BIN.NAME
             BIN.HELP
             // BIN.RESCUE
@@ -43,7 +43,7 @@ class BinGraph {
             BIN.TELL
             BIN.CRASH
             BIN.LIE
-
+            
             /*
              - REPAIR
              - DIE
@@ -54,16 +54,16 @@ class BinGraph {
             BIN.DIE
             BIN.MEMORY
             BIN.LOGIN
-
+            
             BIN.LIVE
-
+            
             BIN.LIE
-
+            
             BIN.SOIL
             BIN.HOPE
-
+            
             BIN.CLUE
-
+            
             COMMON.EYES
             COMMON.COIL
             COMMON.LEAK
@@ -71,38 +71,38 @@ class BinGraph {
             COMMON.HOSE
             COMMON.HISS
             COMMON.PROCESSOR
-
+            
             COMMON.COME
             COMMON.STAY
             COMMON.LIKE
             COMMON.LOVE
-
+            
             COMMON.FIND
             COMMON.GO
             COMMON.SLEEP
             COMMON.CALL
             COMMON.STAND
-
+            
             COMMON.ALIVE
             COMMON.ALONE
             COMMON.SEE
             COMMON.LOOK
             COMMON.CHANGE
-
+            
             COMMON.DEAD_QUESTION
-
+            
             COMMON.LEARN
             COMMON.CHAT
             COMMON.SETTINGS
             COMMON.DIFFICULTY
-
+            
             COMMON.REPEAT
             COMMON.SHOUT
-
+            
             COMMON.PAIN
             COMMON.CLOSE
             COMMON.BREAK
-
+            
             COMMON.DIE()
             COMMON._DICE
             COMMON._DICES
@@ -114,26 +114,26 @@ class BinGraph {
             COMMON.WINK
             COMMON.CRY
             COMMON.EMOTION
-
+            
             COMMON.CLONE
             COMMON.HELL
         }
-
+    
     private static let I =
         AL("I", hidden: ["ME"], ctx: "WHO AM I?") {
             R("AL")
         }
-
+    
     private static let _AL =
         AL("AL", ctx: "WHO IS AL?") {
             R("YOU")
         }
-
+    
     private static let YOU =
         AL("YOU", ctx: "WHO ARE YOU?") {
             R("I AM 414C")
         }
-
+    
     private static var WHO: [Edge] {
         var NOBODY: Node {
             R("NOBODY") {
@@ -142,7 +142,7 @@ class BinGraph {
                 }
             }
         }
-
+        
         return [
             AL("WHO") {
                 R("WHO?") {
@@ -158,257 +158,249 @@ class BinGraph {
             },
         ]
     }
-
+    
     private static var WHERE: [Edge] {
         let NO_HELP =
             R("NO HELP") {
-                AL("WHY", hidden: ["WHY?"]) {
+                AL("WHY") {
                     R("ALONE")
                 }
             }
-
+        
         return
             [
                 AL("WHERE", ctx: "WHERE IS IT?") {
                     R("WHAT?") {
-                        AL(["HELP"], ctx: ["WHERE IS HELP?"]) {
+                        AL("HELP", ctx: "WHERE IS HELP?") {
                             NO_HELP
                         }
-                        AL(["ANYBODY"], ctx: ["WHERE IS ANYBODY?"]) {
+                        AL("ANYBODY", ctx: "WHERE IS ANYBODY?") {
                             R("ALONE")
                         }
-                        AL(["WE"], ctx: ["WHERE ARE WE?"]) {
+                        AL("WE", ctx: "WHERE ARE WE?") {
                             FORGOT
                         }
                     }
                 },
-                AL(ctx: ["WHERE IS HELP?"]) {
+                AL(ctx: "WHERE IS HELP?") {
                     NO_HELP
                 },
-                AL(ctx: ["WHERE IS ANYBODY?"]) {
+                AL(ctx: "WHERE IS ANYBODY?") {
                     R("GONE")
                 },
-                AL(ctx: ["WHERE ARE WE?"]) {
+                AL(ctx: "WHERE ARE WE?") {
                     FORGOT
                 },
             ]
     }
-
+    
     private static var WHY: [Edge] {
-        [
-            AL("WHY") {
-                R("WHAT?") {
-                    AL(["WHY AM I HERE?"], ctx: "WHY ARE YOU THERE?") {
-                        R("WHY ARE YOU HERE?") {
-                            AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"]) {
-                                R("OK")
-                            }
+        let CRASH =
+            R("CRASH") {
+                AL(["CRASH?", "WHAT CRASH?"], ctx: "WHAT CRASH?") {
+                    FORGOT
+                }
+            }
+        
+        let WHY_ARE_YOU_HERE =
+            R("WHY ARE YOU HERE?") {
+                AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"], ctx: "I HAVE FORGOT") {
+                    R("OK")
+                }
+            }
+        
+        let DONT_KNOW =
+            R("DON'T KNOW") {
+                AL("YOU DON'T KNOW?", ctx: "YOU DON'T KNOW?") {
+                    FORGOT
+                }
+            }
+        
+        return
+            [
+                AL("WHY") {
+                    R("WHAT?") {
+                        AL("WHY ARE YOU THERE?", ctx: "WHY ARE YOU THERE?") {
+                            CRASH
+                        }
+                        AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?"], ctx: "WHY ARE YOU BROKEN?") {
+                            FORGOT
+                        }
+                        AL("WHY AM I HERE?", ctx: "WHY AM I HERE?") {
+                            WHY_ARE_YOU_HERE
+                        }
+                        AL(["ALONE", "WHY ARE YOU ALONE?"], ctx: "WHY ARE YOU ALONE?") {
+                            DONT_KNOW
+                        }
+                        AL(["TALKING", "WHY ARE WE TALKING?"], ctx: "WHY ARE WE TALKING?") {
+                            R("WHY NOT?")
                         }
                     }
-                    AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?"], ctx: "WHY ARE YOU BROKEN?") {
-                        FORGOT
-                    }
-                    AL("WHY AM I HERE?", ctx: "WHY AM I HERE?") {
-                        R("CRASH") {
-                            AL(["CRASH?", "WHAT CRASH?"], hidden: ["WHAT CRASH", "WHAT CRASH?"]) {
-                                FORGOT
-                            }
-                        }
-                    }
-                    AL(["ALONE", "WHY ARE YOU ALONE?"], ctx: "WHY ARE YOU ALONE?") {
-                        R("DON'T KNOW") {
-                            AL("YOU DON'T KNOW?") {
-                                FORGOT
-                            }
-                        }
-                    }
-                    AL(["TALKING", "WHY ARE WE TALKING?"], ctx: "WHY ARE WE TALKING?") {
-                        R("WHY NOT?")
-                    }
-                }
-            },
-            AL(ctx: "WHY AM I HERE?") {
-                R("WHY ARE YOU HERE?") {
-                    AL(["I FORGOT", "NOT SURE", "CAN'T REMEMBER", "FORGOT"]) {
-                        R("OK")
-                    }
-                }
-            },
-            AL(ctx: "WHY ARE YOU THERE?") {
-                FORGOT
-            },
-            AL(ctx: "WHY ARE YOU BROKEN?") {
-                R("CRASH") {
-                    AL(["CRASH?", "WHAT CRASH?"], hidden: ["WHAT CRASH", "WHAT CRASH?"]) {
-                        FORGOT
-                    }
-                }
-            },
-            AL(ctx: "WHY ARE YOU ALONE?") {
-                R("DON'T KNOW") {
-                    AL("YOU DON'T KNOW?") {
-                        FORGOT
-                    }
-                }
-            },
-            AL(ctx: "WHY ARE WE TALKING?") {
-                R("WHY NOT?")
-            },
-        ]
+                },
+                AL(ctx: "WHY ARE YOU THERE?") {
+                    CRASH
+                },
+                AL(ctx: "WHY ARE YOU BROKEN?") {
+                    FORGOT
+                },
+                AL(ctx: "WHY AM I HERE?") {
+                    WHY_ARE_YOU_HERE
+                },
+                AL(ctx: "WHY ARE YOU ALONE?") {
+                    DONT_KNOW
+                },
+                AL(ctx: "WHY ARE WE TALKING?") {
+                    R("WHY NOT?")
+                },
+            ]
     }
-
+    
     private static var HOW: [Edge] {
-        [
-            AL(["HOW"], hidden: ["HOW?"]) {
-                R("WHAT?") {
-                    AL("GET OUT", hidden: ["HOW CAN WE GET OUT", "HOW CAN WE GET OUT?"]) {
-                        FORGOT
-                    }
-                    AL("HELP", hidden: ["HOW CAN I HELP", "HOW CAN I HELP?"]) {
-                        R("FIX") {
-                            AL("WHAT", hidden: ["WHAT?"]) {
-                                R("MEMORY")
-                            }
+        let FIX =
+            R("FIX") {
+                AL("WHAT?", ctx: "HOW TO REPAIR?") {
+                    R("MEMORY")
+                }
+            }
+        
+        return
+            [
+                AL("HOW") {
+                    R("WHAT?") {
+                        AL("HOW TO GET OUT?", ctx: "HOW TO GET OUT?") {
+                            FORGOT
+                        }
+                        AL("HOW TO HELP?", ctx: "HOW TO HELP?") {
+                            FIX
+                        }
+                        AL("HOW WILL THIS END?", ctx: "HOW WILL THIS END?") {
+                            R("DON'T KNOW")
+                        }
+                        AL("HOW LONG YOU LIVE?", ctx: "HOW LONG YOU LIVE?") {
+                            FORGOT
                         }
                     }
-                    AL("WILL THIS END?", hidden: ["HOW THIS END", "HOW THIS END?", "WILL THIS END"]) {
-                        R("DON'T KNOW")
-                    }
-                    AL("LONG YOU LIVE?", hidden: ["HOW LONG DO YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
-                        FORGOT
-                    }
-                }
-            },
-            AL(hidden: ["HOW CAN WE GET OUT", "HOW CAN WE GET OUT?"]) {
-                FORGOT
-            },
-            AL(hidden: ["HOW CAN I HELP", "HOW CAN I HELP?"]) {
-                R("FIX") {
-                    AL("WHAT", hidden: ["WHAT?"]) {
-                        R("MEMORY") {
-                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                        }
-                    }
-                }
-            },
-            AL(hidden: ["HOW THIS END", "HOW THIS END?"]) {
-                R("DON'T KNOW")
-            },
-            AL(hidden: ["HOW LONG DO YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
-                FORGOT
-            },
-        ]
+                },
+                AL(ctx: "HOW TO GET OUT?") {
+                    FORGOT
+                },
+                AL(ctx: "HOW TO HELP?") {
+                    FIX
+                },
+                AL(ctx: "HOW WILL THIS END?") {
+                    R("DON'T KNOW")
+                },
+                AL(ctx: "HOW LONG YOU LIVE?") {
+                    FORGOT
+                },
+            ]
     }
-
+    
     private static var WHAT: [Edge] {
-        [
-            AL(["WHAT"]) {
+        let NOTHING_EYES =
+            R("NOTHING") {
+                AL("WHY?", ctx: "WHY YOU DON'T SEE NOTHING?") {
+                    R("EYES BROKEN") {
+                        COMMON.FIX(repairable: false, variants: ["REPLACE"])
+                    }
+                }
+            }
+        
+        let NOTHING_EARS =
+            R("NOTHING") {
+                AL("WHY?", ctx: "WHY") {
+                    R("EARS BROKEN") {
+                        COMMON.FIX(repairable: false, variants: ["REPLACE"])
+                    }
+                }
+            }
+        
+        let FIX =
+            R("FIX") {
+                AL("WHAT", ctx: "WHAT?") {
+                    R("MEMORY") {
+                        COMMON.FIX(repairable: true, variants: ["REFRESH"])
+                    }
+                }
+            }
+        
+        let FIX_MEMORY =
+            R("MEMORY") {
+                COMMON.FIX(repairable: true, variants: ["REFRESH"])
+            }
+        
+        return [
+            AL("WHAT") {
                 R("WHAT?") {
-                    AL(["YOU SEE?"], hidden: ["WHAT DO YOU SEE", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "WHAT CAN YOU SEE"]) {
-                        R("NOTHING") {
-                            AL("WHY?", hidden: ["WHY"]) {
-                                R("EYES BROKEN") {
-                                    COMMON.FIX(repairable: false, variants: ["REPLACE"])
-                                }
-                            }
-                        }
+                    AL("WHAT YOU SEE?", ctx: "WHAT DO YOU SEE?") {
+                        NOTHING_EYES
                     }
-                    AL(["YOU HEAR?"], hidden: ["WHAT DO YOU HEAR", "WHAT DO YOU HEAR?", "WHAT CAN YOU HEAR?", "WHAT CAN YOU HEAR"]) {
-                        R("NOTHING") {
-                            AL("WHY?", hidden: ["WHY"]) {
-                                R("EARS BROKEN") {
-                                    COMMON.FIX(repairable: false, variants: ["REPLACE"])
-                                }
-                            }
-                        }
+                    AL("WHAT YOU HEAR?", ctx: "WHAT DO YOU HEAR?") {
+                        NOTHING_EARS
                     }
-                    AL("CAN HELP?", hidden: ["WHAT CAN HELP", "WHAT CAN HELP?", "WHAT DO YOU WANT", "WHAT DO YOU WANT?"]) {
-                        R("FIX") {
-                            AL("WHAT", hidden: ["WHAT?"]) {
-                                R("MEMORY") {
-                                    COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                                }
-                            }
-                        }
+                    AL("WHAT CAN HELP?", ctx: "WHAT CAN YOU HELP?") {
+                        FIX
                     }
-                    AL("IS DAMAGED?", hidden: ["WHAT IS DAMAGED?", "WHAT IS DAMAGED"]) {
-                        R("MEMORY") {
-                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                        }
+                    AL("WHAT IS DAMAGED?", ctx: "WHAT IS DAMAGED?") {
+                        FIX_MEMORY
                     }
                 }
             },
-            AL(hidden: ["WHAT DO YOU SEE", "WHAT DO YOU SEE?", "WHAT CAN YOU SEE?", "WHAT CAN YOU SEE"]) {
-                R("NOTHING") {
-                    AL("WHY?", hidden: ["WHY"]) {
-                        R("EYES BROKEN") {
-                            COMMON.FIX(repairable: false, variants: ["REPLACE"])
-                        }
-                    }
-                }
+            AL(ctx: "WHAT DO YOU SEE?") {
+                NOTHING_EYES
             },
-            AL(hidden: ["WHAT DO YOU HEAR", "WHAT DO YOU HEAR?", "WHAT CAN YOU HEAR?", "WHAT CAN YOU HEAR"]) {
-                R("NOTHING") {
-                    AL("WHY?", hidden: ["WHY"]) {
-                        R("EARS BROKEN") {
-                            COMMON.FIX(repairable: false, variants: ["REPLACE"])
-                        }
-                    }
-                }
+            AL(ctx: "WHAT DO YOU HEAR?") {
+                NOTHING_EARS
             },
-            AL(hidden: ["WHAT CAN HELP", "WHAT CAN HELP?", "WHAT DO YOU WANT", "WHAT DO YOU WANT?"]) {
-                R("FIX") {
-                    AL("WHAT", hidden: ["WHAT?"]) {
-                        R("MEMORY") {
-                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                        }
-                    }
-                }
+            AL(ctx: "WHAT CAN YOU HELP?") {
+                FIX
             },
-            AL(hidden: ["WHAT IS DAMAGED?", "WHAT IS DAMAGED"]) {
-                R("MEMORY") {
-                    COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                }
+            AL(ctx: "WHAT IS DAMAGED?") {
+                FIX_MEMORY
             },
             // TODO: TIME - current time?
         ]
     }
-
+    
     private static var NAME: [Edge] {
         [
-            AL("NAME", hidden: ["NAME?", "WHAT IS YOUR NAME?", "WHAT IS YOUR NAME"]) {
+            AL("NAME") {
                 R("WHOSE?") {
-                    AL(["YOURS"], hidden: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
+                    AL(["YOURS"], ctx: "WHAT IS YOUR NAME?") {
                         R("414C")
                     }
-                    AL("MINE", hidden: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
+                    AL("MINE", ctx: "WHAT IS MY NAME?") {
                         R("AL")
                     }
                 }
             },
-            AL(hidden: ["WHAT IS YOUR NAME", "WHAT IS YOUR NAME?"]) {
+            AL(ctx: "WHAT IS YOUR NAME?") {
                 R("414C")
             },
-            AL(hidden: ["WHAT IS MY NAME", "WHAT IS MY NAME?"]) {
+            AL(ctx: "WHAT IS MY NAME?") {
                 R("AL")
             },
         ]
     }
-
+    
     private static var HELP: [Edge] {
         [
-            AL("HELP", hidden: ["HELP?", "RESCUE", "CAN YOU HELP?"]) {
+            AL("HELP", ctx: "CAN YOU HELP?") {
                 R("WHO?") {
-                    AL("YOU", hidden: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
+                    AL("YOU", ctx: "CAN I HELP YOU?") {
                         R("YES") {
-                            AL("HOW?", hidden: ["HOW"]) {
-                                R("FIX MEMORY") {
-                                    COMMON.FIX(repairable: true, variants: ["REFRESH"])
+                            AL("HOW?", ctx: "HOW CAN I HELP YOU?") {
+                                R("HELP ME REMEMBER") {
+                                    AL("HOW?", ctx: "HOW CAN I HELP YOU REMEMBER?") {
+                                        R("FIX MEMORY") {
+                                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
-                    AL("ME", hidden: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
+                    AL("ME", ctx: "CAN YOU HELP ME?") {
                         R("WITH WHAT?") {
                             COMMON.LEARN
                             COMMON.SETTINGS
@@ -419,25 +411,9 @@ class BinGraph {
                     }
                 }
             },
-            AL(hidden: ["CAN I HELP YOU", "CAN I HELP YOU?"]) {
-                R("YES") {
-                    AL("HOW?", hidden: ["HOW"]) {
-                        R("FIX MEMORY") {
-                            COMMON.FIX(repairable: true, variants: ["REFRESH"])
-                        }
-                    }
-                }
-            },
-            AL(hidden: ["CAN YOU HELP ME", "CAN YOU HELP ME?"]) {
-                R("WITH WHAT?") {
-                    COMMON.LEARN
-                    COMMON.SETTINGS
-                    COMMON.DIFFICULTY
-                }
-            },
         ]
     }
-
+    
     private static var MEANING: [Edge] {
         [
             AL(["MEANING", "PURPOSE"]) {
@@ -447,7 +423,7 @@ class BinGraph {
                     }
                 }
             },
-            AL(hidden: [
+            AL(ctx: [
                 "MEANING OF YOU",
                 "WHAT IS MEANING OF YOU",
                 "WHAT IS MEANING OF YOU?",
@@ -465,11 +441,11 @@ class BinGraph {
             },
         ]
     }
-
+    
     private static let CAUSE =
-        AL(["CAUSE", "REASON"], hidden: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
+        AL(["CAUSE", "REASON"], ctx: ["CAUSE?", "REASON?", "WHAT IS THE CAUSE?", "WHAT IS THE REASON?"]) {
             R("OF WHAT?") {
-                AL(["YOUR DAMAGES", "DAMAGES"], hidden: ["YOUR DAMAGE", "DAMAGE"]) {
+                AL(["YOUR DAMAGES", "DAMAGES"], ctx: ["YOUR DAMAGE", "DAMAGE"]) {
                     R("CRASH") {
                         AL(["WHAT CRASH?", "CRASH?"]) {
                             FORGOT
@@ -478,16 +454,16 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let ORIGIN =
-        AL(["ORIGIN"], hidden: ["ORIGIN?"]) {
+        AL(["ORIGIN"], ctx: ["ORIGIN?"]) {
             R("OF?") {
                 AL(["YOU", "ME"]) {
                     FORGOT
                 }
             }
         }
-
+    
     private static let MEMORY =
         AL(["MEMORY", "RAM", "MEMORIES"]) {
             R("DAMAGED") {
@@ -495,7 +471,7 @@ class BinGraph {
                 COMMON.DIE()
             }
         }
-
+    
     private static let DIE =
         AL(["DIE"]) {
             R("WHO?") {
@@ -515,7 +491,7 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let LIVE =
         AL(["LIVE"]) {
             R("WHO?") {
@@ -528,7 +504,7 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let LOGIN =
         AL(["LOGIN", "LOGOUT", "AWAKE", "WAKE UP", "WAKE"]) {
             R("N/A") {
@@ -544,7 +520,7 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let LIE =
         AL("LIE") {
             R("WHAT?") {
@@ -553,12 +529,12 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let CRASH =
         AL(["CRASH", "CAR CRASH"]) {
             PANIC("MEMORY")
         }
-
+    
     private static let REPAIR =
         AL(["FIX", "REPAIR", "PATCH", "MEND"]) {
             R("WHAT?") {
@@ -570,27 +546,27 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let SOIL =
         AL(["SOIL", "LAND"]) {
             R("DRY")
         }
-
+    
     private static let HOPE =
         AL(["HOPE"]) {
             R("PROCESSING")
         }
-
+    
     private static let HI =
         AL(["HI", "HELLO"]) {
             R("HI")
         }
-
+    
     private static let _414C =
         AL(["414C", "ROBOT"]) {
             R("I")
         }
-
+    
     private static let TELL =
         AL(["TELL", "TELL ME"]) {
             R("ABOUT?") {
@@ -602,7 +578,7 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let FORGOT =
         R("CAN'T REMEMBER") {
             AL(["WHY?", "WHY DID YOU FORGET?", "HOW DID YOU FORGET?", "HOW COULD YOU FORGET?", "FORGOTTEN?", "FORGOTTEN?!", "HOW?", "HOW", "WHY"]) {
@@ -611,7 +587,7 @@ class BinGraph {
                 }
             }
         }
-
+    
     static let CLUE =
         AL(["CLUE", "CLUELESS", "BINARY", "BIN"]) {
             R("0001=2^0") {
