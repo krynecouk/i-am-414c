@@ -10,15 +10,15 @@ import XCTest
 @testable import hi414C
 
 class GraphTests: XCTestCase {
-    typealias N = ASCIITestNode
-    typealias E = ASCIITestEdge
+    typealias N = TestNode
+    typealias E = TestEdge
     
     static let tested: Node =
         N("HI") {
             E("HI") {
                 N("HI")
             }
-            E("I", ["I?", "ME", "ME?", "WHO AM I", "NAME"]) {
+            E("I") {
                 N("AL") {
                     E("AL?") {
                         N("YES")

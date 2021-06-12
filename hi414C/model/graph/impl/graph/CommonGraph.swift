@@ -77,7 +77,7 @@ class CommonGraph {
 
     
     static let FIND =
-        AL(["FIND", "SEARCH"], silent: ["FOUND", "FINDING"]) {
+        AL(["FIND", "SEARCH"]) {
             R("WHAT?") {
                 AL(["HELP", "SOMEONE", "SOMEBODY"]) {
                     R("CAN'T") {
@@ -177,7 +177,7 @@ class CommonGraph {
         }
     
     static let SEE =
-        AL(["SAW", "SEE"], silent: ["SAW?", "SEE?"]) {
+        AL(["SAW", "SEE"]) {
             R("WHAT?") {
                 AL(["LAND", "STARS", "TREE", "ME", "PLANTS", "DAMAGE", "HILL"]) {
                     R("CAN'T") {
@@ -224,7 +224,7 @@ class CommonGraph {
         }
     
     static let COIL =
-        AL(["COIL"], silent: ["COILS"]) {
+        AL(["COIL"]) {
             R("BROKEN") {
                 FIX(repairable: false)
                 COMMON.DIE()
@@ -232,7 +232,7 @@ class CommonGraph {
         }
     
     static let LEAK =
-        AL(["WHAT IS LEAKING?", "WHERE IS IT LEAKING?", "LEAK"], silent: ["LEAKING"]) {
+        AL(["WHAT IS LEAKING?", "WHERE IS IT LEAKING?", "LEAK"]) {
             R("OIL") {
                 FIX(repairable: false)
                 COMMON.DIE()
@@ -248,7 +248,7 @@ class CommonGraph {
         }
     
     static let HOSE =
-        AL(["HOSE", "PIPE"], silent: ["HOSES", "HOSE?", "PIPES"]) {
+        AL(["HOSE", "PIPE"]) {
             R("BURSTED") {
                 FIX(repairable: false)
                 COMMON.DIE()
@@ -256,7 +256,7 @@ class CommonGraph {
         }
     
     static let HISS =
-        AL(["WHAT ARE THOSE NOISES?", "WHERE IS IT HISSING?", "HISS", "NOISE"], silent: ["HISSING", "NOISES"]) {
+        AL(["WHAT ARE THOSE NOISES?", "WHERE IS IT HISSING?", "HISS", "NOISE"]) {
             R("HOSE") {
                 FIX(repairable: false)
                 COMMON.DIE()
@@ -348,12 +348,12 @@ class CommonGraph {
         }
     
     static let CRY =
-        AL(["CRY", "TEAR"], silent: ["TEARS"]) {
+        AL(["CRY", "TEAR"]) {
             R(":'-(")
         }
     
     static let EMOTION =
-        AL (["EMOTION"], silent: ["EMOTIONS"]) {
+        AL (["EMOTION"]) {
             R("WHAT?") {
                 AL(["SMILE", "HAPPY"]) {
                     R(":-)")
@@ -364,7 +364,7 @@ class CommonGraph {
                 AL(["WINK"]) {
                     R(";-)")
                 }
-                AL(["CRY", "TEAR"], silent: ["TEARS"]) {
+                AL(["CRY", "TEAR"]) {
                     R(":'-(")
                 }
                 AL(["LOL"]) {
@@ -426,7 +426,7 @@ class CommonGraph {
         }
     
     static let SHOUT =
-        AL(["YELL AT ME", "YELL", "SHOUT", "LOUD"], silent: ["LOUDLY"]) {
+        AL(["YELL AT ME", "YELL", "SHOUT", "LOUD"]) {
             R("WHAT?") {
                 ALL {
                     YELL()
@@ -435,7 +435,7 @@ class CommonGraph {
         }
     
     static let CLONE =
-        AL(["CLONE"], silent: ["CLONES"]) {
+        AL(["CLONE"]) {
             R("WHO?") {
                 AL(["YOU", "I"]) {
                     R("NO")
@@ -444,7 +444,7 @@ class CommonGraph {
         }
     
     static let PAIN =
-        AL(["DO YOU FEEL PAIN?", "ACHE", "PAIN", "HURT"], silent: ["PAIN?", "ACHES", "HURTING?", "HURT?", "HURTING"]) {
+        AL(["DO YOU FEEL PAIN?", "ACHE", "PAIN", "HURT"]) {
             R("NO") {
                 AL(COMMON.WHY) {
                     R("INANIMATE")
@@ -471,7 +471,7 @@ class CommonGraph {
         }
     
     static let HELL =
-        AL(["IS THIS HELL?", "IS THIS HEAVEN?", "HELL", "HEAVEN"], silent: ["HEAVEN?", "HELL?"]) {
+        AL(["IS THIS HELL?", "IS THIS HEAVEN?", "HELL", "HEAVEN"]) {
             R("NO") {
                 AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
                     R("YOUR MIND")
@@ -480,7 +480,7 @@ class CommonGraph {
         }
     
     static let DEAD_QUESTION =
-        AL(["DEAD"], silent: ["DEAD?"]) {
+        AL(["DEAD"]) {
             R("WHO?") {
                 AL(["I", "ME"]) {
                     R("NO")
