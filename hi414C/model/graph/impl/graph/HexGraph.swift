@@ -8,9 +8,10 @@
 class HexGraph {
     private init() {}
     
-    static let ROOT =
-        R("HI") {
-            HEX.HI
+    static let HI =
+        ROOT("HI") {
+            
+            HEX._HI
             HEX.I
             HEX._AL
             HEX.YOU
@@ -26,7 +27,7 @@ class HexGraph {
             HEX.CLUE
         }
     
-    private static let HI =
+    private static let _HI =
         AL("HI") {
             R("HI")
         }

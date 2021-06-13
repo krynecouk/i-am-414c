@@ -103,12 +103,13 @@ class GraphViewModel: ObservableObject, Resetable {
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
         var current = getPaths(from: current, precondition: precondition)
-        let root = getPaths(from: root, precondition: precondition, visitedLast: true)
+        let root = self.current is RootNode ? [] : getPaths(from: root, precondition: precondition, visitedLast: true)
         current.append(contentsOf: root)
         return current
     }
     
     private func getPaths(from node: Node, precondition: (String) -> Bool, visitedLast: Bool = false) -> OrderedSet<String> {
+        print("GETTING PATHS FROM \(node.name)")
         var paths: OrderedSet<String> = []
         var visited: OrderedSet<String> = []
         for edge in node.edges {

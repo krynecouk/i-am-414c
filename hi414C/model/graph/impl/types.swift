@@ -5,6 +5,7 @@
 //  Created by Darius Kryszczuk on 04.06.2021.
 //
 
+typealias ROOT = RootNode
 typealias R = TestNode
 typealias EITHER = EitherNode
 typealias RUNTIME = RuntimeNode

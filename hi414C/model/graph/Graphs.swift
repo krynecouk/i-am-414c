@@ -7,6 +7,6 @@
 
 class Graphs {
     private init() {}
-    static let BIN = BinGraph.ROOT
-    static let HEX = HexGraph.ROOT
+    static let BIN = BinGraph.HI
+    static let HEX = HexGraph.HI
 }
