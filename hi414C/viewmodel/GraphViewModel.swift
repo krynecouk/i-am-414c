@@ -13,9 +13,10 @@ class GraphViewModel: ObservableObject, Resetable {
     
     typealias EdgeId = String
     
-    var current: Node = Graphs.BIN
+    private(set) var current: Node = Graphs.BIN
+    private(set) var toolkit: GraphToolkit
+
     var visited: Set<EdgeId> = []
-    let toolkit: GraphToolkit
     
     init(graph: GraphType = .BIN, toolkit: GraphToolkit) {
         self.toolkit = toolkit
@@ -27,15 +28,19 @@ class GraphViewModel: ObservableObject, Resetable {
     func traverse(ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
         DispatchQueue.global().async {
             let targetNode = self.traverse(node: self.current, ctx: ctx) ?? self.traverse(node: self.root, ctx: ctx)
-            DispatchQueue.main.async {
-                if let node = targetNode {
-                    self.current.onExit(ctx: ctx, toolkit: self.toolkit)
-                    self.current = node
-                    self.current.onEnter(ctx: ctx, toolkit: self.toolkit)
-                    callback(.ok)
-                } else {
-                    callback(.error("Node \(ctx.input) was not found"))
-                }
+            self.setCurrent(node: targetNode, ctx: ctx, callback)
+        }
+    }
+    
+    func setCurrent(node: Node?, ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
+        DispatchQueue.main.async {
+            if let node = node {
+                self.current.onExit(ctx: ctx, toolkit: self.toolkit)
+                self.current = node
+                self.current.onEnter(ctx: ctx, toolkit: self.toolkit)
+                callback(.ok)
+            } else {
+                callback(.error("Node \(ctx.input) was not found"))
             }
         }
     }
