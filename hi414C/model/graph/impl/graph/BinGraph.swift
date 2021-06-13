@@ -103,7 +103,11 @@ class BinGraph {
     private static var COMMAND: Edge {
         let LEFT =
             AL {
-                RUNTIME(content: { "HAVING \($1.asciiVM.symbols.count) LETTERS" })
+                R("NEED MORE SYMBOLS") {
+                    AL("WHY?", ctx: "WHY YOU NEED MORE SYMBOLS?") {
+                        R("TO REMEMBER")
+                    }
+                }
             }
         
         let RIGHT: Edge =
