@@ -15,6 +15,7 @@ class DeadNode: Node {
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         let gameFinished = GameOverDao.find() ?? false
+        CmdDao.remove()
         toolkit.testVM.reset()
         if !gameFinished {
             toolkit.asciiVM.reset()

@@ -25,4 +25,8 @@ struct Dao<T: Decodable & Encodable> {
         }
         return .none
     }
+    
+    public static func remove(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
 }

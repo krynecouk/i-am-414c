@@ -11,7 +11,7 @@ class BinGraph {
     static let ROOT =
         R("HI") {
             
-            BIN.CMD
+            BIN.COMMAND
             
             BIN.HI
             BIN._414C
@@ -100,25 +100,26 @@ class BinGraph {
             COMMON.HELL
         }
     
-    private static var CMD: Edge {
+    private static var COMMAND: Edge {
         let LEFT =
             AL {
-                RUNTIME(content: { "HAVING \($1.asciiVM.symbols.count) LETTERS" }) {
-                    AL("OK") {
-                        R("OK")
+                RUNTIME(content: { "HAVING \($1.asciiVM.symbols.count) LETTERS" })
+            }
+        
+        let RIGHT: Edge =
+            AL {
+                CMD {
+                    AL("EXECUTE", ctx: "EXECUTE COMMAND") {
+                        COMMON.FIX
                     }
                 }
             }
         
-        let RIGHT =
-            AL {
-                R("CMD IS XYZ")
-            }
-        
         return
-            AL("COMMAND", ctx: "WHAT IS THE COMMAND?") {
+            AL(["COMMAND", "WHAT IS THE COMMAND?", "CMD"], ctx: "WHAT IS THE COMMAND?") {
                 EITHER(left: LEFT, right: RIGHT) { ctx, toolkit in
-                    return false
+                    let symbols = toolkit.asciiVM.symbols
+                    return symbols.count > 35
                 }
             }
     }

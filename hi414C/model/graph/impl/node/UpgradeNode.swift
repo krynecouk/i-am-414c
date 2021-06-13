@@ -15,6 +15,7 @@ class UpgradeNode: Node {
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
         let gameFinished = GameOverDao.find() ?? false
+        CmdDao.remove()
         toolkit.testVM.level(reset: true)
         toolkit.testVM.radix(of: .hex)
         toolkit.helpVM.radix(of: .hex)

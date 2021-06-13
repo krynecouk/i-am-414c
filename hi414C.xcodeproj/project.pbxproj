@@ -148,6 +148,8 @@
 		26AE69962674BFBF001D5E4D /* Indexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE69952674BFBF001D5E4D /* Indexable.swift */; };
 		26AE699826762218001D5E4D /* EitherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE699726762218001D5E4D /* EitherNode.swift */; };
 		26AE699A26762B7B001D5E4D /* RuntimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE699926762B7B001D5E4D /* RuntimeNode.swift */; };
+		26AE699C26764D5A001D5E4D /* CmdDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE699B26764D5A001D5E4D /* CmdDao.swift */; };
+		26AE699E267651E7001D5E4D /* CmdNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE699D267651E7001D5E4D /* CmdNode.swift */; };
 		26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4325FF7E7400B77E0A /* TestLevel.swift */; };
 		26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5525FF7FAC00B77E0A /* Test.swift */; };
 		26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestResult.swift */; };
@@ -385,6 +387,8 @@
 		26AE69952674BFBF001D5E4D /* Indexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indexable.swift; sourceTree = "<group>"; };
 		26AE699726762218001D5E4D /* EitherNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EitherNode.swift; sourceTree = "<group>"; };
 		26AE699926762B7B001D5E4D /* RuntimeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeNode.swift; sourceTree = "<group>"; };
+		26AE699B26764D5A001D5E4D /* CmdDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmdDao.swift; sourceTree = "<group>"; };
+		26AE699D267651E7001D5E4D /* CmdNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmdNode.swift; sourceTree = "<group>"; };
 		26AF9F4325FF7E7400B77E0A /* TestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLevel.swift; sourceTree = "<group>"; };
 		26AF9F5525FF7FAC00B77E0A /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		26AF9F5D25FF849800B77E0A /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
@@ -751,6 +755,7 @@
 				262F4B3B266E4F5A00D14D52 /* CoinNode.swift */,
 				26AE699726762218001D5E4D /* EitherNode.swift */,
 				26AE699926762B7B001D5E4D /* RuntimeNode.swift */,
+				26AE699D267651E7001D5E4D /* CmdNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -1156,6 +1161,7 @@
 				26EA30362661829B004A78F2 /* TestDao.swift */,
 				26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */,
 				26B61343266BBE6C001F6D7D /* GameOverDao.swift */,
+				26AE699B26764D5A001D5E4D /* CmdDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1451,6 +1457,7 @@
 				269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */,
 				26E091062652ABFF002E404D /* OranginaTheme.swift in Sources */,
 				2665C9BB263AB41300CE724F /* Row.swift in Sources */,
+				26AE699C26764D5A001D5E4D /* CmdDao.swift in Sources */,
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
 				26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */,
 				26E090F42651B9A5002E404D /* FooTheme.swift in Sources */,
@@ -1534,6 +1541,7 @@
 				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */,
 				26EA2FD726541953004A78F2 /* HelpColorButton.swift in Sources */,
+				26AE699E267651E7001D5E4D /* CmdNode.swift in Sources */,
 				263612332631DB7800341B60 /* EquationType.swift in Sources */,
 				269BCC872639A07900229E8A /* EdgeDrag.swift in Sources */,
 				269765382625F09700775D71 /* SUB.swift in Sources */,

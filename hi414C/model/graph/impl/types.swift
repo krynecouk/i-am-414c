@@ -21,6 +21,7 @@ typealias RND_NUM = RndNumNode
 typealias RND_WORD = RndWordNode
 typealias DICE = DiceNode
 typealias COIN = CoinNode
+typealias CMD = CmdNode
 
 typealias AL = TestEdge
 typealias ALL = TraverseAllEdge
