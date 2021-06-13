@@ -120,7 +120,7 @@ class BinGraph {
         [
             AL("WHO") {
                 R("WHO?") {
-                    AL("WHO AM I?", hidden: ["ME"], ctx: "WHO AM I?") {
+                    AL(["WHO AM I?", "ME", "I"], hidden: ["ME"], ctx: "WHO AM I?") {
                         R("AL")
                     }
                     AL("WHO ARE YOU?", hidden: ["YOU"], ctx: "WHO ARE YOU?") {

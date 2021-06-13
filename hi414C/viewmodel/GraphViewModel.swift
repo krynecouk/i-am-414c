@@ -112,7 +112,7 @@ class GraphViewModel: ObservableObject, Resetable {
         var paths: OrderedSet<String> = []
         var visited: OrderedSet<String> = []
         for edge in node.edges {
-            edge.names.forEach { name in
+            for name in edge.names {
                 if precondition(name) {
                     if visitedLast {
                         if self.visited.contains(edge.id) {
@@ -123,6 +123,7 @@ class GraphViewModel: ObservableObject, Resetable {
                     } else {
                         paths.append(name)
                     }
+                    break // store only first acceptable reply
                 }
             }
         }
