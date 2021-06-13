@@ -147,6 +147,7 @@
 		26AE69942674A172001D5E4D /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE69932674A172001D5E4D /* WordTests.swift */; };
 		26AE69962674BFBF001D5E4D /* Indexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE69952674BFBF001D5E4D /* Indexable.swift */; };
 		26AE699826762218001D5E4D /* EitherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE699726762218001D5E4D /* EitherNode.swift */; };
+		26AE699A26762B7B001D5E4D /* RuntimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE699926762B7B001D5E4D /* RuntimeNode.swift */; };
 		26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4325FF7E7400B77E0A /* TestLevel.swift */; };
 		26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5525FF7FAC00B77E0A /* Test.swift */; };
 		26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestResult.swift */; };
@@ -383,6 +384,7 @@
 		26AE69932674A172001D5E4D /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		26AE69952674BFBF001D5E4D /* Indexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indexable.swift; sourceTree = "<group>"; };
 		26AE699726762218001D5E4D /* EitherNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EitherNode.swift; sourceTree = "<group>"; };
+		26AE699926762B7B001D5E4D /* RuntimeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeNode.swift; sourceTree = "<group>"; };
 		26AF9F4325FF7E7400B77E0A /* TestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLevel.swift; sourceTree = "<group>"; };
 		26AF9F5525FF7FAC00B77E0A /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		26AF9F5D25FF849800B77E0A /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 				262F4B39266E4E6700D14D52 /* DiceNode.swift */,
 				262F4B3B266E4F5A00D14D52 /* CoinNode.swift */,
 				26AE699726762218001D5E4D /* EitherNode.swift */,
+				26AE699926762B7B001D5E4D /* RuntimeNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -1518,6 +1521,7 @@
 				26EA30042656C796004A78F2 /* TerminalThemesSelect.swift in Sources */,
 				26E090D8264D5E6E002E404D /* OrangeTheme.swift in Sources */,
 				267463E925DED6B000624D7C /* Curtain.swift in Sources */,
+				26AE699A26762B7B001D5E4D /* RuntimeNode.swift in Sources */,
 				26EA3022265969AA004A78F2 /* RadixDao.swift in Sources */,
 				2697659C262DB14E00775D71 /* TerminalGrid.swift in Sources */,
 				26F00B64266AC0ED008DACE5 /* YellNode.swift in Sources */,

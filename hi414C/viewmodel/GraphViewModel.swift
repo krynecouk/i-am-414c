@@ -28,16 +28,16 @@ class GraphViewModel: ObservableObject, Resetable {
     func traverse(ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
         DispatchQueue.global().async {
             let targetNode = self.traverse(node: self.current, ctx: ctx) ?? self.traverse(node: self.root, ctx: ctx)
-            self.setCurrent(node: targetNode, ctx: ctx, callback)
+            self.setCurrent(node: targetNode, ctx: ctx, toolkit: self.toolkit, callback)
         }
     }
     
-    func setCurrent(node: Node?, ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
+    func setCurrent(node: Node?, ctx: GraphContext, toolkit: GraphToolkit, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
         DispatchQueue.main.async {
             if let node = node {
-                self.current.onExit(ctx: ctx, toolkit: self.toolkit)
+                self.current.onExit(ctx: ctx, toolkit: toolkit)
                 self.current = node
-                self.current.onEnter(ctx: ctx, toolkit: self.toolkit)
+                self.current.onEnter(ctx: ctx, toolkit: toolkit)
                 callback(.ok)
             } else {
                 callback(.error("Node \(ctx.input) was not found"))

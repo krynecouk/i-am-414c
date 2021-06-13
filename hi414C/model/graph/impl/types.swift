@@ -6,6 +6,8 @@
 //
 
 typealias R = TestNode
+typealias EITHER = EitherNode
+typealias RUNTIME = RuntimeNode
 typealias UPGRADE = UpgradeNode
 typealias DEAD = DeadNode
 typealias FINISH = FinishNode
