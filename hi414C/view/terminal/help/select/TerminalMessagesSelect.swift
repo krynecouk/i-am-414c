@@ -15,18 +15,29 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var segueVM: SegueViewModel
     //@EnvironmentObject var graphVM: GraphViewModel
     
-    @State var pageLimit = 3
+    @State var pageLimit = 0
     
     var body: some View {
-        ForEach(chatVM.current.replies.prefix(pageLimit).map { Item($0) }) { item in
-            MessageButton(item.content)
+        Group {
+            ForEach(chatVM.current.replies.map { Item($0) }) { item in
+                MessageButton(item.content)
+            }
+            ForEach(chatVM.root.replies.prefix(pageLimit).map { Item($0) }) { item in
+                MessageButton(item.content)
+            }
+            if chatVM.root.replies.count > pageLimit {
+                MessageReload()
+            }
+            if chatVM.current.message == nil {
+                MessageNoReply()
+            }
         }
-        if chatVM.current.replies.count > pageLimit {
-            MessageReload()
+        .onAppear {
+            if chatVM.current.replies.isEmpty && pageLimit == 0 {
+                self.pageLimit += 3
+            }
         }
-        if chatVM.current.message == nil {
-            MessageNoReply()
-        }
+
     }
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -73,7 +84,7 @@ struct TerminalMessagesSelect: View {
     
     func MessageReload() -> some View {
         ReloadButton() {
-            if chatVM.current.replies.count > pageLimit {
+            if chatVM.root.replies.count > pageLimit {
                 withAnimation {
                     self.pageLimit += 3
                 }
@@ -114,7 +125,6 @@ struct ReloadButton: View {
         .disabled(self.disabled)
         .onTapGesture {
             if !disabled {
-                print("CLICKED")
                 self.animated = true
                 self.disabled = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {

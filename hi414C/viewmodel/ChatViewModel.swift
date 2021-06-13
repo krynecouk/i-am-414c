@@ -13,6 +13,7 @@ typealias Conversation = (message: Message?, replies: OrderedSet<String>)
 class ChatViewModel: ObservableObject, Resetable {
     private(set) var messages: [Message] = []
     private(set) var current: Conversation = (.none, [])
+    private(set) var root: Conversation = (.none, [])
     
     func add(message: Message) {
         if !message.text.isEmpty {
@@ -26,6 +27,10 @@ class ChatViewModel: ObservableObject, Resetable {
 
     func setCurrent(message: Message?, replies: OrderedSet<String>) {
         self.current = (message, replies)
+    }
+    
+    func setRoot(message: Message?, replies: OrderedSet<String>) {
+        self.root = (message, replies)
     }
 }
 

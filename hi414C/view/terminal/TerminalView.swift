@@ -39,14 +39,16 @@ struct TerminalView: View {
                     let text = symbols.map { $0.rawValue }.joined()
                     let id = UUID()
                     let message = Message(id: id, from: .robot, text: text)
-                    let replies = graphVM.getReplies(ascii: ascii)
-                    chatVM.setCurrent(message: message, replies: replies)
+                    let (current, root) = graphVM.getReplies(ascii: ascii)
+                    chatVM.setCurrent(message: message, replies: current)
+                    chatVM.setRoot(message: message, replies: root)
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
                     return items
                 }
                 
                 chatVM.setCurrent(message: .none, replies: [])
+                chatVM.setRoot(message: .none, replies: [])
                 var testWasSetup = false
                 tests.forEach { test in // test node
                     let symbol = test.symbol
