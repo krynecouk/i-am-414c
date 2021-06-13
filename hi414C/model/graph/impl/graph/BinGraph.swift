@@ -113,10 +113,14 @@ class BinGraph {
         }
     
     private static var WHO: [Edge] {
-        var NOBODY: Node {
-            R("NOBODY") {
-                AL("WHY?", ctx: "WHY CAN NOBODY HELP?") {
-                    R("ALONE")
+        var YOU: Node {
+            R("YOU") {
+                AL("HOW?", ctx: "HOW CAN I HELP YOU?") {
+                    R("HELP ME REMEMBER") {
+                        AL("HOW?", ctx: "HOW CAN I HELP YOU REMEMBER?") {
+                            PANIC("MEMORY ERROR")
+                        }
+                    }
                 }
             }
         }
@@ -124,15 +128,19 @@ class BinGraph {
         return [
             AL("WHO") {
                 R("WHO?") {
-                    YOU
-                    I
-                    AL("CAN HELP?", ctx: "WHO CAN HELP?") {
-                        NOBODY
+                    AL("WHO AM I?", hidden: ["ME"], ctx: "WHO AM I?") {
+                        R("AL")
+                    }
+                    AL("WHO ARE YOU?", hidden: ["YOU"], ctx: "WHO ARE YOU?") {
+                        R("414C")
+                    }
+                    AL("WHO CAN HELP?", ctx: "WHO CAN HELP?") {
+                        YOU
                     }
                 }
             },
             AL(ctx: "WHO CAN HELP?") {
-                NOBODY
+                YOU
             },
         ]
     }
@@ -189,7 +197,7 @@ class BinGraph {
         
         let DONT_KNOW =
             R("DON'T KNOW") {
-                AL("YOU DON'T KNOW?", ctx: "YOU DON'T KNOW?") {
+                AL("YOU DON'T KNOW?", ctx: "WHY YOU DON'T KNOW?") {
                     FORGOT
                 }
             }
