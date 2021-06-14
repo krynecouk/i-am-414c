@@ -42,12 +42,7 @@ class TestEdge: Edge {
         toolkit.graphVM?.visited.insert(self.id)
         return target
     }
-    
-    static func + (names: [String], edge: TestEdge) -> TestEdge {
-        TestEdge(id: edge.id, names + edge.names) {
-            edge.target
-        }
-    }
+
 }
 
 extension TestEdge {
@@ -57,5 +52,11 @@ extension TestEdge {
     
     convenience init (_ name: String, _ content: () -> Node) {
         self.init([name], content)
+    }
+    
+    static func + (names: [String], edge: TestEdge) -> TestEdge {
+        TestEdge(id: edge.id, names + edge.names) {
+            edge.target
+        }
     }
 }

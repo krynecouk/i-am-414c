@@ -139,17 +139,48 @@ class BinGraph {
     }
 
     private static var WHERE: [Edge] {
-        let MANY_PLACES =
-            R("MANY PLACES") {
-                AL("FOR EXAMPLE?") {
-                    RND_WORD(["COIL", "MEMORY", "EYES", "LEGS", "OIL", "HOSE", "PROCESSOR"])
+        let WHERE_IS_HELP =
+            AL(["WHERE IS HELP?"]) {
+                R("YOU ARE HELP") {
+                    HOW_TO_HELP
                 }
             }
-
-        let NOT_HERE =
-            R("NOT HERE") {
-                AL(["WHY?", "WHY THERE ARE NO PEOPLE?"]) {
-                    R("VOID")
+        
+        let WHERE_IS_ANYBODY =
+            AL(["WHERE IS ANYBODY?"]) {
+                R("ALONE")
+            }
+        
+        let WHERE_AM_I =
+            AL(["WHERE AM I?"]) {
+                R("VOID")
+            }
+        
+        let WHERE_ARE_YOU =
+            AL(["WHERE ARE YOU?"]) {
+                R("VOID")
+            }
+        
+        let WHERE_ARE_WE =
+            AL(["WHERE ARE WE?"]) {
+                R("VOID")
+            }
+        
+        let WHERE_IS_DAMAGE =
+            AL(["WHERE IS THE DAMAGE?"]) {
+                R("MANY PLACES") {
+                    AL("FOR EXAMPLE?") {
+                        RND_WORD(["COIL", "MEMORY", "EYES", "LEGS", "OIL", "HOSE", "PROCESSOR"])
+                    }
+                }
+            }
+        
+        let WHERE_ARE_PEOPLE =
+            AL(["WHERE ARE PEOPLE?"]) {
+                R("NOT HERE") {
+                    AL(["WHY?", "WHY THERE ARE NO PEOPLE?"]) {
+                        R("VOID")
+                    }
                 }
             }
 
@@ -157,31 +188,22 @@ class BinGraph {
             [
                 AL("WHERE") {
                     R("WHAT?") {
-                        AL(["HELP", "WHERE IS HELP?"]) {
-                            R("YOU ARE HELP") {
-                                HOW_TO_HELP
-                            }
-                        }
-                        AL(["ANYBODY", "SOMEBODY", "WHERE IS ANYBODY?"]) {
-                            R("ALONE")
-                        }
-                        AL(["ME", "WHERE AM I?"]) {
-                            R("VOID")
-                        }
-                        AL(["YOU", "WHERE ARE YOU?"]) {
-                            R("VOID")
-                        }
-                        AL(["WE", "WHERE ARE WE?"]) {
-                            R("VOID")
-                        }
-                        AL(["DAMAGE", "WHERE IS THE DAMAGE?"]) {
-                            MANY_PLACES
-                        }
-                        AL(["PEOPLE", "WHERE ARE PEOPLE?"]) {
-                            NOT_HERE
-                        }
+                        ["HELP"] + WHERE_IS_HELP
+                        ["ANYBODY", "SOMEBODY"] + WHERE_IS_ANYBODY
+                        ["ME"] + WHERE_AM_I
+                        ["YOU"] + WHERE_ARE_YOU
+                        ["WE"] + WHERE_ARE_WE
+                        ["DAMAGE"] + WHERE_IS_DAMAGE
+                        ["PEOPLE"] + WHERE_ARE_PEOPLE
                     }
                 },
+                WHERE_IS_HELP,
+                WHERE_IS_ANYBODY,
+                WHERE_AM_I,
+                WHERE_ARE_YOU,
+                WHERE_ARE_WE,
+                WHERE_IS_DAMAGE,
+                WHERE_ARE_PEOPLE
             ]
     }
 
