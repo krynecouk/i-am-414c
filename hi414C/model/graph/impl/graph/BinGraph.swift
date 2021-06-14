@@ -169,7 +169,7 @@ class BinGraph {
         let WHERE_IS_DAMAGE =
             AL(["WHERE IS THE DAMAGE?"]) {
                 R("MANY PLACES") {
-                    AL("FOR EXAMPLE?") {
+                    AL(["LIKE?", "FOR EXAMPLE?"]) {
                         RND_WORD(["COIL", "MEMORY", "EYES", "LEGS", "OIL", "HOSE", "PROCESSOR"])
                     }
                 }
@@ -208,140 +208,175 @@ class BinGraph {
     }
 
     private static var WHY: [Edge] {
-        let CRASH =
-            R("CRASH") {
-                AL(["CRASH?", "WHAT CRASH?"]) {
-                    FORGOTTEN
+        let WHY_ARE_YOU_THERE =
+            AL(["WHY ARE YOU THERE?"]) {
+                R("CRASH") {
+                    AL(["CRASH?", "WHAT CRASH?"]) {
+                        FORGOTTEN
+                    }
                 }
             }
 
-        let DONT_KNOW =
-            R("DON'T KNOW") {
-                AL(["DON'T KNOW?", "YOU DON'T KNOW?", "WHY DON'T YOU KNOW?"]) {
-                    FORGOTTEN
+        let WHY_ARE_YOU_DAMAGED =
+            AL(["WHY ARE YOU BROKEN?", "WHY ARE YOU DAMAGED?"]) {
+                FORGOTTEN
+            }
+        
+        let WHY_ARE_YOU_ALONE =
+            AL(["WHY ARE YOU ALONE?"]) {
+                R("DON'T KNOW") {
+                    AL(["DON'T KNOW?", "YOU DON'T KNOW?", "WHY DON'T YOU KNOW?"]) {
+                        FORGOTTEN
+                    }
                 }
             }
 
-        let ITS_HELPING =
-            R("IT'S HELPING") {
-                AL(["HOW?", "HOW IS TALKING HELPING YOU?"]) {
-                    R("TO REMEMBER")
+        let WHY_AM_I_HERE =
+            AL("WHY AM I HERE?") {
+                R("TO HELP") {
+                    HOW_TO_HELP
                 }
             }
-
+        
+        let WHY_ARE_WE_TALKING =
+            AL(["WHY ARE WE TALKING?"]) {
+                R("IT'S HELPING") {
+                    AL(["HOW?", "HOW IS TALKING HELPING YOU?"]) {
+                        R("TO REMEMBER")
+                    }
+                }
+            }
+        
         return
             [
                 AL("WHY") {
                     R("WHAT?") {
-                        AL(["YOU THERE", "WHY ARE YOU THERE?"]) {
-                            CRASH
-                        }
-                        AL(["BROKEN", "DAMAGED", "WHY ARE YOU BROKEN?", "WHY ARE YOU DAMAGED?"]) {
-                            FORGOTTEN
-                        }
-                        AL("WHY AM I HERE?") {
-                            R("TO HELP") {
-                                HOW_TO_HELP
-                            }
-                        }
-                        AL(["ALONE", "WHY ARE YOU ALONE?"]) {
-                            DONT_KNOW
-                        }
-                        AL(["TALKING", "WHY ARE WE TALKING?"]) {
-                            ITS_HELPING
-                        }
+                        ["YOU THERE"] + WHY_ARE_YOU_THERE
+                        ["BROKEN", "DAMAGED"] + WHY_ARE_YOU_DAMAGED
+                        ["ALONE"] + WHY_ARE_YOU_ALONE
+                        WHY_AM_I_HERE
+                        ["TALKING"] + WHY_ARE_WE_TALKING
                     }
                 },
+                WHY_ARE_YOU_THERE,
+                WHY_ARE_YOU_DAMAGED,
+                WHY_ARE_YOU_ALONE,
+                WHY_AM_I_HERE,
+                WHY_ARE_WE_TALKING,
             ]
     }
 
     private static var HOW: [Edge] {
-        [
-            AL("HOW") {
-                R("WHAT?") {
-                    AL(["GET OUT", "HOW TO GET OUT?"]) {
-                        FORGOTTEN
+        let HOW_TO_GET_OUT =
+            AL(["HOW TO GET OUT?"]) {
+                FORGOTTEN
+            }
+        
+        let HOW_WILL_THIS_END =
+            AL(["HOW WILL THIS END?"]) {
+                R("DON'T KNOW")
+            }
+        
+        let HOW_LONG_DO_YOU_LIVE =
+            AL(["HOW LONG DO YOU LIVE?"]) {
+                FORGOTTEN
+            }
+        
+        return
+            [
+                AL("HOW") {
+                    R("WHAT?") {
+                        ["GET OUT"] + HOW_TO_GET_OUT
+                        HOW_TO_HELP
+                        ["WILL END"] + HOW_WILL_THIS_END
+                        ["LONG YOU LIVE"] + HOW_LONG_DO_YOU_LIVE
                     }
-                    HOW_TO_HELP
-                    AL(["WILL END", "HOW WILL THIS END?"]) {
-                        R("DON'T KNOW")
-                    }
-                    AL(["LONG YOU LIVE", "HOW LONG DO YOU LIVE?"]) {
-                        FORGOTTEN
-                    }
-                }
-            },
-        ]
+                },
+                HOW_TO_GET_OUT,
+                HOW_WILL_THIS_END,
+                HOW_LONG_DO_YOU_LIVE,
+            ]
     }
 
     private static var WHAT: [Edge] {
-        let NOTHING_EYES =
-            R("NOTHING") {
-                AL(["WHY?", "WHY CAN'T YOU SEE ANYTHING?", "WHY YOU SEE NOTHING?"]) {
-                    R("EYES BROKEN") {
-                        COMMON.FIX(repairable: false, variants: ["REPLACE"])
+        let WHAT_YOU_SEE =
+            AL(["WHAT YOU SEE?", "WHAT DO YOU SEE?"]) {
+                R("NOTHING") {
+                    AL(["WHY?", "WHY CAN'T YOU SEE ANYTHING?", "WHY YOU SEE NOTHING?"]) {
+                        R("EYES BROKEN") {
+                            COMMON.FIX(repairable: false, variants: ["REPLACE"])
+                        }
                     }
                 }
             }
-
-        let NOTHING_EARS =
-            R("NOTHING") {
-                AL(["WHY?", "WHY CAN'T YOU HEAR ANYTHING?", "WHY CAN YOU HEAR NOTHING?"]) {
-                    R("EARS BROKEN") {
-                        COMMON.FIX(repairable: false, variants: ["REPLACE"])
+        
+        let WHAT_YOU_HEAR =
+            AL(["WHAT YOU HEAR?", "WHAT DO YOU HEAR?"]) {
+                R("NOTHING") {
+                    AL(["WHY?", "WHY CAN'T YOU HEAR ANYTHING?", "WHY CAN YOU HEAR NOTHING?"]) {
+                        R("EARS BROKEN") {
+                            COMMON.FIX(repairable: false, variants: ["REPLACE"])
+                        }
                     }
                 }
             }
-
-        let FIX =
-            R("FIX") {
-                AL(["WHAT", "FIX WHAT?", "WHAT TO FIX?"]) {
-                    R("MEMORY") {
-                        COMMON.FIX(repairable: true, variants: ["REFRESH"])
+        
+        let WHAT_CAN_YOU_HELP =
+            AL(["WHAT CAN HELP?", "WHAT CAN YOU HELP?"]) {
+                R("FIX") {
+                    AL(["WHAT", "FIX WHAT?", "WHAT TO FIX?"]) {
+                        MEMORY_ERROR
                     }
                 }
             }
-
-        let FIX_MEMORY =
-            R("MEMORY") {
-                COMMON.FIX(repairable: true, variants: ["REFRESH"])
+        
+        let WHAT_IS_DAMAGED =
+            AL(["WHAT IS DAMAGED?"]) {
+                R("MANY PARTS") {
+                    AL(["LIKE?", "FOR EXAMPLE?"]) {
+                        RND_WORD(["COIL", "MEMORY", "EYES", "LEGS", "OIL", "HOSE", "PROCESSOR"])
+                    }
+                }
             }
-
+        
         return [
             AL("WHAT") {
                 R("WHAT?") {
-                    AL(["YOU SEE?", "WHAT YOU SEE?", "WHAT DO YOU SEE?"]) {
-                        NOTHING_EYES
-                    }
-                    AL(["YOU HEAR?", "WHAT YOU HEAR?", "WHAT DO YOU HEAR?"]) {
-                        NOTHING_EARS
-                    }
-                    // TODO: help
-                    AL(["WHAT CAN HELP?", "WHAT CAN YOU HELP?"]) {
-                        FIX
-                    }
-                    AL(["IS DAMAGED?", "WHAT IS DAMAGED?"]) {
-                        FIX_MEMORY
-                    }
+                    ["YOU SEE?"] + WHAT_YOU_SEE
+                    ["YOU HEAR?"] + WHAT_YOU_HEAR
+                    WHAT_CAN_YOU_HELP
+                    ["IS DAMAGED?"] + WHAT_IS_DAMAGED
                 }
             },
-            // TODO: TIME - current time?
+            WHAT_YOU_SEE,
+            WHAT_YOU_HEAR,
+            WHAT_CAN_YOU_HELP,
+            WHAT_IS_DAMAGED,
         ]
     }
-
+    
     private static var NAME: [Edge] {
-        [
-            AL("NAME") {
-                R("WHOSE?") {
-                    AL(["YOURS", "WHAT IS YOUR NAME?"]) {
-                        R("414C")
+        let WHAT_IS_YOUR_NAME =
+            AL(["WHAT IS YOUR NAME?"]) {
+                R("414C")
+            }
+        
+        let WHAT_IS_MY_NAME =
+            AL(["WHAT IS MY NAME?"]) {
+                R("AL")
+            }
+        
+        return
+            [
+                AL("NAME") {
+                    R("WHOSE?") {
+                        ["YOURS"] + WHAT_IS_YOUR_NAME
+                        ["MINE"] + WHAT_IS_MY_NAME
                     }
-                    AL(["MINE", "WHAT IS MY NAME?"]) {
-                        R("AL")
-                    }
-                }
-            },
-        ]
+                },
+                WHAT_IS_YOUR_NAME,
+                WHAT_IS_MY_NAME
+            ]
     }
 
     private static var HELP: [Edge] {
@@ -368,69 +403,106 @@ class BinGraph {
     }
 
     private static var MEANING: [Edge] {
-        [
-            AL(["PURPOSE", "MEANING", "WHAT IS THE PURPOSE?", "WHAT IS THE MEANING?"]) {
-                R("OF WHAT?") {
-                    AL(["ME", "WHAT IS THE PURPOSE OF ME?", "WHAT IS THE MEANING OF ME?"]) {
-                        FORGOTTEN
+        let WHAT_IS_THE_MEANING_OF_ME =
+            AL(["WHAT IS THE PURPOSE OF ME?", "WHAT IS THE MEANING OF ME?"]) {
+                FORGOTTEN
+            }
+        
+        let WHAT_IS_THE_MEANING_OF_YOU =
+            AL(["WHAT IS THE PURPOSE OF YOU?", "WHAT IS THE MEANING OF YOU?"]) {
+                FORGOTTEN
+            }
+        
+        let WHAT_IS_THE_MEANING_OF_NAME_414C =
+            AL(["WHAT IS THE MEANING OF NAME 414C?"]) {
+                FORGOTTEN
+            }
+        
+        let WHAT_IS_THE_MEANING_OF_THIS_PLACE =
+            AL(["WHAT IS THE PURPOSE OF THIS PLACE?", "WHAT IS THE MEANING OF THIS PLACE?"]) {
+                FORGOTTEN
+            }
+        
+        return
+            [
+                AL(["PURPOSE", "MEANING", "WHAT IS THE PURPOSE?", "WHAT IS THE MEANING?"]) {
+                    R("OF WHAT?") {
+                        ["ME"] + WHAT_IS_THE_MEANING_OF_ME
+                        ["YOU"] + WHAT_IS_THE_MEANING_OF_YOU
+                        ["414C"] + WHAT_IS_THE_MEANING_OF_NAME_414C
+                        ["THIS PLACE"] + WHAT_IS_THE_MEANING_OF_THIS_PLACE
                     }
-                    AL(["YOU", "WHAT IS THE PURPOSE OF YOU?", "WHAT IS THE MEANING OF YOU?"]) {
-                        FORGOTTEN
-                    }
-                    AL(["414C", "WHAT IS THE MEANING OF NAME 414C?"]) {
-                        FORGOTTEN
-                    }
-                    AL(["THIS PLACE", "WHAT IS THE PURPOSE OF THIS PLACE?", "WHAT IS THE MEANING OF THIS PLACE?"]) {
-                        FORGOTTEN
-                    }
-                }
-            },
-        ]
+                },
+                WHAT_IS_THE_MEANING_OF_ME,
+                WHAT_IS_THE_MEANING_OF_YOU,
+                WHAT_IS_THE_MEANING_OF_NAME_414C,
+                WHAT_IS_THE_MEANING_OF_THIS_PLACE
+            ]
     }
-
+    
     private static var CAUSE: [Edge] {
-        [
-            AL(["REASON", "CAUSE", "WHAT IS THE REASON?", "WHAT IS THE CAUSE?"]) {
-                R("OF WHAT?") {
-                    AL(["DAMAGES", "YOUR DAMAGES", "CAUSE OF YOUR DAMAGES?", "WHAT IS THE CAUSE OF YOUR DAMAGES?"]) {
-                        R("CRASH") {
-                            AL(["WHAT CRASH?", "CRASH?"]) {
-                                FORGOTTEN
-                            }
-                        }
+        let WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES =
+            AL(["CAUSE OF YOUR DAMAGES?", "WHAT IS THE CAUSE OF YOUR DAMAGES?"]) {
+                R("CRASH") {
+                    AL(["WHAT CRASH?", "CRASH?"]) {
+                        FORGOTTEN
                     }
                 }
-            },
-        ]
+            }
+        
+        return
+            [
+                AL(["REASON", "CAUSE", "WHAT IS THE REASON?", "WHAT IS THE CAUSE?"]) {
+                    R("OF WHAT?") {
+                        ["DAMAGES", "YOUR DAMAGES"] + WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
+                    }
+                },
+                WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
+            ]
     }
 
     private static var ORIGIN: [Edge] {
-        [
-            AL(["ORIGIN", "WHAT IS THE ORIGIN?"]) {
-                R("OF WHAT?") {
-                    AL(["YOU", "WHAT IS THE ORIGIN OF YOU?"]) {
-                        FORGOTTEN
+        let WHAT_IS_THE_ORIGIN_OF_YOU =
+            AL(["WHAT IS THE ORIGIN OF YOU?"]) {
+                FORGOTTEN
+            }
+        
+        let WHAT_IS_THE_ORIGIN_OF_ME =
+            AL(["WHAT IS THE ORIGIN OF ME?"]) {
+                FORGOTTEN
+            }
+        
+        let WHAT_IS_THE_ORIGIN_OF_THIS_PLACE =
+            AL(["WHAT IS THE ORIGIN OF THIS PLACE?"]) {
+                FORGOTTEN
+            }
+        
+        return
+            [
+                AL(["ORIGIN", "WHAT IS THE ORIGIN?"]) {
+                    R("OF WHAT?") {
+                        ["YOU"] + WHAT_IS_THE_ORIGIN_OF_YOU
+                        ["ME"] + WHAT_IS_THE_ORIGIN_OF_ME
+                        ["THIS PLACE"] + WHAT_IS_THE_ORIGIN_OF_THIS_PLACE
                     }
-                    AL(["ME", "WHAT IS THE ORIGIN OF ME?"]) {
-                        FORGOTTEN
-                    }
-                    AL(["THIS PLACE", "WHAT IS THE ORIGIN OF THIS PLACE?"]) {
-                        FORGOTTEN
-                    }
-                }
-            },
-        ]
+                },
+                WHAT_IS_THE_ORIGIN_OF_YOU,
+                WHAT_IS_THE_ORIGIN_OF_ME,
+                WHAT_IS_THE_ORIGIN_OF_THIS_PLACE
+            ]
     }
 
     private static var TELL: [Edge] {
-        let _414C =
-            R("414C") {
-                AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
-                    R("ROBOT") {
-                        AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
-                            R("DAMAGED") {
-                                AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
-                                    FORGOTTEN
+        let TELL_ME_MORE_ABOUT_YOU =
+            AL(["TELL ME ABOUT YOU"]) {
+                R("414C") {
+                    AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
+                        R("ROBOT") {
+                            AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
+                                R("DAMAGED") {
+                                    AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
+                                        FORGOTTEN
+                                    }
                                 }
                             }
                         }
@@ -438,18 +510,21 @@ class BinGraph {
                 }
             }
 
+        let TELL_ME_MORE_ABOUT_YOUR_HISTORY =
+            AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
+                FORGOTTEN
+            }
+        
         return
             [
                 AL("TELL ME") {
                     R("ABOUT?") {
-                        AL(["YOU", "TELL ME ABOUT YOU"]) {
-                            _414C
-                        }
-                        AL(["PAST", "HISTORY", "YOUR PAST", "YOUR HISTORY", "WHAT IS YOUR PAST?", "WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
-                            FORGOTTEN
-                        }
+                        ["YOU"] + TELL_ME_MORE_ABOUT_YOU
+                        ["PAST", "HISTORY", "YOUR PAST", "YOUR HISTORY"] + TELL_ME_MORE_ABOUT_YOUR_HISTORY
                     }
                 },
+                TELL_ME_MORE_ABOUT_YOU,
+                TELL_ME_MORE_ABOUT_YOUR_HISTORY
             ]
     }
 
@@ -472,30 +547,26 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static var LIVE: [Edge] {
-        let NO =
-            R("NO") {
-                AL(["WHY?", "WHY CAN'T YOU LIVE?"]) {
-                    R("JUST A ROBOT")
-                }
-            }
-
-        return
-            [
-                AL(["LIVE", "ALIVE", "LIVING"]) {
-                    R("WHO?") {
-                        AL(["414C", "YOU"]) {
-                            NO
-                        }
-                        AL(["AL", "ME"]) {
-                            R("YES")
+        [
+            AL(["LIVE", "ALIVE", "LIVING"]) {
+                R("WHO?") {
+                    AL(["414C", "YOU"]) {
+                        R("NO") {
+                            AL(["WHY?", "WHY CAN'T YOU LIVE?"]) {
+                                R("JUST A ROBOT")
+                            }
                         }
                     }
-                },
-            ]
+                    AL(["AL", "ME"]) {
+                        R("YES")
+                    }
+                }
+            },
+        ]
     }
-
+    
     private static let DIE =
         AL(["DIE", "CAN YOU DIE?"]) {
             R("CAN'T") {
@@ -542,7 +613,7 @@ class BinGraph {
     private static let MEMORY =
         AL(["MEMORIES", "RANDOM ACCESS MEMORY", "RAM", "MEMORY"]) {
             R("DAMAGED") {
-                COMMON.FIX()
+                //COMMON.FIX()
                 COMMON.DIE()
             }
         }
@@ -554,22 +625,34 @@ class BinGraph {
                     MEMORY_ERROR
                 }
             }
-
+        
+        let DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED =
+            AL(["DO YOU REMEMBER HOW YOU GOT DAMAGED?"]) {
+                NO
+            }
+        
+        let DO_YOU_REMEMBER_HOW_YOU_GET_THERE =
+            AL(["HOW YOU GET THERE?", "DO YOU REMEMBER HOW YOU GET THERE?"]) {
+                NO
+            }
+        
+        let DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST =
+            AL(["WHAT IS YOUR PAST?", "DO YOU REMEMBER SOMETHING FROM YOUR PAST?"]) {
+                NO
+            }
+        
         return
             [
                 AL(["REMEMBER", "CAN YOU REMEMBER?"]) {
                     R("WHAT?") {
-                        AL(["DAMAGES", "HOW YOU GOT DAMAGED?", "DO YOU REMEMBER HOW YOU GOT DAMAGED?"]) {
-                            NO
-                        }
-                        AL(["GETTING THERE", "HOW YOU GET THERE?", "DO YOU REMEMBER HOW YOU GET THERE?"]) {
-                            NO
-                        }
-                        AL(["YOUR PAST?", "WHAT IS YOUR PAST?", "DO YOU REMEMBER SOMETHING FROM YOUR PAST?"]) {
-                            NO
-                        }
+                        ["DAMAGES", "HOW YOU GOT DAMAGED?"] + DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED
+                        ["GETTING THERE"] + DO_YOU_REMEMBER_HOW_YOU_GET_THERE
+                        ["YOUR PAST?"] + DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST
                     }
                 },
+                DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED,
+                DO_YOU_REMEMBER_HOW_YOU_GET_THERE,
+                DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST
             ]
     }
 
