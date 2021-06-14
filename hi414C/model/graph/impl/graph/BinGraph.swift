@@ -615,7 +615,7 @@ class BinGraph {
         }
 
     private static let _414C =
-        AL(["414C", "ROBOT"]) {
+        AL(["ROBOT", "414C"]) {
             R("I")
         }
 

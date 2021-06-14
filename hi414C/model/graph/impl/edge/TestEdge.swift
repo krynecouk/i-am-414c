@@ -12,37 +12,28 @@ typealias EdgeName = String
 class TestEdge: Edge {
     let id: String
     let names: [EdgeName]
+    let sentences: [Sentence]
     let target: Node
     
     init(id: String = UUID().uuidString, _ names: [String] = [], _ content: () -> Node) {
         self.id = id
         self.names = names
         self.target = content()
+        self.sentences = names.filter { !$0.isWord() }
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
-        /*
-        let tokenizedInput = ctx.input.tokenizeWord()
-        if tokens.contains(tokenizedInput) {
+        if names.contains(ctx.input) {
             return true
         }
         
-        if ctx.input.isWord() {
-            for token in tokens {
-                if token.isSimilar(word: tokenizedInput) {
-                    print("SIMILAR WITH DISTANCE:", token.distance(word: ctx.input))
-                    return true
-                }
-            }
-        } else {
-            for sentence in context {
-                if sentence.isSimilar(sentence: ctx.input) {
-                    print("SIMILAR WITH DISTANCE:", sentence.distance(sentence: ctx.input))
+        if !ctx.input.isWord() {
+            for sentence in sentences {
+                if sentence.isSimilar(sentence: ctx.input, debug: true) {
                     return true
                 }
             }
         }
-        */
 
         return false
     }

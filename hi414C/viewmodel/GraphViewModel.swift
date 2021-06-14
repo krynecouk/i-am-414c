@@ -23,6 +23,7 @@ class GraphViewModel: ObservableObject, Resetable {
         self.toolkit.graphVM = self
         self.setGraph(GraphDao.find() ?? graph)
         self.start()
+        print(root.index)
     }
     
     func traverse(ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
@@ -47,10 +48,8 @@ class GraphViewModel: ObservableObject, Resetable {
     
     private func traverse(node: Node, ctx: GraphContext) -> Node? {
         if let indexed = node.find(name: ctx.input) {
-            if (indexed.isTraversable(ctx: ctx, toolkit: toolkit)) {
-                print("found \(indexed.names)")
-                return indexed.traverse(ctx: ctx, toolkit: toolkit)
-            }
+            print("found \(indexed.names)")
+            return indexed.traverse(ctx: ctx, toolkit: toolkit)
         }
         print("not found, looping node id \(node.name)")
         return traverse(edges: node.edges, ctx: ctx)

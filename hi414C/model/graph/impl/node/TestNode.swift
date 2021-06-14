@@ -11,14 +11,17 @@ class TestNode: Node {
     let id: String
     var name: String
     let edges: [Edge]
-    let index: [String:Edge]
+    var index: [String:Edge] = [:]
     
     init(_ name: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         let _edges = edges()
         self.id = UUID().uuidString
         self.name = name
         self.edges = _edges
-        self.index = TestNode.index(_edges)
+        TestNode.asyncIndex(_edges) { index in
+            print(index)
+            self.index = index
+        }
     }
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
