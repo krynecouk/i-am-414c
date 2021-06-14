@@ -11,7 +11,7 @@ typealias EdgeName = String
 
 class TestEdge: Edge {
     let id: String
-    let names: [EdgeName]
+    var names: [EdgeName]
     let sentences: [Sentence]
     let target: Node
     
@@ -41,6 +41,12 @@ class TestEdge: Edge {
     func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
         toolkit.graphVM?.visited.insert(self.id)
         return target
+    }
+    
+    static func + (names: [String], edge: TestEdge) -> TestEdge {
+        TestEdge(id: edge.id, names + edge.names) {
+            edge.target
+        }
     }
 }
 

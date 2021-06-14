@@ -19,7 +19,6 @@ class TestNode: Node {
         self.name = name
         self.edges = _edges
         TestNode.asyncIndex(_edges) { index in
-            print(index)
             self.index = index
         }
     }

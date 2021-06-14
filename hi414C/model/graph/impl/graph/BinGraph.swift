@@ -116,30 +116,26 @@ class BinGraph {
         AL(["YOU", "WHO ARE YOU?"]) {
             R("I AM 414C")
         }
-
+    
     private static var WHO: [Edge] {
-        [
-            AL("WHO") {
-                R("WHO?") {
-                    AL(["ME", "I", "WHO AM I?"]) {
-                        R("AL")
-                    }
-                    AL(["YOU", "WHO ARE YOU?"]) {
-                        R("414C")
-                    }
-                    AL(["CAN HELP?", "WHO CAN HELP?", "WHO CAN HELP YOU?"]) {
-                        R("YOU") {
-                            HOW_TO_HELP
-                        }
-                    }
-                }
-            },
-            AL("WHO CAN HELP YOU?") {
+        let WHO_CAN_HELP_YOU =
+            AL(["WHO CAN HELP YOU?"]) {
                 R("YOU") {
                     HOW_TO_HELP
                 }
-            },
-        ]
+            }
+        
+        return
+            [
+                AL("WHO") {
+                    R("WHO?") {
+                        I
+                        YOU
+                        ["CAN HELP?", "WHO CAN HELP?"] + WHO_CAN_HELP_YOU
+                    }
+                },
+                WHO_CAN_HELP_YOU
+            ]
     }
 
     private static var WHERE: [Edge] {

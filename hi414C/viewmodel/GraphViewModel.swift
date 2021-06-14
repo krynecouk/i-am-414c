@@ -28,7 +28,8 @@ class GraphViewModel: ObservableObject, Resetable {
     
     func traverse(ctx: GraphContext, _ callback: @escaping (GraphTraverseResult) -> Void = { _ in }) {
         DispatchQueue.global().async {
-            let targetNode = self.traverse(node: self.current, ctx: ctx) ?? self.traverse(node: self.root, ctx: ctx)
+            let targetNode = self.traverse(node: self.current, ctx: ctx)
+                ?? (self.current is RootNode ? .none : self.traverse(node: self.root, ctx: ctx))
             self.setCurrent(node: targetNode, ctx: ctx, toolkit: self.toolkit, callback)
         }
     }
