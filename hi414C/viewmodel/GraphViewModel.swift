@@ -112,7 +112,7 @@ class GraphViewModel: ObservableObject, Resetable {
         var paths: OrderedSet<String> = []
         var visited: OrderedSet<String> = []
         for edge in node.edges {
-            for name in edge.names {
+            for name in edge.names.reversed() {
                 if precondition(name) {
                     if visitedLast {
                         if self.visited.contains(edge.id) {

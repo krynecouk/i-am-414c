@@ -28,11 +28,11 @@ class SentenceTests: XCTestCase {
     }
     
     func assertSimilar(_ first: Sentence, _ second: Sentence) {
-        XCTAssertTrue(first.isSimilar(sentence: second), "sentence \"\(first)\" should be similar to \"\(second)\"")
+        XCTAssertTrue(first.isSimilar(sentence: second, debug: true), "sentence \"\(first)\" should be similar to \"\(second)\"")
     }
     
     func assertDifferent(_ first: Sentence, _ second: Sentence) {
-        XCTAssertFalse(first.isSimilar(sentence: second), "sentence \"\(first)\" should NOT be similar to \"\(second)\"")
+        XCTAssertFalse(first.isSimilar(sentence: second, debug: true), "sentence \"\(first)\" should NOT be similar to \"\(second)\"")
     }
 
 }

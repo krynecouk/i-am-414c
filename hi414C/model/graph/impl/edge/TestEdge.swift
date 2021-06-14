@@ -12,21 +12,16 @@ typealias EdgeName = String
 class TestEdge: Edge {
     let id: String
     let names: [EdgeName]
-    let hidden: [EdgeName]
-    let context: [Sentence]
-    let tokens: [EdgeName]
     let target: Node
     
-    init(_ names: [String] = [], hidden: [String] = [], ctx context: [Sentence] = [], _ content: () -> Node) {
-        self.id = UUID().uuidString
+    init(id: String = UUID().uuidString, _ names: [String] = [], _ content: () -> Node) {
+        self.id = id
         self.names = names
-        self.hidden = hidden
-        self.context = context
         self.target = content()
-        self.tokens = (names + `hidden`).map { $0.tokenizeWord() }
     }
     
     func isTraversable(ctx: GraphContext, toolkit: GraphToolkit) -> Bool {
+        /*
         let tokenizedInput = ctx.input.tokenizeWord()
         if tokens.contains(tokenizedInput) {
             return true
@@ -47,6 +42,7 @@ class TestEdge: Edge {
                 }
             }
         }
+        */
 
         return false
     }
@@ -59,26 +55,10 @@ class TestEdge: Edge {
 
 extension TestEdge {
     convenience init(_ content: () -> Node) {
-        self.init([], hidden: [], ctx: [], content)
+        self.init([], content)
     }
     
-    convenience init(ctx: String, _ content: () -> Node) {
-        self.init([], hidden: [], ctx: [ctx], content)
-    }
-    
-    convenience init (_ name: String, hidden: [String] = [], _ content: () -> Node) {
-        self.init([name], hidden: hidden, ctx: [], content)
-    }
-    
-    convenience init (_ name: String, hidden: [String] = [], ctx: String, _ content: () -> Node) {
-        self.init([name], hidden: hidden, ctx: [ctx], content)
-    }
-    
-    convenience init (_ name: String, hidden: [String] = [], ctx: [String] = [], _ content: () -> Node) {
-        self.init([name], hidden: hidden, ctx: ctx, content)
-    }
-    
-    convenience init (_ names: [String] = [], hidden: [String] = [], ctx: String, _ content: () -> Node) {
-        self.init(names, hidden: hidden, ctx: [ctx], content)
+    convenience init (_ name: String, _ content: () -> Node) {
+        self.init([name], content)
     }
 }

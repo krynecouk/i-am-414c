@@ -11,8 +11,12 @@ typealias Sentence = String
 
 extension Sentence {
     
-    func isSimilar(sentence: String, threshold: Double = 0.6) -> Bool {
-        distance(sentence: sentence) < threshold
+    func isSimilar(sentence: String, threshold: Double = 0.7, debug: Bool = false) -> Bool {
+        let distance = distance(sentence: sentence)
+        if debug {
+            print("distance of \"\(self)\" and \(sentence) is: \(distance)")
+        }
+        return distance < threshold
     }
     
     func distance(sentence: String) -> Double {
