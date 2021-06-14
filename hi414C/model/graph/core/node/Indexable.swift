@@ -21,14 +21,7 @@ extension Indexable {
     static func index(_ edges: [Edge]) -> EdgeIndex {
         var index: EdgeIndex = [:]
         for edge in edges {
-            var names = edge.names
-            
-            if let edge = edge as? TestEdge {
-                names += edge.hidden
-                names += edge.context
-            }
-
-            for name in names {
+            for name in edge.names {
                 index[name.tokenizeWord()] = edge
             }
         }

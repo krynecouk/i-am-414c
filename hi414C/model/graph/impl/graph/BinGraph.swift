@@ -299,7 +299,7 @@ class BinGraph {
                         NOTHING_EARS
                     }
                     // TODO: help
-                    AL("WHAT CAN HELP?", ctx: "WHAT CAN YOU HELP?") {
+                    AL(["WHAT CAN HELP?", "WHAT CAN YOU HELP?"]) {
                         FIX
                     }
                     AL(["IS DAMAGED?", "WHAT IS DAMAGED?"]) {
@@ -328,7 +328,7 @@ class BinGraph {
 
     private static var HELP: [Edge] {
         [
-            AL("HELP", ctx: "CAN YOU HELP?") {
+            AL("HELP") {
                 R("WHOM?") {
                     AL(["YOU", "CAN I HELP YOU?"]) {
                         R("YES") {
@@ -470,7 +470,7 @@ class BinGraph {
                         AL(["414C", "YOU"]) {
                             NO
                         }
-                        AL("AL", "ME") {
+                        AL(["AL", "ME"]) {
                             R("YES")
                         }
                     }
