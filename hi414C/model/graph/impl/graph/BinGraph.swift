@@ -495,7 +495,7 @@ class BinGraph {
         let TELL_ME_MORE_ABOUT_YOU =
             AL(["TELL ME ABOUT YOU"]) {
                 R("414C") {
-                    AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
+                    AL(["NEXT", "MORE", "TELL ME MORE ABOUT YOU"]) {
                         R("ROBOT") {
                             AL(["NEXT", "TELL ME MORE ABOUT YOU"]) {
                                 R("DAMAGED") {
@@ -782,7 +782,7 @@ class BinGraph {
             }
 
         return
-            AL(["CMD", "COMMAND", "WHAT IS THE COMMAND?"]) {
+            AL(["CMD", "COMMAND", "TELL ME THE COMMAND", "WHAT IS THE COMMAND?"]) {
                 EITHER(left: LEFT, right: RIGHT) { _, toolkit in
                     let symbols = toolkit.asciiVM.symbols
                     return symbols.count > 35
