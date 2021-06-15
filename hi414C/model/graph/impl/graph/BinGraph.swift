@@ -61,7 +61,6 @@ class BinGraph {
             COMMON.LOVE
 
             COMMON.FIND
-            COMMON.GO
             COMMON.SLEEP
             COMMON.CALL
             COMMON.STAND
@@ -86,7 +85,7 @@ class BinGraph {
             COMMON.CLOSE
             COMMON.BREAK
 
-            COMMON.DIE()
+            COMMON.DIE
             COMMON._DICE
             COMMON._DICES
             COMMON._COIN
@@ -304,7 +303,7 @@ class BinGraph {
                 R("NOTHING") {
                     AL(["WHY?", "WHY CAN'T YOU SEE ANYTHING?", "WHY YOU SEE NOTHING?"]) {
                         R("EYES BROKEN") {
-                            COMMON.FIX(repairable: false, variants: ["REPLACE"])
+                            COMMON.IRREPAIRABLE
                         }
                     }
                 }
@@ -315,7 +314,7 @@ class BinGraph {
                 R("NOTHING") {
                     AL(["WHY?", "WHY CAN'T YOU HEAR ANYTHING?", "WHY CAN YOU HEAR NOTHING?"]) {
                         R("EARS BROKEN") {
-                            COMMON.FIX(repairable: false, variants: ["REPLACE"])
+                            COMMON.IRREPAIRABLE
                         }
                     }
                 }
@@ -517,7 +516,7 @@ class BinGraph {
         
         return
             [
-                AL("TELL ME") {
+                AL(["TALK", "TELL", "TELL ME"]) {
                     R("ABOUT?") {
                         ["YOU"] + TELL_ME_MORE_ABOUT_YOU
                         ["PAST", "HISTORY", "YOUR PAST", "YOUR HISTORY"] + TELL_ME_MORE_ABOUT_YOUR_HISTORY
@@ -583,27 +582,11 @@ class BinGraph {
     private static let REPAIR =
         AL(["PATCH", "MEND", "FIX", "REPAIR"]) {
             R("WHAT?") {
-                AL(["COILS", "COIL", "PATCH BROKEN COIL", "MEND BROKEN COIL", "FIX BROKEN COIL", "REPAIR BROKEN COIL"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
-                AL(["LEAKING", "LEAK", "PATCH OIL LEAK", "MEND OIL LEAK", "FIX OIL LEAK", "REPAIR OIL LEAK"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
-                AL(["EYE", "EYES", "PATCH DEFECTIVE EYES", "MEND DEFECTIVE EYES", "FIX DEFECTIVE EYES", "REPAIR DEFECTIVE EYES"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
-                AL(["HOSES", "HOSE", "PATCH BURSTED HOSE", "MEND BURSTED HOSE", "FIX BURSTED HOSE", "REPAIR BURSTED HOSE"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
-                AL(["PIPES", "PIPE", "PATCH BURSTED PIPE", "MEND BURSTED PIPE", "FIX BURSTED PIPE", "REPAIR BURSTED PIPE"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
-                AL(["LEG", "LEGS", "PATCH DAMAGED LEGS", "MEND DAMAGED LEGS", "FIX DAMAGED LEGS", "REPAIR DAMAGED LEGS"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
-                AL(["PROCESSOR", "PATCH MALFUNCTIONED PROCESSOR", "MEND MALFUNCTIONED PROCESSOR", "FIX MALFUNCTIONED PROCESSOR", "REPAIR MALFUNCTIONED PROCESSOR"]) {
-                    COMMON.FIX_UNAVAILABLE
-                }
+                COMMON.COIL
+                COMMON.LEAK
+                COMMON.EYES
+                COMMON.HOSE
+                COMMON.PROCESSOR
                 AL(["RAM", "MEMORIES", "RANDOM ACCESS MEMORY", "MEMORY", "PATCH DAMAGED MEMORY", "MEND DAMAGED MEMORY", "FIX DAMAGED MEMORY", "REPAIR DAMAGED MEMORY"]) {
                     MEMORY_ERROR
                 }
@@ -614,7 +597,7 @@ class BinGraph {
         AL(["MEMORIES", "RANDOM ACCESS MEMORY", "RAM", "MEMORY"]) {
             R("DAMAGED") {
                 //COMMON.FIX()
-                COMMON.DIE()
+                COMMON.DIE
             }
         }
 
@@ -759,15 +742,26 @@ class BinGraph {
         }
 
     private static var EXECUTE: Edge {
-        AL(["EXECUTE", "EXECUTE COMMAND"]) {
-            R("WHAT?") {
-                ALL {
-                    EITHER(left: AL { R("WRONG COMMAND") }, right: AL { COMMON.FIX }) { ctx, _ in
-                        CmdDao.find() == ctx.input
+        let FIX =
+            R("Y/N") {
+                AL(["YES", "Y"]) {
+                    UPGRADE()
+                }
+                AL(["NO", "N"]) {
+                    R("OK")
+                }
+            }
+        
+        return
+            AL(["EXECUTE", "EXECUTE COMMAND"]) {
+                R("WHAT?") {
+                    ALL {
+                        EITHER(left: AL { R("WRONG COMMAND") }, right: AL { FIX }) { ctx, _ in
+                            CmdDao.find() == ctx.input
+                        }
                     }
                 }
             }
-        }
     }
 
     private static var COMMAND: Edge {
@@ -783,9 +777,7 @@ class BinGraph {
         let RIGHT: Edge =
             AL {
                 CMD {
-                    AL(["EXECUTE", "EXECUTE COMMAND"]) {
-                        COMMON.FIX
-                    }
+                    EXECUTE
                 }
             }
 

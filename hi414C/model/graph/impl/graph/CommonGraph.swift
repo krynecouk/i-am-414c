@@ -11,10 +11,10 @@ class CommonGraph {
     static let LOVE =
         AL(["LOVE", "DO YOU LOVE?"]) {
             R("WHO?") {
-                AL(["YOU", "ME", "ANYBODY"]) {
+                AL(["YOU", "ME", "SOMEBODY", "DO YOU LOVE SOMEBODY?"]) {
                     R("CAN'T") {
-                        AL(WHY) {
-                            R("APATHETIC")
+                        AL(["WHY?"]) {
+                            R("ONLY A ROBOT")
                         }
                     }
                 }
@@ -24,45 +24,58 @@ class CommonGraph {
     static let HURRY =
         AL(["HURRY", "HURRY!", "HURRY UP!"]) {
             R("WHY?") {
-                AL("CAN YOU HURRY UP?") {
+                AL(["CAN YOU?", "CAN YOU HURRY UP?"]) {
                     R("NO, DAMAGED")
                 }
-                AL("ARE YOU IN HURRY?") {
+                AL("ARE YOU IN A HURRY?") {
                     R("NO, I'AM NOT")
                 }
                 AL(["TIME", "DO WE HAVE TIME?"]) {
-                    R("PLENTY")
+                    R("A LITTLE")
                 }
                 AL(["LATE", "BECAUSE IT'S LATE"]) {
                     R("NEVERMIND")
                 }
-                AL("WE ARE RUNNING OUT OF TIME") {
-                    R("NO, WE'RE NOT")
+                AL("ARE WE RUNNING OUT OF TIME?") {
+                    R("MAYBE")
                 }
             }
         }
 
     static let LIKE =
-        AL(["DO YOU LIKE?", "LIKE?", "LIKE"]) {
+        AL(["LIKE?", "DO YOU LIKE?"]) {
             R("WHAT?") {
-                AL(["DO YOU LIKE TALKING WITH ME?", "TALKING", "STARS"]) {
+                AL(["TALKING", "DO YOU LIKE TALKING WITH ME?"]) {
                     R("YES")
                 }
-                AL(["DO YOU LIKE IT HERE?", "HERE", "LYING", "DYING"]) {
+                AL(["HERE", "DO YOU LIKE IT HERE?"]) {
                     R("NO")
+                }
+                AL(["THIS PLACE", "DO YOU LIKE THIS PLACE?"]) {
+                    R("SOMETIMES")
                 }
             }
         }
 
     static let COME =
-        AL(["COME", "GO", "RIDE", "DRIVE"]) {
+        AL(["RIDE", "DRIVE", "GO", "RUN", "COME", "CAN YOU COME WITH ME?"]) {
             R("WHERE?") {
-                AL(["SOMEWHERE ELSE", "AWAY", "HOME", "FAR", "FAR AWAY"]) {
+                AL(["HOME"]) {
                     R("CAN'T") {
-                        AL(WHY) {
+                        AL("WHY?") {
                             R("DAMAGED") {
-                                COMMON.FIX(repairable: false)
-                                COMMON.DIE()
+                                IRREPAIRABLE
+                                DIE
+                            }
+                        }
+                    }
+                }
+                AL(["AWAY", "HOME", "FAR", "FAR AWAY", "SOMEWHERE ELSE"]) {
+                    R("CAN'T") {
+                        AL("WHY?") {
+                            R("DAMAGED") {
+                                IRREPAIRABLE
+                                DIE
                             }
                         }
                     }
@@ -71,53 +84,34 @@ class CommonGraph {
         }
 
     static let STAY =
-        AL(["STAY THERE", "STAY", "DON'T MOVE"]) {
+        AL(["STAY", "DON'T MOVE", "STAY THERE"]) {
             R("OK")
         }
 
     static let FIND =
-        AL(["FIND", "SEARCH", "FOUND", "FINDING"]) {
+        AL(["SEARCH", "FOUND", "FINDING", "FIND", "CAN YOU FIND?"]) {
             R("WHAT?") {
-                AL(["HELP", "SOMEONE", "SOMEBODY"]) {
+                AL(["SOMEONE", "SOMEBODY"]) {
                     R("CAN'T") {
-                        AL(WHY) {
+                        AL(["WHY?", "WHY CAN'T WE FIND SOMEONE?"]) {
                             R("ALONE")
                         }
                     }
                 }
-                AL("MEMORIES") {
+                AL(["HELP"]) {
                     R("CAN'T") {
-                        AL(WHY) {
-                            PANIC("MEMORY") {
-                                COMMON.FIX()
-                                COMMON.DIE()
-                            }
+                        AL(["WHY?", "WHY CAN'T WE FIND HELP?"]) {
+                            R("ALONE")
                         }
                     }
                 }
             }
         }
-
-    static let GO =
-        AL(["GO", "RUN"]) {
-            R("WHERE?") {
-                AL(["HOME", "AWAY"]) {
-                    R("CAN'T") {
-                        AL(WHY) {
-                            R("DAMAGED") {
-                                COMMON.FIX(repairable: false)
-                                COMMON.DIE()
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+    
     static let SLEEP =
         AL(["SLEEP", "EAT", "DRINK"]) {
             R("CAN'T") {
-                AL(WHY) {
+                AL("WHY?") {
                     R("ROBOT")
                 }
             }
@@ -126,9 +120,16 @@ class CommonGraph {
     static let CALL =
         AL(["CALL"]) {
             R("WHO?") {
-                AL(["HELP", "SOMEONE", "SOMEBODY"]) {
+                AL(["SOMEONE", "SOMEBODY", "HELP", "CALL SOME HELP"]) {
                     R("CAN'T") {
-                        AL(WHY) {
+                        AL("WHY?") {
+                            R("ALONE")
+                        }
+                    }
+                }
+                AL(["SOMEONE", "CALL SOMEONE"]) {
+                    R("CAN'T") {
+                        AL("WHY?") {
                             R("ALONE")
                         }
                     }
@@ -137,14 +138,14 @@ class CommonGraph {
         }
 
     static let STAND =
-        AL(["STAND-UP", "STAND UP", "STAND", "RISE", "STANDUP"]) {
+        AL(["STAND-UP", "STAND UP", "STAND", "RISE", "STANDUP", "CAN YOU STAND UP?"]) {
             R("CAN'T") {
-                AL(WHY) {
+                AL(["WHY", "WHY CAN'T YOU STAND UP?"]) {
                     R("LEGS") {
-                        AL(["LEGS?"]) {
+                        AL(["LEGS?", "WHAT IS WITH YOUR LEGS?"]) {
                             R("DAMAGED") {
-                                COMMON.FIX(repairable: false)
-                                COMMON.DIE()
+                                IRREPAIRABLE
+                                DIE
                             }
                         }
                     }
@@ -155,7 +156,10 @@ class CommonGraph {
     static let ALONE =
         AL(["ALONE"]) {
             R("WHO?") {
-                AL(["I", "YOU", "BOTH"]) {
+                AL(["YOU", "ARE YOU ALONE HERE?"]) {
+                    R("YES")
+                }
+                AL(["WE", "ARE WE ALONE HERE?"]) {
                     R("YES")
                 }
             }
@@ -164,106 +168,174 @@ class CommonGraph {
     static let ALIVE =
         AL(["ALIVE"]) {
             R("WHO?") {
-                AL("I") {
+                AL(["I", "AM I ALIVE?"]) {
                     R("YES")
                 }
-                AL("YOU") {
+                AL(["YOU", "ARE YOU ALIVE?"]) {
                     R("NO")
                 }
             }
         }
 
-    static let SEE =
-        AL(["SAW", "SEE", "SAW?", "SEE?"]) {
-            R("WHAT?") {
-                AL(["LAND", "STARS", "TREE", "ME", "PLANTS", "DAMAGE", "HILL"]) {
-                    R("CAN'T") {
-                        AL(["WHY?", "WHY"]) {
-                            R("EYES") {
-                                AL("EYES?") {
-                                    R("DAMAGED") {
-                                        COMMON.FIX(repairable: false)
-                                        COMMON.DIE()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                OIL
-                HOSE
-            }
-        }
-
-    static let LOOK =
-        AL("LOOK") {
-            R("WHERE") {
-                AL(["FOR HELP", "FOR SOMEBODY ELSE", "UP", "DOWN", "LEFT", "RIGHT", "SOMEBODY", "SOMEWHERE"]) {
-                    R("CAN'T") {
-                        AL(["WHY?", "WHY"]) {
+    static var SEE: Edge {
+        let CANT =
+            R("CAN'T") {
+                AL(["WHY?", "WHY CAN'T YOU SEE?"]) {
+                    R("EYES") {
+                        // TODO EYES
+                        AL(["EYES?", "WHAT IS WITH YOUR EYES?"]) {
                             R("DAMAGED") {
-                                COMMON.FIX(repairable: false)
-                                COMMON.DIE()
+                                IRREPAIRABLE
+                                DIE
                             }
                         }
                     }
                 }
             }
-        }
+        
+        return
+            AL(["SAW", "SEE", "SAW?", "SEE?", "DID YOU SAW?", "CAN YOU SEE?"]) {
+                R("WHAT?") {
+                    AL(["LAND", "CAN YOU SEE LAND?"]) {
+                        CANT
+                    }
+                    AL(["STARS", "CAN YOU SEE STARS?"]) {
+                        CANT
+                    }
+                    AL(["TREE", "CAN YOU SEE TREES?"]) {
+                        CANT
+                    }
+                    AL(["ME", "CAN YOU SEE ME?"]) {
+                        CANT
+                    }
+                    AL(["PLANTS", "CAN YOU SEE PLANTS?"]) {
+                        CANT
+                    }
+                    AL(["DAMAGE", "CAN YOU SEE DAMAGE?"]) {
+                        CANT
+                    }
+                    AL(["HILL", "CAN YOU SEE HILL?"]) {
+                        CANT
+                    }
+                }
+            }
+    }
+
+    static var LOOK: Edge {
+        let CANT =
+            R("CAN'T") {
+                AL(["WHY?", "WHY CAN'T YOU LOOK?"]) {
+                    R("EYES DAMAGED") {
+                        IRREPAIRABLE
+                        AL(["RIP OUT", "RIP THEM OUT OF YOUR HEAD"]) {
+                            DIE_WARN
+                        }
+                    }
+                }
+            }
+        
+        return
+            AL("LOOK") {
+                R("WHERE") {
+                    AL(["UP"]) {
+                        CANT
+                    }
+                    AL(["DOWN"]) {
+                        CANT
+                    }
+                    AL(["LEFT"]) {
+                        CANT
+                    }
+                    AL(["RIGHT"]) {
+                        CANT
+                    }
+                    AL(["SOMEBODY", "LOOK FOR SOMEBODY ELSE"]) {
+                        CANT
+                    }
+                    AL(["SOMEWHERE", "LOOK SOMEWHERE ELSE"]) {
+                        CANT
+                    }
+                }
+            }
+    }
 
     static let EYES =
-        AL(["EYES", "EYE"]) {
+        AL(["EYE", "EYES"]) {
             R("DEFECTIVE") {
-                FIX(repairable: false)
-                COMMON.DIE()
+                IRREPAIRABLE
+                AL(["RIP OUT", "RIP THEM OUT OF YOUR HEAD"]) {
+                    DIE_WARN
+                }
             }
         }
 
     static let COIL =
-        AL(["COIL", "COILS"]) {
+        AL(["COIL", "COILS", "COIL SPRING"]) {
             R("BROKEN") {
-                FIX(repairable: false)
-                COMMON.DIE()
+                IRREPAIRABLE
+                AL(["BREAK", "BREAK IT COMPLETELY"]) {
+                    DIE_WARN
+                }
             }
         }
 
     static let LEAK =
-        AL(["WHAT IS LEAKING?", "WHERE IS IT LEAKING?", "LEAK", "LEAKING"]) {
+        AL(["LEAK", "LEAKING", "WHERE IS IT LEAKING?", "WHAT IS LEAKING?"]) {
             R("OIL") {
-                FIX(repairable: false)
-                COMMON.DIE()
+                IRREPAIRABLE
+                AL(["DUMP", "DUMP ALL THE OIL"]) {
+                    DIE_WARN
+                }
             }
         }
 
     static let OIL =
         AL("OIL") {
             R("LEAKING") {
-                FIX(repairable: false)
-                COMMON.DIE()
+                IRREPAIRABLE
+                AL(["DUMP", "DUMP ALL THE OIL"]) {
+                    DIE_WARN
+                }
+            }
+        }
+    
+    static let SENSOR =
+        AL(["SENSOR", "SENSOR", "SENSORS"]) {
+            R("MALFUNCTIONING") {
+                IRREPAIRABLE
+                AL(["THROW", "THROW IT AWAY", "THROW THAT SENSORS AWAY"]) {
+                    DIE_WARN
+                }
             }
         }
 
     static let HOSE =
-        AL(["HOSE", "PIPE", "HOSES", "HOSE?", "PIPES"]) {
+        AL(["PIPE", "HOSES", "PIPES", "HOSE", "MAIN INLET HOSE"]) {
             R("BURSTED") {
-                FIX(repairable: false)
-                COMMON.DIE()
+                IRREPAIRABLE
+                AL(["THROW", "THROW IT AWAY", "THROW THAT BURSTED HOSE AWAY"]) {
+                    DIE_WARN
+                }
             }
         }
 
     static let HISS =
-        AL(["WHAT ARE THOSE NOISES?", "WHERE IS IT HISSING?", "HISS", "NOISE", "HISSING", "NOISES"]) {
-            R("HOSE") {
-                FIX(repairable: false)
-                COMMON.DIE()
+        AL(["NOISES", "NOISE", "HISS", "HISSING", "WHAT ARE THOSE NOISES?", "WHERE IS IT HISSING?"]) {
+            R("BURSTED HOSE") {
+                IRREPAIRABLE
+                AL(["THROW", "THROW IT AWAY"]) {
+                    DIE_WARN
+                }
             }
         }
 
     static let PROCESSOR =
         AL(["WHAT IS THE STATUS OF YOUR PROCESSOR?", "PROCESSOR", "PROCESSOR UNIT"]) {
             R("MALFUNCTION") {
-                FIX(repairable: false)
-                COMMON.DIE()
+                IRREPAIRABLE
+                AL(["TURN OFF", "TURN THE PROCESSOR OFF"]) {
+                    DIE_WARN
+                }
             }
         }
 
@@ -442,7 +514,7 @@ class CommonGraph {
     static let PAIN =
         AL(["DO YOU FEEL PAIN?", "ACHE", "PAIN", "HURT", "PAIN?", "ACHES", "HURTING?", "HURT?", "HURTING"]) {
             R("NO") {
-                AL(COMMON.WHY) {
+                AL(["WHY?", "WHY DON'T YOU FEEL ANY PAIN?"]) {
                     R("INANIMATE")
                 }
             }
@@ -486,33 +558,30 @@ class CommonGraph {
                 }
             }
         }
-
-    static let WHY = ["WHY", "TELL ME MORE", "EXPLAIN", "REASON", "TELL MORE"]
-
-    static func FIX(repairable: Bool = true, variants: [String] = []) -> Edge {
-        AL(["RELOAD", "REFRESH", "FIX", "REPAIR", "RESTORE", "PATCH", "MEND", "UPGRADE", "REPLACE"] + variants) {
-            repairable ? FIX : FIX_UNAVAILABLE
+    
+    static let IRREPAIRABLE =
+        AL(["PATCH", "MEND", "FIX", "REPAIR"]) {
+            R("IRREPAIRABLE")
         }
+    
+    static var DIE: [Edge] {
+        return
+            [
+                AL(["OFF", "TURN OFF", "TURN IT OFF"]) {
+                    DIE_WARN
+                },
+                AL(["RESTART"]) {
+                    DIE_WARN
+                },
+                AL(["RESET"]) {
+                    DIE_WARN
+                },
+                AL(["TERMINATE"]) {
+                    DIE_WARN
+                }
+            ]
     }
-
-    static let FIX =
-        R("Y/N?") {
-            AL("Y") {
-                UPGRADE()
-            }
-            AL("N") {
-                R("OK")
-            }
-        }
-
-    static let FIX_UNAVAILABLE = R("IRREPAIRABLE")
-
-    static func DIE(_ names: [String] = []) -> Edge {
-        AL(["OFF", "TURN OFF", "RESTART", "RESET", "TERMINATE", "DELETE"] + names) {
-            DIE_WARN
-        }
-    }
-
+    
     static let DIE_WARN =
         R("Y/N?") {
             AL("Y") {
