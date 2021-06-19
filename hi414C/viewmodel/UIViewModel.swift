@@ -14,6 +14,7 @@ class UIViewModel: ObservableObject, Resetable {
     @Published var detail = (is: false, animated: true)
     @Published var isHelp = false
     @Published var current: ContentType = .test
+    @Published var isWaiting: Bool = false
     @Published private(set) var errors: Int = 0
 
     func shake() {
@@ -31,6 +32,7 @@ class UIViewModel: ObservableObject, Resetable {
         self.current = .test
         self.isHelp = false
         self.isIntro = true
+        self.isWaiting = false
         self.detail = (false, false)
     }
 }

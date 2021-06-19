@@ -23,9 +23,11 @@ struct TerminalCommandSegue: View {
         VStack(spacing: 0) {
             TerminalCommandLine()
                 .onTapGesture {
-                    segueVM.isOpen
-                        ? segueVM.close()
-                        : segueVM.open()
+                    if !uiVM.isWaiting {
+                        segueVM.isOpen
+                            ? segueVM.close()
+                            : segueVM.open()
+                    }
                 }
             ASCIIKeyboardView() { input in
                 if input == "?" {
@@ -46,12 +48,15 @@ struct TerminalCommandSegue: View {
                         print("No test provided")
                     }
                 } else {
+                    uiVM.isWaiting = true
                     graphVM.traverse(ctx: GraphContext(input: input)) { result in
                         switch result {
                         case .ok:
                             Sound.play(.modifier)
+                            uiVM.isWaiting = false
                         case .error(_):
                             uiVM.shake()
+                            uiVM.isWaiting = false
                         }
                     }
                 }

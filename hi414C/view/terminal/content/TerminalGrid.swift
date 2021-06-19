@@ -58,7 +58,6 @@ struct TerminalGrid: View {
                                 if uiVM.current != .message {
                                     self.grid = wide ? .landslide_message : .portrait_message
                                     uiVM.current = .message
-                                    helpVM.current = .chat
                                     self.printed = []
                                     self.solved = []
                                 }
@@ -90,7 +89,6 @@ struct TerminalGrid: View {
                                 if uiVM.current != .test {
                                     self.grid = .adaptive
                                     uiVM.current = .test
-                                    helpVM.current = .learn
                                 }
                                 if !printedMsg.isEmpty {
                                     printedMsg = []
@@ -148,11 +146,16 @@ struct TerminalGrid: View {
     }
     
     func getShakeAnimation(from animations: [ArtAnimation]) -> ArtAnimation? {
-        for animation in animations {
-            if case .shake(_, _, _, _) = animation {
-                return animation
+        if uiVM.isWaiting {
+            return .shake(dt: 0.6, force: 1.5, type: .wave)
+        } else {
+            for animation in animations {
+                if case .shake(_, _, _, _) = animation {
+                    return animation
+                }
             }
         }
+
         return .none
     }
     
