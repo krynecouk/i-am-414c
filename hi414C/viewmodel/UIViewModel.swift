@@ -12,6 +12,7 @@ class UIViewModel: ObservableObject, Resetable {
     @Published var isFinishedGame = false
     @Published var video: VideoType? = .none
     @Published var detail = (is: false, animated: true)
+    @Published var isDetailAvailable = false
     @Published var isHelp = false
     @Published var current: ContentType = .test
     @Published var isWaiting: Bool = false

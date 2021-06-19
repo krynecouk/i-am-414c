@@ -135,12 +135,11 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-            // TODO will stop working for learn mode in help
-            //if uiVM.current != .message {
-            withAnimation(themeVM.terminal.grid.test.animation.detail) {
-                uiVM.detail = (!uiVM.detail.is, true)
+            if uiVM.current == .test || (uiVM.isHelp && helpVM.current == .learn) {
+                withAnimation(themeVM.terminal.grid.test.animation.detail) {
+                    uiVM.detail = (!uiVM.detail.is, true)
+                }
             }
-            //}
         }
         .contentShape(Rectangle())
     }
