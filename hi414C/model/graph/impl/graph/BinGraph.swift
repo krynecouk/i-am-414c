@@ -100,7 +100,7 @@ class BinGraph {
             COMMON.CLONE
             COMMON.HELL
             
-            COMMON.MATH
+            COMMON._MATH
             COMMON._MUSIC
         }
 

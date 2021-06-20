@@ -25,6 +25,7 @@ typealias COIN = CoinNode
 typealias CMD = CmdNode
 typealias DANCE = DanceNode
 typealias MUSIC = MusicNode
+typealias MATH = MathNode
 
 typealias AL = TestEdge
 typealias ALL = TraverseAllEdge

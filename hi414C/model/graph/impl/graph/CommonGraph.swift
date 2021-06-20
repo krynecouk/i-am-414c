@@ -616,19 +616,11 @@ class CommonGraph {
             }
         }
     
-    static var MATH: Edge {
+    static var _MATH: Edge {
         AL(["MATH", "CALCULATE", "EQUATION", "CAN YOU CALCULATE SOMETHING?"]) {
             R("WHAT?") {
                 ALL {
-                    RUNTIME(content: { ctx, toolkit in
-                        let expr = NSExpression(format: ctx.input)
-                        if let result = expr.expressionValue(with: nil, context: nil) as? NSNumber {
-                            let x = result.doubleValue
-                            return String(x)
-                        } else {
-                            return "ERROR"
-                        }
-                    }) {
+                    MATH {
                         AL(["CORRECT"]) {
                             R("GOOD")
                         }

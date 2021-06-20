@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Expression",
+        "repositoryURL": "https://github.com/nicklockwood/Expression",
+        "state": {
+          "branch": null,
+          "revision": "79696716b913c816d8dd1c135293de266a01a098",
+          "version": "0.13.2"
+        }
+      },
+      {
         "package": "swift-argument-parser",
         "repositoryURL": "https://github.com/apple/swift-argument-parser",
         "state": {

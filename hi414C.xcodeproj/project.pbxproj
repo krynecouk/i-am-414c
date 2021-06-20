@@ -103,6 +103,8 @@
 		2684EC86267FAABD00AAC7F5 /* computing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2684EC85267FAABD00AAC7F5 /* computing.wav */; };
 		2684EC88267FAE0F00AAC7F5 /* MusicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */; };
 		2684EC8C267FD38000AAC7F5 /* heartbeat_three_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2684EC8B267FD38000AAC7F5 /* heartbeat_three_toggle.wav */; };
+		2684EC8F267FDC9700AAC7F5 /* Expression in Frameworks */ = {isa = PBXBuildFile; productRef = 2684EC8E267FDC9700AAC7F5 /* Expression */; };
+		2684EC91267FDCE700AAC7F5 /* MathNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684EC90267FDCE700AAC7F5 /* MathNode.swift */; };
 		26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26851AAF25E5751E004B1E2E /* ANSIShadowFiglets.swift */; };
 		268D92D12608D83000A43802 /* GraphToolkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92D02608D83000A43802 /* GraphToolkit.swift */; };
 		268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92D62608E10700A43802 /* TerminalViewModel.swift */; };
@@ -346,6 +348,7 @@
 		2684EC85267FAABD00AAC7F5 /* computing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = computing.wav; sourceTree = "<group>"; };
 		2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicNode.swift; sourceTree = "<group>"; };
 		2684EC8B267FD38000AAC7F5 /* heartbeat_three_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heartbeat_three_toggle.wav; sourceTree = "<group>"; };
+		2684EC90267FDCE700AAC7F5 /* MathNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathNode.swift; sourceTree = "<group>"; };
 		26851AAF25E5751E004B1E2E /* ANSIShadowFiglets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIShadowFiglets.swift; sourceTree = "<group>"; };
 		268D92D02608D83000A43802 /* GraphToolkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphToolkit.swift; sourceTree = "<group>"; };
 		268D92D62608E10700A43802 /* TerminalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalViewModel.swift; sourceTree = "<group>"; };
@@ -490,6 +493,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2684EC8F267FDC9700AAC7F5 /* Expression in Frameworks */,
 				26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +765,7 @@
 				26AE699D267651E7001D5E4D /* CmdNode.swift */,
 				2684EC83267FA60600AAC7F5 /* DanceNode.swift */,
 				2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */,
+				2684EC90267FDCE700AAC7F5 /* MathNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -1329,6 +1334,7 @@
 			name = hi414C;
 			packageProductDependencies = (
 				26EA30142657FDB9004A78F2 /* OrderedCollections */,
+				2684EC8E267FDC9700AAC7F5 /* Expression */,
 			);
 			productName = hi414C;
 			productReference = 26BEC22625DD3B0A0035065E /* hi414C.app */;
@@ -1381,6 +1387,7 @@
 			mainGroup = 26BEC21D25DD3B0A0035065E;
 			packageReferences = (
 				26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				2684EC8D267FDC9700AAC7F5 /* XCRemoteSwiftPackageReference "Expression" */,
 			);
 			productRefGroup = 26BEC22725DD3B0A0035065E /* Products */;
 			projectDirPath = "";
@@ -1541,6 +1548,7 @@
 				26040D8325F15753005BF921 /* ASCIITable.swift in Sources */,
 				262F4B50267012FD00D14D52 /* Sound.swift in Sources */,
 				26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */,
+				2684EC91267FDCE700AAC7F5 /* MathNode.swift in Sources */,
 				26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */,
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
 				26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */,
@@ -1897,6 +1905,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2684EC8D267FDC9700AAC7F5 /* XCRemoteSwiftPackageReference "Expression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/Expression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.2;
+			};
+		};
 		26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections";
@@ -1908,6 +1924,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2684EC8E267FDC9700AAC7F5 /* Expression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2684EC8D267FDC9700AAC7F5 /* XCRemoteSwiftPackageReference "Expression" */;
+			productName = Expression;
+		};
 		26EA30142657FDB9004A78F2 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */;
