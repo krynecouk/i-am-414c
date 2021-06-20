@@ -90,7 +90,7 @@ class BinGraph {
             COMMON._DICES
             COMMON._COIN
             COMMON.GUESS
-            COMMON.DANCE
+            COMMON._DANCE
             COMMON.SMILE
             COMMON.SAD
             COMMON.WINK

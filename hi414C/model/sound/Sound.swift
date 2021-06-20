@@ -16,7 +16,8 @@ class Sound {
         .delete: URL.from(.delete),
         .dulled: URL.from(.dulled),
         .tiny: URL.from(.tiny),
-        .high: URL.from(.high)
+        .high: URL.from(.high),
+        .computing: URL.from(.computing)
     ]
     
     static func play(_ type: SoundType) {
@@ -46,4 +47,5 @@ enum SoundType: String {
     case dulled = "dulled_toggle.wav"
     case tiny = "tiny_click.wav"
     case high = "higher_toggle.wav"
+    case computing = "computing.wav"
 }

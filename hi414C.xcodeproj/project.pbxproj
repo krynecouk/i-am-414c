@@ -99,6 +99,9 @@
 		267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D64260C852000844927 /* ASCIIArtCollection.swift */; };
 		267A0D74260C8BB400844927 /* AnimalASCIIArts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D73260C8BB400844927 /* AnimalASCIIArts.swift */; };
 		26841012260A35A500C50F9A /* ViewTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26841011260A35A500C50F9A /* ViewTheme.swift */; };
+		2684EC84267FA60600AAC7F5 /* DanceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684EC83267FA60600AAC7F5 /* DanceNode.swift */; };
+		2684EC86267FAABD00AAC7F5 /* computing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2684EC85267FAABD00AAC7F5 /* computing.wav */; };
+		2684EC88267FAE0F00AAC7F5 /* MusicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */; };
 		26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26851AAF25E5751E004B1E2E /* ANSIShadowFiglets.swift */; };
 		268D92D12608D83000A43802 /* GraphToolkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92D02608D83000A43802 /* GraphToolkit.swift */; };
 		268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92D62608E10700A43802 /* TerminalViewModel.swift */; };
@@ -339,6 +342,9 @@
 		267A0D64260C852000844927 /* ASCIIArtCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtCollection.swift; sourceTree = "<group>"; };
 		267A0D73260C8BB400844927 /* AnimalASCIIArts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalASCIIArts.swift; sourceTree = "<group>"; };
 		26841011260A35A500C50F9A /* ViewTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTheme.swift; sourceTree = "<group>"; };
+		2684EC83267FA60600AAC7F5 /* DanceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceNode.swift; sourceTree = "<group>"; };
+		2684EC85267FAABD00AAC7F5 /* computing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = computing.wav; sourceTree = "<group>"; };
+		2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicNode.swift; sourceTree = "<group>"; };
 		26851AAF25E5751E004B1E2E /* ANSIShadowFiglets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIShadowFiglets.swift; sourceTree = "<group>"; };
 		268D92D02608D83000A43802 /* GraphToolkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphToolkit.swift; sourceTree = "<group>"; };
 		268D92D62608E10700A43802 /* TerminalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalViewModel.swift; sourceTree = "<group>"; };
@@ -533,13 +539,6 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		262F4B43266E940400D14D52 /* video */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = video;
-			sourceTree = "<group>";
-		};
 		262F4B4C266FFFF600D14D52 /* sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +550,7 @@
 		262F4B5126701B1200D14D52 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				2684EC85267FAABD00AAC7F5 /* computing.wav */,
 				26AE697F2672B49E001D5E4D /* dulled_toggle.wav */,
 				26AE697D2672B3CE001D5E4D /* higher_toggle.wav */,
 				26B95FFE2671FD8E001A508D /* tiny_click.wav */,
@@ -759,6 +759,8 @@
 				26AE699726762218001D5E4D /* EitherNode.swift */,
 				26AE699926762B7B001D5E4D /* RuntimeNode.swift */,
 				26AE699D267651E7001D5E4D /* CmdNode.swift */,
+				2684EC83267FA60600AAC7F5 /* DanceNode.swift */,
+				2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -830,7 +832,6 @@
 			children = (
 				26782B382617734F00BA9C4E /* fonts */,
 				262F4B5126701B1200D14D52 /* sound */,
-				262F4B43266E940400D14D52 /* video */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -1401,6 +1402,7 @@
 				26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */,
 				26B960002671FD8E001A508D /* tiny_click.wav in Resources */,
 				26F00B68266B53F8008DACE5 /* ansiregular.ttf in Resources */,
+				2684EC86267FAABD00AAC7F5 /* computing.wav in Resources */,
 				26B95FF82671F9F3001A508D /* heartbeat_one_toggle.wav in Resources */,
 				26782B742617BE3F00BA9C4E /* Licence.txt in Resources */,
 				26B95FFB2671FA80001A508D /* heartbeat_three_toggle.wav in Resources */,
@@ -1504,6 +1506,7 @@
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* TestEdge.swift in Sources */,
 				2678D96D260E4D2700DDB40F /* KeyboardKeyView.swift in Sources */,
+				2684EC88267FAE0F00AAC7F5 /* MusicNode.swift in Sources */,
 				26B61344266BBE6C001F6D7D /* GameOverDao.swift in Sources */,
 				263612532636F8F200341B60 /* TerminalHelpTest.swift in Sources */,
 				269765542627367A00775D71 /* EquationRadix.swift in Sources */,
@@ -1555,6 +1558,7 @@
 				26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */,
 				2620921B2600B2FE0001904B /* FigletView.swift in Sources */,
 				26EA30002656C77C004A78F2 /* TerminalTestSelect.swift in Sources */,
+				2684EC84267FA60600AAC7F5 /* DanceNode.swift in Sources */,
 				262F4B3A266E4E6700D14D52 /* DiceNode.swift in Sources */,
 				264404242619014000CA7EA1 /* Theme.swift in Sources */,
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,

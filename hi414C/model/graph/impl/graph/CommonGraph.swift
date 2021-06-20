@@ -382,22 +382,28 @@ class CommonGraph {
             }
         }
 
-    static let DANCE =
-        AL("DANCE") {
-            SHAKE("DANCING", shake: .shake(dt: 0.5, force: 3, type: .rand, animation: .none)) {
-                AL(["FASTER!", "DANCE!", "MORE!", "DANCE", "FASTER", "MORE"]) {
-                    SHAKE("DANCING!", shake: .shake(dt: 0.3, force: 5, type: .rand, animation: .none)) {
-                        AL(["FASTER!", "DANCE!", "MORE!", "DANCE", "FASTER", "MORE"]) {
-                            SHAKE("DANCING!!", shake: .shake(dt: 0.2, force: 7, type: .rand, animation: .none)) {
-                                AL(["ENOUGH", "STOP"]) {
-                                    R("GOOD")
-                                }
-                                AL(["FASTER!", "DANCE!", "MORE!", "DANCE", "FASTER", "MORE"]) {
+    static let _DANCE =
+        AL(["DANCE", "START DANCING", "START TO DANCE"]) {
+            DANCE("DANCING", shake: .shake(dt: 0.5, force: 3, type: .rand, animation: .none)) {
+                AL(["MORE!", "DANCE!", "FASTER!"]) {
+                    DANCE("DANCING!", shake: .shake(dt: 0.3, force: 5, type: .rand, animation: .none)) {
+                        AL(["MORE!", "DANCE!", "FASTER!"]) {
+                            DANCE("DANCING!!", shake: .shake(dt: 0.2, force: 7, type: .rand, animation: .none)) {
+                                AL(["MORE!", "DANCE!", "FASTER!"]) {
                                     R("ERROR")
+                                }
+                                AL(["ENOUGH", "STOP", "STOP DANCING"]) {
+                                    R("GOOD")
                                 }
                             }
                         }
+                        AL(["ENOUGH", "STOP", "STOP DANCING"]) {
+                            R("OK")
+                        }
                     }
+                }
+                AL(["ENOUGH", "STOP", "STOP DANCING"]) {
+                    R("OK")
                 }
             }
         }
