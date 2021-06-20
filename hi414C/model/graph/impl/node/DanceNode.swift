@@ -8,26 +8,19 @@
 import AVFoundation
 
 class DanceNode: ShakeNode {
-    
-    private let audioPlayer:AVAudioPlayer?
+    private let music: Sound = Sound.of(.computing)
     
     override init(_ name: String, shake: ArtAnimation, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
-        self.audioPlayer = AVAudioPlayer.from(.computing)
-        self.audioPlayer?.numberOfLoops = -1
         super.init(name, shake: shake, edges)
     }
     
     override func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        DispatchQueue.global().async {
-            self.audioPlayer?.play()
-        }
+        self.music.play()
         super.onEnter(ctx: ctx, toolkit: toolkit)
     }
     
     override func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
-        DispatchQueue.global().async {
-            self.audioPlayer?.stop()
-        }
+        self.music.stop()
         super.onExit(ctx: ctx, toolkit: toolkit)
     }
 }

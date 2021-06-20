@@ -101,6 +101,7 @@ class BinGraph {
             COMMON.HELL
             
             COMMON.MATH
+            COMMON._MUSIC
         }
 
     private static let I =

@@ -40,7 +40,7 @@ struct TerminalCommandSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                        Sound.of(.high).play()
+                        Sound.of(.discover).play()
                         asciiVM.add(symbol: testVM.test!.symbol)
                     case .wrong(_):
                         uiVM.shake()

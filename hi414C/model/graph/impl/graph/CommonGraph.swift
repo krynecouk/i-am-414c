@@ -407,6 +407,15 @@ class CommonGraph {
                 }
             }
         }
+    
+    static let _MUSIC =
+        AL(["MUSIC", "SOUND", "PLAY", "PLAY MUSIC"]) {
+            MUSIC("PLAYING...") {
+                AL(["STOP", "STOP PLAYING"]) {
+                    R("OK")
+                }
+            }
+        }
 
     static let SMILE =
         AL(["SMILE", "HAPPY"]) {

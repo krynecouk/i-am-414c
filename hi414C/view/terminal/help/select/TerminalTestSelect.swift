@@ -65,7 +65,7 @@ struct DisabledSound: ViewModifier {
             .disabled(disabled)
             .onTapGesture {
                 if disabled {
-                    Sound.of(.tiny).play()
+                    Sound.of(.tiny_click).play()
                 }
             }
     }
