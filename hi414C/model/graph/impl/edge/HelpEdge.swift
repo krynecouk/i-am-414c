@@ -22,9 +22,11 @@ class HelpEdge: TestEdge {
     }
     
     override func traverse(ctx: GraphContext, toolkit: GraphToolkit) -> Node {
-        toolkit.helpVM.current = type
-        toolkit.helpVM.settings = settings
-        toolkit.uiVM.isHelp = true
+        DispatchQueue.main.async {
+            toolkit.helpVM.current = self.type
+            toolkit.helpVM.settings = self.settings
+            toolkit.uiVM.isHelp = true
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.segueVM.open(type: self.type.toSegueType())
         }

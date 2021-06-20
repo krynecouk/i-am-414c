@@ -23,7 +23,7 @@ struct HelpColorButton: View {
     var body: some View {
         ColorButton(size: (70, 70), left: Color.primary(name), right: Color.secondary(name)) {
             if let sound = self.sound {
-                Sound.play(sound)
+                Sound.of(sound).play()
             }
             themeVM.change(to: theme)
         }

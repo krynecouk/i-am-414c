@@ -8,23 +8,46 @@
 import AVFoundation
 
 class Sound {
-    static var audioPlayer:AVAudioPlayer?
-    
-    static let sounds: [SoundType: URL] = [
-        .click: URL.from(.click),
-        .modifier: URL.from(.modifier),
-        .delete: URL.from(.delete),
-        .dulled: URL.from(.dulled),
-        .tiny: URL.from(.tiny),
-        .high: URL.from(.high),
-        .computing: URL.from(.computing)
+    private static let sounds: [SoundType: Sound] = [
+        .click: Sound(.click),
+        .modifier: Sound(.modifier),
+        .delete: Sound(.delete),
+        .dulled: Sound(.dulled),
+        .tiny: Sound(.tiny),
+        .high: Sound(.high),
+        .computing: Sound(.computing)
     ]
     
-    static func play(_ type: SoundType) {
+    var audioPlayer:AVAudioPlayer
+    var secondAudioPlayer: AVAudioPlayer
+    var type: SoundType
+    
+    init(_ type: SoundType) {
+        self.type = type
+        self.audioPlayer = AVAudioPlayer.from(type)
+        self.secondAudioPlayer = AVAudioPlayer.from(type)
+    }
+    
+    func play() {
             DispatchQueue.global().async {
-                audioPlayer = AVAudioPlayer.from(type)
-                audioPlayer?.play()
+                if self.audioPlayer.isPlaying {
+                    self.secondAudioPlayer.play()
+                } else {
+                    self.audioPlayer.play()
+
+                }
             }
+    }
+    
+    func stop() {
+            DispatchQueue.global().async {
+                self.audioPlayer.stop()
+                self.secondAudioPlayer.stop()
+            }
+    }
+    
+    public static func of(_ type: SoundType) -> Sound {
+        return sounds[type]!
     }
 }
 

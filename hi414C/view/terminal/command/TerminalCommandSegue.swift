@@ -40,7 +40,7 @@ struct TerminalCommandSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                        Sound.play(.high)
+                        Sound.of(.high).play()
                         asciiVM.add(symbol: testVM.test!.symbol)
                     case .wrong(_):
                         uiVM.shake()
@@ -52,7 +52,7 @@ struct TerminalCommandSegue: View {
                     graphVM.traverse(ctx: GraphContext(input: input)) { result in
                         switch result {
                         case .ok:
-                            Sound.play(.modifier)
+                            Sound.of(.modifier).play()
                             uiVM.isWaiting = false
                         case .error(_):
                             uiVM.shake()

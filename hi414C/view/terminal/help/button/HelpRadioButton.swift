@@ -28,11 +28,11 @@ struct HelpRadioButton: View {
         Button(action: {
             if !active {
                 if let sound = self.sound.on {
-                    Sound.play(sound)
+                    Sound.of(sound).play()
                 }
             } else {
                 if let sound = self.sound.off {
-                    Sound.play(sound)
+                    Sound.of(sound).play()
                 }
             }
             action()

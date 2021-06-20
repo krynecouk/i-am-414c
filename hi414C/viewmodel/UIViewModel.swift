@@ -19,7 +19,7 @@ class UIViewModel: ObservableObject, Resetable {
     @Published private(set) var errors: Int = 0
 
     func shake() {
-        Sound.play(.dulled)
+        Sound.of(.dulled).play()
         withAnimation {
             self.errors += 1
         }

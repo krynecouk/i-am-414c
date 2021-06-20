@@ -23,7 +23,7 @@ struct HelpButton: View {
     var body: some View {
         Button(action: {
             if let sound = self.sound {
-                Sound.play(sound)
+                Sound.of(sound).play()
             }
             action()
         }) {

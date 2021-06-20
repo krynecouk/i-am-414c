@@ -62,7 +62,7 @@ struct TerminalMessagesSelect: View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
             .background(RoundedBackground())
             .onTapGesture {
-                Sound.play(.click)
+                Sound.of(.click).play()
                 uiVM.isHelp = false
                 keyboardVM.set(text)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

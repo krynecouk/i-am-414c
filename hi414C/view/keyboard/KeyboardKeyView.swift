@@ -51,7 +51,7 @@ struct KeyboardKeyView: View {
             .frame(width: self.width, height: self.height, alignment: .center)
             .onLongPressGesture(minimumDuration: 0) {
                 if let sound = self.sound {
-                    Sound.play(sound)
+                    Sound.of(sound).play()
                 }
                 onClick(value)
             }
