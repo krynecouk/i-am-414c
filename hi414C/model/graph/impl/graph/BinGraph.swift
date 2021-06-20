@@ -99,6 +99,8 @@ class BinGraph {
 
             COMMON.CLONE
             COMMON.HELL
+            
+            COMMON.MATH
         }
 
     private static let I =

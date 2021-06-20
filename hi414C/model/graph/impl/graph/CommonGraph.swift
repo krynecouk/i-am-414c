@@ -5,6 +5,8 @@
 //  Created by Darius Kryszczuk on 07.06.2021.
 //
 
+import Foundation
+
 class CommonGraph {
     private init() {}
 
@@ -598,4 +600,31 @@ class CommonGraph {
                 R("OK")
             }
         }
+    
+    static var MATH: Edge {
+        AL(["MATH", "CALCULATE", "EQUATION", "CAN YOU CALCULATE SOMETHING?"]) {
+            R("WHAT?") {
+                ALL {
+                    RUNTIME(content: { ctx, toolkit in
+                        let expr = NSExpression(format: ctx.input)
+                        if let result = expr.expressionValue(with: nil, context: nil) as? NSNumber {
+                            let x = result.doubleValue
+                            return String(x)
+                        } else {
+                            return "ERROR"
+                        }
+                    }) {
+                        AL(["CORRECT"]) {
+                            R("GOOD")
+                        }
+                        AL("NOT CORRECT") {
+                            R("PROCESSOR") {
+                                PROCESSOR
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

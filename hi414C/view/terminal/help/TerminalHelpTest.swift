@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TerminalHelpTest: View {
     @EnvironmentObject var helpVM: HelpViewModel
+    @EnvironmentObject var testVM: TestViewModel // TODO!!!
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let wide: Bool
@@ -24,6 +25,12 @@ struct TerminalHelpTest: View {
             let equation = helpVM.equation
             let resultRadix = equation.builder is ID ? EquationRadix.dec : helpVM.radix
             TerminalTest(TerminalTest.getItems(id: UUID(), equation: equation.toString(radix: helpVM.radix, result: (true, resultRadix))), theme: (theme.figlet, theme.sign), wide: wide)
+        }
+        if helpVM.current == .learn {
+            if testVM.test != nil {
+                let result: String = String(testVM.test!.equation.result)
+                Text(result)
+            }
         }
     }
 }
