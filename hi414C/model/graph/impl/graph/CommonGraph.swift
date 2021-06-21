@@ -467,6 +467,46 @@ class CommonGraph {
             }
         }
 
+    static var SIGN: [Edge] {
+        func sign(_ name: String, _ sign: String) -> AL {
+            AL(name) {
+                R(sign) {
+                    _MATH
+                }
+            }
+        }
+        
+        let PLUS = sign("PLUS", "+")
+        let MINUS = sign("MINUS", "-")
+        let DIVISION = sign("DIVISION", "/")
+        let LEFT_PAREN = sign("LEFT PARENTHESIS", "(")
+        let RIGHT_PAREN = sign("RIGHT PARENTHESIS", ")")
+        let EXPONENTION = sign("EXPONENTION", "^")
+        let MULTIPLICATION = sign("MULTIPLICATION", "*")
+        
+        return
+            [
+                AL(["SYMBOL", "SIGN", "MATHEMATICAL SYMBOL"]) {
+                    R("WHICH ONE?") {
+                        PLUS
+                        MINUS
+                        DIVISION
+                        LEFT_PAREN
+                        RIGHT_PAREN
+                        EXPONENTION
+                        MULTIPLICATION
+                    }
+                },
+                PLUS,
+                MINUS,
+                DIVISION,
+                LEFT_PAREN,
+                RIGHT_PAREN,
+                EXPONENTION,
+                MULTIPLICATION
+            ]
+    }
+    
     static let SMILE =
         AL(["SMILE", "HAPPY"]) {
             R(":-)")
@@ -680,15 +720,27 @@ class CommonGraph {
             }
         
         return
-            AL(["MATH", "CALCULATE", "EQUATION", "CAN YOU CALCULATE SOMETHING?"]) {
-                R("WHAT?") {
+            AL(["MATH", "CALCULATE", "EQUATION", "MATH EXPRESSION", "CAN YOU CALCULATE SOMETHING?"]) {
+                R("OK") {
                     AL("2+2") {
                         CALCULATE
                     }
-                    AL("3^3") {
+                    AL("64-16") {
                         CALCULATE
                     }
-                    AL("((2+2)^4)/2") {
+                    AL("9/3") {
+                        CALCULATE
+                    }
+                    AL("(2+2)-(4-2)") {
+                        CALCULATE
+                    }
+                    AL("2^3") {
+                        CALCULATE
+                    }
+                    AL("2*4") {
+                        CALCULATE
+                    }
+                    AL("((2+2)^4)-(16/4)/2") {
                         CALCULATE
                     }
                     ALL {

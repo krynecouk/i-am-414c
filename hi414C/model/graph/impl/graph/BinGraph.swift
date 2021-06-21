@@ -106,6 +106,7 @@ class BinGraph {
             COMMON.YEAR
             COMMON.DATE
             COMMON.TIME
+            COMMON.SIGN
         }
 
     private static let I =
