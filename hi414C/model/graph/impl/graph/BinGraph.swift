@@ -111,6 +111,8 @@ class BinGraph {
             COMMON.SIGN
             COMMON.OPEN
             COMMON.END
+            JOKE
+            COMMON.KNOCK
         }
 
     private static let I =
@@ -865,6 +867,19 @@ class BinGraph {
             R("OF WHAT?") {
                 AL(["THIS STORY", "WHAT IS THE PLOT OF THIS STORY?"]) {
                     FORGOTTEN
+                }
+            }
+        }
+    
+    static let JOKE =
+        AL(["JOKE", "DO YOU KNOW ANY JOKE?"]) {
+            R("KNOCK KNOCK") {
+                AL("WHO'S THERE?") {
+                    R("AL") {
+                        AL("AL WHO?") {
+                            R("AL TELL YOU WHEN I REMEMBER")
+                        }
+                    }
                 }
             }
         }

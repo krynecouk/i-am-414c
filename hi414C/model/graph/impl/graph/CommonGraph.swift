@@ -768,4 +768,44 @@ class CommonGraph {
                 }
             }
         }
+    
+    static let KNOCK =
+        AL(["KNOCK", "KNOCK KNOCK"]) {
+            R("WHO'S THERE?") {
+                AL("HAWAII") {
+                    R("HAWAII WHO?") {
+                        AL("I'M GOOD. HAWAII YOU?") {
+                            R(":)")
+                        }
+                    }
+                }
+                AL("DEJA") {
+                    R("DEJA WHO?") {
+                        AL("KNOCK KNOCK") {
+                            R(":)")
+                        }
+                    }
+                }
+                AL("SPELL") {
+                    R("SPELL WHO?") {
+                        AL("W-H-O") {
+                            R(":)")
+                        }
+                    }
+                }
+                ALL {
+                    RUNTIME(content: { ctx, _ in
+                        "\(ctx.input) WHO?"
+                    }) {
+                        ALL {
+                            R(":)")
+                        }
+                    }
+                }
+            }
+        }
+    
+
+    
+    
 }

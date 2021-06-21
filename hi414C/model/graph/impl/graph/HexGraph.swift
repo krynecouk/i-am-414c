@@ -117,6 +117,8 @@ class HexGraph {
             COMMON.SIGN
             COMMON.OPEN
             COMMON.END
+            JOKE
+            COMMON.KNOCK
         }
     
     private static let _HI =
@@ -1008,6 +1010,19 @@ class HexGraph {
                                     R("EXCELLENT!")
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    
+    static let JOKE =
+        AL(["JOKE", "DO YOU KNOW ANY JOKE?"]) {
+            R("KNOCK KNOCK") {
+                AL("WHO'S THERE?") {
+                    R("AL") {
+                        AL("AL WHO?") {
+                            R("AL TELL YOU WHEN I WAKE UP")
                         }
                     }
                 }
