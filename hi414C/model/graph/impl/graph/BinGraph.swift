@@ -109,6 +109,7 @@ class BinGraph {
             COMMON.TIME
             COMMON.SIGN
             COMMON.OPEN
+            COMMON.END
         }
 
     private static let I =
@@ -147,7 +148,7 @@ class BinGraph {
         
         return
             [
-                AL("WHO") {
+                AL("WHO?") {
                     R("WHO?") {
                         I
                         YOU
@@ -206,7 +207,7 @@ class BinGraph {
 
         return
             [
-                AL("WHERE") {
+                AL("WHERE?") {
                     R("WHAT?") {
                         ["HELP"] + WHERE_IS_HELP
                         ["ANYBODY", "SOMEBODY"] + WHERE_IS_ANYBODY
@@ -269,7 +270,7 @@ class BinGraph {
         
         return
             [
-                AL("WHY") {
+                AL("WHY?") {
                     R("WHAT?") {
                         ["YOU THERE"] + WHY_ARE_YOU_THERE
                         ["BROKEN", "DAMAGED"] + WHY_ARE_YOU_DAMAGED
@@ -304,7 +305,7 @@ class BinGraph {
         
         return
             [
-                AL("HOW") {
+                AL("HOW?") {
                     R("WHAT?") {
                         ["GET OUT"] + HOW_TO_GET_OUT
                         HOW_TO_HELP
@@ -360,7 +361,7 @@ class BinGraph {
             }
         
         return [
-            AL("WHAT") {
+            AL("WHAT?") {
                 R("WHAT?") {
                     ["YOU SEE?"] + WHAT_YOU_SEE
                     ["YOU HEAR?"] + WHAT_YOU_HEAR

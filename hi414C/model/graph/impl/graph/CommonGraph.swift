@@ -759,5 +759,13 @@ class CommonGraph {
                 COMMON.DIFFICULTY
             }
         }
-
+    
+    static let END =
+        AL(["END", "END THIS"]) {
+            R("WHAT?") {
+                AL(["YOU", "YOUR OPERATING SYSTEM"]) {
+                    DIE_WARN
+                }
+            }
+        }
 }
