@@ -15,17 +15,21 @@ class Sound {
         .error: Sound(.error),
         .tiny_click: Sound(.tiny_click),
         .discover: Sound(.discover),
-        .computing: Sound(.computing)
+        .computing: Sound(.computing, infinite: true)
     ]
     
-    var primary: AVAudioPlayer
-    var secondary: AVAudioPlayer
-    var type: SoundType
+    let primary: AVAudioPlayer
+    let secondary: AVAudioPlayer
+    let type: SoundType
     
-    init(_ type: SoundType) {
+    init(_ type: SoundType, infinite: Bool = false) {
         self.type = type
         self.primary = AVAudioPlayer.from(type)
         self.secondary = AVAudioPlayer.from(type)
+        if infinite {
+            self.primary.numberOfLoops = -1
+            self.secondary.numberOfLoops = -1
+        }
     }
     
     func play() {

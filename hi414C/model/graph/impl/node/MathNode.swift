@@ -54,7 +54,7 @@ class MathNode: TestNode {
     private func getStringResult(from result: Double) -> String {
         switch result {
         case let result where result.isInfinite:
-            return String("INFINITE")
+            return String("TOO LARGE")
         case let result where result.isNaN:
             return String("NOT A NUMBER")
         case let result where String(result).contains("e+"):

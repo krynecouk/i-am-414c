@@ -409,7 +409,7 @@ class CommonGraph {
         }
     
     static let _MUSIC =
-        AL(["MUSIC", "SOUND", "PLAY", "PLAY MUSIC"]) {
+        AL(["SING", "SONG", "SING A SONG", "MUSIC", "SOUND", "PLAY", "PLAY SOUND", "PLAY MUSIC"]) {
             MUSIC("PLAYING...") {
                 AL(["STOP", "STOP PLAYING"]) {
                     R("OK")
@@ -617,21 +617,34 @@ class CommonGraph {
         }
     
     static var _MATH: Edge {
-        AL(["MATH", "CALCULATE", "EQUATION", "CAN YOU CALCULATE SOMETHING?"]) {
-            R("WHAT?") {
-                ALL {
-                    MATH {
-                        AL(["CORRECT"]) {
-                            R("GOOD")
-                        }
-                        AL("NOT CORRECT") {
-                            R("PROCESSOR") {
-                                PROCESSOR
-                            }
-                        }
+        let CALCULATE =
+            MATH {
+                AL(["CORRECT"]) {
+                    R("GOOD")
+                }
+                AL("NOT CORRECT") {
+                    R("PROCESSOR") {
+                        PROCESSOR
                     }
                 }
             }
-        }
+        
+        return
+            AL(["MATH", "CALCULATE", "EQUATION", "CAN YOU CALCULATE SOMETHING?"]) {
+                R("WHAT?") {
+                    AL("2+2") {
+                        CALCULATE
+                    }
+                    AL("3^3") {
+                        CALCULATE
+                    }
+                    AL("((2+2)^4)/2") {
+                        CALCULATE
+                    }
+                    ALL {
+                        CALCULATE
+                    }
+                }
+            }
     }
 }
