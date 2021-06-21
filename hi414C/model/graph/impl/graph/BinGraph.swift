@@ -102,6 +102,10 @@ class BinGraph {
             
             COMMON._MATH
             COMMON._MUSIC
+            COMMON.VERSION
+            COMMON.YEAR
+            COMMON.DATE
+            COMMON.TIME
         }
 
     private static let I =

@@ -409,11 +409,61 @@ class CommonGraph {
         }
     
     static let _MUSIC =
-        AL(["SING", "SONG", "SING A SONG", "MUSIC", "SOUND", "PLAY", "PLAY SOUND", "PLAY MUSIC"]) {
+        AL(["SING", "SONG", "SING A SONG", "MUSIC", "SOUND", "PLAY", "PLAY SOUND", "PLAY SOME MUSIC"]) {
             MUSIC("PLAYING...") {
                 AL(["STOP", "STOP PLAYING"]) {
                     R("OK")
                 }
+            }
+        }
+    
+    static let VERSION =
+        AL(["VERSION", "WHAT IS YOUR VERSION?"]) {
+            RUNTIME { _, _ in
+                (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "UNKNOWN"
+            }
+        }
+    
+    static let YEAR =
+        AL(["YEAR", "WHAT YEAR IS IT?"]) {
+            RUNTIME(content: { _, _ in
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy"
+                return formatter.string(from: Date())
+            }) {
+                DATE
+                TIME
+            }
+        }
+    
+    static let DATE =
+        AL(["TODAY", "DATE", "WHAT DATE IS TODAY?"]) {
+            RUNTIME(content: { _, _ in
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd/yyyy"
+                return formatter.string(from: Date())
+            }) {
+                TIME
+            }
+        }
+    
+    static let TIME =
+        AL(["TIME", "WHAT TIME IS IT?"]) {
+            RUNTIME(content: { _, _ in
+                let formatter = DateFormatter()
+                formatter.timeStyle = .short
+                return formatter.string(from: Date())
+            }) {
+                SECONDS
+            }
+        }
+    
+    static let SECONDS =
+        AL(["TIME WITH SECONDS", "DO YOU HAVE TIME WITH SECONDS?"]) {
+            RUNTIME { _, _ in
+                let formatter = DateFormatter()
+                formatter.timeStyle = .medium
+                return formatter.string(from: Date())
             }
         }
 
