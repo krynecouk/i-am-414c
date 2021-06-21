@@ -16,6 +16,7 @@ class BinGraph {
             BIN._AL
             BIN.YOU
 
+            BIN.ASK
             BIN.WHO
             BIN.WHERE
             BIN.WHY
@@ -122,6 +123,17 @@ class BinGraph {
     private static let YOU =
         AL(["YOU", "WHO ARE YOU?"]) {
             R("I AM 414C")
+        }
+    
+    private static let ASK =
+        AL(["ASK", "CAN I ASK YOU SOMETHING?"]) {
+            R("OK") {
+                WHO
+                WHERE
+                WHY
+                HOW
+                WHAT
+            }
         }
     
     private static var WHO: [Edge] {
@@ -839,6 +851,15 @@ class BinGraph {
                             }
                         }
                     }
+                }
+            }
+        }
+    
+    static let PLOT =
+        AL(["PLOT", "WHAT IS THE PLOT?"]) {
+            R("OF WHAT?") {
+                AL(["THIS STORY", "WHAT IS THE PLOT OF THIS STORY?"]) {
+                    FORGOTTEN
                 }
             }
         }
