@@ -549,17 +549,17 @@ class CommonGraph {
         }
 
     static let LEARN =
-        HELP(["LEARN", "HELP", "TEACH"], .learn) {
+        HELP(["HELP", "TEACH", "LEARN"], .learn) {
             R("OK")
         }
 
     static let CHAT =
-        HELP(["CHAT", "SPEAK"], .chat) {
+        HELP(["SPEAK", "CHAT", "CHAT HISTORY"], .chat) {
             R("OK")
         }
 
     static let SETTINGS =
-        HELP(["SETTINGS", "FONT", "FONTS"], .settings, .font) {
+        HELP(["FONT", "FONTS", "SETTINGS"], .settings, .font) {
             R("OK")
         }
 
@@ -749,5 +749,15 @@ class CommonGraph {
                 }
             }
     }
+    
+    static let OPEN =
+        AL(["OPEN", "CAN YOU OPEN?"]) {
+            R("WHAT?") {
+                COMMON.LEARN
+                COMMON.CHAT
+                COMMON.SETTINGS
+                COMMON.DIFFICULTY
+            }
+        }
 
 }
