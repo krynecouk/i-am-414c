@@ -47,6 +47,7 @@ class BinGraph {
 
             BIN.EXECUTE
             BIN.COMMAND
+            BIN.PLOT
 
             COMMON.EYES
             COMMON.COIL
@@ -618,7 +619,9 @@ class BinGraph {
     private static let MEMORY =
         AL(["MEMORIES", "RANDOM ACCESS MEMORY", "RAM", "MEMORY"]) {
             R("DAMAGED") {
-                //COMMON.FIX()
+                AL(["HOW TO FIX YOUR MEMORY?", "HOW TO REPAIR YOUR MEMORY?"]) {
+                    EXEC_CMD
+                }
                 COMMON.DIE
             }
         }
