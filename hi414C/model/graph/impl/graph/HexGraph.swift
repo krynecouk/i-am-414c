@@ -87,7 +87,7 @@ class HexGraph {
             COMMON.DIFFICULTY
 
             COMMON.REPEAT
-            COMMON.SHOUT
+            COMMON._YELL
 
             COMMON.PAIN
             COMMON.CLOSE

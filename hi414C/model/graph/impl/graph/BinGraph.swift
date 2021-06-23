@@ -10,27 +10,56 @@ class BinGraph {
 
     public static let HI =
         ROOT("HI") {
-            BIN._HI
             BIN._414C
-            BIN.I
-            BIN._AL
-            BIN.YOU
 
             BIN.ASK
+            COMMON.YEAR
+            COMMON.SIGN
+            COMMON._MATH
+            BIN.JOKE
+            COMMON.GUESS
+            BIN.MEMORY
+            BIN.MEANING
+            BIN.TELL
+            BIN.YOU
+            COMMON.OIL
+
+            BIN.CAUSE
+
+            COMMON._MUSIC
+            COMMON.VERSION
+            
+            BIN.EXECUTE
+            BIN.COMMAND
+            
+            COMMON._DICE
+            COMMON._DICES
+            COMMON._COIN
+            COMMON._DANCE
+            COMMON._YELL
+            
+            BIN.ORIGIN
             BIN.WHO
             BIN.WHERE
             BIN.WHY
             BIN.HOW
             BIN.WHAT
-
-            BIN.NAME
             BIN.HELP
-            BIN.MEANING
-            BIN.CAUSE
-            BIN.ORIGIN
-            BIN.TELL
+            COMMON.COIL
+            BIN.CLUE
+            BIN.NAME
             BIN.CRASH
             BIN.LIE
+
+            COMMON.HOSE
+            COMMON.LEAK
+            COMMON.LEARN
+            COMMON.CHAT
+            COMMON.SETTINGS
+            COMMON.DIFFICULTY
+            COMMON.HISS
+            COMMON.PROCESSOR
+            COMMON.EYES
 
             BIN.LIVE
             BIN.DIE
@@ -38,81 +67,47 @@ class BinGraph {
             BIN.LOGIN
             BIN.LOGOUT
             BIN.WAKE
-            BIN.MEMORY
             BIN.REMEMBER
-
             BIN.SOIL
             BIN.HOPE
-            BIN.CLUE
-
-            BIN.EXECUTE
-            BIN.COMMAND
             BIN.PLOT
-
-            COMMON.EYES
-            COMMON.COIL
-            COMMON.LEAK
-            COMMON.OIL
-            COMMON.HOSE
-            COMMON.HISS
-            COMMON.PROCESSOR
-
+            
             COMMON.COME
             COMMON.STAY
             COMMON.LIKE
             COMMON.LOVE
-
             COMMON.FIND
             COMMON.SLEEP
             COMMON.CALL
             COMMON.STAND
-
             COMMON.ALIVE
             COMMON.ALONE
             COMMON.SEE
             COMMON.LOOK
             COMMON.CHANGE
-
             COMMON.DEAD_QUESTION
-
-            COMMON.LEARN
-            COMMON.CHAT
-            COMMON.SETTINGS
-            COMMON.DIFFICULTY
-
             COMMON.REPEAT
-            COMMON.SHOUT
-
             COMMON.PAIN
             COMMON.CLOSE
             COMMON.BREAK
-
             COMMON.DIE
-            COMMON._DICE
-            COMMON._DICES
-            COMMON._COIN
-            COMMON.GUESS
-            COMMON._DANCE
             COMMON.SMILE
             COMMON.SAD
             COMMON.WINK
             COMMON.CRY
             COMMON.EMOTION
-
             COMMON.CLONE
             COMMON.HELL
-            
-            COMMON._MATH
-            COMMON._MUSIC
-            COMMON.VERSION
-            COMMON.YEAR
             COMMON.DATE
             COMMON.TIME
-            COMMON.SIGN
             COMMON.OPEN
             COMMON.END
-            JOKE
             COMMON.KNOCK
+            
+            BIN._HI
+
+            BIN.I
+            BIN._AL
         }
 
     private static let I =
@@ -727,7 +722,7 @@ class BinGraph {
 
     private static let _414C =
         AL(["ROBOT", "414C"]) {
-            R("I")
+            R("ME")
         }
 
     private static var MEMORY_ERROR =
@@ -781,10 +776,25 @@ class BinGraph {
         
         return
             AL(["EXECUTE", "EXECUTE COMMAND"]) {
-                R("WHAT?") {
+                R("TYPE COMMAND") {
+                    AL("LOAD(MEMORY)") {
+                        R("UNKNOWN COMMAND")
+                    }
+                    AL("GC.COLLECT()") {
+                        R("UNKNOWN COMMAND")
+                    }
+                    AL("LDA-2034K") {
+                        R("UNKNOWN COMMAND")
+                    }
+                    AL("MEM-DALLOC") {
+                        R("UNKNOWN COMMAND")
+                    }
+                    AL("JCMD-7544-GC.RUN") {
+                        R("UNKNOWN COMMAND")
+                    }
                     ALL {
-                        EITHER(left: AL { R("WRONG COMMAND") }, right: AL { FIX }) { ctx, _ in
-                            CmdDao.find() == ctx.input
+                        EITHER(left: AL { R("UNKNOWN COMMAND") }, right: AL { FIX }) { ctx, _ in
+                            return CmdDao.find() == ctx.input
                         }
                     }
                 }
@@ -818,7 +828,7 @@ class BinGraph {
     }
 
     static let CLUE =
-        AL(["CLUE", "CLUELESS", "BINARY", "BIN", "DO YOU HAVE ANY CLUE HOW TO CALCULATE BINARY?"]) {
+        AL(["BINARY", "BIN", "CLUELESS", "CLUE", "DO YOU HAVE ANY CLUE HOW TO CALCULATE BINARY?"]) {
             R("0001=2^0") {
                 AL(["2", "20"]) {
                     R("WRONG")

@@ -18,7 +18,7 @@ class CmdNode: TestNode {
     }
     
     func createCmd(from symbols: Set<ASCIISymbol>) -> String {
-        "INIT \(randomString(from: symbols.map { $0.rawValue }.joined(), length: 5))"
+        "INIT-\(randomString(from: symbols.filter{ $0 != .space }.map { $0.rawValue }.joined(), length: 5))"
     }
     
     func randomString(from letters: String, length: Int) -> String {

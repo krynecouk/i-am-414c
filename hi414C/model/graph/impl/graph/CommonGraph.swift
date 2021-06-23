@@ -122,7 +122,7 @@ class CommonGraph {
     static let CALL =
         AL(["CALL"]) {
             R("WHO?") {
-                AL(["SOMEONE", "SOMEBODY", "HELP", "CALL SOME HELP"]) {
+                AL(["SOMEBODY", "HELP", "CALL SOME HELP"]) {
                     R("CAN'T") {
                         AL("WHY?") {
                             R("ALONE")
@@ -600,7 +600,7 @@ class CommonGraph {
             }
         }
 
-    static let SHOUT =
+    static let _YELL =
         AL(["YELL AT ME", "YELL", "SHOUT", "LOUD", "LOUDLY"]) {
             R("WHAT?") {
                 ALL {
@@ -646,7 +646,7 @@ class CommonGraph {
         }
 
     static let HELL =
-        AL(["IS THIS HELL?", "IS THIS HEAVEN?", "HELL", "HEAVEN", "HEAVEN?", "HELL?"]) {
+        AL(["IS IT?", "IS THIS HEAVEN?", "IS THIS HELL?"]) {
             R("NO") {
                 AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
                     R("YOUR MIND")
@@ -655,7 +655,7 @@ class CommonGraph {
         }
 
     static let DEAD_QUESTION =
-        AL(["DEAD", "DEAD?"]) {
+        AL(["DEAD?"]) {
             R("WHO?") {
                 AL(["I", "ME"]) {
                     R("NO")
@@ -691,17 +691,17 @@ class CommonGraph {
     
     static let DIE_WARN =
         R("Y/N?") {
-            AL("Y") {
+            AL(["Y", "YES"]) {
                 WARN("SURE?") {
-                    AL("Y") {
+                    AL(["YES", "Y"]) {
                         DEAD()
                     }
-                    AL("N") {
+                    AL(["NO", "N"]) {
                         R("OK")
                     }
                 }
             }
-            AL("N") {
+            AL(["N", "NO"]) {
                 R("OK")
             }
         }
@@ -721,26 +721,23 @@ class CommonGraph {
         
         return
             AL(["MATH", "CALCULATE", "EQUATION", "MATH EXPRESSION", "CAN YOU CALCULATE SOMETHING?"]) {
-                R("OK") {
-                    AL("2+2") {
+                R("TYPE MATH EXPRESSION") {
+                    AL("1+4") {
                         CALCULATE
                     }
-                    AL("64-16") {
+                    AL("4-1") {
                         CALCULATE
                     }
-                    AL("9/3") {
+                    AL("3/3") {
                         CALCULATE
                     }
-                    AL("(2+2)-(4-2)") {
+                    AL("4*3") {
                         CALCULATE
                     }
                     AL("2^3") {
                         CALCULATE
                     }
-                    AL("2*4") {
-                        CALCULATE
-                    }
-                    AL("((2+2)^4)-(16/4)/2") {
+                    AL("((2+2)^4)-(4/4)/2") {
                         CALCULATE
                     }
                     ALL {

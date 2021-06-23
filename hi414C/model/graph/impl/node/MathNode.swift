@@ -17,7 +17,7 @@ class MathNode: TestNode {
         let expression = getExpression(from: ctx.input)
         let result = try? expression.evaluate()
         if let result = result {
-            self.name = getSafeStringResult(from: result, symbols: toolkit.asciiVM.symbols)
+            self.name = getSafeStringResult(from: result, symbols: ASCIIViewModel.allSymbols)
         } else {
             self.name = "ERROR"
         }
