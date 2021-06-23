@@ -10,9 +10,7 @@ class HexGraph {
     
     static let HI =
         ROOT("HI") {
-            HEX._HI
-            HEX._414C
-            HEX.I
+
             HEX._AL
             HEX.YOU
 
@@ -22,14 +20,13 @@ class HexGraph {
             HEX.WHY
             HEX.HOW
             HEX.WHAT
+            HEX.LIE
 
             HEX.NAME
-            HEX.HELP
             HEX.MEANING
             HEX.CAUSE
             HEX.ORIGIN
             HEX.TELL
-            HEX.LIE
 
             HEX.LIVE
             HEX.DIE
@@ -38,6 +35,7 @@ class HexGraph {
             HEX.WAKE
             HEX.MEMORY
             HEX.REMEMBER
+            HEX.HELP
 
             HEX.SOIL
             HEX.HOPE
@@ -47,13 +45,13 @@ class HexGraph {
             HEX.PLOT
             
             HEX.WHERE
-            HEX.LIE
             HEX.CAR_CRASH
             HEX.FAMILY
             HEX.DAUGHTER
             HEX.WAKE
             HEX.PASSWORD
             HEX.CLUE
+            HEX.JOKE
             
             COMMON.EYES
             COMMON.COIL
@@ -117,8 +115,12 @@ class HexGraph {
             COMMON.SIGN
             COMMON.OPEN
             COMMON.END
-            JOKE
+
             COMMON.KNOCK
+            
+            HEX._HI
+            HEX._414C
+            HEX.I
         }
     
     private static let _HI =
@@ -415,6 +417,9 @@ class HexGraph {
                 R("NOTHING") {
                     AL(["WHY?", "WHY CAN'T YOU SEE ANYTHING?", "WHY DO YOU SEE NOTHING?"]) {
                         R("EYES BROKEN") {
+                            AL(["RIP OUT", "RIP THEM OUT OF YOUR HEAD"]) {
+                                COMMON.DIE_WARN
+                            }
                             COMMON.IRREPAIRABLE
                         }
                     }
@@ -426,6 +431,9 @@ class HexGraph {
                 R("NOTHING") {
                     AL(["WHY?", "WHY CAN'T YOU HEAR ANYTHING?", "WHY CAN YOU HEAR NOTHING?"]) {
                         R("EARS BROKEN") {
+                            AL(["RIP OUT", "RIP THEM OUT OF YOUR HEAD"]) {
+                                COMMON.DIE_WARN
+                            }
                             COMMON.IRREPAIRABLE
                         }
                     }
@@ -692,7 +700,7 @@ class HexGraph {
                 AL("2+2=5") {
                     R("LIE")
                 }
-                AL("YOU ARE ME") {
+                AL(["ALL", "YOU ARE ME"]) {
                     R("NOT A LIE")
                 }
                 AL("YOU ARE INSIDE OF ME") {

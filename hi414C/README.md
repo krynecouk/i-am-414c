@@ -55,3 +55,7 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 - Palete
 - Ice
 - Sunset
+
+### Hex/Bin
+- graphVM
+- testVM

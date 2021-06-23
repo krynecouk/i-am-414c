@@ -9,16 +9,16 @@ import SwiftUI
 import OrderedCollections
 
 class GraphViewModel: ObservableObject, Resetable {
-    @Published private(set) var root: Node = Graphs.BIN
+    @Published private(set) var root: Node = Graphs.HEX
     
     typealias EdgeId = String
     
-    private(set) var current: Node = Graphs.BIN
+    private(set) var current: Node = Graphs.HEX
     private(set) var toolkit: GraphToolkit
 
     var visited: Set<EdgeId> = []
     
-    init(graph: GraphType = .BIN, toolkit: GraphToolkit) {
+    init(graph: GraphType = .HEX, toolkit: GraphToolkit) {
         self.toolkit = toolkit
         self.toolkit.graphVM = self
         self.setGraph(GraphDao.find() ?? graph)
@@ -75,7 +75,7 @@ class GraphViewModel: ObservableObject, Resetable {
     
     func reset() {
         self.visited = []
-        self.setGraph(.BIN)
+        self.setGraph(.HEX)
     }
     
     private func start() {
