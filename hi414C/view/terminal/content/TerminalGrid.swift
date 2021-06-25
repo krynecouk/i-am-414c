@@ -22,7 +22,6 @@ struct TerminalGrid: View {
     @State var printedSymbols: Set<SymbolId> = []
     @State var printedMsgs: Set<MessageId> = []
     @State var solved: [ASCIISymbol] = []
-    @State var wasHelp = false
     @State var wide = UIScreen.main.bounds.width > 500
     
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
@@ -40,9 +39,6 @@ struct TerminalGrid: View {
         Grid(columns: self.grid.rawValue()) {
             if uiVM.isHelp {
                 TerminalHelpTest(wide: wide)
-                    .onAppear {
-                        self.wasHelp = true
-                    }
             }
             ForEach(items, id: \.id) { item in
                 if case let .art(arts) = item.type {
@@ -87,16 +83,16 @@ struct TerminalGrid: View {
                     }
                 }
                 if case let .test(test, items, active) = item.type {
+                    let symbolId = TerminalSymbol.id(from: test)
                     if !uiVM.isHelp && (!uiVM.detail.is || (uiVM.detail.is && active)) {
-                        TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty && !self.wasHelp)
-                            .matchedGeometryEffect(id: TerminalSymbol.id(from: test), in: ns, properties: .position, isSource: false)
+                        TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty)
+                            .matchedGeometryEffect(id: symbolId, in: ns, properties: .position, isSource: false)
                             .onAppear {
                                 if uiVM.current != .test {
                                     self.grid = .adaptive
                                     uiVM.current = .test
                                 }
                                 if !printedMsgs.isEmpty {
-                                    self.wasHelp = false
                                     printedMsgs = []
                                 }
                             }
