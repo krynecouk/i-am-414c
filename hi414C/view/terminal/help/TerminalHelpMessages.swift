@@ -55,7 +55,6 @@ struct TerminalHelpMessages: View {
                     }
                 }
             }
-            .animation(.default)
         }
     }
     

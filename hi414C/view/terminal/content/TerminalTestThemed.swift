@@ -12,7 +12,7 @@ struct TerminalTestThemed: View {
     @EnvironmentObject var testVM: TestViewModel
     @State var bloom = false
     
-    let delay: Double = 1.9
+    let delay: Double = 2.2
     
     let test: Test
     let items: [TerminalTestItem]

@@ -13,7 +13,6 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var segueVM: SegueViewModel
-    //@EnvironmentObject var graphVM: GraphViewModel
     
     @State var pageLimit = 0
     
@@ -68,17 +67,6 @@ struct TerminalMessagesSelect: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     segueVM.open(type: .keyboard)
                 }
-                
-                
-                
-                /*
-                 // for immediately send to graph
-                 uiVM.isHelp = false
-                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                     graphVM.traverse(ctx: GraphContext(input: text))
-                 }
-                */
-                 
             }
     }
     

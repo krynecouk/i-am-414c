@@ -19,8 +19,8 @@ struct TerminalGrid: View {
     typealias MessageId = String
     
     @State var grid: GridType = .adaptive
-    @State var printed: Set<SymbolId> = []
-    @State var printedMsg: Set<MessageId> = []
+    @State var printedSymbols: Set<SymbolId> = []
+    @State var printedMsgs: Set<MessageId> = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = UIScreen.main.bounds.width > 500
     
@@ -50,7 +50,7 @@ struct TerminalGrid: View {
                     if !uiVM.isHelp {
                         let shakeAnimation = getShakeAnimation(from: themeVM.terminal.grid.message.figlet.animations)
                         let animations = shakeAnimation != nil ? [shakeAnimation!] : []
-                        let theme = !printedMsg.contains(item.id)
+                        let theme = !printedMsgs.contains(item.id)
                             ? themeVM.terminal.grid.message.figlet
                             : themeVM.terminal.grid.message.figlet.withAnimation(animations)
                         TerminalMessageRow(text, wide: wide, theme: theme)
@@ -58,13 +58,12 @@ struct TerminalGrid: View {
                                 if uiVM.current != .message {
                                     self.grid = wide ? .landslide_message : .portrait_message
                                     uiVM.current = .message
-                                    self.printed = []
+                                    self.printedSymbols = []
                                     self.solved = []
                                 }
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                    if !self.printedMsg.contains(item.id) {
-                                        self.printedMsg.insert(item.id)
+                                if !self.printedMsgs.contains(item.id) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                        self.printedMsgs.insert(item.id)
                                     }
                                 }
                             }
@@ -72,10 +71,14 @@ struct TerminalGrid: View {
                 }
                 if case let .symbol(symbol) = item.type {
                     if !uiVM.detail.is && !uiVM.isHelp {
-                        TerminalSymbol(symbol, active: !printed.contains(item.id) && solved.contains(symbol), theme: themeVM.terminal.grid.symbol)
+                        TerminalSymbol(symbol, active: !printedSymbols.contains(item.id) && solved.contains(symbol), theme: themeVM.terminal.grid.symbol)
                             .matchedGeometryEffect(id: item.id, in: ns)
-                            .onDisappear {
-                                self.printed.insert(item.id)
+                            .onAppear {
+                                if !self.printedSymbols.contains(item.id) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                        self.printedSymbols.insert(item.id)
+                                    }
+                                }
                             }
                     }
                 }
@@ -88,8 +91,8 @@ struct TerminalGrid: View {
                                     self.grid = .adaptive
                                     uiVM.current = .test
                                 }
-                                if !printedMsg.isEmpty {
-                                    printedMsg = []
+                                if !printedMsgs.isEmpty {
+                                    printedMsgs = []
                                 }
                             }
                     }
