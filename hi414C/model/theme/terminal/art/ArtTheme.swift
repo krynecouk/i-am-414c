@@ -18,6 +18,12 @@ struct LiteFigletTheme {
     var view: ViewTheme = ViewTheme()
 }
 
+extension LiteFigletTheme {
+    static func from(_ theme: FigletTheme) -> LiteFigletTheme {
+        LiteFigletTheme(typeface: theme.typeface, view: theme.view)
+    }
+}
+
 extension FigletTheme {
     func withDelay(_ delay: Double) -> FigletTheme {
         var copy = self
