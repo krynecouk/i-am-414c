@@ -137,7 +137,7 @@ class Theme: Themable {
                         font: font.robot,
                         color: color.primary.value
                     ),
-                    animations: [.print(dt: 0.3, animation: .linear)]
+                    animations: [.print(dt: 0.3, animation: .none)]
                 ),
                 symbol: FigletTheme(
                     typeface: .ansi(.regular),
@@ -193,9 +193,9 @@ class Theme: Themable {
                             color: color.primary.value
                         ),
                         animations: [
-                            .print(dt: 0.3, delay: 0, animation: .linear),
+                            .print(dt: 0.3, delay: 0, animation: .none),
                             //.shake(dt: 0.8, force: 1, type: .wave, animation: .none),
-                            .bloom(speed: 0.3, color: color.primary.value)
+                            .bloom(speed: 0.4, color: color.primary.value)
                         ]
                     )
                 )
