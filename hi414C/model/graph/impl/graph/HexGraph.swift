@@ -13,6 +13,7 @@ class HexGraph {
             HEX._AL
             HEX.YOU
             HEX.ASK
+            HEX.TELL_ME_MORE_ABOUT_YOUR_HISTORY
             HEX.WHAT_IS_THE_MEANING_OF_YOU
             HEX.WHAT_IS_THE_MEANING_OF_THIS_PLACE
             HEX.WHO
@@ -22,6 +23,8 @@ class HexGraph {
             HEX.DAUGHTER
             HEX.JOKE
             HEX.CAR_CRASH
+            HEX.COMA
+            HEX.LIVE
             HEX.NAME
             HEX.PASSWORD
             HEX.CAUSE
@@ -34,7 +37,6 @@ class HexGraph {
             HEX.LIE
             HEX.MEANING
 
-            HEX.LIVE
             HEX.DIE
             HEX.REPAIR
             HEX.MEMORY
@@ -46,7 +48,6 @@ class HexGraph {
             HEX.EXECUTE
             HEX.PLOT
             HEX.CLUE
-            HEX.COMA
 
             COMMON.EYES
             COMMON.COIL
@@ -654,6 +655,16 @@ class HexGraph {
             ]
     }
     
+    private static let TELL_ME_MORE_ABOUT_YOUR_HISTORY =
+        AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
+            R("CREATED AFTER THE CRASH") {
+                AL("WHY?") {
+                    R("TO BUILD A SAFE SPACE")
+                }
+                CAR_CRASH
+            }
+        }
+    
     private static var TELL: [Edge] {
         let TELL_ME_MORE_ABOUT_YOU =
             AL(["TELL ME ABOUT YOU"]) {
@@ -674,15 +685,7 @@ class HexGraph {
                 }
             }
 
-        let TELL_ME_MORE_ABOUT_YOUR_HISTORY =
-            AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
-                R("CREATED AFTER THE CRASH") {
-                    AL("WHY?") {
-                        R("TO BUILD A SAFE SPACE")
-                    }
-                    CAR_CRASH
-                }
-            }
+
         
         return
             [
@@ -966,52 +969,78 @@ class HexGraph {
             ]
     }
     
-    private static let PASSWORD =
-        AL(["LOGIN", "LOGOUT", "TRY PASSWORD", "REMEMBER", "TRY REMEMBER", "PASSWORD", "TRY PASSWORD"]) {
-            R("TRY?") {
-                AL("Y") {
-                    R("*****") {
-                        AL("ELENA") {
-                            FINISH(with: .dawn)
-                        }
-                        ALL {
-                            R("WRONG NEXT?") {
-                                AL("Y") {
-                                    R("*****") {
-                                        AL("ELENA") {
-                                            FINISH(with: .dawn)
-                                        }
-                                        ALL {
-                                            R("WRONG NEXT?") {
-                                                AL("Y") {
-                                                    R("*****") {
-                                                        AL("ELENA") {
-                                                            FINISH(with: .dawn)
-                                                        }
-                                                        ALL {
-                                                            FINISH(with: .sunset)
-                                                        }
-                                                    }
-                                                }
-                                                AL("N") {
-                                                    R("OK")
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                AL("N") {
-                                    R("OK")
+    private static var PASSWORD: Edge {
+        let Y = ["YES", "Y"]
+        let N = ["NO", "N"]
+        
+        let HAPPY_END =
+            AL("ELENA") {
+                FINISH(with: .dawn)
+            }
+        
+        let SAD_END =
+            ALL {
+                FINISH( with: .sunset)
+            }
+        
+        
+        let THIRD_TRY =
+            ALL {
+                R("WRONG NEXT?") {
+                    AL(Y) {
+                        R("*****") {
+                            ALL {
+                                EITHER(left: SAD_END, right: HAPPY_END) { ctx, _ in
+                                    ctx.input == "ELENA"
                                 }
                             }
                         }
                     }
-                }
-                AL("N") {
-                    R("OK")
+                    AL(N) {
+                        R("OK")
+                    }
                 }
             }
-        }
+        
+        let SECOND_TRY =
+            ALL {
+                R("WRONG NEXT?") {
+                    AL(Y) {
+                        R("*****") {
+                            ALL {
+                                EITHER(left: THIRD_TRY, right: HAPPY_END) { ctx, _ in
+                                    ctx.input == "ELENA"
+                                }
+                            }
+                        }
+                    }
+                    AL(N) {
+                        R("OK")
+                    }
+                }
+            }
+        
+        let FIRST_TRY =
+            ALL {
+                EITHER(left: SECOND_TRY, right: HAPPY_END) { ctx, _ in
+                    ctx.input == "ELENA"
+                }
+            }
+        
+        return
+            AL(["LOGIN", "LOGOUT", "REMEMBER", "PASSWORD", "TRY PASSWORD"]) {
+                R("Y/N?") {
+                    AL(Y) {
+                        R("*****") {
+                            FIRST_TRY
+                        }
+                    }
+                    AL(N) {
+                        R("OK")
+                    }
+                }
+            }
+    }
     
     private static let CLUE =
         AL(["CLUE", "CLUELESS", "WHAT IS HEX?"]) {

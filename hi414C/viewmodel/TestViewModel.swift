@@ -109,7 +109,7 @@ class TestViewModel: ObservableObject, Resetable {
     
     func reset() {
         self.level(reset: true)
-        self.radix(of: .hex)
+        self.radix(of: .bin)
         self.difficulty(.easy)
     }
 }
