@@ -22,9 +22,10 @@ struct CathodeView<Content: View>: View {
             BlurIn(of: themeVM.terminal.cathode.blurIn)
                 .opacity(0.2)
             
+            /*
             RefreshWave(of: themeVM.terminal.cathode.wave)
                 .opacity(0.09)
-            
+            */
             content
         }
     }

@@ -106,6 +106,8 @@ struct ReloadButton: View {
     @State var animated = false
     @State var disabled = false
     
+    private var DELAY: Double = 0
+    
     var action: () -> Void
     
     init(perform action: @escaping () -> Void = {}) {
@@ -127,10 +129,10 @@ struct ReloadButton: View {
             if !disabled {
                 self.animated = true
                 self.disabled = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + DELAY) { // 1.7
                     self.animated = false
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + DELAY) { // 2
                     self.disabled = false
                     action()
                 }

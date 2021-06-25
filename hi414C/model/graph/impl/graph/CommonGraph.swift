@@ -802,7 +802,41 @@ class CommonGraph {
             }
         }
     
-
-    
-    
+    static var _RADIX: [Edge] {
+        let SWITCH_TO_BIN =
+            AL(["CHANGE TO BINARY", "SWITCH TO BINARY"]) {
+                R("Y/N?") {
+                    AL(["YES", "Y"]) {
+                        RADIX("BIN NOW", radix: .bin)
+                    }
+                    AL(["NO", "N"]) {
+                        R("OK")
+                    }
+                }
+            }
+        
+        let SWITCH_TO_HEX =
+            AL(["CHANGE TO HEX", "SWITCH TO HEX"]) {
+                R("Y/N?") {
+                    AL(["YES", "Y"]) {
+                        RADIX("HEX NOW", radix: .hex)
+                    }
+                    AL(["NO", "N"]) {
+                        R("OK")
+                    }
+                }
+            }
+        
+        return [
+            AL(["CHANGE RADIX", "SWITCH RADIX", "CAN YOU CHANGE BASE?", "CAN YOU CHANGE BASE?", "CAN YOU CHANGE RADIX?", "CAN YOU SWITCH RADIX?", "BASE", "RADIX"]) {
+                R("WHAT?") {
+                    ["BINARY", "BIN"] + SWITCH_TO_BIN
+                    ["HEXADECIMAL", "HEX"] + SWITCH_TO_HEX
+                }
+            },
+            SWITCH_TO_BIN,
+            SWITCH_TO_HEX
+        ]
+        
+    }
 }

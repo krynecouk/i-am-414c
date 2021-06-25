@@ -103,9 +103,9 @@ class BinGraph {
             COMMON.OPEN
             COMMON.END
             COMMON.KNOCK
+            COMMON._RADIX
             
             BIN._HI
-
             BIN.I
             BIN._AL
         }
@@ -765,7 +765,7 @@ class BinGraph {
 
     private static var EXECUTE: Edge {
         let FIX =
-            R("Y/N") {
+            R("Y/N?") {
                 AL(["YES", "Y"]) {
                     UPGRADE()
                 }

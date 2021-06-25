@@ -26,6 +26,7 @@ typealias CMD = CmdNode
 typealias DANCE = DanceNode
 typealias MUSIC = MusicNode
 typealias MATH = MathNode
+typealias RADIX = RadixNode
 
 typealias AL = TestEdge
 typealias ALL = TraverseAllEdge

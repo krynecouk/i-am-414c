@@ -173,6 +173,7 @@
 		26BEC22C25DD3B0A0035065E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEC22B25DD3B0A0035065E /* ContentView.swift */; };
 		26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BEC22D25DD3B0B0035065E /* Assets.xcassets */; };
 		26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BEC23025DD3B0B0035065E /* Preview Assets.xcassets */; };
+		26C52883268628AA000EA235 /* RadixNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52882268628AA000EA235 /* RadixNode.swift */; };
 		26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */; };
 		26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
@@ -419,6 +420,7 @@
 		26BEC22D25DD3B0B0035065E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26BEC23025DD3B0B0035065E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		26BEC23225DD3B0B0035065E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26C52882268628AA000EA235 /* RadixNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixNode.swift; sourceTree = "<group>"; };
 		26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtShaker.swift; sourceTree = "<group>"; };
 		26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIIArtShakerTests.swift; path = hi414CTests/model/ascii/art/ASCIIArtShakerTests.swift; sourceTree = SOURCE_ROOT; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 				2684EC83267FA60600AAC7F5 /* DanceNode.swift */,
 				2684EC87267FAE0F00AAC7F5 /* MusicNode.swift */,
 				2684EC90267FDCE700AAC7F5 /* MathNode.swift */,
+				26C52882268628AA000EA235 /* RadixNode.swift */,
 			);
 			path = node;
 			sourceTree = "<group>";
@@ -1514,6 +1517,7 @@
 				26F7A6D925FA592200F04156 /* TestEdge.swift in Sources */,
 				2678D96D260E4D2700DDB40F /* KeyboardKeyView.swift in Sources */,
 				2684EC88267FAE0F00AAC7F5 /* MusicNode.swift in Sources */,
+				26C52883268628AA000EA235 /* RadixNode.swift in Sources */,
 				26B61344266BBE6C001F6D7D /* GameOverDao.swift in Sources */,
 				263612532636F8F200341B60 /* TerminalHelpTest.swift in Sources */,
 				269765542627367A00775D71 /* EquationRadix.swift in Sources */,

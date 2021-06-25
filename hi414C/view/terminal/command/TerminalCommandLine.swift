@@ -21,7 +21,7 @@ struct TerminalCommandLine: View {
                         Text(String(char))
                             .offset(y: 4)
                             .withTheme(themeVM.terminal.cli.text.view)
-                            .fadeOut(speed: themeVM.terminal.cli.text.bloom.speed, color: themeVM.terminal.cli.text.bloom.color)
+                            //.fadeOut(speed: themeVM.terminal.cli.text.bloom.speed, color: themeVM.terminal.cli.text.bloom.color)
                             .padding(.trailing, 4)
                     }
                     TerminalCommandCursor(theme: themeVM.terminal.cli.cursor)
