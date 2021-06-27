@@ -74,11 +74,11 @@ struct TerminalHelpLine: View {
     func QuitButton(_ text: String) -> some View {
         Button(action: {
             Sound.of(.delete).play()
-            if uiVM.detail.0 == true {
-                uiVM.detail = (false, false)
-            }
             withAnimation {
                 segueVM.close()
+                if uiVM.detail.0 == true {
+                    uiVM.detail = (false, false)
+                }
                 uiVM.isHelp = false
             }
         }) {

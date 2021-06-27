@@ -15,6 +15,8 @@ struct TerminalCommandSegue: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var segueVM: SegueViewModel
     
+    @State var modifier: Sound = Sound.of(.modifier)
+    
     init() {
         print("TerminalSegue")
     }
@@ -34,6 +36,7 @@ struct TerminalCommandSegue: View {
                     withAnimation {
                         uiVM.isHelp = uiVM.isHelp ? false : true
                     }
+                    modifier.play()
                     return
                 }
                 if (testVM.test != nil) {
