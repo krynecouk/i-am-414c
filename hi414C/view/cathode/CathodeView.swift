@@ -20,7 +20,7 @@ struct CathodeView<Content: View>: View {
         ZStack {
             Curtain(of: themeVM.terminal.cathode.background)
             BlurIn(of: themeVM.terminal.cathode.blurIn)
-                .opacity(0.2)
+                .opacity(0.22)
             
             /*
             RefreshWave(of: themeVM.terminal.cathode.wave)
