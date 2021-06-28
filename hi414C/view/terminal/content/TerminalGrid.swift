@@ -21,6 +21,7 @@ struct TerminalGrid: View {
     @State var grid: GridType = .adaptive
     @State var printedSymbols: Set<SymbolId> = []
     @State var printedMsgs: Set<MessageId> = []
+    @State var printedTests: Set<UUID> = []
     @State var solved: [ASCIISymbol] = []
     @State var wide = UIScreen.main.bounds.width > 500
     
@@ -61,6 +62,9 @@ struct TerminalGrid: View {
                                     self.printedSymbols = []
                                     self.solved = []
                                 }
+                                if !self.printedTests.isEmpty {
+                                    self.printedTests = []
+                                }
                                 if !self.printedMsgs.contains(item.id) {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                         self.printedMsgs.insert(item.id)
@@ -85,7 +89,7 @@ struct TerminalGrid: View {
                 if case let .test(test, items, active) = item.type {
                     let symbolId = TerminalSymbol.id(from: test)
                     if !uiVM.isHelp && (!uiVM.detail.is || (uiVM.detail.is && active)) {
-                        TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty)
+                        TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty && !printedTests.contains(test.id))
                             .matchedGeometryEffect(id: symbolId, in: ns, properties: .position, isSource: false)
                             .onAppear {
                                 if uiVM.current != .test {
@@ -94,6 +98,11 @@ struct TerminalGrid: View {
                                 }
                                 if !printedMsgs.isEmpty {
                                     printedMsgs = []
+                                }
+                            }
+                            .onChange(of: active) { active in
+                                if active && !printedTests.contains(test.id) {
+                                    self.printedTests.insert(test.id)
                                 }
                             }
                     }
