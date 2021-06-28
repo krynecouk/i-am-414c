@@ -25,6 +25,7 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 - read: https://useyourloaf.com/blog/xcode-visual-memory-debugger/
 - monitor memory usage over time
 - text analyzer: https://developer.apple.com/documentation/naturallanguage/finding_similarities_between_pieces_of_text
+- Sound insntances
 
 ### Visuals
 

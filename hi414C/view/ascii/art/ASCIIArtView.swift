@@ -116,7 +116,8 @@ struct ASCIIArtView: View {
                     offset: (
                         x: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.x,
                         y: !shakeable || shakeLines[idx] == nil ? 0 : shakeLines[idx]!.y
-                    )
+                    ),
+                    shadow: theme.shadow
                 )
             }
         }

@@ -30,7 +30,7 @@ struct FigletView: View {
         Group {
             ForEach(figlets.map { Item($0) }) { item in
                 ASCIIArtView(item.content, theme: ArtTheme(
-                    view: theme.view, animations: theme.animations
+                    view: theme.view, animations: theme.animations, shadow: theme.shadow
                 ))
             }
         }

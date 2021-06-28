@@ -145,7 +145,8 @@ class Theme: Themable {
                         font: font.robot,
                         color: color.primary.value
                     ),
-                    animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary.value)]
+                    animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary.value)],
+                    shadow: true
                 ),
                 test: TestTheme(
                     active: TestTheme.Active(
@@ -196,7 +197,8 @@ class Theme: Themable {
                             .print(dt: 0.3, delay: 0, animation: .none),
                             //.shake(dt: 0.8, force: 1, type: .wave, animation: .none),
                             .bloom(speed: 0.4, color: color.primary.value)
-                        ]
+                        ],
+                        shadow: true
                     )
                 )
             ),
