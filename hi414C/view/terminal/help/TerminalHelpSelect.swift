@@ -62,8 +62,8 @@ struct TerminalHelpSelect: View {
                     segueVM.setChatSize((.infinity, 140))
                     segueVM.setSettingsSize((.infinity, 95))
                 } else {
-                    segueVM.setLearnSize((.infinity, 200))
-                    segueVM.setChatSize((.infinity, 200))
+                    segueVM.setLearnSize((.infinity, 270))
+                    segueVM.setChatSize((.infinity, 270))
                     segueVM.setSettingsSize((.infinity, 200))
                 }
             }

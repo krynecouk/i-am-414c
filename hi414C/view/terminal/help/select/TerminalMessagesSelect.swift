@@ -19,7 +19,7 @@ struct TerminalMessagesSelect: View {
     var body: some View {
         Group {
             ForEach(chatVM.current.replies.map { Item($0) }) { item in
-                MessageButton(item.content)
+                MessageButton(item.content, withBorder: true)
             }
             ForEach(chatVM.root.replies.prefix(pageLimit).map { Item($0) }) { item in
                 MessageButton(item.content)
@@ -52,12 +52,12 @@ struct TerminalMessagesSelect: View {
     func MessageNoReply(_ text: String = "N/A") -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.noMessageButton)
             .padding([.leading, .trailing], 25)
-            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+            .background(RoundedBackground())
     }
     
-    func MessageButton(_ text: String) -> some View {
+    func MessageButton(_ text: String, withBorder: Bool = false) -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
-            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+            .background(RoundedBackground(withBorder: withBorder))
             .onTapGesture {
                 Sound.of(.click).play()
                 uiVM.isHelp = false
@@ -80,13 +80,24 @@ struct TerminalMessagesSelect: View {
 }
 
 struct RoundedBackground: View {
-    let color: Color?
+    @EnvironmentObject var themeVM: ThemeViewModel
+    
+    var withBorder = false
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 35)
-            .fill(self.color ?? Color.clear)
+        let Rect = RoundedRectangle(cornerRadius: 35)
+            .fill(themeVM.terminal.help.history.al.background ?? Color.clear)
         
-            .padding([.leading, .trailing], 10)
+        if withBorder {
+            Rect
+                .overlay(
+                    RoundedRectangle(cornerRadius: 35)
+                        .stroke(themeVM.terminal.help.history.al.color, lineWidth: 3)
+                )
+        } else {
+            Rect
+                .padding([.leading, .trailing], 10)
+        }
     }
 }
 
@@ -112,7 +123,7 @@ struct ReloadButton: View {
         .offset(x: 2, y: 3.5)
         .padding([.top, .bottom], 8)
         .padding([.trailing, .leading], 25)
-        .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+        .background(RoundedBackground())
         .disabled(self.disabled)
         .onTapGesture {
             if !disabled {
