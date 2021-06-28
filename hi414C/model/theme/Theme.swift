@@ -343,12 +343,12 @@ class Theme: Themable {
                     messageButton: ViewTheme(
                         font: FontProps(.proggyTiny, 46),
                         color: color.secondary.contrast.opacity(0.8),
-                        background: color.secondary.value
+                        background: Color.clear
                     ),
                     noMessageButton: ViewTheme(
                         font: FontProps(.proggyTiny, 46),
                         color: color.secondary.contrast.opacity(0.3),
-                        background: color.secondary.value.opacity(0.3)
+                        background: Color.clear
                     ),
                     background: TerminalTheme.HelpLine.Background(
                         active: color.tertiary.value,

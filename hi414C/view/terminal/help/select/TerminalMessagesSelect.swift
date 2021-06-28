@@ -36,7 +36,6 @@ struct TerminalMessagesSelect: View {
                 self.pageLimit += 3
             }
         }
-
     }
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -48,18 +47,17 @@ struct TerminalMessagesSelect: View {
             .offset(x: 2, y: 3.5)
             .padding([.top, .bottom], 8)
             .padding([.trailing, .leading], 25)
-
     }
     
     func MessageNoReply(_ text: String = "N/A") -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.noMessageButton)
             .padding([.leading, .trailing], 25)
-            .background(RoundedBackground())
+            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
     }
     
     func MessageButton(_ text: String) -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
-            .background(RoundedBackground())
+            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
             .onTapGesture {
                 Sound.of(.click).play()
                 uiVM.isHelp = false
@@ -82,9 +80,12 @@ struct TerminalMessagesSelect: View {
 }
 
 struct RoundedBackground: View {
-    @EnvironmentObject var themeVM: ThemeViewModel
+    let color: Color?
+    
     var body: some View {
-        RoundedRectangle(cornerRadius: 35).fill(themeVM.terminal.help.history.al.background ?? Color.clear)
+        RoundedRectangle(cornerRadius: 35)
+            .fill(self.color ?? Color.clear)
+        
             .padding([.leading, .trailing], 10)
     }
 }
@@ -111,7 +112,7 @@ struct ReloadButton: View {
         .offset(x: 2, y: 3.5)
         .padding([.top, .bottom], 8)
         .padding([.trailing, .leading], 25)
-        .background(RoundedBackground())
+        .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
         .disabled(self.disabled)
         .onTapGesture {
             if !disabled {
