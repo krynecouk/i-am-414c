@@ -332,7 +332,7 @@ class CommonGraph {
         }
 
     static let PROCESSOR =
-        AL(["WHAT IS THE STATUS OF YOUR PROCESSOR?", "PROCESSOR", "PROCESSOR UNIT"]) {
+        AL(["WHAT IS THE STATUS OF YOUR PROCESSOR?", "PROCESSOR?"]) {
             R("MALFUNCTION") {
                 IRREPAIRABLE
                 AL(["TURN OFF", "TURN THE PROCESSOR OFF"]) {
