@@ -21,11 +21,16 @@ struct TerminalMessageRow: View {
     }
     
     var body: some View {
-        ForEach(self.words.map { Item($0) }) { item in
-            MessageRow(of: item.content, wide: wide) {
-                TerminalMessage(item.content, theme: theme)
+        if wide {
+            TerminalMessage(self.text, theme: theme)
+        } else {
+            ForEach(self.words.map { Item($0) }) { item in
+                MessageRow(of: item.content, wide: wide) {
+                    TerminalMessage(item.content, theme: theme)
+                }
             }
         }
+
     }
 }
 

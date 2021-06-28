@@ -34,7 +34,6 @@ struct FigletView: View {
                 ))
             }
         }
-        .compositingGroup()
     }
 }
 

@@ -60,6 +60,7 @@ struct TerminalMessagesSelect: View {
             .background(RoundedBackground(withBorder: withBorder))
             .onTapGesture {
                 Sound.of(.click).play()
+                uiVM.detail = (false, false)
                 uiVM.isHelp = false
                 keyboardVM.set(text)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
