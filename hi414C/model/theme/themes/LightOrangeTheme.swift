@@ -18,6 +18,7 @@ class LightOrangeTheme: Theme {
             background: Color("WhiteLightOrange")
         )) {
         super.init(font: font, color: color)
+        super.terminal.cathode.blurIn = .clear
     }
     
 }
