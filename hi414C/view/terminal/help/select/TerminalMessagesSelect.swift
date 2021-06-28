@@ -93,7 +93,8 @@ struct RoundedBackground: View {
             Rect
                 .overlay(
                     RoundedRectangle(cornerRadius: 35)
-                        .stroke(themeVM.terminal.help.history.al.color, lineWidth: 3)
+                        .stroke(themeVM.terminal.help.history.al.color, lineWidth: 5)
+                        
                 )
         } else {
             Rect
