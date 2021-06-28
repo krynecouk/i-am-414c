@@ -12,7 +12,7 @@ class LightOrangeTheme: Theme {
     override init(
         font: FontTheme = FontTheme(),
         color: ColorTheme = ColorTheme(
-            primary: (Color("PrimaryLightOrange"), Color("SecondaryLightOrange")),
+            primary: (Color("PrimaryLightOrange"), Color("WhiteLightOrange")),
             secondary: (Color("SecondaryLightOrange"), Color("BlackLightOrange")),
             tertiary: (Color("TertiaryLightOrange"), Color("BlackLightOrange")),
             background: Color("WhiteLightOrange")

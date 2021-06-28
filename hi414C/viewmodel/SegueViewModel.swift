@@ -11,9 +11,9 @@ class SegueViewModel: ObservableObject {
     static let header: Size = (.infinity, 64)
     
     @Published private(set) var segue: Size = header
-    @Published private(set) var help: Size = (.infinity, 200)
-    @Published private(set) var chat: Size = (.infinity, 100)
-    @Published private(set) var settings: Size = (.infinity, 200)
+    @Published private(set) var learn: Size = (.infinity, 150)
+    @Published private(set) var chat: Size = (.infinity, 150)
+    @Published private(set) var settings: Size = (.infinity, 150)
     @Published private(set) var keyboard: Size = (.infinity, 200)
     @Published private(set) var isOpen: Bool = false
     @Published private(set) var opened: SegueType?
@@ -36,8 +36,8 @@ class SegueViewModel: ObservableObject {
         self.keyboard = size
     }
     
-    func setHelpSize(_ size: Size) {
-        self.help = size
+    func setLearnSize(_ size: Size) {
+        self.learn = size
     }
     
     func setSettingsSize(_ size: Size) {

@@ -28,7 +28,7 @@ struct TerminalHelpSegue: View {
                 segueVM.setSegueSize((.infinity, getSegueH(opened)))
             }
         }
-        .onReceive(segueVM.$help) { _ in
+        .onReceive(segueVM.$learn) { _ in
             segueVM.close()
         }
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
@@ -37,7 +37,7 @@ struct TerminalHelpSegue: View {
     func getSegueH(_ opened: SegueType?) -> CGFloat {
         switch opened {
         case .learn:
-            return SegueViewModel.header.height + segueVM.help.height
+            return SegueViewModel.header.height + segueVM.learn.height
         case .chat:
             return SegueViewModel.header.height + segueVM.chat.height
         case .settings:

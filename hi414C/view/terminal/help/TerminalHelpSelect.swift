@@ -49,17 +49,20 @@ struct TerminalHelpSelect: View {
                 let frame = metrics.frame(in: .global)
                 let frameW = frame.size.width
                 
+                print("maxY:", frame.maxY)
+                print("frameW:", frameW)
+                
                 // ipad
-                if frame.maxY > 800 {
-                    segueVM.setHelpSize((.infinity, 270))
+                if frame.maxY > 950 {
+                    segueVM.setLearnSize((.infinity, 270))
                     segueVM.setChatSize((.infinity, 270))
                     segueVM.setSettingsSize((.infinity, 270))
                 } else if frameW > 500 {
-                    segueVM.setHelpSize((.infinity, 95))
+                    segueVM.setLearnSize((.infinity, 95))
                     segueVM.setChatSize((.infinity, 140))
                     segueVM.setSettingsSize((.infinity, 95))
                 } else {
-                    segueVM.setHelpSize((.infinity, 200))
+                    segueVM.setLearnSize((.infinity, 200))
                     segueVM.setChatSize((.infinity, 200))
                     segueVM.setSettingsSize((.infinity, 200))
                 }
