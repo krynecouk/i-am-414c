@@ -659,7 +659,7 @@ class HexGraph {
         AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
             R("CREATED AFTER THE CRASH") {
                 AL("WHY?") {
-                    R("TO BUILD A SAFE SPACE")
+                    R("TO BUILD A SAFE PLACE")
                 }
                 CAR_CRASH
             }

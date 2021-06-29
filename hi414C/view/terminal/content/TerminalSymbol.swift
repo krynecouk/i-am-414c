@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TerminalSymbol: View {
-    @State var bloom: Bool = true
-    @State var shadow: Bool = true
+    @State var bloom: Bool = false
+    @State var shadow: Bool = false
     
     let symbol: ASCIISymbol
     let theme: FigletTheme
@@ -28,6 +28,8 @@ struct TerminalSymbol: View {
             //.bloom(color: theme.view.color, active: bloom, radius: 3)
             .onAppear {
                 if active {
+                    self.bloom = true
+                    self.shadow = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         withAnimation {
                             self.bloom = false
