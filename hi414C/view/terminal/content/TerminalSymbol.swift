@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TerminalSymbol: View {
     @State var bloom: Bool = true
+    @State var shadow: Bool = true
     
     let symbol: ASCIISymbol
     let theme: FigletTheme
@@ -22,7 +23,7 @@ struct TerminalSymbol: View {
     }
     
     var body: some View {
-        FigletView(symbol.rawValue, theme: active ? theme : theme.withAnimation([]))
+        FigletView([symbol], theme: active ? theme : theme.withAnimation([]), shadow: self.shadow)
             .opacity(bloom ? 1 : 0.2)
             //.bloom(color: theme.view.color, active: bloom, radius: 3)
             .onAppear {
@@ -30,10 +31,12 @@ struct TerminalSymbol: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         withAnimation {
                             self.bloom = false
+                            self.shadow = false
                         }
                     }
                 } else {
                     self.bloom = false
+                    self.shadow = false
                 }
             }
     }

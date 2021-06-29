@@ -11,6 +11,7 @@ struct TerminalTestThemed: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var testVM: TestViewModel
     @State var bloom = false
+    @State var shadow = false
     
     let delay: Double = 2.2
     
@@ -30,7 +31,7 @@ struct TerminalTestThemed: View {
     }
     
     var body: some View {
-        TerminalTest(items, theme: (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.sign), wide: wide)
+        TerminalTest(items, theme: (themeVM.terminal.grid.test.active.figlet, themeVM.terminal.grid.test.active.sign), wide: wide, shadow: self.shadow)
             //.bloom(color: themeVM.terminal.grid.test.active.figlet.view.color, active: bloom, radius: 5)
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
@@ -39,10 +40,12 @@ struct TerminalTestThemed: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + self.delay) {
                             withAnimation {
                                 self.bloom = true
+                                self.shadow = true
                             }
                         }
                     } else {
                         self.bloom = true
+                        self.shadow = true
                     }
                 }
             }
@@ -51,6 +54,7 @@ struct TerminalTestThemed: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + self.delay) {
                         withAnimation {
                             self.bloom = true
+                            self.shadow = true
                         }
                     }
                 }

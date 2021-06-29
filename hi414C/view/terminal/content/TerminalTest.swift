@@ -16,24 +16,26 @@ struct TerminalTest: View {
         sign: LiteFigletTheme
     )
     let wide: Bool
+    let shadow: Bool
     
-    init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, LiteFigletTheme), wide: Bool = false) {
+    init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, LiteFigletTheme), wide: Bool = false, shadow: Bool = false) {
         print("TerminalTest")
         self.items = items
         self.theme = theme
         self.wide = wide
+        self.shadow = shadow
     }
     
     var body: some View {
         ForEach(items, id: \.id) { item in
             if case let .num(chars) = item.type {
                 DetailRow(of: chars, wide: wide) {
-                    LiteFigletView(String(chars), theme: theme.num)
+                    LiteFigletView(String(chars), theme: theme.num, shadow: self.shadow)
                 }
             }
             if case let .sign(chars) = item.type {
                 DetailRow(of: chars, wide: wide) {
-                    LiteFigletView(String(chars), theme: theme.sign)
+                    LiteFigletView(String(chars), theme: theme.sign, shadow: self.shadow)
                 }
             }
         }

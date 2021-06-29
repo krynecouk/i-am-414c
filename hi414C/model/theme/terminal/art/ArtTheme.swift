@@ -11,13 +11,11 @@ struct FigletTheme {
     var typeface: FigletTypeface = .ansi()
     var view: ViewTheme = ViewTheme()
     var animations: [ArtAnimation] = [.print(dt: 0.3), .shake(dt: 0.8, force: 1, type: .wave)]
-    var shadow: Bool = false
 }
 
 struct LiteFigletTheme {
     var typeface: FigletTypeface = .ansi()
     var view: ViewTheme = ViewTheme()
-    var shadow: Bool = false
 }
 
 extension LiteFigletTheme {

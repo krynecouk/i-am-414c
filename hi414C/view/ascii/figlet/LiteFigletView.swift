@@ -10,40 +10,39 @@ import SwiftUI
 struct LiteFigletView: View {
     let figlets: [Figlet]
     var theme: LiteFigletTheme
+    var shadow: Bool
     
-    init(_ content: String, theme: LiteFigletTheme = LiteFigletTheme()) {
-        self.init(content.map { ASCIISymbol.from(String($0)) }, theme: theme)
+    init(_ content: String, theme: LiteFigletTheme = LiteFigletTheme(), shadow: Bool = false) {
+        self.init(content.map { ASCIISymbol.from(String($0)) }, theme: theme, shadow: shadow)
     }
     
-    init(_ content: ASCIISymbol, theme: LiteFigletTheme = LiteFigletTheme()) {
-        self.init([content], theme: theme)
+    init(_ content: ASCIISymbol, theme: LiteFigletTheme = LiteFigletTheme(), shadow: Bool = false) {
+        self.init([content], theme: theme, shadow: shadow)
     }
     
-    init(_ content: [ASCIISymbol], theme: LiteFigletTheme = LiteFigletTheme()) {
+    init(_ content: [ASCIISymbol], theme: LiteFigletTheme = LiteFigletTheme(), shadow: Bool = false) {
         self.figlets = content.map { symbol in
             return Figlet.of(symbol, typeface: theme.typeface)
         }
         self.theme = theme
+        self.shadow = shadow
     }
     
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
                 let figletText = figlets[i].lines.joined(separator: "\n")
-                if theme.shadow {
-                    ZStack {
+                ZStack {
+                    if self.shadow {
                         Text(figletText)
                             .opacity(0.3)
                             .offset(x: 5, y: 5)
                             .withTheme(theme.view)
-                        
-                        Text(figletText)
-                            .withTheme(theme.view)
                     }
-                } else {
                     Text(figletText)
                         .withTheme(theme.view)
                 }
+                
             }
         }
     }

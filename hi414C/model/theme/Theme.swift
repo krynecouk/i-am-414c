@@ -145,8 +145,7 @@ class Theme: Themable {
                         font: font.robot,
                         color: color.primary.value
                     ),
-                    animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary.value)],
-                    shadow: true
+                    animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary.value)]
                 ),
                 test: TestTheme(
                     active: TestTheme.Active(
@@ -155,16 +154,14 @@ class Theme: Themable {
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.primary.value
-                            ),
-                            shadow: true
+                            )
                         ),
                         sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: color.secondary.contrast.opacity(0.7)
-                            ),
-                            shadow: true
+                                color: color.secondary.contrast
+                            )
                         )
                     ),
                     passive: TestTheme.Passive(
@@ -173,16 +170,14 @@ class Theme: Themable {
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.primary.value.opacity(0.2)
-                            ),
-                            shadow: false
+                            )
                         ),
                         sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
-                                color: color.secondary.contrast.opacity(0.7)
-                            ),
-                            shadow: false
+                                color: color.secondary.contrast
+                            )
                         )
                     ),
                     animation: TestTheme.TestAnimation(
@@ -201,8 +196,7 @@ class Theme: Themable {
                             .print(dt: 0.3, delay: 0, animation: .none),
                             //.shake(dt: 0.8, force: 1, type: .wave, animation: .none),
                             .bloom(speed: 0.4, color: color.primary.value)
-                        ],
-                        shadow: true
+                        ]
                     )
                 )
             ),

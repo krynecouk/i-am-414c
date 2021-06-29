@@ -49,7 +49,7 @@ struct TerminalMessage: View {
     }
     
     var body: some View {
-        FigletView(text, theme: theme)
+        FigletView(text, theme: theme, shadow: true)
     }
 }
 

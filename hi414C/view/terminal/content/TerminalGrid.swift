@@ -79,7 +79,7 @@ struct TerminalGrid: View {
                             .matchedGeometryEffect(id: item.id, in: ns)
                             .onAppear {
                                 if !self.printedSymbols.contains(item.id) {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                         self.printedSymbols.insert(item.id)
                                     }
                                 }
