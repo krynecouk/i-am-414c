@@ -12,8 +12,8 @@ class PanicTheme: Theme {
     init(font: FontTheme, color: ColorTheme, styled: Bool = false) {
         super.init(font: font, color: color)
         if styled {
-            self.terminal.grid.test.active.figlet.typeface = .ansi(.shadow)
-            self.terminal.grid.test.passive.figlet.typeface = .ansi(.shadow)
+            self.terminal.grid.test.figlet.typeface = .ansi(.shadow)
+            self.terminal.grid.test.figlet.typeface = .ansi(.shadow)
         }
 
         self.terminal.grid.message.figlet.animations = [

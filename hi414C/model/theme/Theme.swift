@@ -148,36 +148,18 @@ class Theme: Themable {
                     animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary.value)]
                 ),
                 test: TestTheme(
-                    active: TestTheme.Active(
-                        figlet: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.primary.value
-                            )
-                        ),
-                        sign: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.secondary.contrast
-                            )
+                    figlet: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: font.robot,
+                            color: color.primary.value
                         )
                     ),
-                    passive: TestTheme.Passive(
-                        figlet: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.primary.value.opacity(0.2)
-                            )
-                        ),
-                        sign: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.secondary.contrast
-                            )
+                    sign: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: font.robot,
+                            color: color.secondary.contrast
                         )
                     ),
                     animation: TestTheme.TestAnimation(
@@ -203,37 +185,18 @@ class Theme: Themable {
             help: TerminalTheme.Help(
                 background: color.primary.value.opacity(0.8),
                 test: TestTheme(
-                    active: TestTheme.Active(
-                        figlet: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.primary.contrast
-                            )
-                        ),
-                        sign: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.tertiary.contrast.opacity(0.7)
-                            )
+                    figlet: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: font.robot,
+                            color: color.primary.contrast
                         )
                     ),
-                    // not needed
-                    passive: TestTheme.Passive(
-                        figlet: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.primary.value.opacity(0.2)
-                            )
-                        ),
-                        sign: LiteFigletTheme(
-                            typeface: .ansi(.regular),
-                            view: ViewTheme(
-                                font: font.robot,
-                                color: color.tertiary.value.opacity(0.2)
-                            )
+                    sign: LiteFigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: font.robot,
+                            color: color.tertiary.contrast
                         )
                     ),
                     animation: TestTheme.TestAnimation(
