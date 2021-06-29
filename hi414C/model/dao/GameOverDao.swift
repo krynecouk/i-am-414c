@@ -8,7 +8,7 @@
 struct GameOverDao {
     static var key: String = "414C_GameOver"
     
-    public static func store(_ finished: Bool) {
+    public static func store(finished: Bool) {
         Dao.store(key: key, content: finished)
     }
     

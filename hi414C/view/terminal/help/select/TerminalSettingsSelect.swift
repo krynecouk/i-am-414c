@@ -72,7 +72,6 @@ struct TerminalSettingsSelect: View {
                     Color.clear
                 }
                 HelpWarnButton("ok") {
-                    GameOverDao.store(false)
                     CmdDao.remove()
                     testVM.reset()
                     asciiVM.reset()

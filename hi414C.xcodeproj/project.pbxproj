@@ -176,6 +176,8 @@
 		26C52883268628AA000EA235 /* RadixNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52882268628AA000EA235 /* RadixNode.swift */; };
 		26C52886268AF9E7000EA235 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52885268AF9E7000EA235 /* Modal.swift */; };
 		26C52888268AFA61000EA235 /* HelpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52887268AFA61000EA235 /* HelpModal.swift */; };
+		26C5288A268B002D000EA235 /* HelpModalDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52889268B002D000EA235 /* HelpModalDao.swift */; };
+		26C5288C268B247A000EA235 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5288B268B247A000EA235 /* Blur.swift */; };
 		26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */; };
 		26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
@@ -425,6 +427,8 @@
 		26C52882268628AA000EA235 /* RadixNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixNode.swift; sourceTree = "<group>"; };
 		26C52885268AF9E7000EA235 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		26C52887268AFA61000EA235 /* HelpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModal.swift; sourceTree = "<group>"; };
+		26C52889268B002D000EA235 /* HelpModalDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModalDao.swift; sourceTree = "<group>"; };
+		26C5288B268B247A000EA235 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtShaker.swift; sourceTree = "<group>"; };
 		26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIIArtShakerTests.swift; path = hi414CTests/model/ascii/art/ASCIIArtShakerTests.swift; sourceTree = SOURCE_ROOT; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -836,6 +840,7 @@
 				266A43B7261C2F7800C7855C /* Shake.swift */,
 				26645DC12639B1930086F26C /* CircleTransition.swift */,
 				26645DC52639B2790086F26C /* IrisTransition.swift */,
+				26C5288B268B247A000EA235 /* Blur.swift */,
 			);
 			path = effects;
 			sourceTree = "<group>";
@@ -1189,6 +1194,7 @@
 				26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */,
 				26B61343266BBE6C001F6D7D /* GameOverDao.swift */,
 				26AE699B26764D5A001D5E4D /* CmdDao.swift */,
+				26C52889268B002D000EA235 /* HelpModalDao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -1575,6 +1581,7 @@
 				26EA2FD726541953004A78F2 /* HelpColorButton.swift in Sources */,
 				26AE699E267651E7001D5E4D /* CmdNode.swift in Sources */,
 				263612332631DB7800341B60 /* EquationType.swift in Sources */,
+				26C5288A268B002D000EA235 /* HelpModalDao.swift in Sources */,
 				269BCC872639A07900229E8A /* EdgeDrag.swift in Sources */,
 				269765382625F09700775D71 /* SUB.swift in Sources */,
 				2678D97E260E5D8700DDB40F /* KeyboardKey.swift in Sources */,
@@ -1653,6 +1660,7 @@
 				26EA301E265968F1004A78F2 /* GraphDao.swift in Sources */,
 				2636126B2637F70500341B60 /* TerminalFooter.swift in Sources */,
 				262F4B3E266E515400D14D52 /* RndNumNode.swift in Sources */,
+				26C5288C268B247A000EA235 /* Blur.swift in Sources */,
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
 				266F97FB2668CEBB0012619B /* GameOverModal.swift in Sources */,

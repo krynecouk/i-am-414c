@@ -17,7 +17,7 @@ struct GameOverModal: View {
         Modal(
             action: {
                 withAnimation {
-                    uiVM.isFinishedGame = false
+                    uiVM.finishGame()
                 }
             },
             theme: themeVM.intro.finish) {

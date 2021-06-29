@@ -24,10 +24,9 @@ class FinishNode: Node {
         toolkit.helpVM.reset()
         toolkit.themeVM.reset()
         toolkit.graphVM?.reset()
-        GameOverDao.store(true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()
-            toolkit.uiVM.isFinishedGame = true
+            toolkit.uiVM.finishGame()
             toolkit.uiVM.video = self.end
         }
     }

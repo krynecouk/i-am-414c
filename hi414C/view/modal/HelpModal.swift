@@ -11,14 +11,12 @@ struct HelpModal: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
-    let text = "*** Welcome! ***\nYou have entered help center.\n\nHere you can learn about binary, browse messaging history or change app settings.\n\nTIP: Next time swipe left for quick access to this screen. Single tap on binary to have it's formatted view."
+    let text = "*** Welcome! ***\nYou have entered help center.\n\nHere you can learn about binary, browse messaging history or change app settings.\n\nTIP#1: For a quicker access to this screen, swipe left. \n\nTIP#2: Use single tap in binary section to display its formatted view."
     
     var body: some View {
         Modal(
             action: {
-                withAnimation {
-                    // TODO
-                }
+                uiVM.closeHelp()
             },
             theme: themeVM.intro.finish) {
             Text(text)
@@ -27,9 +25,9 @@ struct HelpModal: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(themeVM.intro.finish.body.color)
         }
-        .frame(maxWidth: 600)
+        .frame(maxWidth: 600, maxHeight: 270)
+        .offset(y: -30)
     }
-    
 }
 
 struct HelpModal_Previews: PreviewProvider {

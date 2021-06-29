@@ -19,12 +19,15 @@ struct Modal<Content: View>: View {
     }
     
     var body: some View {
-        content
-            .padding(.top, 60)
-            .padding([.bottom], 20)
-            .padding([.trailing, .leading], 10)
-            .background(Modal)
-            .padding([.trailing, .leading], 30)
+        ScrollView {
+            content
+                .padding([.trailing, .leading], 12)
+                .padding(.bottom, 35)
+                .offset(y: 15)
+        }
+        .padding(.top, 40)
+        .background(Modal)
+        .padding([.trailing, .leading], 30)
     }
     
     var Modal: some View {
