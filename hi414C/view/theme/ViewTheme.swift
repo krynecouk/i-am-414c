@@ -74,7 +74,7 @@ extension View {
 }
 
 extension View {
-    func hidden(_ isHidden: Bool = true) -> some View {
-        self.modifier(HiddenViewModifier(isHidden: isHidden))
+    func hidden(if condition: Bool = true) -> some View {
+        self.modifier(HiddenViewModifier(isHidden: condition))
     }
 }

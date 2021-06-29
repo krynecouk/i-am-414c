@@ -25,8 +25,9 @@ struct HelpModal: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(themeVM.intro.finish.body.color)
         }
-        .frame(maxWidth: 600, maxHeight: 270)
-        .offset(y: -30)
+        .frame(maxWidth: 400, maxHeight: 550)
+        .padding(.top, 20)
+        .padding(.bottom, SegueViewModel.header.height)
     }
 }
 

@@ -18,11 +18,14 @@ struct TerminalContent: View {
                 let isHelpModal = uiVM.isHelp && !uiVM.isHelpModalClosed
                 TerminalGrid(items: items)
                     .blur(if: isHelpModal)
+                    .disabled(isHelpModal)
                 if uiVM.isHelp {
                     TerminalHelpMessages()
                         .blur(if: isHelpModal)
+                        .disabled(isHelpModal)
                     TerminalHelpSettings()
                         .blur(if: isHelpModal)
+                        .disabled(isHelpModal)
                     if !uiVM.isHelpModalClosed {
                         HelpModal()
                     }
