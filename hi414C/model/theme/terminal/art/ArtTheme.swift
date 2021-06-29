@@ -17,6 +17,7 @@ struct FigletTheme {
 struct LiteFigletTheme {
     var typeface: FigletTypeface = .ansi()
     var view: ViewTheme = ViewTheme()
+    var shadow: Bool = false
 }
 
 extension LiteFigletTheme {

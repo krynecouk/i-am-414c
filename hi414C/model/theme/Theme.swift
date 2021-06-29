@@ -155,14 +155,16 @@ class Theme: Themable {
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.primary.value
-                            )
+                            ),
+                            shadow: true
                         ),
                         sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.secondary.contrast.opacity(0.7)
-                            )
+                            ),
+                            shadow: true
                         )
                     ),
                     passive: TestTheme.Passive(
@@ -171,14 +173,16 @@ class Theme: Themable {
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.primary.value.opacity(0.2)
-                            )
+                            ),
+                            shadow: false
                         ),
                         sign: LiteFigletTheme(
                             typeface: .ansi(.regular),
                             view: ViewTheme(
                                 font: font.robot,
                                 color: color.secondary.contrast.opacity(0.7)
-                            )
+                            ),
+                            shadow: false
                         )
                     ),
                     animation: TestTheme.TestAnimation(

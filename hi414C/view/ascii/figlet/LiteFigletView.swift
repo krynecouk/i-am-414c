@@ -29,9 +29,21 @@ struct LiteFigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.indices) { i in
-                //let figlet = figlets[safe: i] ?? Figlet.of(.questionMark)
-                Text(figlets[i].lines.joined(separator: "\n"))
-                    .withTheme(theme.view)
+                let figletText = figlets[i].lines.joined(separator: "\n")
+                if theme.shadow {
+                    ZStack {
+                        Text(figletText)
+                            .opacity(0.3)
+                            .offset(x: 5, y: 5)
+                            .withTheme(theme.view)
+                        
+                        Text(figletText)
+                            .withTheme(theme.view)
+                    }
+                } else {
+                    Text(figletText)
+                        .withTheme(theme.view)
+                }
             }
         }
     }
