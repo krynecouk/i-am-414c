@@ -26,6 +26,7 @@ class UpgradeNode: Node {
         toolkit.graphVM?.visited = []
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()
+            toolkit.uiVM.closeHelp()
         }
     }
 }
