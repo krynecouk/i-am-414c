@@ -1,36 +1,11 @@
 //
-//  FinishedGameScreen.swift
+//  Modal.swift
 //  hi414C
 //
-//  Created by Darius Kryszczuk on 03.06.2021.
+//  Created by Darius Kryszczuk on 29.06.2021.
 //
 
 import SwiftUI
-
-struct FinishedGameScreen: View {
-    @EnvironmentObject var uiVM: UIViewModel
-    @EnvironmentObject var themeVM: ThemeViewModel
-    
-    let text = "*** Congratulations ***\nYou have finished the main story!\n\nContinue finding missing letters or start again at a different difficulty.\n\nThank you for playing!"
-    
-    var body: some View {
-        Modal(
-            action: {
-                withAnimation {
-                    uiVM.isFinishedGame = false
-                }
-            },
-            theme: themeVM.intro.finish) {
-            Text(text)
-                .lineSpacing(10)
-                .font(Font.of(props: themeVM.intro.finish.body.font))
-                .multilineTextAlignment(.center)
-                .foregroundColor(themeVM.intro.finish.body.color)
-        }
-        .frame(maxWidth: 600)
-    }
-    
-}
 
 struct Modal<Content: View>: View {
     let content: Content
@@ -92,15 +67,5 @@ struct Modal<Content: View>: View {
     var ModalBody: some View {
         Rectangle()
             .fill(theme.body.background ?? Color.clear)
-    }
-}
-
-struct FinishedGameScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        CathodeView {
-            FinishedGameScreen()
-        }
-        .withEnvironment()
-        
     }
 }

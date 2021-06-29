@@ -24,7 +24,7 @@ struct ContentView: View {
                     IntroScreen()
                 } else {
                     if uiVM.isFinishedGame {
-                        FinishedGameScreen()
+                        GameOverModal()
                     } else {
                         TerminalView()
                     }

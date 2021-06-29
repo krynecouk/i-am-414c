@@ -71,7 +71,7 @@
 		266CA42426441254001A07E0 /* HelpEdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA42326441254001A07E0 /* HelpEdgeDrag.swift */; };
 		266CA42A2645A617001A07E0 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4292645A617001A07E0 /* Collection.swift */; };
 		266F97F7266757050012619B /* WarnTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97F6266757050012619B /* WarnTheme.swift */; };
-		266F97FB2668CEBB0012619B /* FinishedGameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FA2668CEBB0012619B /* FinishedGameScreen.swift */; };
+		266F97FB2668CEBB0012619B /* GameOverModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FA2668CEBB0012619B /* GameOverModal.swift */; };
 		266F97FD26693A4E0012619B /* Resetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FC26693A4E0012619B /* Resetable.swift */; };
 		266F97FF2669452D0012619B /* FinishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FE2669452D0012619B /* FinishNode.swift */; };
 		266F9803266946620012619B /* ThemeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9802266946620012619B /* ThemeNode.swift */; };
@@ -174,6 +174,8 @@
 		26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BEC22D25DD3B0B0035065E /* Assets.xcassets */; };
 		26BEC23125DD3B0B0035065E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BEC23025DD3B0B0035065E /* Preview Assets.xcassets */; };
 		26C52883268628AA000EA235 /* RadixNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52882268628AA000EA235 /* RadixNode.swift */; };
+		26C52886268AF9E7000EA235 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52885268AF9E7000EA235 /* Modal.swift */; };
+		26C52888268AFA61000EA235 /* HelpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52887268AFA61000EA235 /* HelpModal.swift */; };
 		26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */; };
 		26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
@@ -317,7 +319,7 @@
 		266CA42326441254001A07E0 /* HelpEdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEdgeDrag.swift; sourceTree = "<group>"; };
 		266CA4292645A617001A07E0 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		266F97F6266757050012619B /* WarnTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnTheme.swift; sourceTree = "<group>"; };
-		266F97FA2668CEBB0012619B /* FinishedGameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGameScreen.swift; sourceTree = "<group>"; };
+		266F97FA2668CEBB0012619B /* GameOverModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverModal.swift; sourceTree = "<group>"; };
 		266F97FC26693A4E0012619B /* Resetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resetable.swift; sourceTree = "<group>"; };
 		266F97FE2669452D0012619B /* FinishNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishNode.swift; sourceTree = "<group>"; };
 		266F9802266946620012619B /* ThemeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNode.swift; sourceTree = "<group>"; };
@@ -421,6 +423,8 @@
 		26BEC23025DD3B0B0035065E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		26BEC23225DD3B0B0035065E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26C52882268628AA000EA235 /* RadixNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixNode.swift; sourceTree = "<group>"; };
+		26C52885268AF9E7000EA235 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		26C52887268AFA61000EA235 /* HelpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModal.swift; sourceTree = "<group>"; };
 		26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtShaker.swift; sourceTree = "<group>"; };
 		26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIIArtShakerTests.swift; path = hi414CTests/model/ascii/art/ASCIIArtShakerTests.swift; sourceTree = SOURCE_ROOT; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -787,6 +791,7 @@
 		267463DB25DED18000624D7C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				26C52884268AF9CB000EA235 /* modal */,
 				26EA2FE02655916D004A78F2 /* intro */,
 				269BCC852639A06800229E8A /* gesture */,
 				26500145260F312400414E89 /* device */,
@@ -1145,6 +1150,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		26C52884268AF9CB000EA235 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				26C52885268AF9E7000EA235 /* Modal.swift */,
+				266F97FA2668CEBB0012619B /* GameOverModal.swift */,
+				26C52887268AFA61000EA235 /* HelpModal.swift */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
 		26DA68C52609F55B00AF0583 /* ascii */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,7 +1229,6 @@
 			children = (
 				26EA2FE126559178004A78F2 /* Video.swift */,
 				26EA2FE326559186004A78F2 /* IntroScreen.swift */,
-				266F97FA2668CEBB0012619B /* FinishedGameScreen.swift */,
 			);
 			path = intro;
 			sourceTree = "<group>";
@@ -1575,9 +1589,11 @@
 				264404242619014000CA7EA1 /* Theme.swift in Sources */,
 				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26EA2FE7265639B3004A78F2 /* IntroTheme.swift in Sources */,
+				26C52886268AF9E7000EA235 /* Modal.swift in Sources */,
 				26500159260F3C6200414E89 /* Keyboards.swift in Sources */,
 				2665C9C7263C32B100CE724F /* TerminalMessage.swift in Sources */,
 				2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */,
+				26C52888268AFA61000EA235 /* HelpModal.swift in Sources */,
 				26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */,
 				26F00B62266ABD1C008DACE5 /* EchoNode.swift in Sources */,
 				26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */,
@@ -1639,7 +1655,7 @@
 				262F4B3E266E515400D14D52 /* RndNumNode.swift in Sources */,
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
-				266F97FB2668CEBB0012619B /* FinishedGameScreen.swift in Sources */,
+				266F97FB2668CEBB0012619B /* GameOverModal.swift in Sources */,
 				26E091022651C86E002E404D /* SunsetTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
