@@ -109,6 +109,5 @@ struct KeyboardView_Previews: PreviewProvider {
             KeyboardView(Keyboards.qwerty)
         }
         .withEnvironment()
-        .previewDisplayName("Portrait")
     }
 }

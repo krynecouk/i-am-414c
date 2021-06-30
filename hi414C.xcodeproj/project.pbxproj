@@ -124,7 +124,6 @@
 		2697655826273C1B00775D71 /* SHR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697655726273C1B00775D71 /* SHR.swift */; };
 		2697659C262DB14E00775D71 /* TerminalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2697659B262DB14E00775D71 /* TerminalGrid.swift */; };
 		269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765A3262DD6F000775D71 /* UIViewModel.swift */; };
-		269765A8262EBC3800775D71 /* ColSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765A7262EBC3800775D71 /* ColSpan.swift */; };
 		269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269765AB262EC32E00775D71 /* TerminalTest.swift */; };
 		269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */; };
 		269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC75263927DA00229E8A /* TerminalHelpLine.swift */; };
@@ -344,7 +343,6 @@
 		2697655726273C1B00775D71 /* SHR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHR.swift; sourceTree = "<group>"; };
 		2697659B262DB14E00775D71 /* TerminalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalGrid.swift; sourceTree = "<group>"; };
 		269765A3262DD6F000775D71 /* UIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewModel.swift; sourceTree = "<group>"; };
-		269765A7262EBC3800775D71 /* ColSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColSpan.swift; sourceTree = "<group>"; };
 		269765AB262EC32E00775D71 /* TerminalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTest.swift; sourceTree = "<group>"; };
 		269BCC6F263927B700229E8A /* TerminalHelpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSegue.swift; sourceTree = "<group>"; };
 		269BCC75263927DA00229E8A /* TerminalHelpLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpLine.swift; sourceTree = "<group>"; };
@@ -972,7 +970,6 @@
 			isa = PBXGroup;
 			children = (
 				26B10A2026027B08007E7B65 /* Grid.swift */,
-				269765A7262EBC3800775D71 /* ColSpan.swift */,
 				2665C9BA263AB41300CE724F /* Row.swift */,
 				2665C9C2263C0DC400CE724F /* DetailRow.swift */,
 				266CA417264191CD001A07E0 /* MessageRow.swift */,
@@ -1424,7 +1421,6 @@
 				26F00B60266AB92A008DACE5 /* HexGraph.swift in Sources */,
 				266A43B8261C2F7800C7855C /* Shake.swift in Sources */,
 				26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */,
-				269765A8262EBC3800775D71 /* ColSpan.swift in Sources */,
 				26851AB025E5751E004B1E2E /* ANSIShadowFiglets.swift in Sources */,
 				26EA2FD726541953004A78F2 /* HelpColorButton.swift in Sources */,
 				26AE699E267651E7001D5E4D /* CmdNode.swift in Sources */,

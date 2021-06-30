@@ -26,19 +26,6 @@ struct ViewThemeModifier: ViewModifier {
     }
 }
 
-struct HiddenViewModifier: ViewModifier {
-    let isHidden: Bool
-    
-    func body(content: Content) -> some View {
-        if isHidden {
-            content
-                .hidden()
-        } else {
-            content
-        }
-    }
-}
-
 struct FontProps {
     var name: FontName
     var size: CGFloat
@@ -70,11 +57,5 @@ extension Font {
 extension View {
     func withTheme(_ theme: ViewTheme) -> some View {
         self.modifier(ViewThemeModifier(theme: theme))
-    }
-}
-
-extension View {
-    func hidden(if condition: Bool = true) -> some View {
-        self.modifier(HiddenViewModifier(isHidden: condition))
     }
 }
