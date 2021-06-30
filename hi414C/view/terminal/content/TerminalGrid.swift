@@ -32,7 +32,6 @@ struct TerminalGrid: View {
     var items: [TerminalItem]
     
     init(items: [TerminalItem]) {
-        print("TerminalGrid")
         self.items = items
     }
     

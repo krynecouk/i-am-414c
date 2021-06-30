@@ -18,10 +18,6 @@ struct TerminalCommandSegue: View {
     let modifier: Sound = Sound.of(.modifier)
     let discover: Sound = Sound.of(.discover)
     
-    init() {
-        print("TerminalSegue")
-    }
-    
     var body: some View {
         VStack(spacing: 0) {
             TerminalCommandLine()

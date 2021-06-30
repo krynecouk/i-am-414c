@@ -19,9 +19,6 @@ class TestViewModel: ObservableObject, Resetable {
     private(set) var level: Int = TestDao.find() ?? 0
         
     func set(test: Test?) {
-        if let test = self.test {
-            print("current test: ", test.equation.toString())
-        }
         self.test = test
     }
     

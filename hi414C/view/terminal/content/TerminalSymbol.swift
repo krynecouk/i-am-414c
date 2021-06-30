@@ -16,7 +16,6 @@ struct TerminalSymbol: View {
     let active: Bool
     
     init(_ symbol: ASCIISymbol, active: Bool, theme: FigletTheme) {
-        print("TerminalSymbol")
         self.symbol = symbol
         self.active = active
         self.theme = theme

@@ -9,10 +9,6 @@ import SwiftUI
 struct TerminalHelpSegue: View {
     @EnvironmentObject var segueVM: SegueViewModel
     
-    init() {
-        print("TerminalHelpSegue")
-    }
-    
     var body: some View {
         VStack(spacing: 0) {
             TerminalHelpLine()

@@ -39,7 +39,6 @@ struct TerminalMessage: View {
     let theme: FigletTheme
     
     init(_ text: String, theme: FigletTheme) {
-        print("TerminalMessage")
         self.text = text
         self.theme = theme
     }

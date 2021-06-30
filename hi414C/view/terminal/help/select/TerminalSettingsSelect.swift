@@ -104,9 +104,6 @@ struct TerminalSettingsSelect: View {
                 .frame(width: isSmallPhone ? nil : 350)
                 .padding(.bottom, 20)
                 .padding(.top, 5)
-                .onAppear {
-                    print(UIScreen.main.bounds.width)
-                }
             if !isSmallPhone {
                 Color.clear
             }

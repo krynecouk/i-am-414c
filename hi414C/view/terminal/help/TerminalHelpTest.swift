@@ -14,7 +14,6 @@ struct TerminalHelpTest: View {
     let wide: Bool
     
     init(wide: Bool = false) {
-        print("TerminalHelp")
         self.wide = wide
     }
     

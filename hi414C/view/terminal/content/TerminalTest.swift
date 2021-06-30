@@ -19,7 +19,6 @@ struct TerminalTest: View {
     let shadow: Bool
     
     init(_ items: [TerminalTestItem], theme: (FigletTheme, FigletTheme), wide: Bool = false, shadow: Bool = false) {
-        print("TerminalTest")
         self.items = items
         self.theme = theme
         self.wide = wide
@@ -42,7 +41,6 @@ struct TerminalTest: View {
     }
     
     public static func getItems(id: UUID, equation: String) -> [TerminalTestItem] {
-        print("Calculating Test Items")
         var items: [TerminalTestItem] = []
         let chars = equation.map { $0 }
         
@@ -67,7 +65,6 @@ struct TerminalTest: View {
                 }
             }
         }
-        print(items)
         return items
     }
     

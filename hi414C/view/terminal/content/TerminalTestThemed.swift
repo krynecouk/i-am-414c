@@ -23,7 +23,6 @@ struct TerminalTestThemed: View {
     let withDelay: Bool
     
     init(_ test: Test, items: [TerminalTestItem], wide: Bool = false, active: Bool = false, withDelay: Bool = false) {
-        print("TerminalTestThemed")
         self.test = test
         self.items = items
         self.wide = wide

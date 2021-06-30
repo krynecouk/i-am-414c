@@ -22,7 +22,6 @@ class ASCIIViewModel: ObservableObject {
     }
     
     func add(symbol: ASCIISymbol) {
-        print("adding \(symbol)")
         self.symbols.insert(symbol)
         ASCIIDao.store(symbols)
     }

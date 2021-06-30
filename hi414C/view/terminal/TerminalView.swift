@@ -14,10 +14,6 @@ struct TerminalView: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var chatVM: ChatViewModel
     
-    init() {
-        print("TerminalView")
-    }
-    
     var body: some View {
         ZStack(alignment: .bottom) {
             let items = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
@@ -29,8 +25,6 @@ struct TerminalView: View {
     }
     
     private func getContent(from types: [TerminalContentType], ascii: Set<ASCIISymbol>) -> [TerminalItem] {
-        print("Calculating Terminal Content Items")
-
         var items: [TerminalItem] = []
         for type in types {
             if case let .test(tests) = type {

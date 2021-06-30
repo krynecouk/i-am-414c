@@ -49,9 +49,6 @@ struct TerminalHelpSelect: View {
                 let frame = metrics.frame(in: .global)
                 let frameW = frame.size.width
                 
-                print("maxY:", frame.maxY)
-                print("frameW:", frameW)
-                
                 // ipad
                 if frame.maxY > 800 {
                     segueVM.setLearnSize((.infinity, 270))

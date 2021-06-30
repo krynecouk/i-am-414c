@@ -10,10 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var uiVM: UIViewModel
     
-    init() {
-        print("WARN: CONTENT VIEW")
-    }
-    
     var body: some View {
         if let video = uiVM.video {
             Video(video)
