@@ -9,18 +9,18 @@ import SwiftUI
 
 struct LiteFigletView: View {
     let figlets: [Figlet]
-    var theme: LiteFigletTheme
+    var theme: FigletTheme
     var shadow: Bool
     
-    init(_ content: String, theme: LiteFigletTheme = LiteFigletTheme(), shadow: Bool = false) {
+    init(_ content: String, theme: FigletTheme = FigletTheme(), shadow: Bool = false) {
         self.init(content.map { ASCIISymbol.from(String($0)) }, theme: theme, shadow: shadow)
     }
     
-    init(_ content: ASCIISymbol, theme: LiteFigletTheme = LiteFigletTheme(), shadow: Bool = false) {
+    init(_ content: ASCIISymbol, theme: FigletTheme = FigletTheme(), shadow: Bool = false) {
         self.init([content], theme: theme, shadow: shadow)
     }
     
-    init(_ content: [ASCIISymbol], theme: LiteFigletTheme = LiteFigletTheme(), shadow: Bool = false) {
+    init(_ content: [ASCIISymbol], theme: FigletTheme = FigletTheme(), shadow: Bool = false) {
         self.figlets = content.map { symbol in
             return Figlet.of(symbol, typeface: theme.typeface)
         }

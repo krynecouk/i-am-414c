@@ -12,13 +12,13 @@ struct TerminalTest: View {
     
     let items: [TerminalTestItem]
     let theme: (
-        num: LiteFigletTheme,
-        sign: LiteFigletTheme
+        num: FigletTheme,
+        sign: FigletTheme
     )
     let wide: Bool
     let shadow: Bool
     
-    init(_ items: [TerminalTestItem], theme: (LiteFigletTheme, LiteFigletTheme), wide: Bool = false, shadow: Bool = false) {
+    init(_ items: [TerminalTestItem], theme: (FigletTheme, FigletTheme), wide: Bool = false, shadow: Bool = false) {
         print("TerminalTest")
         self.items = items
         self.theme = theme

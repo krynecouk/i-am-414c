@@ -141,14 +141,14 @@ class Theme: Themable {
                     animations: [.print(delay: 0.5), .bloom(speed: 0.8, color: color.primary.value)]
                 ),
                 test: TestTheme(
-                    figlet: LiteFigletTheme(
+                    figlet: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
                             color: color.primary.value
                         )
                     ),
-                    sign: LiteFigletTheme(
+                    sign: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
@@ -178,14 +178,14 @@ class Theme: Themable {
             help: TerminalTheme.Help(
                 background: color.primary.value.opacity(0.8),
                 test: TestTheme(
-                    figlet: LiteFigletTheme(
+                    figlet: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,
                             color: color.primary.contrast
                         )
                     ),
-                    sign: LiteFigletTheme(
+                    sign: FigletTheme(
                         typeface: .ansi(.regular),
                         view: ViewTheme(
                             font: font.robot,

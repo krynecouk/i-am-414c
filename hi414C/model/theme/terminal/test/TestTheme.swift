@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TestTheme {
-    var figlet: LiteFigletTheme
-    var sign: LiteFigletTheme
+    var figlet: FigletTheme
+    var sign: FigletTheme
     var animation: TestAnimation
     
     struct TestAnimation {
