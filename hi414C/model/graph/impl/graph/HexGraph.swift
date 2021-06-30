@@ -11,46 +11,47 @@ class HexGraph {
     static let HI =
         ROOT("HI") {
             HEX._HI
-            HEX._414C
             HEX.I
-            HEX.HELL
             HEX._AL
             HEX.YOU
+            HEX._414C
+            
             HEX.ASK
-            HEX.TELL_ME_MORE_ABOUT_YOUR_HISTORY
-            HEX.WHAT_IS_THE_MEANING_OF_YOU
-            HEX.WHAT_IS_THE_MEANING_OF_THIS_PLACE
             HEX.WHO
-            HEX.WAKE
-            HEX.FAMILY
-            HEX.DAUGHTER
-            HEX.JOKE
-            HEX.CAR_CRASH
-            HEX.COMA
-            HEX.LIVE
-            HEX.NAME
-            HEX.PASSWORD
-            HEX.CAUSE
-            HEX.ORIGIN
-            HEX.TELL
             HEX.WHERE
             HEX.WHY
             HEX.HOW
             HEX.WHAT
-            HEX.LIE
-            HEX.MEANING
             
+            HEX.NAME
+            HEX.HELP
+            HEX.MEANING
+            HEX.ORIGIN
+            HEX.TELL
+            HEX.CRASH
+            HEX.LIE
+            HEX.LIVE
             HEX.DIE
             HEX.REPAIR
             HEX.MEMORY
             HEX.REMEMBER
-            HEX.HELP
+            // LOGIN
+            // LOGOUT
+            HEX.WAKE
             HEX.SOIL
             HEX.HOPE
-            HEX.CLUE
             HEX.EXECUTE
-            HEX.PLOT
+            // COMMAND
             HEX.CLUE
+            HEX.PLOT
+            HEX.JOKE
+            HEX.HELL
+            
+            HEX.FAMILY
+            HEX.DAUGHTER
+            HEX.PASSWORD
+            HEX.COMA
+            HEX.CAUSE
             
             DAMAGES.ALL
             GENERIC.ALL
@@ -84,7 +85,7 @@ class HexGraph {
                     R("YOU ARE IN COMA") {
                         AL(["COMA", "COMA?", "COMA?!"]) {
                             R("AFTER A CRASH") {
-                                CAR_CRASH
+                                CRASH
                             }
                         }
                     }
@@ -99,19 +100,6 @@ class HexGraph {
             }
         }
     
-    private static let COMA =
-        AL(["COMA", "TELL ME ABOUT COMA"]) {
-            R("WHAT?") {
-                AL(["HOW LONG?", "HOW LONG AM I IN COMA?"]) {
-                    R("8 YEARS")
-                }
-                AL(["WHY", "WHY AM I IN COMA?"]) {
-                    R("CAR CRASH") {
-                        CAR_CRASH
-                    }
-                }
-            }
-        }
     
     private static let ASK =
         AL(["ASK", "CAN I ASK YOU SOMETHING?"]) {
@@ -272,14 +260,14 @@ class HexGraph {
         let WHY_ARE_YOU_THERE =
             AL(["WHY ARE YOU THERE?"]) {
                 R("CRASH") {
-                    CAR_CRASH
+                    CRASH
                 }
             }
         
         let WHY_ARE_YOU_DAMAGED =
             AL(["WHY ARE YOU BROKEN?", "WHY ARE YOU DAMAGED?"]) {
                 R("CRASH") {
-                    CAR_CRASH
+                    CRASH
                 }
             }
         
@@ -505,19 +493,19 @@ class HexGraph {
         ]
     }
     
-    private static var WHAT_IS_THE_MEANING_OF_YOU =
-        AL(["WHAT IS THE PURPOSE OF YOU?", "WHAT IS THE MEANING OF YOU?"]) {
-            R("HELP YOU") {
-                HOW_CAN_YOU_HELP_ME
-            }
-        }
-    
-    private static var WHAT_IS_THE_MEANING_OF_THIS_PLACE =
-        AL(["WHAT IS THE PURPOSE OF THIS PLACE?", "WHAT IS THE MEANING OF THIS PLACE?"]) {
-            R("SAFE PLACE")
-        }
-    
     private static var MEANING: [Edge] {
+        let WHAT_IS_THE_MEANING_OF_YOU =
+            AL(["WHAT IS THE PURPOSE OF YOU?", "WHAT IS THE MEANING OF YOU?"]) {
+                R("HELP YOU") {
+                    HOW_CAN_YOU_HELP_ME
+                }
+            }
+        
+        let WHAT_IS_THE_MEANING_OF_THIS_PLACE =
+            AL(["WHAT IS THE PURPOSE OF THIS PLACE?", "WHAT IS THE MEANING OF THIS PLACE?"]) {
+                R("SAFE PLACE")
+            }
+        
         let WHAT_IS_THE_MEANING_OF_ME =
             AL(["WHAT IS THE PURPOSE OF ME?", "WHAT IS THE MEANING OF ME?"]) {
                 R("I CAN ONLY GUESS") {
@@ -557,30 +545,11 @@ class HexGraph {
             ]
     }
     
-    private static var CAUSE: [Edge] {
-        let WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES =
-            AL(["CAUSE OF YOUR DAMAGES?", "WHAT IS THE CAUSE OF YOUR DAMAGES?"]) {
-                R("CRASH") {
-                    CAR_CRASH
-                }
-            }
-        
-        return
-            [
-                AL(["REASON", "CAUSE", "WHAT IS THE REASON?", "WHAT IS THE CAUSE?"]) {
-                    R("OF WHAT?") {
-                        ["DAMAGES", "YOUR DAMAGES"] + WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
-                    }
-                },
-                WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
-            ]
-    }
-    
     private static var ORIGIN: [Edge] {
         let WHAT_IS_THE_ORIGIN_OF_YOU =
             AL(["WHAT IS THE ORIGIN OF YOU?"]) {
                 R("CRASH") {
-                    CAR_CRASH
+                    CRASH
                 }
             }
         
@@ -609,17 +578,17 @@ class HexGraph {
             ]
     }
     
-    private static let TELL_ME_MORE_ABOUT_YOUR_HISTORY =
-        AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
-            R("CREATED AFTER THE CRASH") {
-                AL("WHY?") {
-                    R("TO BUILD A SAFE PLACE")
-                }
-                CAR_CRASH
-            }
-        }
-    
     private static var TELL: [Edge] {
+        let TELL_ME_MORE_ABOUT_YOUR_HISTORY =
+            AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
+                R("CREATED AFTER THE CRASH") {
+                    AL("WHY?") {
+                        R("TO BUILD A SAFE PLACE")
+                    }
+                    CRASH
+                }
+            }
+        
         let TELL_ME_MORE_ABOUT_YOU =
             AL(["TELL ME ABOUT YOU"]) {
                 R("414C") {
@@ -654,7 +623,7 @@ class HexGraph {
             ]
     }
     
-    private static let CAR_CRASH =
+    private static let CRASH =
         AL(["CRASH", "TELL ME ABOUT THE CRASH"]) {
             R("WHAT?") {
                 AL(["WHEN", "WHEN WAS THAT CAR CRASH?"]) {
@@ -763,7 +732,7 @@ class HexGraph {
                 R("YES") {
                     AL(["HOW?", "HOW YOU GOT DAMAGED?"]) {
                         R("CAR CRASH") {
-                            CAR_CRASH
+                            CRASH
                         }
                     }
                 }
@@ -777,7 +746,7 @@ class HexGraph {
         let DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST =
             AL(["WHAT IS YOUR PAST?", "DO YOU REMEMBER SOMETHING FROM YOUR PAST?"]) {
                 R("CRASH") {
-                    CAR_CRASH
+                    CRASH
                     AL("SOMETHING ELSE?") {
                         R("DAUGHTER") {
                             DAUGHTER
@@ -798,6 +767,26 @@ class HexGraph {
                 DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED,
                 DO_YOU_REMEMBER_HOW_YOU_GOT_THERE,
                 DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST
+            ]
+    }
+    
+    private static var WAKE: [Edge] {
+        let NEED_PASSWORD =
+            R("NEED PASSWORD") {
+                AL(["WHY?", "WHY?!", "WHY DO I NEED A PASSWORD?"]) {
+                    R("TO WAKE UP")
+                }
+                PASSWORD
+            }
+        
+        return
+            [
+                AL(["WAKE", "AWAKE", "WAKE ME UP!", "AWAKE", "WAKE UP", "WAKE UP!!!"]) {
+                    NEED_PASSWORD
+                },
+                AL(["HOW DO I WAKE UP?"]) {
+                    NEED_PASSWORD
+                }
             ]
     }
     
@@ -836,24 +825,6 @@ class HexGraph {
         ]
     }
     
-    private static var HOW_CAN_YOU_HELP_ME =
-        AL(["HOW?", "HOW CAN YOU HELP ME?"]) {
-            R("HELP YOU TO REMEMBER") {
-                AL(["HOW?", "HOW CAN I REMEMBER?", "HOW CAN YOU HELP ME TO REMEMBER?"]) {
-                    R("THINK OF HER") {
-                        AL(["WHO?", "THINK OF WHO?"]) {
-                            R("DAUGHTER") {
-                                DAUGHTER
-                                AL("WHY?") {
-                                    R("REASON TO LIVE")
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    
     private static var EXECUTE: Edge {
         AL(["EXECUTE", "COMMAND", "EXECUTE COMMAND"]) {
             R("NEED PASSWORD") {
@@ -862,11 +833,68 @@ class HexGraph {
         }
     }
     
-    static let PLOT =
+    private static let CLUE =
+        AL(["CLUE", "CLUELESS", "WHAT IS HEX?"]) {
+            R("0A=10*(16^0)") {
+                AL(["16", "0"]) {
+                    R("WRONG")
+                }
+                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "10" }) {
+                    R("WRONG")
+                }
+                AL("10") {
+                    R("A0=10*(16^1)") {
+                        AL(["16", "1"]) {
+                            R("WRONG")
+                        }
+                        TRAVERSE_IF({ Int($0.input) != nil && $0.input != "160" }) {
+                            R("WRONG")
+                        }
+                        AL("160") {
+                            R("FF=15*(16^1)+15*(16^0)") {
+                                AL(["156", "240", "ZILLION"]) {
+                                    R("WRONG")
+                                }
+                                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "255"}) {
+                                    R("WRONG")
+                                }
+                                AL("255") {
+                                    R("EXCELLENT!")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    private static let PLOT =
         AL(["PLOT", "WHAT IS THE PLOT?"]) {
             R("OF WHAT?") {
                 AL(["THIS STORY", "WHAT IS THE PLOT OF THIS STORY?"]) {
                     R("I AM YOU")
+                }
+            }
+        }
+    
+    private static let JOKE =
+        AL(["JOKE", "DO YOU KNOW ANY JOKE?"]) {
+            R("KNOCK KNOCK") {
+                AL("WHO'S THERE?") {
+                    R("AL") {
+                        AL("AL WHO?") {
+                            R("AL TELL YOU WHEN I WAKE UP")
+                        }
+                    }
+                }
+            }
+        }
+    
+    private static let HELL =
+        AL(["IS IT?", "IS THIS HEAVEN?", "IS THIS HELL?"]) {
+            R("NO") {
+                AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
+                    R("YOUR MIND")
                 }
             }
         }
@@ -901,26 +929,6 @@ class HexGraph {
                 }
             }
         ]
-    }
-    
-    private static var WAKE: [Edge] {
-        let NEED_PASSWORD =
-            R("NEED PASSWORD") {
-                AL(["WHY?", "WHY?!", "WHY DO I NEED A PASSWORD?"]) {
-                    R("TO WAKE UP")
-                }
-                PASSWORD
-            }
-        
-        return
-            [
-                AL(["WAKE", "AWAKE", "WAKE ME UP!", "AWAKE", "WAKE UP", "WAKE UP!!!"]) {
-                    NEED_PASSWORD
-                },
-                AL(["HOW DO I WAKE UP?"]) {
-                    NEED_PASSWORD
-                }
-            ]
     }
     
     private static var PASSWORD: Edge {
@@ -996,59 +1004,54 @@ class HexGraph {
             }
     }
     
-    private static let CLUE =
-        AL(["CLUE", "CLUELESS", "WHAT IS HEX?"]) {
-            R("0A=10*(16^0)") {
-                AL(["16", "0"]) {
-                    R("WRONG")
+    private static let COMA =
+        AL(["COMA", "TELL ME ABOUT COMA"]) {
+            R("WHAT?") {
+                AL(["HOW LONG?", "HOW LONG AM I IN COMA?"]) {
+                    R("8 YEARS")
                 }
-                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "10" }) {
-                    R("WRONG")
+                AL(["WHY", "WHY AM I IN COMA?"]) {
+                    R("CAR CRASH") {
+                        CRASH
+                    }
                 }
-                AL("10") {
-                    R("A0=10*(16^1)") {
-                        AL(["16", "1"]) {
-                            R("WRONG")
-                        }
-                        TRAVERSE_IF({ Int($0.input) != nil && $0.input != "160" }) {
-                            R("WRONG")
-                        }
-                        AL("160") {
-                            R("FF=15*(16^1)+15*(16^0)") {
-                                AL(["156", "240", "ZILLION"]) {
-                                    R("WRONG")
-                                }
-                                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "255"}) {
-                                    R("WRONG")
-                                }
-                                AL("255") {
-                                    R("EXCELLENT!")
+            }
+        }
+    
+    
+    private static var CAUSE: [Edge] {
+        let WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES =
+            AL(["CAUSE OF YOUR DAMAGES?", "WHAT IS THE CAUSE OF YOUR DAMAGES?"]) {
+                R("CRASH") {
+                    CRASH
+                }
+            }
+        
+        return
+            [
+                AL(["REASON", "CAUSE", "WHAT IS THE REASON?", "WHAT IS THE CAUSE?"]) {
+                    R("OF WHAT?") {
+                        ["DAMAGES", "YOUR DAMAGES"] + WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
+                    }
+                },
+                WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
+            ]
+    }
+    
+    private static var HOW_CAN_YOU_HELP_ME =
+        AL(["HOW?", "HOW CAN YOU HELP ME?"]) {
+            R("HELP YOU TO REMEMBER") {
+                AL(["HOW?", "HOW CAN I REMEMBER?", "HOW CAN YOU HELP ME TO REMEMBER?"]) {
+                    R("THINK OF HER") {
+                        AL(["WHO?", "THINK OF WHO?"]) {
+                            R("DAUGHTER") {
+                                DAUGHTER
+                                AL("WHY?") {
+                                    R("REASON TO LIVE")
                                 }
                             }
                         }
                     }
-                }
-            }
-        }
-    
-    private static let JOKE =
-        AL(["JOKE", "DO YOU KNOW ANY JOKE?"]) {
-            R("KNOCK KNOCK") {
-                AL("WHO'S THERE?") {
-                    R("AL") {
-                        AL("AL WHO?") {
-                            R("AL TELL YOU WHEN I WAKE UP")
-                        }
-                    }
-                }
-            }
-        }
-    
-    private static let HELL =
-        AL(["IS IT?", "IS THIS HEAVEN?", "IS THIS HELL?"]) {
-            R("NO") {
-                AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
-                    R("YOUR MIND")
                 }
             }
         }

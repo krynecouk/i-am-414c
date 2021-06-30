@@ -15,12 +15,14 @@ class BinGraph {
             BIN._AL
             BIN.YOU
             BIN._414C
+            
             BIN.ASK
             BIN.WHO
             BIN.WHERE
             BIN.WHY
             BIN.HOW
             BIN.WHAT
+            
             BIN.NAME
             BIN.HELP
             BIN.MEANING
