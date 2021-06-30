@@ -784,7 +784,7 @@ class BinGraph {
     }
     
     private static let CLUE =
-        AL(["BINARY", "BIN", "CLUELESS", "CLUE", "DO YOU HAVE ANY CLUE HOW TO CALCULATE BINARY?"]) {
+        AL(["CLUELESS", "CLUE", "DO YOU HAVE ANY CLUE HOW TO CALCULATE BINARY?"]) {
             R("0001=2^0") {
                 AL(["2", "20"]) {
                     R("WRONG")

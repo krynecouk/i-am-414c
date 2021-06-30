@@ -683,8 +683,8 @@ class CommonGraph {
         
         static var _RADIX: [Edge] {
             let SWITCH_TO_BIN =
-                AL(["CHANGE TO BINARY", "SWITCH TO BINARY"]) {
-                    R("Y/N?") {
+                AL(["BIN", "BINARY", "CHANGE TO BINARY", "SWITCH TO BINARY"]) {
+                    R("SWITCH TO BIN?") {
                         AL(["YES", "Y"]) {
                             RADIX("BIN NOW", radix: .bin)
                         }
@@ -695,8 +695,8 @@ class CommonGraph {
                 }
             
             let SWITCH_TO_HEX =
-                AL(["CHANGE TO HEX", "SWITCH TO HEX"]) {
-                    R("Y/N?") {
+                AL(["HEX", "HEXADECIMAL", "CHANGE TO HEX", "SWITCH TO HEX"]) {
+                    R("SWITCH TO HEX?") {
                         AL(["YES", "Y"]) {
                             RADIX("HEX NOW", radix: .hex)
                         }

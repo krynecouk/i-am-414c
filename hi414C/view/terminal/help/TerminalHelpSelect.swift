@@ -53,7 +53,7 @@ struct TerminalHelpSelect: View {
                 print("frameW:", frameW)
                 
                 // ipad
-                if frame.maxY > 950 {
+                if frame.maxY > 800 {
                     segueVM.setLearnSize((.infinity, 270))
                     segueVM.setChatSize((.infinity, 270))
                     segueVM.setSettingsSize((.infinity, 270))
