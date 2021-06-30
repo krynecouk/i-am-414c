@@ -29,10 +29,18 @@ typealias MATH = MathNode
 typealias RADIX = RadixNode
 
 typealias AL = TestEdge
-typealias ALL = TraverseAllEdge
-typealias IF = TraverseIfEdge
+typealias TRAVERSE_ALL = TraverseAllEdge
+typealias TRAVERSE_IF = TraverseIfEdge
 typealias HELP = HelpEdge
 
 typealias BIN = BinGraph
 typealias HEX = HexGraph
 typealias COMMON = CommonGraph
+typealias DAMAGES = CommonGraph.Damages
+typealias GENERIC = CommonGraph.Generic
+typealias SETTINGS = CommonGraph.Settings
+typealias FATALITY = CommonGraph.Fatality
+typealias EMOTION = CommonGraph.Emotion
+typealias DATETIME = CommonGraph.DateTime
+typealias CALCULATE = CommonGraph.Math
+typealias INTERACTIVE = CommonGraph.Interactive

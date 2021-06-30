@@ -10,6 +10,10 @@ class HexGraph {
     
     static let HI =
         ROOT("HI") {
+            HEX._HI
+            HEX._414C
+            HEX.I
+            HEX.HELL
             HEX._AL
             HEX.YOU
             HEX.ASK
@@ -18,7 +22,6 @@ class HexGraph {
             HEX.WHAT_IS_THE_MEANING_OF_THIS_PLACE
             HEX.WHO
             HEX.WAKE
-            COMMON._RADIX
             HEX.FAMILY
             HEX.DAUGHTER
             HEX.JOKE
@@ -36,7 +39,7 @@ class HexGraph {
             HEX.WHAT
             HEX.LIE
             HEX.MEANING
-
+            
             HEX.DIE
             HEX.REPAIR
             HEX.MEMORY
@@ -48,64 +51,15 @@ class HexGraph {
             HEX.EXECUTE
             HEX.PLOT
             HEX.CLUE
-
-            COMMON.EYES
-            COMMON.COIL
-            COMMON.LEAK
-            COMMON.OIL
-            COMMON.HOSE
-            COMMON.HISS
-            COMMON.PROCESSOR
-            COMMON.COME
-            COMMON.STAY
-            COMMON.LIKE
-            COMMON.LOVE
-            COMMON.FIND
-            COMMON.SLEEP
-            COMMON.CALL
-            COMMON.STAND
-            COMMON.ALIVE
-            COMMON.ALONE
-            COMMON.SEE
-            COMMON.LOOK
-            COMMON.CHANGE
-            COMMON.DEAD_QUESTION
-            COMMON.LEARN
-            COMMON.CHAT
-            COMMON.SETTINGS
-            COMMON.DIFFICULTY
-            COMMON.REPEAT
-            COMMON._YELL
-            COMMON.PAIN
-            COMMON.CLOSE
-            COMMON.BREAK
-            COMMON.DIE
-            COMMON._DICE
-            COMMON._DICES
-            COMMON._COIN
-            COMMON.GUESS
-            COMMON._DANCE
-            COMMON.SMILE
-            COMMON.SAD
-            COMMON.WINK
-            COMMON.CRY
-            COMMON.EMOTION
-            COMMON.CLONE
-            COMMON.HELL
-            COMMON._MATH
-            COMMON._MUSIC
-            COMMON.VERSION
-            COMMON.YEAR
-            COMMON.DATE
-            COMMON.TIME
-            COMMON.SIGN
-            COMMON.OPEN
-            COMMON.END
-            COMMON.KNOCK
             
-            HEX._HI
-            HEX._414C
-            HEX.I
+            DAMAGES.ALL
+            GENERIC.ALL
+            SETTINGS.ALL
+            FATALITY.ALL
+            EMOTION.ALL
+            DATETIME.ALL
+            CALCULATE.ALL
+            INTERACTIVE.ALL
         }
     
     private static let _HI =
@@ -144,7 +98,7 @@ class HexGraph {
                 CLUE
             }
         }
-  
+    
     private static let COMA =
         AL(["COMA", "TELL ME ABOUT COMA"]) {
             R("WHAT?") {
@@ -263,7 +217,7 @@ class HexGraph {
             AL(["WHERE ARE YOU?"]) {
                 R("IN YOUR HEAD")
             }
-
+        
         let WHERE_IS_DAMAGE =
             AL(["WHERE IS THE DAMAGE?"]) {
                 R("MANY PLACES") {
@@ -285,7 +239,7 @@ class HexGraph {
                     }
                 }
             }
-
+        
         return
             [
                 AL("WHERE?") {
@@ -321,7 +275,7 @@ class HexGraph {
                     CAR_CRASH
                 }
             }
-
+        
         let WHY_ARE_YOU_DAMAGED =
             AL(["WHY ARE YOU BROKEN?", "WHY ARE YOU DAMAGED?"]) {
                 R("CRASH") {
@@ -337,8 +291,8 @@ class HexGraph {
                     }
                 }
             }
-
-
+        
+        
         
         let WHY_ARE_WE_TALKING =
             AL(["WHY ARE WE TALKING?"]) {
@@ -539,11 +493,11 @@ class HexGraph {
                                     }
                                 }
                             }
-                            COMMON.LEARN
-                            COMMON.SETTINGS
-                            COMMON.DIFFICULTY
-                            COMMON.THEME
-                            COMMON.CHANGE
+                            SETTINGS.LEARN
+                            SETTINGS.SETTINGS
+                            SETTINGS.DIFFICULTY
+                            SETTINGS.THEME
+                            SETTINGS.CHANGE
                         }
                     }
                 }
@@ -573,7 +527,7 @@ class HexGraph {
                 }
             }
         
-
+        
         
         let WHAT_IS_THE_MEANING_OF_NAME_414C =
             AL(["WHAT IS THE MEANING OF NAME 414C?"]) {
@@ -584,7 +538,7 @@ class HexGraph {
                 }
             }
         
-
+        
         
         return
             [
@@ -684,8 +638,8 @@ class HexGraph {
                     }
                 }
             }
-
-
+        
+        
         
         return
             [
@@ -789,11 +743,11 @@ class HexGraph {
     private static let REPAIR =
         AL(["PATCH", "MEND", "FIX", "REPAIR"]) {
             R("WHAT?") {
-                COMMON.COIL
-                COMMON.LEAK
-                COMMON.EYES
-                COMMON.HOSE
-                COMMON.PROCESSOR
+                DAMAGES.COIL
+                DAMAGES.LEAK
+                DAMAGES.EYES
+                DAMAGES.HOSE
+                DAMAGES.PROCESSOR
                 MEMORY
             }
         }
@@ -901,11 +855,11 @@ class HexGraph {
         }
     
     private static var EXECUTE: Edge {
-            AL(["EXECUTE", "COMMAND", "EXECUTE COMMAND"]) {
-                R("NEED PASSWORD") {
-                    PASSWORD
-                }
+        AL(["EXECUTE", "COMMAND", "EXECUTE COMMAND"]) {
+            R("NEED PASSWORD") {
+                PASSWORD
             }
+        }
     }
     
     static let PLOT =
@@ -979,17 +933,17 @@ class HexGraph {
             }
         
         let SAD_END =
-            ALL {
+            TRAVERSE_ALL {
                 FINISH( with: .sunset)
             }
         
         
         let THIRD_TRY =
-            ALL {
+            TRAVERSE_ALL {
                 R("WRONG NEXT?") {
                     AL(Y) {
                         R("*****") {
-                            ALL {
+                            TRAVERSE_ALL {
                                 EITHER(left: SAD_END, right: HAPPY_END) { ctx, _ in
                                     ctx.input == "ELENA"
                                 }
@@ -1003,11 +957,11 @@ class HexGraph {
             }
         
         let SECOND_TRY =
-            ALL {
+            TRAVERSE_ALL {
                 R("WRONG NEXT?") {
                     AL(Y) {
                         R("*****") {
-                            ALL {
+                            TRAVERSE_ALL {
                                 EITHER(left: THIRD_TRY, right: HAPPY_END) { ctx, _ in
                                     ctx.input == "ELENA"
                                 }
@@ -1021,7 +975,7 @@ class HexGraph {
             }
         
         let FIRST_TRY =
-            ALL {
+            TRAVERSE_ALL {
                 EITHER(left: SECOND_TRY, right: HAPPY_END) { ctx, _ in
                     ctx.input == "ELENA"
                 }
@@ -1048,7 +1002,7 @@ class HexGraph {
                 AL(["16", "0"]) {
                     R("WRONG")
                 }
-                IF({ Int($0.input) != nil && $0.input != "10" }) {
+                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "10" }) {
                     R("WRONG")
                 }
                 AL("10") {
@@ -1056,7 +1010,7 @@ class HexGraph {
                         AL(["16", "1"]) {
                             R("WRONG")
                         }
-                        IF({ Int($0.input) != nil && $0.input != "160" }) {
+                        TRAVERSE_IF({ Int($0.input) != nil && $0.input != "160" }) {
                             R("WRONG")
                         }
                         AL("160") {
@@ -1064,7 +1018,7 @@ class HexGraph {
                                 AL(["156", "240", "ZILLION"]) {
                                     R("WRONG")
                                 }
-                                IF({ Int($0.input) != nil && $0.input != "255"}) {
+                                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "255"}) {
                                     R("WRONG")
                                 }
                                 AL("255") {
@@ -1077,7 +1031,7 @@ class HexGraph {
             }
         }
     
-    static let JOKE =
+    private static let JOKE =
         AL(["JOKE", "DO YOU KNOW ANY JOKE?"]) {
             R("KNOCK KNOCK") {
                 AL("WHO'S THERE?") {
@@ -1086,6 +1040,15 @@ class HexGraph {
                             R("AL TELL YOU WHEN I WAKE UP")
                         }
                     }
+                }
+            }
+        }
+    
+    private static let HELL =
+        AL(["IS IT?", "IS THIS HEAVEN?", "IS THIS HELL?"]) {
+            R("NO") {
+                AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
+                    R("YOUR MIND")
                 }
             }
         }

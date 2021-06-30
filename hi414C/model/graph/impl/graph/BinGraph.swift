@@ -7,126 +7,86 @@
 
 class BinGraph {
     private init() {}
-
+    
     public static let HI =
         ROOT("HI") {
             BIN._HI
             BIN.I
             BIN._AL
+            BIN.YOU
             BIN._414C
-
             BIN.ASK
-            BIN.ORIGIN
             BIN.WHO
             BIN.WHERE
             BIN.WHY
             BIN.HOW
             BIN.WHAT
-            BIN.HELP
-            BIN.EXECUTE
-            BIN.COMMAND
-            BIN.JOKE
-            BIN.MEMORY
-            BIN.MEANING
-            BIN.TELL
-            BIN.YOU
-            BIN.CAUSE
-            
-            COMMON.YEAR
-            COMMON.SIGN
-            COMMON._MATH
-            COMMON.GUESS
-            COMMON.OIL
-
-
-
-            COMMON._MUSIC
-            COMMON.VERSION
-            
-
-            
-            COMMON._DICE
-            COMMON._DICES
-            COMMON._COIN
-            COMMON._DANCE
-            COMMON._YELL
-            
-
-            COMMON.COIL
-            BIN.CLUE
             BIN.NAME
+            BIN.HELP
+            BIN.MEANING
+            BIN.CAUSE
+            BIN.ORIGIN
+            BIN.TELL
             BIN.CRASH
             BIN.LIE
-
-            COMMON.HOSE
-            COMMON.LEAK
-            COMMON.LEARN
-            COMMON.CHAT
-            COMMON.SETTINGS
-            COMMON.DIFFICULTY
-            COMMON.HISS
-            COMMON.PROCESSOR
-            COMMON.EYES
-
             BIN.LIVE
             BIN.DIE
             BIN.REPAIR
+            BIN.MEMORY
+            BIN.REMEMBER
             BIN.LOGIN
             BIN.LOGOUT
             BIN.WAKE
-            BIN.REMEMBER
             BIN.SOIL
             BIN.HOPE
+            BIN.EXECUTE
+            BIN.COMMAND
+            BIN.CLUE
             BIN.PLOT
+            BIN.JOKE
+            BIN.HELL
             
-            COMMON.COME
-            COMMON.STAY
-            COMMON.LIKE
-            COMMON.LOVE
-            COMMON.FIND
-            COMMON.SLEEP
-            COMMON.CALL
-            COMMON.STAND
-            COMMON.ALIVE
-            COMMON.ALONE
-            COMMON.SEE
-            COMMON.LOOK
-            COMMON.CHANGE
-            COMMON.DEAD_QUESTION
-            COMMON.REPEAT
-            COMMON.PAIN
-            COMMON.CLOSE
-            COMMON.BREAK
-            COMMON.DIE
-            COMMON.SMILE
-            COMMON.SAD
-            COMMON.WINK
-            COMMON.CRY
-            COMMON.EMOTION
-            COMMON.CLONE
-            COMMON.HELL
-            COMMON.DATE
-            COMMON.TIME
-            COMMON.OPEN
-            COMMON.END
-            COMMON.KNOCK
-            COMMON._RADIX
-
+            DAMAGES.ALL
+            GENERIC.ALL
+            SETTINGS.ALL
+            FATALITY.ALL
+            EMOTION.ALL
+            DATETIME.ALL
+            CALCULATE.ALL
+            INTERACTIVE.ALL
         }
-
+    
+    private static let _HI =
+        AL(["HELLO", "HI"]) {
+            R("HI") {
+                AL("HI") {
+                    R("HI") {
+                        AL("HI") {
+                            R("...HI")
+                        }
+                    }
+                }
+            }
+        }
+    
     private static let I =
         AL(["ME?", "I?", "WHO AM I?"]) {
             R("AL") >> _AL
         }
-
+    
     private static let _AL =
         AL(["AL?", "WHO IS AL?"]) {
             R("YOU") >> YOU
         }
-
+    
     private static let YOU =
         AL(["YOU?", "WHO ARE YOU?"]) {
             R("I AM 414C") >> _414C
+        }
+    
+    private static let _414C =
+        AL(["ROBOT", "414C?"]) {
+            R("ME")
         }
     
     private static let ASK =
@@ -160,7 +120,7 @@ class BinGraph {
                 WHO_CAN_HELP_YOU
             ]
     }
-
+    
     private static var WHERE: [Edge] {
         let WHERE_IS_HELP =
             AL(["WHERE IS HELP?"]) {
@@ -206,7 +166,7 @@ class BinGraph {
                     }
                 }
             }
-
+        
         return
             [
                 AL("WHERE?") {
@@ -229,7 +189,7 @@ class BinGraph {
                 WHERE_ARE_PEOPLE
             ]
     }
-
+    
     private static var WHY: [Edge] {
         let WHY_ARE_YOU_THERE =
             AL(["WHY ARE YOU THERE?"]) {
@@ -239,7 +199,7 @@ class BinGraph {
                     }
                 }
             }
-
+        
         let WHY_ARE_YOU_DAMAGED =
             AL(["WHY ARE YOU BROKEN?", "WHY ARE YOU DAMAGED?"]) {
                 FORGOTTEN
@@ -253,7 +213,7 @@ class BinGraph {
                     }
                 }
             }
-
+        
         let WHY_AM_I_HERE =
             AL("WHY AM I HERE?") {
                 R("TO HELP") {
@@ -288,7 +248,7 @@ class BinGraph {
                 WHY_ARE_WE_TALKING,
             ]
     }
-
+    
     private static var HOW: [Edge] {
         let HOW_TO_GET_OUT =
             AL(["HOW TO GET OUT?"]) {
@@ -320,7 +280,7 @@ class BinGraph {
                 HOW_LONG_DO_YOU_LIVE,
             ]
     }
-
+    
     private static var WHAT: [Edge] {
         let WHAT_YOU_SEE =
             AL(["WHAT YOU SEE?", "WHAT DO YOU SEE?"]) {
@@ -401,7 +361,7 @@ class BinGraph {
                 WHAT_IS_MY_NAME
             ]
     }
-
+    
     private static var HELP: [Edge] {
         [
             AL("HELP") {
@@ -413,18 +373,18 @@ class BinGraph {
                     }
                     AL(["ME", "CAN YOU HELP ME?"]) {
                         R("WHAT WITH?") {
-                            COMMON.LEARN
-                            COMMON.SETTINGS
-                            COMMON.DIFFICULTY
-                            COMMON.THEME
-                            COMMON.CHANGE
+                            SETTINGS.LEARN
+                            SETTINGS.SETTINGS
+                            SETTINGS.DIFFICULTY
+                            SETTINGS.THEME
+                            SETTINGS.CHANGE
                         }
                     }
                 }
             },
         ]
     }
-
+    
     private static var MEANING: [Edge] {
         let WHAT_IS_THE_MEANING_OF_ME =
             AL(["WHAT IS THE PURPOSE OF ME?", "WHAT IS THE MEANING OF ME?"]) {
@@ -483,7 +443,7 @@ class BinGraph {
                 WHAT_IS_THE_CAUSE_OF_YOUR_DAMAGES
             ]
     }
-
+    
     private static var ORIGIN: [Edge] {
         let WHAT_IS_THE_ORIGIN_OF_YOU =
             AL(["WHAT IS THE ORIGIN OF YOU?"]) {
@@ -514,7 +474,7 @@ class BinGraph {
                 WHAT_IS_THE_ORIGIN_OF_THIS_PLACE
             ]
     }
-
+    
     private static var TELL: [Edge] {
         let TELL_ME_MORE_ABOUT_YOU =
             AL(["TELL ME ABOUT YOU"]) {
@@ -532,7 +492,7 @@ class BinGraph {
                     }
                 }
             }
-
+        
         let TELL_ME_MORE_ABOUT_YOUR_HISTORY =
             AL(["WHAT IS YOUR HISTORY?", "TELL ME ABOUT YOUR PAST", "TELL ME ABOUT YOUR HISTORY"]) {
                 FORGOTTEN
@@ -550,12 +510,12 @@ class BinGraph {
                 TELL_ME_MORE_ABOUT_YOUR_HISTORY
             ]
     }
-
+    
     private static let CRASH =
         AL(["CRASH", "TELL ME ABOUT YOUR CRASH"]) {
             FORGOTTEN
         }
-
+    
     private static let LIE =
         AL(["LIE", "IT'S A LIE!"]) {
             R("WHAT?") {
@@ -602,31 +562,31 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let REPAIR =
         AL(["PATCH", "MEND", "FIX", "REPAIR"]) {
             R("WHAT?") {
-                COMMON.COIL
-                COMMON.LEAK
-                COMMON.EYES
-                COMMON.HOSE
-                COMMON.PROCESSOR
+                DAMAGES.COIL
+                DAMAGES.LEAK
+                DAMAGES.EYES
+                DAMAGES.HOSE
+                DAMAGES.PROCESSOR
                 AL(["RAM", "MEMORIES", "RANDOM ACCESS MEMORY", "MEMORY", "PATCH DAMAGED MEMORY", "MEND DAMAGED MEMORY", "FIX DAMAGED MEMORY", "REPAIR DAMAGED MEMORY"]) {
                     MEMORY_ERROR
                 }
             }
         }
-
+    
     private static let MEMORY =
         AL(["MEMORIES", "RANDOM ACCESS MEMORY", "RAM", "MEMORY"]) {
             R("DAMAGED") {
                 AL(["HOW TO FIX YOUR MEMORY?", "HOW TO REPAIR YOUR MEMORY?"]) {
                     EXEC_CMD
                 }
-                COMMON.DIE
+                FATALITY.DIE
             }
         }
-
+    
     private static var REMEMBER: [Edge] {
         let NO =
             R("NO") {
@@ -664,7 +624,7 @@ class BinGraph {
                 DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST
             ]
     }
-
+    
     private static let LOGIN =
         AL(["LOGIN"]) {
             R("N/A") {
@@ -683,17 +643,17 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let LOGOUT =
         AL(["LOGOUT"]) {
             COMMON.DIE_WARN
         }
-
+    
     private static let WAKE =
         AL(["AWAKE", "WAKE", "WAKE UP"]) {
             R("I AM AWAKE")
         }
-
+    
     private static let SOIL =
         AL(["SOIL", "LAND", "PLANTS", "FLOWERS"]) {
             R("DYING") {
@@ -706,7 +666,7 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static var HOPE: [Edge] {
         [
             AL(["HOPE"]) {
@@ -718,25 +678,7 @@ class BinGraph {
             },
         ]
     }
-
-    private static let _HI =
-        AL(["HELLO", "HI"]) {
-            R("HI") {
-                AL("HI") {
-                    R("HI") {
-                        AL("HI") {
-                            R("...HI")
-                        }
-                    }
-                }
-            }
-        }
-
-    private static let _414C =
-        AL(["ROBOT", "414C?"]) {
-            R("ME")
-        }
-
+    
     private static var MEMORY_ERROR =
         PANIC("MEMORY ERROR") {
             AL(["BACK", "GO BACK"]) {
@@ -753,12 +695,12 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static var EXEC_CMD =
         R("EXECUTE COMMAND") {
             COMMAND
         }
-
+    
     private static var HOW_TO_HELP =
         AL(["HOW?", "HOW CAN I HELP YOU?"]) {
             R("HELP ME TO REMEMBER") {
@@ -767,14 +709,14 @@ class BinGraph {
                 }
             }
         }
-
+    
     private static let FORGOTTEN =
         R("CAN'T REMEMBER") {
             AL(["WHY?", "WHY CAN'T YOU REMEMBER?"]) {
                 MEMORY_ERROR
             }
         }
-
+    
     private static var EXECUTE: Edge {
         let FIX =
             R("Y/N?") {
@@ -804,7 +746,7 @@ class BinGraph {
                     AL("JCMD-7544-GC.RUN") {
                         COMMON.DIE_WARN
                     }
-                    ALL {
+                    TRAVERSE_ALL {
                         EITHER(left: AL { R("UNKNOWN COMMAND") }, right: AL { FIX }) { ctx, _ in
                             return CmdDao.find() == ctx.input
                         }
@@ -812,7 +754,7 @@ class BinGraph {
                 }
             }
     }
-
+    
     private static var COMMAND: Edge {
         let LEFT =
             AL {
@@ -822,14 +764,14 @@ class BinGraph {
                     }
                 }
             }
-
+        
         let RIGHT: Edge =
             AL {
                 CMD {
                     EXECUTE
                 }
             }
-
+        
         return
             AL(["CMD", "COMMAND", "TELL ME THE COMMAND", "WHAT IS THE COMMAND?"]) {
                 EITHER(left: LEFT, right: RIGHT) { _, toolkit in
@@ -838,14 +780,14 @@ class BinGraph {
                 }
             }
     }
-
-    static let CLUE =
+    
+    private static let CLUE =
         AL(["BINARY", "BIN", "CLUELESS", "CLUE", "DO YOU HAVE ANY CLUE HOW TO CALCULATE BINARY?"]) {
             R("0001=2^0") {
                 AL(["2", "20"]) {
                     R("WRONG")
                 }
-                IF({ Int($0.input) != nil && $0.input != "1" }) {
+                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "1" }) {
                     R("WRONG")
                 }
                 AL("1") {
@@ -853,7 +795,7 @@ class BinGraph {
                         AL(["1", "21"]) {
                             R("WRONG")
                         }
-                        IF({ Int($0.input) != nil && $0.input != "2" }) {
+                        TRAVERSE_IF({ Int($0.input) != nil && $0.input != "2" }) {
                             R("WRONG")
                         }
                         AL("2") {
@@ -861,7 +803,7 @@ class BinGraph {
                                 AL(["2", "22"]) {
                                     R("WRONG")
                                 }
-                                IF({ Int($0.input) != nil && $0.input != "4" }) {
+                                TRAVERSE_IF({ Int($0.input) != nil && $0.input != "4" }) {
                                     R("WRONG")
                                 }
                                 AL("4") {
@@ -869,7 +811,7 @@ class BinGraph {
                                         AL(["6", "23"]) {
                                             R("WRONG")
                                         }
-                                        IF({ Int($0.input) != nil && $0.input != "8" }) {
+                                        TRAVERSE_IF({ Int($0.input) != nil && $0.input != "8" }) {
                                             R("WRONG")
                                         }
                                         AL("8") {
@@ -884,7 +826,7 @@ class BinGraph {
             }
         }
     
-    static let PLOT =
+    private static let PLOT =
         AL(["PLOT", "WHAT IS THE PLOT?"]) {
             R("OF WHAT?") {
                 AL(["THIS STORY", "WHAT IS THE PLOT OF THIS STORY?"]) {
@@ -893,7 +835,7 @@ class BinGraph {
             }
         }
     
-    static let JOKE =
+    private static let JOKE =
         AL(["JOKE", "DO YOU KNOW ANY JOKE?"]) {
             R("KNOCK KNOCK") {
                 AL("WHO'S THERE?") {
@@ -902,6 +844,15 @@ class BinGraph {
                             R("AL TELL YOU WHEN I REMEMBER")
                         }
                     }
+                }
+            }
+        }
+    
+    private static let HELL =
+        AL(["IS IT?", "IS THIS HEAVEN?", "IS THIS HELL?"]) {
+            R("NO") {
+                AL(["WHAT IS IT", "THEN WHAT IS IT?", "WHERE ARE WE?"]) {
+                    FORGOTTEN
                 }
             }
         }
