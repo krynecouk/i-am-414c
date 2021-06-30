@@ -17,6 +17,9 @@ struct TerminalMessagesSelect: View {
     @State var pageLimit = 0
     @State var shuffled: [String] = []
     
+    let click: Sound = Sound.of(.click)
+    let tinyClick: Sound = Sound.of(.tiny_click)
+    
     var body: some View {
         Group {
             ForEach(chatVM.current.replies.map { Item($0) }) { item in
@@ -57,7 +60,7 @@ struct TerminalMessagesSelect: View {
             .padding([.leading, .trailing], 25)
             .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
             .onTapGesture {
-                Sound.of(.tiny_click).play()
+                tinyClick.play()
             }
     }
     
@@ -65,7 +68,7 @@ struct TerminalMessagesSelect: View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
             .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
             .onTapGesture {
-                Sound.of(.click).play()
+                click.play()
                 uiVM.detail = (false, false)
                 uiVM.isHelp = false
                 keyboardVM.set(text)

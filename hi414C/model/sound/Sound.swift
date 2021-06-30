@@ -52,6 +52,13 @@ class Sound {
     public static func of(_ type: SoundType) -> Sound {
         return sounds[type]!
     }
+    
+    public static func of(_ type: SoundType?) -> Sound? {
+        if let type = type {
+            return Sound.of(type)
+        }
+        return .none
+    }
 }
 
 extension AVAudioPlayer {

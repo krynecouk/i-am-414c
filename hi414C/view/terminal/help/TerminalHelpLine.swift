@@ -17,6 +17,9 @@ struct TerminalHelpLine: View {
     
     @State var quitBackground: Color = .clear
     
+    let delete: Sound = Sound.of(.delete)
+    let modifier: Sound = Sound.of(.modifier)
+    
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -49,10 +52,10 @@ struct TerminalHelpLine: View {
     func MinButton() -> some View {
         Button(action: {
             if segueVM.isOpen {
-                Sound.of(.delete).play()
+                delete.play()
                 segueVM.close()
             } else {
-                Sound.of(.modifier).play()
+                modifier.play()
                 segueVM.open(type: getCurrentSegue())
             }
         }) {
@@ -73,7 +76,7 @@ struct TerminalHelpLine: View {
     
     func QuitButton(_ text: String) -> some View {
         Button(action: {
-            Sound.of(.delete).play()
+            delete.play()
             withAnimation {
                 segueVM.close()
                 if uiVM.detail.0 == true {
@@ -102,17 +105,17 @@ struct TerminalHelpLine: View {
             .onTapGesture {
                 if isOpen {
                     if isCurrent {
-                        Sound.of(.delete).play()
+                        delete.play()
                     } else {
-                        Sound.of(.modifier).play()
+                        modifier.play()
                     }
                     toggleSegue(type)
                 } else {
                     if isCurrent {
-                        Sound.of(.modifier).play()
+                        modifier.play()
                         toggleSegue(type)
                     } else {
-                        Sound.of(.modifier).play()
+                        modifier.play()
                     }
                 }
                 action()

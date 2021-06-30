@@ -55,9 +55,11 @@ struct TerminalTestSelect: View {
 
 struct DisabledSound: ViewModifier {
     let disabled: Bool
+    let tinyClick: Sound
     
     init(_ disabled: Bool = false) {
         self.disabled = disabled
+        self.tinyClick = Sound.of(.tiny_click)
     }
     
     func body(content: Content) -> some View {
@@ -65,7 +67,7 @@ struct DisabledSound: ViewModifier {
             .disabled(disabled)
             .onTapGesture {
                 if disabled {
-                    Sound.of(.tiny_click).play()
+                    tinyClick.play()
                 }
             }
     }

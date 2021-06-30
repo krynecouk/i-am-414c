@@ -15,7 +15,8 @@ struct TerminalCommandSegue: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var segueVM: SegueViewModel
     
-    @State var modifier: Sound = Sound.of(.modifier)
+    let modifier: Sound = Sound.of(.modifier)
+    let discover: Sound = Sound.of(.discover)
     
     init() {
         print("TerminalSegue")
@@ -43,7 +44,7 @@ struct TerminalCommandSegue: View {
                     let solution = testVM.solve(with: input)
                     switch solution {
                     case .right:
-                        Sound.of(.discover).play()
+                        discover.play()
                         asciiVM.add(symbol: testVM.test!.symbol)
                     case .wrong(_):
                         uiVM.shake()
@@ -55,7 +56,7 @@ struct TerminalCommandSegue: View {
                     graphVM.traverse(ctx: GraphContext(input: input)) { result in
                         switch result {
                         case .ok:
-                            Sound.of(.modifier).play()
+                            modifier.play()
                             uiVM.isWaiting = false
                         case .error(_):
                             uiVM.shake()

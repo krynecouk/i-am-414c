@@ -12,15 +12,17 @@ struct HelpWarnButton: View {
     
     let text: String
     let action: () -> Void
+    let delete: Sound
     
     init(_ text: String, perform action: @escaping () -> Void = {}) {
         self.text = text
         self.action = action
+        self.delete = Sound.of(.delete)
     }
     
     var body: some View {
         Button(action: {
-            Sound.of(.delete).play()
+            delete.play()
             action()
         }) {
             Text(text)

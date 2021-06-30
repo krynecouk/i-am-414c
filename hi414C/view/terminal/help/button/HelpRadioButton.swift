@@ -14,26 +14,22 @@ struct HelpRadioButton: View {
     
     let text: String
     let active: Bool
-    let sound: (on: SoundType?, off: SoundType?)
+    let sound: (on: Sound?, off: Sound?)
     let action: () -> Void
     
-    init(_ text: String, active: Bool = false, sound: HelpRadioButtonSound = (.click, .delete), perform action: @escaping () -> Void = {}) {
+    init(_ text: String, active: Bool = false, sound type: HelpRadioButtonSound = (.click, .delete), perform action: @escaping () -> Void = {}) {
         self.text = text
         self.active = active
-        self.sound = sound
+        self.sound = (Sound.of(type.on), Sound.of(type.off))
         self.action = action
     }
     
     var body: some View {
         Button(action: {
             if !active {
-                if let sound = self.sound.on {
-                    Sound.of(sound).play()
-                }
+                sound.on?.play()
             } else {
-                if let sound = self.sound.off {
-                    Sound.of(sound).play()
-                }
+                sound.off?.play()
             }
             action()
         }) {

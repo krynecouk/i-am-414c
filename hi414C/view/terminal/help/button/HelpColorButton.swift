@@ -11,20 +11,18 @@ struct HelpColorButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
 
     let name: String
-    let sound: SoundType?
+    let sound: Sound?
     let theme: ThemeType
     
-    init(_ name: String, sound: SoundType? = .click, _ theme: ThemeType) {
+    init(_ name: String, sound type: SoundType? = .click, _ theme: ThemeType) {
         self.name = name
-        self.sound = sound
+        self.sound = Sound.of(type)
         self.theme = theme
     }
     
     var body: some View {
         ColorButton(size: (70, 70), left: Color.primary(name), right: Color.secondary(name)) {
-            if let sound = self.sound {
-                Sound.of(sound).play()
-            }
+            self.sound?.play()
             themeVM.change(to: theme)
         }
         .border(Color.tertiary(name), width: 15)

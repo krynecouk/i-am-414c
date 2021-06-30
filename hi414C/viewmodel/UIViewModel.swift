@@ -19,9 +19,11 @@ class UIViewModel: ObservableObject, Resetable {
     @Published private(set) var isFinishedGame = false
     @Published private(set) var isHelpModalClosed = HelpModalDao.find()
     @Published private(set) var errors: Int = 0
+    
+    let error: Sound = Sound.of(.error)
 
     func shake() {
-        Sound.of(.error).play()
+        error.play()
         withAnimation {
             self.errors += 1
         }

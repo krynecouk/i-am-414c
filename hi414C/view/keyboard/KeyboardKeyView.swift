@@ -14,7 +14,7 @@ struct KeyboardKeyView: View {
     var height: CGFloat
     var theme: ViewTheme
     var collapsable: Bool
-    var sound: SoundType?
+    var sound: Sound?
     var onClick: (String) -> Void
     
     init(
@@ -25,7 +25,7 @@ struct KeyboardKeyView: View {
         height: CGFloat,
         theme: ViewTheme,
         collapsable: Bool = true,
-        sound: SoundType? = .click,
+        sound type: SoundType? = .click,
         onClick: @escaping (String) -> Void = { _ in }) {
         
         self.label = label
@@ -34,7 +34,7 @@ struct KeyboardKeyView: View {
         self.height = height
         self.theme = theme
         self.collapsable = collapsable
-        self.sound = sound
+        self.sound = Sound.of(type)
         self.onClick = onClick
     }
     
@@ -50,9 +50,7 @@ struct KeyboardKeyView: View {
             .fill(theme.background ?? Color.white)
             .frame(width: self.width, height: self.height, alignment: .center)
             .onLongPressGesture(minimumDuration: 0) {
-                if let sound = self.sound {
-                    Sound.of(sound).play()
-                }
+                self.sound?.play()
                 onClick(value)
             }
     }
