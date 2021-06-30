@@ -738,7 +738,7 @@
 				26C52884268AF9CB000EA235 /* modal */,
 				26EA2FE02655916D004A78F2 /* intro */,
 				269BCC852639A06800229E8A /* gesture */,
-				268D92E0260901CF00A43802 /* ascii */,
+				2641EF3C25E411B00005ABF7 /* figlet */,
 				2641EF6525E422350005ABF7 /* cathode */,
 				2649528326026A1D0045BC21 /* environment */,
 				26B10A1F26027AFB007E7B65 /* grid */,
@@ -841,22 +841,6 @@
 				26440443261907B000CA7EA1 /* ColorTheme.swift */,
 			);
 			path = theme;
-			sourceTree = "<group>";
-		};
-		268D92E0260901CF00A43802 /* ascii */ = {
-			isa = PBXGroup;
-			children = (
-				268D92E1260901D900A43802 /* art */,
-				2641EF3C25E411B00005ABF7 /* figlet */,
-			);
-			path = ascii;
-			sourceTree = "<group>";
-		};
-		268D92E1260901D900A43802 /* art */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = art;
 			sourceTree = "<group>";
 		};
 		269764D12624839900775D71 /* les */ = {
