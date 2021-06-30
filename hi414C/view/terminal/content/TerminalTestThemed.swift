@@ -10,6 +10,7 @@ import SwiftUI
 struct TerminalTestThemed: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var testVM: TestViewModel
+    
     @State var bloom = false
     @State var shadow = false
     
@@ -32,7 +33,6 @@ struct TerminalTestThemed: View {
     
     var body: some View {
         TerminalTest(items, theme: (themeVM.terminal.grid.test.figlet, themeVM.terminal.grid.test.sign), wide: wide, shadow: self.shadow)
-            //.bloom(color: themeVM.terminal.grid.test.active.figlet.view.color, active: bloom, radius: 5)
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {

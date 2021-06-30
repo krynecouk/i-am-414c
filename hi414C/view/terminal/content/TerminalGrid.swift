@@ -167,9 +167,6 @@ struct TerminalGrid: View {
     func HelpBackground() -> some View {
         themeVM.terminal.help.background
             .edgesIgnoringSafeArea(.all)
-            //.frame(width: UIScreen.main.bounds.width + 100, height: UIScreen.main.bounds.height + 100)
-            //.transition(AnyTransition.circular.animation(.easeOut.speed(1)))
-            
     }
 
     enum GridType {

@@ -1,5 +1,5 @@
 //
-//  TerminalMessage.swift
+//  TerminalMessageRow.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 30.04.2021.

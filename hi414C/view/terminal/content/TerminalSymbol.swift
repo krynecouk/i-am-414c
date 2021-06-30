@@ -24,8 +24,7 @@ struct TerminalSymbol: View {
     
     var body: some View {
         FigletView([symbol], theme: active ? theme : theme.withAnimation([]), shadow: self.shadow)
-            .opacity(bloom ? 1 : 0.2)
-            //.bloom(color: theme.view.color, active: bloom, radius: 3)
+            .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {
                     self.bloom = true
