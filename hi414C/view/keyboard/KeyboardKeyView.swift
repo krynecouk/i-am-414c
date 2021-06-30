@@ -102,26 +102,6 @@ struct KeyboardKey_Previews: PreviewProvider {
                 PortraitKeyboardKeyPreview("DEL")
             }
         }
-        Landscape {
-            VStack(spacing: 4) {
-                HStack(spacing: 4) {
-                    LandscapeKeyboardKeyPreview("Q")
-                    LandscapeKeyboardKeyPreview("W")
-                    LandscapeKeyboardKeyPreview("E")
-                    LandscapeKeyboardKeyPreview("R")
-                    LandscapeKeyboardKeyPreview("T")
-                    LandscapeKeyboardKeyPreview("Y")
-                }
-                HStack(spacing: 4) {
-                    LandscapeKeyboardKeyPreview("81")
-                    LandscapeKeyboardKeyPreview("87")
-                    LandscapeKeyboardKeyPreview("69")
-                    LandscapeKeyboardKeyPreview("82")
-                    LandscapeKeyboardKeyPreview("84")
-                    LandscapeKeyboardKeyPreview("89")
-                }
-            }
-        }
     }
     
     static func PortraitKeyboardKeyPreview(_ label: String) -> some View {

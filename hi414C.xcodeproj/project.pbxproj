@@ -38,7 +38,6 @@
 		264404572619135E00CA7EA1 /* TerminalCommandCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */; };
 		2649527E260267DA0045BC21 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649527D260267DA0045BC21 /* Environment.swift */; };
 		26500159260F3C6200414E89 /* Keyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26500158260F3C6200414E89 /* Keyboards.swift */; };
-		26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26500164260F455D00414E89 /* DeviceLandscapePreview.swift */; };
 		2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651294C25FA2D5F003F0FB2 /* Node.swift */; };
 		2654882326050B710044297D /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882226050B710044297D /* TerminalView.swift */; };
 		2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654882A26050B920044297D /* TerminalCommandLine.swift */; };
@@ -263,7 +262,6 @@
 		264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandCursor.swift; sourceTree = "<group>"; };
 		2649527D260267DA0045BC21 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		26500158260F3C6200414E89 /* Keyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboards.swift; sourceTree = "<group>"; };
-		26500164260F455D00414E89 /* DeviceLandscapePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLandscapePreview.swift; sourceTree = "<group>"; };
 		2651294C25FA2D5F003F0FB2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		2654882226050B710044297D /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
 		2654882A26050B920044297D /* TerminalCommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandLine.swift; sourceTree = "<group>"; };
@@ -612,14 +610,6 @@
 			path = environment;
 			sourceTree = "<group>";
 		};
-		26500145260F312400414E89 /* device */ = {
-			isa = PBXGroup;
-			children = (
-				26500164260F455D00414E89 /* DeviceLandscapePreview.swift */,
-			);
-			path = device;
-			sourceTree = "<group>";
-		};
 		2654882126050B510044297D /* terminal */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,7 +738,6 @@
 				26C52884268AF9CB000EA235 /* modal */,
 				26EA2FE02655916D004A78F2 /* intro */,
 				269BCC852639A06800229E8A /* gesture */,
-				26500145260F312400414E89 /* device */,
 				268D92E0260901CF00A43802 /* ascii */,
 				2641EF6525E422350005ABF7 /* cathode */,
 				2649528326026A1D0045BC21 /* environment */,
@@ -1507,7 +1496,6 @@
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
 				26D1018F268CD36700E69CE4 /* ModalTheme.swift in Sources */,
 				266F980F266A86D00012619B /* TraverseAllEdge.swift in Sources */,
-				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,
 				26F00B6C266B8002008DACE5 /* ShakeNode.swift in Sources */,
 				266CA418264191CD001A07E0 /* MessageRow.swift in Sources */,
