@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 22.03.2021.
 //
 
-class GraphToolkit {
+struct GraphToolkit {
     var asciiVM: ASCIIViewModel
     var terminalVM: TerminalViewModel
     var keyboardVM: KeyboardViewModel

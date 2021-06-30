@@ -27,7 +27,7 @@ struct GameOverModal: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(themeVM.intro.finish.body.color)
         }
-        .frame(maxWidth: 600)
+        .frame(maxWidth: 450, maxHeight: 350)
     }
     
 }
