@@ -237,6 +237,23 @@ class Theme: Themable {
                         active: color.secondary.value,
                         passive: color.tertiary.value
                     )
+                ),
+                modal: ModalTheme(
+                    header: ViewTheme(
+                        font: FontProps(.proggyTiny, 32),
+                        color: color.secondary.contrast,
+                        background: color.secondary.value
+                    ),
+                    body: ViewTheme(
+                        font: FontProps(.proggyTiny, 32),
+                        color: color.tertiary.contrast,
+                        background: color.tertiary.value
+                    ),
+                    button: ViewTheme(
+                        font: FontProps(.proggyTiny, 32),
+                        color: color.primary.contrast,
+                        background: color.primary.value
+                    )
                 )
             ),
             cli: TerminalTheme.CommandLine(

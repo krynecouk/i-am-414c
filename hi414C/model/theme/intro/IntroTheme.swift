@@ -11,9 +11,3 @@ struct IntroTheme {
     var text: ViewTheme
     var finish: ModalTheme
 }
-
-struct ModalTheme {
-    var header: ViewTheme
-    var body: ViewTheme
-    var button: ViewTheme
-}

@@ -18,12 +18,12 @@ struct HelpModal: View {
             action: {
                 uiVM.closeHelp()
             },
-            theme: themeVM.intro.finish) {
+            theme: themeVM.terminal.help.modal) {
             Text(text)
                 .lineSpacing(10)
-                .font(Font.of(props: themeVM.intro.finish.body.font))
+                .font(Font.of(props: themeVM.terminal.help.modal.body.font))
                 .multilineTextAlignment(.center)
-                .foregroundColor(themeVM.intro.finish.body.color)
+                .foregroundColor(themeVM.terminal.help.modal.body.color)
         }
         .frame(maxWidth: 400, maxHeight: 550)
         .padding(.top, 20)

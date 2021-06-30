@@ -173,6 +173,7 @@
 		26C5288A268B002D000EA235 /* HelpModalDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52889268B002D000EA235 /* HelpModalDao.swift */; };
 		26C5288C268B247A000EA235 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5288B268B247A000EA235 /* Blur.swift */; };
 		26D1018B268CCFC500E69CE4 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1018A268CCFC500E69CE4 /* Graphs.swift */; };
+		26D1018F268CD36700E69CE4 /* ModalTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1018E268CD36700E69CE4 /* ModalTheme.swift */; };
 		26DA68C22609EF1300AF0583 /* FigletShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* FigletShaker.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
 		26E090D1264C0060002E404D /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D0264C0060002E404D /* Dao.swift */; };
@@ -398,6 +399,7 @@
 		26C52889268B002D000EA235 /* HelpModalDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModalDao.swift; sourceTree = "<group>"; };
 		26C5288B268B247A000EA235 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		26D1018A268CCFC500E69CE4 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
+		26D1018E268CD36700E69CE4 /* ModalTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTheme.swift; sourceTree = "<group>"; };
 		26DA68C12609EF1300AF0583 /* FigletShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletShaker.swift; sourceTree = "<group>"; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		26E090D0264C0060002E404D /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 		2644041C2619005000CA7EA1 /* theme */ = {
 			isa = PBXGroup;
 			children = (
+				26D1018D268CD35700E69CE4 /* modal */,
 				26EA2FE52656399A004A78F2 /* intro */,
 				26E090D6264D5E5D002E404D /* themes */,
 				264404102618FAE300CA7EA1 /* keyboard */,
@@ -1090,6 +1093,14 @@
 			path = figlet;
 			sourceTree = "<group>";
 		};
+		26D1018D268CD35700E69CE4 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				26D1018E268CD36700E69CE4 /* ModalTheme.swift */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
 		26E090CF264C0025002E404D /* dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -1494,6 +1505,7 @@
 				26AE69A026769E9E001D5E4D /* RootNode.swift in Sources */,
 				26645DC62639B2790086F26C /* IrisTransition.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
+				26D1018F268CD36700E69CE4 /* ModalTheme.swift in Sources */,
 				266F980F266A86D00012619B /* TraverseAllEdge.swift in Sources */,
 				26500165260F455D00414E89 /* DeviceLandscapePreview.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,

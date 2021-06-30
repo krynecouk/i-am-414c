@@ -33,6 +33,7 @@ struct TerminalTheme {
         var history: History
         var hint: ViewTheme
         var settings: Settings
+        var modal: ModalTheme
         
         struct History {
             var robot: ViewTheme
