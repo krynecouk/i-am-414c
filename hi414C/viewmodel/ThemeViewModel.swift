@@ -23,7 +23,6 @@ class ThemeViewModel: ObservableObject, Resetable {
         let type = ThemeDao.find() ?? type
         let size = FontDao.find() ?? size
         self.theme = type.toTheme(font: FontTheme(size: size))
-        //self.theme = WarnTheme()
         self.fontSize = size
     }
     

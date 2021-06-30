@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-import OrderedCollections
 
 class GraphViewModel: ObservableObject, Resetable {
-    @Published private(set) var root: Node = Graphs.root(of: .BIN)
-    
     typealias EdgeId = String
+    
+    @Published private(set) var root: Node = Graphs.root(of: .BIN)
     
     private(set) var current: Node = Graphs.root(of: .BIN)
     private(set) var toolkit: GraphToolkit
@@ -114,21 +113,17 @@ class GraphViewModel: ObservableObject, Resetable {
     private func getPaths(from node: Node, precondition: (String) -> Bool, visitedLast: Bool = false) -> Set<String> {
         print("GETTING PATHS FROM \(node.name)")
         var paths: Set<String> = []
-        //var visited: Set<String> = []
         for edge in node.edges {
             for name in edge.names.reversed() {
                 if precondition(name) {
-
-                        paths.insert(name)
+                    paths.insert(name)
                     break // store only first acceptable reply
                 }
             }
         }
-        //paths.append(contentsOf: visited)
         return paths
     }
 }
-
 
 enum GraphTraverseResult {
     case ok

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import OrderedCollections
 
 typealias Conversation = (message: Message?, replies: Set<String>)
 

@@ -74,7 +74,6 @@
 		266F9803266946620012619B /* ThemeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9802266946620012619B /* ThemeNode.swift */; };
 		266F9805266946750012619B /* WarnNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9804266946750012619B /* WarnNode.swift */; };
 		266F9807266946860012619B /* PanicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9806266946860012619B /* PanicNode.swift */; };
-		266F980B26694F760012619B /* GraphValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F980A26694F760012619B /* GraphValidationTests.swift */; };
 		266F980F266A86D00012619B /* TraverseAllEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F980E266A86D00012619B /* TraverseAllEdge.swift */; };
 		266F9811266A86EC0012619B /* TraverseIfEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9810266A86EC0012619B /* TraverseIfEdge.swift */; };
 		267463E225DED49900624D7C /* BlurIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267463E125DED49900624D7C /* BlurIn.swift */; };
@@ -149,7 +148,6 @@
 		26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F4325FF7E7400B77E0A /* TestLevel.swift */; };
 		26AF9F5625FF7FAC00B77E0A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5525FF7FAC00B77E0A /* Test.swift */; };
 		26AF9F5E25FF849800B77E0A /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F5D25FF849800B77E0A /* TestResult.swift */; };
-		26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */; };
 		26AF9F8625FFAD4600B77E0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF9F8525FFAD4600B77E0A /* String.swift */; };
 		26B10A2126027B08007E7B65 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B10A2026027B08007E7B65 /* Grid.swift */; };
 		26B39DC525F65741004E4D22 /* Bloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B39DC425F65741004E4D22 /* Bloom.swift */; };
@@ -294,7 +292,6 @@
 		266F9802266946620012619B /* ThemeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNode.swift; sourceTree = "<group>"; };
 		266F9804266946750012619B /* WarnNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnNode.swift; sourceTree = "<group>"; };
 		266F9806266946860012619B /* PanicNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicNode.swift; sourceTree = "<group>"; };
-		266F980A26694F760012619B /* GraphValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphValidationTests.swift; sourceTree = "<group>"; };
 		266F980E266A86D00012619B /* TraverseAllEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraverseAllEdge.swift; sourceTree = "<group>"; };
 		266F9810266A86EC0012619B /* TraverseIfEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraverseIfEdge.swift; sourceTree = "<group>"; };
 		267463E125DED49900624D7C /* BlurIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurIn.swift; sourceTree = "<group>"; };
@@ -368,7 +365,6 @@
 		26AF9F4325FF7E7400B77E0A /* TestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLevel.swift; sourceTree = "<group>"; };
 		26AF9F5525FF7FAC00B77E0A /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		26AF9F5D25FF849800B77E0A /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
-		26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestsTests.swift; path = hi414CTests/model/test/TestsTests.swift; sourceTree = SOURCE_ROOT; };
 		26AF9F8525FFAD4600B77E0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		26B10A2026027B08007E7B65 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		26B39DC425F65741004E4D22 /* Bloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bloom.swift; sourceTree = "<group>"; };
@@ -815,14 +811,6 @@
 			path = keyboard;
 			sourceTree = "<group>";
 		};
-		267E73FB25FFC5EF004E18E0 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				26AF9F7B25FFA69A00B77E0A /* TestsTests.swift */,
-			);
-			path = test;
-			sourceTree = "<group>";
-		};
 		26841009260A350100C50F9A /* theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,7 +939,6 @@
 			children = (
 				26AE69862673EFBD001D5E4D /* language */,
 				269764F726249A3700775D71 /* les */,
-				267E73FB25FFC5EF004E18E0 /* test */,
 				26AF9F7625FFA62D00B77E0A /* graph */,
 			);
 			path = model;
@@ -961,7 +948,6 @@
 			isa = PBXGroup;
 			children = (
 				26F7A6CA25FA4FF800F04156 /* GraphTests.swift */,
-				266F980A26694F760012619B /* GraphValidationTests.swift */,
 			);
 			path = graph;
 			sourceTree = "<group>";
@@ -1513,10 +1499,8 @@
 			files = (
 				26AE69942674A172001D5E4D /* WordTests.swift in Sources */,
 				26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */,
-				26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */,
 				26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */,
 				269765112624ABFF00775D71 /* EquationTests.swift in Sources */,
-				266F980B26694F760012619B /* GraphValidationTests.swift in Sources */,
 				26AE69922674A160001D5E4D /* SentenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

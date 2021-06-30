@@ -47,35 +47,24 @@ class GraphTests: XCTestCase {
     func test_graph_contains_all_the_nodes_and_edges() {
         print("tested graph: ", GraphTests.tested)
         
-        XCTAssertEqual(GraphTests.tested.id, "HI", "Root node should have id 'HI'")
+        XCTAssertEqual(GraphTests.tested.name, "HI", "Root node should have id 'HI'")
         XCTAssertEqual(GraphTests.tested.edges.count, 5, "Root node should have 5 edges")
-        XCTAssertEqual(GraphTests.tested.edges[0].id, "HI", "[HI] -HI-> [HI]")
-        XCTAssertEqual(GraphTests.tested.edges[0].target.id, "HI", "[HI] -HI-> [HI]")
-        XCTAssertEqual(GraphTests.tested.edges[1].id, "I", "[HI] -I-> [AL] -AL?-> [YES]")
-        XCTAssertEqual(GraphTests.tested.edges[1].target.id, "AL", "[HI] -I-> [AL] -AL?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[0].names, ["HI"], "[HI] -HI-> [HI]")
+        XCTAssertEqual(GraphTests.tested.edges[0].target.name, "HI", "[HI] -HI-> [HI]")
+        XCTAssertEqual(GraphTests.tested.edges[1].names, ["I"], "[HI] -I-> [AL] -AL?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[1].target.name, "AL", "[HI] -I-> [AL] -AL?-> [YES]")
         XCTAssertEqual(GraphTests.tested.edges[1].target.edges.count, 1, "[HI] -I-> [AL] -AL?-> [YES]")
-        XCTAssertEqual(GraphTests.tested.edges[1].target.edges[0].id, "AL?", "[HI] -I-> [AL] -AL?-> [YES]")
-        XCTAssertEqual(GraphTests.tested.edges[1].target.edges[0].target.id, "YES", "[HI] -I-> [AL] -AL?-> [YES]")
-        
-        //TODO
-        /*
-        let edgeWithVariants = GraphTests.tested.edges[1]
-        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: GraphContext(input: "foo")), false, "Should not be traversable")
-        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: GraphContext(input: "I")), true, "Should be traversable")
-        XCTAssertEqual(edgeWithVariants.isTraversable(ctx: GraphContext(input: "ME?")), true, "Should be traversable")
-        // XCTAssertEqual(edgeWithVariants.isTraversable(ctx: Context(input: "MY NAME")), true, "Should be traversable") //TODO should be traversable
-        XCTAssertEqual(edgeWithVariants.traverse().id, "AL", "Should traverse to node with id 'AL'")
-        XCTAssertEqual(edgeWithVariants.traverse().edges.count, 1, "New node should have 1 edge to traverse")
-        */
+        XCTAssertEqual(GraphTests.tested.edges[1].target.edges[0].names, ["AL?"], "[HI] -I-> [AL] -AL?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[1].target.edges[0].target.name, "YES", "[HI] -I-> [AL] -AL?-> [YES]")
  
-        XCTAssertEqual(GraphTests.tested.edges[2].id, "AL", "[HI] -AL-> [YOU] -AL?-> [YES]")
-        XCTAssertEqual(GraphTests.tested.edges[2].target.id, "YOU", "[HI] -AL-> [YOU] -AL?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[2].names, ["AL"], "[HI] -AL-> [YOU] -AL?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[2].target.name, "YOU", "[HI] -AL-> [YOU] -AL?-> [YES]")
         
-        XCTAssertEqual(GraphTests.tested.edges[3].id, "YOU", "[HI] -YOU-> [414C] -414C?-> [YES]")
-        XCTAssertEqual(GraphTests.tested.edges[3].target.id, "414C", "[HI] -AL-> [YOU] -AL?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[3].names, ["YOU"], "[HI] -YOU-> [414C] -414C?-> [YES]")
+        XCTAssertEqual(GraphTests.tested.edges[3].target.name, "414C", "[HI] -AL-> [YOU] -AL?-> [YES]")
         
-        XCTAssertEqual(GraphTests.tested.edges[4].id, "414C", "[HI] -414C-> [I]")
-        XCTAssertEqual(GraphTests.tested.edges[4].target.id, "I", "[HI] -414C-> [I]")
+        XCTAssertEqual(GraphTests.tested.edges[4].names, ["414C"], "[HI] -414C-> [I]")
+        XCTAssertEqual(GraphTests.tested.edges[4].target.name, "I", "[HI] -414C-> [I]")
         XCTAssertEqual(GraphTests.tested.edges[4].target.edges.isEmpty, true, "[HI] -414C-> [I]")
     }
 }
