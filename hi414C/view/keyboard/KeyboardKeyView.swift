@@ -85,33 +85,25 @@ struct KeyboardKey_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 4) {
             HStack(spacing: 4) {
-                PortraitKeyboardKeyPreview("Q")
-                PortraitKeyboardKeyPreview("W")
-                PortraitKeyboardKeyPreview("E")
-                PortraitKeyboardKeyPreview("R")
-                PortraitKeyboardKeyPreview("T")
-                PortraitKeyboardKeyPreview("Y")
+                KeyboardKeyPreview("Q")
+                KeyboardKeyPreview("W")
+                KeyboardKeyPreview("E")
+                KeyboardKeyPreview("R")
+                KeyboardKeyPreview("T")
+                KeyboardKeyPreview("Y")
             }
             HStack(spacing: 4) {
-                PortraitKeyboardKeyPreview("81")
-                PortraitKeyboardKeyPreview("87")
-                PortraitKeyboardKeyPreview("69")
-                PortraitKeyboardKeyPreview("82")
-                PortraitKeyboardKeyPreview("84")
-                PortraitKeyboardKeyPreview("89")
-                PortraitKeyboardKeyPreview("DEL")
+                KeyboardKeyPreview("81")
+                KeyboardKeyPreview("87")
+                KeyboardKeyPreview("69")
+                KeyboardKeyPreview("82")
+                KeyboardKeyPreview("84")
+                KeyboardKeyPreview("89")
+                KeyboardKeyPreview("DEL")
             }
         }
     }
-    
-    static func PortraitKeyboardKeyPreview(_ label: String) -> some View {
-        KeyboardKeyPreview(label)
-    }
-    
-    static func LandscapeKeyboardKeyPreview(_ label: String) -> some View {
-        KeyboardKeyPreview(label, width: 70, height: 40)
-    }
-    
+
     static func KeyboardKeyPreview(_ label: String, width: CGFloat = 40, height: CGFloat = 70) -> some View {
         KeyboardKeyView(label, width: width, height: height, theme: ViewTheme()) { _ in
             print("Clicked on \(label)")
