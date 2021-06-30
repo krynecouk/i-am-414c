@@ -98,7 +98,7 @@ class GraphViewModel: ObservableObject, Resetable {
         toolkit.terminalVM.setContent([.test(tests)])
     }
     
-    func getReplies(ascii: Set<ASCIISymbol>) -> (current: OrderedSet<String>, root: OrderedSet<String>) {
+    func getReplies(ascii: Set<ASCIISymbol>) -> (current: Set<String>, root: Set<String>) {
         let currentRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
@@ -111,27 +111,20 @@ class GraphViewModel: ObservableObject, Resetable {
         return (current, root)
     }
     
-    private func getPaths(from node: Node, precondition: (String) -> Bool, visitedLast: Bool = false) -> OrderedSet<String> {
+    private func getPaths(from node: Node, precondition: (String) -> Bool, visitedLast: Bool = false) -> Set<String> {
         print("GETTING PATHS FROM \(node.name)")
-        var paths: OrderedSet<String> = []
-        var visited: OrderedSet<String> = []
+        var paths: Set<String> = []
+        //var visited: Set<String> = []
         for edge in node.edges {
             for name in edge.names.reversed() {
                 if precondition(name) {
-                    if visitedLast {
-                        if self.visited.contains(edge.id) {
-                            visited.append(name)
-                        } else {
-                            paths.append(name)
-                        }
-                    } else {
-                        paths.append(name)
-                    }
+
+                        paths.insert(name)
                     break // store only first acceptable reply
                 }
             }
         }
-        paths.append(contentsOf: visited)
+        //paths.append(contentsOf: visited)
         return paths
     }
 }

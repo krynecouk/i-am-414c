@@ -786,19 +786,19 @@ class BinGraph {
             AL(["EXECUTE", "EXECUTE COMMAND"]) {
                 R("TYPE COMMAND") {
                     AL("LOAD(MEMORY)") {
-                        R("UNKNOWN COMMAND")
+                        COMMON.DIE_WARN
                     }
                     AL("GC.COLLECT()") {
-                        R("UNKNOWN COMMAND")
+                        COMMON.DIE_WARN
                     }
                     AL("LDA-2034K") {
-                        R("UNKNOWN COMMAND")
+                        COMMON.DIE_WARN
                     }
                     AL("MEM-DALLOC") {
-                        R("UNKNOWN COMMAND")
+                        COMMON.DIE_WARN
                     }
                     AL("JCMD-7544-GC.RUN") {
-                        R("UNKNOWN COMMAND")
+                        COMMON.DIE_WARN
                     }
                     ALL {
                         EITHER(left: AL { R("UNKNOWN COMMAND") }, right: AL { FIX }) { ctx, _ in

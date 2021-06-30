@@ -8,7 +8,7 @@
 import SwiftUI
 import OrderedCollections
 
-typealias Conversation = (message: Message?, replies: OrderedSet<String>)
+typealias Conversation = (message: Message?, replies: Set<String>)
 
 class ChatViewModel: ObservableObject, Resetable {
     private(set) var messages: [Message] = []
@@ -29,11 +29,11 @@ class ChatViewModel: ObservableObject, Resetable {
         self.messages = []
     }
 
-    func setCurrent(message: Message?, replies: OrderedSet<String>) {
+    func setCurrent(message: Message?, replies: Set<String>) {
         self.current = (message, replies)
     }
     
-    func setRoot(message: Message?, replies: OrderedSet<String>) {
+    func setRoot(message: Message?, replies: Set<String>) {
         self.root = (message, replies)
     }
 }

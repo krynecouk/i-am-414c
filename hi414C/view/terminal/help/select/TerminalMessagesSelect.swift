@@ -15,13 +15,14 @@ struct TerminalMessagesSelect: View {
     @EnvironmentObject var segueVM: SegueViewModel
     
     @State var pageLimit = 0
+    @State var shuffled: [String] = []
     
     var body: some View {
         Group {
             ForEach(chatVM.current.replies.map { Item($0) }) { item in
                 MessageButton(item.content)
             }
-            ForEach(chatVM.root.replies.prefix(pageLimit).map { Item($0) }) { item in
+            ForEach(getRootItems()) { item in
                 MessageButton(item.content)
             }
             if chatVM.current.message == nil || (chatVM.current.replies.isEmpty && self.pageLimit == 0) {
@@ -31,6 +32,13 @@ struct TerminalMessagesSelect: View {
                 MessageReload()
             }
         }
+    }
+    
+    func getRootItems() -> [Item<String>] {
+        if shuffled.isEmpty {
+            return chatVM.root.replies.prefix(pageLimit).map { Item($0) }
+        }
+        return shuffled.prefix(pageLimit).map { Item($0) }
     }
     
     func MessageLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -68,7 +76,11 @@ struct TerminalMessagesSelect: View {
     }
     
     func MessageReload() -> some View {
-        ReloadButton() {
+        ReloadButton(perform: {
+            if self.shuffled.isEmpty {
+                self.shuffled = chatVM.root.replies.shuffled()
+            }
+        }) {
             if chatVM.root.replies.count > pageLimit {
                 withAnimation {
                     self.pageLimit += 3
@@ -96,9 +108,11 @@ struct ReloadButton: View {
     private var DELAY: Double = 1.7
     
     var action: () -> Void
+    var callback: () -> Void
     
-    init(perform action: @escaping () -> Void = {}) {
+    init(perform action: @escaping () -> Void = {}, on callback: @escaping () -> Void = {}) {
         self.action = action
+        self.callback = callback
     }
     
     var body: some View {
@@ -114,6 +128,7 @@ struct ReloadButton: View {
         .disabled(self.disabled)
         .onTapGesture {
             if !disabled {
+                self.action()
                 self.animated = true
                 self.disabled = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + DELAY) {
@@ -121,7 +136,7 @@ struct ReloadButton: View {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + DELAY + 0.3) {
                     self.disabled = false
-                    action()
+                    self.callback()
                 }
             }
         }
