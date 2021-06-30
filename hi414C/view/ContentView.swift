@@ -18,6 +18,9 @@ struct ContentView: View {
             CathodeView {
                 if uiVM.isIntro {
                     IntroScreen()
+                        .onAppear {
+                            uiVM.isRefreshWave = true
+                        }
                 } else {
                     if uiVM.isFinishedGame {
                         GameOverModal()
@@ -29,6 +32,7 @@ struct ContentView: View {
             .onTapGesture {
                 if uiVM.isIntro {
                     uiVM.isIntro = false
+                    uiVM.isRefreshWave = false
                 }
             }
             .statusBar(hidden: true)

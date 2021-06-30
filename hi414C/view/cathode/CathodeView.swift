@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CathodeView<Content: View>: View {
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var uiVM: UIViewModel
     
     let content: Content
     
@@ -24,10 +25,11 @@ struct CathodeView<Content: View>: View {
                     .opacity(0.22)
             }
             
-            /*
-            RefreshWave(of: themeVM.terminal.cathode.wave)
-                .opacity(0.09)
-            */
+            if uiVM.isRefreshWave {
+                RefreshWave(of: themeVM.terminal.cathode.wave)
+                    .opacity(0.09)
+            }
+      
             content
         }
     }
