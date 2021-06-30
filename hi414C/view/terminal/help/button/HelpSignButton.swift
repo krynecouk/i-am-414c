@@ -30,6 +30,7 @@ struct HelpSignButton<T>: View {
                 helpVM.change(to: equationType)
             }
         }
-        //.bevelBorder(light: .white, dark: .black, width: 3, visible: !active)
+        // TODO maybe add bevel?
+        //.bevelBorder(light: themeVM.theme.terminal.hli.button.passive.color, dark: themeVM.theme.terminal.hli.button.passive.background ?? .black, width: 3, visible: !active)
     }
 }
