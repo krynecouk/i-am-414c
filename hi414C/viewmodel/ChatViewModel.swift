@@ -19,6 +19,10 @@ class ChatViewModel: ObservableObject, Resetable {
         if !message.text.isEmpty {
             self.messages.append(message)
         }
+        
+        if messages.count > 200 {
+            self.messages = Array(self.messages[50...])
+        }
     }
     
     func reset() {
