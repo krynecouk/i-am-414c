@@ -28,3 +28,10 @@ class PanicNode414C: PanicNode {
         super.onExit(ctx: ctx, toolkit: toolkit)
     }
 }
+
+extension PanicNode414C {
+    static func >> (node: PanicNode414C, edge: TestEdge) -> PanicNode414C {
+        node.edges.append(edge)
+        return node
+    }
+}

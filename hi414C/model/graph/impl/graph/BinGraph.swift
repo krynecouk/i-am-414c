@@ -111,18 +111,18 @@ class BinGraph {
         }
 
     private static let I =
-        AL(["I", "ME", "WHO AM I?"]) {
-            R("AL")
+        AL(["ME?", "I?", "WHO AM I?"]) {
+            R("AL") >> _AL
         }
 
     private static let _AL =
-        AL(["AL", "WHO IS AL?"]) {
-            R("YOU")
+        AL(["AL?", "WHO IS AL?"]) {
+            R("YOU") >> YOU
         }
 
     private static let YOU =
-        AL(["YOU", "WHO ARE YOU?"]) {
-            R("I AM 414C")
+        AL(["YOU?", "WHO ARE YOU?"]) {
+            R("I AM 414C") >> _414C
         }
     
     private static let ASK =
@@ -717,11 +717,19 @@ class BinGraph {
 
     private static let _HI =
         AL(["HELLO", "HI"]) {
-            R("HI")
+            R("HI") {
+                AL("HI") {
+                    R("HI") {
+                        AL("HI") {
+                            R("...HI")
+                        }
+                    }
+                }
+            }
         }
 
     private static let _414C =
-        AL(["ROBOT", "414C"]) {
+        AL(["ROBOT", "414C?"]) {
             R("ME")
         }
 

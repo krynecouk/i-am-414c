@@ -42,7 +42,6 @@ class TestEdge: Edge {
         toolkit.graphVM?.visited.insert(self.id)
         return target
     }
-
 }
 
 extension TestEdge {

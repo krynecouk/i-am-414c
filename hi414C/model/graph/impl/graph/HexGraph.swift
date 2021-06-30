@@ -110,28 +110,21 @@ class HexGraph {
     
     private static let _HI =
         AL("HI") {
-            R("HI")
+            R("HI") >> HEX.I
         }
     
     private static let I =
-        AL(["I", "WHO AM I?"]) {
-            PANIC414C("AL")
+        AL(["I?", "WHO AM I?"]) {
+            PANIC414C("AL") >> HEX._AL
         }
     
     private static let _AL =
-        AL("AL") {
-            R("YOU")
-        }
-    
-    private static let _414C =
-        AL(["414C"]) {
-            R("AL IN HEX") {
-                CLUE
-            }
+        AL("AL?") {
+            R("YOU") >> HEX.YOU
         }
     
     private static let YOU =
-        AL(["YOU", "WHO ARE YOU?"]) {
+        AL(["YOU?", "WHO ARE YOU?"]) {
             R("I AM AL") {
                 AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
                     R("YOU ARE IN COMA") {
@@ -145,6 +138,13 @@ class HexGraph {
             }
         }
     
+    private static let _414C =
+        AL(["414C?"]) {
+            R("AL IN HEX") {
+                CLUE
+            }
+        }
+  
     private static let COMA =
         AL(["COMA", "TELL ME ABOUT COMA"]) {
             R("WHAT?") {

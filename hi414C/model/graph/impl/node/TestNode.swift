@@ -10,7 +10,7 @@ import Foundation
 class TestNode: Node {
     let id: String
     var name: String
-    let edges: [Edge]
+    var edges: [Edge]
     var index: [String:Edge] = [:]
     
     init(_ name: String, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
@@ -42,5 +42,12 @@ class TestNode: Node {
     func onExit(ctx: GraphContext, toolkit: GraphToolkit) {
         toolkit.chatVM.add(message: Message(from: .robot, text: name))
         toolkit.testVM.storeLevel()
+    }
+}
+
+extension TestNode {
+    static func >> (node: TestNode, edge: TestEdge) -> TestNode {
+        node.edges.append(edge)
+        return node
     }
 }

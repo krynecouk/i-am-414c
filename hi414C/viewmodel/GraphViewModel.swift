@@ -99,11 +99,15 @@ class GraphViewModel: ObservableObject, Resetable {
     }
     
     func getReplies(ascii: Set<ASCIISymbol>) -> (current: OrderedSet<String>, root: OrderedSet<String>) {
-        let precondition: (String) -> Bool = { path in
+        let currentRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
-        let current = self.current is RootNode ? [] : getPaths(from: current, precondition: precondition)
-        let root = getPaths(from: root, precondition: precondition, visitedLast: true)
+        let current = self.current is RootNode ? ["HI"] : getPaths(from: current, precondition: currentRule)
+        
+        let rootRule: (String) -> Bool = { path in
+            ascii.contains(all: path.map { ASCIISymbol.from($0) }) && !current.contains(path)
+        }
+        let root = getPaths(from: root, precondition: rootRule, visitedLast: true)
         return (current, root)
     }
     
