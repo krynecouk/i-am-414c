@@ -10,7 +10,7 @@ import AVFoundation
 class DanceNode: ShakeNode {
     private let music: Sound = Sound.of(.computing)
     
-    override init(_ name: String, shake: ArtAnimation, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
+    override init(_ name: String, shake: FigletAnimation, @EdgeBuilder _ edges: () -> [Edge] = {[]}) {
         super.init(name, shake: shake, edges)
     }
     

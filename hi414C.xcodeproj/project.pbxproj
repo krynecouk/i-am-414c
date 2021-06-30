@@ -94,10 +94,6 @@
 		2678D97E260E5D8700DDB40F /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D97D260E5D8700DDB40F /* KeyboardKey.swift */; };
 		2678D982260E818700DDB40F /* KeyboardSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D981260E818700DDB40F /* KeyboardSide.swift */; };
 		2678D986260E81BD00DDB40F /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678D985260E81BD00DDB40F /* Keyboard.swift */; };
-		267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D5C260C847400844927 /* ASCIIPrintable.swift */; };
-		267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D60260C84E300844927 /* ASCIIArtType.swift */; };
-		267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D64260C852000844927 /* ASCIIArtCollection.swift */; };
-		267A0D74260C8BB400844927 /* AnimalASCIIArts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0D73260C8BB400844927 /* AnimalASCIIArts.swift */; };
 		26841012260A35A500C50F9A /* ViewTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26841011260A35A500C50F9A /* ViewTheme.swift */; };
 		2684EC84267FA60600AAC7F5 /* DanceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684EC83267FA60600AAC7F5 /* DanceNode.swift */; };
 		2684EC86267FAABD00AAC7F5 /* computing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2684EC85267FAABD00AAC7F5 /* computing.wav */; };
@@ -109,10 +105,9 @@
 		268D92D12608D83000A43802 /* GraphToolkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92D02608D83000A43802 /* GraphToolkit.swift */; };
 		268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92D62608E10700A43802 /* TerminalViewModel.swift */; };
 		268D92DB2608E18A00A43802 /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92DA2608E18A00A43802 /* ThemeViewModel.swift */; };
-		268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92E2260901F300A43802 /* ASCIIArtView.swift */; };
-		268D92E92609025400A43802 /* ASCIIArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92E82609025400A43802 /* ASCIIArt.swift */; };
+		268D92E3260901F300A43802 /* FigletPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D92E2260901F300A43802 /* FigletPrinter.swift */; };
 		26904A5A25F0CC87001BFBA5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 26904A5925F0CC87001BFBA5 /* README.md */; };
-		2695155C2614F56C0020DD11 /* ASCIIArtLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */; };
+		2695155C2614F56C0020DD11 /* FigletPrintLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155B2614F56C0020DD11 /* FigletPrintLine.swift */; };
 		2695156026151B2F0020DD11 /* LiteFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695155F26151B2F0020DD11 /* LiteFigletView.swift */; };
 		269764DA262483E800775D71 /* AND.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764D9262483E800775D71 /* AND.swift */; };
 		269764DE262483F800775D71 /* EquationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269764DD262483F800775D71 /* EquationBuilder.swift */; };
@@ -178,8 +173,7 @@
 		26C52888268AFA61000EA235 /* HelpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52887268AFA61000EA235 /* HelpModal.swift */; };
 		26C5288A268B002D000EA235 /* HelpModalDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52889268B002D000EA235 /* HelpModalDao.swift */; };
 		26C5288C268B247A000EA235 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5288B268B247A000EA235 /* Blur.swift */; };
-		26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */; };
-		26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */; };
+		26DA68C22609EF1300AF0583 /* FigletShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* FigletShaker.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
 		26E090D1264C0060002E404D /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D0264C0060002E404D /* Dao.swift */; };
 		26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D2264C01D0002E404D /* ASCIIDao.swift */; };
@@ -226,7 +220,6 @@
 		26EA3026265C07FA004A78F2 /* TerminalHelpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */; };
 		26EA302C265E6EA8004A78F2 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA3029265E6EA8004A78F2 /* license.txt */; };
 		26EA302D265E6EA8004A78F2 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26EA302A265E6EA8004A78F2 /* readme.txt */; };
-		26EA3030265E72D6004A78F2 /* TextFigletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA302F265E72D6004A78F2 /* TextFigletView.swift */; };
 		26EA30372661829B004A78F2 /* TestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30362661829B004A78F2 /* TestDao.swift */; };
 		26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */; };
 		26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA303E26669120004A78F2 /* PanicTheme.swift */; };
@@ -343,10 +336,6 @@
 		2678D97D260E5D8700DDB40F /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		2678D981260E818700DDB40F /* KeyboardSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSide.swift; sourceTree = "<group>"; };
 		2678D985260E81BD00DDB40F /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		267A0D5C260C847400844927 /* ASCIIPrintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIPrintable.swift; sourceTree = "<group>"; };
-		267A0D60260C84E300844927 /* ASCIIArtType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtType.swift; sourceTree = "<group>"; };
-		267A0D64260C852000844927 /* ASCIIArtCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtCollection.swift; sourceTree = "<group>"; };
-		267A0D73260C8BB400844927 /* AnimalASCIIArts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalASCIIArts.swift; sourceTree = "<group>"; };
 		26841011260A35A500C50F9A /* ViewTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTheme.swift; sourceTree = "<group>"; };
 		2684EC83267FA60600AAC7F5 /* DanceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceNode.swift; sourceTree = "<group>"; };
 		2684EC85267FAABD00AAC7F5 /* computing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = computing.wav; sourceTree = "<group>"; };
@@ -357,10 +346,9 @@
 		268D92D02608D83000A43802 /* GraphToolkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphToolkit.swift; sourceTree = "<group>"; };
 		268D92D62608E10700A43802 /* TerminalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalViewModel.swift; sourceTree = "<group>"; };
 		268D92DA2608E18A00A43802 /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
-		268D92E2260901F300A43802 /* ASCIIArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtView.swift; sourceTree = "<group>"; };
-		268D92E82609025400A43802 /* ASCIIArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArt.swift; sourceTree = "<group>"; };
+		268D92E2260901F300A43802 /* FigletPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletPrinter.swift; sourceTree = "<group>"; };
 		26904A5925F0CC87001BFBA5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtLineView.swift; sourceTree = "<group>"; };
+		2695155B2614F56C0020DD11 /* FigletPrintLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletPrintLine.swift; sourceTree = "<group>"; };
 		2695155F26151B2F0020DD11 /* LiteFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteFigletView.swift; sourceTree = "<group>"; };
 		269764D9262483E800775D71 /* AND.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AND.swift; sourceTree = "<group>"; };
 		269764DD262483F800775D71 /* EquationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationBuilder.swift; sourceTree = "<group>"; };
@@ -428,8 +416,7 @@
 		26C52887268AFA61000EA235 /* HelpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModal.swift; sourceTree = "<group>"; };
 		26C52889268B002D000EA235 /* HelpModalDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModalDao.swift; sourceTree = "<group>"; };
 		26C5288B268B247A000EA235 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
-		26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIArtShaker.swift; sourceTree = "<group>"; };
-		26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCIIArtShakerTests.swift; path = hi414CTests/model/ascii/art/ASCIIArtShakerTests.swift; sourceTree = SOURCE_ROOT; };
+		26DA68C12609EF1300AF0583 /* FigletShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletShaker.swift; sourceTree = "<group>"; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		26E090D0264C0060002E404D /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 		26E090D2264C01D0002E404D /* ASCIIDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIDao.swift; sourceTree = "<group>"; };
@@ -476,7 +463,6 @@
 		26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpSettings.swift; sourceTree = "<group>"; };
 		26EA3029265E6EA8004A78F2 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		26EA302A265E6EA8004A78F2 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		26EA302F265E72D6004A78F2 /* TextFigletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFigletView.swift; sourceTree = "<group>"; };
 		26EA30362661829B004A78F2 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
 		26EA303A2665740D004A78F2 /* TestDifficultyDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDifficultyDao.swift; sourceTree = "<group>"; };
 		26EA303E26669120004A78F2 /* PanicTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicTheme.swift; sourceTree = "<group>"; };
@@ -519,12 +505,9 @@
 		26040D8125F15745005BF921 /* ascii */ = {
 			isa = PBXGroup;
 			children = (
-				268D92F02609064800A43802 /* art */,
-				26647D1D25F8FC7100E32DE0 /* figlet */,
 				26040D7E25F15629005BF921 /* ASCII.swift */,
 				26040D8225F15753005BF921 /* ASCIITable.swift */,
 				26647D2325F906D900E32DE0 /* ASCIISymbol.swift */,
-				267A0D5C260C847400844927 /* ASCIIPrintable.swift */,
 			);
 			path = ascii;
 			sourceTree = "<group>";
@@ -577,9 +560,10 @@
 		2641EF3C25E411B00005ABF7 /* figlet */ = {
 			isa = PBXGroup;
 			children = (
+				268D92E2260901F300A43802 /* FigletPrinter.swift */,
+				2695155B2614F56C0020DD11 /* FigletPrintLine.swift */,
 				2620921A2600B2FE0001904B /* FigletView.swift */,
 				2695155F26151B2F0020DD11 /* LiteFigletView.swift */,
-				26EA302F265E72D6004A78F2 /* TextFigletView.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -717,6 +701,7 @@
 				26647D1F25F8FD2900E32DE0 /* Figlet.swift */,
 				2636248D25FCBB2900B490B4 /* FigletFont.swift */,
 				262092242600B7250001904B /* FigletTypeface.swift */,
+				26DA68C12609EF1300AF0583 /* FigletShaker.swift */,
 			);
 			path = figlet;
 			sourceTree = "<group>";
@@ -815,6 +800,7 @@
 				26AE69832673EAF3001D5E4D /* language */,
 				26E090CF264C0025002E404D /* dao */,
 				269764D12624839900775D71 /* les */,
+				26647D1D25F8FC7100E32DE0 /* figlet */,
 				26040D8125F15745005BF921 /* ascii */,
 				2641EF5125E41D1A0005ABF7 /* font */,
 				26647D2825F94D0D00E32DE0 /* graph */,
@@ -884,14 +870,6 @@
 			path = keyboard;
 			sourceTree = "<group>";
 		};
-		267A0D72260C8B9B00844927 /* animal */ = {
-			isa = PBXGroup;
-			children = (
-				267A0D73260C8BB400844927 /* AnimalASCIIArts.swift */,
-			);
-			path = animal;
-			sourceTree = "<group>";
-		};
 		267E73FB25FFC5EF004E18E0 /* test */ = {
 			isa = PBXGroup;
 			children = (
@@ -921,20 +899,6 @@
 		268D92E1260901D900A43802 /* art */ = {
 			isa = PBXGroup;
 			children = (
-				268D92E2260901F300A43802 /* ASCIIArtView.swift */,
-				2695155B2614F56C0020DD11 /* ASCIIArtLineView.swift */,
-			);
-			path = art;
-			sourceTree = "<group>";
-		};
-		268D92F02609064800A43802 /* art */ = {
-			isa = PBXGroup;
-			children = (
-				267A0D72260C8B9B00844927 /* animal */,
-				268D92E82609025400A43802 /* ASCIIArt.swift */,
-				26DA68C12609EF1300AF0583 /* ASCIIArtShaker.swift */,
-				267A0D60260C84E300844927 /* ASCIIArtType.swift */,
-				267A0D64260C852000844927 /* ASCIIArtCollection.swift */,
 			);
 			path = art;
 			sourceTree = "<group>";
@@ -1058,7 +1022,6 @@
 			children = (
 				26AE69862673EFBD001D5E4D /* language */,
 				269764F726249A3700775D71 /* les */,
-				26DA68C52609F55B00AF0583 /* ascii */,
 				267E73FB25FFC5EF004E18E0 /* test */,
 				26AF9F7625FFA62D00B77E0A /* graph */,
 			);
@@ -1161,22 +1124,6 @@
 				26C52887268AFA61000EA235 /* HelpModal.swift */,
 			);
 			path = modal;
-			sourceTree = "<group>";
-		};
-		26DA68C52609F55B00AF0583 /* ascii */ = {
-			isa = PBXGroup;
-			children = (
-				26DA68C62609F56100AF0583 /* art */,
-			);
-			path = ascii;
-			sourceTree = "<group>";
-		};
-		26DA68C62609F56100AF0583 /* art */ = {
-			isa = PBXGroup;
-			children = (
-				26DA68C72609F58C00AF0583 /* ASCIIArtShakerTests.swift */,
-			);
-			path = art;
 			sourceTree = "<group>";
 		};
 		26E090CF264C0025002E404D /* dao */ = {
@@ -1482,7 +1429,6 @@
 				2654883B26051B8B0044297D /* TestViewModel.swift in Sources */,
 				2620922E2600C5420001904B /* ASCIIViewModel.swift in Sources */,
 				26E090F62651BCAD002E404D /* YellowTheme.swift in Sources */,
-				268D92E92609025400A43802 /* ASCIIArt.swift in Sources */,
 				26E091002651C600002E404D /* SwampTheme.swift in Sources */,
 				2678D982260E818700DDB40F /* KeyboardSide.swift in Sources */,
 				269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */,
@@ -1505,12 +1451,11 @@
 				2649527E260267DA0045BC21 /* Environment.swift in Sources */,
 				265848EE260BB4A8009C0975 /* TestTheme.swift in Sources */,
 				269764DA262483E800775D71 /* AND.swift in Sources */,
-				2695155C2614F56C0020DD11 /* ASCIIArtLineView.swift in Sources */,
+				2695155C2614F56C0020DD11 /* FigletPrintLine.swift in Sources */,
 				2697651726256A2600775D71 /* XOR.swift in Sources */,
 				26EA30072656C950004A78F2 /* HelpButton.swift in Sources */,
 				26E090E426506318002E404D /* LightOrangeTheme.swift in Sources */,
 				2697651F26256DB500775D71 /* NOT.swift in Sources */,
-				267A0D74260C8BB400844927 /* AnimalASCIIArts.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				2678D986260E81BD00DDB40F /* Keyboard.swift in Sources */,
 				26645DC22639B1930086F26C /* CircleTransition.swift in Sources */,
@@ -1524,10 +1469,8 @@
 				26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewTheme.swift in Sources */,
 				269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */,
-				267A0D65260C852000844927 /* ASCIIArtCollection.swift in Sources */,
 				26AE698A267494A9001D5E4D /* Sentence.swift in Sources */,
 				268D92D72608E10700A43802 /* TerminalViewModel.swift in Sources */,
-				26EA3030265E72D6004A78F2 /* TextFigletView.swift in Sources */,
 				266CA42A2645A617001A07E0 /* Collection.swift in Sources */,
 				2636248E25FCBB2900B490B4 /* FigletFont.swift in Sources */,
 				26F7A6D925FA592200F04156 /* TestEdge.swift in Sources */,
@@ -1547,10 +1490,10 @@
 				2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */,
 				26AE698C267494B2001D5E4D /* Word.swift in Sources */,
 				2665C9E1263D2DD500CE724F /* TerminalSymbol.swift in Sources */,
-				268D92E3260901F300A43802 /* ASCIIArtView.swift in Sources */,
+				268D92E3260901F300A43802 /* FigletPrinter.swift in Sources */,
 				267463EC25DED87500624D7C /* CathodeView.swift in Sources */,
 				266F97FD26693A4E0012619B /* Resetable.swift in Sources */,
-				26DA68C22609EF1300AF0583 /* ASCIIArtShaker.swift in Sources */,
+				26DA68C22609EF1300AF0583 /* FigletShaker.swift in Sources */,
 				26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */,
 				26F7A6CF25FA583100F04156 /* Edge.swift in Sources */,
 				26F00B5C266AB7D8008DACE5 /* types.swift in Sources */,
@@ -1590,7 +1533,6 @@
 				2684EC84267FA60600AAC7F5 /* DanceNode.swift in Sources */,
 				262F4B3A266E4E6700D14D52 /* DiceNode.swift in Sources */,
 				264404242619014000CA7EA1 /* Theme.swift in Sources */,
-				267A0D61260C84E300844927 /* ASCIIArtType.swift in Sources */,
 				26EA2FE7265639B3004A78F2 /* IntroTheme.swift in Sources */,
 				26C52886268AF9E7000EA235 /* Modal.swift in Sources */,
 				26500159260F3C6200414E89 /* Keyboards.swift in Sources */,
@@ -1650,7 +1592,6 @@
 				269BCC8226396A1700229E8A /* SegueViewModel.swift in Sources */,
 				26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */,
 				26EA30092656C9D4004A78F2 /* HelpWarnButton.swift in Sources */,
-				267A0D5D260C847400844927 /* ASCIIPrintable.swift in Sources */,
 				264404172618FE2A00CA7EA1 /* TerminalTheme.swift in Sources */,
 				26EA2FE226559178004A78F2 /* Video.swift in Sources */,
 				26EA301E265968F1004A78F2 /* GraphDao.swift in Sources */,
@@ -1676,7 +1617,6 @@
 			files = (
 				26AE69942674A172001D5E4D /* WordTests.swift in Sources */,
 				26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */,
-				26DA68C82609F58C00AF0583 /* ASCIIArtShakerTests.swift in Sources */,
 				26AF9F7C25FFA69A00B77E0A /* TestsTests.swift in Sources */,
 				26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */,
 				269765112624ABFF00775D71 /* EquationTests.swift in Sources */,

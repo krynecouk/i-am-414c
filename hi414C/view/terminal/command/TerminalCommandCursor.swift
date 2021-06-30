@@ -11,7 +11,7 @@ struct TerminalCommandCursor: View {
     @State var visible: Bool
     
     var theme: TerminalTheme.CommandLine.Cursor
-    var timer: ViewTimer
+    var timer: TimerPublisher
     var animation: Animation?
     var size: Size
     

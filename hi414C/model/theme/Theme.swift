@@ -132,13 +132,6 @@ class Theme: Themable {
                 wave: color.primary.value
             ),
             grid: TerminalTheme.Grid(
-                art: ArtTheme(
-                    view: ViewTheme(
-                        font: font.robot,
-                        color: color.primary.value
-                    ),
-                    animations: [.print(dt: 0.3, animation: .none)]
-                ),
                 symbol: FigletTheme(
                     typeface: .ansi(.regular),
                     view: ViewTheme(

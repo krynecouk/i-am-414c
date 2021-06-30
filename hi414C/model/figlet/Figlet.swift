@@ -5,7 +5,7 @@
 //  Created by Darius Kryszczuk on 10.03.2021.
 //
 
-struct Figlet: ASCIIPrintable, Hashable {
+struct Figlet: Hashable {
     var symbol: ASCIISymbol
     var lines: [String]
 }

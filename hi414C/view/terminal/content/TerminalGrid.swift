@@ -42,11 +42,6 @@ struct TerminalGrid: View {
                 TerminalHelpTest(wide: wide)
             }
             ForEach(items, id: \.id) { item in
-                if case let .art(arts) = item.type {
-                    if !uiVM.isHelp {
-                        TerminalArt(arts)
-                    }
-                }
                 if case let .message(text) = item.type {
                     if !uiVM.isHelp {
                         let shakeAnimation = getShakeAnimation(from: themeVM.terminal.grid.message.figlet.animations)
@@ -155,7 +150,7 @@ struct TerminalGrid: View {
         .contentShape(Rectangle())
     }
     
-    func getShakeAnimation(from animations: [ArtAnimation]) -> ArtAnimation? {
+    func getShakeAnimation(from animations: [FigletAnimation]) -> FigletAnimation? {
         if uiVM.isWaiting {
             return .shake(dt: 0.6, force: 1.5, type: .wave)
         } else {
@@ -176,11 +171,7 @@ struct TerminalGrid: View {
             //.transition(AnyTransition.circular.animation(.easeOut.speed(1)))
             
     }
-    
-    func TerminalArt(_ arts: [ASCIIPrintable]) -> some View {
-        ForEach(arts.indices) { ASCIIArtView(arts[$0], theme: themeVM.terminal.grid.art) }
-    }
-    
+
     enum GridType {
         case adaptive, portrait_detail, landslide_detail, portrait_message, landslide_message
         
@@ -225,7 +216,6 @@ enum TerminalItemType {
     case symbol(ASCIISymbol)
     case test(Test, [TerminalTestItem], Bool)
     case message(String)
-    case art([ASCIIPrintable])
 }
 
 struct TerminalGrid_Previews: PreviewProvider {

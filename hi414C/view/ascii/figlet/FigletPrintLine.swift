@@ -1,5 +1,5 @@
 //
-//  ASCIIArtLineView.swift
+//  FigletPrintLine.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 31.03.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ASCIIArtLineView: View {
+struct FigletPrintLine: View {
     var line: String
     var offset: LineOffset
     var visible: Bool

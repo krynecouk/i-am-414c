@@ -21,5 +21,4 @@ class TerminalViewModel: ObservableObject {
 
 enum TerminalContentType {
     case test([Test])
-    case art([ASCIIPrintable])
 }

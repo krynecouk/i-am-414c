@@ -1,5 +1,5 @@
 //
-//  ASCIIArtShaker.swift
+//  FigletShaker.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 23.03.2021.
@@ -9,9 +9,9 @@ typealias Line = Int
 typealias LineOffset = (x: Float, y: Float)
 typealias Shaker = () -> [Line:LineOffset]
 
-struct ASCIIArtShaker {
+struct FigletShaker {
 
-    static func of(lines: Int, force: Float = 1, type: ASCIIArtShakeType = .wave) -> Shaker {
+    static func of(lines: Int, force: Float = 1, type: FigletShakeType = .wave) -> Shaker {
         switch type {
         case .wave:
             return waveShake(lines: lines, force: force)
@@ -62,7 +62,7 @@ struct ASCIIArtShaker {
     }
 }
 
-enum ASCIIArtShakeType {
+enum FigletShakeType {
     case wave
     case rand
     case baba

@@ -67,9 +67,6 @@ struct TerminalView: View {
                     testVM.set(test: test)
                 }
             }
-            if case let .art(arts) = type {
-                items.append(TerminalItem(of: .art(arts)))
-            }
         }
         return items
     }

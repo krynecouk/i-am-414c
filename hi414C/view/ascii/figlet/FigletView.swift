@@ -31,9 +31,7 @@ struct FigletView: View {
     var body: some View {
         Group {
             ForEach(figlets.map { Item($0) }) { item in
-                ASCIIArtView(item.content, theme: ArtTheme(
-                    view: theme.view, animations: theme.animations, shadow: self.shadow
-                ))
+                FigletPrinter(item.content, theme: self.theme, shadow: self.shadow)
             }
         }
     }

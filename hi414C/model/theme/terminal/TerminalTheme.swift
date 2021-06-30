@@ -21,7 +21,6 @@ struct TerminalTheme {
     }
     
     struct Grid {
-        var art: ArtTheme
         var symbol: FigletTheme
         var test: TestTheme
         var message: MessageTheme
