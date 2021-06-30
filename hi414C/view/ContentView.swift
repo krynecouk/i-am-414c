@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var uiVM: UIViewModel
     
+    let intro: Sound = Sound.of(.intro)
+    
     var body: some View {
         if let video = uiVM.video {
             Video(video)
@@ -17,10 +19,12 @@ struct ContentView: View {
         } else {
             CathodeView {
                 if uiVM.isIntro {
-                    IntroScreen()
-                        .onAppear {
-                            uiVM.isRefreshWave = true
-                        }
+                    IntroScreen {
+                        intro.play()
+                    }
+                    .onAppear {
+                        uiVM.isRefreshWave = true
+                    }
                 } else {
                     if uiVM.isFinishedGame {
                         GameOverModal()
@@ -33,6 +37,7 @@ struct ContentView: View {
                 if uiVM.isIntro {
                     uiVM.isIntro = false
                     uiVM.isRefreshWave = false
+                    intro.stop()
                 }
             }
             .statusBar(hidden: true)

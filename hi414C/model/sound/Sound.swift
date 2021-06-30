@@ -15,7 +15,8 @@ class Sound {
         .error: Sound(.error),
         .tiny_click: Sound(.tiny_click),
         .discover: Sound(.discover),
-        .computing: Sound(.computing, infinite: true)
+        .computing: Sound(.computing, infinite: true),
+        .intro: Sound(.intro)
     ]
     
     let primary: AVAudioPlayer
@@ -81,4 +82,5 @@ enum SoundType: String {
     case tiny_click = "tiny_click.wav"
     case discover = "higher_toggle.wav"
     case computing = "computing.wav"
+    case intro = "intro.wav"
 }

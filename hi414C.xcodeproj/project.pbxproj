@@ -166,6 +166,7 @@
 		26C5288C268B247A000EA235 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5288B268B247A000EA235 /* Blur.swift */; };
 		26D1018B268CCFC500E69CE4 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1018A268CCFC500E69CE4 /* Graphs.swift */; };
 		26D1018F268CD36700E69CE4 /* ModalTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1018E268CD36700E69CE4 /* ModalTheme.swift */; };
+		26D1019B268D206700E69CE4 /* intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26D1019A268D206700E69CE4 /* intro.wav */; };
 		26DA68C22609EF1300AF0583 /* FigletShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* FigletShaker.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
 		26E090D1264C0060002E404D /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D0264C0060002E404D /* Dao.swift */; };
@@ -384,6 +385,7 @@
 		26C5288B268B247A000EA235 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		26D1018A268CCFC500E69CE4 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		26D1018E268CD36700E69CE4 /* ModalTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTheme.swift; sourceTree = "<group>"; };
+		26D1019A268D206700E69CE4 /* intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = intro.wav; sourceTree = "<group>"; };
 		26DA68C12609EF1300AF0583 /* FigletShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletShaker.swift; sourceTree = "<group>"; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		26E090D0264C0060002E404D /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		262F4B5126701B1200D14D52 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				26D1019A268D206700E69CE4 /* intro.wav */,
 				2684EC85267FAABD00AAC7F5 /* computing.wav */,
 				26AE697F2672B49E001D5E4D /* dulled_toggle.wav */,
 				26AE697D2672B3CE001D5E4D /* higher_toggle.wav */,
@@ -1284,6 +1287,7 @@
 				26AE697E2672B3CE001D5E4D /* higher_toggle.wav in Resources */,
 				26EA302C265E6EA8004A78F2 /* license.txt in Resources */,
 				26904A5A25F0CC87001BFBA5 /* README.md in Resources */,
+				26D1019B268D206700E69CE4 /* intro.wav in Resources */,
 				26B95FFC2671FA80001A508D /* heartbeat_two_toggle.wav in Resources */,
 				26EA302D265E6EA8004A78F2 /* readme.txt in Resources */,
 				26BEC22E25DD3B0B0035065E /* Assets.xcassets in Resources */,

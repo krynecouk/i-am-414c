@@ -14,6 +14,12 @@ struct IntroScreen: View {
     @State var isCursor = true
     @State var textOpacity: Double = 0
     
+    let onLogoAppear: () -> Void
+    
+    init(on appear: @escaping () -> Void = {}) {
+        self.onLogoAppear = appear
+    }
+    
     var body: some View {
         GeometryReader { metrics in
             if isCursor {
@@ -37,6 +43,7 @@ struct IntroScreen: View {
                         .opacity(textOpacity)
                         .bloom(color: themeVM.intro.text.color)
                         .onAppear {
+                            self.onLogoAppear()
                             withAnimation(Animation.easeIn(duration: 2).delay(3.3)) {
                                 self.textOpacity = 0.8
                             }

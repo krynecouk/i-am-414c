@@ -80,6 +80,7 @@ struct TerminalMessagesSelect: View {
     
     func MessageReload() -> some View {
         ReloadButton(perform: {
+            click.play()
             if self.shuffled.isEmpty {
                 self.shuffled = chatVM.root.replies.shuffled()
             }
