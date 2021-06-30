@@ -5,8 +5,6 @@
 //  Created by Darius Kryszczuk on 20.06.2021.
 //
 
-import AVFoundation
-
 class DanceNode: ShakeNode {
     private let music: Sound = Sound.of(.computing)
     

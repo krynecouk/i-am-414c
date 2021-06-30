@@ -5,6 +5,7 @@
 //  Created by Darius Kryszczuk on 04.06.2021.
 //
 
+// Nodes
 typealias ROOT = RootNode
 typealias R = TestNode
 typealias EITHER = EitherNode
@@ -28,11 +29,13 @@ typealias MUSIC = MusicNode
 typealias MATH = MathNode
 typealias RADIX = RadixNode
 
+// Edges
 typealias AL = TestEdge
 typealias TRAVERSE_ALL = TraverseAllEdge
 typealias TRAVERSE_IF = TraverseIfEdge
 typealias HELP = HelpEdge
 
+// Graphs
 typealias BIN = BinGraph
 typealias HEX = HexGraph
 typealias COMMON = CommonGraph

@@ -138,7 +138,6 @@
 		269BCC872639A07900229E8A /* EdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BCC862639A07900229E8A /* EdgeDrag.swift */; };
 		26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */; };
 		26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */; };
-		26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ADBC1925FBAAA10003AD54 /* Graphs.swift */; };
 		26AE697E2672B3CE001D5E4D /* higher_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26AE697D2672B3CE001D5E4D /* higher_toggle.wav */; };
 		26AE69802672B49E001D5E4D /* dulled_toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26AE697F2672B49E001D5E4D /* dulled_toggle.wav */; };
 		26AE698226737A71001D5E4D /* EdgeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AE698126737A71001D5E4D /* EdgeArray.swift */; };
@@ -173,6 +172,7 @@
 		26C52888268AFA61000EA235 /* HelpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52887268AFA61000EA235 /* HelpModal.swift */; };
 		26C5288A268B002D000EA235 /* HelpModalDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C52889268B002D000EA235 /* HelpModalDao.swift */; };
 		26C5288C268B247A000EA235 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5288B268B247A000EA235 /* Blur.swift */; };
+		26D1018B268CCFC500E69CE4 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1018A268CCFC500E69CE4 /* Graphs.swift */; };
 		26DA68C22609EF1300AF0583 /* FigletShaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DA68C12609EF1300AF0583 /* FigletShaker.swift */; };
 		26E090CE264AA701002E404D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090CD264AA701002E404D /* Item.swift */; };
 		26E090D1264C0060002E404D /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D0264C0060002E404D /* Dao.swift */; };
@@ -379,7 +379,6 @@
 		269BCC862639A07900229E8A /* EdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeDrag.swift; sourceTree = "<group>"; };
 		26ADBC0625FB9A420003AD54 /* EdgeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBuilder.swift; sourceTree = "<group>"; };
 		26ADBC0C25FB9B5F0003AD54 /* Traversable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversable.swift; sourceTree = "<group>"; };
-		26ADBC1925FBAAA10003AD54 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		26AE697D2672B3CE001D5E4D /* higher_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = higher_toggle.wav; sourceTree = "<group>"; };
 		26AE697F2672B49E001D5E4D /* dulled_toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dulled_toggle.wav; sourceTree = "<group>"; };
 		26AE698126737A71001D5E4D /* EdgeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeArray.swift; sourceTree = "<group>"; };
@@ -416,6 +415,7 @@
 		26C52887268AFA61000EA235 /* HelpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModal.swift; sourceTree = "<group>"; };
 		26C52889268B002D000EA235 /* HelpModalDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModalDao.swift; sourceTree = "<group>"; };
 		26C5288B268B247A000EA235 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		26D1018A268CCFC500E69CE4 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		26DA68C12609EF1300AF0583 /* FigletShaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletShaker.swift; sourceTree = "<group>"; };
 		26E090CD264AA701002E404D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		26E090D0264C0060002E404D /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
@@ -711,7 +711,6 @@
 			children = (
 				26F7A6DC25FA5B3400F04156 /* core */,
 				266F98012669461F0012619B /* impl */,
-				26ADBC1925FBAAA10003AD54 /* Graphs.swift */,
 			);
 			path = graph;
 			sourceTree = "<group>";
@@ -731,6 +730,7 @@
 				266F980D266A865F0012619B /* edge */,
 				26F00B5A266AB7A4008DACE5 /* graph */,
 				26F00B5B266AB7D8008DACE5 /* types.swift */,
+				26D1018A268CCFC500E69CE4 /* Graphs.swift */,
 			);
 			path = impl;
 			sourceTree = "<group>";
@@ -738,8 +738,8 @@
 		266F980C266A86580012619B /* node */ = {
 			isa = PBXGroup;
 			children = (
-				26AE699F26769E9E001D5E4D /* RootNode.swift */,
 				26647D2925F94D1700E32DE0 /* TestNode.swift */,
+				26AE699F26769E9E001D5E4D /* RootNode.swift */,
 				26EA3019265951A8004A78F2 /* UpgradeNode.swift */,
 				26EA301B265951B6004A78F2 /* DeadNode.swift */,
 				266F97FE2669452D0012619B /* FinishNode.swift */,
@@ -1407,6 +1407,7 @@
 			files = (
 				266F9803266946620012619B /* ThemeNode.swift in Sources */,
 				2644041E2619007300CA7EA1 /* Themable.swift in Sources */,
+				26D1018B268CCFC500E69CE4 /* Graphs.swift in Sources */,
 				26E090FE2651C261002E404D /* BananaSkyTheme.swift in Sources */,
 				26E090F02651B45E002E404D /* SeaTheme.swift in Sources */,
 				266F9807266946860012619B /* PanicNode.swift in Sources */,
@@ -1466,7 +1467,6 @@
 				269765092624A2C100775D71 /* ID.swift in Sources */,
 				266F97FF2669452D0012619B /* FinishNode.swift in Sources */,
 				26E090FA2651BE66002E404D /* VintageTheme.swift in Sources */,
-				26ADBC1A25FBAAA10003AD54 /* Graphs.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewTheme.swift in Sources */,
 				269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */,
 				26AE698A267494A9001D5E4D /* Sentence.swift in Sources */,

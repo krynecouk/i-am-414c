@@ -9,11 +9,11 @@ import SwiftUI
 import OrderedCollections
 
 class GraphViewModel: ObservableObject, Resetable {
-    @Published private(set) var root: Node = Graphs.BIN
+    @Published private(set) var root: Node = Graphs.root(of: .BIN)
     
     typealias EdgeId = String
     
-    private(set) var current: Node = Graphs.BIN
+    private(set) var current: Node = Graphs.root(of: .BIN)
     private(set) var toolkit: GraphToolkit
 
     var visited: Set<EdgeId> = []
@@ -66,9 +66,9 @@ class GraphViewModel: ObservableObject, Resetable {
     }
     
     func setGraph(_ type: GraphType) {
-        let graph = type.toGraph()
-        self.root = graph
-        self.current = graph
+        let root = Graphs.root(of: type)
+        self.root = root
+        self.current = root
         self.start()
         GraphDao.store(type)
     }
@@ -129,18 +129,6 @@ class GraphViewModel: ObservableObject, Resetable {
     }
 }
 
-enum GraphType: String, Storable {
-    case BIN, HEX
-    
-    func toGraph() -> Node {
-        switch self {
-        case .BIN:
-            return Graphs.BIN
-        case .HEX:
-            return Graphs.HEX
-        }
-    }
-}
 
 enum GraphTraverseResult {
     case ok
