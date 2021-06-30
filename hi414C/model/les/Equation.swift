@@ -14,4 +14,3 @@ struct Equation {
     var types: Set<EquationType>
     var test: () -> Bool
 }
-

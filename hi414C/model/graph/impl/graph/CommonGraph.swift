@@ -430,7 +430,8 @@ class CommonGraph {
             }
         
         static let ALL: [Edge] = [
-            LEARN, CHAT, THEME, DIFFICULTY, SETTINGS, OPEN, CHANGE
+            //CHAT // TODO error, without msg select
+            LEARN, THEME, DIFFICULTY, SETTINGS, OPEN, CHANGE
         ]
     }
     
