@@ -10,34 +10,12 @@ class BinGraph {
 
     public static let HI =
         ROOT("HI") {
+            BIN._HI
+            BIN.I
+            BIN._AL
             BIN._414C
 
             BIN.ASK
-            COMMON.YEAR
-            COMMON.SIGN
-            COMMON._MATH
-            BIN.JOKE
-            COMMON.GUESS
-            BIN.MEMORY
-            BIN.MEANING
-            BIN.TELL
-            BIN.YOU
-            COMMON.OIL
-
-            BIN.CAUSE
-
-            COMMON._MUSIC
-            COMMON.VERSION
-            
-            BIN.EXECUTE
-            BIN.COMMAND
-            
-            COMMON._DICE
-            COMMON._DICES
-            COMMON._COIN
-            COMMON._DANCE
-            COMMON._YELL
-            
             BIN.ORIGIN
             BIN.WHO
             BIN.WHERE
@@ -45,6 +23,35 @@ class BinGraph {
             BIN.HOW
             BIN.WHAT
             BIN.HELP
+            BIN.EXECUTE
+            BIN.COMMAND
+            BIN.JOKE
+            BIN.MEMORY
+            BIN.MEANING
+            BIN.TELL
+            BIN.YOU
+            BIN.CAUSE
+            
+            COMMON.YEAR
+            COMMON.SIGN
+            COMMON._MATH
+            COMMON.GUESS
+            COMMON.OIL
+
+
+
+            COMMON._MUSIC
+            COMMON.VERSION
+            
+
+            
+            COMMON._DICE
+            COMMON._DICES
+            COMMON._COIN
+            COMMON._DANCE
+            COMMON._YELL
+            
+
             COMMON.COIL
             BIN.CLUE
             BIN.NAME
@@ -104,10 +111,7 @@ class BinGraph {
             COMMON.END
             COMMON.KNOCK
             COMMON._RADIX
-            
-            BIN._HI
-            BIN.I
-            BIN._AL
+
         }
 
     private static let I =

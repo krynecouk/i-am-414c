@@ -110,7 +110,7 @@ class HexGraph {
     
     private static let _HI =
         AL("HI") {
-            R("HI") >> HEX.I
+            R("HI")
         }
     
     private static let I =

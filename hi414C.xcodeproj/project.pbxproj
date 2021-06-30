@@ -218,7 +218,6 @@
 		26EA30092656C9D4004A78F2 /* HelpWarnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA30082656C9D4004A78F2 /* HelpWarnButton.swift */; };
 		26EA300B2656CA1B004A78F2 /* HelpRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300A2656CA1B004A78F2 /* HelpRadioButton.swift */; };
 		26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA300C2656CB68004A78F2 /* HelpSignButton.swift */; };
-		26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 26EA30142657FDB9004A78F2 /* OrderedCollections */; };
 		26EA3017265813DC004A78F2 /* TerminalHelpPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */; };
 		26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA3019265951A8004A78F2 /* UpgradeNode.swift */; };
 		26EA301C265951B6004A78F2 /* DeadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA301B265951B6004A78F2 /* DeadNode.swift */; };
@@ -504,7 +503,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2684EC8F267FDC9700AAC7F5 /* Expression in Frameworks */,
-				26EA30152657FDB9004A78F2 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,7 +1354,6 @@
 			);
 			name = hi414C;
 			packageProductDependencies = (
-				26EA30142657FDB9004A78F2 /* OrderedCollections */,
 				2684EC8E267FDC9700AAC7F5 /* Expression */,
 			);
 			productName = hi414C;
@@ -1409,7 +1406,6 @@
 			);
 			mainGroup = 26BEC21D25DD3B0A0035065E;
 			packageReferences = (
-				26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				2684EC8D267FDC9700AAC7F5 /* XCRemoteSwiftPackageReference "Expression" */,
 			);
 			productRefGroup = 26BEC22725DD3B0A0035065E /* Products */;
@@ -1941,14 +1937,6 @@
 				minimumVersion = 0.13.2;
 			};
 		};
-		26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1956,11 +1944,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2684EC8D267FDC9700AAC7F5 /* XCRemoteSwiftPackageReference "Expression" */;
 			productName = Expression;
-		};
-		26EA30142657FDB9004A78F2 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26EA30132657FDB8004A78F2 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
