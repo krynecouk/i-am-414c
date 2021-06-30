@@ -63,7 +63,6 @@
 		266CA416264155F9001A07E0 /* TerminalTestThemed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA415264155F9001A07E0 /* TerminalTestThemed.swift */; };
 		266CA418264191CD001A07E0 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA417264191CD001A07E0 /* MessageRow.swift */; };
 		266CA41E2642F2DE001A07E0 /* TerminalContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41D2642F2DE001A07E0 /* TerminalContent.swift */; };
-		266CA4202642F4E9001A07E0 /* TerminalHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA41F2642F4E9001A07E0 /* TerminalHint.swift */; };
 		266CA4222643D78F001A07E0 /* TerminalHelpMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */; };
 		266CA42426441254001A07E0 /* HelpEdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA42326441254001A07E0 /* HelpEdgeDrag.swift */; };
 		266CA42A2645A617001A07E0 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4292645A617001A07E0 /* Collection.swift */; };
@@ -281,7 +280,6 @@
 		266CA415264155F9001A07E0 /* TerminalTestThemed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalTestThemed.swift; sourceTree = "<group>"; };
 		266CA417264191CD001A07E0 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		266CA41D2642F2DE001A07E0 /* TerminalContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalContent.swift; sourceTree = "<group>"; };
-		266CA41F2642F4E9001A07E0 /* TerminalHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHint.swift; sourceTree = "<group>"; };
 		266CA4212643D78F001A07E0 /* TerminalHelpMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpMessages.swift; sourceTree = "<group>"; };
 		266CA42326441254001A07E0 /* HelpEdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEdgeDrag.swift; sourceTree = "<group>"; };
 		266CA4292645A617001A07E0 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -876,7 +874,6 @@
 				266CA41326411F4E001A07E0 /* TerminalPadding.swift */,
 				269765AB262EC32E00775D71 /* TerminalTest.swift */,
 				266CA415264155F9001A07E0 /* TerminalTestThemed.swift */,
-				266CA41F2642F4E9001A07E0 /* TerminalHint.swift */,
 			);
 			path = content;
 			sourceTree = "<group>";
@@ -1456,7 +1453,6 @@
 				26AF9F4425FF7E7400B77E0A /* TestLevel.swift in Sources */,
 				26BEC22A25DD3B0A0035065E /* hi414CApp.swift in Sources */,
 				2678D978260E5D5B00DDB40F /* KeyboardPart.swift in Sources */,
-				266CA4202642F4E9001A07E0 /* TerminalHint.swift in Sources */,
 				266CA42426441254001A07E0 /* HelpEdgeDrag.swift in Sources */,
 				266F97F7266757050012619B /* WarnTheme.swift in Sources */,
 				269764DE262483F800775D71 /* EquationBuilder.swift in Sources */,

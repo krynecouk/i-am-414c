@@ -19,20 +19,20 @@ struct TerminalHelpSelect: View {
             Grid(columns: gridType.rawValue(), spacing: 10, padding: 15) {
                 if segueVM.opened == .learn {
                     TerminalTestSelect()
-                    .onAppear {
-                        if self.gridType != .adaptive {
-                            self.gridType = .adaptive
+                        .onAppear {
+                            if self.gridType != .adaptive {
+                                self.gridType = .adaptive
+                            }
                         }
-                    }
                 }
                 
                 if segueVM.opened == .chat {
                     TerminalMessagesSelect()
-                    .onAppear {
-                        if self.gridType != .messages {
-                            self.gridType = .messages
+                        .onAppear {
+                            if self.gridType != .messages {
+                                self.gridType = .messages
+                            }
                         }
-                    }
                 }
                 
                 if segueVM.opened == .settings {
