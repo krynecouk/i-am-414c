@@ -1,5 +1,5 @@
 //
-//  AnimatedTheme.swift
+//  ShakeTheme.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 05.06.2021.

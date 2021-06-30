@@ -80,6 +80,5 @@ struct Keyboards {
             .space: [
                 KeyboardKey("SPC", value: " ")
             ]
-        ]
-        ]
+        ]]
 }

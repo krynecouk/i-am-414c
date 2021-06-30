@@ -45,7 +45,7 @@
 		2654883B26051B8B0044297D /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654883A26051B8B0044297D /* TestViewModel.swift */; };
 		2654884B260524460044297D /* TerminalCommandPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884A260524460044297D /* TerminalCommandPrompt.swift */; };
 		2654884F2605247C0044297D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654884E2605247C0044297D /* KeyboardView.swift */; };
-		265848E9260BB48E009C0975 /* ArtTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848E8260BB48E009C0975 /* ArtTheme.swift */; };
+		265848E9260BB48E009C0975 /* FigletTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848E8260BB48E009C0975 /* FigletTheme.swift */; };
 		265848EE260BB4A8009C0975 /* TestTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265848ED260BB4A8009C0975 /* TestTheme.swift */; };
 		265A00AB25ED49EA00F479FA /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A00AA25ED49EA00F479FA /* FontName.swift */; };
 		26645DC22639B1930086F26C /* CircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26645DC12639B1930086F26C /* CircleTransition.swift */; };
@@ -180,24 +180,6 @@
 		26E090D8264D5E6E002E404D /* OrangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090D7264D5E6E002E404D /* OrangeTheme.swift */; };
 		26E090DE264ED610002E404D /* GreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090DD264ED610002E404D /* GreenTheme.swift */; };
 		26E090E0264EDB0A002E404D /* BlueTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090DF264EDB0A002E404D /* BlueTheme.swift */; };
-		26E090E2265033FD002E404D /* GreenGoldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E1265033FD002E404D /* GreenGoldTheme.swift */; };
-		26E090E426506318002E404D /* LightOrangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E326506318002E404D /* LightOrangeTheme.swift */; };
-		26E090E62650738C002E404D /* LightGreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E52650738C002E404D /* LightGreenTheme.swift */; };
-		26E090E8265076D8002E404D /* LightBlueTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E7265076D8002E404D /* LightBlueTheme.swift */; };
-		26E090EA2651AB69002E404D /* PastelTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090E92651AB69002E404D /* PastelTheme.swift */; };
-		26E090EC2651B044002E404D /* SummerTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090EB2651B044002E404D /* SummerTheme.swift */; };
-		26E090F02651B45E002E404D /* SeaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090EF2651B45E002E404D /* SeaTheme.swift */; };
-		26E090F22651B56E002E404D /* GrayTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F12651B56E002E404D /* GrayTheme.swift */; };
-		26E090F42651B9A5002E404D /* FooTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F32651B9A5002E404D /* FooTheme.swift */; };
-		26E090F62651BCAD002E404D /* YellowTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F52651BCAD002E404D /* YellowTheme.swift */; };
-		26E090F82651BD97002E404D /* MelonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F72651BD97002E404D /* MelonTheme.swift */; };
-		26E090FA2651BE66002E404D /* VintageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090F92651BE66002E404D /* VintageTheme.swift */; };
-		26E090FC2651C181002E404D /* IceTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090FB2651C181002E404D /* IceTheme.swift */; };
-		26E090FE2651C261002E404D /* BananaSkyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090FD2651C261002E404D /* BananaSkyTheme.swift */; };
-		26E091002651C600002E404D /* SwampTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E090FF2651C600002E404D /* SwampTheme.swift */; };
-		26E091022651C86E002E404D /* SunsetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091012651C86E002E404D /* SunsetTheme.swift */; };
-		26E091042652A693002E404D /* ForestTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091032652A693002E404D /* ForestTheme.swift */; };
-		26E091062652ABFF002E404D /* OranginaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E091052652ABFF002E404D /* OranginaTheme.swift */; };
 		26EA2FD726541953004A78F2 /* HelpColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FD626541953004A78F2 /* HelpColorButton.swift */; };
 		26EA2FE226559178004A78F2 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FE126559178004A78F2 /* Video.swift */; };
 		26EA2FE426559186004A78F2 /* IntroScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA2FE326559186004A78F2 /* IntroScreen.swift */; };
@@ -230,7 +212,7 @@
 		26F00B62266ABD1C008DACE5 /* EchoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B61266ABD1C008DACE5 /* EchoNode.swift */; };
 		26F00B64266AC0ED008DACE5 /* YellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B63266AC0ED008DACE5 /* YellNode.swift */; };
 		26F00B68266B53F8008DACE5 /* ansiregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F00B67266B53F8008DACE5 /* ansiregular.ttf */; };
-		26F00B6A266B757B008DACE5 /* AnimatedTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B69266B757B008DACE5 /* AnimatedTheme.swift */; };
+		26F00B6A266B757B008DACE5 /* ShakeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B69266B757B008DACE5 /* ShakeTheme.swift */; };
 		26F00B6C266B8002008DACE5 /* ShakeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F00B6B266B8002008DACE5 /* ShakeNode.swift */; };
 		26F7A6C125FA4FCE00F04156 /* hi414CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */; };
 		26F7A6CB25FA4FF800F04156 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A6CA25FA4FF800F04156 /* GraphTests.swift */; };
@@ -287,7 +269,7 @@
 		2654883A26051B8B0044297D /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		2654884A260524460044297D /* TerminalCommandPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandPrompt.swift; sourceTree = "<group>"; };
 		2654884E2605247C0044297D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		265848E8260BB48E009C0975 /* ArtTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTheme.swift; sourceTree = "<group>"; };
+		265848E8260BB48E009C0975 /* FigletTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigletTheme.swift; sourceTree = "<group>"; };
 		265848ED260BB4A8009C0975 /* TestTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTheme.swift; sourceTree = "<group>"; };
 		265A00AA25ED49EA00F479FA /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
 		26645DC12639B1930086F26C /* CircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransition.swift; sourceTree = "<group>"; };
@@ -423,24 +405,6 @@
 		26E090D7264D5E6E002E404D /* OrangeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeTheme.swift; sourceTree = "<group>"; };
 		26E090DD264ED610002E404D /* GreenTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenTheme.swift; sourceTree = "<group>"; };
 		26E090DF264EDB0A002E404D /* BlueTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTheme.swift; sourceTree = "<group>"; };
-		26E090E1265033FD002E404D /* GreenGoldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenGoldTheme.swift; sourceTree = "<group>"; };
-		26E090E326506318002E404D /* LightOrangeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightOrangeTheme.swift; sourceTree = "<group>"; };
-		26E090E52650738C002E404D /* LightGreenTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGreenTheme.swift; sourceTree = "<group>"; };
-		26E090E7265076D8002E404D /* LightBlueTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBlueTheme.swift; sourceTree = "<group>"; };
-		26E090E92651AB69002E404D /* PastelTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastelTheme.swift; sourceTree = "<group>"; };
-		26E090EB2651B044002E404D /* SummerTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummerTheme.swift; sourceTree = "<group>"; };
-		26E090EF2651B45E002E404D /* SeaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaTheme.swift; sourceTree = "<group>"; };
-		26E090F12651B56E002E404D /* GrayTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTheme.swift; sourceTree = "<group>"; };
-		26E090F32651B9A5002E404D /* FooTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooTheme.swift; sourceTree = "<group>"; };
-		26E090F52651BCAD002E404D /* YellowTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowTheme.swift; sourceTree = "<group>"; };
-		26E090F72651BD97002E404D /* MelonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelonTheme.swift; sourceTree = "<group>"; };
-		26E090F92651BE66002E404D /* VintageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VintageTheme.swift; sourceTree = "<group>"; };
-		26E090FB2651C181002E404D /* IceTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceTheme.swift; sourceTree = "<group>"; };
-		26E090FD2651C261002E404D /* BananaSkyTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BananaSkyTheme.swift; sourceTree = "<group>"; };
-		26E090FF2651C600002E404D /* SwampTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwampTheme.swift; sourceTree = "<group>"; };
-		26E091012651C86E002E404D /* SunsetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetTheme.swift; sourceTree = "<group>"; };
-		26E091032652A693002E404D /* ForestTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestTheme.swift; sourceTree = "<group>"; };
-		26E091052652ABFF002E404D /* OranginaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OranginaTheme.swift; sourceTree = "<group>"; };
 		26EA2FD626541953004A78F2 /* HelpColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpColorButton.swift; sourceTree = "<group>"; };
 		26EA2FE126559178004A78F2 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		26EA2FE326559186004A78F2 /* IntroScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreen.swift; sourceTree = "<group>"; };
@@ -473,7 +437,7 @@
 		26F00B61266ABD1C008DACE5 /* EchoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoNode.swift; sourceTree = "<group>"; };
 		26F00B63266AC0ED008DACE5 /* YellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellNode.swift; sourceTree = "<group>"; };
 		26F00B67266B53F8008DACE5 /* ansiregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ansiregular.ttf; sourceTree = "<group>"; };
-		26F00B69266B757B008DACE5 /* AnimatedTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTheme.swift; sourceTree = "<group>"; };
+		26F00B69266B757B008DACE5 /* ShakeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeTheme.swift; sourceTree = "<group>"; };
 		26F00B6B266B8002008DACE5 /* ShakeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeNode.swift; sourceTree = "<group>"; };
 		26F7A6BE25FA4FCE00F04156 /* hi414CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hi414CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F7A6C025FA4FCE00F04156 /* hi414CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hi414CTests.swift; sourceTree = "<group>"; };
@@ -607,7 +571,7 @@
 			children = (
 				26BE1E462631849700F4AB0F /* test */,
 				26BE1E472631849D00F4AB0F /* message */,
-				26BE1E452631848E00F4AB0F /* art */,
+				26D1018C268CD1F500E69CE4 /* figlet */,
 				264404162618FE2A00CA7EA1 /* TerminalTheme.swift */,
 			);
 			path = terminal;
@@ -1049,14 +1013,6 @@
 			path = grid;
 			sourceTree = "<group>";
 		};
-		26BE1E452631848E00F4AB0F /* art */ = {
-			isa = PBXGroup;
-			children = (
-				265848E8260BB48E009C0975 /* ArtTheme.swift */,
-			);
-			path = art;
-			sourceTree = "<group>";
-		};
 		26BE1E462631849700F4AB0F /* test */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,6 +1082,14 @@
 			path = modal;
 			sourceTree = "<group>";
 		};
+		26D1018C268CD1F500E69CE4 /* figlet */ = {
+			isa = PBXGroup;
+			children = (
+				265848E8260BB48E009C0975 /* FigletTheme.swift */,
+			);
+			path = figlet;
+			sourceTree = "<group>";
+		};
 		26E090CF264C0025002E404D /* dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,27 +1114,9 @@
 				26E090D7264D5E6E002E404D /* OrangeTheme.swift */,
 				26E090DD264ED610002E404D /* GreenTheme.swift */,
 				26E090DF264EDB0A002E404D /* BlueTheme.swift */,
-				26E090E1265033FD002E404D /* GreenGoldTheme.swift */,
-				26E090E326506318002E404D /* LightOrangeTheme.swift */,
-				26E090E52650738C002E404D /* LightGreenTheme.swift */,
-				26E090E7265076D8002E404D /* LightBlueTheme.swift */,
-				26E090E92651AB69002E404D /* PastelTheme.swift */,
-				26E090EB2651B044002E404D /* SummerTheme.swift */,
-				26E090EF2651B45E002E404D /* SeaTheme.swift */,
-				26E090F12651B56E002E404D /* GrayTheme.swift */,
-				26E090F32651B9A5002E404D /* FooTheme.swift */,
-				26E090F52651BCAD002E404D /* YellowTheme.swift */,
-				26E090F72651BD97002E404D /* MelonTheme.swift */,
-				26E090F92651BE66002E404D /* VintageTheme.swift */,
-				26E090FB2651C181002E404D /* IceTheme.swift */,
-				26E090FD2651C261002E404D /* BananaSkyTheme.swift */,
-				26E090FF2651C600002E404D /* SwampTheme.swift */,
-				26E091012651C86E002E404D /* SunsetTheme.swift */,
-				26E091032652A693002E404D /* ForestTheme.swift */,
-				26E091052652ABFF002E404D /* OranginaTheme.swift */,
 				26EA303E26669120004A78F2 /* PanicTheme.swift */,
 				266F97F6266757050012619B /* WarnTheme.swift */,
-				26F00B69266B757B008DACE5 /* AnimatedTheme.swift */,
+				26F00B69266B757B008DACE5 /* ShakeTheme.swift */,
 			);
 			path = themes;
 			sourceTree = "<group>";
@@ -1408,8 +1354,6 @@
 				266F9803266946620012619B /* ThemeNode.swift in Sources */,
 				2644041E2619007300CA7EA1 /* Themable.swift in Sources */,
 				26D1018B268CCFC500E69CE4 /* Graphs.swift in Sources */,
-				26E090FE2651C261002E404D /* BananaSkyTheme.swift in Sources */,
-				26E090F02651B45E002E404D /* SeaTheme.swift in Sources */,
 				266F9807266946860012619B /* PanicNode.swift in Sources */,
 				269765A4262DD6F000775D71 /* UIViewModel.swift in Sources */,
 				262F4B40266E515F00D14D52 /* RndWordNode.swift in Sources */,
@@ -1429,16 +1373,12 @@
 				268D92DB2608E18A00A43802 /* ThemeViewModel.swift in Sources */,
 				2654883B26051B8B0044297D /* TestViewModel.swift in Sources */,
 				2620922E2600C5420001904B /* ASCIIViewModel.swift in Sources */,
-				26E090F62651BCAD002E404D /* YellowTheme.swift in Sources */,
-				26E091002651C600002E404D /* SwampTheme.swift in Sources */,
 				2678D982260E818700DDB40F /* KeyboardSide.swift in Sources */,
 				269BCC76263927DA00229E8A /* TerminalHelpLine.swift in Sources */,
-				26E091062652ABFF002E404D /* OranginaTheme.swift in Sources */,
 				2665C9BB263AB41300CE724F /* Row.swift in Sources */,
 				26AE699C26764D5A001D5E4D /* CmdDao.swift in Sources */,
 				26AF9F8625FFAD4600B77E0A /* String.swift in Sources */,
 				26EA301A265951A8004A78F2 /* UpgradeNode.swift in Sources */,
-				26E090F42651B9A5002E404D /* FooTheme.swift in Sources */,
 				269BCC70263927B700229E8A /* TerminalHelpSegue.swift in Sources */,
 				26F00B5E266AB800008DACE5 /* BinGraph.swift in Sources */,
 				26647D2A25F94D1700E32DE0 /* TestNode.swift in Sources */,
@@ -1455,7 +1395,6 @@
 				2695155C2614F56C0020DD11 /* FigletPrintLine.swift in Sources */,
 				2697651726256A2600775D71 /* XOR.swift in Sources */,
 				26EA30072656C950004A78F2 /* HelpButton.swift in Sources */,
-				26E090E426506318002E404D /* LightOrangeTheme.swift in Sources */,
 				2697651F26256DB500775D71 /* NOT.swift in Sources */,
 				267463E525DED4B300624D7C /* StaticNoise.swift in Sources */,
 				2678D986260E81BD00DDB40F /* Keyboard.swift in Sources */,
@@ -1466,7 +1405,6 @@
 				26782B4026177AC800BA9C4E /* FadeOut.swift in Sources */,
 				269765092624A2C100775D71 /* ID.swift in Sources */,
 				266F97FF2669452D0012619B /* FinishNode.swift in Sources */,
-				26E090FA2651BE66002E404D /* VintageTheme.swift in Sources */,
 				26841012260A35A500C50F9A /* ViewTheme.swift in Sources */,
 				269BCC7A263927F600229E8A /* TerminalHelpSelect.swift in Sources */,
 				26AE698A267494A9001D5E4D /* Sentence.swift in Sources */,
@@ -1484,9 +1422,7 @@
 				2697654426271E3E00775D71 /* EquationPart.swift in Sources */,
 				269764F02624981700775D71 /* Equation.swift in Sources */,
 				262F4B42266E6B6200D14D52 /* CommonGraph.swift in Sources */,
-				26E090E8265076D8002E404D /* LightBlueTheme.swift in Sources */,
 				269765052624A25900775D71 /* OR.swift in Sources */,
-				26E090F82651BD97002E404D /* MelonTheme.swift in Sources */,
 				2654882B26050B920044297D /* TerminalCommandLine.swift in Sources */,
 				26AE698C267494B2001D5E4D /* Word.swift in Sources */,
 				2665C9E1263D2DD500CE724F /* TerminalSymbol.swift in Sources */,
@@ -1545,16 +1481,13 @@
 				26ADBC0D25FB9B5F0003AD54 /* Traversable.swift in Sources */,
 				269765262625705A00775D71 /* SHL.swift in Sources */,
 				26682CB32611FAAA00F7C943 /* ASCIIKeyboardView.swift in Sources */,
-				26E090E2265033FD002E404D /* GreenGoldTheme.swift in Sources */,
 				26AE699826762218001D5E4D /* EitherNode.swift in Sources */,
-				265848E9260BB48E009C0975 /* ArtTheme.swift in Sources */,
+				265848E9260BB48E009C0975 /* FigletTheme.swift in Sources */,
 				26ADBC0725FB9A420003AD54 /* EdgeBuilder.swift in Sources */,
 				266A43B4261C229700C7855C /* Metrics.swift in Sources */,
 				264404572619135E00CA7EA1 /* TerminalCommandCursor.swift in Sources */,
-				26E090F22651B56E002E404D /* GrayTheme.swift in Sources */,
 				2678D972260E5D4A00DDB40F /* KeyboardSet.swift in Sources */,
 				26B10A2126027B08007E7B65 /* Grid.swift in Sources */,
-				26E090EC2651B044002E404D /* SummerTheme.swift in Sources */,
 				269765322625EE3300775D71 /* ADD.swift in Sources */,
 				269765402626128F00775D71 /* MUL.swift in Sources */,
 				26EA30022656C78D004A78F2 /* TerminalSettingsSelect.swift in Sources */,
@@ -1574,20 +1507,16 @@
 				266F97F7266757050012619B /* WarnTheme.swift in Sources */,
 				269764DE262483F800775D71 /* EquationBuilder.swift in Sources */,
 				26EA300B2656CA1B004A78F2 /* HelpRadioButton.swift in Sources */,
-				26E090FC2651C181002E404D /* IceTheme.swift in Sources */,
 				2665C9C3263C0DC400CE724F /* DetailRow.swift in Sources */,
 				2697653C26260E4B00775D71 /* DIV.swift in Sources */,
 				26EA2FE426559186004A78F2 /* IntroScreen.swift in Sources */,
 				26E090CE264AA701002E404D /* Item.swift in Sources */,
-				26E090EA2651AB69002E404D /* PastelTheme.swift in Sources */,
 				266F9811266A86EC0012619B /* TraverseIfEdge.swift in Sources */,
 				262F4B3C266E4F5A00D14D52 /* CoinNode.swift in Sources */,
 				26AE698226737A71001D5E4D /* EdgeArray.swift in Sources */,
-				26E090E62650738C002E404D /* LightGreenTheme.swift in Sources */,
 				26040D7F25F15629005BF921 /* ASCII.swift in Sources */,
-				26E091042652A693002E404D /* ForestTheme.swift in Sources */,
 				26AE69962674BFBF001D5E4D /* Indexable.swift in Sources */,
-				26F00B6A266B757B008DACE5 /* AnimatedTheme.swift in Sources */,
+				26F00B6A266B757B008DACE5 /* ShakeTheme.swift in Sources */,
 				266CA4222643D78F001A07E0 /* TerminalHelpMessages.swift in Sources */,
 				269BCC8226396A1700229E8A /* SegueViewModel.swift in Sources */,
 				26EA300D2656CB68004A78F2 /* HelpSignButton.swift in Sources */,
@@ -1601,7 +1530,6 @@
 				269BCC7E2639290E00229E8A /* TerminalCommandSegue.swift in Sources */,
 				26E090D3264C01D0002E404D /* ASCIIDao.swift in Sources */,
 				266F97FB2668CEBB0012619B /* GameOverModal.swift in Sources */,
-				26E091022651C86E002E404D /* SunsetTheme.swift in Sources */,
 				264404122618FAF400CA7EA1 /* KeyboardTheme.swift in Sources */,
 				269765AC262EC32E00775D71 /* TerminalTest.swift in Sources */,
 				26EA2FE926565621004A78F2 /* ThemeDao.swift in Sources */,
