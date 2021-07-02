@@ -10,15 +10,6 @@ class BinGraph {
     
     public static let HI =
         ROOT("HI") {
-            
-            AL("HIHI") {
-                FINISH(with: .dawn)
-            }
-            
-            AL("IH") {
-                FINISH(with: .sunset)
-            }
-            
             BIN._HI
             BIN.I
             BIN._AL
