@@ -81,8 +81,8 @@ struct TerminalSettingsSelect: View {
                     graphVM.reset()
                     withAnimation {
                         uiVM.reset()
-                        // uiVM.video = .intro // TODO
                     }
+                    uiVM.video = .intro
                 }
                 .padding(.bottom, 20)
                 .padding(.top, 5)

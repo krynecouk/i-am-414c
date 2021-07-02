@@ -60,3 +60,8 @@ Po oprave/upgradu robota pokracuje druha cast hry (hex cast). V te se hlavni pro
 ### Hex/Bin
 - graphVM
 - testVM
+
+### VLC
+
+- how to change filter: preferences > tick the "show all" box in the lower left corner > navigate to stream output, sout stream, transcode > scroll down and tick all the filters/edits you've done. it'll all apply when you convert/stream
+- how to export with audio: MPEG 4 audio (AAC) 

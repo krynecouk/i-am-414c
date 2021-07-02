@@ -10,18 +10,29 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var uiVM: UIViewModel
     
-    let intro: Sound = Sound.of(.intro)
+    @ObservedObject var intro: PlayerViewModel
+    @ObservedObject var sunset: PlayerViewModel
+    @ObservedObject var dawn: PlayerViewModel
+    
+    init() {
+        self.intro = PlayerViewModel(fileName: "intro")
+        self.sunset = PlayerViewModel(fileName: "sunset")
+        self.dawn = PlayerViewModel(fileName: "dawn")
+    }
     
     var body: some View {
         if let video = uiVM.video {
-            Video(video)
-
+            if video == .intro {
+                IntroVideo().environmentObject(self.intro)
+            } else if video == .dawn {
+                DawnVideo().environmentObject(self.dawn)
+            } else {
+                SunsetVideo().environmentObject(self.sunset)
+            }
         } else {
             CathodeView {
                 if uiVM.isIntro {
-                    IntroScreen {
-                        intro.play()
-                    }
+                    IntroScreen()
                     .onAppear {
                         uiVM.isRefreshWave = true
                     }
@@ -37,7 +48,6 @@ struct ContentView: View {
                 if uiVM.isIntro {
                     uiVM.isIntro = false
                     uiVM.isRefreshWave = false
-                    intro.stop()
                 }
             }
             .statusBar(hidden: true)

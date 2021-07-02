@@ -9,7 +9,7 @@ import SwiftUI
 
 class UIViewModel: ObservableObject, Resetable {
     @Published var isIntro = true
-    @Published var video: VideoType? = .none
+    @Published var video: VideoType? = .intro
     @Published var detail = (is: false, animated: true)
     @Published var isDetailAvailable = false
     @Published var isHelp = false
@@ -17,7 +17,7 @@ class UIViewModel: ObservableObject, Resetable {
     @Published var isWaiting: Bool = false
     @Published var isRefreshWave: Bool = false
     
-    @Published private(set) var isFinishedGame = false
+    @Published var isFinishedGame = false
     @Published private(set) var isHelpModalClosed = HelpModalDao.find()
     @Published private(set) var errors: Int = 0
     
