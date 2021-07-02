@@ -58,7 +58,7 @@ struct IntroVideo: View {
     func TapToSkip() -> some View {
         Text("tap to skip")
             .font(Font.of(name: .proggyTiny, size: 30))
-            .foregroundColor(Color.gray)
+            .foregroundColor(Color.gray.opacity(0.5))
     }
     
     func skip() {

@@ -109,7 +109,7 @@ struct ReloadButton: View {
     @State var animated = false
     @State var disabled = false
     
-    private var DELAY: Double = 1.7
+    private var DELAY: Double = 0.8
     
     var action: () -> Void
     var callback: () -> Void
