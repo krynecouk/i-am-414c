@@ -29,8 +29,8 @@ struct TerminalHelpSettings: View {
                     self.height = height
                 }
                 .animation(.default.speed(2.3), value: height)
-                .animation(.default.speed(0.7), value: themeVM.theme.type)
                 .animation(.default.speed(1), value: themeVM.fontSize.robot)
+                //.animation(.default.speed(0.7), value: themeVM.theme.type)
             }
         }
     }
@@ -48,28 +48,23 @@ struct TerminalHelpSettings: View {
     }
     
     func SettingsButton(_ text: String, _ type: HelpSettingsType, frame: CGSize, perform action: @escaping () -> Void = {}) -> some View {
-            ZStack {
-                if helpVM.settings == type {
-                    Rectangle()
-                        .fill(themeVM.terminal.help.settings.background.active)
-                        .frame(width: 325, height: 80)
-                } else {
-                    Rectangle()
-                        .fill(themeVM.terminal.help.settings.background.passive)
-                        .frame(width: 325, height: 80)
-                        .bevelBorder(light: themeVM.terminal.help.settings.active.color, dark: themeVM.terminal.help.settings.background.active, width: 4)
-                }
-                
-                Text(text)
-                    .lineLimit(1)
-                    .allowsTightening(true)
-                    .withTheme(helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
-            }
-            .onTapGesture {
-                    helpVM.settings = type
-                    segueVM.open(type: .settings)
-                    action()
-            }
+        ZStack {
+            Rectangle()
+                .fill(helpVM.settings == type ? themeVM.terminal.help.settings.background.active : themeVM.terminal.help.settings.background.passive)
+                .frame(width: 325, height: 80)
+                .bevelBorder(
+                    light: helpVM.settings == type ? themeVM.terminal.help.settings.background.active : themeVM.terminal.help.settings.active.color,
+                    dark: themeVM.terminal.help.settings.background.active, width: 4)
+            Text(text)
+                .lineLimit(1)
+                .allowsTightening(true)
+                .withTheme(helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
+        }
+        .onTapGesture {
+            helpVM.settings = type
+            segueVM.open(type: .settings)
+            action()
+        }
     }
     
     
