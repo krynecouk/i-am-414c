@@ -26,7 +26,7 @@ class DeadNode: Node {
         toolkit.graphVM?.reset()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             toolkit.uiVM.reset()
-            toolkit.uiVM.video = .intro
+            toolkit.uiVM.video = .sunset
         }
     }
 }
