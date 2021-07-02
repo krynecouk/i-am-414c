@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
     @EnvironmentObject var uiVM: UIViewModel
@@ -18,6 +19,12 @@ struct ContentView: View {
         self.intro = PlayerViewModel(fileName: "intro")
         self.sunset = PlayerViewModel(fileName: "sunset")
         self.dawn = PlayerViewModel(fileName: "dawn")
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch {
+            print("unable to set playback audio category", error.localizedDescription)
+        }
     }
     
     var body: some View {

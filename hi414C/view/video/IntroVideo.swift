@@ -49,7 +49,6 @@ struct IntroVideo: View {
         .edgesIgnoringSafeArea(.all)
         .statusBar(hidden: true)
         .onTapGesture {
-            print(playerVM.isPlaying)
             if playerVM.isPlaying {
                 skip()
             }
