@@ -38,6 +38,10 @@ struct FontSize: Encodable, Decodable {
     func isDecreasable() -> Bool {
         robot > 6 && al > 20
     }
+    
+    func isDefault() -> Bool {
+        robot == 13
+    }
 }
 
 struct FontTheme {

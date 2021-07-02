@@ -36,9 +36,13 @@ struct TerminalSettingsSelect: View {
                     }
                     .withDisabledSound(if: !isIncreasable)
                     
-                    HelpButton("default", sound: .delete) {
-                        themeVM.font(.reset)
+                    let isResetable = !themeVM.fontSize.isDefault()
+                    HelpRadioButton("reset", active: isResetable, sound: (on: .click, off: .click)) {
+                        if isResetable {
+                            themeVM.font(.reset)
+                        }
                     }
+                    .withDisabledSound(if: !isResetable)
                 }
             }
             
