@@ -29,7 +29,7 @@ class TestEdge: Edge {
         
         if !ctx.input.isWord() {
             for sentence in sentences {
-                if sentence.isSimilar(sentence: ctx.input, debug: true) {
+                if sentence.isSimilar(sentence: ctx.input, debug: false) {
                     return true
                 }
             }
