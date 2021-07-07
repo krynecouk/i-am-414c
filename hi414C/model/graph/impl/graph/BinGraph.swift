@@ -704,7 +704,7 @@ class BinGraph {
         }
     
     private static var HOW_TO_HELP =
-        AL(["HOW?", "HOW CAN I HELP YOU?"]) {
+        AL(["HOW HELP?", "HOW CAN I HELP YOU?"]) {
             R("HELP ME TO REMEMBER") {
                 AL(["HOW?", "HOW CAN YOU REMEMBER?", "HOW CAN I HELP YOU TO REMEMBER?"]) {
                     EXEC_CMD
