@@ -19,8 +19,8 @@ class ChatViewModel: ObservableObject, Resetable {
             self.messages.append(message)
         }
         
-        if messages.count > 200 {
-            self.messages = Array(self.messages[50...])
+        if messages.count > 100 {
+            self.messages = Array(self.messages[30...])
         }
     }
     
