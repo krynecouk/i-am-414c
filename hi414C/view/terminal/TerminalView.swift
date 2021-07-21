@@ -14,6 +14,10 @@ struct TerminalView: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var chatVM: ChatViewModel
     
+    init() {
+        print("TerminalView")
+    }
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             let items = getContent(from: terminalVM.content, ascii: asciiVM.symbols)

@@ -16,6 +16,7 @@ struct ContentView: View {
     @ObservedObject var dawn: PlayerViewModel
     
     init() {
+        print("ContentView")
         self.intro = PlayerViewModel(fileName: "intro")
         self.sunset = PlayerViewModel(fileName: "sunset")
         self.dawn = PlayerViewModel(fileName: "dawn")

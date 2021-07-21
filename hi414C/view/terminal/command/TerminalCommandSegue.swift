@@ -25,9 +25,12 @@ struct TerminalCommandSegue: View {
                     if !uiVM.isWaiting {
                         segueVM.isOpen
                             ? segueVM.close()
-                            : segueVM.open()
+                            : segueVM.open(extended: testVM.test == .none)
                     }
                 }
+            if testVM.test == .none && segueVM.isOpen {
+                TerminalCommandPredictive()
+            }
             ASCIIKeyboardView() { input in
                 if input == "?" {
                     withAnimation {
@@ -68,7 +71,9 @@ struct TerminalCommandSegue: View {
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
-                let segueH = isOpen ? SegueViewModel.header.height + segueVM.keyboard.height : SegueViewModel.header.height
+                let openedHeaderH = testVM.test == .none ? SegueViewModel.extendedHeader.height : SegueViewModel.header.height
+                let closedHeaderH = SegueViewModel.header.height
+                let segueH = isOpen ? openedHeaderH + segueVM.keyboard.height : closedHeaderH
                 segueVM.setSegueSize((.infinity, segueH))
             }
         }

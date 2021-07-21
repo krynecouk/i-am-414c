@@ -9,6 +9,7 @@ import SwiftUI
 
 class SegueViewModel: ObservableObject {
     static let header: Size = (.infinity, 64)
+    static let extendedHeader: Size = (.infinity, 128)
     
     @Published private(set) var segue: Size = header
     @Published private(set) var learn: Size = (.infinity, 270)
@@ -18,9 +19,15 @@ class SegueViewModel: ObservableObject {
     @Published private(set) var isOpen: Bool = false
     @Published private(set) var opened: SegueType?
     
-    func open(type: SegueType = .keyboard) {
+    func open(type: SegueType = .keyboard, extended: Bool = false) {
         self.isOpen = true
         self.opened = type
+        if type == .keyboard && extended {
+            self.segue = SegueViewModel.extendedHeader
+        } else {
+            self.segue = SegueViewModel.header
+        }
+        print("segue: ", self.segue)
     }
     
     func close() {
