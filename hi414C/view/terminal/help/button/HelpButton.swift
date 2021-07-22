@@ -26,7 +26,7 @@ struct HelpButton: View {
             action()
         }) {
             Text(text)
-                .padding()
+                .padding(20)
                 .withTheme(themeVM.terminal.hli.select.button)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)

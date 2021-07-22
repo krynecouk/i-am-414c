@@ -14,21 +14,21 @@ class HelpViewModel: ObservableObject, Resetable {
     @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
     @Published private(set) var answers: Int = 0
     
-    func increment() {
+    func increment(_ amount: UInt8 = 1) {
         let (result, builder) = getResultBuilder()
         if result == UInt8.max {
             self.equation = builder.eq(0)
         } else {
-            self.equation = builder.eq(result + 1)
+            self.equation = builder.eq(result + amount)
         }
     }
     
-    func decrement() {
+    func decrement(_ amount: UInt8 = 1) {
         let (result, builder) = getResultBuilder()
         if result == 0 {
             self.equation = builder.eq(UInt8.max)
         } else {
-            self.equation = builder.eq(result - 1)
+            self.equation = builder.eq(result - amount)
         }
     }
     

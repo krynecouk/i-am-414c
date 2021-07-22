@@ -34,7 +34,7 @@ struct HelpRadioButton: View {
             action()
         }) {
             Text(text)
-                .padding()
+                .padding(20)
                 .background(active ? themeVM.terminal.hli.select.button.background : themeVM.terminal.hli.button.passive.color.opacity(0.6))
                 .font(Font.of(props: themeVM.terminal.hli.select.button.font))
                 .foregroundColor(themeVM.terminal.hli.select.button.color.opacity(active ? 1 : 0.5))
