@@ -1,5 +1,5 @@
 //
-//  TerminalCommandPredictive.swift
+//  KeyboardPrediction.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 21.07.2021.
@@ -9,7 +9,7 @@ import SwiftUI
 
 typealias Prediction = (label: String, value: String)
 
-struct TerminalCommandPredictive: View {
+struct KeyboardPrediction: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
@@ -25,7 +25,7 @@ struct TerminalCommandPredictive: View {
                     }
                 } else {
                     ForEach(chatVM.current.replies.map { Item($0) }) { item in
-                        PredictionButton((item.content, item.content))
+                        PredictionButton((item.content, item.content), active: true)
                     }
                     let rootReplies = Set(chatVM.root.replies.map { $0.components(separatedBy: " ").first! })
                     ForEach(rootReplies.map { Item($0) }) { item in
@@ -94,36 +94,23 @@ struct PredictionButton: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
+    let active: Bool
     let click: Sound = Sound.of(.click)
     let prediction: Prediction
     
-    init(_ prediction: Prediction) {
+    init(_ prediction: Prediction, active: Bool = false) {
+        self.active = active
         self.prediction = prediction
     }
     
     var body: some View {
-        PredictionButton(prediction)
-        /*
-         Text(prediction.label)
-         .font(Font.of(name: .proggyTiny, size: 35))
-         .foregroundColor(themeVM.terminal.cli.cursor.view.color)
-         .onTapGesture {
-         keyboardVM.set(prediction.value + " ")
-         }
-         .transition(.opacity)
-         .padding([.leading, .trailing], 15)
-         .frame(minWidth: 100)
-         */
-    }
-    
-    func PredictionButton(_ prediction: Prediction) -> some View {
-        PredictionLabel(prediction.label, theme: themeVM.terminal.hli.select.messageButton)
-            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+        let theme = themeVM.keyboard.prediction
+        PredictionLabel(prediction.label, theme: active ? theme.active : theme.passive)
+            .background(RoundedBackground(color: active ? theme.active.background : theme.passive.background))
             .onTapGesture {
                 click.play()
                 keyboardVM.set(prediction.value + " ")
             }
-            //.offset(y: -5)
     }
     
     func PredictionLabel(_ text: String, theme: ViewTheme) -> some View {
@@ -131,7 +118,8 @@ struct PredictionButton: View {
             .allowsTightening(true)
             .minimumScaleFactor(0.1)
             .multilineTextAlignment(.center)
-            .withTheme(theme)
+            .font(Font.of(props: theme.font))
+            .foregroundColor(theme.color)
             .offset(x: 2, y: 3.5)
             .padding([.top, .bottom], 13)
             .padding([.trailing, .leading], 25)

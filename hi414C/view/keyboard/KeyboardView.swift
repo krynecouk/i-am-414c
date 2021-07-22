@@ -21,17 +21,23 @@ struct KeyboardView: View {
     @State var spaceKeySize: Size = (200, 70)
     @State var specialKeySize: Size = (50, 70)
 
-    var keyboard: Keyboard
-    var onEnter: (String) -> Void
+    let keyboard: Keyboard
+    let onEnter: (String) -> Void
+    let predictive: Bool
    
-    init(_ keyboard: Keyboard, onEnter: @escaping (String) -> Void = { _ in }) {
+    init(_ keyboard: Keyboard, predictive: Bool = false, onEnter: @escaping (String) -> Void = { _ in }) {
         self.keyboard = keyboard
+        self.predictive = predictive
         self.onEnter = onEnter
     }
     
     var body: some View {
         GeometryReader { metrics in
             VStack(alignment: .center, spacing: spacing.vertical) {
+                if self.predictive {
+                    KeyboardPrediction()
+                        .offset(x: keyOffset.x, y: keyOffset.y)
+                }
                 KeyboardRow(keyboard[side]![.row1])
                 KeyboardRow(keyboard[side]![.row2])
                 ZStack(alignment: .trailing) {
@@ -58,6 +64,7 @@ struct KeyboardView: View {
             }
             .id(metrics.frame(in: .global).size.width)
             .onAppear {
+                print("APPEAR OF KEYBOARD")
                 let frame = metrics.frame(in: .global)
                 let frameW = frame.size.width
                 let keyW: CGFloat = ((frameW - (self.spacing.horizontal * 9)) / 10)
@@ -69,7 +76,9 @@ struct KeyboardView: View {
                 
                 let specialW: CGFloat = (frameW - (7 * keyW + 8 * self.spacing.horizontal)) / 2
                 let spaceW = (frameW - (self.spacing.horizontal * 2) - (2 * specialW))
-                let keyboardH = (4 * keyH) + self.spacing.vertical * 3
+                var keyboardH = (4 * keyH) + self.spacing.vertical * 3
+                
+                    keyboardH += SegueViewModel.header.height
                 
                 self.keySize = (keyW, keyH)
                 self.size = (.infinity, keyboardH)
@@ -86,7 +95,7 @@ struct KeyboardView: View {
                 }
             }
         }
-        .frame(maxWidth: self.size.width, maxHeight: self.size.height)
+        .frame(maxWidth: self.size.width, maxHeight: self.predictive ? self.size.height : self.size.height - 64)
         .background(themeVM.keyboard.view.background.edgesIgnoringSafeArea(.all))
     }
     

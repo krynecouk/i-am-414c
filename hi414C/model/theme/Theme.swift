@@ -366,6 +366,18 @@ class Theme: Themable {
                     color: color.secondary.contrast,
                     background: color.secondary.value
                 )
+            ),
+            prediction: KeyboardTheme.Prediction(
+                active: ViewTheme(
+                    font: FontProps(font.al.name, 45),
+                    color: color.tertiary.contrast,
+                    background: color.tertiary.value
+                ),
+                passive: ViewTheme(
+                    font: FontProps(font.al.name, 45),
+                    color: color.secondary.contrast,
+                    background: color.secondary.value
+                )
             )
         )
     }

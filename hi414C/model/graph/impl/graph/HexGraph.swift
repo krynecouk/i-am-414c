@@ -42,7 +42,7 @@ class HexGraph {
             HEX.HOPE
             HEX.EXECUTE
             // COMMAND
-            HEX.CLUE
+            //HEX.CLUE
             HEX.PLOT
             HEX.JOKE
             HEX.HELL

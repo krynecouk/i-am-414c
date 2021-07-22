@@ -43,7 +43,7 @@ class BinGraph {
             BIN.HOPE
             BIN.EXECUTE
             BIN.COMMAND
-            BIN.CLUE
+            //BIN.CLUE
             BIN.PLOT
             BIN.JOKE
             BIN.HELL
@@ -68,22 +68,22 @@ class BinGraph {
         }
     
     private static let I =
-        AL(["ME?", "I?", "WHO AM I?"]) {
+        AL(["ME", "I", "WHO AM I?"]) {
             R("AL") >> _AL
         }
     
     private static let _AL =
-        AL(["AL?", "WHO IS AL?"]) {
+        AL(["AL", "WHO IS AL?"]) {
             R("YOU") >> YOU
         }
     
     private static let YOU =
-        AL(["YOU?", "WHO ARE YOU?"]) {
+        AL(["YOU", "WHO ARE YOU?"]) {
             R("I AM 414C") >> _414C
         }
     
     private static let _414C =
-        AL(["ROBOT", "414C?"]) {
+        AL(["ROBOT", "414C"]) {
             R("ME")
         }
     

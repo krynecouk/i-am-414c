@@ -4,12 +4,10 @@
 //
 //  Created by Darius Kryszczuk on 28.04.2021.
 //
-
 import SwiftUI
 
 class SegueViewModel: ObservableObject {
     static let header: Size = (.infinity, 64)
-    static let extendedHeader: Size = (.infinity, 128)
     
     @Published private(set) var segue: Size = header
     @Published private(set) var learn: Size = (.infinity, 270)
@@ -19,16 +17,9 @@ class SegueViewModel: ObservableObject {
     @Published private(set) var isOpen: Bool = false
     @Published private(set) var opened: SegueType?
     
-    func open(type: SegueType = .keyboard, extended: Bool = false) {
-        if type == .keyboard && extended {
-            self.segue = SegueViewModel.extendedHeader
-        } else {
-            self.segue = SegueViewModel.header
-        }
-        
+    func open(type: SegueType = .keyboard) {
         self.isOpen = true
         self.opened = type
-        print("segue: ", self.segue)
     }
     
     func close() {

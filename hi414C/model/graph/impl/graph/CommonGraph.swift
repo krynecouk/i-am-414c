@@ -114,7 +114,7 @@ class CommonGraph {
             }
         
         static let LIKE =
-            AL(["LIKE?", "DO YOU LIKE?"]) {
+            AL(["LIKE", "DO YOU LIKE?"]) {
                 R("WHAT?") {
                     AL(["TALKING", "DO YOU LIKE TALKING WITH ME?"]) {
                         R("YES")
@@ -129,7 +129,7 @@ class CommonGraph {
             }
         
         static let HURRY =
-            AL(["HURRY", "HURRY!", "HURRY UP!"]) {
+            AL(["HURRY UP"]) {
                 R("WHY?") {
                     AL(["CAN YOU?", "CAN YOU HURRY UP?"]) {
                         R("NO, DAMAGED")
@@ -808,7 +808,7 @@ class CommonGraph {
             }
         
         static let REPEAT =
-            AL(["SAY AGAIN", "ECHO", "REPEAT", "SAY", "PRINT"]) {
+            AL(["SAY AGAIN", "REPEAT"]) {
                 R("WHAT?") {
                     TRAVERSE_ALL {
                         ECHO()
@@ -817,7 +817,7 @@ class CommonGraph {
             }
         
         static let _YELL =
-            AL(["YELL AT ME", "YELL", "SHOUT", "LOUD", "LOUDLY"]) {
+            AL(["YELL AT ME", "YELL", "SHOUT"]) {
                 R("WHAT?") {
                     TRAVERSE_ALL {
                         YELL()

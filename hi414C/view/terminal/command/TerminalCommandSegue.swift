@@ -4,7 +4,6 @@
 //
 //  Created by Darius Kryszczuk on 04.04.2021.
 //
-
 import SwiftUI
 
 struct TerminalCommandSegue: View {
@@ -25,13 +24,10 @@ struct TerminalCommandSegue: View {
                     if !uiVM.isWaiting {
                         segueVM.isOpen
                             ? segueVM.close()
-                            : segueVM.open(extended: testVM.test == .none)
+                            : segueVM.open()
                     }
                 }
-            if testVM.test == .none && segueVM.isOpen {
-                TerminalCommandPredictive()
-            }
-            ASCIIKeyboardView() { input in
+            ASCIIKeyboardView(predictive: testVM.test == nil) { input in
                 if input == "?" {
                     withAnimation {
                         uiVM.isHelp = uiVM.isHelp ? false : true
@@ -71,9 +67,8 @@ struct TerminalCommandSegue: View {
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
-                let openedHeaderH = testVM.test == .none ? SegueViewModel.extendedHeader.height : SegueViewModel.header.height
-                let closedHeaderH = SegueViewModel.header.height
-                let segueH = isOpen ? openedHeaderH + segueVM.keyboard.height : closedHeaderH
+                let keyboardH = testVM.test == nil ? segueVM.keyboard.height : segueVM.keyboard.height - 64
+                let segueH = isOpen ? SegueViewModel.header.height + keyboardH : SegueViewModel.header.height
                 segueVM.setSegueSize((.infinity, segueH))
             }
         }

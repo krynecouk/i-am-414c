@@ -20,7 +20,7 @@
 		262F4B42266E6B6200D14D52 /* CommonGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B41266E6B6200D14D52 /* CommonGraph.swift */; };
 		262F4B50267012FD00D14D52 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F4B4F267012FD00D14D52 /* Sound.swift */; };
 		262F4B5D2670F0D000D14D52 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 262F4B5C2670F0D000D14D52 /* License.rtf */; };
-		262F752A26A89CA5008C632B /* TerminalCommandPredictive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F752926A89CA5008C632B /* TerminalCommandPredictive.swift */; };
+		262F752A26A89CA5008C632B /* KeyboardPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F752926A89CA5008C632B /* KeyboardPrediction.swift */; };
 		2634DE4225FBC0A800FE8A65 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */; };
 		263612332631DB7800341B60 /* EquationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612322631DB7800341B60 /* EquationType.swift */; };
 		263612372632100800341B60 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263612362632100800341B60 /* Set.swift */; };
@@ -245,7 +245,7 @@
 		262F4B41266E6B6200D14D52 /* CommonGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonGraph.swift; sourceTree = "<group>"; };
 		262F4B4F267012FD00D14D52 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		262F4B5C2670F0D000D14D52 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
-		262F752926A89CA5008C632B /* TerminalCommandPredictive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandPredictive.swift; sourceTree = "<group>"; };
+		262F752926A89CA5008C632B /* KeyboardPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPrediction.swift; sourceTree = "<group>"; };
 		2634DE4125FBC0A800FE8A65 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		263612322631DB7800341B60 /* EquationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationType.swift; sourceTree = "<group>"; };
 		263612362632100800341B60 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -600,7 +600,6 @@
 				2654884A260524460044297D /* TerminalCommandPrompt.swift */,
 				264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */,
 				269BCC7D2639290E00229E8A /* TerminalCommandSegue.swift */,
-				262F752926A89CA5008C632B /* TerminalCommandPredictive.swift */,
 			);
 			path = command;
 			sourceTree = "<group>";
@@ -651,6 +650,7 @@
 				26682CB12611FA9A00F7C943 /* ascii */,
 				2654884E2605247C0044297D /* KeyboardView.swift */,
 				2678D96C260E4D2700DDB40F /* KeyboardKeyView.swift */,
+				262F752926A89CA5008C632B /* KeyboardPrediction.swift */,
 			);
 			path = keyboard;
 			sourceTree = "<group>";
@@ -1463,7 +1463,7 @@
 				267463E225DED49900624D7C /* BlurIn.swift in Sources */,
 				26EA303B2665740D004A78F2 /* TestDifficultyDao.swift in Sources */,
 				2620921B2600B2FE0001904B /* FigletView.swift in Sources */,
-				262F752A26A89CA5008C632B /* TerminalCommandPredictive.swift in Sources */,
+				262F752A26A89CA5008C632B /* KeyboardPrediction.swift in Sources */,
 				26EA30002656C77C004A78F2 /* TerminalTestSelect.swift in Sources */,
 				2684EC84267FA60600AAC7F5 /* DanceNode.swift in Sources */,
 				262F4B3A266E4E6700D14D52 /* DiceNode.swift in Sources */,
