@@ -50,19 +50,19 @@ class TestViewModel: ObservableObject, Resetable {
         switch level {
         case 0..<6:
             return Test(symbol: symbol, equation: ID() => dec)
-        case 0..<7:
-            return Test(symbol: symbol, equation: ET.rand(of: [.ADD, .SUB]).build().eq(dec))
         case 0..<8:
-            return Test(symbol: symbol, equation: ET.rand(of: [.MUL, .DIV]).build().eq(dec))
-        case 0..<9:
-            return Test(symbol: symbol, equation: AND() => dec)
+            return Test(symbol: symbol, equation: ET.rand(of: [.ADD, .SUB]).build().eq(dec))
         case 0..<10:
-            return Test(symbol: symbol, equation: OR() => dec)
-        case 0..<11:
-            return Test(symbol: symbol, equation: XOR() => dec)
+            return Test(symbol: symbol, equation: ET.rand(of: [.MUL, .DIV]).build().eq(dec))
         case 0..<12:
+            return Test(symbol: symbol, equation: AND() => dec)
+        case 0..<14:
+            return Test(symbol: symbol, equation: OR() => dec)
+        case 0..<16:
+            return Test(symbol: symbol, equation: XOR() => dec)
+        case 0..<18:
             return Test(symbol: symbol, equation: NOT() => dec)
-        case 0..<13:
+        case 0..<20:
             if dec % 2 == 0 {
                 return Test(symbol: symbol, equation: SHL() => dec)
             } else {
