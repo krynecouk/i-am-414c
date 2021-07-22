@@ -69,12 +69,12 @@ class BinGraph {
     
     private static let I =
         AL(["ME", "I", "WHO AM I?"]) {
-            R("AL") >> _AL
+            R("AL")
         }
     
     private static let _AL =
         AL(["AL", "WHO IS AL?"]) {
-            R("YOU") >> YOU
+            R("YOU")
         }
     
     private static let YOU =

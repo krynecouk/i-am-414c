@@ -15,10 +15,13 @@ struct TerminalContent: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .center) {
-                let isHelpModal = uiVM.isHelp && !uiVM.isHelpModalClosed
+                let isHelpModal = !uiVM.isHelpModalClosed
                 TerminalGrid(items: items)
                     .blur(if: isHelpModal)
                     .disabled(isHelpModal)
+                if !uiVM.isHelpModalClosed {
+                    HelpModal()
+                }
                 if uiVM.isHelp {
                     TerminalHelpMessages()
                         .blur(if: isHelpModal)
@@ -26,9 +29,6 @@ struct TerminalContent: View {
                     TerminalHelpSettings()
                         .blur(if: isHelpModal)
                         .disabled(isHelpModal)
-                    if !uiVM.isHelpModalClosed {
-                        HelpModal()
-                    }
                 }
             }
         }

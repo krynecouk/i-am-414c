@@ -21,6 +21,8 @@ struct TerminalFooter: View {
             if !uiVM.detail.is {
                 TerminalCommandSegue()
                     .matchedGeometryEffect(id: "segue", in: ns)
+                    .blur(if: !uiVM.isHelpModalClosed)
+                    .disabled(!uiVM.isHelpModalClosed)
             }
         }
     }
