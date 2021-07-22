@@ -21,73 +21,131 @@ struct TerminalCommandPredictive: View {
             LazyHStack {
                 if let predictions = self.predictions {
                     ForEach(predictions.map { Item($0) }) { item in
-                        Text(item.content.label)
-                            .onTapGesture {
-                                keyboardVM.set(item.content.value + " ")
-                            }
+                        PredictionButton(item.content)
                     }
                 } else {
                     ForEach(chatVM.current.replies.map { Item($0) }) { item in
-                        Text("> " + item.content)
-                            .onTapGesture {
-                                keyboardVM.set(item.content + " ")
-                            }
+                        PredictionButton((item.content, item.content))
                     }
                     let rootReplies = Set(chatVM.root.replies.map { $0.components(separatedBy: " ").first! })
                     ForEach(rootReplies.map { Item($0) }) { item in
-                        Text(item.content)
-                            .onTapGesture {
-                                keyboardVM.set(item.content + " ")
-                            }
+                        PredictionButton((item.content, item.content))
                     }
                 }
             }
+            .padding([.leading, .trailing], 15)
+            .onAppear {
+                initPredictions(with: keyboardVM.input)
+            }
             .onChange(of: keyboardVM.input) { input in
-                if input.isEmpty {
-                    withAnimation {
-                        self.predictions = .none
-                    }
-                } else {
-                    DispatchQueue.global().async {
-                        // filter possible replies
-                        let filtered = chatVM.allReplies.filter { $0.starts(with: input) }
-                        print("filtered: ", filtered)
-                        
-                        // prediction index
-                        let tokenizedInput = input.tokenize() // punctuation??
-                        let endsWithSpace = input.hasSuffix(" ")
-                        let endIndex = tokenizedInput.endIndex
-                        let index = endsWithSpace ? endIndex : endIndex - 1
-                        
-                        // create predictions
-                        let tokenizedFilter = filtered.map { $0.tokenize() } // punctuation?
-                        print("tokenized filter: ", tokenizedFilter)
-                        let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
-                        var predictions: [Prediction] = []
-                        for tokenizedPrediction in tokenizedPredictions {
-                            let label = tokenizedPrediction[index]
-                            if !predictions.contains(where: { $0.label == label }) {
-                                let value = tokenizedPrediction[...index].joined(separator: " ")
-                                predictions.append((label, value))
-                            }
-                        }
-                        print(predictions)
-                        
-                        
-                        DispatchQueue.main.async {
-                            withAnimation {
-                                self.predictions = predictions
-
-                            }
-                        }
-                        
-                    }
-                }
-
-                //reader.scrollTo(input)
+                initPredictions(with: input)
             }
         }
         .frame(height: SegueViewModel.header.height)
         .background(themeVM.terminal.cli.view.background)
+        //.background(Color.blue)
+    }
+    
+    func initPredictions(with input: String) {
+        if input.isEmpty {
+            withAnimation {
+                self.predictions = .none
+            }
+        } else {
+            DispatchQueue.global().async {
+                // filter possible replies
+                let filtered = chatVM.allReplies.filter { $0.starts(with: input) }
+                print("filtered: ", filtered)
+                
+                // prediction index
+                let tokenizedInput = input.tokenize() // punctuation??
+                let endsWithSpace = input.hasSuffix(" ")
+                let endIndex = tokenizedInput.endIndex
+                let index = endsWithSpace ? endIndex : endIndex - 1
+                
+                // create predictions
+                let tokenizedFilter = filtered.map { $0.tokenize() } // punctuation?
+                print("tokenized filter: ", tokenizedFilter)
+                let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
+                var predictions: [Prediction] = []
+                for tokenizedPrediction in tokenizedPredictions {
+                    let label = tokenizedPrediction[index]
+                    if !predictions.contains(where: { $0.label == label }) {
+                        let value = tokenizedPrediction[...index].joined(separator: " ")
+                        predictions.append((label, value))
+                    }
+                }
+                print(predictions)
+                
+                
+                DispatchQueue.main.async {
+                    //withAnimation {
+                    self.predictions = predictions
+                    
+                    //}
+                }
+                
+            }
+        }
+    }
+}
+
+struct PredictionButton: View {
+    @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
+    
+    let click: Sound = Sound.of(.click)
+    let prediction: Prediction
+    
+    init(_ prediction: Prediction) {
+        self.prediction = prediction
+    }
+    
+    var body: some View {
+        PredictionButton(prediction)
+        /*
+         Text(prediction.label)
+         .font(Font.of(name: .proggyTiny, size: 35))
+         .foregroundColor(themeVM.terminal.cli.cursor.view.color)
+         .onTapGesture {
+         keyboardVM.set(prediction.value + " ")
+         }
+         .transition(.opacity)
+         .padding([.leading, .trailing], 15)
+         .frame(minWidth: 100)
+         */
+    }
+    
+    func PredictionButton(_ prediction: Prediction) -> some View {
+        PredictionLabel(prediction.label, theme: themeVM.terminal.hli.select.messageButton)
+            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+            .onTapGesture {
+                click.play()
+                keyboardVM.set(prediction.value + " ")
+            }
+            //.offset(y: -5)
+    }
+    
+    func PredictionLabel(_ text: String, theme: ViewTheme) -> some View {
+        Text(text)
+            .allowsTightening(true)
+            .minimumScaleFactor(0.1)
+            .multilineTextAlignment(.center)
+            .withTheme(theme)
+            .offset(x: 2, y: 3.5)
+            .padding([.top, .bottom], 13)
+            .padding([.trailing, .leading], 25)
+    }
+}
+
+struct RoundedBackground: View {
+    let color: Color?
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 15)
+            .fill(self.color ?? Color.clear)
+            //.padding([.leading, .trailing], 5)
+            .padding([.trailing], 3)
+        
     }
 }

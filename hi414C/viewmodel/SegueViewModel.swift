@@ -20,13 +20,14 @@ class SegueViewModel: ObservableObject {
     @Published private(set) var opened: SegueType?
     
     func open(type: SegueType = .keyboard, extended: Bool = false) {
-        self.isOpen = true
-        self.opened = type
         if type == .keyboard && extended {
             self.segue = SegueViewModel.extendedHeader
         } else {
             self.segue = SegueViewModel.header
         }
+        
+        self.isOpen = true
+        self.opened = type
         print("segue: ", self.segue)
     }
     

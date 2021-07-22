@@ -107,7 +107,7 @@ class GraphViewModel: ObservableObject, Resetable {
         return (current, root)
     }
     
-    private func getPaths(from node: Node, unique: Bool = false, precondition: (String) -> Bool) -> Set<String> {
+    private func getPaths(from node: Node, unique: Bool = true, precondition: (String) -> Bool) -> Set<String> {
         var paths: Set<String> = []
         for edge in node.edges {
             for name in edge.names.reversed() {

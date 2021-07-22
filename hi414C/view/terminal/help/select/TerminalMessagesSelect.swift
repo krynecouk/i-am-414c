@@ -94,15 +94,7 @@ struct TerminalMessagesSelect: View {
     }
 }
 
-struct RoundedBackground: View {
-    let color: Color?
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 35)
-            .fill(self.color ?? Color.clear)
-            .padding([.leading, .trailing], 10)
-    }
-}
+
 
 struct ReloadButton: View {
     @EnvironmentObject var themeVM: ThemeViewModel
