@@ -11,7 +11,14 @@ struct HelpModal: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
-    let text = "*** Welcome! ***\nYou have entered help center.\n\nHere you can learn about binary, browse messaging history or change app settings.\n\nTIP#1: For a quicker access to this screen, swipe left. \n\nTIP#2: Use single tap in binary section to display its formatted view."
+    let text = """
+        *** Welcome! ***
+        You meet a damaged robot named 414C. Unfortunately, the robot has forgotten all letters.
+        
+        Decode its binary messages to uncover the letters and use them to communicate with the robot. Find out more about its past and purpose.
+        
+        Important: type "?" or swipe left to enter the help center.
+        """
     
     var body: some View {
         Modal(
