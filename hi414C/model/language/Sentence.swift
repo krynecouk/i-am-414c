@@ -26,10 +26,15 @@ extension Sentence {
         return 2
     }
     
-    func tokenize() -> [String] {
+    func tokenize(omitPunctuation: Bool = true) -> [String] {
         var result: [String] = []
         let tagger = NSLinguisticTagger(tagSchemes:[.tokenType], options: 0)
-        let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace]
+        var options: NSLinguisticTagger.Options
+        if omitPunctuation {
+            options = [.omitPunctuation, .omitWhitespace]
+        } else {
+            options = [.omitWhitespace]
+        }
         let toTokenize = self
         
         tagger.string = toTokenize

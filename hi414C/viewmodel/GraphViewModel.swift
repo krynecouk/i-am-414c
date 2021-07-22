@@ -98,22 +98,24 @@ class GraphViewModel: ObservableObject, Resetable {
         let currentRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
-        let current = self.current is RootNode ? ["HI"] : getPaths(from: current, precondition: currentRule)
+        let current = self.current is RootNode ? ["HI"] : getPaths(from: current, unique: true, precondition: currentRule)
         
         let rootRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) }) && !current.contains(path)
         }
-        let root = getPaths(from: root, precondition: rootRule, visitedLast: true)
+        let root = getPaths(from: root, precondition: rootRule)
         return (current, root)
     }
     
-    private func getPaths(from node: Node, precondition: (String) -> Bool, visitedLast: Bool = false) -> Set<String> {
+    private func getPaths(from node: Node, unique: Bool = false, precondition: (String) -> Bool) -> Set<String> {
         var paths: Set<String> = []
         for edge in node.edges {
             for name in edge.names.reversed() {
                 if precondition(name) {
                     paths.insert(name)
-                    //break // store only first acceptable reply
+                    if unique {
+                        break // store only first acceptable reply
+                    }
                 }
             }
         }

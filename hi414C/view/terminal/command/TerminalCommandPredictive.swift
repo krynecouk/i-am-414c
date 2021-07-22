@@ -14,39 +14,38 @@ struct TerminalCommandPredictive: View {
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
-    @State var filtered: [String]?
     @State var predictions: [Prediction]?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
-                if filtered == .none {
-                    ForEach(chatVM.current.replies.map { Item($0) }) { item in
-                        Text(item.content)
+                if let predictions = self.predictions {
+                    ForEach(predictions.map { Item($0) }) { item in
+                        Text(item.content.label)
                             .onTapGesture {
-                                keyboardVM.set(item.content + " ")
-                            }
-                    }
-                    ForEach(chatVM.root.replies.map { Item($0) }) { item in
-                        Text(item.content)
-                            .onTapGesture {
-                                keyboardVM.set(item.content + " ")
+                                keyboardVM.set(item.content.value + " ")
                             }
                     }
                 } else {
-                    ForEach(filtered!.map { Item($0) }) { item in
+                    ForEach(chatVM.current.replies.map { Item($0) }) { item in
+                        Text("> " + item.content)
+                            .onTapGesture {
+                                keyboardVM.set(item.content + " ")
+                            }
+                    }
+                    let rootReplies = Set(chatVM.root.replies.map { $0.components(separatedBy: " ").first! })
+                    ForEach(rootReplies.map { Item($0) }) { item in
                         Text(item.content)
                             .onTapGesture {
                                 keyboardVM.set(item.content + " ")
                             }
                     }
                 }
-
             }
             .onChange(of: keyboardVM.input) { input in
                 if input.isEmpty {
                     withAnimation {
-                        self.filtered = .none
+                        self.predictions = .none
                     }
                 } else {
                     DispatchQueue.global().async {
@@ -55,13 +54,14 @@ struct TerminalCommandPredictive: View {
                         print("filtered: ", filtered)
                         
                         // prediction index
-                        let tokenizedInput = input.tokenize()
+                        let tokenizedInput = input.tokenize() // punctuation??
                         let endsWithSpace = input.hasSuffix(" ")
                         let endIndex = tokenizedInput.endIndex
                         let index = endsWithSpace ? endIndex : endIndex - 1
                         
-                        //
-                        let tokenizedFilter = filtered.map { $0.tokenize() }
+                        // create predictions
+                        let tokenizedFilter = filtered.map { $0.tokenize() } // punctuation?
+                        print("tokenized filter: ", tokenizedFilter)
                         let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
                         var predictions: [Prediction] = []
                         for tokenizedPrediction in tokenizedPredictions {
@@ -73,14 +73,14 @@ struct TerminalCommandPredictive: View {
                         }
                         print(predictions)
                         
-                        /*
+                        
                         DispatchQueue.main.async {
                             withAnimation {
-                                self.filtered = filtered
+                                self.predictions = predictions
 
                             }
                         }
-                        */
+                        
                     }
                 }
 
