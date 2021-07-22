@@ -64,7 +64,6 @@ struct KeyboardView: View {
             }
             .id(metrics.frame(in: .global).size.width)
             .onAppear {
-                print("APPEAR OF KEYBOARD")
                 let frame = metrics.frame(in: .global)
                 let frameW = frame.size.width
                 let keyW: CGFloat = ((frameW - (self.spacing.horizontal * 9)) / 10)

@@ -55,7 +55,7 @@ struct KeyboardPrediction: View {
             DispatchQueue.global().async {
                 // filter possible replies
                 let filtered = chatVM.allReplies.filter { $0.starts(with: input) }
-                print("filtered: ", filtered)
+                //print("filtered: ", filtered)
                 
                 // prediction index
                 let tokenizedInput = input.tokenize() // punctuation??
@@ -65,7 +65,7 @@ struct KeyboardPrediction: View {
                 
                 // create predictions
                 let tokenizedFilter = filtered.map { $0.tokenize() } // punctuation?
-                print("tokenized filter: ", tokenizedFilter)
+                //print("tokenized filter: ", tokenizedFilter)
                 let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
                 var predictions: [Prediction] = []
                 for tokenizedPrediction in tokenizedPredictions {
@@ -75,7 +75,7 @@ struct KeyboardPrediction: View {
                         predictions.append((label, value))
                     }
                 }
-                print(predictions)
+                //print(predictions)
                 
                 
                 DispatchQueue.main.async {
