@@ -40,6 +40,7 @@ struct TerminalView: View {
                     let (current, root) = graphVM.getReplies(ascii: ascii)
                     chatVM.setCurrent(message: message, replies: current)
                     chatVM.setRoot(message: message, replies: root)
+                    chatVM.setAllReplies(Array(chatVM.current.replies) + Array(chatVM.root.replies))
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
                     return items
@@ -47,6 +48,7 @@ struct TerminalView: View {
                 
                 chatVM.setCurrent(message: .none, replies: [])
                 chatVM.setRoot(message: .none, replies: [])
+                chatVM.setAllReplies([])
                 var testWasSetup = false
                 tests.forEach { test in // test node
                     let symbol = test.symbol

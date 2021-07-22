@@ -13,6 +13,7 @@ class ChatViewModel: ObservableObject, Resetable {
     private(set) var messages: [Message] = []
     private(set) var current: Conversation = (.none, [])
     private(set) var root: Conversation = (.none, [])
+    private(set) var allReplies: [String] = []
     
     func add(message: Message) {
         if !message.text.isEmpty {
@@ -35,6 +36,11 @@ class ChatViewModel: ObservableObject, Resetable {
     func setRoot(message: Message?, replies: Set<String>) {
         self.root = (message, replies)
     }
+    
+    func setAllReplies(_ replies: [String]) {
+        self.allReplies = replies
+    }
+    
 }
 
 struct Message: Identifiable {

@@ -113,7 +113,7 @@ class GraphViewModel: ObservableObject, Resetable {
             for name in edge.names.reversed() {
                 if precondition(name) {
                     paths.insert(name)
-                    break // store only first acceptable reply
+                    //break // store only first acceptable reply
                 }
             }
         }
