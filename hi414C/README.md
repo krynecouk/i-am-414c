@@ -8,3 +8,11 @@
 
 ## TODO
 - NONE!
+
+## How to release
+1. version and build id
+2. Any IOS build!
+3. Product -> Archive
+4. Validate
+5. Distribute
+ 

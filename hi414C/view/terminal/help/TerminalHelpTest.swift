@@ -22,7 +22,8 @@ struct TerminalHelpTest: View {
             let theme = themeVM.terminal.help.test
             let equation = helpVM.equation
             let resultRadix = equation.builder is ID ? EquationRadix.dec : helpVM.radix
-            TerminalTest(TerminalTest.getItems(id: UUID(), equation: equation.toString(radix: helpVM.radix, result: (true, resultRadix))), theme: (theme.figlet, theme.sign), wide: wide, shadow: true)
+            let items = TerminalTest.getItems(id: UUID(), equation: equation.toString(radix: helpVM.radix, result: (true, resultRadix)))
+            TerminalTest(items, theme: (theme.figlet, theme.sign), wide: wide, shadow: true)
         }
     }
 }
