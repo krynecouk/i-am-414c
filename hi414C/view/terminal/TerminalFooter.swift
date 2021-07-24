@@ -15,14 +15,15 @@ struct TerminalFooter: View {
         if uiVM.isHelp {
             TerminalHelpSegue()
                 .matchedGeometryEffect(id: "segue", in: ns)
-                .blur(if: uiVM.isHelp && !uiVM.isHelpModalClosed)
-                .disabled(uiVM.isHelp && !uiVM.isHelpModalClosed)
         } else {
             if !uiVM.detail.is {
                 TerminalCommandSegue()
                     .matchedGeometryEffect(id: "segue", in: ns)
                     .blur(if: !uiVM.isHelpModalClosed)
                     .disabled(!uiVM.isHelpModalClosed)
+            } else {
+                TerminalDetailFooter()
+                    .matchedGeometryEffect(id: "segue", in: ns)
             }
         }
     }

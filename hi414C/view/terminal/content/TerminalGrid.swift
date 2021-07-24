@@ -84,7 +84,7 @@ struct TerminalGrid: View {
                 if case let .test(test, items, active) = item.type {
                     let symbolId = TerminalSymbol.id(from: test)
                     if !uiVM.isHelp && (!uiVM.detail.is || (uiVM.detail.is && active)) {
-                        TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty && !printedTests.contains(test.id))
+                        TerminalTestThemed(test, items: items, wide: wide, active: active, withDelay: !self.solved.isEmpty && !printedTests.contains(test.id), withResult: uiVM.withResult)
                             .matchedGeometryEffect(id: symbolId, in: ns, properties: .position, isSource: false)
                             .onAppear {
                                 if uiVM.current != .test {
@@ -127,6 +127,9 @@ struct TerminalGrid: View {
                     if self.grid != .adaptive {
                         self.grid = .adaptive
                     }
+                    if uiVM.withResult {
+                        uiVM.withResult = false
+                    }
                 } else {
                     if uiVM.isWideScreen() {
                         if self.grid != .landslide_detail {
@@ -160,7 +163,7 @@ struct TerminalGrid: View {
                 }
             }
         }
-
+        
         return .none
     }
     
@@ -168,7 +171,7 @@ struct TerminalGrid: View {
         themeVM.terminal.help.background
             .edgesIgnoringSafeArea(.all)
     }
-
+    
     enum GridType {
         case adaptive, portrait_detail, landslide_detail, portrait_message, landslide_message
         

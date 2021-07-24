@@ -14,8 +14,6 @@ struct TerminalTestThemed: View {
     @State var bloom = false
     @State var shadow = false
     
-    @State var withResult = false
-    
     let delay: Double = 2.2
     
     let test: Test
@@ -23,15 +21,15 @@ struct TerminalTestThemed: View {
     let wide: Bool
     let active: Bool
     let withDelay: Bool
+    let withResult: Bool
     
-    init(_ test: Test, items: TestItems, wide: Bool = false, active: Bool = false, withDelay: Bool = false) {
+    init(_ test: Test, items: TestItems, wide: Bool = false, active: Bool = false, withDelay: Bool = false, withResult: Bool = false) {
         self.test = test
         self.items = items
         self.wide = wide
         self.active = active
         self.withDelay = withDelay
-        //let equation = self.test.equation
-        //self.itemsWithResult = TerminalTest.getItems(id: test.id, equation: equation.toString(radix: testVM.radix, result: (true, .bin)))
+        self.withResult = withResult
     }
     
     var body: some View {
@@ -60,11 +58,6 @@ struct TerminalTestThemed: View {
                             self.shadow = true
                         }
                     }
-                }
-            }
-            .onTapGesture {
-                withAnimation {
-                    self.withResult.toggle()
                 }
             }
     }
