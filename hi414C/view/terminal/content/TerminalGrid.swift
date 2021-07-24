@@ -209,9 +209,11 @@ struct TerminalItem: Equatable {
     }
 }
 
+typealias TestItems = (unsolved: [TerminalTestItem], solved: [TerminalTestItem])
+
 enum TerminalItemType {
     case symbol(ASCIISymbol)
-    case test(Test, [TerminalTestItem], Bool)
+    case test(Test, TestItems, Bool)
     case message(String)
 }
 

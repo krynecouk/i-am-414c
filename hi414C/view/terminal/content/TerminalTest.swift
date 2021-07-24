@@ -41,6 +41,7 @@ struct TerminalTest: View {
     }
     
     public static func getItems(id: UUID, equation: String) -> [TerminalTestItem] {
+        print("getting test items eq: ", equation)
         var items: [TerminalTestItem] = []
         let chars = equation.map { $0 }
         

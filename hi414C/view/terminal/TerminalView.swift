@@ -57,13 +57,14 @@ struct TerminalView: View {
                         return
                     }
                     
-                    let testItems = TerminalTest.getItems(from: test, radix: testVM.radix)
+                    let unsolved = TerminalTest.getItems(from: test, radix: testVM.radix)
+                    let solved = TerminalTest.getItems(id: test.id, equation: test.equation.toString(radix: testVM.radix, result: (true, .dec)))
                     if testWasSetup {
-                        items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, false)))
+                        items.append(TerminalItem(id: test.id.uuidString, of: .test(test, (unsolved, solved), false)))
                         return
                     }
                     testWasSetup.toggle()
-                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, testItems, true)))
+                    items.append(TerminalItem(id: test.id.uuidString, of: .test(test, (unsolved, solved), true)))
                     testVM.set(test: test)
                 }
             }

@@ -14,24 +14,28 @@ struct TerminalTestThemed: View {
     @State var bloom = false
     @State var shadow = false
     
+    @State var withResult = false
+    
     let delay: Double = 2.2
     
     let test: Test
-    let items: [TerminalTestItem]
+    let items: TestItems
     let wide: Bool
     let active: Bool
     let withDelay: Bool
     
-    init(_ test: Test, items: [TerminalTestItem], wide: Bool = false, active: Bool = false, withDelay: Bool = false) {
+    init(_ test: Test, items: TestItems, wide: Bool = false, active: Bool = false, withDelay: Bool = false) {
         self.test = test
         self.items = items
         self.wide = wide
         self.active = active
         self.withDelay = withDelay
+        //let equation = self.test.equation
+        //self.itemsWithResult = TerminalTest.getItems(id: test.id, equation: equation.toString(radix: testVM.radix, result: (true, .bin)))
     }
     
     var body: some View {
-        TerminalTest(items, theme: (themeVM.terminal.grid.test.figlet, themeVM.terminal.grid.test.sign), wide: wide, shadow: self.shadow)
+        TerminalTest(withResult ? items.solved : items.unsolved, theme: (themeVM.terminal.grid.test.figlet, themeVM.terminal.grid.test.sign), wide: wide, shadow: self.shadow)
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {
@@ -56,6 +60,11 @@ struct TerminalTestThemed: View {
                             self.shadow = true
                         }
                     }
+                }
+            }
+            .onTapGesture {
+                withAnimation {
+                    self.withResult.toggle()
                 }
             }
     }
