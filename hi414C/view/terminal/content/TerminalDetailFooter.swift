@@ -18,7 +18,7 @@ struct TerminalDetailFooter: View {
             Text(uiVM.withResult ? "HIDE RESULT" : "SHOW RESULT")
         }
         .frame(height: SegueViewModel.header.height)
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
         .onTapGesture {
             withAnimation {
                 uiVM.withResult.toggle()

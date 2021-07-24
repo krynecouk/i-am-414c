@@ -27,7 +27,7 @@ struct TerminalHelpSegue: View {
         .onReceive(segueVM.$learn) { _ in
             segueVM.close()
         }
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
     }
     
     func getSegueH(_ opened: SegueType?) -> CGFloat {

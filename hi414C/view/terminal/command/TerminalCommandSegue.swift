@@ -75,6 +75,6 @@ struct TerminalCommandSegue: View {
         .onReceive(segueVM.$keyboard) { value in
             segueVM.close()
         }
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 60)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
     }
 }
