@@ -8,22 +8,18 @@
 import SwiftUI
 
 struct TerminalFooter: View {
-    @Namespace private var ns
     @EnvironmentObject var uiVM: UIViewModel
     
     var body: some View {
         if uiVM.isHelp {
             TerminalHelpSegue()
-                .matchedGeometryEffect(id: "segue", in: ns)
         } else {
             if !uiVM.detail.is {
                 TerminalCommandSegue()
-                    .matchedGeometryEffect(id: "segue", in: ns)
                     .blur(if: !uiVM.isHelpModalClosed)
                     .disabled(!uiVM.isHelpModalClosed)
             } else {
                 TerminalDetailFooter()
-                    .matchedGeometryEffect(id: "segue", in: ns)
             }
         }
     }
