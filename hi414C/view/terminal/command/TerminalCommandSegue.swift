@@ -64,6 +64,11 @@ struct TerminalCommandSegue: View {
         .onAppear {
             segueVM.setSegueSize((.infinity, SegueViewModel.header.height))
         }
+        .onDisappear {
+            print("dissapearing")
+            segueVM.close()
+            segueVM.setSegueSize((.infinity, 64))
+        }
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
