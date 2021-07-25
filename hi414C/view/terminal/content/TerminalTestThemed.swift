@@ -21,19 +21,19 @@ struct TerminalTestThemed: View {
     let wide: Bool
     let active: Bool
     let withDelay: Bool
-    let withResult: Bool
+    let withHint: Bool
     
-    init(_ test: Test, items: TestItems, wide: Bool = false, active: Bool = false, withDelay: Bool = false, withResult: Bool = false) {
+    init(_ test: Test, items: TestItems, wide: Bool = false, active: Bool = false, withDelay: Bool = false, withHint: Bool = false) {
         self.test = test
         self.items = items
         self.wide = wide
         self.active = active
         self.withDelay = withDelay
-        self.withResult = withResult
+        self.withHint = withHint
     }
     
     var body: some View {
-        TerminalTest(withResult ? items.solved : items.unsolved, theme: (themeVM.terminal.grid.test.figlet, themeVM.terminal.grid.test.sign), wide: wide, shadow: self.shadow)
+        TerminalTest(withHint ? items.hinted : items.unhinted, theme: (themeVM.terminal.grid.test.figlet, themeVM.terminal.grid.test.sign), wide: wide, shadow: self.shadow)
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {

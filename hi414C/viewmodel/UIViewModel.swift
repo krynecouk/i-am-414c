@@ -16,7 +16,7 @@ class UIViewModel: ObservableObject, Resetable {
     @Published var current: ContentType = .test
     @Published var isWaiting: Bool = false
     @Published var isRefreshWave: Bool = false
-    @Published var withResult: Bool = false
+    @Published var withHint: Bool = false
     
     @Published var isFinishedGame = false
     @Published private(set) var isHelpModalClosed = HelpModalDao.find()

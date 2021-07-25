@@ -83,7 +83,7 @@ struct TerminalTest: View {
     }
     
     public static func getItems(from hint: EquationHint, radix: EquationRadix) -> [TerminalTestItem] {
-        [TerminalTestItem(of: .hint(Array(hint.bin.toString(radix: (body: .dec, result: .dec)))))]
+        [TerminalTestItem(of: .hint(Array(hint.of(radix: radix).toString(radix: (body: .dec, result: .dec)))))]
     }
     
     public static func isEquationSign(_ char: Character) -> Bool {

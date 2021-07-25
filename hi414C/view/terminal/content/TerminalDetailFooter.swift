@@ -15,14 +15,14 @@ struct TerminalDetailFooter: View {
     var body: some View {
         ZStack {
             Rectangle().fill(Color.black).edgesIgnoringSafeArea(.all)
-            Text(uiVM.withResult ? "HIDE RESULT" : "SHOW RESULT")
+            Text(uiVM.withHint ? "HIDE HINT" : "SHOW HINT")
                 .foregroundColor(.white)
         }
         .frame(height: SegueViewModel.header.height)
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
         .onTapGesture {
             withAnimation {
-                uiVM.withResult.toggle()
+                uiVM.withHint.toggle()
             }
         }
     }

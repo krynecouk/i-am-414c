@@ -29,7 +29,7 @@ extension Equation {
     func toString(
         radix: EquationRadix = .bin,
         result: (visible: Bool, radix: EquationRadix) = (false, .bin),
-        hint: Bool = false) -> String {
+        hint: (visible: Bool, radix: EquationRadix) = (false, .bin)) -> String {
         
         var parts: EquationParts = self.parts
         
@@ -37,8 +37,8 @@ extension Equation {
             parts += [.SIGN(.EQ), .RESULT(self.result)]
         }
         
-        if hint {
-            
+        if hint.visible {
+            parts += [.SIGN(.EQ)] + self.hint.of(radix: hint.radix)
         }
         
         return parts.toString(radix: (radix, result.radix))
