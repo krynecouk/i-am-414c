@@ -30,8 +30,21 @@ struct SUB: EquationBuilder {
         
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
+        
+        let hint = EquationHint(
+            bin: xResult.hint.bin.withParen() + [.SIGN(.SUB)] + yResult.hint.bin.withParen(),
+            hex: xResult.hint.bin.withParen() + [.SIGN(.SUB)] + yResult.hint.bin.withParen())
                 
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.SUB)] + yParts, types: [.SUB] + xResult.types + yResult.types, test: { x - y == result })
+        return Equation(
+            x: x,
+            y: y,
+            result: result,
+            builder: self,
+            parts: xParts + [.SIGN(.SUB)] + yParts,
+            types: [.SUB] + xResult.types + yResult.types,
+            test: { x - y == result },
+            hint: hint
+        )
     }
 }
 

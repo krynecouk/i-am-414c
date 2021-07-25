@@ -13,4 +13,5 @@ struct Equation {
     var parts: EquationParts
     var types: Set<EquationType>
     var test: () -> Bool
+    var hint: EquationHint
 }

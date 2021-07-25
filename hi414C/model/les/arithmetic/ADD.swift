@@ -45,7 +45,18 @@ struct ADD: EquationBuilder {
         
         let xParts = xResult.parts.withParen(!(self.x.equation is ID))
         let yParts = yResult.parts.withParen(!(self.y.equation is ID))
+        
+        let hint = EquationHint(
+            bin: xResult.hint.bin.withParen() + [.SIGN(.ADD)] + yResult.hint.bin.withParen(),
+            hex: xResult.hint.bin.withParen() + [.SIGN(.ADD)] + yResult.hint.bin.withParen())
 
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.ADD)] + yParts, types: [.ADD] + xResult.types + yResult.types, test: { x + y == result })
+        return Equation(
+            x: x,
+            y: y,
+            result: result,
+            builder: self,
+            parts: xParts + [.SIGN(.ADD)] + yParts,
+            types: [.ADD] + xResult.types + yResult.types, test: { x + y == result },
+            hint: hint)
     }
 }

@@ -38,6 +38,17 @@ struct OR: EquationBuilder {
         let x: UInt8 = UInt8.from(bin: xByte)
         let y: UInt8 = UInt8.from(bin: yByte)
         
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.OR)] + yParts, types: [.OR] + xResult.types + yResult.types, test: { x | y == result })
+        let hint = EquationHint(bin: [], hex: []) // TODO
+        
+        return Equation(
+            x: x,
+            y: y,
+            result: result,
+            builder: self,
+            parts: xParts + [.SIGN(.OR)] + yParts,
+            types: [.OR] + xResult.types + yResult.types,
+            test: { x | y == result },
+            hint: hint
+        )
     }
 }

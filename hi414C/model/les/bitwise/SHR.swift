@@ -42,7 +42,18 @@ struct SHR: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.SHR)] + yParts, types: [.SHR] + xResult.types + yResult.types, test: { x >> y == result })
+        let hint = EquationHint(bin: [], hex: []) // TODO
+        
+        return Equation(
+            x: x,
+            y: y,
+            result: result,
+            builder: self,
+            parts: xParts + [.SIGN(.SHR)] + yParts,
+            types: [.SHR] + xResult.types + yResult.types,
+            test: { x >> y == result },
+            hint: hint
+        )
     }
     
     func getMultiplications(from value: UInt8, max: UInt8 = UInt8.max) -> [UInt8] {

@@ -44,6 +44,17 @@ struct SHL: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.SHL)] + yParts, types: [.SHL] + xResult.types + yResult.types, test: { x << y == toSHL })
+        let hint = EquationHint(bin: [], hex: []) // TODO
+        
+        return Equation(
+            x: x,
+            y: y,
+            result: result,
+            builder: self,
+            parts: xParts + [.SIGN(.SHL)] + yParts,
+            types: [.SHL] + xResult.types + yResult.types,
+            test: { x << y == toSHL },
+            hint: hint
+        )
     }
 }

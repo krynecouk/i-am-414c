@@ -39,7 +39,20 @@ struct MUL: EquationBuilder {
         
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
-                
-        return Equation(x: x, y: y, result: result, builder: self, parts: xParts + [.SIGN(.MUL)] + yParts, types: [.MUL] + xResult.types + yResult.types, test: { x * y == result })
+        
+        let hint = EquationHint(
+            bin: xResult.hint.bin.withParen() + [.SIGN(.MUL)] + yResult.hint.bin.withParen(),
+            hex: xResult.hint.bin.withParen() + [.SIGN(.MUL)] + yResult.hint.bin.withParen())
+        
+        return Equation(
+            x: x,
+            y: y,
+            result: result,
+            builder: self,
+            parts: xParts + [.SIGN(.MUL)] + yParts,
+            types: [.MUL] + xResult.types + yResult.types,
+            test: { x * y == result },
+            hint: hint
+        )
     }
 }
