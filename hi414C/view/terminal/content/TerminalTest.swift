@@ -37,6 +37,15 @@ struct TerminalTest: View {
                     LiteFigletView(String(chars), theme: theme.sign, shadow: self.shadow)
                 }
             }
+            if case let .hint(chars) = item.type {
+                ForEach(chars.map { Item($0) }) { item in
+                    if TerminalTest.isEquationSign(item.content) {
+                        LiteFigletView(String(item.content), theme: theme.sign, shadow: self.shadow)
+                    } else {
+                        LiteFigletView(String(item.content), theme: theme.num, shadow: self.shadow)
+                    }
+                }
+            }
         }
     }
     
@@ -73,6 +82,10 @@ struct TerminalTest: View {
         getItems(id: test.id, equation: test.equation.toString(radix: radix))
     }
     
+    public static func getItems(from hint: EquationHint, radix: EquationRadix) -> [TerminalTestItem] {
+        [TerminalTestItem(of: .hint(Array(hint.bin.toString(radix: (body: .dec, result: .dec)))))]
+    }
+    
     public static func isEquationSign(_ char: Character) -> Bool {
         ["+", "-", "/", "*", "&", "|", "^", "~", "<", ">", ")", "(", "="].contains(char)
     }
@@ -95,4 +108,5 @@ protocol IdentifiableString {
 enum TerminalTestType {
     case num([Character])
     case sign([Character])
+    case hint([Character])
 }

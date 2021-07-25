@@ -68,6 +68,7 @@
 		266CA42426441254001A07E0 /* HelpEdgeDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA42326441254001A07E0 /* HelpEdgeDrag.swift */; };
 		266CA42A2645A617001A07E0 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CA4292645A617001A07E0 /* Collection.swift */; };
 		266F6FF526ACC4FC00BE8DAE /* TerminalDetailFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F6FF426ACC4FC00BE8DAE /* TerminalDetailFooter.swift */; };
+		266F6FF726ADE09700BE8DAE /* EquationHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F6FF626ADE09700BE8DAE /* EquationHint.swift */; };
 		266F97F7266757050012619B /* WarnTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97F6266757050012619B /* WarnTheme.swift */; };
 		266F97FB2668CEBB0012619B /* GameOverModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FA2668CEBB0012619B /* GameOverModal.swift */; };
 		266F97FD26693A4E0012619B /* Resetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F97FC26693A4E0012619B /* Resetable.swift */; };
@@ -294,6 +295,7 @@
 		266CA42326441254001A07E0 /* HelpEdgeDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEdgeDrag.swift; sourceTree = "<group>"; };
 		266CA4292645A617001A07E0 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		266F6FF426ACC4FC00BE8DAE /* TerminalDetailFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalDetailFooter.swift; sourceTree = "<group>"; };
+		266F6FF626ADE09700BE8DAE /* EquationHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationHint.swift; sourceTree = "<group>"; };
 		266F97F6266757050012619B /* WarnTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnTheme.swift; sourceTree = "<group>"; };
 		266F97FA2668CEBB0012619B /* GameOverModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverModal.swift; sourceTree = "<group>"; };
 		266F97FC26693A4E0012619B /* Resetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resetable.swift; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 				2697654326271E3E00775D71 /* EquationPart.swift */,
 				269765532627367A00775D71 /* EquationRadix.swift */,
 				263612322631DB7800341B60 /* EquationType.swift */,
+				266F6FF626ADE09700BE8DAE /* EquationHint.swift */,
 			);
 			path = les;
 			sourceTree = "<group>";
@@ -1371,6 +1374,7 @@
 				26BE1E3A263181F700F4AB0F /* MessageTheme.swift in Sources */,
 				26F00B59266AAF03008DACE5 /* HelpEdge.swift in Sources */,
 				26EA303F26669120004A78F2 /* PanicTheme.swift in Sources */,
+				266F6FF726ADE09700BE8DAE /* EquationHint.swift in Sources */,
 				266F6FF526ACC4FC00BE8DAE /* TerminalDetailFooter.swift in Sources */,
 				263F440125EAB5C700D069B6 /* ANSIRegularFiglets.swift in Sources */,
 				268D92DB2608E18A00A43802 /* ThemeViewModel.swift in Sources */,

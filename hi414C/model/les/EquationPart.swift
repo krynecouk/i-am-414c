@@ -26,11 +26,33 @@ enum EquationSign: String {
 }
 
 extension Equation {
-    func toString(radix: EquationRadix = .bin, result: (visible: Bool, radix: EquationRadix) = (false, .bin)) -> String {
-        result.visible
-            ? (self.parts + [.SIGN(.EQ), .RESULT(self.result)]).toString(radix: (radix, result.radix))
-            : self.parts.toString(radix: (radix, result.radix))
+    func toString(
+        radix: EquationRadix = .bin,
+        result: (visible: Bool, radix: EquationRadix) = (false, .bin),
+        hint: Bool = false) -> String {
+        
+        var parts: EquationParts = self.parts
+        
+        if result.visible {
+            parts += [.SIGN(.EQ), .RESULT(self.result)]
+        }
+        
+        if hint {
+            
+        }
+        
+        return parts.toString(radix: (radix, result.radix))
     }
+    
+    public func createHint(radix: EquationRadix = .bin) -> EquationParts {
+        if radix == .bin {
+            if self.builder is ID {
+                
+            }
+        }
+        return [] // TODO
+    }
+    
 }
 
 extension EquationParts {

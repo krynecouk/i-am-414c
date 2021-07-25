@@ -16,7 +16,6 @@ struct TerminalHelpSegue: View {
                     segueVM.close()
                 }
             TerminalHelpSelect()
-
         }
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$opened) { opened in
