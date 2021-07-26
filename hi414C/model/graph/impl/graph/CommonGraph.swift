@@ -855,6 +855,9 @@ class CommonGraph {
                     AL("WAKE UUUUP") {
                         YELL()
                     }
+                    AL("STAND UUUUP") {
+                        YELL()
+                    }
                     TRAVERSE_ALL {
                         YELL()
                     }
