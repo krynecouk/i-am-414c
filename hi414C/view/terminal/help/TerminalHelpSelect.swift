@@ -12,39 +12,26 @@ struct TerminalHelpSelect: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var uiVM: UIViewModel
     
-    @State var gridType: GridType = .adaptive
-    
     var body: some View {
         GeometryReader { metrics in
-            Grid(columns: gridType.rawValue(), spacing: 10, padding: 15) {
+            Group {
                 if segueVM.opened == .learn {
                     TerminalTestSelect()
-                        .onAppear {
-                            if self.gridType != .adaptive {
-                                self.gridType = .adaptive
-                            }
-                        }
                 }
                 
                 if segueVM.opened == .chat {
-                    TerminalMessagesSelect()
-                        .onAppear {
-                            if self.gridType != .messages {
-                                self.gridType = .messages
-                            }
-                        }
+                    LazyVStack {
+                        TerminalMessagesSelect()
+                    }
+
                 }
                 
                 if segueVM.opened == .settings {
                     TerminalSettingsSelect()
-                        .onAppear {
-                            if self.gridType != .adaptive {
-                                self.gridType = .adaptive
-                            }
-                        }
                 }
             }
             .id(metrics.frame(in: .global).size.width)
+            /*
             .onAppear {
                 let frame = metrics.frame(in: .global)
                 let frameW = frame.size.width
@@ -64,6 +51,7 @@ struct TerminalHelpSelect: View {
                     segueVM.setSettingsSize((.infinity, 200))
                 }
             }
+            */
             .background(segueVM.isOpen && segueVM.opened != .keyboard
                             ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
                             : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))

@@ -12,43 +12,37 @@ struct TerminalTestSelect: View {
     @EnvironmentObject var testVM: TestViewModel
     
     var body: some View {
-        Group {
-            HelpButton("-1") {
-                helpVM.decrement()
-            }
-            HelpButton("+1") {
-                helpVM.increment()
-            }
-            HelpRadioButton("0", active: helpVM.equation.result != 0, sound: (.delete, .delete)) {
-                helpVM.resetToZero()
-            }
-            .withDisabledSound(if: helpVM.equation.result == 0)
-        }
-        Group {
-            HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
-                helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
-            }
-        }
-        Group {
-            HelpSignButton<ADD>("+", .ADD)
-            HelpSignButton<SUB>("-", .SUB)
-            
-            HelpSignButton<DIV>("/", .DIV, sound: (.click, .delete))
+        VStack {
+            Grid {
+                HelpButton("-1") {
+                    helpVM.decrement()
+                }
+                HelpButton("+1") {
+                    helpVM.increment()
+                }
+                HelpRadioButton("0", active: helpVM.equation.result != 0, sound: (.delete, .delete)) {
+                    helpVM.resetToZero()
+                }
                 .withDisabledSound(if: helpVM.equation.result == 0)
-            
-            HelpSignButton<MUL>("*", .MUL)
-        }
-        Group{
-            HelpSignButton<AND>("&", .AND)
-            
-            HelpSignButton<OR>("|", .OR)
-            
-            HelpSignButton<XOR>("^", .XOR)
-            
-            HelpSignButton<NOT>("~", .NOT)
-            
-            HelpSignButton<SHL>("<<", .SHL)
-            HelpSignButton<SHR>(">>", .SHR)
+                HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
+                    helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
+                }
+            }
+            Slider(
+                value: helpVM.current,
+                    in: 0...100,
+                    step: 5
+                ) {
+                    Text("Speed")
+                } minimumValueLabel: {
+                    Text("0")
+                } maximumValueLabel: {
+                    Text("100")
+                } onEditingChanged: { editing in
+                    isEditing = editing
+                }
+                Text("\(speed)")
+                    .foregroundColor(isEditing ? .red : .blue)
         }
     }
 }
