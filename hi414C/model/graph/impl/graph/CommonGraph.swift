@@ -639,7 +639,7 @@ class CommonGraph {
             
             return
                 AL(["MATH", "CALCULATE", "EQUATION", "MATH EXPRESSION", "CAN YOU CALCULATE SOMETHING?"]) {
-                    R("TYPE MATH EXPRESSION") {
+                    R("TYPE MATH") {
                         AL("1+4") {
                             CALCULATE
                         }

@@ -23,7 +23,6 @@ struct TerminalDetailFooter: View {
                 Text(active: uiVM.withHint)
             }
         }
-
         .frame(height: SegueViewModel.header.height)
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
         .onTapGesture {

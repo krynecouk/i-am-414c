@@ -19,7 +19,7 @@ class MathNode: TestNode {
         if let result = result {
             self.name = getSafeStringResult(from: result, symbols: ASCIIViewModel.allSymbols)
         } else {
-            self.name = "ERROR"
+            self.name = "NOT A NUMBER"
         }
         super.onEnter(ctx: ctx, toolkit: toolkit)
     }
