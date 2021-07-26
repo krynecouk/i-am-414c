@@ -27,7 +27,7 @@ struct TerminalHelpMessages: View {
                                         if message.author == .robot {
                                             Message414C(message.text, frame: metrics.size)
                                         } else {
-                                            MessageAl(message.text, frame: metrics.size)
+                                            MessageAl(message.text.trim(), frame: metrics.size)
                                         }
                                     }
                                 }
