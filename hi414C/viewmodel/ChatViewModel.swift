@@ -12,6 +12,7 @@ typealias Conversation = (message: Message?, replies: Set<String>)
 class ChatViewModel: ObservableObject, Resetable {
     private(set) var messages: [Message] = []
     private(set) var current: Conversation = (.none, [])
+    private(set) var currentExtended: Conversation = (.none, [])
     private(set) var root: Conversation = (.none, [])
     private(set) var allReplies: [String] = []
     
@@ -31,6 +32,10 @@ class ChatViewModel: ObservableObject, Resetable {
 
     func setCurrent(message: Message?, replies: Set<String>) {
         self.current = (message, replies)
+    }
+    
+    func setCurrentExtended(message: Message?, replies: Set<String>) {
+        self.currentExtended = (message, replies)
     }
     
     func setRoot(message: Message?, replies: Set<String>) {

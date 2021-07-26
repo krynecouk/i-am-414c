@@ -93,18 +93,19 @@ class GraphViewModel: ObservableObject, Resetable {
         let tests: [Test] = symbols.map { toolkit.testVM.generate(for: $0) }
         toolkit.terminalVM.setContent([.test(tests)])
     }
-    
-    func getReplies(ascii: Set<ASCIISymbol>) -> (current: Set<String>, root: Set<String>) {
+        
+    func getReplies(ascii: Set<ASCIISymbol>) -> (current: Set<String>, currentExtended: Set<String>, root: Set<String>) {
         let currentRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) })
         }
-        let current = self.current is RootNode ? [] : getPaths(from: current, unique: true, precondition: currentRule)
+        let current = self.current is RootNode ? [] : getPaths(from: self.current, unique: true, precondition: currentRule)
+        let currentExtended = self.current is RootNode ? [] : getPaths(from: self.current, unique: false, precondition: currentRule)
         
         let rootRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) }) && !current.contains(path)
         }
         let root = getPaths(from: root, unique: false, precondition: rootRule)
-        return (current, root)
+        return (current, currentExtended, root)
     }
     
     private func getPaths(from node: Node, unique: Bool = true, precondition: (String) -> Bool) -> Set<String> {

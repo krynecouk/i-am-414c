@@ -37,10 +37,11 @@ struct TerminalView: View {
                     let text = symbols.map { $0.rawValue }.joined()
                     let id = UUID()
                     let message = Message(id: id, from: .robot, text: text)
-                    let (current, root) = graphVM.getReplies(ascii: ascii)
+                    let (current, currentExtended, root) = graphVM.getReplies(ascii: ascii)
                     chatVM.setCurrent(message: message, replies: current)
+                    chatVM.setCurrentExtended(message: message, replies: currentExtended)
                     chatVM.setRoot(message: message, replies: root)
-                    chatVM.setAllReplies(Array(chatVM.current.replies) + Array(chatVM.root.replies))
+                    chatVM.setAllReplies(Array(chatVM.currentExtended.replies) + Array(chatVM.root.replies))
                     items.append(TerminalItem(id: id.uuidString, of: .message(text)))
                     testVM.set(test: .none)
                     return items

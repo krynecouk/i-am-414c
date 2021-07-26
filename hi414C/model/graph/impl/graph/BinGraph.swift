@@ -64,22 +64,22 @@ class BinGraph {
         }
     
     private static let I =
-        AL(["ME", "I?", "WHO AM I?"]) {
+        AL(["ME", "ME?", "I", "I?", "WHO AM I?"]) {
             R("AL") >> _AL
         }
     
     private static let _AL =
-        AL(["AL?", "WHO IS AL?"]) {
+        AL(["AL", "AL?", "WHO IS AL?"]) {
             R("YOU") >> YOU
         }
     
     private static let YOU =
-        AL(["YOU?", "WHO ARE YOU?"]) {
+        AL(["YOU", "YOU?", "WHO ARE YOU?"]) {
             R("I AM 414C") >> _414C
         }
     
     private static let _414C =
-        AL(["ROBOT", "414C?"]) {
+        AL(["ROBOT", "414C", "414C?"]) {
             R("ME")
         }
     
