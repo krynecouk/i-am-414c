@@ -340,6 +340,11 @@ class Theme: Themable {
                         passive: color.secondary.value
                     )
                 )
+            ),
+            hintli: ViewTheme(
+                font: FontProps(.proggyTiny, 50),
+                color: color.primary.contrast,
+                background: color.primary.value
             )
         )
     }

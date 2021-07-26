@@ -77,7 +77,7 @@ struct KeyboardPrediction: View {
                 let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
                 var predictions: [Prediction] = []
                 for tokenizedPrediction in tokenizedPredictions {
-                    let label = tokenizedPrediction[index]
+                    let label = tokenizedPrediction[safe: index] ?? input
                     if !predictions.contains(where: { $0.label == label }) {
                         let value = tokenizedPrediction[...index].joined(separator: " ")
                         predictions.append((label, value))

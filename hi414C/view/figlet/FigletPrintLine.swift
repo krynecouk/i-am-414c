@@ -13,15 +13,24 @@ struct FigletPrintLine: View {
     var visible: Bool
     var bloom: (speed: Double, color: Color)
     var shadow: Bool
+    var shadowOffset: Offset
     var theme: ViewTheme
     
-    init(_ line: String, theme: ViewTheme = ViewTheme(), visible: Bool = false, bloom: (speed: Double, color: Color), offset: LineOffset = (0,0), shadow: Bool = false) {
+    init(
+        _ line: String,
+        theme: ViewTheme = ViewTheme(),
+        visible: Bool = false,
+        bloom: (speed: Double, color: Color),
+        offset: LineOffset = (0,0),
+        shadow: Bool = false,
+        shadowOffset: Offset = (5, 5)) {
         self.line = line
         self.theme = theme
         self.offset = offset
         self.visible = visible
         self.bloom = bloom
         self.shadow = shadow
+        self.shadowOffset = shadowOffset
     }
     
     var body: some View {
@@ -42,7 +51,7 @@ struct FigletPrintLine: View {
                     .offset(x: CGFloat(offset.x), y: CGFloat(offset.y))
                     .id(visible)
                     .withTheme(theme)
-                    .offset(x: 5, y: 5)
+                    .offset(x: self.shadowOffset.x, y: self.shadowOffset.y)
             }
             Text(line)
                 .fixedSize()

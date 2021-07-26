@@ -29,8 +29,9 @@ struct FigletPrinter: View {
     var bloomable: Bool
     var bloom: (speed: Double, color: Color) = (0.0, .primary)
     var shadow: Bool
+    var shadowOffset: Offset
     
-    init(_ figlet: Figlet, theme: FigletTheme = FigletTheme(), shadow: Bool) {
+    init(_ figlet: Figlet, theme: FigletTheme = FigletTheme(), shadow: Bool, shadowOffset: Offset = (5, 5)) {
         self.figlet = figlet
         self.lines = figlet.lines
         self.theme = theme
@@ -38,6 +39,7 @@ struct FigletPrinter: View {
         self.shakeable = false
         self.printable = false
         self.bloomable = false
+        self.shadowOffset = shadowOffset
         for animation in theme.animations {
             if case let .print(speed, delay, animation) = animation {
                 self.printTimer = Timer.publish(every: speed, on: .main, in: .common).autoconnect()
