@@ -843,6 +843,18 @@ class CommonGraph {
         static let _YELL =
             AL(["YELL AT ME", "YELL", "SHOUT"]) {
                 R("WHAT?") {
+                    AL("HEEEELP") {
+                        YELL()
+                    }
+                    AL("HELLOOOO") {
+                        YELL()
+                    }
+                    AL("SOMEBODY HEEEELP") {
+                        YELL()
+                    }
+                    AL("WAKE UUUUP") {
+                        YELL()
+                    }
                     TRAVERSE_ALL {
                         YELL()
                     }
