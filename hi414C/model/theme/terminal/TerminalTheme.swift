@@ -13,7 +13,7 @@ struct TerminalTheme {
     var help: Help
     var cli: CommandLine
     var hli: HelpLine
-    var hintli: ViewTheme
+    var hintli: HintLine
     
     struct Cathode {
         var blurIn: Color
@@ -102,5 +102,10 @@ struct TerminalTheme {
             var active: Color
             var passive: Color
         }
+    }
+    
+    struct HintLine {
+        var active: ViewTheme
+        var passive: ViewTheme
     }
 }

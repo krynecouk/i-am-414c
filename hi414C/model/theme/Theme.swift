@@ -69,6 +69,7 @@ struct ColorTheme {
     var secondary: ContrastColor
     var tertiary: ContrastColor
     var background: Color
+    var passive: Color
 }
 
 class Theme: Themable {
@@ -341,10 +342,17 @@ class Theme: Themable {
                     )
                 )
             ),
-            hintli: ViewTheme(
-                font: FontProps(.proggyTiny, 50),
-                color: color.primary.contrast,
-                background: color.primary.value
+            hintli: TerminalTheme.HintLine(
+                active: ViewTheme(
+                    font: FontProps(.proggyTiny, 50),
+                    color: color.primary.contrast,
+                    background: color.primary.value
+                ),
+                passive: ViewTheme(
+                    font: FontProps(.proggyTiny, 50),
+                    color: color.primary.contrast,
+                    background: color.passive
+                )
             )
         )
     }

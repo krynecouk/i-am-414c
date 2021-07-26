@@ -15,7 +15,8 @@ class BlueTheme: Theme {
             primary: (Color("PrimaryBlue"), Color("SecondaryBlue")),
             secondary: (Color("SecondaryBlue"), Color("WhiteBlue")),
             tertiary: (Color("TertiaryBlue"), Color("WhiteBlue")),
-            background: Color.black
+            background: Color.black,
+            passive: Color("PassiveBlue")
         )) {
         super.init(font: font, color: color)
     }

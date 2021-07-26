@@ -16,7 +16,8 @@ class OrangeTheme: Theme {
             primary: (Color("PrimaryOrange"), Color("SecondaryOrange")),
             secondary: (Color("SecondaryOrange"), Color("WhiteOrange")),
             tertiary: (Color("TertiaryOrange"), Color("WhiteOrange")),
-            background: .black
+            background: .black,
+            passive: Color("PassiveOrange")
         )) {
         super.init(font: font, color: color)
     }

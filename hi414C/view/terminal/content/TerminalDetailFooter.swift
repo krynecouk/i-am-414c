@@ -16,7 +16,7 @@ struct TerminalDetailFooter: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(uiVM.withHint ? themeVM.terminal.hintli.background! : Color("PassiveOrange"))
+                .fill(uiVM.withHint ? themeVM.terminal.hintli.active.background! : themeVM.terminal.hintli.passive.background!)
                 .edgesIgnoringSafeArea(.all)
                 .transition(.iris)
             HStack {

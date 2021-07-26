@@ -15,7 +15,8 @@ class GreenTheme: Theme {
             primary: (Color("PrimaryGreen"), Color("SecondaryGreen")),
             secondary: (Color("SecondaryGreen"), Color("WhiteGreen")),
             tertiary: (Color("TertiaryGreen"), Color("WhiteGreen")),
-            background: .black
+            background: .black,
+            passive: Color("PassiveGreen")
         )) {
         super.init(font: font, color: color)
     }

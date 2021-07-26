@@ -15,7 +15,8 @@ class WarnTheme: Theme {
             primary: (Color("PrimaryWarn"), Color("SecondaryWarn")),
             secondary: (Color("SecondaryWarn"), Color("WhiteWarn")),
             tertiary: (Color("TertiaryWarn"), Color("WhiteWarn")),
-            background: .black
+            background: .black,
+            passive: Color("PassiveWarn")
         )) {
         super.init(font: font, color: color)
         self.terminal.grid.message.figlet.animations = [
