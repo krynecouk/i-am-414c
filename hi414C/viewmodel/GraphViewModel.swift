@@ -103,7 +103,7 @@ class GraphViewModel: ObservableObject, Resetable {
         let rootRule: (String) -> Bool = { path in
             ascii.contains(all: path.map { ASCIISymbol.from($0) }) && !current.contains(path)
         }
-        let root = getPaths(from: root, precondition: rootRule)
+        let root = getPaths(from: root, unique: false, precondition: rootRule)
         return (current, root)
     }
     

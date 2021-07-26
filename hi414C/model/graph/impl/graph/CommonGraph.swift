@@ -369,8 +369,13 @@ class CommonGraph {
                 }
             }
         
+        static let NEVERMIND =
+            AL(["NEVERMIND", "IT DOESN'T MATTER"]) {
+                R("OK")
+            }
+        
         static let ALL: [Edge] = [
-            LOVE, LIKE, HURRY, COME, STAY, FIND, SLEEP, CALL, STAND, ALONE, ALIVE, SEE, LOOK, CLONE, PAIN
+            LOVE, LIKE, HURRY, COME, STAY, FIND, SLEEP, CALL, STAND, ALONE, ALIVE, SEE, LOOK, CLONE, PAIN, NEVERMIND
         ]
     }
     
@@ -871,17 +876,17 @@ class CommonGraph {
     
     static let DIE_WARN =
         R("Y/N?") {
-            AL(["Y", "YES"]) {
+            AL(["YES", "Y"]) {
                 WARN("SURE?") {
-                    AL(["YES", "Y"]) {
+                    AL(["Y", "YES"]) {
                         DEAD()
                     }
-                    AL(["NO", "N"]) {
+                    AL(["N", "NO"]) {
                         R("OK")
                     }
                 }
             }
-            AL(["N", "NO"]) {
+            AL(["NO", "N"]) {
                 R("OK")
             }
         }

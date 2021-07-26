@@ -25,6 +25,12 @@ struct KeyboardPrediction: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
+                if !keyboardVM.input.isEmpty && keyboardVM.input.last != " " {
+                    if let lastWord = keyboardVM.input.lastWord() {
+                        PredictionButton(("\"\(lastWord)\"", keyboardVM.input))
+                    }
+                }
+                
                 if let predictions = self.predictions {
                     ForEach(predictions.map { Item($0) }) { item in
                         PredictionButton(item.content)
@@ -66,21 +72,32 @@ struct KeyboardPrediction: View {
                 print("current: ", chatVM.current.replies)
                 // filter possible replies
                 let filtered = chatVM.allReplies.filter { $0.starts(with: input) }
+                print("all replies: ", chatVM.allReplies)
                 print("filtered: ", filtered)
                 
                 // prediction index
-                let tokenizedInput = input.tokenize() // punctuation??
+                //let tokenizedInput = input.tokenize(omitPunctuation: false) // punctuation??
+                let tokenizedInput = input.trim().components(separatedBy: " ")
+                print("tokenized input: ", tokenizedInput)
                 let endsWithSpace = input.hasSuffix(" ")
                 let endIndex = tokenizedInput.endIndex
                 let index = endsWithSpace ? endIndex : endIndex - 1
                 
                 // create predictions
-                let tokenizedFilter = filtered.map { $0.tokenize() } // punctuation?
+                //let tokenizedFilter = filtered.map { $0.tokenize(omitPunctuation: false) } // punctuation?
+                let tokenizedFilter = filtered.map { $0.trim().components(separatedBy: " ") }
                 print("tokenized filter: ", tokenizedFilter)
                 let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
                 var predictions: [Prediction] = []
+                let keyboardLastWord = keyboardVM.input.lastWord()
                 for tokenizedPrediction in tokenizedPredictions {
-                    let label = tokenizedPrediction[safe: index] ?? input
+                    guard let label = tokenizedPrediction[safe: index] else {
+                        continue
+                    }
+                    if keyboardLastWord == label {
+                        continue
+                    }
+
                     if !predictions.contains(where: { $0.label == label }) {
                         let value = tokenizedPrediction[...index].joined(separator: " ")
                         predictions.append((label, value))

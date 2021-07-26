@@ -39,6 +39,10 @@ extension String {
         return indices
     }
     
+    func trim() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     func substring(from: Int) -> String {
         let fromIndex = index(from: from)
         return String(self[fromIndex...])
@@ -57,5 +61,9 @@ extension String {
         let startIndex = index(from: r.lowerBound)
         let endIndex = index(from: r.upperBound)
         return String(self[startIndex..<endIndex])
+    }
+    
+    func lastWord() -> String? {
+        self.trim().components(separatedBy: .whitespacesAndNewlines).reversed().first
     }
 }
