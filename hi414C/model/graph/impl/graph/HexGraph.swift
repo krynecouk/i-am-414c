@@ -65,17 +65,17 @@ class HexGraph {
     
     private static let _HI =
         AL("HI") {
-            R("HI")
+            R("HI") >> I
         }
     
     private static let I =
-        AL(["I?", "WHO AM I?"]) {
-            PANIC414C("AL") >> HEX._AL
+        AL(["ME", "I?", "WHO AM I?"]) {
+            PANIC414C("AL") >> _AL
         }
     
     private static let _AL =
         AL("AL?") {
-            R("YOU") >> HEX.YOU
+            R("YOU") >> YOU
         }
     
     private static let YOU =
@@ -103,7 +103,7 @@ class HexGraph {
     
     private static let ASK =
         AL(["ASK", "CAN I ASK YOU SOMETHING?"]) {
-            R("OK") {
+            R("WHAT?") {
                 WHO
                 WHERE
                 WHY
@@ -115,7 +115,7 @@ class HexGraph {
     
     private static var WHO: [Edge] {
         let WHO_NEED_HELP =
-            AL(["WHO?", "WHO NEED HELP?"]) {
+            AL(["WHO NEED HELP?"]) {
                 R("YOU NEED HELP") {
                     AL("REALLY?") {
                         R("YES") {
@@ -161,7 +161,7 @@ class HexGraph {
         return
             [
                 AL("WHO?") {
-                    R("WHO?") {
+                    R("?") {
                         I
                         YOU
                         ["HELP YOU?", "WHO CAN HELP YOU?"] + WHO_CAN_HELP_YOU
@@ -231,7 +231,7 @@ class HexGraph {
         return
             [
                 AL("WHERE?") {
-                    R("WHAT?") {
+                    R("?") {
                         ["HELP"] + WHERE_IS_HELP
                         ["ANYBODY", "SOMEBODY"] + WHERE_IS_ANYBODY
                         ["ME"] + WHERE_AM_I
@@ -303,7 +303,7 @@ class HexGraph {
         return
             [
                 AL("WHY?") {
-                    R("WHAT?") {
+                    R("?") {
                         ["YOU THERE"] + WHY_ARE_YOU_THERE
                         ["BROKEN", "DAMAGED"] + WHY_ARE_YOU_DAMAGED
                         ["ALONE"] + WHY_ARE_YOU_ALONE
@@ -353,7 +353,7 @@ class HexGraph {
         return
             [
                 AL("HOW?") {
-                    R("WHAT?") {
+                    R("?") {
                         ["GET OUT"] + HOW_TO_GET_OUT
                         ["WILL END"] + HOW_WILL_THIS_END
                         ["LONG YOU LIVE"] + HOW_LONG_DO_YOU_LIVE
@@ -414,7 +414,7 @@ class HexGraph {
         
         return [
             AL("WHAT?") {
-                R("WHAT?") {
+                R("?") {
                     ["YOU SEE?"] + WHAT_YOU_SEE
                     ["YOU HEAR?"] + WHAT_YOU_HEAR
                     WHAT_CAN_YOU_HELP
@@ -646,7 +646,7 @@ class HexGraph {
     
     private static let LIE =
         AL(["LIE", "IT'S A LIE!"]) {
-            R("WHAT?") {
+            R("?") {
                 AL("2+2=5") {
                     R("LIE")
                 }

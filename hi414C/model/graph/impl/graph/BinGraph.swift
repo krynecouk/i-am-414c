@@ -64,28 +64,28 @@ class BinGraph {
         }
     
     private static let I =
-        AL(["ME", "I", "WHO AM I?"]) {
-            R("AL")
+        AL(["ME", "I?", "WHO AM I?"]) {
+            R("AL") >> _AL
         }
     
     private static let _AL =
-        AL(["AL", "WHO IS AL?"]) {
-            R("YOU")
+        AL(["AL?", "WHO IS AL?"]) {
+            R("YOU") >> YOU
         }
     
     private static let YOU =
-        AL(["YOU", "WHO ARE YOU?"]) {
+        AL(["YOU?", "WHO ARE YOU?"]) {
             R("I AM 414C") >> _414C
         }
     
     private static let _414C =
-        AL(["ROBOT", "414C"]) {
+        AL(["ROBOT", "414C?"]) {
             R("ME")
         }
     
     private static let ASK =
         AL(["ASK", "CAN I ASK YOU SOMETHING?"]) {
-            R("OK") {
+            R("WHAT?") {
                 WHO
                 WHERE
                 WHY
@@ -105,7 +105,7 @@ class BinGraph {
         return
             [
                 AL("WHO") {
-                    R("WHO?") {
+                    R("?") {
                         I
                         YOU
                         ["CAN HELP?", "WHO CAN HELP?"] + WHO_CAN_HELP_YOU
@@ -164,7 +164,7 @@ class BinGraph {
         return
             [
                 AL("WHERE") {
-                    R("WHAT?") {
+                    R("?") {
                         ["HELP"] + WHERE_IS_HELP
                         ["ANYBODY", "SOMEBODY"] + WHERE_IS_ANYBODY
                         ["ME"] + WHERE_AM_I
@@ -227,7 +227,7 @@ class BinGraph {
         return
             [
                 AL("WHY") {
-                    R("WHAT?") {
+                    R("?") {
                         ["YOU THERE"] + WHY_ARE_YOU_THERE
                         ["BROKEN", "DAMAGED"] + WHY_ARE_YOU_DAMAGED
                         ["ALONE"] + WHY_ARE_YOU_ALONE
@@ -262,7 +262,7 @@ class BinGraph {
         return
             [
                 AL("HOW") {
-                    R("WHAT?") {
+                    R("?") {
                         ["GET OUT"] + HOW_TO_GET_OUT
                         HOW_TO_HELP
                         ["WILL END"] + HOW_WILL_THIS_END
@@ -318,7 +318,7 @@ class BinGraph {
         
         return [
             AL("WHAT") {
-                R("WHAT?") {
+                R("?") {
                     ["YOU SEE?"] + WHAT_YOU_SEE
                     ["YOU HEAR?"] + WHAT_YOU_HEAR
                     WHAT_CAN_YOU_HELP
@@ -512,7 +512,7 @@ class BinGraph {
     
     private static let LIE =
         AL(["LIE", "IT'S A LIE!"]) {
-            R("WHAT?") {
+            R("?") {
                 AL("2+2=5") {
                     R("LIE")
                 }

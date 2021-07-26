@@ -50,4 +50,9 @@ extension TestNode {
         node.edges.append(edge)
         return node
     }
+    
+    static func >> (node: TestNode, edges: [TestEdge]) -> TestNode {
+        node.edges.append(contentsOf: edges)
+        return node
+    }
 }
