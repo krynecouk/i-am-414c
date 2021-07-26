@@ -71,7 +71,7 @@ struct TerminalCommandSegue: View {
         .frame(height: segueVM.segue.height)
         .onReceive(segueVM.$isOpen) { isOpen in
             withAnimation {
-                let keyboardH = testVM.test == nil ? segueVM.keyboard.height : segueVM.keyboard.height - 64
+                let keyboardH = testVM.test == nil ? segueVM.keyboard.height : segueVM.keyboard.height - KeyboardViewModel.prediction.height
                 let segueH = isOpen ? SegueViewModel.header.height + keyboardH : SegueViewModel.header.height
                 segueVM.setSegueSize((.infinity, segueH))
             }
@@ -79,6 +79,6 @@ struct TerminalCommandSegue: View {
         .onReceive(segueVM.$keyboard) { value in
             segueVM.close()
         }
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)))
     }
 }

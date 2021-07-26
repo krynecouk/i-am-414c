@@ -8,6 +8,8 @@
 import SwiftUI
 
 class KeyboardViewModel: ObservableObject {
+    static let prediction: Size = (.infinity, 64)
+
     @Published private(set) var input: String = ""
     
     func set(_ input: String) {

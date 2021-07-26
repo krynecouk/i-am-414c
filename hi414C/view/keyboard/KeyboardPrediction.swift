@@ -48,7 +48,7 @@ struct KeyboardPrediction: View {
                 initPredictions(with: input)
             }
         }
-        .frame(height: SegueViewModel.header.height)
+        .frame(height: KeyboardViewModel.prediction.height)
         .background(themeVM.terminal.cli.view.background)
         //.background(Color.blue)
     }
@@ -138,7 +138,7 @@ struct RoundedBackground: View {
     let color: Color?
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 15)
+        RoundedRectangle(cornerRadius: 25)
             .fill(self.color ?? Color.clear)
             //.padding([.leading, .trailing], 5)
             .padding([.trailing], 3)

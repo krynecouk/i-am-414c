@@ -75,9 +75,7 @@ struct KeyboardView: View {
                 
                 let specialW: CGFloat = (frameW - (7 * keyW + 8 * self.spacing.horizontal)) / 2
                 let spaceW = (frameW - (self.spacing.horizontal * 2) - (2 * specialW))
-                var keyboardH = (4 * keyH) + self.spacing.vertical * 3
-                
-                    keyboardH += SegueViewModel.header.height
+                let keyboardH = (4 * keyH) + self.spacing.vertical * 3 + KeyboardViewModel.prediction.height
                 
                 self.keySize = (keyW, keyH)
                 self.size = (.infinity, keyboardH)
@@ -94,7 +92,7 @@ struct KeyboardView: View {
                 }
             }
         }
-        .frame(maxWidth: self.size.width, maxHeight: self.predictive ? self.size.height : self.size.height - 64)
+        .frame(maxWidth: self.size.width, maxHeight: self.predictive ? self.size.height : self.size.height - KeyboardViewModel.prediction.height)
         .background(themeVM.keyboard.view.background.edgesIgnoringSafeArea(.all))
     }
     
