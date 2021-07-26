@@ -6,7 +6,7 @@
 //
 
 struct HelpModalDao {
-    static var key: String = "414C_HelpModalClosed"
+    static var key: String = "414C_HelpModalClosed2"
     
     public static func store(closed: Bool) {
         Dao.store(key: key, content: closed)
