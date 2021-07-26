@@ -37,9 +37,7 @@ struct OR: EquationBuilder {
         
         let x: UInt8 = UInt8.from(bin: xByte)
         let y: UInt8 = UInt8.from(bin: yByte)
-        
-        let hint = EquationHint(bin: [], hex: []) // TODO
-        
+                
         return Equation(
             x: x,
             y: y,
@@ -48,7 +46,7 @@ struct OR: EquationBuilder {
             parts: xParts + [.SIGN(.OR)] + yParts,
             types: [.OR] + xResult.types + yResult.types,
             test: { x | y == result },
-            hint: hint
+            hint: bitwiseHint(for: result)
         )
     }
 }

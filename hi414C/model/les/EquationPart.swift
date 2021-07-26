@@ -8,7 +8,7 @@
 typealias EquationParts = [EquationPart]
 
 enum EquationPart {
-    case LP, NUM(UInt8), RP, SIGN(EquationSign), RESULT(UInt8)
+    case LP, NUM(UInt8), RP, SIGN(EquationSign), RESULT(UInt8), UNKNOWN
 }
 
 enum EquationSign: String {
@@ -26,33 +26,26 @@ enum EquationSign: String {
 }
 
 extension Equation {
-    func toString(
-        radix: EquationRadix = .bin,
-        result: (visible: Bool, radix: EquationRadix) = (false, .bin),
-        hint: (visible: Bool, radix: EquationRadix) = (false, .bin)) -> String {
-        
-        var parts: EquationParts = self.parts
-        
-        if result.visible {
-            parts += [.SIGN(.EQ), .RESULT(self.result)]
-        }
-        
-        if hint.visible {
-            parts += [.SIGN(.EQ)] + self.hint.of(radix: hint.radix)
-        }
-        
-        return parts.toString(radix: (radix, result.radix))
+    func toString(radix: EquationRadix = .bin, result: (visible: Bool, radix: EquationRadix) = (false, .bin)) -> String {
+        result.visible
+            ? (self.parts + [.SIGN(.EQ), .RESULT(self.result)]).toString(radix: (radix, result.radix))
+            : self.parts.toString(radix: (radix, result.radix))
     }
-    
-    public func createHint(radix: EquationRadix = .bin) -> EquationParts {
-        if radix == .bin {
-            if self.builder is ID {
-                
-            }
-        }
-        return [] // TODO
+}
+
+extension EquationBuilder {
+    func bitwiseHint(for result: UInt8) -> EquationHint {
+        // bin
+        let binStr = result.toBinStr()
+        var bin: [EquationPart] = Array(binStr).map { .NUM($0 == "1" ? 1 : 0) }
+        let rndIdx1 = Int.random(in: 0...7)
+        //let rndIdx2 = Int.random(in: 0...7)
+        bin[rndIdx1] = .UNKNOWN
+        //bin[rndIdx2] = .UNKNOWN
+        // hex
+        
+        return EquationHint(bin: bin, hex: []) // todo
     }
-    
 }
 
 extension EquationParts {
@@ -90,6 +83,8 @@ extension EquationPart {
             } else {
                 return String(num)
             }
+        case .UNKNOWN:
+            return "?"
         }
     }
 }

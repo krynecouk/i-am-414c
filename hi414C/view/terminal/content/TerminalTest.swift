@@ -13,12 +13,13 @@ struct TerminalTest: View {
     let items: [TerminalTestItem]
     let theme: (
         num: FigletTheme,
-        sign: FigletTheme
+        sign: FigletTheme,
+        unknown: FigletTheme?
     )
     let wide: Bool
     let shadow: Bool
     
-    init(_ items: [TerminalTestItem], theme: (FigletTheme, FigletTheme), wide: Bool = false, shadow: Bool = false) {
+    init(_ items: [TerminalTestItem], theme: (FigletTheme, FigletTheme, FigletTheme?), wide: Bool = false, shadow: Bool = false) {
         self.items = items
         self.theme = theme
         self.wide = wide
@@ -41,6 +42,8 @@ struct TerminalTest: View {
                 ForEach(chars.map { Item($0) }) { item in
                     if TerminalTest.isEquationSign(item.content) {
                         LiteFigletView(String(item.content), theme: theme.sign, shadow: self.shadow)
+                    } else if item.content == "?" {
+                        FigletView(String(item.content), theme: theme.unknown!, shadow: false)
                     } else {
                         LiteFigletView(String(item.content), theme: theme.num, shadow: self.shadow)
                     }

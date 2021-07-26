@@ -23,7 +23,12 @@ struct TerminalTheme {
     struct Grid {
         var symbol: FigletTheme
         var test: TestTheme
+        var hint: HintTheme
         var message: MessageTheme
+    }
+    
+    struct HintTheme {
+        var unknown: FigletTheme
     }
     
     struct Help {

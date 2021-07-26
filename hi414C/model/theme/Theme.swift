@@ -164,6 +164,16 @@ class Theme: Themable {
                         symbol: Animation.easeOut.speed(0.8)
                     )
                 ),
+                hint: TerminalTheme.HintTheme(
+                    unknown: FigletTheme(
+                        typeface: .ansi(.regular),
+                        view: ViewTheme(
+                            font: font.robot,
+                            color: color.secondary.contrast.opacity(0.3)
+                        ),
+                        animations: [.shake(dt: 0.3, force: 3, type: .rand, animation: .none)]
+                    )
+                ),
                 message: MessageTheme(
                     figlet: FigletTheme(
                         typeface: .ansi(.regular),

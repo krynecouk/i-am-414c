@@ -27,9 +27,7 @@ struct NOT: EquationBuilder {
         let xParts = xResult.parts.withParen(!(self.x is ID))
         
         let x: UInt8 = UInt8.from(bin: xByte)
-        
-        let hint = EquationHint(bin: [], hex: []) // TODO
-                
+                        
         return Equation(
             x: x,
             result: result,
@@ -37,7 +35,7 @@ struct NOT: EquationBuilder {
             parts: [.SIGN(.NOT)] + xParts,
             types: [.NOT] + xResult.types,
             test: { ~x == result },
-            hint: hint
+            hint: bitwiseHint(for: result)
         )
     }
 }

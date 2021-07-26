@@ -33,7 +33,9 @@ struct TerminalTestThemed: View {
     }
     
     var body: some View {
-        TerminalTest(withHint ? items.hinted : items.unhinted, theme: (themeVM.terminal.grid.test.figlet, themeVM.terminal.grid.test.sign), wide: wide, shadow: self.shadow)
+        let testTheme = themeVM.terminal.grid.test
+        let hintTheme = themeVM.terminal.grid.hint
+        TerminalTest(withHint ? items.hinted : items.unhinted, theme: (testTheme.figlet, testTheme.sign, hintTheme.unknown), wide: wide, shadow: self.shadow)
             .opacity(bloom ? 1 : 0.15)
             .onAppear {
                 if active {

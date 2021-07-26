@@ -41,9 +41,7 @@ struct SHR: EquationBuilder {
         
         let xParts = xResult.parts.withParen(!(self.x is ID))
         let yParts = yResult.parts.withParen(!(self.y is ID))
-        
-        let hint = EquationHint(bin: [], hex: []) // TODO
-        
+                
         return Equation(
             x: x,
             y: y,
@@ -52,7 +50,7 @@ struct SHR: EquationBuilder {
             parts: xParts + [.SIGN(.SHR)] + yParts,
             types: [.SHR] + xResult.types + yResult.types,
             test: { x >> y == result },
-            hint: hint
+            hint: bitwiseHint(for: result)
         )
     }
     
