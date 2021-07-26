@@ -770,7 +770,7 @@ class BinGraph {
             AL(["CMD", "COMMAND", "TELL ME THE COMMAND", "WHAT IS THE COMMAND?"]) {
                 EITHER(left: LEFT, right: RIGHT) { _, toolkit in
                     let symbols = toolkit.asciiVM.symbols
-                    return symbols.count > 35
+                    return symbols.count > 32
                 }
             }
     }

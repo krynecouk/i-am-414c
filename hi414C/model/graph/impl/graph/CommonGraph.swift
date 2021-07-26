@@ -742,7 +742,8 @@ class CommonGraph {
             ]
         }
         
-        static let ALL: [Edge] = SIGN + _RADIX + [_MATH]
+        //static let ALL: [Edge] = SIGN + _RADIX + [_MATH] // ERROR WHEN WHISPERING
+        static let ALL: [Edge] = SIGN + [_MATH]
     }
     
     class Interactive {

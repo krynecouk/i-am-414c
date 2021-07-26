@@ -81,7 +81,7 @@ class HexGraph {
     private static let YOU =
         AL(["YOU", "YOU?", "WHO ARE YOU?"]) {
             R("I AM AL") {
-                AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "???"]) {
+                AL(["YOU ARE ME?", "ME?", "WHAT?", "HOW?", "YOU???"]) {
                     R("YOU ARE IN COMA") {
                         AL(["COMA", "COMA?", "COMA?!"]) {
                             R("AFTER A CRASH") {
