@@ -8,7 +8,7 @@
 struct KeyboardTheme {
     var view: ViewTheme
     var key: Key
-    var prediction: Prediction
+    var prediction: ViewTheme
     
     struct Key {
         var `default`: ViewTheme
@@ -16,10 +16,5 @@ struct KeyboardTheme {
         var ABC: ViewTheme
         var BS: ViewTheme
         var CR: ViewTheme
-    }
-    
-    struct Prediction {
-        var active: ViewTheme
-        var passive: ViewTheme
     }
 }

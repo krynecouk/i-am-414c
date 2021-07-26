@@ -60,7 +60,7 @@ class BinGraph {
     
     private static let _HI =
         AL(["HELLO", "HI"]) {
-            R("HI")
+            R("HI") >> I
         }
     
     private static let I =

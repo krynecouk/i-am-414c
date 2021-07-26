@@ -11,6 +11,7 @@ typealias Prediction = (label: String, value: String)
 
 struct KeyboardPrediction: View {
     @EnvironmentObject var keyboardVM: KeyboardViewModel
+    @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
@@ -29,12 +30,14 @@ struct KeyboardPrediction: View {
                         PredictionButton(item.content)
                     }
                 } else {
-                    ForEach(chatVM.current.replies.map { Item($0) }) { item in
-                        PredictionButton((item.content, item.content), active: true)
-                    }
-                    let rootReplies = Set(chatVM.root.replies.map { $0.components(separatedBy: " ").first! })
-                    ForEach(rootReplies.map { Item($0) }) { item in
-                        PredictionButton((item.content, item.content))
+                    if graphVM.current is RootNode {
+                        ForEach(["HI", "I?"].map { Item($0) }) { item in
+                            PredictionButton((item.content, item.content))
+                        }
+                    } else {
+                        ForEach(chatVM.current.replies.map { Item($0) }) { item in
+                            PredictionButton((item.content, item.content))
+                        }
                     }
                 }
             }
@@ -112,9 +115,8 @@ struct PredictionButton: View {
     }
     
     var body: some View {
-        let theme = themeVM.keyboard.prediction
-        PredictionLabel(prediction.label, theme: active ? theme.active : theme.passive)
-            .background(RoundedBackground(color: active ? theme.active.background : theme.passive.background))
+        PredictionLabel(prediction.label, theme: themeVM.keyboard.prediction)
+            .background(RoundedBackground(color: themeVM.keyboard.prediction.background))
             .onTapGesture {
                 click.play()
                 keyboardVM.set(prediction.value + " ")
