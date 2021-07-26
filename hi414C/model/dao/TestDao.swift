@@ -6,7 +6,7 @@
 //
 
 struct TestDao {
-    static var key: String = "414C_TestLevel"
+    static var key: String = "414C_TestLevel2"
     
     public static func store(_ level: Int) {
         Dao.store(key: key, content: level)
