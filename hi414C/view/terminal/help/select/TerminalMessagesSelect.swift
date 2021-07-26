@@ -58,7 +58,7 @@ struct TerminalMessagesSelect: View {
     func MessageNoReply(_ text: String = "N/A") -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.noMessageButton)
             .padding([.leading, .trailing], 25)
-            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+            .background(RoundedBackground2(color: themeVM.terminal.help.history.al.background))
             .onTapGesture {
                 tinyClick.play()
             }
@@ -66,7 +66,7 @@ struct TerminalMessagesSelect: View {
     
     func MessageButton(_ text: String) -> some View {
         MessageLabel(text, theme: themeVM.terminal.hli.select.messageButton)
-            .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+            .background(RoundedBackground2(color: themeVM.terminal.help.history.al.background))
             .onTapGesture {
                 click.play()
                 uiVM.detail = (false, false)
@@ -120,7 +120,7 @@ struct ReloadButton: View {
         .offset(x: 2, y: 3.5)
         .padding([.top, .bottom], 8)
         .padding([.trailing, .leading], 25)
-        .background(RoundedBackground(color: themeVM.terminal.help.history.al.background))
+        .background(RoundedBackground2(color: themeVM.terminal.help.history.al.background))
         .disabled(self.disabled)
         .onTapGesture {
             if !disabled {
@@ -169,5 +169,15 @@ struct ReloadButtonDot: View {
 
             }
             .withTheme(themeVM.terminal.hli.select.messageButton)
+    }
+}
+
+struct RoundedBackground2: View {
+    let color: Color?
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 35)
+            .fill(self.color ?? Color.clear)
+            .padding([.leading, .trailing], 10)
     }
 }
