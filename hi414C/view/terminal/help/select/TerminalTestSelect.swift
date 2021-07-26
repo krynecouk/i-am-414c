@@ -10,7 +10,7 @@ import SwiftUI
 struct TerminalTestSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var testVM: TestViewModel
-    
+        
     var body: some View {
         VStack {
             Grid {
@@ -24,25 +24,27 @@ struct TerminalTestSelect: View {
                     helpVM.resetToZero()
                 }
                 .withDisabledSound(if: helpVM.equation.result == 0)
+                
                 HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
                     helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
                 }
             }
-            Slider(
-                value: helpVM.current,
-                    in: 0...100,
-                    step: 5
-                ) {
-                    Text("Speed")
-                } minimumValueLabel: {
-                    Text("0")
-                } maximumValueLabel: {
-                    Text("100")
-                } onEditingChanged: { editing in
-                    isEditing = editing
-                }
-                Text("\(speed)")
-                    .foregroundColor(isEditing ? .red : .blue)
+            
+            HStack {
+                Slider(
+                    value: Binding(get: {
+                        Double(helpVM.equation.result)
+                    }, set: { newVal in
+                        helpVM.equation = ID() => UInt8(newVal)
+                    }),
+                    in: 0...255,
+                    step: 1
+                )
+                .accentColor(.orange)
+                .padding()
+            }
+            
+
         }
     }
 }
