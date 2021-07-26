@@ -3,16 +3,40 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "A.init():A.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIFont.familyNames">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MUL.eq(_:):MUL.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "result.getAllDenominators()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GraphTests.testFoo():GraphTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "root">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "TerminalView.getItems(from:):TerminalView.swift">
          <PersistentStrings>
             <PersistentString
                value = "chars.endIndex">
             </PersistentString>
             <PersistentString
-               value = "chars.count &gt;= (i + 1)">
+               value = "chars[i + 1]">
             </PersistentString>
             <PersistentString
-               value = "chars[i + 1]">
+               value = "chars.count &gt;= (i + 1)">
             </PersistentString>
             <PersistentString
                value = "chars.endIndex &gt; (i + 1)">
@@ -28,37 +52,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "GraphTests.testFoo():GraphTests.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "root">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "A.init():A.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UIFont.familyNames">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "closure #2 in closure #4 in closure #1 in closure #1 in TerminalKeyboard.__preview__body.getter:TerminalKeyboard.swift">
          <PersistentStrings>
             <PersistentString
-               value = "testViewModel.current!.symbol">
+               value = "keyboardInput.value">
             </PersistentString>
             <PersistentString
-               value = "keyboardInput.value">
+               value = "testViewModel.current!.symbol">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MUL.eq(_:):MUL.swift">
+         contextName = "ID.hint(_:):ID.swift">
          <PersistentStrings>
             <PersistentString
-               value = "result.getAllDenominators()">
+               value = "hexVal(of: value)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

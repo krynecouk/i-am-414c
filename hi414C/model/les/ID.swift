@@ -28,9 +28,9 @@ extension ID {
         var hex: EquationParts = []
         for (i, value) in hexValues.enumerated() {
             hex.append(.NUM(hexVal(of: value)))
-            hex.append(.SIGN(.MUL))
-            hex.append(.NUM(16))
             if i != hexValues.endIndex - 1 {
+                hex.append(.SIGN(.MUL))
+                hex.append(.NUM(16))
                 hex.append(.SIGN(.ADD))
             }
         }
