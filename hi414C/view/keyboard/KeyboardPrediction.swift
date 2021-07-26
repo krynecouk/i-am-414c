@@ -18,11 +18,26 @@ struct KeyboardPrediction: View {
     @State var predictions: [Prediction]?
     @State var uuid: UUID = UUID()
     
-    init() {
-        //print("KeyboardPrediction")
+    var body: some View {
+        if !(graphVM.current is RootNode) && keyboardVM.input.isEmpty && chatVM.current.replies.isEmpty {
+            PlaceholderPanel()
+        } else {
+            PredictionPanel()
+        }
     }
     
-    var body: some View {
+    func PlaceholderPanel() -> some View {
+        ZStack {
+            Rectangle()
+                .fill(themeVM.terminal.cli.view.background ?? Color.clear)
+            Text("start typing...")
+                .font(Font.of(props: FontProps(.proggyTiny, 35)))
+                .foregroundColor(themeVM.terminal.cathode.background.opacity(0.9))
+        }
+        .frame(height: KeyboardViewModel.prediction.height)
+    }
+    
+    func PredictionPanel() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 if !keyboardVM.input.isEmpty && keyboardVM.input.last != " " {
@@ -49,17 +64,14 @@ struct KeyboardPrediction: View {
             }
             .padding([.leading, .trailing], 15)
             .onAppear {
-                print("appear: \"\(keyboardVM.input)\"")
                 initPredictions(with: keyboardVM.input)
             }
             .onChange(of: keyboardVM.input) { input in
-                print("change: \"\(input)\"")
                 initPredictions(with: input)
             }
         }
         .frame(height: KeyboardViewModel.prediction.height)
         .background(themeVM.terminal.cli.view.background)
-        //.background(Color.blue)
     }
     
     func initPredictions(with input: String) {
@@ -69,16 +81,12 @@ struct KeyboardPrediction: View {
             }
         } else {
             DispatchQueue.global().async {
-                print("current: ", chatVM.current.replies)
                 // filter possible replies
                 let filtered = chatVM.allReplies.filter { $0.starts(with: input) }
-                print("all replies: ", chatVM.allReplies)
-                print("filtered: ", filtered)
                 
                 // prediction index
                 //let tokenizedInput = input.tokenize(omitPunctuation: false) // punctuation??
                 let tokenizedInput = input.trim().components(separatedBy: " ")
-                print("tokenized input: ", tokenizedInput)
                 let endsWithSpace = input.hasSuffix(" ")
                 let endIndex = tokenizedInput.endIndex
                 let index = endsWithSpace ? endIndex : endIndex - 1
@@ -86,7 +94,6 @@ struct KeyboardPrediction: View {
                 // create predictions
                 //let tokenizedFilter = filtered.map { $0.tokenize(omitPunctuation: false) } // punctuation?
                 let tokenizedFilter = filtered.map { $0.trim().components(separatedBy: " ") }
-                print("tokenized filter: ", tokenizedFilter)
                 let tokenizedPredictions = tokenizedFilter.filter { $0.count >= index + 1 }
                 var predictions: [Prediction] = []
                 let keyboardLastWord = keyboardVM.input.lastWord()
@@ -97,22 +104,16 @@ struct KeyboardPrediction: View {
                     if keyboardLastWord == label {
                         continue
                     }
-
+                    
                     if !predictions.contains(where: { $0.label == label }) {
                         let value = tokenizedPrediction[...index].joined(separator: " ")
                         predictions.append((label, value))
                     }
                 }
-                print(predictions)
-                
                 
                 DispatchQueue.main.async {
-                    //withAnimation {
                     self.predictions = predictions
-                    
-                    //}
                 }
-                
             }
         }
     }

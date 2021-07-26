@@ -313,7 +313,7 @@ class CommonGraph {
                 }
         }
         
-        static var LOOK: Edge {
+        static var LOOK: [Edge] {
             let CANT =
                 R("CAN'T") {
                     AL(["WHY?", "WHY CAN'T YOU LOOK?"]) {
@@ -326,29 +326,48 @@ class CommonGraph {
                     }
                 }
             
-            return
+            let UP = AL(["LOOK UP"]) {
+                CANT
+            }
+            
+            let LEFT = AL(["LOOK LEFT"]) {
+                CANT
+            }
+            
+            let DOWN = AL(["LOOK DOWN"]) {
+                CANT
+            }
+            
+            let RIGHT = AL(["LOOK RIGHT"]) {
+                CANT
+            }
+            
+            let SOMEBODY = AL(["LOOK FOR SOMEBODY ELSE"]) {
+                CANT
+            }
+            
+            let SOMEWHERE = AL(["LOOK SOMEWHERE ELSE"]) {
+                CANT
+            }
+            
+            return [
                 AL("LOOK") {
                     R("WHERE") {
-                        AL(["UP"]) {
-                            CANT
-                        }
-                        AL(["DOWN"]) {
-                            CANT
-                        }
-                        AL(["LEFT"]) {
-                            CANT
-                        }
-                        AL(["RIGHT"]) {
-                            CANT
-                        }
-                        AL(["SOMEBODY", "LOOK FOR SOMEBODY ELSE"]) {
-                            CANT
-                        }
-                        AL(["SOMEWHERE", "LOOK SOMEWHERE ELSE"]) {
-                            CANT
-                        }
+                        ["UP"] + UP
+                        ["LEFT"] + LEFT
+                        ["DOWN"] + DOWN
+                        ["RIGHT"] + RIGHT
+                        ["SOMEBODY"] + SOMEBODY
+                        ["SOMEWHERE"] + SOMEWHERE
                     }
-                }
+                },
+                UP,
+                LEFT,
+                DOWN,
+                RIGHT,
+                SOMEBODY,
+                SOMEWHERE
+            ]
         }
         
         static let CLONE =
@@ -375,8 +394,8 @@ class CommonGraph {
             }
         
         static let ALL: [Edge] = [
-            LOVE, LIKE, HURRY, COME, STAY, FIND, SLEEP, CALL, STAND, ALONE, ALIVE, SEE, LOOK, CLONE, PAIN, NEVERMIND
-        ]
+            LOVE, LIKE, HURRY, COME, STAY, FIND, SLEEP, CALL, STAND, ALONE, ALIVE, SEE, CLONE, PAIN, NEVERMIND
+        ] + LOOK
     }
     
     class Settings {

@@ -624,7 +624,7 @@ class HexGraph {
     }
     
     private static let CRASH =
-        AL(["CRASH", "TELL ME ABOUT THE CRASH"]) {
+        AL(["CRASH", "CRASH?", "CRASH???", "TELL ME ABOUT THE CRASH"]) {
             R("WHAT?") {
                 AL(["WHEN", "WHEN WAS THAT CAR CRASH?"]) {
                     R("8 YEARS AGO")
