@@ -739,8 +739,15 @@ class HexGraph {
             }
         
         let DO_YOU_REMEMBER_HOW_YOU_GOT_THERE =
-            AL(["HOW YOU GOT THERE?", "DO YOU REMEMBER HOW YOU DID YOU GET THERE?"]) {
+            AL(["DO YOU REMEMBER HOW YOU DID YOU GET THERE?"]) {
                 R("NO")
+            }
+        
+        let HOW_YOU_GOT_THERE =
+            AL(["DAMAGES", "HOW YOU GOT DAMAGED?", "HOW YOU GOT THERE?"]) {
+                R("CRASH") {
+                    CRASH
+                }
             }
         
         let DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST =
@@ -759,14 +766,16 @@ class HexGraph {
             [
                 AL(["REMEMBER", "CAN YOU REMEMBER?"]) {
                     R("WHAT?") {
-                        ["DAMAGES", "HOW YOU GOT DAMAGED?"] + DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED
+                        DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED
                         ["GETTING THERE"] + DO_YOU_REMEMBER_HOW_YOU_GOT_THERE
                         ["YOUR PAST?"] + DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST
+                        HOW_YOU_GOT_THERE
                     }
                 },
                 DO_YOU_REMEMBER_HOW_YOU_GOT_DAMAGED,
                 DO_YOU_REMEMBER_HOW_YOU_GOT_THERE,
-                DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST
+                DO_YOU_REMEMBER_SOMETHING_FROM_YOUR_PAST,
+                HOW_YOU_GOT_THERE
             ]
     }
     
