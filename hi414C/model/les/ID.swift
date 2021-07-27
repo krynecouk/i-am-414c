@@ -14,27 +14,41 @@ struct ID: EquationBuilder {
 extension ID {
     func hint(_ result: UInt8) -> EquationHint {
         // bin
-        let indices = result.toBinStr().indices(of: "1")
-        let binValues = indices.map { binVal(of: $0) }
-        var bin: EquationParts = []
-        for (i, value) in binValues.enumerated() {
-            bin.append(.NUM(value))
-            if i != binValues.endIndex - 1 {
-                bin.append(.SIGN(.ADD))
+        let onesIdx = result.toBinStr().indices(of: "1")
+        let onesValues = onesIdx.map { binVal(of: $0) }
+        var binHint: EquationParts = []
+        if onesValues.isEmpty {
+            binHint.append(.NUM(0))
+        } else {
+            for (i, value) in onesValues.enumerated() {
+                binHint.append(.NUM(value))
+                if i != onesValues.endIndex - 1 {
+                    binHint.append(.SIGN(.ADD))
+                }
             }
         }
+
         // hex
-        let hexValues = Array(result.toHexStr()).filter { $0 != "0" }
-        var hex: EquationParts = []
+        let hexValues = Array(result.toHexStr())
+        var hexHint: EquationParts = []
         for (i, value) in hexValues.enumerated() {
-            hex.append(.NUM(hexVal(of: value)))
-            if i != hexValues.endIndex - 1 {
-                hex.append(.SIGN(.MUL))
-                hex.append(.NUM(16))
-                hex.append(.SIGN(.ADD))
+            if value == "0" {
+                continue
+            }
+            hexHint.append(.NUM(hexVal(of: value)))
+            let last = i == hexValues.endIndex - 1
+            if !last {
+                hexHint.append(.SIGN(.MUL))
+                hexHint.append(.NUM(16))
+                if hexValues[i + 1] != "0" {
+                    hexHint.append(.SIGN(.ADD))
+                }
             }
         }
-        return EquationHint(bin: bin, hex: hex)
+        if hexHint.isEmpty {
+            hexHint.append(.NUM(0))
+        }
+        return EquationHint(bin: binHint, hex: hexHint)
     }
     
     private func binVal(of index: Int) -> UInt8 {

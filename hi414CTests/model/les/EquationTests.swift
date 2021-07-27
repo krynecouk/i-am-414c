@@ -6,12 +6,22 @@
 //
 
 import XCTest
+import Expression
 
 @testable import hi414C
 
 class EquationTests: XCTestCase {
     
+    override class func tearDown() {
+        Expression.clearCache()
+        super.tearDown()
+    }
+    
     let tests = (0...10_000)
+    
+    func test_of_ID() {
+        test(ID(), debug: true)
+    }
     
     func test_of_AND() {
         test(AND(), debug: false)
@@ -93,6 +103,24 @@ class EquationTests: XCTestCase {
         XCTAssertEqual(equation.toString(radix: .hex), "01+02", "equation \(equation.toString(radix: .hex)) should be printed as 01+02")
     }
     
+    func test_of_hint(_ hint: EquationHint, _ result: UInt8, debug: Bool = false) {
+        try! test_of_hint(hint.bin.toString(radix: (body: .dec, result: .dec)), result, debug: debug)
+        try! test_of_hint(hint.hex.toString(radix: (body: .dec, result: .dec)), result, debug: debug)
+    }
+    
+    func test_of_hint(_ hint: String, _ result: UInt8, debug: Bool = false) throws {
+        let exp = Expression(hint)
+        let eval = try? exp.evaluate()
+        if let eval = eval {
+            if debug {
+                print("result of \(hint) was evaluated as \(eval)")
+            }
+            XCTAssertEqual(eval, Double(result), "hint evaluated as \(eval) should have be same as result \(result)")
+        } else {
+            throw EquationTestError.argumentError(msg: "Evaluation of hint \(hint) failed.")
+        }
+    }
+    
     func test(_ builder: EquationBuilder, debug: Bool = false) {
         test(builder.eq(0), debug: debug)
         tests.forEach { _ in
@@ -102,9 +130,17 @@ class EquationTests: XCTestCase {
     }
     
     func test(_ equation: Equation, debug: Bool = false) {
+        if equation.builder is ID {
+            test_of_hint(equation.hint, equation.result)
+        }
+        
         if debug {
             print("\(equation.toString())=\(equation.result) (\(equation.test()))")
         }
         XCTAssertEqual(equation.test(), true, "equation \(equation.toString()) was not equal to \(equation.result); x = \(equation.x), y = \(equation.y), result = \(equation.result)")
+    }
+    
+    enum EquationTestError: Error {
+        case argumentError(msg: String)
     }
 }
