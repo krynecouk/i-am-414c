@@ -20,7 +20,7 @@ class EquationTests: XCTestCase {
     let tests = (0...10_000)
     
     func test_of_ID() {
-        test(ID(), debug: true)
+        test(ID(), debug: false)
     }
     
     func test_of_AND() {
@@ -103,21 +103,37 @@ class EquationTests: XCTestCase {
         XCTAssertEqual(equation.toString(radix: .hex), "01+02", "equation \(equation.toString(radix: .hex)) should be printed as 01+02")
     }
     
-    func test_of_hint(_ hint: EquationHint, _ result: UInt8, debug: Bool = false) {
-        try! test_of_hint(hint.bin.toString(radix: (body: .dec, result: .dec)), result, debug: debug)
-        try! test_of_hint(hint.hex.toString(radix: (body: .dec, result: .dec)), result, debug: debug)
+    func test_of_hint(_ equation: Equation, debug: Bool = false) {
+        let hint = equation.hint
+        let builder = equation.builder
+        if !equation.types.contains(.SHR) && !equation.types.contains(.SHL) {
+            let isBinaryHint = builder is AND || builder is OR || builder is XOR || builder is NOT || builder is SHL || builder is SHR
+            try! test_of_hint(hint.bin.toString(radix: (body: .dec, result: .dec)), equation.result, isBinaryHint: isBinaryHint, debug: debug)
+            try! test_of_hint(hint.hex.toString(radix: (body: .dec, result: .dec)), equation.result, isBinaryHint: isBinaryHint, debug: debug)
+        }
     }
     
-    func test_of_hint(_ hint: String, _ result: UInt8, debug: Bool = false) throws {
-        let exp = Expression(hint)
-        let eval = try? exp.evaluate()
-        if let eval = eval {
+    func test_of_hint(_ hint: String, _ result: UInt8, isBinaryHint: Bool = false, debug: Bool = false) throws {
+        if isBinaryHint {
+            let oneHint = hint.replacingOccurrences(of: "?", with: "1")
+            let zeroHint = hint.replacingOccurrences(of: "?", with: "0")
+            let oneHintResult = UInt8(oneHint, radix: 2)
+            let zeroHintResult = UInt8(zeroHint, radix: 2)
             if debug {
-                print("result of \(hint) was evaluated as \(eval)")
+                print("hint: \(hint); one possible hint \(oneHint) - second possible hint \(zeroHint); result: \(result)")
             }
-            XCTAssertEqual(eval, Double(result), "hint evaluated as \(eval) should have be same as result \(result)")
+            XCTAssertTrue(oneHintResult! == result || zeroHintResult! == result, "\(oneHint) or \(zeroHint) should be equal to result \(result)")
         } else {
-            throw EquationTestError.argumentError(msg: "Evaluation of hint \(hint) failed.")
+            let exp = Expression(hint)
+            let eval = try? exp.evaluate()
+            if let eval = eval {
+                if debug {
+                    print("result of \(hint) was evaluated as \(eval)")
+                }
+                XCTAssertEqual(eval, Double(result), "hint evaluated as \(eval) should have be same as result \(result)")
+            } else {
+                throw EquationTestError.argumentError(msg: "Evaluation of hint \(hint) failed.")
+            }
         }
     }
     
@@ -130,10 +146,7 @@ class EquationTests: XCTestCase {
     }
     
     func test(_ equation: Equation, debug: Bool = false) {
-        if equation.builder is ID {
-            test_of_hint(equation.hint, equation.result)
-        }
-        
+        test_of_hint(equation)
         if debug {
             print("\(equation.toString())=\(equation.result) (\(equation.test()))")
         }

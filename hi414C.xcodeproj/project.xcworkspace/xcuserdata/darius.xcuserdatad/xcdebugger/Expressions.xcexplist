@@ -3,62 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "A.init():A.swift">
+         contextName = "ID.hint(_:):ID.swift">
          <PersistentStrings>
             <PersistentString
-               value = "UIFont.familyNames">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MUL.eq(_:):MUL.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "result.getAllDenominators()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "GraphTests.testFoo():GraphTests.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "root">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in closure #4 in closure #1 in closure #1 in TerminalKeyboard.__preview__body.getter:TerminalKeyboard.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "testViewModel.current!.symbol">
-            </PersistentString>
-            <PersistentString
-               value = "keyboardInput.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in Figlet.__preview__body.getter:Figlet.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "lines.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "TerminalView.getItems(from:):TerminalView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "chars.endIndex">
-            </PersistentString>
-            <PersistentString
-               value = "chars.count &gt;= (i + 1)">
-            </PersistentString>
-            <PersistentString
-               value = "chars[i + 1]">
-            </PersistentString>
-            <PersistentString
-               value = "chars.endIndex &gt; (i + 1)">
+               value = "hexVal(of: value)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -71,10 +19,79 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ID.hint(_:):ID.swift">
+         contextName = "TerminalView.getItems(from:):TerminalView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "hexVal(of: value)">
+               value = "chars.endIndex">
+            </PersistentString>
+            <PersistentString
+               value = "chars[i + 1]">
+            </PersistentString>
+            <PersistentString
+               value = "chars.count &gt;= (i + 1)">
+            </PersistentString>
+            <PersistentString
+               value = "chars.endIndex &gt; (i + 1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GraphTests.testFoo():GraphTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "root">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in Figlet.__preview__body.getter:Figlet.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lines.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in closure #4 in closure #1 in closure #1 in TerminalKeyboard.__preview__body.getter:TerminalKeyboard.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "keyboardInput.value">
+            </PersistentString>
+            <PersistentString
+               value = "testViewModel.current!.symbol">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MUL.eq(_:):MUL.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "result.getAllDenominators()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EquationTests.test_of_hint(_:_:isBinaryHint:debug:):EquationTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UInt8(zeroHint, radix: 2)">
+            </PersistentString>
+            <PersistentString
+               value = "zeroHintResult == result">
+            </PersistentString>
+            <PersistentString
+               value = "UInt8(oneHint, radix: 10)">
+            </PersistentString>
+            <PersistentString
+               value = "oneHintResult == result || zeroHintResult == result">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "A.init():A.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIFont.familyNames">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

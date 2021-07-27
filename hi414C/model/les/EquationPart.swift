@@ -44,7 +44,7 @@ extension EquationBuilder {
         //bin[rndIdx2] = .UNKNOWN
         // hex
         
-        return EquationHint(bin: bin, hex: []) // todo
+        return EquationHint(bin: bin, hex: bin)
     }
 }
 
