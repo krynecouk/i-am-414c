@@ -42,7 +42,7 @@ struct MUL: EquationBuilder {
         
         let hint = EquationHint(
             bin: xResult.hint.bin.withParen() + [.SIGN(.MUL)] + yResult.hint.bin.withParen(),
-            hex: xResult.hint.bin.withParen() + [.SIGN(.MUL)] + yResult.hint.bin.withParen())
+            hex: xResult.hint.hex.withParen() + [.SIGN(.MUL)] + yResult.hint.hex.withParen())
         
         return Equation(
             x: x,
