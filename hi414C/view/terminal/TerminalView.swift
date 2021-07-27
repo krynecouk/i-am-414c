@@ -22,9 +22,9 @@ struct TerminalView: View {
         ZStack(alignment: .bottom) {
             let items = getContent(from: terminalVM.content, ascii: asciiVM.symbols)
             TerminalContent(items: items)
+                .helpEdgeDrag()
             TerminalFooter()
         }
-        .helpEdgeDrag()
         .statusBar(hidden: true)
     }
     

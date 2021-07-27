@@ -10,7 +10,7 @@ import SwiftUI
 class HelpViewModel: ObservableObject, Resetable {
     @Published var current: HelpType = .learn
     @Published var settings: HelpSettingsType = .font
-    @Published private(set) var equation: Equation = ID() => 0
+    @Published var equation: Equation = ID() => 0
     @Published private(set) var radix: EquationRadix = RadixDao.find() ?? .bin
     @Published private(set) var answers: Int = 0
     
