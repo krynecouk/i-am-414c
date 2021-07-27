@@ -23,19 +23,21 @@ struct NOT: EquationBuilder {
             }
         }
         
-        let xResult = self.x.eq(UInt8.from(bin: xByte))
-        let xParts = xResult.parts.withParen(!(self.x is ID))
+        let xEq = self.x.eq(UInt8.from(bin: xByte))
+        let xParts = xEq.parts.withParen(!(self.x is ID))
         
         let x: UInt8 = UInt8.from(bin: xByte)
+        
+        let hint = bitwiseHint(for: result)
                         
         return Equation(
             x: x,
             result: result,
             builder: self,
             parts: [.SIGN(.NOT)] + xParts,
-            types: [.NOT] + xResult.types,
+            types: [.NOT] + xEq.types,
             test: { ~x == result },
-            hint: bitwiseHint(for: result)
+            hint: hint
         )
     }
 }

@@ -29,14 +29,16 @@ struct AND: EquationBuilder {
             }
         }
         
-        let xResult = self.x.eq(UInt8.from(bin: xByte))
-        let yResult = self.y.eq(UInt8.from(bin: yByte))
+        let xEq = self.x.eq(UInt8.from(bin: xByte))
+        let yEq = self.y.eq(UInt8.from(bin: yByte))
         
-        let xParts = xResult.parts.withParen(!(self.x is ID))
-        let yParts = yResult.parts.withParen(!(self.y is ID))
+        let xParts = xEq.parts.withParen(!(self.x is ID))
+        let yParts = yEq.parts.withParen(!(self.y is ID))
                 
         let x: UInt8 = UInt8.from(bin: xByte)
         let y: UInt8 = UInt8.from(bin: yByte)
+        
+        let hint = bitwiseHint(for: result)
                 
         return Equation(
             x: x,
@@ -44,9 +46,10 @@ struct AND: EquationBuilder {
             result: result,
             builder: self,
             parts: xParts + [.SIGN(.AND)] + yParts,
-            types: [.AND] + xResult.types + yResult.types,
+            types: [.AND] + xEq.types + yEq.types,
             test: { x & y == result },
-            hint: bitwiseHint(for: result))
+            hint: hint
+        )
     }
 }
 

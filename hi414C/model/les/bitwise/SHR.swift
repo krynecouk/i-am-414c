@@ -36,11 +36,13 @@ struct SHR: EquationBuilder {
             x = UInt8.from(bin: resultWithoutLeading0 + trailing0)
         }
       
-        let xResult = self.x.eq(x)
-        let yResult = self.y.eq(y)
+        let xEq = self.x.eq(x)
+        let yEq = self.y.eq(y)
         
-        let xParts = xResult.parts.withParen(!(self.x is ID))
-        let yParts = yResult.parts.withParen(!(self.y is ID))
+        let xParts = xEq.parts.withParen(!(self.x is ID))
+        let yParts = yEq.parts.withParen(!(self.y is ID))
+        
+        let hint = bitwiseHint(for: result)
                 
         return Equation(
             x: x,
@@ -48,9 +50,9 @@ struct SHR: EquationBuilder {
             result: result,
             builder: self,
             parts: xParts + [.SIGN(.SHR)] + yParts,
-            types: [.SHR] + xResult.types + yResult.types,
+            types: [.SHR] + xEq.types + yEq.types,
             test: { x >> y == result },
-            hint: bitwiseHint(for: result)
+            hint: hint
         )
     }
     

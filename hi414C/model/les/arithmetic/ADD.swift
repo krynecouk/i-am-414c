@@ -40,15 +40,15 @@ struct ADD: EquationBuilder {
             x = self.x.result ?? result - y
         }
 
-        let xResult = self.x.equation.eq(x)
-        let yResult = self.y.equation.eq(y)
+        let xEq = self.x.equation.eq(x)
+        let yEq = self.y.equation.eq(y)
         
-        let xParts = xResult.parts.withParen(!(self.x.equation is ID))
-        let yParts = yResult.parts.withParen(!(self.y.equation is ID))
+        let xParts = xEq.parts.withParen(!(self.x.equation is ID))
+        let yParts = yEq.parts.withParen(!(self.y.equation is ID))
         
         let hint = EquationHint(
-            bin: xResult.hint.bin.withParenIfNeeded() + [.SIGN(.ADD)] + yResult.hint.bin.withParenIfNeeded(),
-            hex: xResult.hint.hex.withParenIfNeeded() + [.SIGN(.ADD)] + yResult.hint.hex.withParenIfNeeded())
+            bin: xEq.hint.bin.withParenIfNeeded() + [.SIGN(.ADD)] + yEq.hint.bin.withParenIfNeeded(),
+            hex: xEq.hint.hex.withParenIfNeeded() + [.SIGN(.ADD)] + yEq.hint.hex.withParenIfNeeded())
 
         return Equation(
             x: x,
@@ -56,7 +56,7 @@ struct ADD: EquationBuilder {
             result: result,
             builder: self,
             parts: xParts + [.SIGN(.ADD)] + yParts,
-            types: [.ADD] + xResult.types + yResult.types, test: { x + y == result },
+            types: [.ADD] + xEq.types + yEq.types, test: { x + y == result },
             hint: hint)
     }
 }

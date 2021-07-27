@@ -38,21 +38,23 @@ struct SHL: EquationBuilder {
             y = UInt8(log2(Double(toSHL/x)))
         }
         
-        let xResult = self.x.eq(x)
-        let yResult = self.y.eq(y)
+        let xEq = self.x.eq(x)
+        let yEq = self.y.eq(y)
         
-        let xParts = xResult.parts.withParen(!(self.x is ID))
-        let yParts = yResult.parts.withParen(!(self.y is ID))
+        let xParts = xEq.parts.withParen(!(self.x is ID))
+        let yParts = yEq.parts.withParen(!(self.y is ID))
                 
+        let hint = bitwiseHint(for: result)
+        
         return Equation(
             x: x,
             y: y,
             result: result,
             builder: self,
             parts: xParts + [.SIGN(.SHL)] + yParts,
-            types: [.SHL] + xResult.types + yResult.types,
+            types: [.SHL] + xEq.types + yEq.types,
             test: { x << y == toSHL },
-            hint: bitwiseHint(for: result)
+            hint: hint
         )
     }
 }

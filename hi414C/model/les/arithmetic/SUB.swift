@@ -25,15 +25,15 @@ struct SUB: EquationBuilder {
             x = result + y
         }
         
-        let xResult = self.x.eq(x)
-        let yResult = self.y.eq(y)
+        let xEq = self.x.eq(x)
+        let yEq = self.y.eq(y)
         
-        let xParts = xResult.parts.withParen(!(self.x is ID))
-        let yParts = yResult.parts.withParen(!(self.y is ID))
+        let xParts = xEq.parts.withParen(!(self.x is ID))
+        let yParts = yEq.parts.withParen(!(self.y is ID))
         
         let hint = EquationHint(
-            bin: xResult.hint.bin.withParenIfNeeded() + [.SIGN(.SUB)] + yResult.hint.bin.withParenIfNeeded(),
-            hex: xResult.hint.hex.withParenIfNeeded() + [.SIGN(.SUB)] + yResult.hint.hex.withParenIfNeeded())
+            bin: xEq.hint.bin.withParenIfNeeded() + [.SIGN(.SUB)] + yEq.hint.bin.withParenIfNeeded(),
+            hex: xEq.hint.hex.withParenIfNeeded() + [.SIGN(.SUB)] + yEq.hint.hex.withParenIfNeeded())
                 
         return Equation(
             x: x,
@@ -41,7 +41,7 @@ struct SUB: EquationBuilder {
             result: result,
             builder: self,
             parts: xParts + [.SIGN(.SUB)] + yParts,
-            types: [.SUB] + xResult.types + yResult.types,
+            types: [.SUB] + xEq.types + yEq.types,
             test: { x - y == result },
             hint: hint
         )

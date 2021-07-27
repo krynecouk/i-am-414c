@@ -23,15 +23,15 @@ struct DIV: EquationBuilder {
         let y = UInt8.random(in: 1...maxMultiplicator)
         let x = result * y
         
-        let xResult = self.x.eq(x)
-        let yResult = self.y.eq(y)
+        let xEq = self.x.eq(x)
+        let yEq = self.y.eq(y)
         
-        let xParts = xResult.parts.withParen(!(self.x is ID))
-        let yParts = yResult.parts.withParen(!(self.y is ID))
+        let xParts = xEq.parts.withParen(!(self.x is ID))
+        let yParts = yEq.parts.withParen(!(self.y is ID))
         
         let hint = EquationHint(
-            bin: xResult.hint.bin.withParenIfNeeded() + [.SIGN(.DIV)] + yResult.hint.bin.withParenIfNeeded(),
-            hex: xResult.hint.hex.withParenIfNeeded() + [.SIGN(.DIV)] + yResult.hint.hex.withParenIfNeeded())
+            bin: xEq.hint.bin.withParenIfNeeded() + [.SIGN(.DIV)] + yEq.hint.bin.withParenIfNeeded(),
+            hex: xEq.hint.hex.withParenIfNeeded() + [.SIGN(.DIV)] + yEq.hint.hex.withParenIfNeeded())
                 
         return Equation(
             x: x,
@@ -39,7 +39,7 @@ struct DIV: EquationBuilder {
             result: result,
             builder: self,
             parts: xParts + [.SIGN(.DIV)] + yParts,
-            types: [.DIV] + xResult.types + yResult.types,
+            types: [.DIV] + xEq.types + yEq.types,
             test: { x / y == result },
             hint: hint
             )
