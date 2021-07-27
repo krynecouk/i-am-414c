@@ -14,12 +14,17 @@ struct KeyboardPrediction: View {
     @EnvironmentObject var graphVM: GraphViewModel
     @EnvironmentObject var chatVM: ChatViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var asciiVM: ASCIIViewModel
     
     @State var predictions: [Prediction]?
     @State var uuid: UUID = UUID()
     
     var body: some View {
-        if !(graphVM.current is RootNode) && keyboardVM.input.isEmpty && chatVM.current.replies.isEmpty {
+        let isEmpty = keyboardVM.input.isEmpty && chatVM.current.replies.isEmpty
+        let isRoot = graphVM.current is RootNode
+        let isStartOfGame = !asciiVM.symbols.contains(.A)
+        
+        if (!isRoot && isEmpty) || (isRoot && !isStartOfGame && isEmpty) {
             PlaceholderPanel()
         } else {
             PredictionPanel()
