@@ -30,8 +30,8 @@ struct DIV: EquationBuilder {
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
         let hint = EquationHint(
-            bin: xResult.hint.bin.withParen() + [.SIGN(.DIV)] + yResult.hint.bin.withParen(),
-            hex: xResult.hint.hex.withParen() + [.SIGN(.DIV)] + yResult.hint.hex.withParen())
+            bin: xResult.hint.bin.withParenIfNeeded() + [.SIGN(.DIV)] + yResult.hint.bin.withParenIfNeeded(),
+            hex: xResult.hint.hex.withParenIfNeeded() + [.SIGN(.DIV)] + yResult.hint.hex.withParenIfNeeded())
                 
         return Equation(
             x: x,

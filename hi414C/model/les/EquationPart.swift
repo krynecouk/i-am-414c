@@ -49,6 +49,10 @@ extension EquationBuilder {
 }
 
 extension EquationParts {
+    func withParenIfNeeded() -> Self {
+        self.withParen(self.count > 1)
+    }
+    
     func withParen(_ flag: Bool = true) -> Self {
         flag ? [.LP] + self + [.RP] : self
     }

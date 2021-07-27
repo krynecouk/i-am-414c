@@ -656,7 +656,7 @@ class HexGraph {
                 AL("YOU ARE INSIDE OF ME") {
                     R("NOT A LIE")
                 }
-                AL("I AM IN A COMA") {
+                AL(["I AM IN A COMA", "IS A LIE THAT I AM IN A COMA"]) {
                     R("NOT A LIE")
                 }
             }

@@ -47,8 +47,8 @@ struct ADD: EquationBuilder {
         let yParts = yResult.parts.withParen(!(self.y.equation is ID))
         
         let hint = EquationHint(
-            bin: xResult.hint.bin.withParen() + [.SIGN(.ADD)] + yResult.hint.bin.withParen(),
-            hex: xResult.hint.hex.withParen() + [.SIGN(.ADD)] + yResult.hint.hex.withParen())
+            bin: xResult.hint.bin.withParenIfNeeded() + [.SIGN(.ADD)] + yResult.hint.bin.withParenIfNeeded(),
+            hex: xResult.hint.hex.withParenIfNeeded() + [.SIGN(.ADD)] + yResult.hint.hex.withParenIfNeeded())
 
         return Equation(
             x: x,

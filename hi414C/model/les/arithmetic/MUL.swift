@@ -41,8 +41,8 @@ struct MUL: EquationBuilder {
         let yParts = yResult.parts.withParen(!(self.y is ID))
         
         let hint = EquationHint(
-            bin: xResult.hint.bin.withParen() + [.SIGN(.MUL)] + yResult.hint.bin.withParen(),
-            hex: xResult.hint.hex.withParen() + [.SIGN(.MUL)] + yResult.hint.hex.withParen())
+            bin: xResult.hint.bin.withParenIfNeeded() + [.SIGN(.MUL)] + yResult.hint.bin.withParenIfNeeded(),
+            hex: xResult.hint.hex.withParenIfNeeded() + [.SIGN(.MUL)] + yResult.hint.hex.withParenIfNeeded())
         
         return Equation(
             x: x,
