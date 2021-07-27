@@ -12,6 +12,7 @@ class CommonGraph {
     
     class Damages {
         private init() {}
+
         static let EYES =
             AL(["EYE", "EYES"]) {
                 R("DEFECTIVE") {

@@ -23,6 +23,7 @@ class BinGraph {
             BIN.HOW
             BIN.WHAT
             
+            //BIN.HEAL
             BIN.NAME
             BIN.HELP
             BIN.MEANING
@@ -331,6 +332,30 @@ class BinGraph {
             WHAT_IS_DAMAGED,
         ]
     }
+    
+    /*
+    static var HEAL: [Edge] {
+        let CAN_YOU_HEAL_ME =
+            AL(["CAN YOU HEAL ME?"]) {
+                R("NO, SORRY") {
+                    AL(["WHY?"]) {
+                        R("NOT")
+                    }
+                }
+            }
+        
+        let CAN_YOU_HEAL_YOURSELF =
+            AL(["CAN YOU HEAL ME?"]) {
+                R("OK")
+            }
+        
+        return [
+            AL(["HEAL", "CAN YOU HEAL?"]) {
+                R("WHOM?")
+            }
+        ]
+    }
+    */
     
     private static var NAME: [Edge] {
         let WHAT_IS_YOUR_NAME =

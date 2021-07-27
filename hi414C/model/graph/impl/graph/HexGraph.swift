@@ -23,6 +23,7 @@ class HexGraph {
             HEX.HOW
             HEX.WHAT
             
+            //HEX.HEAL
             HEX.NAME
             HEX.HELP
             HEX.MEANING
@@ -427,6 +428,81 @@ class HexGraph {
             WHAT_IS_DAMAGED,
         ]
     }
+    
+    /*
+    static var HEAL: [Edge] {
+        let CAN_YOU_HEAL_ME =
+            AL(["CAN YOU HEAL ME?"]) {
+                R("CAN ONLY HELP") {
+                    AL(["HOW?", "HOW CAN YOU HELP ME?", "HELP ME"]) {
+                        R("TO REMEMBER") {
+                            AL(["WHAT?", "WHAT TO REMEMBER?"]) {
+                                R("PASSWORD") {
+                                    AL("WHAT IS THE PASSWORD?") {
+                                        R("")
+                                    }
+                                }
+                            }
+                            AL(["HELP ME TO REMEMBER"]) {
+                                R("THINK OF HER") {
+                                    AL(["WHO?", "THINK OF WHO?"]) {
+                                        R("DAUGHTER") {
+                                            DAUGHTER
+                                        }
+                                    }
+                                }
+                            }
+                            AL(["WHY?", "WHY DO I NEED TO REMEMBER?"]) {
+                                R("TO WAKE UP")
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        
+        let CAN_YOU_HEAL_YOURSELF =
+            AL(["CAN YOU HEAL YOURSELF?"]) {
+                R("NO") {
+                    AL(["WHY?", "WHY CAN'T YOU HEAL YOURSELF?"]) {
+                        R("")
+                    }
+                }
+            }
+        
+        let CAN_YOU_HEAL_ME =
+            AL(["CAN YOU HEAL ME?"]) {
+                R("YES") {
+                    AL(["HEAL ME"]) {
+                        R("NEED PASSWORD") {
+                            AL(["WHY?", "WHY?!", "WHY DO I NEED A PASSWORD?"]) {
+                                R("PROTECTED") {
+                                    AL("WHY?") {
+                                        R("WAKING UNPREPARED")
+                                    }
+                                }
+                            }
+                            PASSWORD
+                        }
+                    }
+                    AL(["WHAT CAN YOU HEAL?"]) {
+                        
+                    }
+                }
+            }
+        
+        let CAN_YOU_HEAL_YOURSELF =
+            AL(["CAN YOU HEAL ME?"]) {
+                R("OK")
+            }
+        
+        return [
+            AL(["HEAL", "CAN YOU HEAL?"]) {
+                R("WHOM?")
+            }
+        ]
+    }
+    */
     
     private static var NAME: [Edge] {
         let WHAT_IS_YOUR_NAME =
@@ -953,7 +1029,6 @@ class HexGraph {
             TRAVERSE_ALL {
                 FINISH( with: .sunset)
             }
-        
         
         let THIRD_TRY =
             TRAVERSE_ALL {
