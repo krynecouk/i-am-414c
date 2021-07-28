@@ -11,7 +11,6 @@ struct TerminalHelpLine: View {
     @Namespace private var ns
     
     @EnvironmentObject var themeVM: ThemeViewModel
-    @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var helpVM: HelpViewModel
     
@@ -58,7 +57,6 @@ struct TerminalHelpLine: View {
         Button(action: {
             delete.play()
             withAnimation {
-                segueVM.close()
                 if uiVM.detail.0 == true {
                     uiVM.detail = (false, false)
                 }
@@ -73,13 +71,12 @@ struct TerminalHelpLine: View {
     
     func SegueButton(_ text: String, _ type: HelpType, perform action: @escaping () -> Void = {}) -> some View {
         let isCurrent = helpVM.current == type
-        let isOpen = segueVM.isOpen
         let theme = themeVM.terminal.hli.button
         return
             ButtonLabel(text)
             .background(isCurrent ? theme.background.active.frame(height: 6).offset(y: -29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
             //.background(isCurrent && isOpen ? theme.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
-            .withTheme(isCurrent && isOpen ? theme.active : theme.passive)
+            .withTheme(isCurrent ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
                 helpVM.current = type
