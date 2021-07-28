@@ -9,25 +9,31 @@ import SwiftUI
 struct TerminalTestSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var testVM: TestViewModel
-        
+    @EnvironmentObject var themeVM: ThemeViewModel
+    
     var body: some View {
-        VStack {
-            Grid {
-                HelpButton("-1") {
+        VStack(alignment: .leading) {
+            HStack {
+                HelpButton("-") {
                     helpVM.decrement()
                 }
-                HelpButton("+1") {
+                Spacer()
+                HelpButton("+") {
                     helpVM.increment()
                 }
+                Spacer()
                 HelpRadioButton("0", active: helpVM.equation.result != 0, sound: (.delete, .delete)) {
                     helpVM.resetToZero()
                 }
                 .withDisabledSound(if: helpVM.equation.result == 0)
-                
+                Spacer()
                 HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
                     helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
                 }
             }
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 15.0)
+                            .fill(Color("TertiaryOrange")))
             
             HStack {
                 Slider(
@@ -39,12 +45,17 @@ struct TerminalTestSelect: View {
                     in: 0...255,
                     step: 1
                 )
-                .accentColor(.orange)
-                .padding()
-            }
-            
+                .accentColor(Color("PrimaryOrange")) // TODO!!!
 
+            }
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 15.0)
+                            .fill(Color("TertiaryOrange")))
+            .padding(.top, 5)
         }
+        .padding()
+        .padding(.bottom, 69)
+        .background(themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -71,14 +82,5 @@ struct DisabledSound: ViewModifier {
 extension View {
     func withDisabledSound(if condition: Bool) -> some View {
         self.modifier(DisabledSound(condition))
-    }
-}
-
-struct TestSelect_Previews: PreviewProvider {
-    static var previews: some View {
-        HStack {
-            TerminalTestSelect()
-                .withEnvironment()
-        }
     }
 }

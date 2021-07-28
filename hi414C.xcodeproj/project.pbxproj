@@ -38,6 +38,7 @@
 		26440444261907B000CA7EA1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440443261907B000CA7EA1 /* ColorTheme.swift */; };
 		264404572619135E00CA7EA1 /* TerminalCommandCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */; };
 		2645BF2B26B1BA6700C56CA5 /* HelpIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2645BF2A26B1BA6700C56CA5 /* HelpIcon.swift */; };
+		2645BF2D26B1DA8100C56CA5 /* TerminalHelpFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2645BF2C26B1DA8100C56CA5 /* TerminalHelpFooter.swift */; };
 		2649527E260267DA0045BC21 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649527D260267DA0045BC21 /* Environment.swift */; };
 		26500159260F3C6200414E89 /* Keyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26500158260F3C6200414E89 /* Keyboards.swift */; };
 		2651294D25FA2D5F003F0FB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651294C25FA2D5F003F0FB2 /* Node.swift */; };
@@ -267,6 +268,7 @@
 		26440443261907B000CA7EA1 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		264404562619135E00CA7EA1 /* TerminalCommandCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalCommandCursor.swift; sourceTree = "<group>"; };
 		2645BF2A26B1BA6700C56CA5 /* HelpIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpIcon.swift; sourceTree = "<group>"; };
+		2645BF2C26B1DA8100C56CA5 /* TerminalHelpFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalHelpFooter.swift; sourceTree = "<group>"; };
 		2649527D260267DA0045BC21 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		26500158260F3C6200414E89 /* Keyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboards.swift; sourceTree = "<group>"; };
 		2651294C25FA2D5F003F0FB2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -941,6 +943,7 @@
 				263612522636F8F200341B60 /* TerminalHelpTest.swift */,
 				26EA3016265813DC004A78F2 /* TerminalHelpPadding.swift */,
 				26EA3025265C07FA004A78F2 /* TerminalHelpSettings.swift */,
+				2645BF2C26B1DA8100C56CA5 /* TerminalHelpFooter.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -1516,6 +1519,7 @@
 				26AE69A026769E9E001D5E4D /* RootNode.swift in Sources */,
 				2645BF2B26B1BA6700C56CA5 /* HelpIcon.swift in Sources */,
 				2613B0ED25FCA9FF00DDE737 /* KeyboardViewModel.swift in Sources */,
+				2645BF2D26B1DA8100C56CA5 /* TerminalHelpFooter.swift in Sources */,
 				26D1018F268CD36700E69CE4 /* ModalTheme.swift in Sources */,
 				266F980F266A86D00012619B /* TraverseAllEdge.swift in Sources */,
 				26B39DC525F65741004E4D22 /* Bloom.swift in Sources */,

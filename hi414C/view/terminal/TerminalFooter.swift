@@ -12,7 +12,7 @@ struct TerminalFooter: View {
     
     var body: some View {
         if uiVM.isHelp {
-            TerminalHelpLine()
+            TerminalHelpFooter()
         } else {
             if !uiVM.detail.is {
                 TerminalCommandSegue()

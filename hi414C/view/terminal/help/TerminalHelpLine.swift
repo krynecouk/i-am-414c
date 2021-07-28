@@ -77,11 +77,14 @@ struct TerminalHelpLine: View {
         let isCurrent = helpVM.current == type
         let theme = themeVM.terminal.hli.button
         return
+            ButtonLabel("Text")
+            /*
             ZStack {
                 HelpIcon(icon, size: (42, 42), active: self.visible == type)
             }
             .frame(width: 80, height: SegueViewModel.header.height)
-            .background(isCurrent ? theme.background.active.frame(height: 6).offset(y: -29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
+             */
+            .background(isCurrent ? ActiveBorder() : nil)
             .withTheme(isCurrent ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
@@ -92,5 +95,12 @@ struct TerminalHelpLine: View {
                 modifier.play()
                 action()
             }
+    }
+    
+    func ActiveBorder() -> some View {
+        themeVM.terminal.hli.button.background.active
+            .frame(height: 6)
+            .offset(y: -29.5)
+            .matchedGeometryEffect(id: "border", in: ns)
     }
 }

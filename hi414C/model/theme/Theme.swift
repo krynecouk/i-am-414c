@@ -322,7 +322,7 @@ class Theme: Themable {
                 ),
                 select: TerminalTheme.HelpLine.Select(
                     button: ViewTheme(
-                        font: FontProps(.proggyTiny, 32),
+                        font: FontProps(.proggyTiny, 42),
                         color: color.primary.contrast,
                         background: color.primary.value
                     ),
@@ -337,7 +337,7 @@ class Theme: Themable {
                         background: Color.clear
                     ),
                     background: TerminalTheme.HelpLine.Background(
-                        active: color.tertiary.value,
+                        active: color.secondary.value,
                         passive: color.secondary.value
                     )
                 )
