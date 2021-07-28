@@ -151,7 +151,7 @@ struct TerminalTestSelect: View {
         .background(landscape ? RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color.clear) : RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color("TertiaryOrange")))
-        .padding(.top, landscape || tablet ? 0 : 5)
+        .padding(.top, landscape || tablet ? 0 : 10)
     }
 }
 
