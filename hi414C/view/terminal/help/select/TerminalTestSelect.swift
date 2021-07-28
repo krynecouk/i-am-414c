@@ -12,12 +12,13 @@ struct TerminalTestSelect: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     @State var frame: CGRect = CGRect()
-    @State var extended: Bool = true
+    @State var portrait: Bool = true
+    @State var large: Bool = true
     
     var body: some View {
         Group {
             VStack(alignment: .leading) {
-                if extended {
+                if portrait {
                     Buttons()
                 }
                 Slider()
@@ -27,16 +28,19 @@ struct TerminalTestSelect: View {
             Color.clear
                 .onAppear {
                     self.frame = metrics.frame(in: .global)
-                    self.extended = self.frame.maxY > 400
+                    self.portrait = self.frame.maxY > 400
+                    print(frame.size)
                 }
                 .onChange(of: metrics.size) { size in
                     self.frame = metrics.frame(in: .global)
-                    self.extended = self.frame.maxY > 400
+                    self.portrait = self.frame.maxY > 400
+                    print(frame.size)
                 }
         })
-        .padding(extended ? 20 : 10)
-        .padding(.bottom, extended ? 69 : 62)
+        .padding(portrait ? 20 : 10)
+        .padding(.bottom, portrait ? 69 : 62)
         .background(themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)))
     }
     
     func Buttons() -> some View {
@@ -65,7 +69,7 @@ struct TerminalTestSelect: View {
     
     func Slider() -> some View {
         HStack {
-            if !extended {
+            if !portrait {
                 HelpButton("-", size: (10, 10), padding: 10, color: Color("WhiteOrange"), withBackground: false) { // TODO
                     helpVM.decrement()
                 }
@@ -83,7 +87,7 @@ struct TerminalTestSelect: View {
                 step: 1
             )
             .accentColor(Color("PrimaryOrange")) // TODO!!!
-            if !extended {
+            if !portrait {
                 HelpButton("+", size: (10, 10), padding: 10, color: Color("WhiteOrange"), withBackground: false) { // TODO
                     helpVM.increment()
                 }
@@ -91,11 +95,11 @@ struct TerminalTestSelect: View {
                 .padding([.leading, .trailing], 5)
             }
         }
-        .padding(extended ? 20 : 5)
-        .background(extended ? RoundedRectangle(cornerRadius: 15.0)
+        .padding(portrait ? 20 : 5)
+        .background(portrait ? RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color("TertiaryOrange")) : RoundedRectangle(cornerRadius: 15.0)
                         .fill(Color.clear))
-        .padding(.top, extended ? 5 : 0)
+        .padding(.top, portrait ? 5 : 0)
     }
 }
 
