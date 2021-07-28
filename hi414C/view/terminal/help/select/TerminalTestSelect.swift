@@ -4,51 +4,46 @@
 //
 //  Created by Darius Kryszczuk on 20.05.2021.
 //
-
 import SwiftUI
 
 struct TerminalTestSelect: View {
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var testVM: TestViewModel
-    
+        
     var body: some View {
-        Group {
-            HelpButton("-1") {
-                helpVM.decrement()
-            }
-            HelpButton("+1") {
-                helpVM.increment()
-            }
-            HelpRadioButton("0", active: helpVM.equation.result != 0, sound: (.delete, .delete)) {
-                helpVM.resetToZero()
-            }
-            .withDisabledSound(if: helpVM.equation.result == 0)
-        }
-        Group {
-            HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
-                helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
-            }
-        }
-        Group {
-            HelpSignButton<ADD>("+", .ADD)
-            HelpSignButton<SUB>("-", .SUB)
-            
-            HelpSignButton<DIV>("/", .DIV, sound: (.click, .delete))
+        VStack {
+            Grid {
+                HelpButton("-1") {
+                    helpVM.decrement()
+                }
+                HelpButton("+1") {
+                    helpVM.increment()
+                }
+                HelpRadioButton("0", active: helpVM.equation.result != 0, sound: (.delete, .delete)) {
+                    helpVM.resetToZero()
+                }
                 .withDisabledSound(if: helpVM.equation.result == 0)
+                
+                HelpButton(helpVM.radix == .bin ? "hex" : "bin") {
+                    helpVM.radix(of: helpVM.radix == .bin ? .hex : .bin)
+                }
+            }
             
-            HelpSignButton<MUL>("*", .MUL)
-        }
-        Group{
-            HelpSignButton<AND>("&", .AND)
+            HStack {
+                Slider(
+                    value: Binding(get: {
+                        Double(helpVM.equation.result)
+                    }, set: { newVal in
+                        helpVM.equation = ID() => UInt8(newVal)
+                    }),
+                    in: 0...255,
+                    step: 1
+                )
+                .accentColor(.orange)
+                .padding()
+            }
             
-            HelpSignButton<OR>("|", .OR)
-            
-            HelpSignButton<XOR>("^", .XOR)
-            
-            HelpSignButton<NOT>("~", .NOT)
-            
-            HelpSignButton<SHL>("<<", .SHL)
-            HelpSignButton<SHR>(">>", .SHR)
+
         }
     }
 }
