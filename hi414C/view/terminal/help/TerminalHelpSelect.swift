@@ -18,13 +18,6 @@ struct TerminalHelpSelect: View {
                     TerminalTestSelect()
                 }
                 
-                if segueVM.opened == .chat {
-                    LazyVStack {
-                        TerminalMessagesSelect()
-                    }
-
-                }
-                
                 if segueVM.opened == .settings {
                     TerminalSettingsSelect()
                 }
