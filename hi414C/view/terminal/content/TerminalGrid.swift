@@ -144,7 +144,7 @@ struct TerminalGrid: View {
             }
         }
         .onTapGesture {
-            if uiVM.current == .test || (uiVM.isHelp && helpVM.current == .learn) {
+            if uiVM.current == .test && !uiVM.isHelp {
                 withAnimation(themeVM.terminal.grid.test.animation.detail) {
                     uiVM.detail = (!uiVM.detail.is, true)
                 }

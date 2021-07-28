@@ -16,8 +16,8 @@ struct HelpEdgeDrag: ViewModifier {
                 left: {
                     if !uiVM.isHelp {
                         withAnimation {
-                            if uiVM.detail.0 == true {
-                                uiVM.detail = (false, false)
+                            if uiVM.detail.0 == false {
+                                uiVM.detail = (true, false)
                             }
                             uiVM.isHelp = true
                         }
