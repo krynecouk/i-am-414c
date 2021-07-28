@@ -1,5 +1,5 @@
 //
-//  TerminalDetailFooter.swift
+//  TerminalHintLine.swift
 //  hi414C
 //
 //  Created by Darius Kryszczuk on 25.07.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TerminalDetailFooter: View {
+struct TerminalHintLine: View {
     @EnvironmentObject var uiVM: UIViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
@@ -18,13 +18,12 @@ struct TerminalDetailFooter: View {
             Rectangle()
                 .fill(uiVM.withHint ? themeVM.terminal.hintli.active.background! : themeVM.terminal.hintli.passive.background!)
                 .edgesIgnoringSafeArea(.all)
-                .transition(.iris)
             HStack {
                 Text(active: uiVM.withHint)
             }
         }
         .frame(height: SegueViewModel.header.height)
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: 64)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)))
         .onTapGesture {
             withAnimation {
                 modifier.play()

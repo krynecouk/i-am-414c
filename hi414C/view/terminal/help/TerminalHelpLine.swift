@@ -24,9 +24,14 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton("Learn", .learn) {
+                    SegueButton("Calc", .learn) {
                         helpVM.current = .learn
                     }
+                    /*
+                    Image(systemName: helpVM.current == .learn ? "plus.circle.fill" : "plus.circle")
+                        .foregroundColor(.white)
+                        .font(.system(size: 46.0, weight: .bold))
+                    */
                     SegueButton("Chat", .chat) {
                         helpVM.current = .chat
                     }
@@ -36,10 +41,10 @@ struct TerminalHelpLine: View {
                 }
             }
             Spacer()
-            MinButton()
             QuitButton("x")
         }
         .frame(height: SegueViewModel.header.height)
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)))
         .background(themeVM.terminal.hli.background.edgesIgnoringSafeArea(.all))
     }
     
@@ -47,31 +52,6 @@ struct TerminalHelpLine: View {
         Text(text)
             .padding(.all, 13)
             .frame(height: SegueViewModel.header.height)
-    }
-    
-    func MinButton() -> some View {
-        Button(action: {
-            if segueVM.isOpen {
-                delete.play()
-                segueVM.close()
-            } else {
-                modifier.play()
-                segueVM.open(type: getCurrentSegue())
-            }
-        }) {
-            if segueVM.isOpen {
-                ButtonLabel("-")
-                    .withTheme(themeVM.terminal.hli.button.passive)
-            } else {
-                Rectangle()
-                    .fill(Color.clear)
-                    .frame(width: 15, height: 15)
-                    .border(themeVM.terminal.hli.button.passive.color, width: 1.7)
-                    .offset(y: -1.4)
-                    .padding(.all, 13)
-            }
-            
-        }
     }
     
     func QuitButton(_ text: String) -> some View {
@@ -91,53 +71,20 @@ struct TerminalHelpLine: View {
         }
     }
     
-    func SegueButton(_ text: String, _ type: SegueType, perform action: @escaping () -> Void = {}) -> some View {
-        let currentSegue = getCurrentSegue()
-        let isCurrent = currentSegue == type
+    func SegueButton(_ text: String, _ type: HelpType, perform action: @escaping () -> Void = {}) -> some View {
+        let isCurrent = helpVM.current == type
         let isOpen = segueVM.isOpen
         let theme = themeVM.terminal.hli.button
         return
             ButtonLabel(text)
-            .background(isCurrent && !isOpen ? theme.background.active.frame(height: 5).offset(y: 29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
-            .background(isCurrent && isOpen ? theme.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
+            .background(isCurrent ? theme.background.active.frame(height: 6).offset(y: -29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
+            //.background(isCurrent && isOpen ? theme.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
             .withTheme(isCurrent && isOpen ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
-                if isOpen {
-                    if isCurrent {
-                        delete.play()
-                    } else {
-                        modifier.play()
-                    }
-                    toggleSegue(type)
-                } else {
-                    if isCurrent {
-                        modifier.play()
-                        toggleSegue(type)
-                    } else {
-                        modifier.play()
-                    }
-                }
+                helpVM.current = type
+                modifier.play()
                 action()
             }
-    }
-    
-    func getCurrentSegue() -> SegueType {
-        switch helpVM.current {
-        case .learn:
-            return .learn
-        case .chat:
-            return .chat
-        case .settings:
-            return .settings
-        }
-    }
-    
-    func toggleSegue(_ type: SegueType) {
-        if segueVM.isOpen {
-            segueVM.opened == type ? segueVM.close() : segueVM.open(type: type)
-        } else {
-            segueVM.open(type: type)
-        }
     }
 }

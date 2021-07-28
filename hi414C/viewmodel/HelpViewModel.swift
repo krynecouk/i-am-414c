@@ -81,17 +81,6 @@ class HelpViewModel: ObservableObject, Resetable {
 
 enum HelpType {
     case learn, chat, settings
-    
-    func toSegueType() -> SegueType {
-        switch self {
-        case .learn:
-            return SegueType.learn
-        case .chat:
-            return SegueType.chat
-        case .settings:
-            return SegueType.settings
-        }
-    }
 }
 
 enum HelpSettingsType {

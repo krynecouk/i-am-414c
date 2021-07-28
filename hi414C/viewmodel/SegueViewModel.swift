@@ -10,7 +10,6 @@ class SegueViewModel: ObservableObject {
     static let header: Size = (.infinity, 64)
     
     @Published private(set) var segue: Size = header
-    @Published private(set) var help: Size = (.infinity, 200)
     @Published private(set) var keyboard: Size = (.infinity, 200)
     @Published private(set) var isOpen: Bool = false
     @Published private(set) var opened: SegueType?
@@ -35,5 +34,5 @@ class SegueViewModel: ObservableObject {
 }
 
 enum SegueType {
-    case keyboard, learn, chat, settings
+    case keyboard
 }

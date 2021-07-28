@@ -40,7 +40,7 @@ struct TerminalHelpSettings: View {
         var diff: CGFloat = 0
         
         if segueVM.isOpen {
-            diff += segueVM.help.height
+            diff += 200 + 64 // TODO
         } else {
             diff += SegueViewModel.header.height
         }
@@ -62,7 +62,6 @@ struct TerminalHelpSettings: View {
         }
         .onTapGesture {
             helpVM.settings = type
-            segueVM.open(type: .settings)
             action()
         }
     }

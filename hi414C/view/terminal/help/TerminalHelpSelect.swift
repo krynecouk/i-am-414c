@@ -13,6 +13,7 @@ struct TerminalHelpSelect: View {
     
     var body: some View {
         GeometryReader { metrics in
+            /*
             Group {
                 if segueVM.opened == .learn {
                     TerminalTestSelect()
@@ -22,7 +23,8 @@ struct TerminalHelpSelect: View {
                     TerminalSettingsSelect()
                 }
             }
-            .id(metrics.frame(in: .global).size.width)
+            */
+            //.id(metrics.frame(in: .global).size.width)
             /*
             .onAppear {
                 let frame = metrics.frame(in: .global)
@@ -43,10 +45,12 @@ struct TerminalHelpSelect: View {
                     segueVM.setSettingsSize((.infinity, 200))
                 }
             }
-            */
+            
+            
             .background(segueVM.isOpen && segueVM.opened != .keyboard
                             ? themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all)
                             : themeVM.terminal.hli.select.background.passive.edgesIgnoringSafeArea(.all))
+             */
         }
     }
     

@@ -12,14 +12,14 @@ struct TerminalFooter: View {
     
     var body: some View {
         if uiVM.isHelp {
-            TerminalHelpSegue()
+            TerminalHelpLine()
         } else {
             if !uiVM.detail.is {
                 TerminalCommandSegue()
                     .blur(if: !uiVM.isHelpModalClosed)
                     .disabled(!uiVM.isHelpModalClosed)
             } else {
-                TerminalDetailFooter()
+                TerminalHintLine()
             }
         }
     }

@@ -27,9 +27,11 @@ class HelpEdge: TestEdge {
             toolkit.helpVM.settings = self.settings
             toolkit.uiVM.isHelp = true
         }
+        /*
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            toolkit.segueVM.open(type: self.type.toSegueType())
+            toolkit.helpVM.current = self.type
         }
+        */
         return super.traverse(ctx: ctx, toolkit: toolkit)
     }
 }
