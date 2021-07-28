@@ -12,11 +12,27 @@ struct HelpButton: View {
     
     let text: String
     let sound: Sound?
+    let size: Size
+    let padding: CGFloat
+    let color: Color?
+    let withBackground: Bool
     let action: () -> Void
     
-    init(_ text: String, sound type: SoundType? = .click, perform action: @escaping () -> Void = {}) {
+    init(
+        _ text: String,
+        sound type: SoundType? = .click,
+        size: Size = (70, 70),
+        padding: CGFloat = 20,
+        color: Color? = nil,
+        withBackground: Bool = true,
+        perform action: @escaping () -> Void = {}) {
+        
         self.text = text
         self.sound = Sound.of(type)
+        self.size = size
+        self.padding = padding
+        self.color = color
+        self.withBackground = withBackground
         self.action = action
     }
     
@@ -27,11 +43,11 @@ struct HelpButton: View {
             action()
         }) {
             Text(text)
-                .foregroundColor(theme.color)
+                .foregroundColor(self.color ?? theme.color)
                 .font(Font.of(props: theme.font))
-                .padding(20)
-                .frame(minWidth: 70, minHeight: 70)
-                .background(RoundedRectangle(cornerRadius: 15.0).fill(theme.background!))
+                .padding(self.padding)
+                .frame(minWidth: size.width, minHeight: size.height)
+                .background(withBackground ? RoundedRectangle(cornerRadius: 15.0).fill(theme.background!) : nil)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
                 .allowsTightening(true)
