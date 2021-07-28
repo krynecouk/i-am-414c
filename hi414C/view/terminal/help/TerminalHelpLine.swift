@@ -15,6 +15,7 @@ struct TerminalHelpLine: View {
     @EnvironmentObject var helpVM: HelpViewModel
     
     @State var quitBackground: Color = .clear
+    @State var visible: HelpType = .learn
     
     let delete: Sound = Sound.of(.delete)
     let modifier: Sound = Sound.of(.modifier)
@@ -23,18 +24,21 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton("Calc", .learn) {
+                    SegueButton(.message, .learn) {
                         helpVM.current = .learn
                     }
+
+                    //HelpIcon(.message, active: visible == .learn)
+                        
                     /*
                     Image(systemName: helpVM.current == .learn ? "plus.circle.fill" : "plus.circle")
                         .foregroundColor(.white)
                         .font(.system(size: 46.0, weight: .bold))
                     */
-                    SegueButton("Chat", .chat) {
+                    SegueButton(.message, .chat) {
                         helpVM.current = .chat
                     }
-                    SegueButton("Settings", .settings) {
+                    SegueButton(.message, .settings) {
                         helpVM.current = .settings
                     }
                 }
@@ -69,17 +73,22 @@ struct TerminalHelpLine: View {
         }
     }
     
-    func SegueButton(_ text: String, _ type: HelpType, perform action: @escaping () -> Void = {}) -> some View {
+    func SegueButton(_ icon: HelpIconType, _ type: HelpType, perform action: @escaping () -> Void = {}) -> some View {
         let isCurrent = helpVM.current == type
         let theme = themeVM.terminal.hli.button
         return
-            ButtonLabel(text)
+            ZStack {
+                HelpIcon(icon, size: (42, 42), active: self.visible == type)
+            }
+            .frame(width: 80, height: SegueViewModel.header.height)
             .background(isCurrent ? theme.background.active.frame(height: 6).offset(y: -29.5).matchedGeometryEffect(id: "border", in: ns) : nil)
-            //.background(isCurrent && isOpen ? theme.background.active.matchedGeometryEffect(id: "border", in: ns, properties: .position) : nil)
             .withTheme(isCurrent ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
                 helpVM.current = type
+                withAnimation {
+                    self.visible = type
+                }
                 modifier.play()
                 action()
             }
