@@ -45,50 +45,56 @@ struct TerminalSettingsSelect: View {
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: -SegueViewModel.header.height)))
     }
     
-    func Font() -> some View {
+    func ThreeButtonContainer<Content: View>(_ content: () -> Content) -> some View {
         HStack {
             if landscape || tablet {
                 Spacer()
             }
             ButtonContainer(padding: landscape ? 5 : 20, visible: !landscape) {
-                HStack {
-                    let isDecreasable = themeVM.fontSize.isDecreasable()
-                    HelpRadioButton("-", active: isDecreasable, sound: (on: .click, off: .click)) {
-                        if isDecreasable {
-                            themeVM.font(.decrease)
-                        }
-                    }
-                    .withDisabledSound(if: !isDecreasable)
-                    .padding(.trailing, landscape || tablet ? 15 : 0)
-                    
-                    if !landscape && !tablet {
-                        Spacer()
-                    }
-
-                    let isIncreasable = themeVM.fontSize.isIncreasable()
-                    HelpRadioButton("+", active: isIncreasable, sound: (on: .click, off: .click)) {
-                        if isIncreasable {
-                            themeVM.font(.increase)
-                        }
-                    }
-                    .withDisabledSound(if: !isIncreasable)
-                    .padding(.trailing, landscape || tablet ? 15 : 0)
-                    
-                    if !landscape && !tablet {
-                        Spacer()
-                    }
-                    
-                    let isResetable = !themeVM.fontSize.isDefault()
-                    HelpRadioButton("reset", active: isResetable, sound: (on: .click, off: .click)) {
-                        if isResetable {
-                            themeVM.font(.reset)
-                        }
-                    }
-                    .withDisabledSound(if: !isResetable)
-                }
+                content()
             }
             if landscape || tablet {
                 Spacer()
+            }
+        }
+    }
+    
+    func Font() -> some View {
+        ThreeButtonContainer {
+            HStack {
+                let isDecreasable = themeVM.fontSize.isDecreasable()
+                HelpRadioButton("-", active: isDecreasable, sound: (on: .click, off: .click)) {
+                    if isDecreasable {
+                        themeVM.font(.decrease)
+                    }
+                }
+                .withDisabledSound(if: !isDecreasable)
+                .padding(.trailing, landscape || tablet ? 15 : 0)
+                
+                if !landscape && !tablet {
+                    Spacer()
+                }
+
+                let isIncreasable = themeVM.fontSize.isIncreasable()
+                HelpRadioButton("+", active: isIncreasable, sound: (on: .click, off: .click)) {
+                    if isIncreasable {
+                        themeVM.font(.increase)
+                    }
+                }
+                .withDisabledSound(if: !isIncreasable)
+                .padding(.trailing, landscape || tablet ? 15 : 0)
+                
+                if !landscape && !tablet {
+                    Spacer()
+                }
+                
+                let isResetable = !themeVM.fontSize.isDefault()
+                HelpRadioButton("reset", active: isResetable, sound: (on: .click, off: .click)) {
+                    if isResetable {
+                        themeVM.font(.reset)
+                    }
+                }
+                .withDisabledSound(if: !isResetable)
             }
         }
     }
