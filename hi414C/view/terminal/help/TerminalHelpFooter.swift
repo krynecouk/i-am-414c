@@ -13,7 +13,6 @@ struct TerminalHelpFooter: View {
     var body: some View {
         if helpVM.current == .learn {
             TerminalTestSelect()
-
         }
         
         if helpVM.current == .settings {

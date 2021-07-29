@@ -60,6 +60,7 @@ struct TerminalHelpLine: View {
     func QuitButton(_ text: String) -> some View {
         Button(action: {
             delete.play()
+            helpVM.settings = .none
             withAnimation {
                 if uiVM.detail.0 == true {
                     uiVM.detail = (false, false)

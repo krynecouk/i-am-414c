@@ -7,12 +7,14 @@
 import SwiftUI
 
 struct TerminalTestSelect: View {
+    @Namespace private var ns
+    
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
     @State var frame: CGRect = CGRect()
-    @State var landscape: Bool = false
+    @State var landscape: Bool = true
     @State var tablet: Bool = false
     
     var body: some View {
@@ -26,20 +28,24 @@ struct TerminalTestSelect: View {
         .background(GeometryReader { metrics in
             Color.clear
                 .onAppear {
-                    self.frame = metrics.frame(in: .global)
-                    self.landscape = self.frame.maxY < 400
-                    self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
+                    withAnimation {
+                        self.frame = metrics.frame(in: .global)
+                        self.landscape = self.frame.maxY < 400
+                        self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
+                    }
                 }
                 .onChange(of: metrics.size) { size in
-                    self.frame = metrics.frame(in: .global)
-                    self.landscape = self.frame.maxY < 400
-                    self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
+                    withAnimation {
+                        self.frame = metrics.frame(in: .global)
+                        self.landscape = self.frame.maxY < 400
+                        self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
+                    }
                 }
         })
         .padding(landscape ? 10 : 20)
         .padding(.bottom, landscape ? 62 : 69)
         .background(themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all))
-        //.transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)))
+        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: -SegueViewModel.header.height)))
     }
     
     func TabletLayout() -> some View {
@@ -47,15 +53,20 @@ struct TerminalTestSelect: View {
             TabletButtons()
             Slider()
         }
+        //.matchedGeometryEffect(id: "foo", in: ns, properties: [.position])
     }
     
     func MobileLayout() -> some View {
         VStack(alignment: .leading) {
             if !landscape {
                 MobileButtons()
+                    .transition(AnyTransition.asymmetric(
+                                    insertion: .move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)),
+                                    removal: .identity))
             }
             Slider()
         }
+        //.matchedGeometryEffect(id: "foo", in: ns, properties: [.position])
     }
     
     func TabletButtons() -> some View {
@@ -108,6 +119,8 @@ struct TerminalTestSelect: View {
         }
     }
     
+    @State var opacity: Double = 0
+    
     func Slider() -> some View {
         ButtonContainer(padding: landscape ? 5 : 20, visible: !landscape) {
             HStack {
@@ -117,10 +130,16 @@ struct TerminalTestSelect: View {
                     }
                     .offset(y: 3.5)
                     .padding([.leading, .trailing], 5)
+
+                    //.matchedGeometryEffect(id: "minus", in: ns, properties: .size)
+                    //.matchedGeometryEffect(id: "foo", in: ns, properties: .size)
                 }
 
                 if tablet {
                     Minus()
+                        .padding(.trailing, 10)
+                        //.matchedGeometryEffect(id: "minus", in: ns, properties: .size)
+                        //.matchedGeometryEffect(id: "foo", in: ns, properties: .size)
                 }
                 
                 SwiftUI.Slider(
@@ -133,6 +152,7 @@ struct TerminalTestSelect: View {
                     step: 1
                 )
                 .accentColor(Color("PrimaryOrange")) // TODO!!!
+                
                 if landscape {
                     HelpButton("+", size: (10, 10), padding: 10, color: Color("WhiteOrange"), withBackground: false) { // TODO
                         helpVM.increment()
@@ -142,7 +162,17 @@ struct TerminalTestSelect: View {
                 }
                 if tablet {
                     Plus()
+                        .padding(.leading, 10)
                 }
+            }
+        }
+        .opacity(self.opacity)
+        .transition(AnyTransition.asymmetric(
+                        insertion: .move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)),
+                        removal: .identity))
+        .onAppear {
+            withAnimation(tablet ? nil : .default) {
+                self.opacity = 1
             }
         }
         .padding(.top, landscape || tablet ? 0 : 10)
