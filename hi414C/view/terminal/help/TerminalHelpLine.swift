@@ -24,7 +24,7 @@ struct TerminalHelpLine: View {
         HStack(alignment: .center, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    SegueButton(.message, .learn) {
+                    SegueButton("Calc", icon: .message, .learn) {
                         helpVM.current = .learn
                     }
 
@@ -35,10 +35,10 @@ struct TerminalHelpLine: View {
                         .foregroundColor(.white)
                         .font(.system(size: 46.0, weight: .bold))
                     */
-                    SegueButton(.message, .chat) {
+                    SegueButton("Chat", icon: .message, .chat) {
                         helpVM.current = .chat
                     }
-                    SegueButton(.message, .settings) {
+                    SegueButton("Settings", icon: .message, .settings) {
                         helpVM.current = .settings
                     }
                 }
@@ -74,11 +74,11 @@ struct TerminalHelpLine: View {
         }
     }
     
-    func SegueButton(_ icon: HelpIconType, _ type: HelpType, perform action: @escaping () -> Void = {}) -> some View {
+    func SegueButton(_ text: String, icon: HelpIconType, _ type: HelpType, perform action: @escaping () -> Void = {}) -> some View {
         let isCurrent = helpVM.current == type
         let theme = themeVM.terminal.hli.button
         return
-            ButtonLabel("Text")
+            ButtonLabel(text)
             /*
             ZStack {
                 HelpIcon(icon, size: (42, 42), active: self.visible == type)
@@ -86,7 +86,9 @@ struct TerminalHelpLine: View {
             .frame(width: 80, height: SegueViewModel.header.height)
              */
             .background(isCurrent ? ActiveBorder() : nil)
-            .withTheme(isCurrent ? theme.active : theme.passive)
+            .foregroundColor(isCurrent ? theme.active.color : theme.passive.color)
+            .font(Font.of(props: isCurrent ? theme.active.font : theme.passive.font))
+            //.withTheme(visible == type ? theme.active : theme.passive)
             .animation(.easeOut.speed(2.3))
             .onTapGesture {
                 helpVM.current = type
@@ -99,7 +101,7 @@ struct TerminalHelpLine: View {
     }
     
     func ActiveBorder() -> some View {
-        themeVM.terminal.hli.button.background.active
+        Color("PrimaryOrange").opacity(0.8)
             .frame(height: 6)
             .offset(y: -29.5)
             .matchedGeometryEffect(id: "border", in: ns)

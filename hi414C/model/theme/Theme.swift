@@ -305,7 +305,7 @@ class Theme: Themable {
                 button: TerminalTheme.HelpLine.Button(
                     active: ViewTheme(
                         font: FontProps(.proggyTiny, 32),
-                        color: color.tertiary.contrast
+                        color: color.primary.value
                     ),
                     passive: ViewTheme(
                         font: FontProps(.proggyTiny, 32),

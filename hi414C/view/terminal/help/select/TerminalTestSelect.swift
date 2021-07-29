@@ -131,7 +131,6 @@ struct TerminalTestSelect: View {
                         helpVM.decrement()
                     }
                     .offset(y: 3.5)
-                    //.padding([.leading, .trailing], 5)
                 }
                 
                 SwiftUI.Slider(
