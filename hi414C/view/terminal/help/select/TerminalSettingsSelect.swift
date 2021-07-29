@@ -31,6 +31,9 @@ struct TerminalSettingsSelect: View {
             if helpVM.settings == .difficulty {
                 Difficulty()
             }
+            if helpVM.settings == .delete {
+                NewGame()
+            }
         }
         .background(GeometryReader { metrics in
             Color.clear
@@ -46,7 +49,7 @@ struct TerminalSettingsSelect: View {
                 }
         })
         .padding(20)
-        .padding(.bottom, 64)
+        .padding(.bottom, 60)
         .background(themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all))
         .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: -SegueViewModel.header.height)))
     }
@@ -80,7 +83,7 @@ struct TerminalSettingsSelect: View {
                 if !landscape && !tablet {
                     Spacer()
                 }
-
+                
                 let isIncreasable = themeVM.fontSize.isIncreasable()
                 HelpRadioButton("+", active: isIncreasable, sound: (on: .click, off: .click)) {
                     if isIncreasable {
@@ -158,104 +161,130 @@ struct TerminalSettingsSelect: View {
         }
     }
     
-    /*
-     Group{
-         if helpVM.settings == .font {
-             Group {
-                 let isDecreasable = themeVM.fontSize.isDecreasable()
-                 HelpRadioButton("-1", active: isDecreasable, sound: (on: .click, off: .click)) {
-                     if isDecreasable {
-                         themeVM.font(.decrease)
-                     }
-                 }
-                 .withDisabledSound(if: !isDecreasable)
-                 
-                 let isIncreasable = themeVM.fontSize.isIncreasable()
-                 HelpRadioButton("+1", active: isIncreasable, sound: (on: .click, off: .click)) {
-                     if isIncreasable {
-                         themeVM.font(.increase)
-                     }
-                 }
-                 .withDisabledSound(if: !isIncreasable)
-                 
-                 let isResetable = !themeVM.fontSize.isDefault()
-                 HelpRadioButton("reset", active: isResetable, sound: (on: .click, off: .click)) {
-                     if isResetable {
-                         themeVM.font(.reset)
-                     }
-                 }
-                 .withDisabledSound(if: !isResetable)
-             }
-         }
-         
-         if helpVM.settings == .theme {
-             Group {
-                 HelpColorButton("Orange", .orange)
-                 HelpColorButton("Green", .green)
-                 HelpColorButton("Blue", .blue)
-             }
-         }
-         
-         if helpVM.settings == .difficulty {
-             HelpRadioButton("easy", active: testVM.difficulty == .easy) {
-                 testVM.difficulty(.easy)
-                 graphVM.generateTests()
-             }
-             HelpRadioButton("medium", active: testVM.difficulty == .medium) {
-                 testVM.difficulty(.medium)
-                 graphVM.generateTests()
-             }
-             HelpRadioButton("hard", active: testVM.difficulty == .hard) {
-                 testVM.difficulty(.hard)
-                 graphVM.generateTests()
-             }
-         }
-         
-         if helpVM.settings == .delete {
-             WarnText("Delete all progress and start again?")
-             
-             if !isSmallPhone {
-                 Color.clear
-             }
-             HelpWarnButton("ok") {
-                 CmdDao.remove()
-                 testVM.reset()
-                 asciiVM.reset()
-                 chatVM.reset()
-                 helpVM.reset()
-                 themeVM.reset()
-                 graphVM.reset()
-                 withAnimation {
-                     uiVM.reset()
-                 }
-                 uiVM.video = .intro
-             }
-             .padding(.bottom, 20)
-             .padding(.top, 5)
-         }
-     }
-     */
-
-    
-    func WarnText(_ text: String) -> some View {
-        Group {
-            if !isSmallPhone {
-                Color.clear
-            }
-            Text(text)
-                .lineLimit(3)
-                .withTheme(themeVM.terminal.hli.button.active)
+    func NewGame() -> some View {
+        func WarnText() -> some View {
+            Text("Delete all progress and start again?")
+                .font(SwiftUI.Font.of(props: themeVM.terminal.hli.select.button.font))
+                .foregroundColor(themeVM.terminal.help.settings.active.color)
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
-                .frame(width: isSmallPhone ? nil : 350)
-                .padding(.bottom, 20)
-                .padding(.top, 5)
-            if !isSmallPhone {
-                Color.clear
+                .padding(.bottom, 10)
+        }
+        
+        func WarnButton() -> some View {
+            HelpWarnButton("ok") {
+                CmdDao.remove()
+                testVM.reset()
+                asciiVM.reset()
+                chatVM.reset()
+                helpVM.reset()
+                themeVM.reset()
+                graphVM.reset()
+                withAnimation {
+                    uiVM.reset()
+                }
+                uiVM.video = .intro
             }
         }
+        
+        return
+            HStack {
+                Spacer()
+                ButtonContainer(padding: landscape ? 0 : 20, visible: !landscape) {
+                    if landscape {
+                        HStack {
+                            WarnText()
+                                .padding(.trailing, 20)
+                            WarnButton()
+                        }
+                    } else {
+                        VStack {
+                            WarnText()
+                            WarnButton()
+                        }
+                    }
+
+                }
+                Spacer()
+            }
     }
     
-    var isSmallPhone: Bool {
-        UIScreen.main.bounds.width <= 375
-    }
+    /*
+     Group{
+     if helpVM.settings == .font {
+     Group {
+     let isDecreasable = themeVM.fontSize.isDecreasable()
+     HelpRadioButton("-1", active: isDecreasable, sound: (on: .click, off: .click)) {
+     if isDecreasable {
+     themeVM.font(.decrease)
+     }
+     }
+     .withDisabledSound(if: !isDecreasable)
+     
+     let isIncreasable = themeVM.fontSize.isIncreasable()
+     HelpRadioButton("+1", active: isIncreasable, sound: (on: .click, off: .click)) {
+     if isIncreasable {
+     themeVM.font(.increase)
+     }
+     }
+     .withDisabledSound(if: !isIncreasable)
+     
+     let isResetable = !themeVM.fontSize.isDefault()
+     HelpRadioButton("reset", active: isResetable, sound: (on: .click, off: .click)) {
+     if isResetable {
+     themeVM.font(.reset)
+     }
+     }
+     .withDisabledSound(if: !isResetable)
+     }
+     }
+     
+     if helpVM.settings == .theme {
+     Group {
+     HelpColorButton("Orange", .orange)
+     HelpColorButton("Green", .green)
+     HelpColorButton("Blue", .blue)
+     }
+     }
+     
+     if helpVM.settings == .difficulty {
+     HelpRadioButton("easy", active: testVM.difficulty == .easy) {
+     testVM.difficulty(.easy)
+     graphVM.generateTests()
+     }
+     HelpRadioButton("medium", active: testVM.difficulty == .medium) {
+     testVM.difficulty(.medium)
+     graphVM.generateTests()
+     }
+     HelpRadioButton("hard", active: testVM.difficulty == .hard) {
+     testVM.difficulty(.hard)
+     graphVM.generateTests()
+     }
+     }
+     
+     if helpVM.settings == .delete {
+     WarnText("Delete all progress and start again?")
+     
+     if !isSmallPhone {
+     Color.clear
+     }
+     HelpWarnButton("ok") {
+     CmdDao.remove()
+     testVM.reset()
+     asciiVM.reset()
+     chatVM.reset()
+     helpVM.reset()
+     themeVM.reset()
+     graphVM.reset()
+     withAnimation {
+     uiVM.reset()
+     }
+     uiVM.video = .intro
+     }
+     .padding(.bottom, 20)
+     .padding(.top, 5)
+     }
+     }
+     */
+    
 }

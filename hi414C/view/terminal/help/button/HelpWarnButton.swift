@@ -26,10 +26,12 @@ struct HelpWarnButton: View {
             action()
         }) {
             Text(text)
-                .padding()
-                .background(Color.red.opacity(0.7))
-                .foregroundColor(Color("WhiteOrange"))
-                .withTheme(themeVM.terminal.hli.select.button)
+                .foregroundColor(Color("WhiteOrange")) // TODO
+                .font(Font.of(props: themeVM.terminal.hli.select.button.font))
+                .padding(20)
+                .frame(minWidth: 70, minHeight: 70)
+                .background(RoundedRectangle(cornerRadius: 15.0)
+                                .fill(Color.red.opacity(0.7)))
         }
     }
 }

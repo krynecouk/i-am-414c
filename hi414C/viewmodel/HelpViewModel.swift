@@ -74,7 +74,7 @@ class HelpViewModel: ObservableObject, Resetable {
     func reset() {
         self.current = .learn
         self.radix(of: .bin)
-        self.settings = .font
+        self.settings = .none
         self.resetToZero()
     }
 }
