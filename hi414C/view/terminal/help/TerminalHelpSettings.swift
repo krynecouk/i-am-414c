@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TerminalHelpSettings: View {
     @EnvironmentObject var helpVM: HelpViewModel
-    @EnvironmentObject var segueVM: SegueViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
         
     @State var height: CGFloat = 0
@@ -39,8 +38,8 @@ struct TerminalHelpSettings: View {
         let result: CGFloat = frame.height
         var diff: CGFloat = 0
         
-        if segueVM.isOpen {
-            diff += 200 + 64 // TODO
+        if helpVM.settings != nil {
+            diff += 100 + 64 // TODO
         } else {
             diff += SegueViewModel.header.height
         }
@@ -61,12 +60,17 @@ struct TerminalHelpSettings: View {
                 .withTheme(helpVM.settings == type ? themeVM.terminal.help.settings.active : themeVM.terminal.help.settings.passive)
         }
         .onTapGesture {
-            helpVM.settings = type
+            withAnimation {
+                if helpVM.settings == type {
+                    helpVM.settings = .none
+                } else {
+                    helpVM.settings = type
+                }
+            }
+
             action()
         }
     }
-    
-    
     
     enum GridType {
         case one, double
