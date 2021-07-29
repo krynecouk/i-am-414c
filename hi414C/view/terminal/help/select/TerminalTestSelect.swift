@@ -7,8 +7,6 @@
 import SwiftUI
 
 struct TerminalTestSelect: View {
-    @Namespace private var ns
-    
     @EnvironmentObject var helpVM: HelpViewModel
     @EnvironmentObject var testVM: TestViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
@@ -28,14 +26,14 @@ struct TerminalTestSelect: View {
         .background(GeometryReader { metrics in
             Color.clear
                 .onAppear {
-                    withAnimation {
+                    withAnimation(tablet ? nil : .default) {
                         self.frame = metrics.frame(in: .global)
                         self.landscape = self.frame.maxY < 400
                         self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
                     }
                 }
                 .onChange(of: metrics.size) { size in
-                    withAnimation {
+                    withAnimation(tablet ? nil : .default) {
                         self.frame = metrics.frame(in: .global)
                         self.landscape = self.frame.maxY < 400
                         self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
@@ -45,7 +43,10 @@ struct TerminalTestSelect: View {
         .padding(landscape ? 10 : 20)
         .padding(.bottom, landscape ? 62 : 69)
         .background(themeVM.terminal.hli.select.background.active.edgesIgnoringSafeArea(.all))
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .offset(y: -SegueViewModel.header.height)))
+        .transition(!tablet
+                        ? AnyTransition.move(edge: .bottom).combined(with: .offset(y: -SegueViewModel.header.height))
+                        : .identity
+        )
     }
     
     func TabletLayout() -> some View {
@@ -53,7 +54,6 @@ struct TerminalTestSelect: View {
             TabletButtons()
             Slider()
         }
-        //.matchedGeometryEffect(id: "foo", in: ns, properties: [.position])
     }
     
     func MobileLayout() -> some View {
@@ -123,17 +123,15 @@ struct TerminalTestSelect: View {
     func Slider() -> some View {
         ButtonContainer(padding: landscape ? 5 : 20, visible: !landscape) {
             HStack {
-                if landscape {
-                    HelpButton("-", size: (10, 10), padding: 10, color: Color("WhiteOrange"), withBackground: false) { // TODO
-                        helpVM.decrement()
-                    }
-                    .offset(y: 3.5)
-                    .padding([.leading, .trailing], 5)
-                }
-
                 if tablet {
                     Minus()
                         .padding(.trailing, 10)
+                } else {
+                    HelpButton("-", size: (10, 10), padding: landscape ? 10 : 3, color: Color("WhiteOrange"), withBackground: false) { // TODO
+                        helpVM.decrement()
+                    }
+                    .offset(y: 3.5)
+                    //.padding([.leading, .trailing], 5)
                 }
                 
                 SwiftUI.Slider(
@@ -147,16 +145,15 @@ struct TerminalTestSelect: View {
                 )
                 .accentColor(Color("PrimaryOrange")) // TODO!!!
                 
-                if landscape {
-                    HelpButton("+", size: (10, 10), padding: 10, color: Color("WhiteOrange"), withBackground: false) { // TODO
-                        helpVM.increment()
-                    }
-                    .offset(y: 3.5)
-                    .padding([.leading, .trailing], 5)
-                }
                 if tablet {
                     Plus()
                         .padding(.leading, 10)
+                } else {
+                    HelpButton("+", size: (10, 10), padding: landscape ? 10 : 3, color: Color("WhiteOrange"), withBackground: false) { // TODO
+                        helpVM.increment()
+                    }
+                    .offset(y: 3.5)
+                    //.padding([.leading, .trailing], 5)
                 }
             }
         }
