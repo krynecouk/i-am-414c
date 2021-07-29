@@ -127,7 +127,7 @@ struct TerminalTestSelect: View {
                     Minus()
                         .padding(.trailing, 10)
                 } else {
-                    HelpButton("-", size: (10, 10), padding: landscape ? 10 : 3, color: Color("WhiteOrange"), withBackground: false) { // TODO
+                    HelpButton("-", size: (10, 10), padding: landscape ? 10 : 3, color: themeVM.terminal.hli.button.passive.color, withBackground: false) { // TODO
                         helpVM.decrement()
                     }
                     .offset(y: 3.5)
@@ -142,13 +142,13 @@ struct TerminalTestSelect: View {
                     in: 0...255,
                     step: 1
                 )
-                .accentColor(Color("PrimaryOrange")) // TODO!!!
+                .accentColor(themeVM.terminal.hli.button.active.color)
                 
                 if tablet {
                     Plus()
                         .padding(.leading, 10)
                 } else {
-                    HelpButton("+", size: (10, 10), padding: landscape ? 10 : 3, color: Color("WhiteOrange"), withBackground: false) { // TODO
+                    HelpButton("+", size: (10, 10), padding: landscape ? 10 : 3, color: themeVM.terminal.hli.button.passive.color, withBackground: false) { // TODO
                         helpVM.increment()
                     }
                     .offset(y: 3.5)

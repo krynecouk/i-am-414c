@@ -101,7 +101,7 @@ struct TerminalHelpLine: View {
     }
     
     func ActiveBorder() -> some View {
-        Color("PrimaryOrange").opacity(0.8)
+        themeVM.terminal.hli.button.active.color.opacity(0.8)
             .frame(height: 6)
             .offset(y: -29.5)
             .matchedGeometryEffect(id: "border", in: ns)

@@ -26,7 +26,7 @@ struct HelpWarnButton: View {
             action()
         }) {
             Text(text)
-                .foregroundColor(Color("WhiteOrange")) // TODO
+                .foregroundColor(themeVM.terminal.hli.button.passive.color) // TODO
                 .font(Font.of(props: themeVM.terminal.hli.select.button.font))
                 .padding(20)
                 .frame(minWidth: 70, minHeight: 70)
