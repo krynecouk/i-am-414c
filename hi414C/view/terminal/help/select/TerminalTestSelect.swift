@@ -29,14 +29,14 @@ struct TerminalTestSelect: View {
                     withAnimation(tablet ? nil : .default) {
                         self.frame = metrics.frame(in: .global)
                         self.landscape = self.frame.maxY < 400
-                        self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
+                        self.tablet = self.frame.maxX > 600 && self.frame.maxY > 600
                     }
                 }
                 .onChange(of: metrics.size) { size in
                     withAnimation(tablet ? nil : .default) {
                         self.frame = metrics.frame(in: .global)
                         self.landscape = self.frame.maxY < 400
-                        self.tablet = self.frame.maxX > 700 && self.frame.maxY > 700
+                        self.tablet = self.frame.maxX > 600 && self.frame.maxY > 600
                     }
                 }
         })
