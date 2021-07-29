@@ -43,15 +43,14 @@ struct HelpButton: View {
             action()
         }) {
             Text(text)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+                .allowsTightening(true)
                 .foregroundColor(self.color ?? theme.color)
                 .font(Font.of(props: theme.font))
                 .padding(self.padding)
                 .frame(minWidth: size.width, minHeight: size.height)
                 .background(withBackground ? RoundedRectangle(cornerRadius: 15.0).fill(theme.background!) : nil)
-                .lineLimit(1)
-                .minimumScaleFactor(0.1)
-                .allowsTightening(true)
-
         }
     }
 }

@@ -25,6 +25,12 @@ struct TerminalSettingsSelect: View {
             if helpVM.settings == .font {
                 Font()
             }
+            if helpVM.settings == .theme {
+                Theme()
+            }
+            if helpVM.settings == .difficulty {
+                Difficulty()
+            }
         }
         .background(GeometryReader { metrics in
             Color.clear
@@ -95,6 +101,59 @@ struct TerminalSettingsSelect: View {
                     }
                 }
                 .withDisabledSound(if: !isResetable)
+            }
+        }
+    }
+    
+    func Theme() -> some View {
+        ThreeButtonContainer {
+            HStack {
+                HelpColorButton("Orange", .orange)
+                    .padding(.trailing, landscape || tablet ? 15 : 0)
+                
+                if !landscape && !tablet {
+                    Spacer()
+                }
+                
+                HelpColorButton("Green", .green)
+                    .padding(.trailing, landscape || tablet ? 15 : 0)
+                
+                if !landscape && !tablet {
+                    Spacer()
+                }
+                
+                HelpColorButton("Blue", .blue)
+            }
+        }
+    }
+    
+    func Difficulty() -> some View {
+        ThreeButtonContainer {
+            HStack {
+                HelpRadioButton("easy", active: testVM.difficulty == .easy, fontSizeModifier: !landscape && !tablet ? -10 : 0) {
+                    testVM.difficulty(.easy)
+                    graphVM.generateTests()
+                }
+                .padding(.trailing, landscape || tablet ? 15 : 0)
+                
+                if !landscape && !tablet {
+                    Spacer()
+                }
+                
+                HelpRadioButton("medium", active: testVM.difficulty == .medium, fontSizeModifier: !landscape && !tablet ? -10 : 0) {
+                    testVM.difficulty(.medium)
+                    graphVM.generateTests()
+                }
+                .padding(.trailing, landscape || tablet ? 15 : 0)
+                
+                if !landscape && !tablet {
+                    Spacer()
+                }
+                
+                HelpRadioButton("hard", active: testVM.difficulty == .hard, fontSizeModifier: !landscape && !tablet ? -10 : 0) {
+                    testVM.difficulty(.hard)
+                    graphVM.generateTests()
+                }
             }
         }
     }

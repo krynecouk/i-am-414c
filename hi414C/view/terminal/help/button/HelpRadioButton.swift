@@ -15,12 +15,14 @@ struct HelpRadioButton: View {
     let text: String
     let active: Bool
     let sound: (on: Sound?, off: Sound?)
+    let fontSizeModifier: CGFloat
     let action: () -> Void
     
-    init(_ text: String, active: Bool = false, sound type: HelpRadioButtonSound = (.click, .delete), perform action: @escaping () -> Void = {}) {
+    init(_ text: String, active: Bool = false, sound type: HelpRadioButtonSound = (.click, .delete), fontSizeModifier: CGFloat = 0, perform action: @escaping () -> Void = {}) {
         self.text = text
         self.active = active
         self.sound = (Sound.of(type.on), Sound.of(type.off))
+        self.fontSizeModifier = fontSizeModifier
         self.action = action
     }
     
@@ -34,6 +36,9 @@ struct HelpRadioButton: View {
             action()
         }) {
             Text(text)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+                .allowsTightening(true)
                 .padding(20)
                 .frame(minWidth: 70, minHeight: 70)
                 .background(RoundedRectangle(cornerRadius: 15.0)
@@ -41,7 +46,9 @@ struct HelpRadioButton: View {
                                     active
                                         ? themeVM.terminal.hli.select.button.background!
                                         : themeVM.terminal.hli.button.passive.color.opacity(0.6)))
-                .font(Font.of(props: themeVM.terminal.hli.select.button.font))
+                .font(Font.of(
+                        name: themeVM.terminal.hli.select.button.font.name,
+                        size: themeVM.terminal.hli.select.button.font.size + self.fontSizeModifier))
                 .foregroundColor(themeVM.terminal.hli.select.button.color.opacity(active ? 1 : 0.5))
         }
     }

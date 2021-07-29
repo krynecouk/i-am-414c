@@ -39,7 +39,7 @@ struct TerminalHelpSettings: View {
         var diff: CGFloat = 0
         
         if helpVM.settings != nil {
-            diff += 100 + 64 // TODO
+            diff += 120 + 64 // TODO
         } else {
             diff += SegueViewModel.header.height
         }
