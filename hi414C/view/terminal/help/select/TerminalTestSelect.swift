@@ -66,7 +66,6 @@ struct TerminalTestSelect: View {
             }
             Slider()
         }
-        //.matchedGeometryEffect(id: "foo", in: ns, properties: [.position])
     }
     
     func TabletButtons() -> some View {
@@ -130,16 +129,11 @@ struct TerminalTestSelect: View {
                     }
                     .offset(y: 3.5)
                     .padding([.leading, .trailing], 5)
-
-                    //.matchedGeometryEffect(id: "minus", in: ns, properties: .size)
-                    //.matchedGeometryEffect(id: "foo", in: ns, properties: .size)
                 }
 
                 if tablet {
                     Minus()
                         .padding(.trailing, 10)
-                        //.matchedGeometryEffect(id: "minus", in: ns, properties: .size)
-                        //.matchedGeometryEffect(id: "foo", in: ns, properties: .size)
                 }
                 
                 SwiftUI.Slider(
@@ -171,7 +165,7 @@ struct TerminalTestSelect: View {
                         insertion: .move(edge: .bottom).combined(with: .offset(y: SegueViewModel.header.height)),
                         removal: .identity))
         .onAppear {
-            withAnimation(tablet ? nil : .default) {
+            withAnimation {
                 self.opacity = 1
             }
         }
