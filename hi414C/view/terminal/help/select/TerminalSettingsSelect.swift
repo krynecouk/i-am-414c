@@ -195,6 +195,7 @@ struct TerminalSettingsSelect: View {
                         HStack {
                             WarnText()
                                 .padding(.trailing, 20)
+                                .offset(y: 5)
                             WarnButton()
                         }
                     } else {
