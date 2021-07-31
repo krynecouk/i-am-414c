@@ -30,7 +30,10 @@ struct TerminalCommandSegue: View {
             ASCIIKeyboardView(predictive: testVM.test == nil) { input in
                 if input == "?" {
                     withAnimation {
-                        uiVM.isHelp = uiVM.isHelp ? false : true
+                        if uiVM.detail.0 == false {
+                            uiVM.detail = (true, false)
+                        }
+                        uiVM.isHelp = true
                     }
                     modifier.play()
                     return
