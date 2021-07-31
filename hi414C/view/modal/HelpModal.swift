@@ -17,7 +17,7 @@ struct HelpModal: View {
         
         Decode its binary messages to uncover the letters and use them to communicate with the robot. Find out more about its past and purpose.
         
-        Important: Swipe left to access help center. Tap on binary to enter calc mode.
+        Important: Tap on binary to enter calc mode. Swipe left to access help center.
         """
     
     var body: some View {

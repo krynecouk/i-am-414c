@@ -750,7 +750,7 @@ class BinGraph {
         return
             AL(["EXECUTE", "EXECUTE COMMAND"]) {
                 R("TYPE COMMAND") {
-                    AL("LOAD(MEMORY)") {
+                    AL("RESET(MEMORY)") {
                         COMMON.DIE_WARN
                     }
                     AL("GC.COLLECT()") {
