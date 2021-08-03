@@ -14,12 +14,8 @@ class DeadNode: Node {
     let index: EdgeIndex = [:]
     
     func onEnter(ctx: GraphContext, toolkit: GraphToolkit) {
-        let gameFinished = GameOverDao.find() ?? false
         CmdDao.remove()
         toolkit.testVM.reset()
-        if !gameFinished {
-            toolkit.asciiVM.reset()
-        }
         toolkit.chatVM.reset()
         toolkit.helpVM.reset()
         toolkit.themeVM.reset()
