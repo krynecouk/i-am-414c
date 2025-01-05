@@ -1,12 +1,10 @@
 # I AM 414C
 
-"With an affecting story and a genuinely unexpected resolution, I AM 414C effortlessly blends mathematical and linguistic challenges." - metro.co.uk
+_"With an affecting story and a genuinely unexpected resolution, I AM 414C effortlessly blends mathematical and linguistic challenges."_ - metro.co.uk
 
-"I AM 414C is more than just a fun text adventure. It's a step back in time for some unique fun." - appadvice.com
+_"I AM 414C is more than just a fun text adventure. It's a step back in time for some unique fun."_ - appadvice.com
 
-"I AM 414C is an interesting and bold experiment." - apps.ru
-
-I AM 414C is an engaging text adventure game based on communication with a robot named 414C. The robot is damaged and has forgotten all the letters. Help 414C recover its memory by solving binary operations and chat with it to uncover its past and purpose.
+I AM 414C is an educational text adventure game based on communication with a robot named 414C. The robot is damaged and has forgotten all the letters. Help 414C recover its memory by solving binary operations, uncovering ASCII letters, and chatting with it to reveal its past and purpose.
 
 ## Features
 
@@ -16,18 +14,17 @@ I AM 414C is an engaging text adventure game based on communication with a robot
 - Educational screen for learning binary and hexadecimal operations.
 - No in-app purchases, no ads, and no tracking.
 
-## Screenshots
+## Preview
 
-![Main Interface](assets/main_interface.png)
-*Main Interface of I AM 414C*
-
-![Binary Puzzle](assets/binary_puzzle.png)
-*Example of a Binary Puzzle*
-
-## Video Demonstration
-
-[![Watch the video](assets/video_thumbnail.png)](https://www.youtube.com/watch?v=your_video_id)
-*Click the image above to watch a gameplay demonstration.*
+<p align="center">
+  <img src="hi414C/assets/preview/AppPreview.gif" alt="First Screenshot" width="25%" />
+  <img src="hi414C/assets/preview/1.png" alt="Second Screenshot" width="25%" />
+  <img src="hi414C/assets/preview/2.png" alt="Second Screenshot" width="25%" />
+  <img src="hi414C/assets/preview/3.png" alt="Second Screenshot" width="25%" />
+  <img src="hi414C/assets/preview/4.png" alt="Second Screenshot" width="25%" />
+  <img src="hi414C/assets/preview/5.png" alt="Second Screenshot" width="25%" />
+  <img src="hi414C/assets/preview/6.png" alt="Second Screenshot" width="25%" />
+</p>
 
 ## About This Repository
 
